@@ -1,0 +1,39 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-21T07:44:48.663758Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s4_mt_guard_l1_baseline_full_gpt4_1_mini",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group exect_s4_medication_precision_guard_gpt_full_validation_v1; varied_factor implementation_variant.",
+    "Full fixed ExECTv2 validation split (40 records); not published Table 1 reproduction.",
+    "Medication_temporality precision primary; MT F1 must not regress >=2pp vs L1 for G0 promotion.",
+    "Cap-25 anchor: L1 46.8% MT precision (runs/exect_s4_mt_guard_l1_baseline_cap25_gpt4_1_mini_20260521T073717Z).",
+    "External anchor: GPT S4 v1.2 full 46.4% MT precision (runs/exect_s4_validation_full_gpt4_1_mini_20260520T071248Z).",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s4_field_family_single_pass",
+  "run_id": "exect_s4_mt_guard_l1_baseline_full_gpt4_1_mini_20260521T074448Z",
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

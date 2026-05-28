@@ -1,0 +1,871 @@
+{
+  "benchmark_metrics": {
+    "monthly_frequency_accuracy": 0.16,
+    "pragmatic_category_accuracy": 0.4,
+    "purist_category_accuracy": 0.4
+  },
+  "caveats": [
+    "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+    "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
+    "Evidence metrics are diagnostic source-grounding checks: predicted evidence is evaluated by deterministic quote/offset support in the note text, not by overlap with Gan evidence annotations."
+  ],
+  "confidence_intervals": {
+    "evidence_offsets_present_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_offsets_valid_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_quote_support_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "monthly_frequency_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.04,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 0.16,
+      "seed": 0,
+      "upper": 0.32
+    },
+    "normalized_label_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.04,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 0.16,
+      "seed": 0,
+      "upper": 0.32
+    },
+    "pragmatic_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.24,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 0.4,
+      "seed": 0,
+      "upper": 0.6
+    },
+    "purist_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.24,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 0.4,
+      "seed": 0,
+      "upper": 0.6
+    },
+    "raw_exact_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.04,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 0.16,
+      "seed": 0,
+      "upper": 0.32
+    },
+    "schema_valid_prediction_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 25,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    }
+  },
+  "counts": {
+    "evaluated_records": 25,
+    "extra_predictions": 0,
+    "gold_records": 1500,
+    "invalid_predictions": 0,
+    "missing_predictions": 1475,
+    "predicted_records": 25,
+    "valid_predictions": 25
+  },
+  "dataset": "gan_2026",
+  "diagnostic_metrics": {
+    "evidence_offsets_present_rate": 1.0,
+    "evidence_offsets_valid_rate": 1.0,
+    "evidence_quote_support_rate": 1.0,
+    "normalized_label_accuracy": 0.16,
+    "raw_exact_accuracy": 0.16,
+    "schema_valid_prediction_rate": 1.0
+  },
+  "error_analysis": {
+    "counts": {
+      "classification.pragmatic_category_mismatch": 15,
+      "classification.purist_category_mismatch": 15,
+      "normalization.label_mismatch": 21,
+      "normalization.monthly_frequency_mismatch": 21,
+      "schema.missing_prediction": 1475
+    },
+    "examples": {
+      "classification.pragmatic_category_mismatch": [
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12871"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "frequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "frequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14146"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_16041"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_16780"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_16883"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_16938"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_3623"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_3630"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_4602"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_4709"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_6077"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_6094"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_9943"
+        }
+      ],
+      "classification.purist_category_mismatch": [
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12871"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14146"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_16041"
+        },
+        {
+          "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_16780"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_16883"
+        },
+        {
+          "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+          "predicted_purist_category": "eq_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_16938"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_3623"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_3630"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_4602"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_4709"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "lt_1_per_6_months",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_6077"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_6094"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_9943"
+        }
+      ],
+      "normalization.label_mismatch": [
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "seizure free for 4 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "normalized_gold_label": "1 per day",
+          "normalized_predicted_label": "multiple per day",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12218"
+        },
+        {
+          "normalized_gold_label": "5 per 2 month",
+          "normalized_predicted_label": "5 per year",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12871"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "2 to 3 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "3 per 2 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14146"
+        },
+        {
+          "normalized_gold_label": "3 per month",
+          "normalized_predicted_label": "2 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_1463"
+        },
+        {
+          "normalized_gold_label": "10 per 3 month",
+          "normalized_predicted_label": "6 per 3 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_15997"
+        },
+        {
+          "normalized_gold_label": "9 per 3 month",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_16041"
+        },
+        {
+          "normalized_gold_label": "3 per 7 month",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_16780"
+        },
+        {
+          "normalized_gold_label": "4 per 3 month",
+          "normalized_predicted_label": "2 per 3 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_16883"
+        },
+        {
+          "normalized_gold_label": "2 per week",
+          "normalized_predicted_label": "2 per 2 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_16938"
+        },
+        {
+          "normalized_gold_label": "7 per 3 month",
+          "normalized_predicted_label": "5 per 3 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_1914"
+        },
+        {
+          "normalized_gold_label": "7 per week",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_3623"
+        },
+        {
+          "normalized_gold_label": "7 per week",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_3630"
+        },
+        {
+          "normalized_gold_label": "1 per 2 to 3 week",
+          "normalized_predicted_label": "1 per 3 week",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_4100"
+        },
+        {
+          "normalized_gold_label": "1 per 7 to 10 day",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_4602"
+        },
+        {
+          "normalized_gold_label": "multiple per day",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_4709"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "1 per 8 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_6077"
+        },
+        {
+          "normalized_gold_label": "3 per month",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_6094"
+        },
+        {
+          "normalized_gold_label": "10 per 9 month",
+          "normalized_predicted_label": "2 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_9424"
+        }
+      ],
+      "normalization.monthly_frequency_mismatch": [
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_monthly_frequency": 30.0,
+          "predicted_monthly_frequency": 90.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12218"
+        },
+        {
+          "gold_monthly_frequency": 2.5,
+          "predicted_monthly_frequency": 0.41666666666666663,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12871"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 2.5,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 1.5,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14146"
+        },
+        {
+          "gold_monthly_frequency": 3.0,
+          "predicted_monthly_frequency": 2.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_1463"
+        },
+        {
+          "gold_monthly_frequency": 3.3333333333333335,
+          "predicted_monthly_frequency": 2.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_15997"
+        },
+        {
+          "gold_monthly_frequency": 3.0,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_16041"
+        },
+        {
+          "gold_monthly_frequency": 0.42857142857142855,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_16780"
+        },
+        {
+          "gold_monthly_frequency": 1.3333333333333333,
+          "predicted_monthly_frequency": 0.6666666666666666,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_16883"
+        },
+        {
+          "gold_monthly_frequency": 8.66,
+          "predicted_monthly_frequency": 1.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_16938"
+        },
+        {
+          "gold_monthly_frequency": 2.3333333333333335,
+          "predicted_monthly_frequency": 1.6666666666666667,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_1914"
+        },
+        {
+          "gold_monthly_frequency": 30.310000000000002,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_3623"
+        },
+        {
+          "gold_monthly_frequency": 30.310000000000002,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_3630"
+        },
+        {
+          "gold_monthly_frequency": 1.7320000000000002,
+          "predicted_monthly_frequency": 1.4433333333333334,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_4100"
+        },
+        {
+          "gold_monthly_frequency": 3.5294117647058822,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_4602"
+        },
+        {
+          "gold_monthly_frequency": 90.0,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_4709"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.125,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_6077"
+        },
+        {
+          "gold_monthly_frequency": 3.0,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_6094"
+        },
+        {
+          "gold_monthly_frequency": 1.1111111111111112,
+          "predicted_monthly_frequency": 2.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_9424"
+        }
+      ],
+      "schema.missing_prediction": [
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10002"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10003"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10009"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10010"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10031"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10047"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1005"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10052"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10057"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10063"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10074"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10097"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10123"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10147"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10149"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10159"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1017"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1018"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10183"
+        }
+      ]
+    }
+  },
+  "errors": {
+    "evidence_support_errors": [],
+    "extra_prediction_ids": [],
+    "invalid_predictions": [],
+    "missing_prediction_ids": [
+      "gan_10",
+      "gan_10002",
+      "gan_10003",
+      "gan_10009",
+      "gan_10010",
+      "gan_10031",
+      "gan_10047",
+      "gan_1005",
+      "gan_10052",
+      "gan_10057",
+      "gan_10063",
+      "gan_10074",
+      "gan_10097",
+      "gan_10123",
+      "gan_10147",
+      "gan_10149",
+      "gan_10159",
+      "gan_1017",
+      "gan_1018",
+      "gan_10183"
+    ],
+    "monthly_frequency_mismatches": [
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "seizure free for 4 month",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11216"
+      },
+      {
+        "gold_label": "1 per day",
+        "gold_monthly_frequency": 30.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "multiple per day",
+        "predicted_monthly_frequency": 90.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_12218"
+      },
+      {
+        "gold_label": "5 per 2 month",
+        "gold_monthly_frequency": 2.5,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "5 per year",
+        "predicted_monthly_frequency": 0.41666666666666663,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_12871"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "2 to 3 per month",
+        "predicted_monthly_frequency": 2.5,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_14081"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "3 per 2 month",
+        "predicted_monthly_frequency": 1.5,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_14146"
+      },
+      {
+        "gold_label": "3 per month",
+        "gold_monthly_frequency": 3.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 per month",
+        "predicted_monthly_frequency": 2.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_1463"
+      },
+      {
+        "gold_label": "10 per 3 month",
+        "gold_monthly_frequency": 3.3333333333333335,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "6 per 3 month",
+        "predicted_monthly_frequency": 2.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_15997"
+      },
+      {
+        "gold_label": "9 per 3 month",
+        "gold_monthly_frequency": 3.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_16041"
+      },
+      {
+        "gold_label": "3 per 7 month",
+        "gold_monthly_frequency": 0.42857142857142855,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_16780"
+      },
+      {
+        "gold_label": "4 per 3 month",
+        "gold_monthly_frequency": 1.3333333333333333,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 per 3 month",
+        "predicted_monthly_frequency": 0.6666666666666666,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_16883"
+      },
+      {
+        "gold_label": "2 per week",
+        "gold_monthly_frequency": 8.66,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 per 2 month",
+        "predicted_monthly_frequency": 1.0,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_16938"
+      },
+      {
+        "gold_label": "7 per 3 month",
+        "gold_monthly_frequency": 2.3333333333333335,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "5 per 3 month",
+        "predicted_monthly_frequency": 1.6666666666666667,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_1914"
+      },
+      {
+        "gold_label": "7 per week",
+        "gold_monthly_frequency": 30.310000000000002,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_3623"
+      },
+      {
+        "gold_label": "7 per week",
+        "gold_monthly_frequency": 30.310000000000002,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_3630"
+      },
+      {
+        "gold_label": "1 per 2 to 3 week",
+        "gold_monthly_frequency": 1.7320000000000002,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "1 per 3 week",
+        "predicted_monthly_frequency": 1.4433333333333334,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_4100"
+      },
+      {
+        "gold_label": "1 per 7 to 10 day",
+        "gold_monthly_frequency": 3.5294117647058822,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_4602"
+      },
+      {
+        "gold_label": "multiple per day",
+        "gold_monthly_frequency": 90.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_4709"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "1 per 8 month",
+        "predicted_monthly_frequency": 0.125,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_6077"
+      },
+      {
+        "gold_label": "3 per month",
+        "gold_monthly_frequency": 3.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_6094"
+      },
+      {
+        "gold_label": "10 per 9 month",
+        "gold_monthly_frequency": 1.1111111111111112,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 per month",
+        "predicted_monthly_frequency": 2.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_9424"
+      }
+    ]
+  },
+  "runtime": {
+    "compile_duration_seconds": null,
+    "estimated_model_calls": 25,
+    "evaluation_duration_seconds": 0.07422459998633713,
+    "model_residency": "not_applicable",
+    "optimizer": null,
+    "prediction_duration_seconds": 57.42205809999723,
+    "prediction_seconds_per_record": 2.2968823239998892,
+    "records": 25,
+    "token_usage": {
+      "completion_tokens": 1230,
+      "history_entries": 25,
+      "prompt_tokens": 113391,
+      "total_tokens": 114621
+    },
+    "total_duration_seconds": 57.49804019997828
+  },
+  "schema_level": "gan_frequency_s0",
+  "scorer": "gan_frequency_deterministic_v1"
+}

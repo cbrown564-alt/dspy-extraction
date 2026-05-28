@@ -1,0 +1,34 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_smoke_claude_sonnet_4_6_anthropic",
+  "hypothesis": "A one-record Gan S0 smoke run verifies that the Claude Sonnet 4.6 Anthropic model config can execute the fixed single-pass extraction contract and produce standard run artifacts.",
+  "max_records": 1,
+  "metric_caveats": [
+    "This one-record smoke run validates provider/config/runtime compatibility only; it is not a performance estimate.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing when run at meaningful sample sizes.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "Anthropic OpenAI-compatible response_format support is limited; Pydantic validation remains the source of schema truth.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_claude_sonnet_4_6_anthropic.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_single_pass",
+  "prompt_version": "gan_frequency_s0_v2_vocab_guided",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": null,
+  "taxonomy_exemption": "legacy_registry"
+}

@@ -1,0 +1,71 @@
+{
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication"
+  ],
+  "label_policy_examples": [
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "lamotrigine"
+        ]
+      },
+      "case": "planned_medication_exclusion",
+      "note_fragment": "Current anti-epileptic medication: lamotrigine 75mg bd. To start levetiracetam.",
+      "policy": "Exclude planned medication starts from the benchmark-facing medication list."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "sodium valproate"
+        ]
+      },
+      "case": "previous_medication_exclusion",
+      "note_fragment": "Previously tried carbamazepine. Current treatment is sodium valproate.",
+      "policy": "Exclude historical medication mentions from the benchmark-facing medication list."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "temporal lobe seizure"
+        ]
+      },
+      "case": "canonical_seizure_type_granularity",
+      "note_fragment": "The events are temporal-lobe-onset focal seizures.",
+      "policy": "Use the audited coarse seizure-type surface rather than a richer clinical phrase."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "focal epilepsy"
+        ]
+      },
+      "case": "diagnosis_label_preservation",
+      "note_fragment": "Diagnosis: symptomatic structural focal epilepsy.",
+      "policy": "Preserve the audited canonical diagnosis label rather than emitting a modifier-only label."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": []
+      },
+      "case": "single_event_diagnosis_null",
+      "note_fragment": "This was a single focal seizure. There is no established epilepsy diagnosis.",
+      "policy": "Do not convert a single seizure event into an established epilepsy diagnosis."
+    }
+  ],
+  "label_policy_guidance": [
+    "Return benchmark-facing annotation labels only; do not expand into clinically richer labels.",
+    "Diagnosis labels are limited to established epilepsy diagnoses: epilepsy, focal epilepsy, generalized epilepsy, juvenile myoclonic epilepsy, and status epilepticus.",
+    "Map symptomatic structural focal epilepsy and temporal lobe epilepsy to focal epilepsy.",
+    "Do not output a diagnosis for a single seizure event unless the note separately states an established epilepsy diagnosis.",
+    "Use coarse benchmark seizure-type surfaces when the note uses richer ILAE wording; for example temporal-lobe-onset focal wording should become temporal lobe seizure when that surface is supported.",
+    "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a separate current seizure type unless the note independently names it as current.",
+    "Annotated medication means medications in the audited prescription annotation view only; do not include planned starts, previous trials, taper/stop instructions, or medication history mentions unless they are also prescription-style annotated medication entries.",
+    "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or unsupported evidence."
+  ],
+  "module": "ExectS0S1FieldFamilyModule",
+  "prompt_version": "exect_s0_s1_field_family_v2_label_policy",
+  "signature": "ExectS0S1FieldFamilySignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

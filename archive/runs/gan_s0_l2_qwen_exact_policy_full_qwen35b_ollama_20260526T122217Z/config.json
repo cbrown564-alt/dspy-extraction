@@ -1,0 +1,53 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag_with_error_taxonomy_policy_patch",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama",
+  "hypothesis": "A narrow Qwen3.6:35b exact-frequency policy patch on the full validation split (299 records) reduces the paired local-model gap by resolving cluster collapse, arithmetic window drift, and unknown fallback.",
+  "max_records": null,
+  "metric_caveats": [
+    "This run performs full validation on all 299 records in gan_2026_fixed_v1:validation.",
+    "The varied factor is prompt policy only: program variant, candidate builder implementation, scorer, split, model, context policy, and repair policy remain fixed against the Qwen builder-gap v1 baseline.",
+    "Prompt v1.8 adds a schema-validity surface gate over v1.7; full validation should follow only after the cap-25 gate clears schema validity."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_9_qwen_hybrid_resolution",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_l2_qwen_exact_policy_v1",
+    "context_selection_policy": null,
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during"
+    ],
+    "program_architecture": "temporal_candidates_single_pass",
+    "schema_complexity": "gan_s0",
+    "stage_executor": "det_candidates_llm_adjudicate",
+    "stage_graph_id": "g2_candidates_adjudicate",
+    "validation_ladder_rung": null,
+    "varied_factor": "prompt_policy"
+  },
+  "taxonomy_exemption": null
+}

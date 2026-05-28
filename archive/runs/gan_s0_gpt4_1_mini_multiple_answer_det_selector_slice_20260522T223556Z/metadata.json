@@ -1,0 +1,36 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-22T22:35:56.301958Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice",
+    "prompt_version": "gan_frequency_s0_multiple_answer_det_selector_v1_0",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_gpt4_1_mini_multiple_answer_selector_v1; varied_factor implementation_variant.",
+    "Record_ids are the same 25-record validation slice selected from pragmatic-category mismatches in runs/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama_20260522T131822Z.",
+    "The slice is enriched for over-unknown and short-stability errors; do not compare directly to full-validation metrics.",
+    "One LLM call proposes explicit canonical answer options; deterministic selector chooses the final answer. No verifier or repair pass.",
+    "Answer options are filtered to exact note-supported evidence spans before deterministic selection, except no seizure frequency reference.",
+    "Cap-25/slice search only \u2014 decision_scope arm."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_multiple_answer_det_selector",
+  "run_id": "gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice_20260522T223556Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

@@ -1,0 +1,26 @@
+{
+  "artifact_files": {
+    "compiled_state": "../compiled_state.json",
+    "gepa_logs": "logs"
+  },
+  "optimizer": {
+    "add_format_failure_as_feedback": true,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 4,
+    "max_full_evals": null,
+    "max_labeled_demos": 0,
+    "max_metric_calls": 8,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence_feedback",
+    "name": "GEPA",
+    "num_threads": null,
+    "reflection_minibatch_size": 1,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": true,
+    "track_stats": true,
+    "trainset_size": 4,
+    "use_cloudpickle": true
+  }
+}

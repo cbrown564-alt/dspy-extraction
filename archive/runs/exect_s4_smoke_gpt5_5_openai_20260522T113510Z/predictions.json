@@ -1,0 +1,644 @@
+{
+  "dataset": "exect_v2",
+  "metadata": {
+    "model_name": "gpt-5.5",
+    "model_provider": "openai",
+    "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "scorer_mode": "exect_s4_field_family_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0008",
+      "metadata": {
+        "post_bridge": {
+          "epilepsy_cause": "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
+        },
+        "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s4_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 58,
+              "section": null,
+              "start": 10,
+              "text": "Diagnosis: symptomatic structural focal epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [],
+          "raw_value": "symptomatic structural focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 187,
+              "section": null,
+              "start": 108,
+              "text": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 282,
+              "section": null,
+              "start": 189,
+              "text": "Current anti-epileptic medication: lamotrigine 75mg bd (to reduce and stop as detailed below)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 106,
+              "section": null,
+              "start": 60,
+              "text": "Previous meningioma resection 3rd January 2005"
+            }
+          ],
+          "field_name": "comorbidity",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "meningioma surgery",
+          "quality_flags": [],
+          "raw_value": "meningioma surgery",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 58,
+              "section": null,
+              "start": 10,
+              "text": "Diagnosis: symptomatic structural focal epilepsy"
+            }
+          ],
+          "field_name": "epilepsy_cause",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "symptomatic structural",
+          "quality_flags": [],
+          "raw_value": "symptomatic structural",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 106,
+              "section": null,
+              "start": 60,
+              "text": "Previous meningioma resection 3rd January 2005"
+            }
+          ],
+          "field_name": "epilepsy_cause",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "previous meningioma resection",
+          "quality_flags": [],
+          "raw_value": "previous meningioma resection",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 187,
+              "section": null,
+              "start": 108,
+              "text": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 3 week",
+          "quality_flags": [],
+          "raw_value": "1 per 3 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 282,
+              "section": null,
+              "start": 189,
+              "text": "Current anti-epileptic medication: lamotrigine 75mg bd (to reduce and stop as detailed below)"
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "lamotrigine|current",
+          "quality_flags": [],
+          "raw_value": "lamotrigine|current",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 323,
+              "section": null,
+              "start": 283,
+              "text": "To start levetiracetam as detailed below"
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "levetiracetam|planned",
+          "quality_flags": [],
+          "raw_value": "levetiracetam|planned",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0016",
+      "metadata": {
+        "post_bridge": {
+          "epilepsy_cause": "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
+        },
+        "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s4_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 962,
+              "section": null,
+              "start": 879,
+              "text": "This history is consistent with a single focal seizure secondary to a known stroke."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizure",
+          "quality_flags": [],
+          "raw_value": "focal seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 86,
+              "section": null,
+              "start": 55,
+              "text": "CVA\twith right hemiparesis 2017"
+            }
+          ],
+          "field_name": "comorbidity",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "cva",
+          "quality_flags": [],
+          "raw_value": "CVA",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 86,
+              "section": null,
+              "start": 55,
+              "text": "CVA\twith right hemiparesis 2017"
+            }
+          ],
+          "field_name": "comorbidity",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "right hemiparesis",
+          "quality_flags": [],
+          "raw_value": "right hemiparesis",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 865,
+              "section": null,
+              "start": 793,
+              "text": "There was a previous CT scan from 2017 showing a left hemisphere infarct"
+            }
+          ],
+          "field_name": "comorbidity",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "left hemisphere infarct",
+          "quality_flags": [],
+          "raw_value": "left hemisphere infarct",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "comorbidity",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "stroke",
+          "quality_flags": [],
+          "raw_value": "stroke",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 230,
+              "section": null,
+              "start": 199,
+              "text": "He had an event on 22 December."
+            }
+          ],
+          "field_name": "onset",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "event on 22 december",
+          "quality_flags": [],
+          "raw_value": "event on 22 December",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 962,
+              "section": null,
+              "start": 879,
+              "text": "This history is consistent with a single focal seizure secondary to a known stroke."
+            }
+          ],
+          "field_name": "epilepsy_cause",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "known stroke",
+          "quality_flags": [],
+          "raw_value": "known stroke",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 865,
+              "section": null,
+              "start": 793,
+              "text": "There was a previous CT scan from 2017 showing a left hemisphere infarct"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "ct abnormal",
+          "quality_flags": [],
+          "raw_value": "ct abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 1578,
+              "section": null,
+              "start": 1375,
+              "text": "If you went on to have another seizure or if he decided to start medication then I would suggest maybe Levetiracetam 250 mg once-a-day, increasing by 250 mg every two weeks to 250 milligrams twice a day."
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "levetiracetam|planned",
+          "quality_flags": [],
+          "raw_value": "levetiracetam|planned",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0018",
+      "metadata": {
+        "post_bridge": {
+          "epilepsy_cause": "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
+        },
+        "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s4_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 56,
+              "section": null,
+              "start": 10,
+              "text": "I reviewed this 42 year old lady with epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 388,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe seizure",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 388,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 535,
+              "section": null,
+              "start": 439,
+              "text": "events with coloured objects in her field of vision which were probably occipital lobe seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital lobe seizures",
+          "quality_flags": [],
+          "raw_value": "occipital lobe seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 596,
+              "section": null,
+              "start": 537,
+              "text": "Currently she is taking sodium valproate 500 mg twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 634,
+              "section": null,
+              "start": 601,
+              "text": "levetiracetam 1000 mg twice today"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 1205,
+              "section": null,
+              "start": 1154,
+              "text": "she should introduce lamotrigine at 25 mg every day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 700,
+              "section": null,
+              "start": 636,
+              "text": "She has previously tried carbamazepine but this give her a rash."
+            }
+          ],
+          "field_name": "comorbidity",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "rash",
+          "quality_flags": [],
+          "raw_value": "rash",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 169,
+              "section": null,
+              "start": 120,
+              "text": "she has been getting episodes around twice a week"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 1 week",
+          "quality_flags": [],
+          "raw_value": "2 per 1 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 596,
+              "section": null,
+              "start": 537,
+              "text": "Currently she is taking sodium valproate 500 mg twice a day"
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "sodium valproate|current",
+          "quality_flags": [],
+          "raw_value": "sodium valproate|current",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 634,
+              "section": null,
+              "start": 601,
+              "text": "levetiracetam 1000 mg twice today"
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "levetiracetam|current",
+          "quality_flags": [],
+          "raw_value": "levetiracetam|current",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 700,
+              "section": null,
+              "start": 636,
+              "text": "She has previously tried carbamazepine but this give her a rash."
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "carbamazepine|previous",
+          "quality_flags": [],
+          "raw_value": "carbamazepine|previous",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 1205,
+              "section": null,
+              "start": 1154,
+              "text": "she should introduce lamotrigine at 25 mg every day"
+            }
+          ],
+          "field_name": "medication_temporality",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "lamotrigine|planned",
+          "quality_flags": [],
+          "raw_value": "lamotrigine|planned",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "exect_s4_field_family"
+}

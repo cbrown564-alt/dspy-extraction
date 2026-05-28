@@ -1,0 +1,105 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.6:35b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_single_pass",
+    "prompt_version": "gan_frequency_s0_cot_maxbudget_v1",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "\"Since returning to the UK, there have been no further events reported.\""
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_6532",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_6532",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "\"The patient describes seizure activity occurring in flurries over several days with intervals of relative calm thereafter, i.e. a stop\u2013start pattern rather than a steady baseline.\""
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [
+            "normalized_label_repaired"
+          ],
+          "raw_value": "\"no seizure frequency reference\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10434",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10434",
+              "end": 952,
+              "section": null,
+              "start": 666,
+              "text": "occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30\u201360 seconds, without loss of awareness, sometimes repeating two or three times within the same morning."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

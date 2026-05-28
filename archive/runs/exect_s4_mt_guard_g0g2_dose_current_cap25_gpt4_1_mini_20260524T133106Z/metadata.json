@@ -1,0 +1,38 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-24T13:31:06.487428Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s4_mt_guard_g0g2_dose_current_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "schema_level": "exect_s4_field_family",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group exect_s4_medication_precision_guard_gpt_cap25_v1; varied_factor implementation_variant.",
+    "Uses exect.medication_temporality.non_asm_dose_current_guard.v1 on medication_temporality only.",
+    "Primary metric medication_temporality precision; F1 regression guard >=2pp vs L1.",
+    "Cap-25 search only \u2014 decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass",
+  "run_id": "exect_s4_mt_guard_g0g2_dose_current_cap25_gpt4_1_mini_20260524T133106Z",
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

@@ -1,0 +1,39 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-24T18:21:42.445150Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "schema_level": "exect_s5_core_field_family",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across five families is not comparable to frozen S4 eleven-family or S3 nine-family headlines.",
+    "Only seizure_frequency candidates are injected; S1\u2013S3 and medication_temporality pre-vocab lists are omitted.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1",
+  "run_id": "exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini_20260524T182142Z",
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

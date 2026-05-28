@@ -1,0 +1,37 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-23T07:48:23.448213Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_gpt4_1_mini_seeded_answer_options_slice",
+    "prompt_version": "gan_frequency_s0_seeded_multiple_answer_det_selector_v1_0",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_gpt4_1_mini_seeded_answer_options_v1; varied_factor implementation_variant.",
+    "Record_ids are the same 25-record validation slice used for G1-G7 and targeted examples min7.",
+    "The slice is enriched for over-unknown, short-stability, grouped-event, cluster, and no-reference boundary errors; do not compare directly to full-validation metrics.",
+    "One LLM call proposes additional explicit canonical answer options after seeing deterministic temporal candidates; deterministic selector chooses the final answer.",
+    "Deterministic temporal candidates are always retained as seed options, so LLM option filtering cannot collapse candidate recall to zero.",
+    "Raw rejected LLM options are preserved in prediction metadata for error analysis. No verifier or repair pass.",
+    "Cap-25/slice search only \u2014 decision_scope arm."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+  "run_id": "gan_s0_gpt4_1_mini_seeded_answer_options_slice_20260523T074823Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

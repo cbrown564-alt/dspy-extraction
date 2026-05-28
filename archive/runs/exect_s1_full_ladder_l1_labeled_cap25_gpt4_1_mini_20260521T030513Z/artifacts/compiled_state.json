@@ -1,0 +1,100 @@
+{
+  "extract.predict": {
+    "demos": [
+      {
+        "annotated_medication": [
+          "sodium valproate"
+        ],
+        "diagnosis": [
+          "epilepsy"
+        ],
+        "document_id": "EA0036",
+        "note_text": "Diagnosis: long-standing epilepsy, generalised tonic clonic seizures.\n\nMedication Epilim 200mg in the morning, 400 mg in the evening.\n\nMany thanks for referring this 42 year old lady. She was diagnosed with epilepsy around 10 years ago. She gets generalised tonic clonic seizures which generally last 1 minute. There is no history of any myoclonic jerks or absences. \n\nBirth history was normal and so was her development. There is no history of febrile seizures, head injury, brain infections. She does not have a significant family history of epilepsy. She does not have any significant medical problems.\n\nShe has only ever tried sodium valproate. Her neurological examination was normal. We had a long discussion about the rules for prescribing sodium valproate. She is very keen to stay on this medication. I would suggest increasing the dose to 400 mg twice a day.\n\n",
+        "seizure_type": [
+          "generalized tonic clonic seizures"
+        ]
+      },
+      {
+        "annotated_medication": [
+          "carbamazepine",
+          "zonisamide",
+          "clobazam"
+        ],
+        "diagnosis": [],
+        "document_id": "EA0038",
+        "note_text": "NHS No 677 230 1444\nClinic date: 03.11. 2014\n\nRT: Jane Jones  DOB: 16/10/ 1953\n\nDiagnosis:\n complex partial seizures\nSecondary generalised tonic clonic seizures\nPsychogenic nonepileptic attack disorder\nDiabetes\n\nCurrent anti epileptic medications:\nCarbamazepine 400mg/400 mg/200mg\nZonisamide 50 mg twice a day\nClobazam 10 mg BD\n\nI reviewed this 61 year old lady in clinic today. She has had a recent generalised tonic chronic seizure at home. She did not bite her tongue. Before the seizure she had been seizure free for 3 years. On the odd occasion, she might forget to take medication. Previously she has tried Levetiracetam but was quite depressed on this medication. Her mood has improved since stopping the levetiracetam.\n\nI suggest increasing the zonisamide to 75 mg twice a day. I will ask our epilepsy specialist nurses to get in touch.\n\n",
+        "seizure_type": [
+          "complex partial seizures",
+          "secondary generalized tonic clonic seizures",
+          "generalized tonic clonic seizure"
+        ]
+      },
+      {
+        "annotated_medication": [
+          "sodium valproate",
+          "levetiracetam"
+        ],
+        "diagnosis": [
+          "generalized epilepsy"
+        ],
+        "document_id": "EA0003",
+        "note_text": "Dear Dr,\n\nDiagnosis: probable generalised epilepsy\n\nCurrent antiepileptic medication: sodium valproate 600 mg bd (to reduce and stop as detailed below); levetiracetam 1.25 g BD\n\nSeizure type and frequency: generalised seizures every two months\nPossible additional myoclonus\n\nI reviewed this 50 year old lady together with her partner for the first time in clinic today. She continues to get seizures every few months. She finds it difficult to remember the seizures, and she has injured himself and bitten her tongue on the side several times. She says that she does not forget to take tablets.\n\nThere is no epilepsy in the family. Currently Mrs Richards lives with her husband and is unemployed. She does not drive. She says she only drinks ocassionally at present but has drunk more than this in the past.\n\nLooking through her old notes it appears as if her epilepsy started when she was a young child. She had a period of seizure freedom before the seizures reappeared about five years ago.\n\nThe neurological examination was normal.\n\nComments: \nWe discussed the new regulations regarding the prescription of sodium Valproate in women of childbearing age. Mrs Richards does not want to use a secure form of contraception and therefore I think we need to stop the sodium valproate. I suggest that we introduce lamotrigine at a dose of 25 mg once-a-day. They should be increased by 25 mg every fortnight until she\u2019s on the target dose of 75 mg BD. At the same time she should reduce the Sodium valproate by 200 mg every fortnight until it stops. We discussed there is a risk of increased seizures when changing medication. I will ask the epilepsy nurse specialist to see her in a few months time and I will see her in clinic in six months time.\n\n",
+        "seizure_type": [
+          "generalized seizures"
+        ]
+      },
+      {
+        "annotated_medication": [
+          "sodium valproate",
+          "lamictal"
+        ],
+        "diagnosis": [],
+        "document_id": "EA0025",
+        "note_text": "Ann Richards. D.O.B. 21/04/1974 \n\nDiagnosis: generalised tonic clonic seizures with myoclonic jerks, possible JME\n\nAnti-convulsant medication: epilim 500 mg BD\nLamictal 100 mg in the morning, 175 mg in the afternoon\n\nI saw Ann who was accompanied with her daughter in my nurse led clinic today. She split up from her partner last year and so underwent a lot of stress. She had approximately 3\u20134 generalised tonic chronic seizures per week from May to August. She also had very frequent myoclonic jerks.\n\nShe also has headaches and heartburn. She probably drinks too much alcohol, having around one bottle of wine per day. I have advised her around ifestyle issues and will review her in approximately four months time.\n\n",
+        "seizure_type": [
+          "generalized tonic clonic seizures"
+        ]
+      }
+    ],
+    "lm": null,
+    "signature": {
+      "fields": [
+        {
+          "description": "Clinical note text",
+          "prefix": "Note Text:"
+        },
+        {
+          "description": "${reasoning}",
+          "prefix": "Reasoning:"
+        },
+        {
+          "description": "Epilepsy diagnosis labels explicitly supported by the note",
+          "prefix": "Diagnosis:"
+        },
+        {
+          "description": "Exact quotes supporting each diagnosis label, aligned by index",
+          "prefix": "Diagnosis Evidence:"
+        },
+        {
+          "description": "Seizure-type labels explicitly named in the note",
+          "prefix": "Seizure Type:"
+        },
+        {
+          "description": "Exact quotes supporting each seizure-type label, aligned by index",
+          "prefix": "Seizure Type Evidence:"
+        },
+        {
+          "description": "Current prescription-style anti-seizure medication names in the note",
+          "prefix": "Annotated Medication:"
+        },
+        {
+          "description": "Exact quotes supporting each medication label, aligned by index",
+          "prefix": "Annotated Medication Evidence:"
+        }
+      ],
+      "instructions": "Extract structured field families from a clinical note.\n\nOutput JSON lists for diagnosis, seizure_type, and annotated_medication with\nparallel evidence lists. Use empty lists when the note does not support a field."
+    },
+    "traces": [],
+    "train": []
+  }
+}

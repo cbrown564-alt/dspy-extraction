@@ -1,0 +1,55 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "artifact_epilepsy_cause_k0_k1_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s5_validation_cap25_gpt4_1_mini",
+  "hypothesis": "A 25-record ExECT S5 validation cap evaluates baseline performance on S5 core fields (diagnosis, seizure_type, annotated_medication, investigation, seizure_frequency) using the single-pass prompt-policy program without candidate hints.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This diagnostic validation cap is a gating check for ExECT S5 Axis 1 / Axis 2 grid; it is not a performance estimate.",
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across five families is not comparable to frozen S4 eleven-family or S3 nine-family headlines.",
+    "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families.",
+    "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": null,
+    "comparison_group": "exect_s5_axis1_axis2_decomposition_gpt_cap25_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s5",
+    "stage_executor": null,
+    "stage_graph_id": null,
+    "validation_ladder_rung": null,
+    "varied_factor": "schema_complexity"
+  },
+  "taxonomy_exemption": null
+}

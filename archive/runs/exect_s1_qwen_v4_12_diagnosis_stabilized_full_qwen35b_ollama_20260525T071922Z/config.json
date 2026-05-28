@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "artifact_benchmark_bridge_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_full_qwen35b_ollama",
+  "hypothesis": "Qwen full validation: v4_12 preserves the v4_11 seizure gain while restoring diagnosis guardrails enough for S1 prompt promotion.",
+  "max_records": null,
+  "metric_caveats": [
+    "Full validation for Qwen v4_12 diagnosis-stabilized prompt follow-up; run only after GPT and Qwen cap-25 gates pass.",
+    "Frozen Qwen v4_10 H1 full anchor: seizure F1 55.7%, diagnosis F1 95.1%, micro F1 79.0%.",
+    "Held Qwen v4_11 full run: seizure F1 74.2%, diagnosis F1 90.0%, micro F1 84.3%.",
+    "See docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_preregistration_20260521.md."
+  ],
+  "model_config_path": "configs\\models\\exect_qwen35b_ollama.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_12_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_qwen_diagnosis_stabilized_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "post"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "stage_executor": null,
+    "stage_graph_id": null,
+    "validation_ladder_rung": null,
+    "varied_factor": "prompt_policy"
+  },
+  "taxonomy_exemption": null
+}

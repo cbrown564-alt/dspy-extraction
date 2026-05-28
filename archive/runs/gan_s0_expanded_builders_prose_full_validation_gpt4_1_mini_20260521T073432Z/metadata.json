@@ -1,0 +1,34 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-21T07:34:32.971378Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_expanded_builders_prose_gpt_full_validation_v1; paired read vs promoted VR anchor runs/gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails_20260520T130933Z (65.1% monthly).",
+    "Different stage_graph_id than promoted default: g2_candidates_adjudicate (single LLM pass) vs g3_candidates_extract_repair (verify-repair).",
+    "Cap-50 confirm: runs/gan_s0_expanded_builders_prose_cap50_gpt4_1_mini_20260521T072655Z (68.0% monthly on 50-record prefix).",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini_20260521T073432Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

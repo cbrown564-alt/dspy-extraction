@@ -1,0 +1,72 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "BootstrapFewShot k=4 on train; L0 minimal signature without v4_10 policy or inline bridges",
+    "repair_policy": "raw_no_benchmark_bridges",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_full_ladder_l0_bootstrap_cap25_gpt4_1_mini",
+  "hypothesis": "L0 plus BootstrapFewShot can approach hand-crafted L1+policy cap-25 micro F1 when compile and eval both avoid inline benchmark bridges.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Thesis group exect_s1_ladder_optimizer_automation_v1; see docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md.",
+    "Compile metric exect_field_family_micro_f1_raw (no bridges); eval raw_no_benchmark_bridges.",
+    "Contrast with exect_s1_optimizer_bootstrap_cap25 (v4_10 prompt, bridges on) which regressed to 90.7% micro.",
+    "Trainset: first 40 exectv2_fixed_v1:train records; cap-25 validation eval.",
+    "Success bar: within 3pp of 95.8% hand-crafted cap-25 without v4_10 policy in prediction path."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": {
+    "add_format_failure_as_feedback": false,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 4,
+    "max_full_evals": null,
+    "max_labeled_demos": 0,
+    "max_metric_calls": null,
+    "max_rounds": 1,
+    "metric_name": "exect_field_family_micro_f1_raw",
+    "name": "BootstrapFewShot",
+    "num_candidate_programs": 16,
+    "num_threads": null,
+    "reflection_minibatch_size": 3,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": false,
+    "track_stats": false,
+    "trainset_size": 40,
+    "use_cloudpickle": false
+  },
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_l0_minimal",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_ladder_optimizer_automation_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L0_llm_only"
+    ],
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during"
+    ],
+    "program_architecture": "optimizer_compiled_single_pass",
+    "schema_complexity": "exect_s1",
+    "varied_factor": "ladder_rung"
+  },
+  "taxonomy_exemption": null
+}

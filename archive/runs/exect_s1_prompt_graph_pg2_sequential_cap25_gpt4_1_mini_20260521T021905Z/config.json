@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_prompt_graph_pg2_sequential_cap25_gpt4_1_mini",
+  "hypothesis": "Prompt-graph arm PG2 (g2_field_family_prompt_graph): sequential diagnosis->seizure->medication with prior-context chaining for exect_s1_field_family_prompt_graph_gpt_cap25_v1.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Comparison group exect_s1_field_family_prompt_graph_gpt_cap25_v1; varied_factor pipeline_stage_graph.",
+    "bridge_mode=inline; three sequential LLM calls per record with prior extraction context.",
+    "Literature-informed prompt graph per Spaanderman et al.",
+    "See docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_preregistration_20260521.md."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_prompt_graph_sequential",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_field_family_prompt_graph_gpt_cap25_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during"
+    ],
+    "program_architecture": "field_family_prompt_graph",
+    "schema_complexity": "exect_s1",
+    "stage_executor": null,
+    "stage_graph_id": "g2_field_family_prompt_graph",
+    "validation_ladder_rung": null,
+    "varied_factor": "pipeline_stage_graph"
+  },
+  "taxonomy_exemption": null
+}

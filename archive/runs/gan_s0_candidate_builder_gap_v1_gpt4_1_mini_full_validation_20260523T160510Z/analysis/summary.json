@@ -1,0 +1,3676 @@
+{
+  "accuracies_valid_only": {
+    "monthly_frequency": 0.7785234899328859,
+    "normalized_label": 0.6510067114093959,
+    "pragmatic_category": 0.889261744966443,
+    "purist_category": 0.8489932885906041
+  },
+  "analysis_scope": "full_split",
+  "boundary_case_counts": {
+    "monthly_match_label_surface_mismatch": 38,
+    "pragmatic_match_monthly_divergence": 33,
+    "purist_bin_boundary_within_pragmatic": 12,
+    "purist_match_monthly_divergence": 21
+  },
+  "divergence": {
+    "metric_pattern_counts": {
+      "0000": 33,
+      "0001": 12,
+      "0011": 21,
+      "0111": 38,
+      "1111": 194
+    },
+    "patterns": {
+      "0000": {
+        "count": 33,
+        "examples": [
+          {
+            "failure_class": "unknown_as_high_rate",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "1 to 2 per week",
+            "predicted_monthly_frequency": 6.495,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_9566"
+          },
+          {
+            "failure_class": "unknown_vs_no_reference",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "no seizure frequency reference",
+            "predicted_monthly_frequency": 0.0,
+            "predicted_pragmatic_category": "no_seizure_information",
+            "predicted_purist_category": "no_seizure_information",
+            "record_id": "gan_5974"
+          },
+          {
+            "failure_class": "frequent_undercalled",
+            "gold_label": "multiple per week",
+            "gold_monthly_frequency": 12.99,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+            "predicted_label": "3 per year",
+            "predicted_monthly_frequency": 0.25,
+            "predicted_pragmatic_category": "infrequent",
+            "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+            "record_id": "gan_12130"
+          },
+          {
+            "failure_class": "unknown_as_quantified_rate",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "2 per year",
+            "predicted_monthly_frequency": 0.16666666666666666,
+            "predicted_pragmatic_category": "infrequent",
+            "predicted_purist_category": "eq_1_per_6_months",
+            "record_id": "gan_6387"
+          },
+          {
+            "failure_class": "other_semantic_mismatch",
+            "gold_label": "7 per week",
+            "gold_monthly_frequency": 30.310000000000002,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gte_1_per_day",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_3630"
+          }
+        ],
+        "label": "all_four_wrong",
+        "share_of_valid": 0.11073825503355705
+      },
+      "0001": {
+        "count": 12,
+        "examples": [
+          {
+            "failure_class": "cluster_semantic_mismatch",
+            "gold_label": "multiple cluster per week, 2 to 3 per cluster",
+            "gold_monthly_frequency": 32.475,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gte_1_per_day",
+            "predicted_label": "1 cluster per week, 2 to 3 per cluster",
+            "predicted_monthly_frequency": 10.825,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_10434"
+          },
+          {
+            "failure_class": "purist_bin_boundary_within_pragmatic",
+            "gold_label": "9 per 3 month",
+            "gold_monthly_frequency": 3.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+            "predicted_label": "5 per month",
+            "predicted_monthly_frequency": 5.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_16041"
+          },
+          {
+            "failure_class": "purist_bin_boundary_within_pragmatic",
+            "gold_label": "7 per week",
+            "gold_monthly_frequency": 30.310000000000002,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gte_1_per_day",
+            "predicted_label": "1 cluster per week, multiple per cluster",
+            "predicted_monthly_frequency": 12.99,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_3623"
+          },
+          {
+            "failure_class": "purist_bin_boundary_within_pragmatic",
+            "gold_label": "3 per month",
+            "gold_monthly_frequency": 3.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+            "predicted_label": "5 per month",
+            "predicted_monthly_frequency": 5.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_6094"
+          },
+          {
+            "failure_class": "purist_bin_boundary_within_pragmatic",
+            "gold_label": "1 per day",
+            "gold_monthly_frequency": 30.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gte_1_per_day",
+            "predicted_label": "4 per week",
+            "predicted_monthly_frequency": 17.32,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_12562"
+          }
+        ],
+        "label": "pragmatic_only",
+        "share_of_valid": 0.040268456375838924
+      },
+      "0011": {
+        "count": 21,
+        "examples": [
+          {
+            "failure_class": "pragmatic_match_monthly_divergence",
+            "gold_label": "1 per 1 to 2 day",
+            "gold_monthly_frequency": 20.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+            "predicted_label": "1 per 2 day",
+            "predicted_monthly_frequency": 15.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_4113"
+          },
+          {
+            "failure_class": "pragmatic_match_monthly_divergence",
+            "gold_label": "10 per 3 month",
+            "gold_monthly_frequency": 3.3333333333333335,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+            "predicted_label": "6 per 2 month",
+            "predicted_monthly_frequency": 3.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+            "record_id": "gan_15997"
+          },
+          {
+            "failure_class": "pragmatic_match_monthly_divergence",
+            "gold_label": "1 per 1 to 2 day",
+            "gold_monthly_frequency": 20.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+            "predicted_label": "1 per 2 day",
+            "predicted_monthly_frequency": 15.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_17287"
+          },
+          {
+            "failure_class": "pragmatic_match_monthly_divergence",
+            "gold_label": "9 per 5 month",
+            "gold_monthly_frequency": 1.8,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+            "predicted_label": "8 per 4 month",
+            "predicted_monthly_frequency": 2.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+            "record_id": "gan_16772"
+          },
+          {
+            "failure_class": "pragmatic_match_monthly_divergence",
+            "gold_label": "3 per month",
+            "gold_monthly_frequency": 3.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+            "predicted_label": "2 per month",
+            "predicted_monthly_frequency": 2.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+            "record_id": "gan_1463"
+          }
+        ],
+        "label": "purist_pragmatic_not_monthly",
+        "share_of_valid": 0.07046979865771812
+      },
+      "0111": {
+        "count": 38,
+        "examples": [
+          {
+            "failure_class": "unknown_cluster_label_shape_mismatch",
+            "gold_label": "unknown, multiple per cluster",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_6532"
+          },
+          {
+            "failure_class": "seizure_free_to_no_reference_monthly_match",
+            "gold_label": "seizure free for multiple year",
+            "gold_monthly_frequency": 0.0,
+            "gold_pragmatic_category": "no_seizure_information",
+            "gold_purist_category": "no_seizure_information",
+            "predicted_label": "no seizure frequency reference",
+            "predicted_monthly_frequency": 0.0,
+            "predicted_pragmatic_category": "no_seizure_information",
+            "predicted_purist_category": "no_seizure_information",
+            "record_id": "gan_7894"
+          },
+          {
+            "failure_class": "seizure_free_label_shape_mismatch",
+            "gold_label": "seizure free for multiple year",
+            "gold_monthly_frequency": 0.0,
+            "gold_pragmatic_category": "no_seizure_information",
+            "gold_purist_category": "no_seizure_information",
+            "predicted_label": "seizure free for years",
+            "predicted_monthly_frequency": 0.0,
+            "predicted_pragmatic_category": "no_seizure_information",
+            "predicted_purist_category": "no_seizure_information",
+            "record_id": "gan_13574"
+          },
+          {
+            "failure_class": "unknown_cluster_label_shape_mismatch",
+            "gold_label": "unknown, 2 to 3 per cluster",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_10583"
+          },
+          {
+            "failure_class": "unknown_cluster_label_shape_mismatch",
+            "gold_label": "unknown, 2 to 3 per cluster",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_10553"
+          }
+        ],
+        "label": "monthly_purist_pragmatic_not_normalized",
+        "share_of_valid": 0.12751677852348994
+      },
+      "1111": {
+        "count": 194,
+        "examples": [
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "2 per 3 month",
+            "gold_monthly_frequency": 0.6666666666666666,
+            "gold_pragmatic_category": "infrequent",
+            "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+            "predicted_label": "2 per 3 month",
+            "predicted_monthly_frequency": 0.6666666666666666,
+            "predicted_pragmatic_category": "infrequent",
+            "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+            "record_id": "gan_14485"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "seizure free for 7 month",
+            "gold_monthly_frequency": 0.0,
+            "gold_pragmatic_category": "no_seizure_information",
+            "gold_purist_category": "no_seizure_information",
+            "predicted_label": "seizure free for 7 month",
+            "predicted_monthly_frequency": 0.0,
+            "predicted_pragmatic_category": "no_seizure_information",
+            "predicted_purist_category": "no_seizure_information",
+            "record_id": "gan_4956"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "1 per year",
+            "gold_monthly_frequency": 0.08333333333333333,
+            "gold_pragmatic_category": "infrequent",
+            "gold_purist_category": "lt_1_per_6_months",
+            "predicted_label": "1 per year",
+            "predicted_monthly_frequency": 0.08333333333333333,
+            "predicted_pragmatic_category": "infrequent",
+            "predicted_purist_category": "lt_1_per_6_months",
+            "record_id": "gan_13123"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "multiple per day",
+            "gold_monthly_frequency": 90.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gte_1_per_day",
+            "predicted_label": "multiple per day",
+            "predicted_monthly_frequency": 90.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gte_1_per_day",
+            "record_id": "gan_4702"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "4 cluster per 3 month, multiple per cluster",
+            "gold_monthly_frequency": 4.0,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "eq_1_per_week",
+            "predicted_label": "4 cluster per 3 month, multiple per cluster",
+            "predicted_monthly_frequency": 4.0,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "eq_1_per_week",
+            "record_id": "gan_10052"
+          }
+        ],
+        "label": "all_four_match",
+        "share_of_valid": 0.6510067114093959
+      }
+    }
+  },
+  "failure_action_tier_counts": {
+    "benchmark_severe": 67,
+    "diagnostic_only": 37
+  },
+  "failure_taxonomy_by_action_tier": {
+    "benchmark_severe": {
+      "cluster_collapsed_to_rate": 3,
+      "cluster_semantic_mismatch": 3,
+      "frequent_undercalled": 8,
+      "missed_frequency_reference": 1,
+      "other_semantic_mismatch": 9,
+      "pragmatic_match_monthly_divergence": 20,
+      "purist_bin_boundary_within_pragmatic": 10,
+      "unknown_as_high_rate": 6,
+      "unknown_as_quantified_rate": 3,
+      "unknown_vs_no_reference": 2,
+      "unknown_vs_seizure_free": 2
+    },
+    "diagnostic_only": {
+      "cluster_label_shape_mismatch": 1,
+      "monthly_match_label_surface_mismatch": 4,
+      "seizure_free_label_shape_mismatch": 22,
+      "seizure_free_to_no_reference_monthly_match": 6,
+      "unknown_cluster_label_shape_mismatch": 4
+    },
+    "operational": {}
+  },
+  "failure_taxonomy_invalid": {
+    "invalid_predicted_label": 1
+  },
+  "failure_taxonomy_scored_misses": {
+    "cluster_collapsed_to_rate": 3,
+    "cluster_label_shape_mismatch": 1,
+    "cluster_semantic_mismatch": 3,
+    "frequent_undercalled": 8,
+    "missed_frequency_reference": 1,
+    "monthly_match_label_surface_mismatch": 4,
+    "other_semantic_mismatch": 9,
+    "pragmatic_match_monthly_divergence": 20,
+    "purist_bin_boundary_within_pragmatic": 10,
+    "seizure_free_label_shape_mismatch": 22,
+    "seizure_free_to_no_reference_monthly_match": 6,
+    "unknown_as_high_rate": 6,
+    "unknown_as_quantified_rate": 3,
+    "unknown_cluster_label_shape_mismatch": 4,
+    "unknown_vs_no_reference": 2,
+    "unknown_vs_seizure_free": 2
+  },
+  "metric_implications": {
+    "monthly_implies": {
+      "normalized_exact": 194,
+      "pragmatic": 232,
+      "purist": 232,
+      "total_monthly_match": 232
+    },
+    "normalized_exact_implies": {
+      "monthly": 194,
+      "pragmatic": 194,
+      "purist": 194,
+      "total_normalized_exact": 194
+    },
+    "purist_implies": {
+      "monthly": 232,
+      "pragmatic": 253,
+      "total_purist_match": 253
+    }
+  },
+  "record_counts": {
+    "analysis_total": 299,
+    "invalid_or_missing": 1,
+    "predicted": 299,
+    "scored_valid": 298,
+    "split_total": 299
+  },
+  "run_dir": "runs\\gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T160510Z",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "stratified_reporting": {
+    "gold_pragmatic_category": {
+      "frequent": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.7218543046357616,
+          "normalized_label": 0.7019867549668874,
+          "pragmatic_category": 0.8940397350993378,
+          "purist_category": 0.8344370860927153
+        },
+        "all_records": 152,
+        "invalid_or_missing": 1,
+        "operational_failure_rate": 0.28289473684210525,
+        "operational_failures": 43,
+        "valid_scored": 151
+      },
+      "infrequent": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.803921568627451,
+          "normalized_label": 0.7450980392156863,
+          "pragmatic_category": 0.9411764705882353,
+          "purist_category": 0.8823529411764706
+        },
+        "all_records": 51,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.21568627450980393,
+        "operational_failures": 11,
+        "valid_scored": 51
+      },
+      "no_seizure_information": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.9821428571428571,
+          "normalized_label": 0.48214285714285715,
+          "pragmatic_category": 0.9821428571428571,
+          "purist_category": 0.9821428571428571
+        },
+        "all_records": 56,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.017857142857142856,
+        "operational_failures": 1,
+        "valid_scored": 56
+      },
+      "unknown": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.675,
+          "normalized_label": 0.575,
+          "pragmatic_category": 0.675,
+          "purist_category": 0.675
+        },
+        "all_records": 40,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.325,
+        "operational_failures": 13,
+        "valid_scored": 40
+      }
+    },
+    "hard_case": {
+      "false": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.7837837837837838,
+          "normalized_label": 0.6756756756756757,
+          "pragmatic_category": 0.888030888030888,
+          "purist_category": 0.8494208494208494
+        },
+        "all_records": 260,
+        "invalid_or_missing": 1,
+        "operational_failure_rate": 0.2230769230769231,
+        "operational_failures": 58,
+        "valid_scored": 259
+      },
+      "true": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.7435897435897436,
+          "normalized_label": 0.48717948717948717,
+          "pragmatic_category": 0.8974358974358975,
+          "purist_category": 0.8461538461538461
+        },
+        "all_records": 39,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.2564102564102564,
+        "operational_failures": 10,
+        "valid_scored": 39
+      }
+    },
+    "overall": {
+      "accuracies_valid_only": {
+        "monthly_frequency": 0.7785234899328859,
+        "normalized_label": 0.6510067114093959,
+        "pragmatic_category": 0.889261744966443,
+        "purist_category": 0.8489932885906041
+      },
+      "all_records": 299,
+      "invalid_or_missing": 1,
+      "operational_failure_rate": 0.22742474916387959,
+      "operational_failures": 68,
+      "valid_scored": 298
+    },
+    "row_ok": {
+      "false": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 1.0,
+          "normalized_label": 1.0,
+          "pragmatic_category": 1.0,
+          "purist_category": 1.0
+        },
+        "all_records": 12,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.0,
+        "operational_failures": 0,
+        "valid_scored": 12
+      },
+      "true": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.7692307692307693,
+          "normalized_label": 0.6363636363636364,
+          "pragmatic_category": 0.8846153846153846,
+          "purist_category": 0.8426573426573427
+        },
+        "all_records": 287,
+        "invalid_or_missing": 1,
+        "operational_failure_rate": 0.23693379790940766,
+        "operational_failures": 68,
+        "valid_scored": 286
+      }
+    }
+  },
+  "taxonomy_by_metric_misses": {
+    "monthly": {
+      "cluster_collapsed_to_rate": 3,
+      "cluster_semantic_mismatch": 2,
+      "frequent_undercalled": 8,
+      "missed_frequency_reference": 1,
+      "other_semantic_mismatch": 9,
+      "pragmatic_match_monthly_divergence": 20,
+      "purist_bin_boundary_within_pragmatic": 10,
+      "unknown_as_high_rate": 6,
+      "unknown_as_quantified_rate": 3,
+      "unknown_vs_no_reference": 2,
+      "unknown_vs_seizure_free": 2
+    },
+    "normalized_exact": {
+      "cluster_collapsed_to_rate": 3,
+      "cluster_label_shape_mismatch": 1,
+      "cluster_semantic_mismatch": 3,
+      "frequent_undercalled": 8,
+      "missed_frequency_reference": 1,
+      "monthly_match_label_surface_mismatch": 4,
+      "other_semantic_mismatch": 9,
+      "pragmatic_match_monthly_divergence": 20,
+      "purist_bin_boundary_within_pragmatic": 10,
+      "seizure_free_label_shape_mismatch": 22,
+      "seizure_free_to_no_reference_monthly_match": 6,
+      "unknown_as_high_rate": 6,
+      "unknown_as_quantified_rate": 3,
+      "unknown_cluster_label_shape_mismatch": 4,
+      "unknown_vs_no_reference": 2,
+      "unknown_vs_seizure_free": 2
+    },
+    "pragmatic": {
+      "cluster_collapsed_to_rate": 2,
+      "frequent_undercalled": 8,
+      "missed_frequency_reference": 1,
+      "other_semantic_mismatch": 9,
+      "unknown_as_high_rate": 6,
+      "unknown_as_quantified_rate": 3,
+      "unknown_vs_no_reference": 2,
+      "unknown_vs_seizure_free": 2
+    },
+    "purist": {
+      "cluster_collapsed_to_rate": 2,
+      "cluster_semantic_mismatch": 2,
+      "frequent_undercalled": 8,
+      "missed_frequency_reference": 1,
+      "other_semantic_mismatch": 9,
+      "purist_bin_boundary_within_pragmatic": 10,
+      "unknown_as_high_rate": 6,
+      "unknown_as_quantified_rate": 3,
+      "unknown_vs_no_reference": 2,
+      "unknown_vs_seizure_free": 2
+    }
+  },
+  "temporal_candidate_diagnostics": {
+    "gold_covered_count": 58,
+    "gold_covered_rate": 0.1939799331103679,
+    "note": "Diagnostic temporal-candidate coverage only; benchmark-facing metrics use gan_frequency_deterministic_v1 on model predictions.",
+    "records": [
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 3 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per 3 month",
+        "record_id": "gan_14485"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown, multiple per cluster",
+        "record_id": "gan_6532"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple cluster per week, 2 to 3 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple cluster per week, 2 to 3 per cluster",
+            "derivation": "several mornings each week with intra-morning repeats; per-cluster range preserved without inventing cluster spacing",
+            "event_count": "multiple cluster",
+            "evidence_text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30\u201360 seconds, without loss of awareness, sometimes repeating two or three times within the same morning.",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple cluster per week, 2 to 3 per cluster",
+        "record_id": "gan_10434"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 7 month",
+        "record_id": "gan_4956"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per year"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per year",
+        "record_id": "gan_13123"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per day",
+        "record_id": "gan_4702"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "4 cluster per 3 month, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "4 cluster per 3 month, multiple per cluster",
+            "derivation": "explicit cluster count over a calendar quarter",
+            "event_count": "4 cluster",
+            "evidence_text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "4 cluster per 3 month, multiple per cluster",
+        "record_id": "gan_10052"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_2609"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "8 per 2 month",
+        "record_id": "gan_1794"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "unknown, 4 to 6 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "unknown, 4 to 6 per cluster",
+            "derivation": "grouped spells without benchmark-derivable cluster spacing",
+            "event_count": "4 to 6",
+            "evidence_text": "Regarding frequency, the patient reports that episodes tend to come in small runs: typically around four to six short spells grouped together on days when they occur, most commonly later in the day towards the evening period.",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "unknown, 4 to 6 per cluster",
+        "record_id": "gan_10618"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 to 3 per 15 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 to 3 per 15 month",
+            "derivation": "count range is anchored to an explicit prior month/year",
+            "event_count": "2 to 3",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep",
+            "window_count": "15",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 to 3 per 15 month",
+        "record_id": "gan_15306"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple year",
+        "record_id": "gan_7894"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 cluster per month, 4 per cluster",
+        "record_id": "gan_3246"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 1 to 2 day",
+        "record_id": "gan_4113"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last recorded event falls roughly one month before the clinic date",
+            "event_count": "1",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per month",
+        "record_id": "gan_14881"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 day",
+        "record_id": "gan_536"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per day",
+        "record_id": "gan_4709"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_9566"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per day"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per day",
+            "derivation": "explicit daily seizure-type frequency for concurrent-type selection",
+            "event_count": "1",
+            "evidence_text": "He has daily absences.",
+            "window_count": "1",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per day",
+        "record_id": "gan_12679"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "11 per month",
+        "record_id": "gan_1584"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "10 per 3 month",
+        "record_id": "gan_15997"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 1 to 2 day",
+        "record_id": "gan_17287"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "14 per 4 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "14 per 4 month",
+            "derivation": "reverse-chronological monthly convulsion counts summed over Jun\u2013Sep",
+            "event_count": "14",
+            "evidence_text": "She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun",
+            "window_count": "4",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "14 per 4 month",
+        "record_id": "gan_16251"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per 5 month",
+        "record_id": "gan_16772"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "10 per 6 month",
+        "record_id": "gan_16825"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "7 per 3 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "7 per 3 month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "7",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "7 per 3 month",
+        "record_id": "gan_12950"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 cluster per 3 month, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 cluster per 3 month, multiple per cluster",
+            "derivation": "explicit cluster count over a calendar quarter",
+            "event_count": "2 cluster",
+            "evidence_text": "Seizure History This Quarter:\n\nPatient reports two clusters this quarter, both occurring in the context of poor sleep and intercurrent upper respiratory symptoms",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 cluster per 3 month, multiple per cluster",
+        "record_id": "gan_10047"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "5 per 2 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "5 per 2 month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "5",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just five generalised tonic-clonic seizures documented this year to date",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "5 per 2 month",
+        "record_id": "gan_12810"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per week, 2 per cluster",
+        "record_id": "gan_10398"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per 3 month",
+        "record_id": "gan_16041"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per day",
+        "record_id": "gan_714"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_12465"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per month",
+        "record_id": "gan_4011"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per month",
+        "record_id": "gan_804"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per day",
+        "record_id": "gan_22"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 per 3 month",
+        "record_id": "gan_16335"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per day",
+        "record_id": "gan_3867"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "8 per 2 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "8 per 2 month",
+            "derivation": "named-month tallies aggregated across consecutive calendar months",
+            "event_count": "8",
+            "evidence_text": "In Oct she had no nocturnal seizures but 2 daytime events. In Nov she had a nocturnal seizure and 5 while awake",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "8 per 2 month",
+        "record_id": "gan_15923"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per month",
+        "record_id": "gan_467"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per 2 week",
+        "record_id": "gan_2513"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 cluster per month, 2 to 4 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 cluster per month, 2 to 4 per cluster",
+            "derivation": "morning-cluster shorthand with explicit per-cluster range",
+            "event_count": "2 cluster",
+            "evidence_text": "Morning clusters 2\u00d7/month; ~2 to 4 events over",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 cluster per month, 2 to 4 per cluster",
+        "record_id": "gan_10993"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last dated event anchored to elapsed months before clinic",
+            "event_count": "1",
+            "evidence_text": "His last event was on 02 January and he has remained well since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per month",
+        "record_id": "gan_14792"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple year",
+        "record_id": "gan_13574"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_5974"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6607"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_12438"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 3 week",
+        "record_id": "gan_4597"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 6 month",
+        "record_id": "gan_8564"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple per week"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple per week",
+            "derivation": "qualitative several-times-per-week phrasing maps to multiple per week",
+            "event_count": "multiple",
+            "evidence_text": "focal sensory occur several times each week, particularly in the evenings",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple per week",
+        "record_id": "gan_12130"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_731"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 per 3 month",
+        "record_id": "gan_1914"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per week",
+        "record_id": "gan_15639"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown, 2 to 3 per cluster",
+        "record_id": "gan_10583"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last dated event anchored to elapsed months before clinic",
+            "event_count": "1",
+            "evidence_text": "Her last reported event was on 24 Jul and she has been seizure-free since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per month",
+        "record_id": "gan_14821"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6387"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "3 cluster per month, 3 to 4 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "3 cluster per month, 3 to 4 per cluster",
+            "derivation": "morning-cluster shorthand with explicit per-cluster range",
+            "event_count": "3 cluster",
+            "evidence_text": "Morning clusters 3\u00d7/month; ~three - four events over",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "3 cluster per month, 3 to 4 per cluster",
+        "record_id": "gan_10984"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 4 month",
+        "record_id": "gan_8264"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per month",
+            "derivation": "events concentrated in the week after medication change; monthly benchmark denominator when no further seizures are reported since",
+            "event_count": "2",
+            "evidence_text": "In the following week, he had 2 seizures",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per month",
+        "record_id": "gan_14250"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "6 per week",
+        "record_id": "gan_15876"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per month",
+        "record_id": "gan_1463"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "3 per 2 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "3 per 2 month",
+            "derivation": "dated first and later seizure events define the observation window",
+            "event_count": "3",
+            "evidence_text": "Seizure history and current status: The first seizure was reported in December 2016 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in February 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms.",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "3 per 2 month",
+        "record_id": "gan_14689"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 to 3 week",
+        "record_id": "gan_4100"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per week",
+        "record_id": "gan_15771"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 day",
+        "record_id": "gan_9365"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 4 week",
+        "record_id": "gan_198"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per week, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per week, multiple per cluster",
+            "derivation": "weekly cluster cadence without a documented per-cluster multiplier",
+            "event_count": "1 cluster",
+            "evidence_text": "Weekly morning clusters reported; number per cluster not documented",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "record_id": "gan_10003"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per month",
+        "record_id": "gan_16991"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 per week",
+        "record_id": "gan_3623"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per week",
+        "record_id": "gan_3692"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per day",
+        "record_id": "gan_17"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown, 2 to 3 per cluster",
+        "record_id": "gan_10553"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_14002"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 week",
+        "record_id": "gan_2725"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 to 10 per 2 week",
+        "record_id": "gan_2226"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_11380"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 to 4 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 to 4 per month",
+            "derivation": "post-withdrawal seizure count over elapsed month window",
+            "event_count": "2 to 4",
+            "evidence_text": "She reported that she self-discontinued Valproate on 27/Nov following a discussion about future family planning and concerns around adverse effects. She then transitioned to Levetiracetam monotherapy as above. She discontinued Valproate on 27/Nov. Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 to 4 per month",
+        "record_id": "gan_14214"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 per week",
+        "record_id": "gan_3630"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "19 per 6 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "19 per 6 month",
+            "derivation": "diary month-by-month event tallies aggregated from May through October",
+            "event_count": "19",
+            "evidence_text": "In May he had 3 short seizures in a brief series. In Aug 7 daytime events were noted, in Sep four myoclonic jerks occurred, and in Oct five generalised tonic-clonic seizures",
+            "window_count": "6",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "19 per 6 month",
+        "record_id": "gan_16753"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per day"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per day",
+            "derivation": "explicit daily seizure-type frequency for concurrent-type selection",
+            "event_count": "1",
+            "evidence_text": "He has daily absences.",
+            "window_count": "1",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per day",
+        "record_id": "gan_12667"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per 4 day, 2 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per 4 day, 2 per cluster",
+            "derivation": "explicit seizure-free day cadence followed by per-cluster count",
+            "event_count": "1 cluster",
+            "evidence_text": "On occasions she is seizure-free for 4 consecutive days, followed by a day with multiple events, typically two tonic seizures",
+            "window_count": "4",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per 4 day, 2 per cluster",
+        "record_id": "gan_15442"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 to 9 per 3 week",
+        "record_id": "gan_2262"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11408"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_12218"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "record_id": "gan_10862"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11841"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 2 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 2 month",
+            "derivation": "dated first and later seizure events define the observation window",
+            "event_count": "2",
+            "evidence_text": "The first seizure was reported in April 2015 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second event took place in June 2015 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms.",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per 2 month",
+        "record_id": "gan_14628"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 to 2 cluster per month, 4 per cluster",
+        "record_id": "gan_10996"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per week",
+        "record_id": "gan_16938"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_14081"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6131"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_10509"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 to 4 per 3 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 to 4 per 3 month",
+            "derivation": "withdrawal-moment seizure count anchored to elapsed months before clinic",
+            "event_count": "2 to 4",
+            "evidence_text": "He withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 to 4 per 3 month",
+        "record_id": "gan_14354"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_3512"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_11216"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "10 per 9 month",
+        "record_id": "gan_9424"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per month, 3 to 10 per cluster",
+        "record_id": "gan_3225"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_5976"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 2 year",
+        "record_id": "gan_7818"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple year",
+        "record_id": "gan_13598"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "unknown"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "unknown",
+            "derivation": "generalised tonic-clonic count with latest-date anchor only",
+            "event_count": "3 to 4",
+            "evidence_text": "since beginning Clobazam he has had 3 - 4 generalised tonic-clonic seizures, the most recent on",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "unknown",
+        "record_id": "gan_14137"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last dated event anchored to elapsed months before clinic",
+            "event_count": "1",
+            "evidence_text": "The last such episode occurred on 06 February and she has been stable since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per month",
+        "record_id": "gan_14973"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per 3 month, 2 to 4 per cluster",
+        "record_id": "gan_11044"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_14040"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per 3 month",
+        "record_id": "gan_1883"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "5 per week",
+        "record_id": "gan_1640"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per week",
+        "record_id": "gan_12314"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per week",
+        "record_id": "gan_3325"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per 7 month",
+        "record_id": "gan_16780"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_14146"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 to 4 per day",
+        "record_id": "gan_12296"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 to 8 per 2 month",
+        "record_id": "gan_2549"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "17 per month",
+        "record_id": "gan_128"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple year",
+        "record_id": "gan_13595"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple per week"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple per week",
+            "derivation": "qualitative several-times-per-week phrasing maps to multiple per week",
+            "event_count": "multiple",
+            "evidence_text": "focal epileptic spasm occur several times each week, particularly in the evenings",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple per week",
+        "record_id": "gan_12145"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per month",
+        "record_id": "gan_3300"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per month",
+        "record_id": "gan_6094"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_2824"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_7872"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per month",
+        "record_id": "gan_1486"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per month",
+        "record_id": "gan_7431"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11874"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 12 month",
+        "record_id": "gan_3095"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "6 per week",
+        "record_id": "gan_15847"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per day",
+        "record_id": "gan_3864"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per day",
+        "record_id": "gan_5551"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8160"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per month",
+        "record_id": "gan_2740"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_10292"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "9 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "9 per month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "9",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just nine generalised tonic-clonic seizures documented this year to date",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "9 per month",
+        "record_id": "gan_12823"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per month",
+        "record_id": "gan_338"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per day"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per day",
+            "derivation": "explicit daily seizure-type frequency for concurrent-type selection",
+            "event_count": "1",
+            "evidence_text": "He also has daily drop attacks.",
+            "window_count": "1",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per day",
+        "record_id": "gan_12562"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per week, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per week, multiple per cluster",
+            "derivation": "grouped morning spells on some weeks without per-cluster count",
+            "event_count": "1 cluster",
+            "evidence_text": "zure history and current status:\n- Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded by the patient or witnesses.",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "record_id": "gan_10031"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per week",
+        "record_id": "gan_15737"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per 3 month",
+        "record_id": "gan_16883"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_10447"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per week",
+        "record_id": "gan_15783"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 month",
+        "record_id": "gan_234"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "12 to 30 per 3 month",
+        "record_id": "gan_531"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 16 month",
+        "record_id": "gan_4996"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 cluster per month, 4 per cluster",
+        "record_id": "gan_3261"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per 4 to 5 day, 2 to 3 per cluster",
+        "record_id": "gan_15513"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 3 day",
+        "record_id": "gan_16408"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_2652"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6077"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 2 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 2 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizures: His initial event was in October 2020 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following December 2020, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per 2 month",
+        "record_id": "gan_14655"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per 4 month, 3 to 4 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per 4 month, 3 to 4 per cluster",
+            "derivation": "long seizure-free interval followed by single-day cluster burst",
+            "event_count": "1 cluster",
+            "evidence_text": "She describes variable seizure occurrence: She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day.",
+            "window_count": "4",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per 4 month, 3 to 4 per cluster",
+        "record_id": "gan_15404"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "5 per 2 month",
+        "record_id": "gan_12871"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 6 month",
+        "record_id": "gan_7882"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 1 year",
+        "record_id": "gan_13450"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per day",
+        "record_id": "gan_31"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 14 month",
+        "record_id": "gan_3113"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_5197"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per week",
+        "record_id": "gan_12319"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6624"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 7 to 10 day",
+        "record_id": "gan_4602"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_5977"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11706"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 4 month",
+        "record_id": "gan_243"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_4831"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_9179"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 to 4 per week",
+        "record_id": "gan_1070"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 4 to 5 week",
+        "record_id": "gan_17279"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple year",
+        "record_id": "gan_13487"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8858"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 14 month",
+        "record_id": "gan_8113"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per 3 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per 3 month",
+            "derivation": "last dated event anchored to elapsed months before clinic",
+            "event_count": "1",
+            "evidence_text": "The last such episode occurred on 20/May and she has been stable since.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per 3 month",
+        "record_id": "gan_14965"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per day",
+        "record_id": "gan_3747"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per day",
+        "record_id": "gan_3329"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per 3 month",
+        "record_id": "gan_2486"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per day",
+        "record_id": "gan_12362"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 3 month",
+        "record_id": "gan_3355"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11434"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per day"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per day",
+            "derivation": "explicit daily seizure-type frequency for concurrent-type selection",
+            "event_count": "1",
+            "evidence_text": "Clobazam 5 mg at night as required for breakthrough events (rarely used)\n\nPresent Seizure Frequency:\n\nHe was diagnosed with epilepsy associated with myoclonic jerks, generalised tonic-clonic seizures and daily absences, but has remained seizure free for a prolonged period, not experiencing any seizures in recent years.",
+            "window_count": "1",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple year",
+        "record_id": "gan_13416"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 cluster per month, 5 per cluster",
+        "record_id": "gan_11196"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 to 2 per week",
+        "record_id": "gan_9279"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per day",
+        "record_id": "gan_4700"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "unknown"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "unknown",
+            "derivation": "since-discharge count without benchmark-derivable denominator",
+            "event_count": "2 to 3",
+            "evidence_text": "since discharge from hospital he has experienced two - three seizures",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "unknown",
+        "record_id": "gan_13993"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_5379"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per 15 month",
+        "record_id": "gan_15129"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 to 2 per day",
+        "record_id": "gan_12246"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 week",
+        "record_id": "gan_7573"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per day",
+        "record_id": "gan_1357"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 to 2 per month",
+        "record_id": "gan_7316"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per week",
+        "record_id": "gan_2795"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 8 month",
+        "record_id": "gan_9063"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per 4 to 5 week, multiple per cluster",
+        "record_id": "gan_9943"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "6 per 7 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "6 per 7 month",
+            "derivation": "named-month event diary summed through clinic date",
+            "event_count": "6",
+            "evidence_text": "Regarding recent events: In February she experienced a prolonged focal seizure lasting 8 minutes, resolving without intervention. In May there were four further brief absences, and in August a single generalised tonic-clonic seizure was reported at school (not witnessed by family). These episodes have been clearly recorded in her diary, with triggers likely related to missed meals and sleep deprivation around coursework deadlines. Since adopting structured reminders in late August, she has had no further events and has taken all doses on time",
+            "window_count": "7",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "6 per 7 month",
+        "record_id": "gan_16750"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "5 per 13 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "5 per 13 month",
+            "derivation": "last convulsion plus subsequent event count over elapsed months",
+            "event_count": "5",
+            "evidence_text": "Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then",
+            "window_count": "13",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "5 per 13 month",
+        "record_id": "gan_15127"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "0.5 per week",
+        "record_id": "gan_6661"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 18 month",
+        "record_id": "gan_5351"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "10 per year",
+        "record_id": "gan_3791"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per 5 day"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per 5 day",
+            "derivation": "cluster-pattern interval treated as simple benchmark rate without per-cluster count",
+            "event_count": "1",
+            "evidence_text": "Seizures are occurring with a clustering pattern, most often every 5 days, with occasional short periods of increased frequency",
+            "window_count": "5",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per 5 day",
+        "record_id": "gan_16523"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_7884"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 3 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "His initial event was in June 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following September 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per 3 month",
+        "record_id": "gan_14748"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per week, 3 to 4 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per week, 3 to 4 per cluster",
+            "derivation": "weekly cluster cadence with explicit per-cluster count range",
+            "event_count": "1 cluster",
+            "evidence_text": "Cluster burden increased since 28 Jun 2020; now weekly, 3 or 4 per cluster",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per week, 3 to 4 per cluster",
+        "record_id": "gan_10410"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "6 to 8 per month",
+        "record_id": "gan_3452"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per week",
+        "record_id": "gan_2781"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 4 per month",
+        "record_id": "gan_5682"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 2 year",
+        "record_id": "gan_4919"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8577"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_2135"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "unknown"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "unknown",
+            "derivation": "drop-attack count with latest-date anchor only",
+            "event_count": "2",
+            "evidence_text": "since starting ketogenic diet he has had two drop attacks, the latest one on",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "unknown",
+        "record_id": "gan_14025"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "8 per 6 month",
+        "record_id": "gan_9483"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per month",
+        "record_id": "gan_3340"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple cluster per 15 month, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple cluster per 15 month, multiple per cluster",
+            "derivation": "occasional clusters persisting since last convulsive seizure; long-window cluster spacing from last convulsive month/year to clinic",
+            "event_count": "multiple cluster",
+            "evidence_text": "Her last convulsive seizure was recorded in 2/2021, with occasional clusters of myoclonic jerks persisting.",
+            "window_count": "15",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple cluster per 15 month, multiple per cluster",
+        "record_id": "gan_15255"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 8 month",
+        "record_id": "gan_8852"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_7783"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 cluster per month, 6 per cluster",
+        "record_id": "gan_11207"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 to 8 per month",
+        "record_id": "gan_115"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per month, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per month, multiple per cluster",
+            "derivation": "month-beginning cluster bursts without documented per-cluster multiplier",
+            "event_count": "1 cluster",
+            "evidence_text": "pattern of seizures recurring in short bursts around the beginning of most months shortly after waking, with quieter intervals between these bursts.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per month, multiple per cluster",
+        "record_id": "gan_10673"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 7 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 7 month",
+            "derivation": "breakthrough count after an explicit seizure-free month window",
+            "event_count": "2",
+            "evidence_text": "He remained seizure-free for seven months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure 3 Tuesdays ago, preceded by a cluster of absences",
+            "window_count": "7",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per 7 month",
+        "record_id": "gan_13058"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 to 4 per month",
+        "record_id": "gan_2369"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8224"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per 2 month",
+        "record_id": "gan_15982"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_11259"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per week",
+        "record_id": "gan_744"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 5 month",
+        "record_id": "gan_4591"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 to 3 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 to 3 per month",
+            "derivation": "events concentrated in the week after medication change; monthly benchmark denominator when no further seizures are reported since",
+            "event_count": "2 to 3",
+            "evidence_text": "In the following week, he had 2 - 3 seizures",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 to 3 per month",
+        "record_id": "gan_14271"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 6 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 6 month",
+            "derivation": "breakthrough events after a long seizure-free interval",
+            "event_count": "2",
+            "evidence_text": "Regarding recent events, his seizure diary confirms the following: He did not have seizures for over 6 months, but then reported two generalised tonic-clonic seizures two Fridays ago, each preceded by myoclonic jerks.",
+            "window_count": "6",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": false,
+        "gold_label": "4 per 6 month",
+        "record_id": "gan_13290"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per week",
+        "record_id": "gan_6509"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 12 month",
+        "record_id": "gan_8116"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "5 per 7 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "5 per 7 month",
+            "derivation": "cluster plus later single diary events across inclusive clinic window",
+            "event_count": "5",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care",
+            "window_count": "7",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "5 per 7 month",
+        "record_id": "gan_16645"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 14 month",
+        "record_id": "gan_3102"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "7 per year",
+        "record_id": "gan_9002"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8474"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per month",
+        "record_id": "gan_3291"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple per 13 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple per 13 month",
+            "derivation": "vague ongoing events anchored to last generalised-seizure month",
+            "event_count": "multiple",
+            "evidence_text": "He has had no generalised seizures since 9 - 2022, though continues to experience brief absence from time to time",
+            "window_count": "13",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple per 13 month",
+        "record_id": "gan_15193"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 4 day",
+        "record_id": "gan_16574"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per 2 month",
+        "record_id": "gan_4378"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6029"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 7 day",
+        "record_id": "gan_180"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per 4 month",
+        "record_id": "gan_6684"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per 3 month",
+        "record_id": "gan_14390"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_10751"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per week",
+        "record_id": "gan_12348"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per 4 month",
+        "record_id": "gan_6296"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_5092"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per week, 3 to 4 per cluster",
+        "record_id": "gan_10884"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per year",
+        "record_id": "gan_848"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per week",
+        "record_id": "gan_16947"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11411"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_11221"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per month",
+        "record_id": "gan_6153"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "10 per 4 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "10 per 4 month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "10",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date",
+            "window_count": "4",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "10 per 4 month",
+        "record_id": "gan_12877"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8203"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "3 per month",
+        "record_id": "gan_1497"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per week",
+        "record_id": "gan_17239"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 day",
+        "record_id": "gan_182"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "unknown"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "unknown",
+            "derivation": "drop-attack count with latest-date anchor only",
+            "event_count": "4",
+            "evidence_text": "since starting ketogenic diet he has had 4 drop attacks, the latest one on",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "unknown",
+        "record_id": "gan_14036"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_7290"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "9 per 3 month",
+        "record_id": "gan_13019"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 2 year",
+        "record_id": "gan_13376"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per week",
+        "record_id": "gan_17006"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per 6 week",
+        "record_id": "gan_5866"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "5 cluster per month, multiple per cluster",
+        "record_id": "gan_10074"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "multiple per week",
+        "record_id": "gan_750"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_14076"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 15 month",
+        "record_id": "gan_8844"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple per 15 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple per 15 month",
+            "derivation": "vague ongoing events anchored to last generalised-seizure month",
+            "event_count": "multiple",
+            "evidence_text": "He has had no generalised seizures since 9 - 2018, though continues to experience brief jumps from time to time",
+            "window_count": "15",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple per 15 month",
+        "record_id": "gan_15168"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 12 month",
+        "record_id": "gan_3015"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 day",
+        "record_id": "gan_5653"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown, 2 to 4 per cluster",
+        "record_id": "gan_10542"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_6987"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8723"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per 5 day"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per 5 day",
+            "derivation": "cluster-pattern interval treated as simple benchmark rate without per-cluster count",
+            "event_count": "1",
+            "evidence_text": "Seizures are occurring with a clustering pattern, most often every 5 days, with occasional short periods of increased frequency",
+            "window_count": "5",
+            "window_unit": "day"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per 5 day",
+        "record_id": "gan_16529"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per week",
+        "record_id": "gan_6763"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_14092"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 to 2 per 14 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 to 2 per 14 month",
+            "derivation": "count range is anchored to an explicit prior month/year",
+            "event_count": "1 to 2",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain",
+            "window_count": "14",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 to 2 per 14 month",
+        "record_id": "gan_15302"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 cluster per 3 week, multiple per cluster",
+        "record_id": "gan_5837"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per 2 week, 3 per cluster",
+        "record_id": "gan_1694"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per week",
+        "record_id": "gan_5954"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 2 to 3 day",
+        "record_id": "gan_16422"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_7341"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 per week",
+        "record_id": "gan_16964"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "6 to 7 per 2 week",
+        "record_id": "gan_2456"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 to 2 per 2 week",
+        "record_id": "gan_7420"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "6 to 7 per week",
+        "record_id": "gan_2354"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_11399"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11733"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "3 per year"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "3 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "3",
+            "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "3 per year",
+        "record_id": "gan_13149"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_9109"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_3118"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11763"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11748"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 3 per 3 month",
+        "record_id": "gan_2487"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11804"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for 11 month",
+        "record_id": "gan_4992"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "2 to 4 per year",
+        "record_id": "gan_2366"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_5082"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "4 per 8 month",
+        "record_id": "gan_9526"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8893"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "seizure free for multiple month",
+        "record_id": "gan_8645"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 cluster per 3 month, 1 per cluster",
+        "record_id": "gan_11035"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per 6 to 8 week",
+        "record_id": "gan_8002"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per 5 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per 5 month",
+            "derivation": "breakthrough count after an explicit seizure-free month window",
+            "event_count": "1",
+            "evidence_text": "On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago",
+            "window_count": "5",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per 5 month",
+        "record_id": "gan_13190"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple cluster per 12 month, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple cluster per 12 month, multiple per cluster",
+            "derivation": "occasional clusters persisting since last convulsive seizure; long-window cluster spacing from last convulsive month/year to clinic",
+            "event_count": "multiple cluster",
+            "evidence_text": "Her last convulsive seizure was recorded in 10 - 2016, with occasional clusters of jumps persisting.",
+            "window_count": "12",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple cluster per 12 month, multiple per cluster",
+        "record_id": "gan_15240"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "3 per 6 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "3 per 6 month",
+            "derivation": "dated first and later seizure events define the observation window",
+            "event_count": "3",
+            "evidence_text": "She experienced her first seizure in January 2021 while on holiday in Spain. It occurred in the early morning hours. She described sudden stiffness in both legs. Her second and third seizure was in July 2021 back home in France, again during sleep, lasting around three minutes with the same clinical features.",
+            "window_count": "6",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "3 per 6 month",
+        "record_id": "gan_14562"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "1 per week",
+        "record_id": "gan_6836"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11734"
+      }
+    ]
+  }
+}

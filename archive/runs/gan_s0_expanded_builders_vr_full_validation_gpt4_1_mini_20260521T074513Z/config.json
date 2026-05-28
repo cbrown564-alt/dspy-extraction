@@ -1,0 +1,55 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair with deterministic temporal-candidate hints and v1.1 candidate-gated repair guards"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_expanded_builders_vr_full_validation_gpt4_1_mini",
+  "hypothesis": "Full-validation arm V1 (cand_prose_expanded_builders_vr_v1): expanded deterministic temporal-candidate builders bundled into g3_candidates_extract_repair verify-repair. Tests whether VR adds or subtracts vs F0 adjudicate-only (68.1% monthly) under shared expanded builder surface.",
+  "max_records": null,
+  "metric_caveats": [
+    "Comparison group gan_s0_expanded_builders_vr_gpt_full_validation_v1; paired read vs F0 runs/gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini_20260521T073432Z (68.1% monthly) and pre-expansion VR anchor runs/gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails_20260520T130933Z (65.1% monthly).",
+    "Expanded builders activated in temporal_candidates.py (post-2026-05-21); same program/prompt IDs as frozen VR anchor.",
+    "Two LLM calls per record; latency not comparable to F0 single-pass.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_expanded_builders_vr_gpt_full_validation_v1",
+    "context_selection_policy": null,
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "implementation_variant": "cand_prose_expanded_builders_vr_v1",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during",
+      "post"
+    ],
+    "program_architecture": "temporal_candidates_verify_repair",
+    "schema_complexity": "gan_s0",
+    "stage_executor": null,
+    "stage_graph_id": "g3_candidates_extract_repair",
+    "validation_ladder_rung": null,
+    "varied_factor": "implementation_variant"
+  },
+  "taxonomy_exemption": null
+}

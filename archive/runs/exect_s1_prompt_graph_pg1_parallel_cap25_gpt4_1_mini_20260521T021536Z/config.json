@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_prompt_graph_pg1_parallel_cap25_gpt4_1_mini",
+  "hypothesis": "Prompt-graph arm PG1 (g2_field_family_parallel): full-note parallel per-family v4_10 stages with inline bridges for exect_s1_field_family_prompt_graph_gpt_cap25_v1.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Comparison group exect_s1_field_family_prompt_graph_gpt_cap25_v1; varied_factor pipeline_stage_graph.",
+    "bridge_mode=inline; three LLM calls per record (one per field family, full note each).",
+    "Differs from Phase 5a S5: full note instead of section-aware routing; v4_10 policy examples per family.",
+    "See docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_preregistration_20260521.md."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_prompt_graph_parallel",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_field_family_prompt_graph_gpt_cap25_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during"
+    ],
+    "program_architecture": "field_family_parallel",
+    "schema_complexity": "exect_s1",
+    "stage_executor": null,
+    "stage_graph_id": "g2_field_family_parallel",
+    "validation_ladder_rung": null,
+    "varied_factor": "pipeline_stage_graph"
+  },
+  "taxonomy_exemption": null
+}

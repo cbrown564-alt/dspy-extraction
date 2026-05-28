@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-23T16:40:46.424777Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_candidate_builder_gap_v1; varied_factor implementation_variant.",
+    "Record_ids are the same enriched 25-record validation slice used by gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_4_slice.",
+    "The slice is enriched for Qwen pragmatic-category mismatches and is a search/diagnostic surface, not a full-validation estimate.",
+    "Prompt version, model track, context policy, repair policy, scorer, and record set are held fixed against v1.4 control; only deterministic candidate-builder coverage changed.",
+    "Do not transfer to Qwen unless this GPT slice beats v1.4 or provides preregistered transferability signal."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice_20260523T164046Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

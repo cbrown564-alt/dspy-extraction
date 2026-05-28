@@ -1,0 +1,103 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.5:9b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_single_pass",
+    "prompt_version": "gan_frequency_s0_cot_maxbudget_v1",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "His initial event was in April 2019 in Germany... A second event occurred in Italy the following July 2019... Since returning to the UK, there have been no further events reported."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_6532",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_6532",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "The patient describes seizure activity occurring in flurries over several days with intervals of relative calm thereafter... (e.g. two brief events on 14/09 and three overnight on 27/09, then a quiet week)."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "5 cluster per week, 5 per cluster",
+          "quality_flags": [],
+          "raw_value": "5 cluster per week, 5 per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10434",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10434",
+              "end": 705,
+              "section": null,
+              "start": 666,
+              "text": "occurring on several mornings each week"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

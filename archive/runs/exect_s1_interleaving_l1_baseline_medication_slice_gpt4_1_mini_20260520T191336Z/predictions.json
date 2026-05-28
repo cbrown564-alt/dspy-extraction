@@ -1,0 +1,1431 @@
+{
+  "dataset": "exect_v2",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "exect_s0_s1_field_family_single_pass",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "repair_policy": "none",
+    "scorer_mode": "exect_field_family_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0135",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epileptic seizures",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:dissociative_focal_seizure_suppressed",
+            "benchmark_bridge:epileptic_seizures_surface_restored"
+          ],
+          "raw_value": "epileptic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0135",
+              "end": 195,
+              "section": null,
+              "start": 151,
+              "text": "Current medication:\tEslicarbazepine 800mg od"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "eslicarbazepine",
+          "quality_flags": [],
+          "raw_value": "Eslicarbazepine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0135",
+              "end": 222,
+              "section": null,
+              "start": 199,
+              "text": "Levetiracetam 1750mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "Levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0135",
+              "end": 242,
+              "section": null,
+              "start": 226,
+              "text": "Clobazam 10mg od"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "clobazam",
+          "quality_flags": [],
+          "raw_value": "Clobazam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0150",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0150",
+              "end": 170,
+              "section": null,
+              "start": 85,
+              "text": "I reviewed this 59 year old man with symptomatic structural epilepsy in clinic today."
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "raw_value": "symptomatic structural epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0150",
+              "end": 719,
+              "section": null,
+              "start": 607,
+              "text": "He gets complex partial seizures (deja-vu and orofacial automatsisms) as well as secondary generalised seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "complex partial seizures",
+          "quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "complex partial seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary generalized seizures",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary generalised seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0150",
+              "end": 976,
+              "section": null,
+              "start": 844,
+              "text": "He is taking levetiracetam 1500mg bd as well as lamotrigine 200mg bd and clobazam for seizure clusters (he takes this infrequently)."
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "clobazam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "clobazam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0052",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0052",
+              "end": 116,
+              "section": null,
+              "start": 83,
+              "text": "Diagnosis: temporal lobe epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe epilepsy",
+          "quality_flags": [],
+          "raw_value": "temporal lobe epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0052",
+              "end": 236,
+              "section": null,
+              "start": 217,
+              "text": "Zonisamide 100mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0018",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 56,
+              "section": null,
+              "start": 10,
+              "text": "I reviewed this 42 year old lady with epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 387,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe seizure",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 387,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 534,
+              "section": null,
+              "start": 412,
+              "text": "previously she was getting events with coloured objects in her field of vision which were probably occipital lobe seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital lobe seizures",
+          "quality_flags": [],
+          "raw_value": "occipital lobe seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 634,
+              "section": null,
+              "start": 537,
+              "text": "Currently she is taking sodium valproate 500 mg twice a day and levetiracetam 1000 mg twice today"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0026",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 139,
+              "section": null,
+              "start": 60,
+              "text": "Diagnosis: generalised tonic clonic seizures with myoclonic jerks, possible JME"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 309,
+              "section": null,
+              "start": 219,
+              "text": "Medication: sodium valproate 700 mg in the night (to reduce)\ntopiramate 100 mg twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "topiramate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "topiramate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0059",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 269,
+              "section": null,
+              "start": 187,
+              "text": "Symptomatic structural epilepsy secondary probably caused by early life meningitis"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "raw_value": "symptomatic structural epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 448,
+              "section": null,
+              "start": 393,
+              "text": "focal to bilateral convulsive seizures, last event 2015"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizures",
+          "quality_flags": [],
+          "raw_value": "focal to bilateral convulsive seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 503,
+              "section": null,
+              "start": 449,
+              "text": "Focal seizures with altered awareness, last event 2017"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 340,
+              "section": null,
+              "start": 308,
+              "text": "Brivaracetam  1000mg twice daily"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "brivaracetam",
+          "quality_flags": [],
+          "raw_value": "Brivaracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 363,
+              "section": null,
+              "start": 343,
+              "text": "Lamotrigine 200mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "Lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0050",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 102,
+              "section": null,
+              "start": 64,
+              "text": "Diagnosis: juvenile myoclonic epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 195,
+              "section": null,
+              "start": 132,
+              "text": "generalised tonic clonic seizures, 1 since previous appointment"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 298,
+              "section": null,
+              "start": 277,
+              "text": "lamotrigine 100 mg BD"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 325,
+              "section": null,
+              "start": 299,
+              "text": "Sodium valproate 700 mg BD"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0188",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0188",
+              "end": 55,
+              "section": null,
+              "start": 0,
+              "text": "Diagnosis Focal epilepsy, probable occipital lobe onset"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed"
+          ],
+          "raw_value": "focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0188",
+              "end": 1325,
+              "section": null,
+              "start": 1232,
+              "text": "Impression it does seem that this lady has a drug refractory focal (occipital lobe) epilepsy."
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital lobe epilepsy",
+          "quality_flags": [
+            "specificity_collapsed"
+          ],
+          "raw_value": "occipital lobe epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence",
+            "benchmark_bridge:specificity_collapse_diagnosis_co_listed"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "drug",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence",
+            "benchmark_bridge:specificity_collapse_diagnosis_co_listed"
+          ],
+          "raw_value": "drug",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence",
+            "benchmark_bridge:specificity_collapse_diagnosis_co_listed"
+          ],
+          "raw_value": "occipital",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:specificity_collapse_seizure_surface"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0188",
+              "end": 102,
+              "section": null,
+              "start": 71,
+              "text": "Medication:\nZonismaide 100mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [
+            "benchmark_bridge:medication_surface_repaired"
+          ],
+          "raw_value": "Zonismaide",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0188",
+              "end": 125,
+              "section": null,
+              "start": 103,
+              "text": "Brivitiracetam 50mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "brivaracetam",
+          "quality_flags": [
+            "benchmark_bridge:medication_surface_repaired"
+          ],
+          "raw_value": "Brivitiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0047",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 108,
+              "section": null,
+              "start": 61,
+              "text": "Diagnosis: probable juvenile myoclonic epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 381,
+              "section": null,
+              "start": 305,
+              "text": "Her seizures remain uncontrolled. She gets generalised seizures once a week."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized seizures",
+          "quality_flags": [],
+          "raw_value": "generalised seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 145,
+              "section": null,
+              "start": 109,
+              "text": "Current medication: Clobazam 10mg on"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "clobazam",
+          "quality_flags": [],
+          "raw_value": "Clobazam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 247,
+              "section": null,
+              "start": 146,
+              "text": "Sodium Valproate 200 mg twice a day (to be increased to 300 mg BD in steps of 100 mg every two weeks)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "Sodium Valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0069",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: Juvenile Myoclonic Epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 698,
+              "section": null,
+              "start": 646,
+              "text": "she is having more generalised tonic clinic seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label",
+            "benchmark_bridge:jme_gtcs_singular_co_listed"
+          ],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizure",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label",
+            "benchmark_bridge:jme_gtcs_singular_co_listed"
+          ],
+          "raw_value": "generalized tonic clonic seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 253,
+              "section": null,
+              "start": 216,
+              "text": "Levetiracetam 1500mg bd (50mg/kg/day)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "Levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 267,
+              "section": null,
+              "start": 256,
+              "text": "Lamotrigine"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "Lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0072",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 250,
+              "section": null,
+              "start": 214,
+              "text": "Diagnosis\tSymptomatic focal epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic focal epilepsy",
+          "quality_flags": [],
+          "raw_value": "symptomatic focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 434,
+              "section": null,
+              "start": 366,
+              "text": "Seizure type\tFocal motor seizures and secondary generalised seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal motor seizures",
+          "quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "focal motor seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary generalized seizures",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary generalised seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 342,
+              "section": null,
+              "start": 309,
+              "text": "Medication\tLevetiracetam 500mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "Levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 356,
+              "section": null,
+              "start": 345,
+              "text": "Lamotrigine"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "Lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0124",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 66,
+              "section": null,
+              "start": 47,
+              "text": "Diagnosis: epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 1005,
+              "section": null,
+              "start": 887,
+              "text": "Secondly she gets absence events where she pauses her task and her head turns to one side and she will stare vacantly."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:granular_seizure_surface_coarsened",
+            "benchmark_bridge:granular_seizure_surface_coarsened"
+          ],
+          "raw_value": "absence events",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 193,
+              "section": null,
+              "start": 124,
+              "text": "Medication: sodium valproate 500 milligrams mane 700 milligrams nocte"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 213,
+              "section": null,
+              "start": 195,
+              "text": "Zonisamide 50mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0137",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0137",
+              "end": 401,
+              "section": null,
+              "start": 330,
+              "text": "She continues to have around 2 secondary generalised seizures per year."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary generalized seizures",
+          "quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary generalised seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0137",
+              "end": 651,
+              "section": null,
+              "start": 565,
+              "text": "She has taken sodium valproate for a long time and is currently taking 1g twice a day."
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0137",
+              "end": 743,
+              "section": null,
+              "start": 708,
+              "text": "She is now taking 50mg twice a day."
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0174",
+      "metadata": {
+        "apply_benchmark_bridges": true,
+        "bridge_stage": "inline",
+        "program_variant": "exect_s0_s1_field_family_single_pass",
+        "repair_policy": "none"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0174",
+              "end": 71,
+              "section": null,
+              "start": 39,
+              "text": "Diagnosis:\tEpilepsy unclassified"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "benchmark_bridge:unclassified_epilepsy_surface",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "raw_value": "epilepsy unclassified",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0174",
+              "end": 445,
+              "section": null,
+              "start": 359,
+              "text": "These consist of prolonged bilateral episodes of limb shaking with retained awareness."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "prolonged bilateral episodes of limb shaking with retained awareness",
+          "quality_flags": [],
+          "raw_value": "prolonged bilateral episodes of limb shaking with retained awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0174",
+              "end": 101,
+              "section": null,
+              "start": 84,
+              "text": "Zonisamide 100 bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0174",
+              "end": 127,
+              "section": null,
+              "start": 104,
+              "text": "Levetiracetam 1500 b.d."
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    }
+  ],
+  "schema_level": "exect_s0_s1_field_family"
+}

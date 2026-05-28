@@ -1,0 +1,32 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-18T13:19:57.998260Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_smoke_qwen9b_ollama",
+    "prompt_version": "gan_frequency_s0_v2_vocab_guided",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This one-record smoke run validates provider/config/runtime compatibility only; it is not a performance estimate.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing when run at meaningful sample sizes.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction.",
+    "Local Ollama availability and installed model tags are environment-dependent blockers."
+  ],
+  "model_name": "qwen3.5:9b",
+  "model_provider": "ollama",
+  "program_variant": "gan_frequency_s0_single_pass",
+  "run_id": "gan_s0_smoke_qwen9b_ollama_20260518T131957Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

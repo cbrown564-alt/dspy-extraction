@@ -1,0 +1,38 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T23:58:34.088180Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails",
+    "prompt_version": "gan_frequency_s0_react_temporal_tools_v1_0",
+    "structured_output_strategy": "strict_json_prompt_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This 14-record slice uses record_ids from data/fixtures/gan_s0_qwen_error_regression_slice.json.",
+    "ReAct tool observations are diagnostic; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "This variant uses dspy.ReAct (tool loop + ChainOfThought extract), not provider JSON schema.",
+    "Track react_tool_call_count and react_trajectory in prediction metadata for latency/cost analysis.",
+    "Compare against temporal-candidates v1.1 (`\u2026232514Z`) and event-table B2 (`\u2026235058Z`) on the same slice.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
+    "Do not extrapolate slice metrics to full-validation performance.",
+    "This is not published Gan benchmark reproduction."
+  ],
+  "model_name": "qwen3.6:35b",
+  "model_provider": "ollama",
+  "program_variant": "gan_frequency_s0_react_temporal_tools",
+  "run_id": "gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails_20260519T235834Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

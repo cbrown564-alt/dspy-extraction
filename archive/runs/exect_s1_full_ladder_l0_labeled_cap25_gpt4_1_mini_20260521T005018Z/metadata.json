@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-21T00:50:18.402799Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_full_ladder_l0_labeled_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_l0_minimal",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Thesis group exect_s1_ladder_optimizer_automation_v1; see docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md.",
+    "Compile on exectv2_fixed_v1:train (40 records); eval cap-25 validation with raw_no_benchmark_bridges.",
+    "Train demos use raw gold surfaces from make_exect_s0_s1_dspy_examples (not benchmark-normalized).",
+    "Hand-crafted ceiling: exect_s1_optimizer_baseline_cap25 or L1+policy 95.8% micro with repair_policy none.",
+    "L0 zero-shot anchor: exect_s1_full_ladder_l0_cap25 60.0% micro."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_full_ladder_l0_labeled_cap25_gpt4_1_mini_20260521T005018Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

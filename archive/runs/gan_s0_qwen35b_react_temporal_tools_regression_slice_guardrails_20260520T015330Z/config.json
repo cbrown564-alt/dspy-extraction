@@ -1,0 +1,50 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_bounded_react_temporal_tools",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "bounded dspy.ReAct loop with deterministic temporal tools (max 4 iterations) then ChainOfThought extract"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails",
+  "hypothesis": "A bounded ReAct agent with deterministic temporal tools improves hard Gan infrequent temporal aggregation on the 14-record guardrail slice versus direct extraction, without collapsing schema validity or evidence support.",
+  "max_records": null,
+  "metric_caveats": [
+    "This 14-record slice uses record_ids from data/fixtures/gan_s0_qwen_error_regression_slice.json.",
+    "ReAct tool observations are diagnostic; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "This variant uses dspy.ReAct (tool loop + ChainOfThought extract), not provider JSON schema.",
+    "Track react_tool_call_count and react_trajectory in prediction metadata for latency/cost analysis.",
+    "Compare against temporal-candidates v1.1 (`\u2026232514Z`) and event-table B2 (`\u2026235058Z`) on the same slice.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
+    "Do not extrapolate slice metrics to full-validation performance.",
+    "This is not published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama_verify_repair.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_react_temporal_tools",
+  "prompt_version": "gan_frequency_s0_react_temporal_tools_v1_1",
+  "record_ids": [
+    "gan_10509",
+    "gan_10751",
+    "gan_11221",
+    "gan_11733",
+    "gan_12130",
+    "gan_12810",
+    "gan_12823",
+    "gan_10003",
+    "gan_10052",
+    "gan_10410",
+    "gan_13123",
+    "gan_14485",
+    "gan_14881",
+    "gan_15306"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "strict_json_prompt_with_pydantic_validation"
+}

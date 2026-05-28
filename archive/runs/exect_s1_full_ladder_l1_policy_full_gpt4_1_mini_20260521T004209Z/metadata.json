@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-21T00:42:09.890025Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_full_ladder_l1_policy_full_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Reference ladder rung L1+policy; repair_policy none with inline bridges.",
+    "Full validation (40) on exectv2_fixed_v1:validation; lower rungs use the same cap-25 slice.",
+    "Directly comparable to exect_s0_s1_validation_full_gpt4_1_mini and optimizer baseline cap-25.",
+    "Optimizer rungs 4-7 compile on train but evaluate on validation per separate prereg.",
+    "See docs/exect_s1_full_ladder_gpt_validation_v1_preregistration_20260521.md."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_full_ladder_l1_policy_full_gpt4_1_mini_20260521T004209Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

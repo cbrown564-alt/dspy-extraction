@@ -1,0 +1,52 @@
+{
+  "controls": {
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
+    "context_policy": "full_note",
+    "few_shot_policy": "GEPA instruction optimization with semantic_frequency_with_evidence_feedback",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_semantic_gepa_cap25_gpt4_1_mini",
+  "hypothesis": "A capped GEPA compile pass with semantic_frequency_with_evidence_feedback improves monthly/Purist accuracy versus semantic BootstrapFewShot and verify-repair v2 without prompt-bloat regression or evidence-support loss.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The GEPA feedback metric semantic_frequency_with_evidence_feedback is optimizer-facing only and does not replace gan_frequency_deterministic_v1 scoring.",
+    "Report selected GEPA instruction length and compile/prediction latency alongside label metrics.",
+    "Compare against verify-repair v2 and semantic bootstrap on the same capped validation slice before any full validation.",
+    "This capped validation config is not published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": {
+    "add_format_failure_as_feedback": true,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 4,
+    "max_full_evals": null,
+    "max_labeled_demos": 0,
+    "max_metric_calls": 16,
+    "max_rounds": 1,
+    "metric_name": "semantic_frequency_with_evidence_feedback",
+    "name": "GEPA",
+    "num_candidate_programs": 16,
+    "num_threads": null,
+    "reflection_minibatch_size": 2,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": true,
+    "track_stats": true,
+    "trainset_size": 50,
+    "use_cloudpickle": true
+  },
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1_gepa_semantic",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

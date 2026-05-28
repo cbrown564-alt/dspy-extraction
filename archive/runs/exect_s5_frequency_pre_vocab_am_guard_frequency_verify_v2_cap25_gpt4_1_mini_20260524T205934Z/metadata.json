@@ -1,0 +1,41 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-24T20:59:34.176655Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s4_field_family_v1_3_qualitative_evidence_gate",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "schema_level": "exect_s5_core_field_family",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This diagnostic validation cap is the preregistered residual-iteration gate; it is not a full-validation performance estimate.",
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "High-recall pre-vocab candidates are unchanged; only extractor prompt v1.3 and verifier policy v2 vary.",
+    "Baseline for comparison is the paper-frozen v1 verifier stack at 72.3% full-validation frequency F1.",
+    "Cap-25 ExECT runs are systematically optimistic vs full validation; treat as schema/gate signal only.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2",
+  "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2_cap25_gpt4_1_mini_20260524T205934Z",
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

@@ -174,6 +174,12 @@ GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_PROMPT_VERSION = (
 GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
     "gan_frequency_s0_date_events_candidates_v1"
 )
+GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_V1_2_GUARDRAILS_PROMPT_VERSION = (
+    "gan_frequency_s0_date_events_candidates_v1_2_guardrails"
+)
+GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_V1_2B_SCHEMA_GUARD_ONLY_PROMPT_VERSION = (
+    "gan_frequency_s0_date_events_candidates_v1_2b_schema_guard_only"
+)
 GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
     "gan_frequency_s0_llm_date_events_v1"
 )
@@ -746,10 +752,10 @@ GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM = """
 """
 
 GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM = """
-    Date-event payload adjudication policy (v1.1):
+    Date-event payload adjudication policy (v1.2):
     - date_event_payload lists clinic date, temporal anchors, seizure events,
       seizure-free intervals, cluster events, current window cues, candidate labels,
-      and evidence text extracted from the note.
+      evidence text, and calculated arithmetic totals/denominators extracted from the note.
     - Treat candidate_labels as diagnostic hints, not gold labels.
     - Prefer note-supported quantified rates from candidates when they match the
       note's event/window structure.
@@ -762,6 +768,9 @@ GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM = """
       'multiple per 15 month').
     - Cluster labels must include both cluster period and per-cluster count.
     - evidence_text must be an exact contiguous substring of note_text.
+    - Strict Label Schema Guard: You MUST NOT output hybrid labels containing 'unknown' combined with numbers or units (e.g., '3 per unknown', 'unknown per month', or 'unknown cluster per month'). The only valid ways to use 'unknown' are as the standalone label 'unknown' or in the cluster format 'unknown, multiple per cluster' / 'unknown, N per cluster'. If the event count or the window unit/denominator is unknown, output the standalone label 'unknown'.
+    - Ambiguity & Relative Anchor Guardrail: If a note describes events occurring "since starting [medication]", "since beginning [treatment]", "since discharge", or "since last visit" without providing an explicit, documented start date/anchor (e.g., month/year or date), you MUST NOT guess a denominator or calculate a calendar-window using the latest event date or clinic date. In all such unanchored relative cases, output 'unknown' per Gan policy.
+    - Trigger-dependent or vague recurrence guardrail: If the note states that seizures only happen after specific triggers (e.g., lack of sleep, illness, travel) but does not state the frequency of those triggers, the overall frequency is unquantifiable. You MUST output 'unknown' rather than estimating a rate.
 """
 
 GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM = """
@@ -1384,6 +1393,7 @@ def build_gan_frequency_s0_extractor_signature(
         )
     if prompt_version in {
         GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_V1_2_GUARDRAILS_PROMPT_VERSION,
         GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
         GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
         GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_PROMPT_VERSION,
@@ -1397,6 +1407,19 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0DateEventsAdjudicateEnhancedSignature",
+            (GanFrequencyS0DateEventsAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if prompt_version == GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_V1_2B_SCHEMA_GUARD_ONLY_PROMPT_VERSION:
+        # Ablation: schema guard only — no relative anchor guardrail. Used to isolate its 4.2pp cost.
+        doc = (
+            (GanFrequencyS0DateEventsAdjudicateSignature.__doc__ or "")
+            + GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_SCHEMA_GUARD_ONLY_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0DateEventsAdjudicateSchemaGuardOnlySignature",
             (GanFrequencyS0DateEventsAdjudicateSignature,),
             {"__doc__": doc},
         )
@@ -1879,13 +1902,125 @@ class GanDateEventPayload(FrozenModel):
     candidate_labels: list[str] = Field(default_factory=list)
     evidence_text: str | None = None
     stage_confidence: float | None = None
+    calculated_arithmetic: str | None = None
+
+def run_arithmetic_calculator(note_text: str) -> tuple[str, str] | None:
+    month_map = {
+        "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+        "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
+        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
+    }
+    number_words_map = {
+        "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10
+    }
+    
+    # 1. Segmented monthly series (e.g. In Nov he had 3 ... In Jan he had 5)
+    month_pattern = r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\b"
+    month_mentions = []
+    for m in re.finditer(month_pattern, note_text, re.IGNORECASE):
+        m_name = m.group(1).lower()
+        month_mentions.append((month_map[m_name], m.start(), m.end()))
+        
+    if len(month_mentions) >= 2:
+        segments = []
+        for i in range(len(month_mentions)):
+            start_pos = month_mentions[i][2]
+            end_pos = month_mentions[i+1][1] if i + 1 < len(month_mentions) else len(note_text)
+            seg_text = note_text[start_pos:end_pos]
+            period_idx = seg_text.find('.')
+            if period_idx != -1:
+                seg_text = seg_text[:period_idx]
+            segments.append((month_mentions[i][0], seg_text))
+            
+        parsed_series = []
+        number_pattern = r"\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\b"
+        for m_num, seg_text in segments:
+            counts = []
+            for num_match in re.finditer(number_pattern, seg_text, re.IGNORECASE):
+                val_str = num_match.group(1)
+                if val_str.isdigit():
+                    val = int(val_str)
+                    if 2020 <= val <= 2030:
+                        continue
+                else:
+                    val = number_words_map.get(val_str.lower(), 0)
+                counts.append(val)
+            if counts:
+                parsed_series.append((m_num, sum(counts)))
+                
+        if len(parsed_series) >= 2:
+            total = sum(x[1] for x in parsed_series)
+            years = [0]
+            for i in range(1, len(parsed_series)):
+                prev_m = parsed_series[i-1][0]
+                curr_m = parsed_series[i][0]
+                if curr_m < prev_m:
+                    years.append(years[-1] + 1)
+                else:
+                    years.append(years[-1])
+            start_idx = 0
+            end_idx = len(parsed_series) - 1
+            month_span = (years[end_idx] - years[start_idx]) * 12 + parsed_series[end_idx][0] - parsed_series[start_idx][0] + 1
+            if month_span > 0:
+                lbl = f"{total} per {month_span} month" if month_span > 1 else f"{total} per month"
+                deriv = f"Summed monthly series ({' + '.join(str(x[1]) for x in parsed_series)} = {total}) over {month_span} months"
+                return lbl, deriv
+
+    # 2. Co-occurring event tally (e.g. two drop attacks and five tonic-clonic in past three months)
+    window_match = re.search(
+        r"(?:in|over|during)\s+(?:the\s+)?(?:past|last)\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten)?\s*(month|week|year)s?",
+        note_text, re.IGNORECASE
+    )
+    if window_match:
+        window_start = window_match.start()
+        window_str = window_match.group(1)
+        unit = window_match.group(2).lower()
+        
+        pre_text = note_text[max(0, window_start - 150):window_start]
+        number_pattern = r"\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\b"
+        matches = list(re.finditer(number_pattern, pre_text, re.IGNORECASE))
+        if len(matches) >= 2:
+            total = 0
+            for m in matches:
+                val_str = m.group(1)
+                if val_str.isdigit():
+                    total += int(val_str)
+                else:
+                    total += number_words_map.get(val_str.lower(), 0)
+            
+            w = int(window_str) if (window_str and window_str.isdigit()) else number_words_map.get((window_str or "").lower(), 1)
+            if total > 0:
+                lbl = f"{total} per {w} {unit}" if w > 1 else f"{total} per {unit}"
+                deriv = f"Summed co-occurring event types ({' + '.join(m.group(1) for m in matches)} = {total}) over {w} {unit}"
+                return lbl, deriv
+
+    return None
+
+def validate_and_fallback_label(label: str | None) -> str | None:
+    if label is None:
+        return None
+    from clinical_extraction.gan.frequency import gan_label_policy_failure_class
+    fail_class = gan_label_policy_failure_class(label)
+    if fail_class in {"unknown_quantified_hybrid", "malformed_cluster_unknown_slot"}:
+        return "unknown"
+    return label
 
 def build_deterministic_date_event_payload(note_text: str) -> GanDateEventPayload:
     from clinical_extraction.gan.temporal_candidates import (
         build_temporal_frequency_candidates_from_note,
         _clinic_date,
     )
-    candidates = build_temporal_frequency_candidates_from_note(note_text)
+    candidates = list(build_temporal_frequency_candidates_from_note(note_text))
+    
+    # Arithmetic calculator: run for diagnostic reporting only (v1.3: not injected as candidates
+    # because the month-series parser fires on non-seizure month mentions, adding spurious candidates).
+    arith_res = run_arithmetic_calculator(note_text)
+    calculated_arithmetic = None
+    if arith_res:
+        lbl, deriv = arith_res
+        calculated_arithmetic = f"{lbl} (derived via: {deriv})"
+        # NOTE: calculator result is stored in calculated_arithmetic for prompt context
+        # but NOT appended to candidates to avoid spurious candidate injection.
     
     clinic_d = _clinic_date(note_text)
     clinic_date_str = clinic_d.isoformat() if clinic_d else None
@@ -1930,13 +2065,14 @@ def build_deterministic_date_event_payload(note_text: str) -> GanDateEventPayloa
         candidate_labels=list(dict.fromkeys(candidate_labels)),
         evidence_text=evidence_text,
         stage_confidence=1.0,
+        calculated_arithmetic=calculated_arithmetic,
     )
 
 GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM = """
-    Date-event payload adjudication policy (v1.1):
+    Date-event payload adjudication policy (v1.2):
     - date_event_payload lists clinic date, temporal anchors, seizure events,
       seizure-free intervals, cluster events, current window cues, candidate labels,
-      and evidence text extracted from the note.
+      evidence text, and calculated arithmetic totals/denominators extracted from the note.
     - Treat candidate_labels as diagnostic hints, not gold labels.
     - Prefer note-supported quantified rates from candidates when they match the
       note's event/window structure.
@@ -1951,6 +2087,34 @@ GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM = """
       Do NOT collapse this to unknown or seizure-free.
     - Cluster labels must include both cluster period and per-cluster count.
     - evidence_text must be an exact contiguous substring of note_text.
+    - Strict Label Schema Guard: You MUST NOT output hybrid labels containing 'unknown' combined with numbers or units (e.g., '3 per unknown', 'unknown per month', or 'unknown cluster per month'). The only valid ways to use 'unknown' are as the standalone label 'unknown' or in the cluster format 'unknown, multiple per cluster' / 'unknown, N per cluster'. If the event count or the window unit/denominator is unknown, output the standalone label 'unknown'.
+    - Ambiguity & Relative Anchor Guardrail: If a note describes events occurring "since starting [medication]", "since beginning [treatment]", "since discharge", or "since last visit" without providing an explicit, documented start date/anchor (e.g., month/year or date), you MUST NOT guess a denominator or calculate a calendar-window using the latest event date or clinic date. In all such unanchored relative cases, output 'unknown' per Gan policy.
+    - Trigger-dependent or vague recurrence guardrail: If the note states that seizures only happen after specific triggers (e.g., lack of sleep, illness, travel) but does not state the frequency of those triggers, the overall frequency is unquantifiable. You MUST output 'unknown' rather than estimating a rate.
+"""
+
+# Schema-guard-only addendum (v1.2b): strips the relative anchor guardrail to isolate its impact.
+# Used for ablation: if full-validation accuracy recovers to ~79.5%, anchor guardrail owns the 4.2pp delta.
+GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_SCHEMA_GUARD_ONLY_ADDENDUM = """
+    Date-event payload adjudication policy (v1.2b — schema guard only):
+    - date_event_payload lists clinic date, temporal anchors, seizure events,
+      seizure-free intervals, cluster events, current window cues, candidate labels,
+      evidence text, and calculated arithmetic totals/denominators extracted from the note.
+    - Treat candidate_labels as diagnostic hints, not gold labels.
+    - Prefer note-supported quantified rates from candidates when they match the
+      note's event/window structure.
+    - Do calendar math: calculate the exact number of months between the clinic date
+      and the start date of any seizure-free period or event onset. Use this calculated
+      number as the denominator (e.g. 'multiple per 15 month').
+    - Identify minor active events: if a note describes generalised seizure freedom
+      but describes ongoing myoclonic jerks, brief jumps, or absences, count these
+      as active events rather than classifying the patient as seizure-free. If the
+      candidates list includes 'multiple per [months] month', you MUST select
+      'multiple per [months] month' (e.g., 'multiple per 15 month') as the primary label.
+      Do NOT collapse this to unknown or seizure-free.
+    - Cluster labels must include both cluster period and per-cluster count.
+    - evidence_text must be an exact contiguous substring of note_text.
+    - Strict Label Schema Guard: You MUST NOT output hybrid labels containing 'unknown' combined with numbers or units (e.g., '3 per unknown', 'unknown per month', or 'unknown cluster per month'). The only valid ways to use 'unknown' are as the standalone label 'unknown' or in the cluster format 'unknown, multiple per cluster' / 'unknown, N per cluster'. If the event count or the window unit/denominator is unknown, output the standalone label 'unknown'.
+    - Trigger-dependent or vague recurrence guardrail: If the note states that seizures only happen after specific triggers (e.g., lack of sleep, illness, travel) but does not state the frequency of those triggers, the overall frequency is unquantifiable. You MUST output 'unknown' rather than estimating a rate.
 """
 
 GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM = """
@@ -2121,8 +2285,9 @@ class GanFrequencyS0DateEventsCandidatesSinglePassModule(dspy.Module):
             note_text=note_text,
             date_event_payload=payload_json,
         )
+        final_lbl = validate_and_fallback_label(result.seizure_frequency_number)
         return dspy.Prediction(
-            seizure_frequency_number=result.seizure_frequency_number,
+            seizure_frequency_number=final_lbl,
             evidence_text=result.evidence_text,
             date_event_payload=payload_json,
             temporal_candidate_labels=payload.candidate_labels,
@@ -2156,8 +2321,9 @@ class GanFrequencyS0LlmDateEventsCandidatesSinglePassModule(dspy.Module):
             note_text=note_text,
             date_event_payload=payload_json,
         )
+        final_lbl = validate_and_fallback_label(result.seizure_frequency_number)
         return dspy.Prediction(
-            seizure_frequency_number=result.seizure_frequency_number,
+            seizure_frequency_number=final_lbl,
             evidence_text=result.evidence_text,
             date_event_payload=payload_json,
             temporal_candidate_labels=candidate_labels,
@@ -2237,8 +2403,9 @@ class GanFrequencyS0HybridDateEventsCandidatesSinglePassModule(dspy.Module):
             note_text=note_text,
             date_event_payload=payload_json,
         )
+        final_lbl = validate_and_fallback_label(result.seizure_frequency_number)
         return dspy.Prediction(
-            seizure_frequency_number=result.seizure_frequency_number,
+            seizure_frequency_number=final_lbl,
             evidence_text=result.evidence_text,
             date_event_payload=payload_json,
             temporal_candidate_labels=merged_payload.candidate_labels,

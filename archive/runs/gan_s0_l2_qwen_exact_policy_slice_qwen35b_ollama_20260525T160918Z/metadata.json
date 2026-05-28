@@ -1,0 +1,38 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-25T16:09:18.914882Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_7_qwen_exact_policy",
+    "schema_level": "gan_frequency_s0",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This 18-record slice uses record_ids from data/fixtures/gan_s0_l2_qwen_policy_slice.json.",
+    "All records come from GPT-correct/Qwen-failed paired builder-gap v1 validation outcomes; this is a targeted policy gate, not full-validation evidence.",
+    "The varied factor is prompt policy only: program variant, candidate builder implementation, scorer, split, model, context policy, and repair policy remain fixed against the Qwen builder-gap v1 full-validation run.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
+    "Normalized-label exact, schema validity, abstention, evidence support, and candidate coverage remain diagnostic.",
+    "Do not extrapolate slice metrics to the full validation split.",
+    "This is not published Gan benchmark reproduction."
+  ],
+  "model_name": "qwen3.6:35b",
+  "model_provider": "ollama",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama_20260525T160918Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

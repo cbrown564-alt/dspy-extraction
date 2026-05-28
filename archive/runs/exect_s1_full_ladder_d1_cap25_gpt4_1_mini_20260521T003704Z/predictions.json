@@ -1,0 +1,2365 @@
+{
+  "dataset": "exect_v2",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "exect_s0_s1_field_family_deterministic_only",
+    "prompt_version": "exect_s0_s1_field_family_d1_feasibility",
+    "repair_policy": "raw_no_benchmark_bridges",
+    "scorer_mode": "exect_field_family_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0008",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine",
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "symptomatic structural focal epilepsy",
+            "focal epilepsy",
+            "symptomatic",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": [
+            "focal seizures with altered awareness",
+            "focal seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "symptomatic structural focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "symptomatic",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0016",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "focal"
+          ],
+          "seizure_type": [
+            "focal seizure",
+            "secondary"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizure",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0018",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "carbamazepine",
+            "lamotrigine",
+            "levetiracetam",
+            "sodium valproate"
+          ],
+          "diagnosis": [
+            "occipital",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": [
+            "occipital lobe seizures",
+            "focal seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "occipital",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital lobe seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "occipital lobe seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0026",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "carbamazepine",
+            "levetiracetam",
+            "sodium valproate",
+            "topiramate"
+          ],
+          "diagnosis": [
+            "jme"
+          ],
+          "seizure_type": [
+            "tonic clonic seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "jme",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "jme",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "tonic clonic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "topiramate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "topiramate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0029",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy",
+            "jme"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "jme",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "jme",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0045",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine"
+          ],
+          "diagnosis": [
+            "focal onset epilepsy",
+            "focal epilepsy",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": [
+            "focal to bilateral convulsive seizures",
+            "focal seizures with altered awareness",
+            "focal seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal onset epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal onset epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal to bilateral convulsive seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0047",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "clobazam",
+            "sodium valproate"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "clobazam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "clobazam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0048",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "topiramate"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy"
+          ],
+          "seizure_type": [
+            "tonic clonic seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "tonic clonic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "topiramate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "topiramate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0050",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "clobazam",
+            "lamotrigine",
+            "sodium valproate"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy"
+          ],
+          "seizure_type": [
+            "tonic clonic seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "tonic clonic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "clobazam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "clobazam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0052",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "carbamazepine",
+            "eslicarbazine",
+            "lamotrigine",
+            "levetiracetam",
+            "zonisamide"
+          ],
+          "diagnosis": [
+            "temporal lobe epilepsy",
+            "epilepsy"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "temporal lobe epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "eslicarbazine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "eslicarbazine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0053",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "levetiracetam",
+            "sodium valproate"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy",
+            "drug"
+          ],
+          "seizure_type": [
+            "myoclonic seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "drug",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "drug",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "myoclonic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "myoclonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0059",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "brivaracetam",
+            "gabapentin",
+            "lamotrigine",
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "symptomatic",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": [
+            "focal to bilateral convulsive seizures",
+            "focal seizures with altered awareness",
+            "focal seizures",
+            "secondary"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "symptomatic",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal to bilateral convulsive seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "brivaracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "brivaracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "gabapentin",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "gabapentin",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0061",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine",
+            "topiramate"
+          ],
+          "diagnosis": [
+            "focal epilepsy",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": [
+            "focal seizures with altered awareness",
+            "focal seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "topiramate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "topiramate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0068",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [],
+          "diagnosis": [
+            "focal"
+          ],
+          "seizure_type": [
+            "focal seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0069",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine",
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0072",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine",
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "symptomatic focal epilepsy",
+            "focal epilepsy",
+            "symptomatic",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": [
+            "secondary"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "symptomatic focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "symptomatic",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0078",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "carbamazepine",
+            "levetiracetam"
+          ],
+          "diagnosis": [],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "missing_gold"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0090",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "carbamazepine"
+          ],
+          "diagnosis": [
+            "focal"
+          ],
+          "seizure_type": [
+            "secondary generalisation",
+            "focal seizures",
+            "secondary"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary generalisation",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary generalisation",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0098",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine",
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "focal onset epilepsy",
+            "epilepsy",
+            "focal"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal onset epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal onset epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0100",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [],
+          "diagnosis": [
+            "epilepsy"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "missing_gold"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0102",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "sodium valproate"
+          ],
+          "diagnosis": [
+            "epilepsy"
+          ],
+          "seizure_type": [
+            "epileptic seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epileptic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epileptic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0109",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "carbamazepine"
+          ],
+          "diagnosis": [
+            "epilepsy",
+            "focal",
+            "drug"
+          ],
+          "seizure_type": [
+            "temporal lobe seizures",
+            "focal seizures"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "drug",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "drug",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "temporal lobe seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0116",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "levetiracetam"
+          ],
+          "diagnosis": [
+            "epilepsy",
+            "frontal",
+            "focal"
+          ],
+          "seizure_type": [
+            "tonic clonic seizures",
+            "secondary"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "frontal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "frontal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "focal",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "tonic clonic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0124",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "sodium valproate",
+            "zonisamide"
+          ],
+          "diagnosis": [
+            "epilepsy"
+          ],
+          "seizure_type": [
+            "tonic clonic seizures",
+            "secondary"
+          ]
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "tonic clonic seizures",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0125",
+      "metadata": {
+        "apply_benchmark_bridges": false,
+        "bridge_stage": "none",
+        "d1_surfaces": {
+          "annotated_medication": [
+            "lamotrigine",
+            "sodium valproate"
+          ],
+          "diagnosis": [
+            "juvenile myoclonic epilepsy",
+            "epilepsy",
+            "jme"
+          ],
+          "seizure_type": []
+        },
+        "program_variant": "exect_s0_s1_field_family_deterministic_only",
+        "repair_policy": "raw_no_benchmark_bridges"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "jme",
+          "quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence"
+          ],
+          "raw_value": "jme",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        }
+      ]
+    }
+  ],
+  "schema_level": "exect_s0_s1_field_family"
+}

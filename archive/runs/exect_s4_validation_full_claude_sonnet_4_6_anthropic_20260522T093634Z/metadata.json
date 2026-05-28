@@ -1,0 +1,49 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-22T09:36:34.785399Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s4_validation_full_claude_sonnet_4_6_anthropic",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 Table 1 reproduction.",
+    "These are partial ExECT S4 diagnostics (eleven families), not CUI-aware all-family benchmark reproduction.",
+    "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
+    "GPT 4.1-mini frozen anchor: runs/exect_s4_validation_full_gpt4_1_mini_20260520T071248Z (65.5% micro F1).",
+    "Gemini 3.1 Flash-Lite anchor: runs/exect_s4_validation_full_gemini31_flash_lite_20260521T093556Z (66.8% micro F1).",
+    "Qwen3.6:35b anchor: runs/exect_s4_validation_full_qwen35b_ollama_20260520T160914Z (67.5% micro F1).",
+    "Operational program_variant exect_s4_field_family_cause_bridge_k0_k1_single_pass matches frozen GPT S4 default.",
+    "Qwen S4 anchor used pre-bridge L1 variant; Claude replay uses current frozen K0+K1 path for GPT parity.",
+    "Claude smoke gate: runs/exect_s4_smoke_claude_sonnet_4_6_anthropic_20260522T080625Z (3 records; evidence 96.4%).",
+    "Do not compare this run to GPT full validation as the same experiment; same scorer, different model track.",
+    "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 full anchor (\u2026235439Z).",
+    "Anthropic OpenAI-compatible response_format support is limited; Pydantic validation remains the source of schema truth.",
+    "Record token usage, latency, and billing when inspecting artifacts.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
+  "run_id": "exect_s4_validation_full_claude_sonnet_4_6_anthropic_20260522T093634Z",
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

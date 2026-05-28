@@ -1,0 +1,39 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T23:54:39.857243Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s3_validation_full_gpt4_1_mini",
+    "prompt_version": "exect_s3_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 Table 1 reproduction.",
+    "These are partial ExECT S3 diagnostics (nine families), not CUI-aware all-family benchmark reproduction.",
+    "Pooled micro F1 across nine families is not comparable to frozen S2 five-family headlines.",
+    "S2 label-policy bridges from frozen v1.3 are reused for S1 and S2 families; see docs/exect_s3_phase1_overlap_policy.md.",
+    "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S2-only cap-25.",
+    "Report per-family F1 and monitor frozen S2 families for regression vs S2 v1.3 full anchor (\u2026231223Z).",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s3_field_family_single_pass",
+  "run_id": "exect_s3_validation_full_gpt4_1_mini_20260519T235439Z",
+  "schema_level": "exect_s3_field_family",
+  "scorer_mode": "exect_s3_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

@@ -1,0 +1,48 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first confirm/repair/abstain with v2.4 span-disciplined infrequent repair over unknown"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_qwen35b_verify_repair_regression_slice_guardrails",
+  "hypothesis": "Local Qwen3.6:35b verify-repair v2.4 confirm-first guardrails preserve v2.2 direct slice wins (YTD, clusters, unknown/no-reference) while span-disciplined infrequent repair keeps gan_15306-style quantification without over-repair regressions.",
+  "max_records": null,
+  "metric_caveats": [
+    "This 14-record slice uses record_ids from data/fixtures/gan_s0_qwen_error_regression_slice.json.",
+    "Verify-repair doubles model calls versus direct extraction; latency is not comparable to direct-only runs.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
+    "Normalized-label exact, schema validity, abstention, evidence support, and verifier decisions are diagnostic.",
+    "Do not extrapolate slice metrics to full-validation performance.",
+    "This is not published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama_verify_repair.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_verify_repair",
+  "prompt_version": "gan_frequency_s0_direct_verify_repair_v2_4",
+  "record_ids": [
+    "gan_10509",
+    "gan_10751",
+    "gan_11221",
+    "gan_11733",
+    "gan_12130",
+    "gan_12810",
+    "gan_12823",
+    "gan_10003",
+    "gan_10052",
+    "gan_10410",
+    "gan_13123",
+    "gan_14485",
+    "gan_14881",
+    "gan_15306"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

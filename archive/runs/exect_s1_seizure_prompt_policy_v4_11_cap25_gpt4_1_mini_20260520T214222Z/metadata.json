@@ -1,0 +1,33 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-20T21:42:22.251676Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_11_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Mandatory GPT regression guardrail for exect_s1_seizure_prompt_policy_qwen_v1.",
+    "Block Qwen full if seizure_type F1 is more than 2pp below v4_10 cap-25 reference (runs/exect_s0_s1_validation_cap25_gpt4_1_mini_20260519T221936Z, 95.4% seizure F1).",
+    "See docs/exect_s1_seizure_prompt_policy_qwen_preregistration_20260520.md."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini_20260520T214222Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

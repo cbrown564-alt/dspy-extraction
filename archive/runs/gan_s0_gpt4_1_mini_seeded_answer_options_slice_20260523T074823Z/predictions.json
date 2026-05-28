@@ -1,0 +1,1922 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+    "prompt_version": "gan_frequency_s0_seeded_multiple_answer_det_selector_v1_0",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13058",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizure frequency reference",
+            "evidence_text": "",
+            "rationale": "No other explicit seizure frequency information is provided beyond the above.",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 seizure in 3 weeks",
+            "evidence_text": "before experiencing a generalised tonic-clonic seizure 3 Tuesdays ago",
+            "rationale": "The note specifies a single generalized tonic-clonic seizure occurring three weeks ago, providing a clear temporal frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain count"
+            ],
+            "canonical_label": "cluster of absences prior to recent seizure",
+            "evidence_text": "before experiencing a generalised tonic-clonic seizure 3 Tuesdays ago, preceded by a cluster of absences",
+            "rationale": "The note mentions a cluster of absence seizures before the recent tonic-clonic seizure but does not specify the exact number or frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "seizure-free for 7 months prior to recent event",
+            "evidence_text": "He remained seizure-free for seven months after starting Levetiracetam 500 mg twice daily",
+            "rationale": "The note clearly states a seizure-free period of seven months before the recent seizure.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "unknown frequency",
+              "patient-reported only"
+            ],
+            "canonical_label": "unknown frequency of brief inattentive spells over several years",
+            "evidence_text": "He described episodic brief inattentive spells over several years, often during periods of academic stress",
+            "rationale": "The note reports episodic inattentive spells over years without specifying frequency or clinical confirmation.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "no seizure frequency reference",
+          "evidence_text": "",
+          "rationale": "No other explicit seizure frequency information is provided beyond the above.",
+          "source": "llm_answer_option",
+          "status": "absent"
+        },
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13123",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 per year",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "rationale": "Seeded from deterministic temporal candidate single breakthrough event after a nearly one-year seizure-free window.",
+            "source": "deterministic_temporal_candidate",
+            "status": "current"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 per year",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "rationale": "The note explicitly states a nearly one-year seizure-free period followed by a single breakthrough seizure event, supporting a frequency of approximately one seizure per year.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain denominator"
+            ],
+            "canonical_label": "1 per 6 months",
+            "evidence_text": "then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "rationale": "While only one seizure is documented in the past year, the presence of myoclonic jerks preceding the tonic seizure could indicate more frequent subclinical or minor events not fully quantified, suggesting a possible higher frequency if these are counted.",
+            "source": "llm_answer_option",
+            "status": "possible"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [
+              "pattern only",
+              "trigger-conditioned"
+            ],
+            "canonical_label": "unknown frequency",
+            "evidence_text": "She described a typical focal onset with awareness of a brief internal \"rising\" sensation and right facial twitching before generalisation on that occasion.",
+            "rationale": "The note describes seizure semiology and a single event but does not provide a clear frequency pattern beyond the one event, leaving the true frequency uncertain especially if minor events are unreported.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "possible"
+          }
+        ],
+        "selected_answer_option": {
+          "ambiguity_flags": [
+            "uncertain denominator"
+          ],
+          "canonical_label": "1 per 6 months",
+          "evidence_text": "then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+          "rationale": "While only one seizure is documented in the past year, the presence of myoclonic jerks preceding the tonic seizure could indicate more frequent subclinical or minor events not fully quantified, suggesting a possible higher frequency if these are counted.",
+          "source": "llm_answer_option",
+          "status": "possible"
+        },
+        "temporal_candidate_labels": [
+          "1 per year"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_13123",
+              "end": 937,
+              "section": null,
+              "start": 860,
+              "text": "then developed myoclonic jerks leading to a tonic seizure three Saturdays ago"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 6 months",
+          "quality_flags": [],
+          "raw_value": "1 per 6 months",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13149",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 per year",
+            "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+            "rationale": "Seeded from deterministic temporal candidate single breakthrough event after a nearly one-year seizure-free window.",
+            "source": "deterministic_temporal_candidate",
+            "status": "current"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 per year",
+            "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+            "rationale": "The note explicitly states a nearly one-year seizure-free period followed by a cluster of 3 tonic seizures 2 weeks ago, supporting a frequency of approximately 1 seizure event per year.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "clustered events"
+            ],
+            "canonical_label": "3 per 2 weeks",
+            "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+            "rationale": "The note describes 3 tonic seizures occurring together 2 Saturdays ago, indicating a cluster of 3 seizures within a short time frame (2 weeks), which could be interpreted as 3 seizures per 2 weeks during that cluster.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [
+              "uncertain ongoing frequency"
+            ],
+            "canonical_label": "unknown frequency",
+            "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+            "rationale": "While the note mentions a cluster of seizures 2 weeks ago after a long seizure-free period, it does not provide a clear ongoing seizure frequency pattern beyond this isolated cluster, making the overall frequency uncertain.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": {
+          "ambiguity_flags": [
+            "clustered events"
+          ],
+          "canonical_label": "3 per 2 weeks",
+          "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+          "rationale": "The note describes 3 tonic seizures occurring together 2 Saturdays ago, indicating a cluster of 3 seizures within a short time frame (2 weeks), which could be interpreted as 3 seizures per 2 weeks during that cluster.",
+          "source": "llm_answer_option",
+          "status": "present"
+        },
+        "temporal_candidate_labels": [
+          "1 per year"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_13149",
+              "end": 1180,
+              "section": null,
+              "start": 1005,
+              "text": "Seizure history/progression: She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to 3 tonic seizure 2 Saturdays ago"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "3 per 2 weeks",
+          "quality_flags": [],
+          "raw_value": "3 per 2 weeks",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13190",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 seizure in 5 months",
+            "evidence_text": "On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago.",
+            "rationale": "The note explicitly states a single seizure occurred after a 5-month seizure-free period, indicating one seizure in the last 5 months.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "partial_period"
+            ],
+            "canonical_label": "seizure-free for 5 months",
+            "evidence_text": "On Carbamazepine monotherapy he was seizure-free for 5 months",
+            "rationale": "The patient was seizure-free for 5 months before the recent seizure, indicating a period of no seizures but not the current ongoing frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "insufficient_data"
+            ],
+            "canonical_label": "unknown frequency after recent seizure",
+            "evidence_text": "He recovered without injury and did not require hospital attendance. ... We agreed to continue observation with the present plan and to review if there are any further events.",
+            "rationale": "The note does not specify seizure frequency after the recent event, only that follow-up is planned if more seizures occur.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "unknown"
+          },
+          {
+            "ambiguity_flags": [
+              "temporal_uncertainty"
+            ],
+            "canonical_label": "no seizures currently",
+            "evidence_text": "He remains otherwise well and continues to use the adherence aids reliably.",
+            "rationale": "The patient is currently well with no mention of seizures since the recent event, suggesting no seizures currently but timing is not precisely defined.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13574",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "seizure free for years",
+            "evidence_text": "he is currently in long-term remission, having been seizure free for years",
+            "rationale": "The note explicitly states the patient is in long-term remission and has been seizure free for years, indicating no seizures currently.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizures reported",
+            "evidence_text": "He reports stable wellbeing and no episodes suggestive of relapse.",
+            "rationale": "The patient denies any episodes suggestive of seizure relapse, supporting no recent seizures.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "no_frequency_mentioned"
+            ],
+            "canonical_label": "no seizure frequency mentioned",
+            "evidence_text": "",
+            "rationale": "There is no explicit mention of seizure frequency in a numeric or temporal format in the note.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13598",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "seizure free for years",
+            "evidence_text": "he is currently in long-term remission, having been seizure free for years",
+            "rationale": "The note explicitly states the patient is in long-term remission and seizure free for years, indicating no seizures during that period.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizures reported",
+            "evidence_text": "There have been no episodes suggestive of loss of awareness, no injuries, and no emergency attendances.",
+            "rationale": "The absence of episodes suggestive of seizures or related injuries supports the interpretation of no seizures currently.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "no explicit seizure frequency count or interval"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "No deterministic temporal frequency candidates were extracted from this note.",
+            "rationale": "While remission is stated, no exact seizure frequency or interval is given, so the precise frequency is unknown.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14214",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizure frequency reference",
+            "evidence_text": "",
+            "rationale": "No other explicit seizure frequency information is provided beyond the two periods described.",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "2-4 seizures in late November",
+            "evidence_text": "She then transitioned to Levetiracetam monotherapy as above. She discontinued Valproate on 27/Nov. Shortly afterwards, she experienced two to four seizures, one triggered by missed medication.",
+            "rationale": "The note explicitly states that shortly after stopping Valproate on 27 November, the patient experienced two to four seizures.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 seizures since early December",
+            "evidence_text": "She has remained seizure-free since then. ... There have been no further injuries, no tongue biting, and no prolonged post-ictal confusion since early December.",
+            "rationale": "The note clearly indicates the patient has been seizure-free since early December.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "no seizure frequency reference",
+          "evidence_text": "",
+          "rationale": "No other explicit seizure frequency information is provided beyond the two periods described.",
+          "source": "llm_answer_option",
+          "status": "absent"
+        },
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14250",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "2 per month",
+            "evidence_text": "In the following week, he had 2 seizures",
+            "rationale": "Seeded from deterministic temporal candidate events concentrated in the week after medication change; monthly benchmark denominator when no further seizures are reported since.",
+            "source": "deterministic_temporal_candidate",
+            "status": "current"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "2 per month",
+            "evidence_text": "In the following week, he had 2 seizures",
+            "rationale": "The patient had 2 seizures in the week following medication discontinuation, which is extrapolated to a monthly frequency given no further seizures since.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "post-event stability"
+            ],
+            "canonical_label": "0 per month",
+            "evidence_text": "No further seizures have occurred since.",
+            "rationale": "After the initial 2 seizures in the first week post-medication change, the patient has had no seizures, indicating a current seizure frequency of zero per month.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "potential underreporting",
+              "uncertain long-term frequency"
+            ],
+            "canonical_label": "unknown",
+            "evidence_text": "He is keeping a seizure and trigger diary and has found this helpful alongside the dietary plan.",
+            "rationale": "While the patient is monitoring seizures, the note does not provide a long-term seizure frequency beyond the initial week and subsequent seizure-free period, leaving the overall frequency uncertain.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "2 per month",
+          "evidence_text": "In the following week, he had 2 seizures",
+          "rationale": "Seeded from deterministic temporal candidate events concentrated in the week after medication change; monthly benchmark denominator when no further seizures are reported since.",
+          "source": "deterministic_temporal_candidate",
+          "status": "current"
+        },
+        "temporal_candidate_labels": [
+          "2 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per month",
+            "derivation": "events concentrated in the week after medication change; monthly benchmark denominator when no further seizures are reported since",
+            "event_count": "2",
+            "evidence_text": "In the following week, he had 2 seizures",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14250",
+              "end": 688,
+              "section": null,
+              "start": 648,
+              "text": "In the following week, he had 2 seizures"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per month",
+          "quality_flags": [],
+          "raw_value": "2 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "2 per 3 month",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "rationale": "Seeded from deterministic temporal candidate two explicitly dated events define the observation window.",
+            "source": "deterministic_temporal_candidate",
+            "status": "current"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "2 per 3 month",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "rationale": "Two explicitly dated seizure events occurred within a three-month period (April to July 2019), defining a frequency of 2 seizures per 3 months.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 per 6 month",
+            "evidence_text": "Since returning to the UK, there have been no further events reported. He and his key worker attribute improvement to better sleep routines\u2014bedtime and wake time are consistent, and caffeine is avoided after midday.",
+            "rationale": "No seizures have been reported since July 2019, and the note is dated August 2019, indicating a seizure-free period of approximately one month. Given the plan for follow-up in 6 months and no events reported, a plausible interpretation is 0 seizures per 6 months since the last event.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "insufficient_data"
+            ],
+            "canonical_label": "unknown",
+            "evidence_text": "He has not yet completed the community sleep assessment referral but feels current measures are helping.",
+            "rationale": "The note mentions ongoing assessment and improvement but does not provide a definitive seizure frequency beyond the two events and the recent seizure-free period, leaving the long-term frequency unknown.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "2 per 3 month",
+          "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+          "rationale": "Seeded from deterministic temporal candidate two explicitly dated events define the observation window.",
+          "source": "deterministic_temporal_candidate",
+          "status": "current"
+        },
+        "temporal_candidate_labels": [
+          "2 per 3 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": 1683,
+              "section": null,
+              "start": 1389,
+              "text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 3 month",
+          "quality_flags": [],
+          "raw_value": "2 per 3 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14562",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "3 seizures in 7 months",
+            "evidence_text": "She experienced her first seizure in January 2021 while on holiday in Spain. ... Her second and third seizure was in July 2021 back home in France, ... Since July there have been no further events reported.",
+            "rationale": "The note documents three seizures occurring between January and July 2021, a span of approximately 7 months, with no further seizures reported since July.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizures since July 2021",
+            "evidence_text": "Since July there have been no further events reported.",
+            "rationale": "The note explicitly states no further seizures have occurred since July 2021.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain denominator",
+              "incomplete frequency pattern"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "She experienced her first seizure in January 2021 ... Her second and third seizure was in July 2021 ... Since July there have been no further events reported.",
+            "rationale": "While the note provides discrete seizure events, it does not specify a regular frequency or rate, making the overall seizure frequency pattern unclear.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14628",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "2 seizures in 3 months",
+            "evidence_text": "I reviewed Michael Turner in clinic today following two recent events suggestive of seizures. The first seizure was reported in April 2015 while visiting relatives in Canada. ... The second event took place in June 2015 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms.",
+            "rationale": "The note documents two seizure events occurring between April and June 2015, approximately a 3-month period.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "insufficient data"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "Two unprovoked seizures under evaluation; EEG pending (booked July 2015).",
+            "rationale": "The note indicates only two seizures have occurred but does not specify a regular frequency or pattern; further monitoring is planned.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "unknown"
+          },
+          {
+            "ambiguity_flags": [
+              "limited data"
+            ],
+            "canonical_label": "no regular seizures",
+            "evidence_text": "Given the limited number of events, absence of ongoing neurological deficit, and pending investigations, we agreed not to start an antiseizure medication today.",
+            "rationale": "The clinician notes only two isolated events with no ongoing seizures or treatment initiated, implying no established regular seizure frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14689",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 seizures since early February 2017",
+            "evidence_text": "there has been no further event since early February",
+            "rationale": "The note explicitly states no further events since early February, indicating zero seizures since that time.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "3 seizures between December 2016 and early February 2017",
+            "evidence_text": "The first seizure was reported in December 2016 ... The second and third event took place in February 2017",
+            "rationale": "The note documents three seizures occurring from December 2016 through early February 2017.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "no denominator"
+            ],
+            "canonical_label": "unknown seizure frequency prior to December 2016",
+            "evidence_text": "Recurrent seizures under review; current working diagnosis remains under investigation with no definitive classification.",
+            "rationale": "The note does not specify seizure frequency before December 2016, and the diagnosis is still under investigation.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "unknown"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14792",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 seizures in the past 1 month",
+            "evidence_text": "Given that there have been no further episodes in the past month and his epilepsy is otherwise stable",
+            "rationale": "The note explicitly states no further episodes in the past month, indicating zero seizures during that time frame.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain_diagnosis"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "Seizure disorder under investigation.",
+            "rationale": "The diagnosis is still under investigation, so the exact seizure frequency prior to the last month is not clearly established.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14821",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "seizure-free since 24 Jul 2017",
+            "evidence_text": "Her last reported event was on 24 Jul and she has been seizure-free since.",
+            "rationale": "The note explicitly states the patient has been seizure-free since 24 July, indicating no seizures after that date.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain frequency"
+            ],
+            "canonical_label": "seizure frequency unknown prior to 24 Jul 2017",
+            "evidence_text": "She had recurrent headaches following her seizures earlier this month, but these have now settled.",
+            "rationale": "The note mentions seizures earlier in the month but does not specify frequency or count, making the exact seizure frequency prior to 24 July unclear.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizures reported in last 3 weeks",
+            "evidence_text": "As she has now been stable for over 3 weeks, I am reassured and see no need for urgent changes.",
+            "rationale": "The clinician notes stability for over 3 weeks, consistent with no seizures during that period.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "no exact count"
+            ],
+            "canonical_label": "seizure frequency not explicitly quantified",
+            "evidence_text": "She keeps a seizure diary on paper during power interruptions and will bring this to her next appointment.",
+            "rationale": "Although a seizure diary is maintained, the note does not provide explicit seizure counts or frequency data.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14881",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 per month",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "rationale": "Seeded from deterministic temporal candidate last recorded event falls roughly one month before the clinic date.",
+            "source": "deterministic_temporal_candidate",
+            "status": "current"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 per month",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "rationale": "The note states the last seizure episode was on 26 February, approximately one month before the clinic date of 21 March 2014, indicating a frequency of about one seizure per month.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "recent seizure-free period"
+            ],
+            "canonical_label": "0 per month",
+            "evidence_text": "he has remained well since. Considering that he has now been free of seizures for three weeks and his overall condition is stable, no immediate action is necessary.",
+            "rationale": "The patient has been seizure-free for three weeks since the last episode on 26 February, suggesting a current frequency of zero seizures per month in the recent period.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "1 per month",
+          "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+          "rationale": "Seeded from deterministic temporal candidate last recorded event falls roughly one month before the clinic date.",
+          "source": "deterministic_temporal_candidate",
+          "status": "current"
+        },
+        "temporal_candidate_labels": [
+          "1 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last recorded event falls roughly one month before the clinic date",
+            "event_count": "1",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14881",
+              "end": 978,
+              "section": null,
+              "start": 902,
+              "text": "His last episode was recorded on 26 February and he has remained well since."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per month",
+          "quality_flags": [],
+          "raw_value": "1 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14965",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 per day",
+            "evidence_text": "The last such episode occurred on 20/May and she has been stable since.",
+            "rationale": "The note states the last focal aware episode was on 20 May and the patient has been stable since, indicating no seizures currently.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "no explicit frequency"
+            ],
+            "canonical_label": "unknown",
+            "evidence_text": "She and her colleagues have noticed brief spells where she pauses and experiences a rising epigastric sensation with tingling in the right hand and transient difficulty finding words, typically lasting 30\u201360 seconds without loss of awareness.",
+            "rationale": "While the note describes the semiology of the seizures, it does not specify the frequency of these episodes prior to the last event.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 per month",
+            "evidence_text": "The last such episode occurred on 20/May and she has been stable since.",
+            "rationale": "Given the last episode was on 20 May and the note is dated 15 August, the patient has had no seizures for nearly three months.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "0 per month",
+          "evidence_text": "The last such episode occurred on 20/May and she has been stable since.",
+          "rationale": "Given the last episode was on 20 May and the note is dated 15 August, the patient has had no seizures for nearly three months.",
+          "source": "llm_answer_option",
+          "status": "present"
+        },
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14965",
+              "end": 1852,
+              "section": null,
+              "start": 1781,
+              "text": "The last such episode occurred on 20/May and she has been stable since."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "0 per month",
+          "quality_flags": [],
+          "raw_value": "0 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14973",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 per day",
+            "evidence_text": "she has been stable since. Given her stability now, I do not propose further intervention for now.",
+            "rationale": "The note states the last episode occurred on 06 February and the patient has been stable since, indicating no seizures currently.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 per week",
+            "evidence_text": "she has been stable since. Given her stability now, I do not propose further intervention for now.",
+            "rationale": "No seizures have occurred since early February, implying zero seizures per week.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain_frequency"
+            ],
+            "canonical_label": "unknown",
+            "evidence_text": "She reports intermittent brief absences previously noted by occupational health after near-miss episodes in confined aisles.",
+            "rationale": "The note mentions intermittent brief absences but does not specify exact frequency or count.",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizure frequency reference",
+            "evidence_text": "No deterministic temporal frequency candidates were extracted from this note.",
+            "rationale": "No explicit seizure frequency count or rate is documented in the note.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "0 per week",
+          "evidence_text": "she has been stable since. Given her stability now, I do not propose further intervention for now.",
+          "rationale": "No seizures have occurred since early February, implying zero seizures per week.",
+          "source": "llm_answer_option",
+          "status": "present"
+        },
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14973",
+              "end": 1193,
+              "section": null,
+              "start": 1095,
+              "text": "she has been stable since. Given her stability now, I do not propose further intervention for now."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "0 per week",
+          "quality_flags": [],
+          "raw_value": "0 per week",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15127",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 tonic-clonic seizure in 2-2020",
+            "evidence_text": "Last tonic-clonic seizure was in 2 - 2020",
+            "rationale": "The note explicitly states the date of the last tonic-clonic seizure as February 2020.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "4 morning jerks since 2-2020",
+            "evidence_text": "with 4 morning jerks since then",
+            "rationale": "The note reports 4 morning jerks occurring since the last tonic-clonic seizure in February 2020.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "pattern_not_clearly_defined"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "Seizure disorder under ongoing assessment; pattern not yet clearly defined",
+            "rationale": "The note states that the seizure pattern is not yet clearly defined, indicating uncertainty about overall seizure frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "unknown"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15168",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 seizures per 6 months",
+            "evidence_text": "He has had no generalised seizures since 9 - 2018",
+            "rationale": "The note explicitly states no generalised seizures since September 2018, which is over 6 months prior to the clinic date in December 2019.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain frequency"
+            ],
+            "canonical_label": "unknown focal aware seizure frequency",
+            "evidence_text": "he reports occasional brief focal auras characterised by a rising epigastric sensation and momentary derealisation without loss of awareness",
+            "rationale": "The patient reports occasional focal aware seizures (auras) but no specific frequency or count is given.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain frequency"
+            ],
+            "canonical_label": "unknown myoclonic jerk frequency",
+            "evidence_text": "he describes these as sudden myoclonic jerks predominantly in the early morning after disrupted sleep",
+            "rationale": "The patient reports brief myoclonic jerks from time to time but no exact frequency or count is provided.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no focal impaired-awareness or convulsive seizures",
+            "evidence_text": "there has been no progression to focal impaired-awareness or convulsive seizures",
+            "rationale": "The note explicitly states no progression to focal impaired-awareness or convulsive seizures.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15193",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 generalised seizures since 09-2022",
+            "evidence_text": "He has had no generalised seizures since 9 - 2022",
+            "rationale": "The note explicitly states no generalised seizures have occurred since September 2022, providing a clear zero count for that seizure type.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "frequency_undefined"
+            ],
+            "canonical_label": "intermittent brief absences lasting a few seconds",
+            "evidence_text": "he continues to experience brief absence from time to time. These brief episodes are described as sudden lapses in awareness lasting a few seconds, with immediate recovery and no confusion.",
+            "rationale": "The note describes ongoing brief absence seizures but does not specify exact frequency or count, only that they occur intermittently.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "frequency_undefined",
+              "duration_undefined"
+            ],
+            "canonical_label": "unknown frequency of absence seizures",
+            "evidence_text": "he continues to experience brief absence from time to time.",
+            "rationale": "While absence seizures are mentioned, the note lacks precise frequency or count data, making the exact seizure frequency unknown.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no recent nocturnal seizures",
+            "evidence_text": "There is no recent history of nocturnal events",
+            "rationale": "The note explicitly denies recent nocturnal seizure events.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no generalised tonic\u2013clonic seizures since 09-2022",
+            "evidence_text": "He has had no generalised seizures since 9 - 2022",
+            "rationale": "Generalised seizures include tonic\u2013clonic types; the note confirms none have occurred since September 2022.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15302",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 to 2 per 14 month",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain",
+            "rationale": "Seeded from deterministic temporal candidate count range is anchored to an explicit prior month/year.",
+            "source": "deterministic_temporal_candidate",
+            "status": "current"
+          },
+          {
+            "ambiguity_flags": [
+              "event_type_ambiguity",
+              "frequency_uncertainty"
+            ],
+            "canonical_label": "1 to 2 per 14 month",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain",
+            "rationale": "The note explicitly states no tonic-clonic seizures since February 2021 but mentions one or two single jerks remain, which are brief myoclonic-type events without clear triggers. The frequency is given as 'one or two' over approximately 14 months, but the exact frequency and clinical significance of these jerks are somewhat ambiguous.",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "0 tonic-clonic seizures since 2-2021",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 2 - 2021",
+            "rationale": "The note clearly states that no tonic-clonic seizures have occurred since February 2021, indicating zero frequency for this seizure type over the 14-month period.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "event_type_ambiguity",
+              "frequency_uncertainty"
+            ],
+            "canonical_label": "unknown frequency of myoclonic jerks",
+            "evidence_text": "one or two single jerks remain. These brief myoclonic-type events occur without clear triggers and do not lead to loss of awareness or injury",
+            "rationale": "While the note mentions one or two single jerks, it is unclear if these are regular or sporadic events, and the frequency is not precisely quantified. The clinical note suggests ongoing evaluation, indicating uncertainty about the frequency and significance of these myoclonic jerks.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no nocturnal seizures reported",
+            "evidence_text": "no nocturnal events reported by her partner",
+            "rationale": "The note explicitly states no nocturnal events, indicating zero frequency of seizures during the night.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "1 to 2 per 14 month",
+          "evidence_text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain",
+          "rationale": "Seeded from deterministic temporal candidate count range is anchored to an explicit prior month/year.",
+          "source": "deterministic_temporal_candidate",
+          "status": "current"
+        },
+        "temporal_candidate_labels": [
+          "1 to 2 per 14 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per 14 month",
+            "derivation": "count range is anchored to an explicit prior month/year",
+            "event_count": "1 to 2",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain",
+            "window_count": "14",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15302",
+              "end": 602,
+              "section": null,
+              "start": 500,
+              "text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 to 2 per 14 month",
+          "quality_flags": [],
+          "raw_value": "1 to 2 per 14 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15442",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "multiple seizures per day on cluster days",
+            "evidence_text": "On occasions she is seizure-free for 4 consecutive days, followed by a day with multiple events, typically two tonic seizures.",
+            "rationale": "The note explicitly states that on cluster days, the patient experiences multiple seizures, typically two tonic seizures.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "seizure-free for 4 consecutive days",
+            "evidence_text": "On occasions she is seizure-free for 4 consecutive days, followed by a day with multiple events, typically two tonic seizures.",
+            "rationale": "The patient reports seizure-free intervals lasting 4 days, indicating fluctuating seizure frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "variable frequency"
+            ],
+            "canonical_label": "fluctuating seizure frequency pattern",
+            "evidence_text": "Regarding seizure frequency, she describes a fluctuating pattern around her shift rota.",
+            "rationale": "The patient describes a fluctuating seizure frequency pattern linked to her work shifts, indicating variability rather than a fixed frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "uncertain denominator",
+              "variable frequency"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "Regarding seizure frequency, she describes a fluctuating pattern around her shift rota.",
+            "rationale": "The note does not provide a consistent denominator or average frequency over a standard time period, making exact frequency unknown.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16529",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "seizures every 5 days",
+            "evidence_text": "Seizures are occurring with a clustering pattern, most often every 5 days",
+            "rationale": "The note explicitly states seizures occur most often every 5 days, indicating a clear temporal frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "vague_frequency"
+            ],
+            "canonical_label": "occasional short periods of increased frequency",
+            "evidence_text": "with occasional short periods of increased frequency",
+            "rationale": "The note mentions occasional short periods of increased frequency but does not specify exact timing or counts, making this frequency less precise.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "indirect_frequency"
+            ],
+            "canonical_label": "rescue medication needed on 1 occasion this year",
+            "evidence_text": "Rescue medication has been needed on 1 occasions this year",
+            "rationale": "The use of rescue medication once this year suggests at least one significant seizure event, but does not provide a direct seizure frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "temporal_comparison"
+            ],
+            "canonical_label": "no clear progression compared to previous follow-up",
+            "evidence_text": "No clear progression compared to previous follow-up",
+            "rationale": "The note indicates no clear progression in seizure frequency compared to prior follow-up, implying stability but without exact frequency details.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "pattern_only",
+              "uncertain_frequency"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "Seizures are occurring with a clustering pattern, most often every 5 days, with occasional short periods of increased frequency",
+            "rationale": "While a clustering pattern and approximate frequency are described, the exact seizure count per cluster or per time unit is not provided, leading to uncertainty about precise frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "unknown"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16645",
+      "metadata": {
+        "multiple_answer_options": [],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "3 seizures in 6 months",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care.",
+            "rationale": "The note documents three seizures in August, one in November, and one in February, totaling five seizures over approximately six months. However, the August cluster is described as three seizures, so the total count is five seizures in about six months. The canonical label uses the August cluster count as a key frequency marker.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "count ambiguity"
+            ],
+            "canonical_label": "5 seizures in 6 months",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care.",
+            "rationale": "Counting all seizures mentioned (3 in August + 1 in November + 1 in February) yields 5 seizures over about 6 months. This option reflects the total seizure count rather than just the cluster.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "relative frequency"
+            ],
+            "canonical_label": "reduced seizure frequency compared to earlier last year",
+            "evidence_text": "This represents a reduction compared with his pattern earlier last year when events were more frequent and recovery slower.",
+            "rationale": "The note states the current seizure frequency is reduced compared to earlier last year but does not specify exact counts for that period, indicating a relative improvement rather than an absolute frequency.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "time window ambiguity"
+            ],
+            "canonical_label": "no seizures in past month except 1 in February",
+            "evidence_text": "In February a single tonic seizure was recorded during respite care.",
+            "rationale": "The note mentions a single seizure in February but no other seizures more recently, suggesting low frequency in the past month.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [
+              "insufficient data"
+            ],
+            "canonical_label": "unknown seizure frequency",
+            "evidence_text": "No deterministic temporal frequency candidates were extracted from this note.",
+            "rationale": "No explicit seizure frequency summary is provided; only discrete events are described without a clear denominator or rate.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "selected_answer_option": null,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "abstain",
+        "verifier_reason": "Deterministic selector found no valid seeded or LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16750",
+      "metadata": {
+        "multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "no seizure frequency reference",
+            "evidence_text": "",
+            "rationale": "No explicit overall seizure frequency is stated; only discrete events at specific times are mentioned.",
+            "source": "llm_answer_option",
+            "status": "absent"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+        "rejected_multiple_answer_options": [
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 seizure in 8 months",
+            "evidence_text": "In August a single generalised tonic-clonic seizure was reported at school (not witnessed by family).",
+            "rationale": "The note mentions a single generalized tonic-clonic seizure in August, which is within the last 8 months from the clinic date in September.",
+            "rejection_reason": "unsupported_or_missing_evidence",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "4 seizures in 4 months",
+            "evidence_text": "In May there were four further brief absences",
+            "rationale": "The note reports four brief absence seizures in May, which is 4 months prior to the clinic date.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "1 prolonged seizure in 7 months",
+            "evidence_text": "In February she experienced a prolonged focal seizure lasting 8 minutes",
+            "rationale": "The note describes a prolonged focal seizure in February, 7 months before the clinic date.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          },
+          {
+            "ambiguity_flags": [],
+            "canonical_label": "No seizures in 1 month",
+            "evidence_text": "Since adopting structured reminders in late August, she has had no further events",
+            "rationale": "The patient reports no seizures since late August, indicating no seizures in the last month.",
+            "rejection_reason": "noncanonical_label",
+            "source": "llm_answer_option",
+            "status": "present"
+          }
+        ],
+        "selected_answer_option": {
+          "ambiguity_flags": [],
+          "canonical_label": "no seizure frequency reference",
+          "evidence_text": "",
+          "rationale": "No explicit overall seizure frequency is stated; only discrete events at specific times are mentioned.",
+          "source": "llm_answer_option",
+          "status": "absent"
+        },
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "seeded_hybrid_multiple_answer_det_selector",
+        "verifier_decision": "deterministic_select",
+        "verifier_reason": "Selected by deterministic Gan policy hierarchy over deterministic temporal seeds plus valid LLM answer options."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

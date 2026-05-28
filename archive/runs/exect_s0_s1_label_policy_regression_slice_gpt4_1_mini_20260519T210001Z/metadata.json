@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T21:00:01.994431Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s0_s1_label_policy_regression_slice_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_3_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This 23-record label-policy regression slice uses record_ids from data/fixtures/exect_s0_label_policy_error_regression_slice.json.",
+    "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Deterministic benchmark bridges may repair fused seizure phrases or diagnosis uncertainty; report bridge flags separately when inspecting artifacts.",
+    "Do not extrapolate slice metrics to full-validation performance."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s0_s1_label_policy_regression_slice_gpt4_1_mini_20260519T210001Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

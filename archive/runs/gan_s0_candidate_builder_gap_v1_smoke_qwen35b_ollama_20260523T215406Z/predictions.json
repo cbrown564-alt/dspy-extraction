@@ -1,0 +1,154 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.6:35b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3278,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3278,
+        "temporal_candidate_labels": [
+          "2 per 3 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": 1683,
+              "section": null,
+              "start": 1389,
+              "text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 3 month",
+          "quality_flags": [
+            "normalized_label_repaired"
+          ],
+          "raw_value": "\"2 per 3 month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_6532",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3077,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3077,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_6532",
+              "end": 591,
+              "section": null,
+              "start": 588,
+              "text": "The"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:truncated_to_note_span"
+          ],
+          "raw_value": "\"unknown\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10434",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2351,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2351,
+        "temporal_candidate_labels": [
+          "multiple cluster per week, 2 to 3 per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "multiple cluster per week, 2 to 3 per cluster",
+            "derivation": "several mornings each week with intra-morning repeats; per-cluster range preserved without inventing cluster spacing",
+            "event_count": "multiple cluster",
+            "evidence_text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30\u201360 seconds, without loss of awareness, sometimes repeating two or three times within the same morning.",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10434",
+              "end": 952,
+              "section": null,
+              "start": 561,
+              "text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30\u201360 seconds, without loss of awareness, sometimes repeating two or three times within the same morning."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "multiple cluster per week, 2 to 3 per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"multiple cluster per week, 2 to 3 per cluster\"",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

@@ -1,0 +1,52 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "raw_no_benchmark_bridges",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_interleaving_l1_raw_no_bridges_gpt4_1_mini",
+  "hypothesis": "Scoring single-pass model outputs without audited benchmark bridges isolates the measurable lift from post-hoc deterministic normalization versus prompt policy alone (L1 raw interleaving baseline).",
+  "max_records": null,
+  "metric_caveats": [
+    "L1 raw arm: repair_policy raw_no_benchmark_bridges; canonicalization only, no benchmark_bridge flags.",
+    "Compare to H1 post-bridge arm exect_s1_interleaving_h1_post_bridge_gpt4_1_mini on the same predictions pipeline.",
+    "Frozen production anchor exect_s0_s1_validation_full_gpt4_1_mini (repair_policy none) still applies inline bridges and is not this arm.",
+    "Benchmark-facing fields: diagnosis, seizure_type, annotated_medication only (exect_s1 scope).",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_interleaving_gpt_validation_v2",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "varied_factor": "interleaving_position"
+  },
+  "taxonomy_exemption": null
+}

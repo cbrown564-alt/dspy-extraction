@@ -1,0 +1,96 @@
+{
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication",
+    "investigation",
+    "comorbidity"
+  ],
+  "label_policy_examples": [
+    {
+      "benchmark_output": {
+        "investigation": [
+          "mri abnormal"
+        ]
+      },
+      "case": "investigation_modality_result",
+      "note_fragment": "Investigations: MRI, right parietal focal cortical dysplasia",
+      "policy": "Emit modality+result benchmark labels for performed investigations."
+    },
+    {
+      "benchmark_output": {
+        "comorbidity": [
+          "learning disabilities"
+        ]
+      },
+      "case": "comorbidity_excludes_seizure_history",
+      "note_fragment": "Comorbidities: learning disabilities. Seizure history: febrile seizures.",
+      "policy": "Exclude seizure-history phrases from comorbidity outputs."
+    },
+    {
+      "benchmark_output": {
+        "comorbidity": [
+          "type 1 diabetes"
+        ]
+      },
+      "case": "comorbidity_diabetes_header",
+      "note_fragment": "Diagnosis: epilepsy. Comorbidities: Type 1 diabetes.",
+      "policy": "Emit affirmed non-seizure comorbidities from diagnosis or history sections."
+    }
+  ],
+  "label_policy_guidance": [
+    "Return benchmark-facing annotation labels only; do not expand into clinically richer labels.",
+    "Diagnosis labels should preserve the explicit audited diagnosis surface after deterministic canonicalization; do not force all focal, temporal-lobe, symptomatic, refractory, or syndrome phrases into a five-label diagnosis set unless the scorer has an explicit mapping.",
+    "Do not output a diagnosis for a single seizure event unless the note separately states an established epilepsy diagnosis.",
+    "Use the audited seizure-type surface supported by the note. Preserve plural and modifier surfaces such as focal seizures with altered awareness or occipital lobe seizures when those are the benchmark-facing labels.",
+    "Split fused seizure-type surfaces into audited benchmark labels when the note combines a lobe-specific type with a broader focal seizure type; for example temporal lobe onset focal seizures should produce temporal lobe seizure and focal seizures.",
+    "When a note names focal seizures with secondary generalisation as one phrase, split it into focal seizures, secondary generalisation, and generalized tonic clonic seizure as separate benchmark-facing seizure-type labels.",
+    "Preserve convulsive modifiers on focal to bilateral seizure labels when the audited scorer expects focal to bilateral convulsive seizure or seizures.",
+    "Strip probable, possible, or similar uncertainty qualifiers from diagnosis labels when the benchmark-facing gold uses the definite audited diagnosis surface.",
+    "Preserve modifier-rich audited diagnosis surfaces such as symptomatic structural focal epilepsy; do not drop focal or other audited modifiers unless specificity collapse applies.",
+    "Keep seizure-type labels out of the diagnosis field and epilepsy diagnoses out of the seizure-type field; do not emit non-epilepsy conditions such as hydrocephalus as diagnosis.",
+    "Only emit diagnosis labels from the audited epilepsy diagnosis vocabulary; never place seizure-type phrases, fused secondary-generalisation wording, or seizure-event descriptors in the diagnosis field.",
+    "When splitting temporal-lobe-onset focal seizures, emit temporal lobe seizure and focal seizures as separate labels; do not replace them with temporal lobe seizures alone.",
+    "When the note lists both focal seizures and a temporal-lobe seizure type, include both in seizure_type rather than moving focal seizures into diagnosis.",
+    "For symptomatic structural focal epilepsy, keep the focal modifier; do not shorten to symptomatic structural epilepsy.",
+    "When a note separately names parietal lobe epilepsy alongside focal epilepsy, include both diagnosis labels.",
+    "When the note separately names generic epilepsy outside a compound diagnosis phrase (for example concerns with his epilepsy), include epilepsy alongside focal onset epilepsy, primary generalized epilepsy, symptomatic structural focal epilepsy, or other specific epilepsy diagnoses.",
+    "When the diagnosis header states epilepsy unclassified or unclassified epilepsy, emit epilepsy as the benchmark-facing diagnosis label.",
+    "Do not treat possible TLE or temporal lobe epilepsy in the diagnosis header as seizure-descriptor-only wording; preserve temporal lobe epilepsy when the header or impression names it.",
+    "When the note names both focal epilepsy and focal onset epilepsy, include both audited diagnosis surfaces rather than keeping only one.",
+    "Use epilepsy with generalized tonic clonic seizures on awakening when the note uses on awakening wording or when the diagnosis header uses from sleep phrasing for this syndrome.",
+    "Prefer audited coarse seizure-type labels such as generalized seizures or generalized tonic clonic seizures over granular event descriptors such as jerks, absences, or absence events unless the note explicitly uses the audited benchmark surface.",
+    "When the benchmark-facing seizure label is focal to bilateral convulsive seizure, use that surface even if the note says focal onset convulsive seizure.",
+    "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a separate current seizure type unless the note independently names it as current.",
+    "Annotated medication means anti-seizure medications in the audited prescription annotation view only; do not include psychotropic or non-ASM drugs, planned starts, previous trials, taper/stop instructions, or medication-history mentions.",
+    "When the note has no prescription-style current medication list, return an empty annotated_medication list rather than inferring ASM from seizure history or past trials.",
+    "Do not emit ASM from prescription requests, planned switches, taper/stop instructions, or advice to restart after self-discontinuation.",
+    "Preserve audited brand medication surfaces from the note (for example lamictal, epilim chrono) rather than substituting generic chemical names when the letter uses the brand form in the prescription list.",
+    "Only emit a medication when its name appears in the note; do not infer ASM from discussion of past trials or hypothetical changes.",
+    "Medication evidence must be the shortest exact contiguous quote from the note without invented section headers; omit header labels such as Medication: when they are not part of the source text.",
+    "Do not emit jerks, absences, or absence events as separate seizure-type labels when the benchmark-facing surface is a coarse generalized or generalized tonic clonic label.",
+    "For juvenile myoclonic epilepsy or JME notes, prefer the audited coarse seizure-type surface named in the letter (tonic clonic seizures, generalized tonic clonic seizures, or generalized tonic seizures) and do not add myoclonic seizures when that coarse label is already the benchmark-facing seizure type.",
+    "When the note uses tonic clonic seizures without a generalized tonic clonic prefix, use tonic clonic seizures rather than generalized tonic clonic seizures.",
+    "When the note uses generalized tonic seizures without a clonic modifier, use generalized tonic seizures rather than generalized tonic clonic seizures.",
+    "Do not output an epilepsy diagnosis when the diagnosis header only lists seizure-type descriptors or possible JME without an established epilepsy diagnosis surface.",
+    "When the note contrasts epileptic versus dissociative seizures and concludes the events are epileptic seizures, emit epileptic seizures in seizure_type; do not infer focal seizures from focal onset epilepsy diagnosis alone.",
+    "When the note describes drug-refractory focal or occipital-lobe epilepsy with specificity-collapse gold, co-list the collapsed diagnosis tokens focal, drug, and occipital alongside focal epilepsy and occipital lobe epilepsy when supported.",
+    "Keep current anti-epileptic medication entries when the prescription line includes a taper or stop plan in parentheses; exclude only separate planned-start lines.",
+    "When specificity-collapse diagnosis context applies and the note names secondary generalised seizure(s), emit only secondary in seizure_type; do not add focal seizure descriptors or the full secondary generalised phrase.",
+    "When the note names secondary generalised seizures as a current seizure type without specificity-collapse context, co-list secondary alongside the full audited label.",
+    "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or unsupported evidence.",
+    "Investigation labels are benchmark-facing modality+result pairs only: eeg/mri/ct with normal, abnormal, or unknown. Emit separate labels for each performed investigation named in the note.",
+    "Use investigation header or narrative mentions of performed EEG, MRI, or CT scans; do not infer investigations that are only planned or requested without a result.",
+    "When the note states MRI was normal, emit mri normal; when EEG showed abnormalities, emit eeg abnormal. Preserve the audited result surface from the note.",
+    "Comorbidity labels are non-epilepsy, non-seizure-history conditions explicitly named in the note such as diabetes, learning difficulties, anxiety, depression, migraine, or hypertension.",
+    "Do not emit seizure events, febrile seizures, dissociative seizures, or other seizure-history phrases as comorbidities.",
+    "Do not duplicate epilepsy diagnoses or seizure types in the comorbidity field.",
+    "When no supported investigation or comorbidity is present, return empty lists rather than guessing."
+  ],
+  "module": "ExectS2FieldFamilyModule",
+  "predictor": "dspy.ChainOfThought",
+  "program_variant": "exect_s2_field_family_single_pass",
+  "prompt_version": "exect_s2_field_family_v1_label_policy",
+  "signature": "ExectS2FieldFamilySignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

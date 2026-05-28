@@ -1,0 +1,1834 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+    "prompt_version": "gan_frequency_s0_llm_temporal_candidates_single_pass_v1_1",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 4 months",
+            "derivation": "Two seizure events occurred between April 2019 and July 2019, a span of approximately 4 months.",
+            "event_count": "2",
+            "evidence_text": "His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019",
+            "window_count": "4",
+            "window_unit": "months"
+          },
+          {
+            "canonical_label": "no seizure frequency reference",
+            "derivation": "No seizures reported since July 2019; no specific frequency given beyond no events.",
+            "event_count": "",
+            "evidence_text": "Since returning to the UK, there have been no further events reported.",
+            "window_count": "",
+            "window_unit": ""
+          },
+          {
+            "canonical_label": "seizure free for 1 year",
+            "derivation": "The key worker has supported him for the past year with no further events reported, implying seizure freedom for approximately 1 year.",
+            "event_count": "",
+            "evidence_text": "He and his key worker attribute improvement to better sleep routines\u2014bedtime and wake time are consistent, and caffeine is avoided after midday. Sleep hygiene improved; pattern appears more stable. No episodes of confusion on waking, no witnessed nocturnal movements, and no injuries.",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "2 per 4 months",
+          "no seizure frequency reference",
+          "seizure free for 1 year"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 4 months",
+            "derivation": "Two seizure events occurred between April 2019 and July 2019, a span of approximately 4 months.",
+            "event_count": "2",
+            "evidence_text": "His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019",
+            "window_count": "4",
+            "window_unit": "months"
+          },
+          {
+            "canonical_label": "no seizure frequency reference",
+            "derivation": "No seizures reported since July 2019; no specific frequency given beyond no events.",
+            "event_count": "",
+            "evidence_text": "Since returning to the UK, there have been no further events reported.",
+            "window_count": "",
+            "window_unit": ""
+          },
+          {
+            "canonical_label": "seizure free for 1 year",
+            "derivation": "The key worker has supported him for the past year with no further events reported, implying seizure freedom for approximately 1 year.",
+            "event_count": "",
+            "evidence_text": "He and his key worker attribute improvement to better sleep routines\u2014bedtime and wake time are consistent, and caffeine is avoided after midday. Sleep hygiene improved; pattern appears more stable. No episodes of confusion on waking, no witnessed nocturnal movements, and no injuries.",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": 1609,
+              "section": null,
+              "start": 1425,
+              "text": "His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 4 month",
+          "quality_flags": [],
+          "raw_value": "2 per 4 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_6532",
+      "metadata": {
+        "llm_temporal_candidate_records": [],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_6532",
+              "end": 709,
+              "section": null,
+              "start": 610,
+              "text": "seizure activity occurring in flurries over several days with intervals of relative calm thereafter"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10434",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "seizure cluster",
+            "derivation": "The note states episodes sometimes repeat two or three times within the same morning, indicating clusters of 2-3 events per morning.",
+            "event_count": "2",
+            "evidence_text": "sometimes repeating two or three times within the same morning",
+            "window_count": "1",
+            "window_unit": "morning"
+          },
+          {
+            "canonical_label": "N per week",
+            "derivation": "The note mentions episodes occurring on several mornings each week, indicating multiple events per week.",
+            "event_count": "several",
+            "evidence_text": "occurring on several mornings each week",
+            "window_count": "1",
+            "window_unit": "week"
+          },
+          {
+            "canonical_label": "N per 6 weeks",
+            "derivation": "The note references episodes over the past six weeks, indicating a temporal window of 6 weeks with multiple events.",
+            "event_count": "multiple",
+            "evidence_text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes",
+            "window_count": "6",
+            "window_unit": "weeks"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "seizure cluster",
+          "N per week",
+          "N per 6 weeks"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "seizure cluster",
+            "derivation": "The note states episodes sometimes repeat two or three times within the same morning, indicating clusters of 2-3 events per morning.",
+            "event_count": "2",
+            "evidence_text": "sometimes repeating two or three times within the same morning",
+            "window_count": "1",
+            "window_unit": "morning"
+          },
+          {
+            "canonical_label": "N per week",
+            "derivation": "The note mentions episodes occurring on several mornings each week, indicating multiple events per week.",
+            "event_count": "several",
+            "evidence_text": "occurring on several mornings each week",
+            "window_count": "1",
+            "window_unit": "week"
+          },
+          {
+            "canonical_label": "N per 6 weeks",
+            "derivation": "The note references episodes over the past six weeks, indicating a temporal window of 6 weeks with multiple events.",
+            "event_count": "multiple",
+            "evidence_text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes",
+            "window_count": "6",
+            "window_unit": "weeks"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10434",
+              "end": 664,
+              "section": null,
+              "start": 561,
+              "text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 cluster per week, 2 to 3 per cluster",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped",
+            "evidence_repaired:temporal_candidate_fallback"
+          ],
+          "raw_value": "1 cluster per week, 2 to 3 per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4956",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "The note explicitly states the patient has been free of events for seven months, indicating a seizure-free period of 7 months.",
+            "event_count": "",
+            "evidence_text": "The patient reports being free of events for the past seven months",
+            "window_count": "7",
+            "window_unit": "months"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "seizure free for N unit"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "The note explicitly states the patient has been free of events for seven months, indicating a seizure-free period of 7 months.",
+            "event_count": "",
+            "evidence_text": "The patient reports being free of events for the past seven months",
+            "window_count": "7",
+            "window_unit": "months"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4956",
+              "end": 665,
+              "section": null,
+              "start": 599,
+              "text": "The patient reports being free of events for the past seven months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free for 7 month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"seizure free for 7 month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13123",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "No seizures reported for nearly one year after starting Valproate, indicating seizure freedom for approximately 1 year.",
+            "event_count": "",
+            "evidence_text": "She had no seizures for nearly a year following initiation of Valproate",
+            "window_count": "1",
+            "window_unit": "year"
+          },
+          {
+            "canonical_label": "N per M unit",
+            "derivation": "One tonic seizure occurred three weeks ago (on a Saturday), indicating 1 seizure per week at that time.",
+            "event_count": "1",
+            "evidence_text": "a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "seizure free for N unit",
+          "N per M unit"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "No seizures reported for nearly one year after starting Valproate, indicating seizure freedom for approximately 1 year.",
+            "event_count": "",
+            "evidence_text": "She had no seizures for nearly a year following initiation of Valproate",
+            "window_count": "1",
+            "window_unit": "year"
+          },
+          {
+            "canonical_label": "N per M unit",
+            "derivation": "One tonic seizure occurred three weeks ago (on a Saturday), indicating 1 seizure per week at that time.",
+            "event_count": "1",
+            "evidence_text": "a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_13123",
+              "end": 937,
+              "section": null,
+              "start": 902,
+              "text": "a tonic seizure three Saturdays ago"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per week",
+          "quality_flags": [],
+          "raw_value": "1 per week",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4702",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "4 per hour",
+            "derivation": "Direct count and window unit stated as ~4 per hour on EEG during ambulatory study",
+            "event_count": "4",
+            "evidence_text": "Electrographic seizures frequent on EEG (~4/h) were recorded during a recent ambulatory study",
+            "window_count": "1",
+            "window_unit": "hour"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "4 per hour"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "4 per hour",
+            "derivation": "Direct count and window unit stated as ~4 per hour on EEG during ambulatory study",
+            "event_count": "4",
+            "evidence_text": "Electrographic seizures frequent on EEG (~4/h) were recorded during a recent ambulatory study",
+            "window_count": "1",
+            "window_unit": "hour"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4702",
+              "end": 1206,
+              "section": null,
+              "start": 1113,
+              "text": "Electrographic seizures frequent on EEG (~4/h) were recorded during a recent ambulatory study"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "multiple per day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"4 per hour\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10052",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "4 per quarter",
+            "derivation": "The note states '4 clusters this quarter', indicating 4 seizure clusters per quarter.",
+            "event_count": "4",
+            "evidence_text": "4 clusters this quarter",
+            "window_count": "1",
+            "window_unit": "quarter"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "4 per quarter"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "4 per quarter",
+            "derivation": "The note states '4 clusters this quarter', indicating 4 seizure clusters per quarter.",
+            "event_count": "4",
+            "evidence_text": "4 clusters this quarter",
+            "window_count": "1",
+            "window_unit": "quarter"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10052",
+              "end": 902,
+              "section": null,
+              "start": 879,
+              "text": "4 clusters this quarter"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "4 cluster per 3 month, multiple per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"4 cluster per 3 month, multiple per cluster\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_2609",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "1 per night",
+            "derivation": "The note states 'nocturnal episodes occurring once per night on average' indicating 1 event per 1 night.",
+            "event_count": "1",
+            "evidence_text": "nocturnal episodes occurring once per night on average for the past three months",
+            "window_count": "1",
+            "window_unit": "night"
+          },
+          {
+            "canonical_label": "no daytime events in last 8 weeks",
+            "derivation": "The note states no daytime events in the last 8 weeks, indicating 0 events per 8 weeks.",
+            "event_count": "",
+            "evidence_text": "Daytime events are rare and have not occurred in the last eight weeks",
+            "window_count": "8",
+            "window_unit": "weeks"
+          },
+          {
+            "canonical_label": "cluster pattern in perimenstrual period",
+            "derivation": "The note describes a cyclical clustering pattern of episodes increasing in frequency and intensity in the 5 days before menstruation and first 2 days of bleeding, indicating a cluster pattern in this perimenstrual window.",
+            "event_count": "",
+            "evidence_text": "frequency and intensity of these episodes increase in the five days preceding menstruation and the first two days of bleeding. She shared screenshots from the app which align with a cyclical clustering pattern",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "1 per night",
+          "no daytime events in last 8 weeks",
+          "cluster pattern in perimenstrual period"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per night",
+            "derivation": "The note states 'nocturnal episodes occurring once per night on average' indicating 1 event per 1 night.",
+            "event_count": "1",
+            "evidence_text": "nocturnal episodes occurring once per night on average for the past three months",
+            "window_count": "1",
+            "window_unit": "night"
+          },
+          {
+            "canonical_label": "no daytime events in last 8 weeks",
+            "derivation": "The note states no daytime events in the last 8 weeks, indicating 0 events per 8 weeks.",
+            "event_count": "",
+            "evidence_text": "Daytime events are rare and have not occurred in the last eight weeks",
+            "window_count": "8",
+            "window_unit": "weeks"
+          },
+          {
+            "canonical_label": "cluster pattern in perimenstrual period",
+            "derivation": "The note describes a cyclical clustering pattern of episodes increasing in frequency and intensity in the 5 days before menstruation and first 2 days of bleeding, indicating a cluster pattern in this perimenstrual window.",
+            "event_count": "",
+            "evidence_text": "frequency and intensity of these episodes increase in the five days preceding menstruation and the first two days of bleeding. She shared screenshots from the app which align with a cyclical clustering pattern",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_2609",
+              "end": 1183,
+              "section": null,
+              "start": 1103,
+              "text": "nocturnal episodes occurring once per night on average for the past three months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per night",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 per night\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_1794",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 2 months",
+            "derivation": "The note states 'two absence seizures in the past two months' indicating 2 events over 2 months.",
+            "event_count": "2",
+            "evidence_text": "two absence seizures in the past two months",
+            "window_count": "2",
+            "window_unit": "months"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "2 per 2 months"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 2 months",
+            "derivation": "The note states 'two absence seizures in the past two months' indicating 2 events over 2 months.",
+            "event_count": "2",
+            "evidence_text": "two absence seizures in the past two months",
+            "window_count": "2",
+            "window_unit": "months"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_1794",
+              "end": 783,
+              "section": null,
+              "start": 740,
+              "text": "two absence seizures in the past two months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 2 month",
+          "quality_flags": [],
+          "raw_value": "2 per 2 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10618",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "cluster seizures",
+            "derivation": "The note states episodes come in small runs typically around four to six short spells grouped together on days when they occur, indicating cluster seizures with 4-6 events per cluster.",
+            "event_count": "4",
+            "evidence_text": "episodes tend to come in small runs: typically around four to six short spells grouped together on days when they occur",
+            "window_count": "",
+            "window_unit": ""
+          },
+          {
+            "canonical_label": "cluster seizures",
+            "derivation": "The note mentions two clusters within a fortnight (14 days), indicating cluster seizures occurring twice per 14 days.",
+            "event_count": "",
+            "evidence_text": "Levetiracetam 500 mg twice daily was started by the emergency department six weeks ago after two clusters within a fortnight",
+            "window_count": "14",
+            "window_unit": "days"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "cluster seizures",
+          "cluster seizures"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "cluster seizures",
+            "derivation": "The note states episodes come in small runs typically around four to six short spells grouped together on days when they occur, indicating cluster seizures with 4-6 events per cluster.",
+            "event_count": "4",
+            "evidence_text": "episodes tend to come in small runs: typically around four to six short spells grouped together on days when they occur",
+            "window_count": "",
+            "window_unit": ""
+          },
+          {
+            "canonical_label": "cluster seizures",
+            "derivation": "The note mentions two clusters within a fortnight (14 days), indicating cluster seizures occurring twice per 14 days.",
+            "event_count": "",
+            "evidence_text": "Levetiracetam 500 mg twice daily was started by the emergency department six weeks ago after two clusters within a fortnight",
+            "window_count": "14",
+            "window_unit": "days"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10618",
+              "end": 2980,
+              "section": null,
+              "start": 2856,
+              "text": "Levetiracetam 500 mg twice daily was started by the emergency department six weeks ago after two clusters within a fortnight"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 cluster per 2 week, 4 to 6 per cluster",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped",
+            "evidence_repaired:temporal_candidate_fallback"
+          ],
+          "raw_value": "1 cluster per 2 week, 4 to 6 per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15306",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "2 to 3 per unspecified unit",
+            "derivation": "The note states 'two to three single jerks remain' without specifying a time window, so the frequency is interpreted as 2 to 3 events per unspecified time unit.",
+            "event_count": "2",
+            "evidence_text": "two to three single jerks remain",
+            "window_count": "1",
+            "window_unit": "unspecified"
+          },
+          {
+            "canonical_label": "seizure free for >= 6 months",
+            "derivation": "The note dated 11 March 2022 states no tonic-clonic seizures since December 2020, indicating seizure freedom for approximately 15 months.",
+            "event_count": "",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020",
+            "window_count": "15",
+            "window_unit": "months"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "2 to 3 per unspecified unit",
+          "seizure free for >= 6 months"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 to 3 per unspecified unit",
+            "derivation": "The note states 'two to three single jerks remain' without specifying a time window, so the frequency is interpreted as 2 to 3 events per unspecified time unit.",
+            "event_count": "2",
+            "evidence_text": "two to three single jerks remain",
+            "window_count": "1",
+            "window_unit": "unspecified"
+          },
+          {
+            "canonical_label": "seizure free for >= 6 months",
+            "derivation": "The note dated 11 March 2022 states no tonic-clonic seizures since December 2020, indicating seizure freedom for approximately 15 months.",
+            "event_count": "",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020",
+            "window_count": "15",
+            "window_unit": "months"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15306",
+              "end": 767,
+              "section": null,
+              "start": 707,
+              "text": "No further tonic-clonic seizures have occurred since 12/2020"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free for 15 month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"seizure free for 15 month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_7894",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "Patient born in 1990, note dated 2025, indicating approximately 35 years seizure free in adult life.",
+            "event_count": "",
+            "evidence_text": "she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence",
+            "window_count": "35",
+            "window_unit": "years"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "seizure free for N unit"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "Patient born in 1990, note dated 2025, indicating approximately 35 years seizure free in adult life.",
+            "event_count": "",
+            "evidence_text": "she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence",
+            "window_count": "35",
+            "window_unit": "years"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_7894",
+              "end": 987,
+              "section": null,
+              "start": 852,
+              "text": "she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free for 35 year",
+          "quality_flags": [],
+          "raw_value": "seizure free for 35 year",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_3246",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "2 per month",
+            "derivation": "The note states the patient reports 2 clusters this month, indicating 2 events per 1 month.",
+            "event_count": "2",
+            "evidence_text": "Patient reports 2 clusters this month",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "2 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per month",
+            "derivation": "The note states the patient reports 2 clusters this month, indicating 2 events per 1 month.",
+            "event_count": "2",
+            "evidence_text": "Patient reports 2 clusters this month",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_3246",
+              "end": 661,
+              "section": null,
+              "start": 591,
+              "text": "Patient reports 2 clusters this month; each \u22484 absences in the morning"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 cluster per month, 4 per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"2 cluster per month, 4 per cluster\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4113",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per 2 days",
+            "derivation": "The phrase 'events occurring q1 - 2d' indicates events happen approximately 1 to 2 times every 2 days.",
+            "event_count": "1",
+            "evidence_text": "events occurring q1 - 2d",
+            "window_count": "2",
+            "window_unit": "days"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "1 to 2 per 2 days"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per 2 days",
+            "derivation": "The phrase 'events occurring q1 - 2d' indicates events happen approximately 1 to 2 times every 2 days.",
+            "event_count": "1",
+            "evidence_text": "events occurring q1 - 2d",
+            "window_count": "2",
+            "window_unit": "days"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4113",
+              "end": 1158,
+              "section": null,
+              "start": 1134,
+              "text": "events occurring q1 - 2d"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 to 2 per 2 day",
+          "quality_flags": [],
+          "raw_value": "1 to 2 per 2 day",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14881",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "The note states the patient has been free of seizures for three weeks, indicating a seizure-free period of 3 weeks.",
+            "event_count": "",
+            "evidence_text": "he has now been free of seizures for three weeks",
+            "window_count": "3",
+            "window_unit": "weeks"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "seizure free for N unit"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "seizure free for N unit",
+            "derivation": "The note states the patient has been free of seizures for three weeks, indicating a seizure-free period of 3 weeks.",
+            "event_count": "",
+            "evidence_text": "he has now been free of seizures for three weeks",
+            "window_count": "3",
+            "window_unit": "weeks"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14881",
+              "end": 1044,
+              "section": null,
+              "start": 996,
+              "text": "he has now been free of seizures for three weeks"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_536",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "1 per 2 days",
+            "derivation": "The note states seizures occur every 2 days, indicating 1 seizure per 2 days.",
+            "event_count": "1",
+            "evidence_text": "brief focal impaired-awareness seizures occurring every 2 days",
+            "window_count": "2",
+            "window_unit": "days"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "1 per 2 days"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per 2 days",
+            "derivation": "The note states seizures occur every 2 days, indicating 1 seizure per 2 days.",
+            "event_count": "1",
+            "evidence_text": "brief focal impaired-awareness seizures occurring every 2 days",
+            "window_count": "2",
+            "window_unit": "days"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_536",
+              "end": 754,
+              "section": null,
+              "start": 692,
+              "text": "brief focal impaired-awareness seizures occurring every 2 days"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 2 day",
+          "quality_flags": [],
+          "raw_value": "1 per 2 day",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4709",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "6 per hour",
+            "derivation": "The note states 'electrographic seizures frequent on EEG (~6/h)', indicating approximately 6 seizures per hour on EEG.",
+            "event_count": "6",
+            "evidence_text": "electrographic seizures frequent on EEG (~6/h)",
+            "window_count": "1",
+            "window_unit": "hour"
+          },
+          {
+            "canonical_label": "up to 4 per week",
+            "derivation": "The medication clobazam is taken as needed up to four nights per week, implying up to 4 events per week.",
+            "event_count": "4",
+            "evidence_text": "Clobazam 10 mg nocte PRN up to four nights/week",
+            "window_count": "1",
+            "window_unit": "week"
+          },
+          {
+            "canonical_label": "variable days with clusters",
+            "derivation": "The patient reports variable days with clusters of seizures, indicating an unspecified frequency pattern.",
+            "event_count": "",
+            "evidence_text": "variable days with clusters",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "6 per hour",
+          "up to 4 per week",
+          "variable days with clusters"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "6 per hour",
+            "derivation": "The note states 'electrographic seizures frequent on EEG (~6/h)', indicating approximately 6 seizures per hour on EEG.",
+            "event_count": "6",
+            "evidence_text": "electrographic seizures frequent on EEG (~6/h)",
+            "window_count": "1",
+            "window_unit": "hour"
+          },
+          {
+            "canonical_label": "up to 4 per week",
+            "derivation": "The medication clobazam is taken as needed up to four nights per week, implying up to 4 events per week.",
+            "event_count": "4",
+            "evidence_text": "Clobazam 10 mg nocte PRN up to four nights/week",
+            "window_count": "1",
+            "window_unit": "week"
+          },
+          {
+            "canonical_label": "variable days with clusters",
+            "derivation": "The patient reports variable days with clusters of seizures, indicating an unspecified frequency pattern.",
+            "event_count": "",
+            "evidence_text": "variable days with clusters",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4709",
+              "end": 1929,
+              "section": null,
+              "start": 1902,
+              "text": "variable days with clusters"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_9566",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per day",
+            "derivation": "The note states 'one to two events in the morning' which implies 1 to 2 seizures per day on days with less than five hours of sleep.",
+            "event_count": "1",
+            "evidence_text": "one to two events in the morning following nights with less than five hours of rest",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "canonical_label": "unknown",
+            "derivation": "No explicit quantified seizure frequency over a standard time window is given; only that logs are kept monthly.",
+            "event_count": "",
+            "evidence_text": "The patient keeps a paper seizure calendar and brings the monthly logs to each appointment",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "1 to 2 per day",
+          "unknown"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per day",
+            "derivation": "The note states 'one to two events in the morning' which implies 1 to 2 seizures per day on days with less than five hours of sleep.",
+            "event_count": "1",
+            "evidence_text": "one to two events in the morning following nights with less than five hours of rest",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "canonical_label": "unknown",
+            "derivation": "No explicit quantified seizure frequency over a standard time window is given; only that logs are kept monthly.",
+            "event_count": "",
+            "evidence_text": "The patient keeps a paper seizure calendar and brings the monthly logs to each appointment",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_9566",
+              "end": 780,
+              "section": null,
+              "start": 697,
+              "text": "one to two events in the morning following nights with less than five hours of rest"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 to 2 per day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 to 2 per day\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_12679",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per month",
+            "derivation": "The note states 'one to two generalised tonic-clonic seizures per month' indicating a frequency range of 1 to 2 events per month.",
+            "event_count": "1",
+            "evidence_text": "he continues to suffer one to two generalised tonic-clonic seizures per month",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "daily",
+            "derivation": "The note states 'daily absences' indicating an event frequency of once per day.",
+            "event_count": "1",
+            "evidence_text": "He has daily absences",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "canonical_label": "1 per 3 to 4 weeks",
+            "derivation": "The note states 'every three to four weeks' indicating an event frequency of approximately 1 event per 3 to 4 weeks.",
+            "event_count": "1",
+            "evidence_text": "he experiences focal non-motor with disorientation every three to four weeks",
+            "window_count": "3",
+            "window_unit": "week"
+          },
+          {
+            "canonical_label": "seizure free for 3 weeks",
+            "derivation": "The note states a 'longest seizure-free interval of around three weeks' indicating a seizure-free period of approximately 3 weeks.",
+            "event_count": "",
+            "evidence_text": "longest seizure-free interval of around three weeks",
+            "window_count": "3",
+            "window_unit": "week"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "1 to 2 per month",
+          "daily",
+          "1 per 3 to 4 weeks",
+          "seizure free for 3 weeks"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 to 2 per month",
+            "derivation": "The note states 'one to two generalised tonic-clonic seizures per month' indicating a frequency range of 1 to 2 events per month.",
+            "event_count": "1",
+            "evidence_text": "he continues to suffer one to two generalised tonic-clonic seizures per month",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "daily",
+            "derivation": "The note states 'daily absences' indicating an event frequency of once per day.",
+            "event_count": "1",
+            "evidence_text": "He has daily absences",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "canonical_label": "1 per 3 to 4 weeks",
+            "derivation": "The note states 'every three to four weeks' indicating an event frequency of approximately 1 event per 3 to 4 weeks.",
+            "event_count": "1",
+            "evidence_text": "he experiences focal non-motor with disorientation every three to four weeks",
+            "window_count": "3",
+            "window_unit": "week"
+          },
+          {
+            "canonical_label": "seizure free for 3 weeks",
+            "derivation": "The note states a 'longest seizure-free interval of around three weeks' indicating a seizure-free period of approximately 3 weeks.",
+            "event_count": "",
+            "evidence_text": "longest seizure-free interval of around three weeks",
+            "window_count": "3",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_12679",
+              "end": 1961,
+              "section": null,
+              "start": 1884,
+              "text": "he continues to suffer one to two generalised tonic-clonic seizures per month"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"2 per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_1584",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "5 per 1 month",
+            "derivation": "The note states five focal sensory events in the last month.",
+            "event_count": "5",
+            "evidence_text": "reports five focal sensory and six focal non-motors in last month",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "6 per 1 month",
+            "derivation": "The note states six focal non-motor events in the last month.",
+            "event_count": "6",
+            "evidence_text": "reports five focal sensory and six focal non-motors in last month",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "cluster patterns",
+            "derivation": "The note describes occasional cluster patterns without specifying counts or time windows.",
+            "event_count": "",
+            "evidence_text": "She describes occasional cluster patterns linked to sleep loss",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "5 per 1 month",
+          "6 per 1 month",
+          "cluster patterns"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "5 per 1 month",
+            "derivation": "The note states five focal sensory events in the last month.",
+            "event_count": "5",
+            "evidence_text": "reports five focal sensory and six focal non-motors in last month",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "6 per 1 month",
+            "derivation": "The note states six focal non-motor events in the last month.",
+            "event_count": "6",
+            "evidence_text": "reports five focal sensory and six focal non-motors in last month",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "cluster patterns",
+            "derivation": "The note describes occasional cluster patterns without specifying counts or time windows.",
+            "event_count": "",
+            "evidence_text": "She describes occasional cluster patterns linked to sleep loss",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_1584",
+              "end": 516,
+              "section": null,
+              "start": 451,
+              "text": "reports five focal sensory and six focal non-motors in last month"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "6 per month",
+          "quality_flags": [],
+          "raw_value": "6 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15997",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "N per unit",
+            "derivation": "3 seizures in November (1 month)",
+            "event_count": "3",
+            "evidence_text": "In Nov he had 3 seizures during sleep",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "N per unit",
+            "derivation": "1 daytime seizure in November (1 month)",
+            "event_count": "1",
+            "evidence_text": "and 1 while awake. In Jan he had five in sleep and one while awake",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "N per unit",
+            "derivation": "5 seizures in sleep in January (1 month)",
+            "event_count": "5",
+            "evidence_text": "In Jan he had five in sleep",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "N per unit",
+            "derivation": "1 daytime seizure in January (1 month)",
+            "event_count": "1",
+            "evidence_text": "and one while awake",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "cluster labels",
+            "derivation": "Patient reports seizure events cluster after multiple consecutive nights of poor sleep",
+            "event_count": "",
+            "evidence_text": "She notices events cluster after multiple consecutive nights of <4 hours\u2019 continuous sleep",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "N per unit",
+          "N per unit",
+          "N per unit",
+          "N per unit",
+          "cluster labels"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "N per unit",
+            "derivation": "3 seizures in November (1 month)",
+            "event_count": "3",
+            "evidence_text": "In Nov he had 3 seizures during sleep",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "N per unit",
+            "derivation": "1 daytime seizure in November (1 month)",
+            "event_count": "1",
+            "evidence_text": "and 1 while awake. In Jan he had five in sleep and one while awake",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "N per unit",
+            "derivation": "5 seizures in sleep in January (1 month)",
+            "event_count": "5",
+            "evidence_text": "In Jan he had five in sleep",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "N per unit",
+            "derivation": "1 daytime seizure in January (1 month)",
+            "event_count": "1",
+            "evidence_text": "and one while awake",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "cluster labels",
+            "derivation": "Patient reports seizure events cluster after multiple consecutive nights of poor sleep",
+            "event_count": "",
+            "evidence_text": "She notices events cluster after multiple consecutive nights of <4 hours\u2019 continuous sleep",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15997",
+              "end": 1695,
+              "section": null,
+              "start": 1591,
+              "text": "In Nov he had 3 seizures during sleep and 1 while awake. In Jan he had five in sleep and one while awake"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "6 per month",
+          "quality_flags": [],
+          "raw_value": "6 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_17287",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "1 per 1-2 days",
+            "derivation": "One absence seizure every one to two days interpreted as 1 seizure per 1.5 days on average.",
+            "event_count": "1",
+            "evidence_text": "She reports one absence seizure every one to two day",
+            "window_count": "1.5",
+            "window_unit": "days"
+          },
+          {
+            "canonical_label": "seizure free for 9 months",
+            "derivation": "Patient has been free of tonic-clonic seizures for over nine months, indicating seizure freedom for 9 months.",
+            "event_count": "",
+            "evidence_text": "has been free of tonic-clonic seizures for over nine months",
+            "window_count": "9",
+            "window_unit": "months"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "1 per 1-2 days",
+          "seizure free for 9 months"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per 1-2 days",
+            "derivation": "One absence seizure every one to two days interpreted as 1 seizure per 1.5 days on average.",
+            "event_count": "1",
+            "evidence_text": "She reports one absence seizure every one to two day",
+            "window_count": "1.5",
+            "window_unit": "days"
+          },
+          {
+            "canonical_label": "seizure free for 9 months",
+            "derivation": "Patient has been free of tonic-clonic seizures for over nine months, indicating seizure freedom for 9 months.",
+            "event_count": "",
+            "evidence_text": "has been free of tonic-clonic seizures for over nine months",
+            "window_count": "9",
+            "window_unit": "months"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_17287",
+              "end": 1492,
+              "section": null,
+              "start": 1440,
+              "text": "She reports one absence seizure every one to two day"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 2 day",
+          "quality_flags": [],
+          "raw_value": "1 per 2 day",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16251",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "7 per month",
+            "derivation": "7 convulsions in September (one month)",
+            "event_count": "7",
+            "evidence_text": "She had 7 convulsions so far in Sep",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "4 per month",
+            "derivation": "4 convulsions in August (one month)",
+            "event_count": "4",
+            "evidence_text": "4 in Aug",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "2 per month",
+            "derivation": "2 convulsions in July (one month)",
+            "event_count": "2",
+            "evidence_text": "2 in Jul",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "1 per month",
+            "derivation": "1 convulsion in June (one month)",
+            "event_count": "1",
+            "evidence_text": "one in Jun",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "7 per month",
+          "4 per month",
+          "2 per month",
+          "1 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "7 per month",
+            "derivation": "7 convulsions in September (one month)",
+            "event_count": "7",
+            "evidence_text": "She had 7 convulsions so far in Sep",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "4 per month",
+            "derivation": "4 convulsions in August (one month)",
+            "event_count": "4",
+            "evidence_text": "4 in Aug",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "2 per month",
+            "derivation": "2 convulsions in July (one month)",
+            "event_count": "2",
+            "evidence_text": "2 in Jul",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "1 per month",
+            "derivation": "1 convulsion in June (one month)",
+            "event_count": "1",
+            "evidence_text": "one in Jun",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_16251",
+              "end": 771,
+              "section": null,
+              "start": 736,
+              "text": "She had 7 convulsions so far in Sep"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "7 per month",
+          "quality_flags": [],
+          "raw_value": "7 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16772",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "8 per 5 month",
+            "derivation": "1 seizure in November + 7 seizures in December + 1 seizure in March = 9 seizures over 5 months; however, March seizure is singular and November seizure is a run of one, total 9 seizures over 5 months, but only 8 seizures explicitly counted (7 in December + 1 in November) plus 1 in March; conservatively counted as 8 seizures over 5 months.",
+            "event_count": "8",
+            "evidence_text": "In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother).",
+            "window_count": "5",
+            "window_unit": "month"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "8 per 5 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "8 per 5 month",
+            "derivation": "1 seizure in November + 7 seizures in December + 1 seizure in March = 9 seizures over 5 months; however, March seizure is singular and November seizure is a run of one, total 9 seizures over 5 months, but only 8 seizures explicitly counted (7 in December + 1 in November) plus 1 in March; conservatively counted as 8 seizures over 5 months.",
+            "event_count": "8",
+            "evidence_text": "In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother).",
+            "window_count": "5",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_16772",
+              "end": 1325,
+              "section": null,
+              "start": 1056,
+              "text": "In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother)."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "8 per 5 month",
+          "quality_flags": [],
+          "raw_value": "8 per 5 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16825",
+      "metadata": {
+        "llm_temporal_candidate_records": [
+          {
+            "canonical_label": "3 per month",
+            "derivation": "The note states a cluster of three seizures occurred in August, interpreted as 3 seizures per month.",
+            "event_count": "3",
+            "evidence_text": "He had a cluster of three seizures in August",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "6 per month",
+            "derivation": "The note states six seizures occurred in October, interpreted as 6 seizures per month.",
+            "event_count": "6",
+            "evidence_text": "In October he had six nocturnal seizures",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "1 per month",
+            "derivation": "The note states a single seizure in January, interpreted as 1 seizure per month.",
+            "event_count": "1",
+            "evidence_text": "in January a single tonic seizure was recorded",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "temporal_candidate_labels": [
+          "3 per month",
+          "6 per month",
+          "1 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "3 per month",
+            "derivation": "The note states a cluster of three seizures occurred in August, interpreted as 3 seizures per month.",
+            "event_count": "3",
+            "evidence_text": "He had a cluster of three seizures in August",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "6 per month",
+            "derivation": "The note states six seizures occurred in October, interpreted as 6 seizures per month.",
+            "event_count": "6",
+            "evidence_text": "In October he had six nocturnal seizures",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "canonical_label": "1 per month",
+            "derivation": "The note states a single seizure in January, interpreted as 1 seizure per month.",
+            "event_count": "1",
+            "evidence_text": "in January a single tonic seizure was recorded",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "llm"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_16825",
+              "end": 1649,
+              "section": null,
+              "start": 1609,
+              "text": "In October he had six nocturnal seizures"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "6 per month",
+          "quality_flags": [],
+          "raw_value": "6 per month",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

@@ -1,0 +1,16 @@
+{
+  "extraction_prompt_version": "exect_s0_s1_field_family_d1_feasibility",
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication"
+  ],
+  "label_policy_examples": [],
+  "label_policy_guidance": [],
+  "module": "ExectS0S1DeterministicOnlyModule",
+  "predictor": "deterministic_substring_match",
+  "program_variant": "exect_s0_s1_field_family_deterministic_only",
+  "prompt_version": "exect_s0_s1_field_family_d1_feasibility",
+  "signature": "ExectS0S1DiagnosisSignature + ExectS0S1SeizureTypeSignature + ExectS0S1MedicationSignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

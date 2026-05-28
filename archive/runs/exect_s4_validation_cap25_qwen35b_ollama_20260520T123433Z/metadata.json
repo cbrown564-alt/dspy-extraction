@@ -1,0 +1,41 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-20T12:34:33.789130Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s4_validation_cap25_qwen35b_ollama",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This diagnostic validation cap is a gating check for Qwen3.6:35b ExECT S4 replication; it is not a performance estimate.",
+    "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family headlines.",
+    "Cap-25 ExECT runs are systematically optimistic vs full validation; treat as schema and drift signal only.",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/qwen_dspy_latency_policy.md.",
+    "Do not compare this run to GPT cap-25 or full validation as the same experiment.",
+    "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (\u2026235439Z).",
+    "Record local Ollama GPU residency or RAM offload when inspecting artifacts."
+  ],
+  "model_name": "qwen3.6:35b",
+  "model_provider": "ollama",
+  "program_variant": "exect_s4_field_family_single_pass",
+  "run_id": "exect_s4_validation_cap25_qwen35b_ollama_20260520T123433Z",
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

@@ -1,0 +1,58 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_two_pass_family_routing",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "post_prediction_clean_ladder_v1",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_clean_ladder_v2_diagnosis_stable_cap25_qwen35b_ollama",
+  "hypothesis": "Local Qwen3.6:35b S1 cap-25 tests a two-pass clean-ladder router: v4.10 stable diagnosis plus v4.11 seizure/medication policy and the promoted annotated-medication guard.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Cap-25 validation slice with local Qwen3.6:35b; not published ExECTv2 benchmark reproduction.",
+    "S1 fields only: diagnosis, seizure_type, annotated_medication.",
+    "Two extraction calls per record route diagnosis from v4.10 and seizure/medication from v4.11; scorer semantics are unchanged.",
+    "Annotated-medication non-ASM/brand guard is applied post prediction.",
+    "Proceed to full validation only if cap-25 micro F1 is above the S2 clean-ladder Qwen full headline and cross-family metrics do not show a new regression."
+  ],
+  "model_config_path": "configs\\models\\exect_qwen35b_ollama.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble",
+  "prompt_version": "exect_s0_s1_field_family_v4_11_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_clean_ladder_qwen_validation_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic"
+    ],
+    "implementation_variant": "v4_10_diagnosis_v4_11_seizure_medication_am_guard",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during",
+      "post"
+    ],
+    "program_architecture": "field_family_prompt_graph",
+    "schema_complexity": "exect_s1",
+    "stage_executor": null,
+    "stage_graph_id": "g2_field_family_prompt_graph",
+    "validation_ladder_rung": null,
+    "varied_factor": "implementation_variant"
+  },
+  "taxonomy_exemption": null
+}

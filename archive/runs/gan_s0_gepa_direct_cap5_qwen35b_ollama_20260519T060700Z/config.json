@@ -1,0 +1,51 @@
+{
+  "controls": {
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
+    "context_policy": "full_note",
+    "few_shot_policy": "GEPA instruction optimization with synthesis exact-label and evidence-support feedback metric",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_gepa_direct_cap5_qwen35b_ollama",
+  "hypothesis": "A tiny GEPA compile pass can test whether Qwen3.6:35b benefits from optimizer-produced Gan S0 guidance enough to justify paced local follow-up under the direct-extraction policy when the local reflection/output budget is raised beyond the earlier truncated setting.",
+  "max_records": 5,
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The GEPA feedback metric is optimizer-facing only and does not replace gan_frequency_deterministic_v1 scoring.",
+    "This capped validation config is a local Qwen latency-and-transfer probe, not a published Gan benchmark reproduction.",
+    "This probe intentionally raises max_tokens to 10000 for the local Qwen GEPA path so reflection truncation at 1024 does not decide the outcome in advance.",
+    "This is an explicit optimizer experiment for Qwen3.6:35b and should not be treated as the default local-Qwen workflow."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama_gepa_max10000.json",
+  "optimizer": {
+    "add_format_failure_as_feedback": true,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 4,
+    "max_full_evals": null,
+    "max_labeled_demos": 0,
+    "max_metric_calls": 8,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence_feedback",
+    "name": "GEPA",
+    "num_threads": null,
+    "reflection_minibatch_size": 1,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": true,
+    "track_stats": true,
+    "trainset_size": 4,
+    "use_cloudpickle": true
+  },
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1_gepa_harness",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

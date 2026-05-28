@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s4_smoke_gpt4_1_mini",
+  "hypothesis": "A capped ExECT S4 monolithic label-policy run extends frozen S3 v1.2 bridges to seizure frequency and medication temporality without changing S3 scorer semantics.",
+  "max_records": 3,
+  "metric_caveats": [
+    "This capped smoke run validates the ExECT S4 eleven-family program contract only; it is not a performance estimate.",
+    "These are partial ExECT S4 diagnostics (S3 + seizure frequency + Rx temporality), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
+    "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/exect_s4_gold_policy.md.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

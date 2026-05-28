@@ -1,0 +1,37 @@
+{
+  "extraction_prompt_version": "exect_s0_s1_field_family_l0_minimal",
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication"
+  ],
+  "label_policy_examples": [],
+  "label_policy_guidance": [],
+  "module": "ExectS0S1FieldFamilyModule",
+  "optimizer": {
+    "add_format_failure_as_feedback": false,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 0,
+    "max_full_evals": null,
+    "max_labeled_demos": 4,
+    "max_metric_calls": null,
+    "max_rounds": 1,
+    "metric_name": "exect_field_family_micro_f1",
+    "name": "LabeledFewShot",
+    "num_candidate_programs": 16,
+    "num_threads": null,
+    "reflection_minibatch_size": 3,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": false,
+    "track_stats": false,
+    "trainset_size": 40,
+    "use_cloudpickle": false
+  },
+  "predictor": "dspy.ChainOfThought",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_l0_minimal",
+  "signature": "ExectS0S1FieldFamilySignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

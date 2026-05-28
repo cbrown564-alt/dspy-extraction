@@ -1,0 +1,50 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini",
+  "hypothesis": "GPT cap-25 guardrail: v4_11 seizure-focused label policy must not regress seizure_type F1 versus frozen v4_10 cap-25 before Qwen treatment runs.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Mandatory GPT regression guardrail for exect_s1_seizure_prompt_policy_qwen_v1.",
+    "Block Qwen full if seizure_type F1 is more than 2pp below v4_10 cap-25 reference (runs/exect_s0_s1_validation_cap25_gpt4_1_mini_20260519T221936Z, 95.4% seizure F1).",
+    "See docs/exect_s1_seizure_prompt_policy_qwen_preregistration_20260520.md."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_11_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_s1_seizure_prompt_policy_qwen_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic"
+    ],
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "post"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "varied_factor": "prompt_policy"
+  },
+  "taxonomy_exemption": null
+}

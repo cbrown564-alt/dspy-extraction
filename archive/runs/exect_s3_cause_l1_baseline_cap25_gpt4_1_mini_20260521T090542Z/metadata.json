@@ -1,0 +1,36 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-21T09:05:42.284460Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s3_cause_l1_baseline_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s3_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group exect_s3_epilepsy_cause_bridge_gpt_cap25_v1; varied_factor implementation_variant.",
+    "Primary metric epilepsy_cause F1; regression guards investigation, seizure_type, comorbidity (>=2pp vs L1).",
+    "I0 investigation guard applied on S3 recovery path (ladder regression guard).",
+    "Cap-25 search only \u2014 decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s3_field_family_single_pass",
+  "run_id": "exect_s3_cause_l1_baseline_cap25_gpt4_1_mini_20260521T090542Z",
+  "schema_level": "exect_s3_field_family",
+  "scorer_mode": "exect_s3_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

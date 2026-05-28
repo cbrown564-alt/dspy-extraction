@@ -1,0 +1,45 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-26T13:02:47.408770Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s1_prompt_anchor": "exect_s0_s1_field_family_v4_10_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "schema_level": "exect_s5_core_field_family",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group exect_s5_frequency_verify_v2b_model_comparison; varied_factor model_track.",
+    "This A2 run changes only the model track versus the GPT 4.1-mini and Qwen3.6:35b v2b anchors.",
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across five families is not comparable to frozen S4 eleven-family or S3 nine-family headlines.",
+    "Program variant, prompt version, verifier policy, candidate builder, and AM guard are held fixed against GPT paper-frozen v2b run exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z.",
+    "GPT 5.5 config uses temperature null per OpenAI compatibility policy.",
+    "Do not compare this run to GPT 4.1-mini or Qwen metrics without explicit model_track wording.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Record token usage, latency, and billing when inspecting artifacts.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
+    "decision_scope arm; this is a closed-model anchor, not mechanism closure."
+  ],
+  "model_name": "gpt-5.5",
+  "model_provider": "openai",
+  "program_variant": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b",
+  "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z",
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

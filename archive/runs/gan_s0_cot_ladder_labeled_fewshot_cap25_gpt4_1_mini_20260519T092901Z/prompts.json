@@ -1,0 +1,30 @@
+{
+  "module": "GanFrequencyS0Module",
+  "optimizer": {
+    "add_format_failure_as_feedback": false,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 0,
+    "max_full_evals": null,
+    "max_labeled_demos": 4,
+    "max_metric_calls": null,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence",
+    "name": "LabeledFewShot",
+    "num_candidate_programs": 16,
+    "num_threads": null,
+    "reflection_minibatch_size": 3,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": false,
+    "track_stats": false,
+    "trainset_size": 50,
+    "use_cloudpickle": false
+  },
+  "predictor": "dspy.ChainOfThought",
+  "program_variant": "gan_frequency_s0_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1",
+  "signature": "GanFrequencyS0Signature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "synthesis_guidance": "Synthesis-backed Gan frequency policy: output only canonical Gan labels; use singular units day/week/month/year; convert daily or nightly to 1 per day; convert every N unit to 1 per N unit; use 'to' for numeric ranges; choose the highest current quantified seizure-type frequency; use full cluster format 'N cluster per unit, M per cluster'; for year-to-date counts use months elapsed since January as the denominator; treat a quarter as an observation window when the note gives a per-month rate over the last quarter; use seizure free labels only for seizure freedom of 6 months or longer, otherwise compute the rate from total events over the described period; return an exact contiguous source quote for every present claim."
+}

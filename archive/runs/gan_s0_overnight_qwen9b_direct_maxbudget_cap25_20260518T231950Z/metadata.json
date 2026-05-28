@@ -1,0 +1,33 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-18T23:19:50.548656Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_overnight_qwen9b_direct_maxbudget_cap25",
+    "prompt_version": "gan_frequency_s0_direct_maxbudget_v1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This three-record cap is a local hardware and DSPy component latency check, not a quality estimate.",
+    "This max-budget config raises max_tokens to Qwen's complex-benchmark recommendation while keeping Ollama thinking disabled through the DSPy LM adapter.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing when run at meaningful sample sizes.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction.",
+    "Record local Ollama residency/offload separately when inspecting this run."
+  ],
+  "model_name": "qwen3.5:9b",
+  "model_provider": "ollama",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "run_id": "gan_s0_overnight_qwen9b_direct_maxbudget_cap25_20260518T231950Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

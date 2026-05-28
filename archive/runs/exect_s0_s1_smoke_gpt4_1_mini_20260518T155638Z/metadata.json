@@ -1,0 +1,32 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-18T15:56:38.723074Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s0_s1_smoke_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v2_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This capped smoke run validates the ExECT S0/S1 field-family program contract only; it is not a performance estimate.",
+    "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Medication temporality is intentionally excluded from benchmark-facing metrics for this baseline.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

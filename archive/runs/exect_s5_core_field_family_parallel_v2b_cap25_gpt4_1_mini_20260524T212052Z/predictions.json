@@ -1,0 +1,3331 @@
+{
+  "dataset": "exect_v2",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "exect_s5_core_field_family_parallel_v2b",
+    "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+    "s2_prompt_anchor": "exect_s2_field_family_v1_3_label_policy",
+    "s3_prompt_anchor": "exect_s3_field_family_v1_2_label_policy",
+    "scorer_mode": "exect_s5_core_field_family_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0008",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "Both initial labels are directly supported by explicit evidence in the note: the quantified frequency \"every 3 weeks\" confirms \"1 per 3 week,\" and the phrase \"after the period of seizure freedom the seizures have returned\" supports \"frequency increased.\""
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 3 week",
+            "2 per 1 day",
+            "frequency increased",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 58,
+              "section": null,
+              "start": 10,
+              "text": "Diagnosis: symptomatic structural focal epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [],
+          "raw_value": "symptomatic structural focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 187,
+              "section": null,
+              "start": 108,
+              "text": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 282,
+              "section": null,
+              "start": 189,
+              "text": "Current anti-epileptic medication: lamotrigine 75mg bd (to reduce and stop as detailed below)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "benchmark_bridge:current_prescription_medication_augmented"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 187,
+              "section": null,
+              "start": 136,
+              "text": "focal seizures with altered awareness every 3 weeks"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 3 week",
+          "quality_flags": [],
+          "raw_value": "1 per 3 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 473,
+              "section": null,
+              "start": 397,
+              "text": "Unfortunately after the period of seizure freedom the seizures have returned"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency increased",
+          "quality_flags": [],
+          "raw_value": "frequency increased",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0016",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [
+            "evidence_not_in_note"
+          ],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note states a single seizure event on 22 December and no previous seizures, supporting a frequency of 1 per 12 months."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 week",
+            "1 per 12 month",
+            "1 per 2 week",
+            "250 per 1 day",
+            "250 per 2 week",
+            "3 per 1 week",
+            "frequency increased",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: single focal seizure"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "single focal seizure",
+          "quality_flags": [],
+          "raw_value": "single focal seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 865,
+              "section": null,
+              "start": 793,
+              "text": "There was a previous CT scan from 2017 showing a left hemisphere infarct"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "ct abnormal",
+          "quality_flags": [],
+          "raw_value": "ct abnormal",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0018",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states \"She tells me that she has been getting episodes around twice a week,\" directly supporting the \"2 per 1 week\" label."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 4 month",
+            "2 per 1 week",
+            "200 per 1 week",
+            "25 per 1 day",
+            "500 per 1 day",
+            "75 per 1 day",
+            "frequency same",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 388,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe seizure",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 388,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 535,
+              "section": null,
+              "start": 412,
+              "text": "previously she was getting events with coloured objects in her field of vision which were probably occipital lobe seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital lobe seizures",
+          "quality_flags": [],
+          "raw_value": "occipital lobe seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 596,
+              "section": null,
+              "start": 537,
+              "text": "Currently she is taking sodium valproate 500 mg twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 634,
+              "section": null,
+              "start": 537,
+              "text": "Currently she is taking sodium valproate 500 mg twice a day and levetiracetam 1000 mg twice today"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 192,
+              "section": null,
+              "start": 102,
+              "text": "She tells me that she has been getting episodes around twice a week of an unusual thought."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 1 week",
+          "quality_flags": [],
+          "raw_value": "2 per 1 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency same",
+          "quality_flags": [],
+          "raw_value": "frequency same",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0026",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states \"still having approximately 15 seizures over 4 months,\" directly supporting the \"15 per 4 month\" label."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 2 week",
+            "1 per 4 month",
+            "100 per 1 day",
+            "15 per 4 month",
+            "25 per 1 day",
+            "25 per 2 week"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 139,
+              "section": null,
+              "start": 60,
+              "text": "Diagnosis: generalised tonic clonic seizures with myoclonic jerks, possible JME"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 279,
+              "section": null,
+              "start": 219,
+              "text": "Medication: sodium valproate 700 mg in the night (to reduce)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 309,
+              "section": null,
+              "start": 280,
+              "text": "topiramate 100 mg twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "topiramate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "topiramate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 205,
+              "section": null,
+              "start": 157,
+              "text": "EEG \u2013 single burst of generalised spike and wave"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "eeg abnormal",
+          "quality_flags": [],
+          "raw_value": "eeg abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 217,
+              "section": null,
+              "start": 207,
+              "text": "MRI\u2013normal"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri normal",
+          "quality_flags": [],
+          "raw_value": "mri normal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0026",
+              "end": 379,
+              "section": null,
+              "start": 327,
+              "text": "still having approximately 15 seizures over 4 months"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "15 per 4 month",
+          "quality_flags": [],
+          "raw_value": "15 per 4 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0029",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "No seizure frequency labels were initially extracted, and the note does not contain explicit information about seizure frequency or changes to confirm or reject any labels."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1000 per 1 day",
+            "150 per 1 day",
+            "1500 per 1 day",
+            "frequency same",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0029",
+              "end": 101,
+              "section": null,
+              "start": 0,
+              "text": "Diagnosis: generalised tonic chronic seizures, absences and myoclonic jerks since teenage years,?JME."
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0029",
+              "end": 45,
+              "section": null,
+              "start": 11,
+              "text": "generalised tonic chronic seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "generalised tonic chronic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0029",
+              "end": 153,
+              "section": null,
+              "start": 103,
+              "text": "Medication: lamotrigine 150 milligrams twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0029",
+              "end": 188,
+              "section": null,
+              "start": 154,
+              "text": "Keppra 1000 milligrams twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "keppra",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Keppra",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0029",
+              "end": 351,
+              "section": null,
+              "start": 297,
+              "text": "she had an EEG with spike, polyspike and wave activity"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "eeg abnormal",
+          "quality_flags": [],
+          "raw_value": "eeg abnormal",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0045",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note states \"He has had several episodes where he seemed to go into a day dream,\" which supports the label \"infrequent.\" The additional evidence about three episodes during sleep and the last episode date does not contradict this label."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 5 year",
+            "16 per 1 week",
+            "2 per 1 day",
+            "infrequent",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0045",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: Focal epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal epilepsy",
+          "quality_flags": [
+            "specificity_collapsed"
+          ],
+          "raw_value": "Focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0045",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Impression: I think that this is focal onset epilepsy. The smaller episodes are focal seizures with altered awareness and the episodes during sleep are focal to bilateral convulsive seizures"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal onset epilepsy",
+          "quality_flags": [
+            "specificity_collapsed",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "raw_value": "focal onset epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0045",
+              "end": 1521,
+              "section": null,
+              "start": 1459,
+              "text": "The smaller episodes are focal seizures with altered awareness"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0045",
+              "end": 1594,
+              "section": null,
+              "start": 1526,
+              "text": "the episodes during sleep are focal to bilateral convulsive seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizures",
+          "quality_flags": [],
+          "raw_value": "focal to bilateral convulsive seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0045",
+              "end": 1400,
+              "section": null,
+              "start": 1351,
+              "text": "An MRI brain from September 2018 has been normal."
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri normal",
+          "quality_flags": [],
+          "raw_value": "mri normal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0045",
+              "end": 478,
+              "section": null,
+              "start": 411,
+              "text": "He has had several episodes where he seemed to go into a day dream."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0047",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "repair",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The label \"3 per 1 day\" is not supported because the note states \"The absences and jerks happen more frequently perhaps several times a day,\" which indicates frequency but does not specify an exact quantified rate of 3 per day. Therefore, only the \"1 per 1 week\" label is confirmed."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 2 week",
+            "100 per 2 week",
+            "2 per 1 day",
+            "200 per 1 day",
+            "3 per 1 day",
+            "frequency increased",
+            "frequency same",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 108,
+              "section": null,
+              "start": 61,
+              "text": "Diagnosis: probable juvenile myoclonic epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [
+            "benchmark_bridge:diagnosis_uncertainty_stripped"
+          ],
+          "raw_value": "probable juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 381,
+              "section": null,
+              "start": 339,
+              "text": "She gets generalised seizures once a week."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized seizures",
+          "quality_flags": [],
+          "raw_value": "generalised seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 145,
+              "section": null,
+              "start": 109,
+              "text": "Current medication: Clobazam 10mg on"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "clobazam",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Clobazam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 247,
+              "section": null,
+              "start": 146,
+              "text": "Sodium Valproate 200 mg twice a day (to be increased to 300 mg BD in steps of 100 mg every two weeks)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Sodium Valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0047",
+              "end": 381,
+              "section": null,
+              "start": 339,
+              "text": "She gets generalised seizures once a week."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 1 week",
+          "quality_flags": [],
+          "raw_value": "1 per 1 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency increased",
+          "quality_flags": [],
+          "raw_value": "frequency increased",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency same",
+          "quality_flags": [],
+          "raw_value": "frequency same",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0048",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [
+            "evidence_not_in_note"
+          ],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "Both initial labels are directly supported by explicit evidence in the note: \"Lisa continues to get jerks several times a day.\" supports \"2 per 1 day\" and \"The last one of these happened around three weeks ago.\" supports \"0 per 3 week\"."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "0 per 3 week",
+            "1 per 1 day",
+            "100 per 1 day",
+            "2 per 1 day",
+            "3 per 1 day",
+            "400 per 1 day",
+            "frequency same",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0048",
+              "end": 110,
+              "section": null,
+              "start": 63,
+              "text": "Diagnosis: probable juvenile myoclonic epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0048",
+              "end": 472,
+              "section": null,
+              "start": 436,
+              "text": "She also gets tonic clonic seizures."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0048",
+              "end": 152,
+              "section": null,
+              "start": 111,
+              "text": "Medication: Topiramate 100 mg twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "topiramate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Topiramate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0048",
+              "end": 435,
+              "section": null,
+              "start": 387,
+              "text": "Lisa continues to get jerks several times a day."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 1 day",
+          "quality_flags": [],
+          "raw_value": "2 per 1 day",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency same",
+          "quality_flags": [],
+          "raw_value": "frequency same",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0050",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "All initial labels are supported by explicit evidence in the note: \"Myoclonic jerks weekly\" supports \"1 per 1 week\"; \"I was pleased to hear that his seizures have improved since reducing the lamotrigine\" supports \"frequency decreased\"; and the overall seizure description with low frequency supports \"infrequent.\""
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 week",
+            "frequency decreased",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 102,
+              "section": null,
+              "start": 64,
+              "text": "Diagnosis: juvenile myoclonic epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 195,
+              "section": null,
+              "start": 132,
+              "text": "generalised tonic clonic seizures, 1 since previous appointment"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 298,
+              "section": null,
+              "start": 277,
+              "text": "lamotrigine 100 mg BD"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 325,
+              "section": null,
+              "start": 299,
+              "text": "Sodium valproate 700 mg BD"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 358,
+              "section": null,
+              "start": 327,
+              "text": "Investigations: MRI 2015 normal"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri normal",
+          "quality_flags": [],
+          "raw_value": "mri normal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 411,
+              "section": null,
+              "start": 359,
+              "text": "EEG 2014 generalised spike and wave with polyspikes."
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "eeg abnormal",
+          "quality_flags": [],
+          "raw_value": "eeg abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 218,
+              "section": null,
+              "start": 196,
+              "text": "Myoclonic jerks weekly"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 1 week",
+          "quality_flags": [],
+          "raw_value": "1 per 1 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 536,
+              "section": null,
+              "start": 452,
+              "text": "I was pleased to hear that his seizures have improved since reducing the lamotrigine"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency decreased",
+          "quality_flags": [],
+          "raw_value": "frequency decreased",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0050",
+              "end": 195,
+              "section": null,
+              "start": 132,
+              "text": "generalised tonic clonic seizures, 1 since previous appointment"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0052",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "repair",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note states \"Since the last appointment Mr Richards has had 4 more attacks,\" but does not specify a frequency of \"1 per 6 month.\" The mention of review in 6 months is not evidence of seizure frequency. Therefore, the label \"1 per 6 month\" is not supported."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 6 month"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0052",
+              "end": 116,
+              "section": null,
+              "start": 83,
+              "text": "Diagnosis: temporal lobe epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe epilepsy",
+          "quality_flags": [],
+          "raw_value": "temporal lobe epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0052",
+              "end": 116,
+              "section": null,
+              "start": 83,
+              "text": "Diagnosis: temporal lobe epilepsy"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe epilepsy",
+          "quality_flags": [],
+          "raw_value": "temporal lobe epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0052",
+              "end": 236,
+              "section": null,
+              "start": 217,
+              "text": "Zonisamide 100mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0053",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "repair",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "No explicit mention of seizure frequency or qualitative frequency descriptors such as \"infrequent\" or \"frequency same\" is present in the note text. The note describes symptoms and diagnosis but does not provide any information about seizure frequency or changes in frequency."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 year",
+            "1 per 3 month",
+            "frequency same",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0053",
+              "end": 120,
+              "section": null,
+              "start": 82,
+              "text": "Diagnosis: juvenile myoclonic epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "juvenile myoclonic epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0053",
+              "end": 1391,
+              "section": null,
+              "start": 1252,
+              "text": "I think that the jerks are myoclonic seizures, and this, together with the abnormal EEG gives the diagnosis of Juvenile Myoclonic Epilepsy."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "myoclonic seizures",
+          "quality_flags": [],
+          "raw_value": "myoclonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0053",
+              "end": 1168,
+              "section": null,
+              "start": 1084,
+              "text": "An EEG last year showed generalised spike, polyspike and wave with photosensitivity."
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "eeg abnormal",
+          "quality_flags": [],
+          "raw_value": "eeg abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0053",
+              "end": 1239,
+              "section": null,
+              "start": 1169,
+              "text": "An MRI on 1/2/2018 was normal apart from an incidental arachnoid cyst."
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri normal",
+          "quality_flags": [],
+          "raw_value": "mri normal",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0059",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states \"last event 2015\" and \"last event 2017\" for different seizure types, directly supporting the labels \"seizure free since 2015\" and \"seizure free since 2017\" per policy rules 2 and 4."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "2 per 1 day",
+            "frequency same",
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis 1. Symptomatic structural epilepsy secondary probably caused by early life meningitis"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "raw_value": "Symptomatic structural epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 448,
+              "section": null,
+              "start": 365,
+              "text": "Seizure type and frequency: focal to bilateral convulsive seizures, last event 2015"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizures",
+          "quality_flags": [],
+          "raw_value": "focal to bilateral convulsive seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 503,
+              "section": null,
+              "start": 449,
+              "text": "Focal seizures with altered awareness, last event 2017"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "Focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 340,
+              "section": null,
+              "start": 308,
+              "text": "Brivaracetam  1000mg twice daily"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "brivaracetam",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Brivaracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 363,
+              "section": null,
+              "start": 343,
+              "text": "Lamotrigine 200mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 595,
+              "section": null,
+              "start": 521,
+              "text": "MRI 4/5/2016 generalised brain atrophy whith white matter ischaemic change"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri abnormal",
+          "quality_flags": [],
+          "raw_value": "mri abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 628,
+              "section": null,
+              "start": 596,
+              "text": "EEG 1/5/2005: bitemporal slowing"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "eeg abnormal",
+          "quality_flags": [],
+          "raw_value": "eeg abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 448,
+              "section": null,
+              "start": 433,
+              "text": "last event 2015"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free since 2015",
+          "quality_flags": [],
+          "raw_value": "seizure free since 2015",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0059",
+              "end": 503,
+              "section": null,
+              "start": 488,
+              "text": "last event 2017"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free since 2017",
+          "quality_flags": [],
+          "raw_value": "seizure free since 2017",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0061",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "Both labels are directly supported by explicit statements of the last seizure event timing: \"last event 3 years ago\" and \"last event 10 years ago\" respectively, which per policy support zero-rate interval labels."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "0 per 10 year",
+            "0 per 3 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "2 per 1 day",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0061",
+              "end": 319,
+              "section": null,
+              "start": 206,
+              "text": "Seizure type and frequency: focal seizures with altered awareness (unusual arm sensation), last event 3 years ago"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0061",
+              "end": 391,
+              "section": null,
+              "start": 320,
+              "text": "focal to bilateral seizures 2 events in total, last event 10 years ago."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizures",
+          "quality_flags": [
+            "benchmark_bridge:seizure_type_convulsive_modifier",
+            "benchmark_bridge:seizure_type_convulsive_modifier"
+          ],
+          "raw_value": "focal to bilateral seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0061",
+              "end": 479,
+              "section": null,
+              "start": 394,
+              "text": "Current anti-epileptic medication: lamtorigine 250mg bd (to reduce as detailed below)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0061",
+              "end": 590,
+              "section": null,
+              "start": 530,
+              "text": "Investigations: MRI, right parietal focal cortical dysplasia"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri abnormal",
+          "quality_flags": [],
+          "raw_value": "mri abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0061",
+              "end": 319,
+              "section": null,
+              "start": 297,
+              "text": "last event 3 years ago"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "0 per 3 year",
+          "quality_flags": [],
+          "raw_value": "0 per 3 year",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0061",
+              "end": 390,
+              "section": null,
+              "start": 367,
+              "text": "last event 10 years ago"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "0 per 10 year",
+          "quality_flags": [],
+          "raw_value": "0 per 10 year",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0068",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "Both labels are supported by explicit evidence: \"Diagnosis: Infrequent focal seizures\" supports \"infrequent\" and \"She is very well and has had no further seizures\" supports \"seizure free\" per policy rule 6 and 1."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "infrequent",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0068",
+              "end": 198,
+              "section": null,
+              "start": 162,
+              "text": "Diagnosis: Infrequent focal seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "infrequent focal seizures",
+          "quality_flags": [],
+          "raw_value": "infrequent focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0068",
+              "end": 198,
+              "section": null,
+              "start": 162,
+              "text": "Diagnosis: Infrequent focal seizures"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0068",
+              "end": 356,
+              "section": null,
+              "start": 308,
+              "text": "She is very well and has had no further seizures"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free",
+          "quality_flags": [],
+          "raw_value": "seizure free",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0069",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "All initial labels are directly supported by explicit frequency and qualitative change statements in the note text."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 week",
+            "1 per 2 week",
+            "4 per 3 week",
+            "frequency increased",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: Juvenile Myoclonic Epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "Juvenile Myoclonic Epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "she is having more generalised tonic clinic seizures. She has had four in the last three weeks"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label",
+            "benchmark_bridge:jme_gtcs_singular_co_listed"
+          ],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizure",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label",
+            "benchmark_bridge:jme_gtcs_singular_co_listed"
+          ],
+          "raw_value": "generalized tonic clonic seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 253,
+              "section": null,
+              "start": 204,
+              "text": "Medication:\tLevetiracetam 1500mg bd (50mg/kg/day)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 267,
+              "section": null,
+              "start": 256,
+              "text": "Lamotrigine"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Lamotrigine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 599,
+              "section": null,
+              "start": 521,
+              "text": "She thinks that she has about one a week and they happen when she is stressed."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 1 week",
+          "quality_flags": [],
+          "raw_value": "1 per 1 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 741,
+              "section": null,
+              "start": 701,
+              "text": "She has had four in the last three weeks"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "4 per 3 week",
+          "quality_flags": [],
+          "raw_value": "4 per 3 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0069",
+              "end": 699,
+              "section": null,
+              "start": 600,
+              "text": "Of rather more concern to her family, is that she is having more generalised tonic clinic seizures."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency increased",
+          "quality_flags": [],
+          "raw_value": "frequency increased",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0072",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "No initial seizure frequency labels were provided to verify or reject; the note describes a single recent seizure and improvement but does not explicitly mention frequency increased, decreased, or any quantified frequency label."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "frequency increased"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis Symptomatic focal epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic focal epilepsy",
+          "quality_flags": [],
+          "raw_value": "Symptomatic focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 434,
+              "section": null,
+              "start": 366,
+              "text": "Seizure type\tFocal motor seizures and secondary generalised seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal motor seizures",
+          "quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "Focal motor seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary generalized seizures",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary generalised seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:secondary_token_co_listed"
+          ],
+          "raw_value": "secondary",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 342,
+              "section": null,
+              "start": 309,
+              "text": "Medication\tLevetiracetam 500mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Levetiracetam",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0072",
+              "end": 356,
+              "section": null,
+              "start": 345,
+              "text": "Lamotrigine"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0078",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "No seizure frequency labels were initially extracted, and the note does not contain any explicit information about seizure frequency or qualitative frequency changes to support adding any labels."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 week",
+            "1 per 2 month",
+            "2 per 1 day",
+            "frequency same",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "missing_gold"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0078",
+              "end": 383,
+              "section": null,
+              "start": 273,
+              "text": "Her seizures are reasonably controlled by her low mood as well as some agitation is causing her some distress."
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [],
+          "raw_value": "Epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0078",
+              "end": 661,
+              "section": null,
+              "start": 613,
+              "text": "Increase the carbamazepine to 600mg twice a day."
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "carbamazepine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0090",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [
+            "evidence_not_in_note"
+          ],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "All initial labels are supported by explicit evidence in the note: the recent seizure event and unknown prior timing support \"1 per 1 year\"; \"She is having no other episodes\" supports \"frequency same\" and \"infrequent\"; and the plan for yearly review aligns with stable frequency."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 year",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0090",
+              "end": 190,
+              "section": null,
+              "start": 135,
+              "text": "Diagnosis: Focal seizures with secondary generalisation"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "focal seizures with secondary generalisation",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0090",
+              "end": 190,
+              "section": null,
+              "start": 135,
+              "text": "Diagnosis: Focal seizures with secondary generalisation"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "secondary generalisation",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split",
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "focal seizures with secondary generalisation",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0090",
+              "end": 419,
+              "section": null,
+              "start": 348,
+              "text": "She had a generalised tonic clonic seizure two days before her birthday"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizure",
+          "quality_flags": [],
+          "raw_value": "generalised tonic clonic seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0090",
+              "end": 250,
+              "section": null,
+              "start": 192,
+              "text": "Medication: Carbamazepine 150mg am, 200mg pm (16mg/kg/day)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "carbamazepine",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Carbamazepine",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0090",
+              "end": 673,
+              "section": null,
+              "start": 641,
+              "text": "She is having no other episodes."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency same",
+          "quality_flags": [],
+          "raw_value": "frequency same",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0090",
+              "end": 819,
+              "section": null,
+              "start": 757,
+              "text": "As things are going well, we will review her in a years\u2019 time."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0098",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [
+            "verifier_added_label_blocked"
+          ],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note states the last seizure was in September 2019, directly supporting the label \"seizure free since 2019\". There is no initial label to reject."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "2 per 1 day",
+            "frequency increased",
+            "seizure free",
+            "seizure free since 2019"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0098",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: Focal onset epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal onset epilepsy",
+          "quality_flags": [],
+          "raw_value": "Focal onset epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0098",
+              "end": 334,
+              "section": null,
+              "start": 252,
+              "text": "Seizure type and frequency: \tFocal onset convulsive seizure, last event April 2019"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal to bilateral convulsive seizure",
+          "quality_flags": [
+            "benchmark_bridge:focal_onset_to_bilateral_surface",
+            "benchmark_bridge:focal_onset_to_bilateral_surface"
+          ],
+          "raw_value": "Focal onset convulsive seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0098",
+              "end": 250,
+              "section": null,
+              "start": 163,
+              "text": "Current anti-epileptic medication:\tLamotrigine 100mg bd (to increase as detailed below)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0100",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "repair",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The label \"seizure free since 2020\" is not supported because the note documents a single seizure event on 23/10/2020 and does not indicate seizure freedom since that year. The patient had no previous or subsequent seizures, but the single seizure in 2020 precludes labeling as seizure free since 2020."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "frequency increased",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "missing_gold"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0100",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: Single seizure"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "single seizure",
+          "quality_flags": [],
+          "raw_value": "single seizure",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0100",
+              "end": 1468,
+              "section": null,
+              "start": 1398,
+              "text": "An ECG from A+E shows sinus rhythm with a slight right axis deviation."
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "ct normal",
+          "quality_flags": [],
+          "raw_value": "ct normal",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0102",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states \"She has been seizure free for more than five years,\" which directly supports the \"seizure free\" label according to policy rule 1."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "0 per 5 year",
+            "2 per 1 day",
+            "200 per 1 day",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0102",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Diagnosis: non-epileptic psychogenic seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "non epileptic psychogenic seizures",
+          "quality_flags": [],
+          "raw_value": "non-epileptic psychogenic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0102",
+              "end": 601,
+              "section": null,
+              "start": 529,
+              "text": "She does continue to take sodium valproate 200 milligrammes twice a day."
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0102",
+              "end": 316,
+              "section": null,
+              "start": 256,
+              "text": "non epileptic psychogenic seizures which is confirmed on EEG"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "eeg abnormal",
+          "quality_flags": [],
+          "raw_value": "eeg abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0102",
+              "end": 353,
+              "section": null,
+              "start": 317,
+              "text": "In the past she has had a normal MRI"
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri normal",
+          "quality_flags": [],
+          "raw_value": "mri normal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0102",
+              "end": 443,
+              "section": null,
+              "start": 392,
+              "text": "She has been seizure free for more than five years."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free",
+          "quality_flags": [],
+          "raw_value": "seizure free",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0109",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [
+            "missing_evidence"
+          ],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states \"have become more frequent in the last year, occurring 2-3 times a week for the last 6 months,\" which supports both the quantified frequency \"3 per 1 week\" and the qualitative label \"frequency increased.\""
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "1 per 1 week",
+            "1 per 1 year",
+            "1 per 2 week",
+            "1 per 6 month",
+            "3 per 1 week",
+            "frequency increased",
+            "infrequent"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0109",
+              "end": 75,
+              "section": null,
+              "start": 24,
+              "text": "Diagnosis:  Focal Seizures, probably temporal lobe."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures, probably temporal lobe",
+          "quality_flags": [],
+          "raw_value": "focal seizures, probably temporal lobe",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0109",
+              "end": 648,
+              "section": null,
+              "start": 521,
+              "text": "episodes were rare in the past but have become more frequent in the last year, occurring 2-3 times a week for the last 6 months"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "3 per 1 week",
+          "quality_flags": [],
+          "raw_value": "3 per 1 week",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency increased",
+          "quality_flags": [],
+          "raw_value": "frequency increased",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "infrequent",
+          "quality_flags": [],
+          "raw_value": "infrequent",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0116",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [
+            "evidence_not_in_note"
+          ],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states multiple episodes with the first in May 2017 and the most recent episode last week, supporting the label \"1 per 2 week\" as a reasonable frequency estimate."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "0 per 12 month",
+            "1 per 1 day",
+            "1 per 12 month",
+            "1 per 2 week",
+            "infrequent",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0116",
+              "end": 211,
+              "section": null,
+              "start": 136,
+              "text": "New diagnosis of epilepsy with generalised tonic clonic seizures from sleep"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy with generalized tonic clonic seizures on awakening",
+          "quality_flags": [
+            "benchmark_bridge:on_awakening_diagnosis_surface",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "raw_value": "epilepsy with generalized tonic clonic seizures from sleep",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0116",
+              "end": 211,
+              "section": null,
+              "start": 136,
+              "text": "New diagnosis of epilepsy with generalised tonic clonic seizures from sleep"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [],
+          "raw_value": "generalised tonic clonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0116",
+              "end": 335,
+              "section": null,
+              "start": 255,
+              "text": "Levetiracetam 250mgs once a day, increasing by 250mgs every 2 weeks to 500mgs bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "Levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0124",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "Both initial labels are directly supported by explicit temporal frequency statements in the note: \"the last occurred three years ago\" supports \"0 per 3 year\" and \"These currently happen around once a week\" supports \"1 per 1 week\"."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "0 per 3 year",
+            "1 per 1 week",
+            "100 per 1 day",
+            "50 per 1 week",
+            "seizure free"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 66,
+              "section": null,
+              "start": 47,
+              "text": "Diagnosis: epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [],
+          "raw_value": "Epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 1005,
+              "section": null,
+              "start": 887,
+              "text": "Secondly she gets absence events where she pauses her task and her head turns to one side and she will stare vacantly."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic clonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:granular_seizure_surface_coarsened",
+            "benchmark_bridge:granular_seizure_surface_coarsened"
+          ],
+          "raw_value": "absence events",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 193,
+              "section": null,
+              "start": 124,
+              "text": "Medication: sodium valproate 500 milligrams mane 700 milligrams nocte"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 213,
+              "section": null,
+              "start": 195,
+              "text": "Zonisamide 50mg bd"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "zonisamide",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "zonisamide",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 1384,
+              "section": null,
+              "start": 1266,
+              "text": "In the past she's had an MRI brain scan which does show some premature atrophy and some white matter hyperintensities."
+            }
+          ],
+          "field_name": "investigation",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "mri abnormal",
+          "quality_flags": [],
+          "raw_value": "mri abnormal",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 885,
+              "section": null,
+              "start": 852,
+              "text": "the last occurred three years ago"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "0 per 3 year",
+          "quality_flags": [],
+          "raw_value": "0 per 3 year",
+          "temporality": "unknown"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0124",
+              "end": 1082,
+              "section": null,
+              "start": 1041,
+              "text": "These currently happen around once a week"
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 1 week",
+          "quality_flags": [],
+          "raw_value": "1 per 1 week",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0125",
+      "metadata": {
+        "frequency_verifier": {
+          "decision": "confirm",
+          "flags": [],
+          "policy": "reject_only",
+          "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+          "reason": "The note explicitly states \"increasing seizures,\" which directly supports the \"frequency increased\" label."
+        },
+        "post_guard": {
+          "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "precomputed_candidates": {
+          "seizure_frequency": [
+            "400 per 1 day",
+            "frequency increased"
+          ]
+        },
+        "program_variant": "exect_s5_core_field_family_parallel_v2b",
+        "stage_graph_id": "g2_s5_core_family_parallel"
+      },
+      "quality_flags": [
+        "specificity_collapsed"
+      ],
+      "schema_level": "exect_s5_core_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0125",
+              "end": 143,
+              "section": null,
+              "start": 47,
+              "text": "Diagnosis: probably JME presenting with generalised tonic seizures, absences and myoclonic jerks"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "juvenile myoclonic epilepsy",
+          "quality_flags": [],
+          "raw_value": "Juvenile Myoclonic Epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0125",
+              "end": 143,
+              "section": null,
+              "start": 58,
+              "text": "probably JME presenting with generalised tonic seizures, absences and myoclonic jerks"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "generalized tonic seizures",
+          "quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "raw_value": "generalised tonic seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0125",
+              "end": 241,
+              "section": null,
+              "start": 194,
+              "text": "Medication: epilim 400 milligrammes twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [
+            "benchmark_bridge:medication_brand_surface_preserved"
+          ],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0125",
+              "end": 316,
+              "section": null,
+              "start": 244,
+              "text": "Many thanks for referring this 49 year old lady for increasing seizures."
+            }
+          ],
+          "field_name": "seizure_frequency",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "frequency increased",
+          "quality_flags": [],
+          "raw_value": "frequency increased",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "exect_s5_core_field_family"
+}

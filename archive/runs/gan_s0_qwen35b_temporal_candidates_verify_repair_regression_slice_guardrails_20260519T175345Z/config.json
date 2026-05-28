@@ -1,0 +1,49 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair with deterministic temporal-candidate hints for unknown infrequent aggregation"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails",
+  "hypothesis": "Passing deterministic temporal event/window candidates into the Qwen verify-repair verifier unlocks infrequent quantified rates (>=3/4) without regressing original regression targets (>=10/10), compared with verify-repair v2.4 alone.",
+  "max_records": null,
+  "metric_caveats": [
+    "This 14-record slice uses record_ids from data/fixtures/gan_s0_qwen_error_regression_slice.json.",
+    "Temporal candidates are deterministic diagnostic hints; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "Verify-repair doubles model calls versus direct extraction; latency is not comparable to direct-only runs.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
+    "Normalized-label exact, schema validity, abstention, evidence support, temporal-candidate coverage, and verifier decisions are diagnostic.",
+    "Do not extrapolate slice metrics to full-validation performance.",
+    "This is not published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama_verify_repair.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1",
+  "record_ids": [
+    "gan_10509",
+    "gan_10751",
+    "gan_11221",
+    "gan_11733",
+    "gan_12130",
+    "gan_12810",
+    "gan_12823",
+    "gan_10003",
+    "gan_10052",
+    "gan_10410",
+    "gan_13123",
+    "gan_14485",
+    "gan_14881",
+    "gan_15306"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

@@ -1,0 +1,31 @@
+{
+  "controls": {
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_direct_full_validation_gemini31_flash_lite",
+  "hypothesis": "Gemini 3.1 Flash-Lite direct extraction on the full Gan validation split preserves cap-25 label metrics and schema validity while recording evidence support, latency, and token usage at scale.",
+  "max_records": null,
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "Compare against Gemini direct cap-25 runs/gan_s0_direct_cap25_gemini31_flash_lite_20260519T100621Z and GPT verify-repair v2 full validation runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z.",
+    "Do not claim primary-model candidacy until billing/cost and evidence support are recorded alongside label metrics.",
+    "This full fixed synthetic validation run is not a published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

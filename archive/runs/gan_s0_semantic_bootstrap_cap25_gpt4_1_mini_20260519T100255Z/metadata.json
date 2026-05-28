@@ -1,0 +1,36 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T10:02:55.125524Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_semantic_bootstrap_cap25_gpt4_1_mini",
+    "prompt_version": "gan_frequency_s0_synthesis_v1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The optimizer metric semantic_frequency_with_evidence is optimizer-facing only and does not replace gan_frequency_deterministic_v1 benchmark scoring.",
+    "This config changes optimizer reward balance toward monthly/Purist semantics while holding the benchmark-facing scorer contract fixed.",
+    "Compare against verify-repair v2 and synthesis exact-label BootstrapFewShot anchors on the same capped validation slice before full validation.",
+    "This capped validation config is not published Gan benchmark reproduction."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "run_id": "gan_s0_semantic_bootstrap_cap25_gpt4_1_mini_20260519T100255Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

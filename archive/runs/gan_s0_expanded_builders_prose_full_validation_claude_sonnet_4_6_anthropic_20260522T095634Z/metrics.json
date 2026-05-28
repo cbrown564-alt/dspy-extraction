@@ -1,0 +1,1068 @@
+{
+  "benchmark_metrics": {
+    "monthly_frequency_accuracy": 0.7303754266211604,
+    "pragmatic_category_accuracy": 0.856655290102389,
+    "purist_category_accuracy": 0.7952218430034129
+  },
+  "caveats": [
+    "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+    "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
+    "Evidence metrics are diagnostic source-grounding checks: predicted evidence is evaluated by deterministic quote/offset support in the note text, not by overlap with Gan evidence annotations."
+  ],
+  "confidence_intervals": {
+    "evidence_offsets_present_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.9826388888888888,
+      "method": "percentile_bootstrap_mean",
+      "n": 288,
+      "point_estimate": 0.9930555555555556,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_offsets_valid_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 286,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_quote_support_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.9826388888888888,
+      "method": "percentile_bootstrap_mean",
+      "n": 288,
+      "point_estimate": 0.9930555555555556,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "monthly_frequency_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.6791808873720137,
+      "method": "percentile_bootstrap_mean",
+      "n": 293,
+      "point_estimate": 0.7303754266211604,
+      "seed": 0,
+      "upper": 0.7815699658703071
+    },
+    "normalized_label_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.5631399317406144,
+      "method": "percentile_bootstrap_mean",
+      "n": 293,
+      "point_estimate": 0.6177474402730375,
+      "seed": 0,
+      "upper": 0.6723549488054608
+    },
+    "pragmatic_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.8122866894197952,
+      "method": "percentile_bootstrap_mean",
+      "n": 293,
+      "point_estimate": 0.856655290102389,
+      "seed": 0,
+      "upper": 0.8976109215017065
+    },
+    "purist_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.7507679180887372,
+      "method": "percentile_bootstrap_mean",
+      "n": 293,
+      "point_estimate": 0.7952218430034129,
+      "seed": 0,
+      "upper": 0.8430034129692833
+    },
+    "raw_exact_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.5631399317406144,
+      "method": "percentile_bootstrap_mean",
+      "n": 293,
+      "point_estimate": 0.6177474402730375,
+      "seed": 0,
+      "upper": 0.6723549488054608
+    },
+    "schema_valid_prediction_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.9632107023411371,
+      "method": "percentile_bootstrap_mean",
+      "n": 299,
+      "point_estimate": 0.979933110367893,
+      "seed": 0,
+      "upper": 0.9933110367892977
+    }
+  },
+  "counts": {
+    "evaluated_records": 299,
+    "extra_predictions": 0,
+    "gold_records": 1500,
+    "invalid_predictions": 6,
+    "missing_predictions": 1201,
+    "predicted_records": 299,
+    "valid_predictions": 293
+  },
+  "dataset": "gan_2026",
+  "diagnostic_metrics": {
+    "evidence_offsets_present_rate": 0.9930555555555556,
+    "evidence_offsets_valid_rate": 1.0,
+    "evidence_quote_support_rate": 0.9930555555555556,
+    "normalized_label_accuracy": 0.6177474402730375,
+    "raw_exact_accuracy": 0.6177474402730375,
+    "schema_valid_prediction_rate": 0.979933110367893
+  },
+  "error_analysis": {
+    "counts": {
+      "classification.pragmatic_category_mismatch": 42,
+      "classification.purist_category_mismatch": 60,
+      "evidence.missing_prediction_evidence": 5,
+      "evidence.unsupported_quote": 2,
+      "normalization.invalid_label": 6,
+      "normalization.label_mismatch": 112,
+      "normalization.monthly_frequency_mismatch": 79,
+      "schema.missing_prediction": 1201
+    },
+    "examples": {
+      "classification.pragmatic_category_mismatch": [
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "frequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_13058"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_13123"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_13149"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "frequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_13290"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "frequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14025"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14092"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "frequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14137"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14354"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14390"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14689"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14792"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14821"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14881"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14965"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14973"
+        },
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_15168"
+        }
+      ],
+      "classification.purist_category_mismatch": [
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gte_1_per_day",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "eq_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12562"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12679"
+        },
+        {
+          "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_13058"
+        },
+        {
+          "gold_purist_category": "lt_1_per_6_months",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_13123"
+        },
+        {
+          "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_13149"
+        },
+        {
+          "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_13290"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14025"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14092"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14137"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14250"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14271"
+        },
+        {
+          "gold_purist_category": "eq_1_per_month",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14354"
+        },
+        {
+          "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14390"
+        },
+        {
+          "gold_purist_category": "eq_1_per_month",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14628"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "eq_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14689"
+        },
+        {
+          "gold_purist_category": "eq_1_per_month",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14792"
+        }
+      ],
+      "evidence.missing_prediction_evidence": [
+        {
+          "reason": "prediction has no evidence spans",
+          "record_id": "gan_11411"
+        },
+        {
+          "reason": "prediction has no evidence spans",
+          "record_id": "gan_11706"
+        },
+        {
+          "reason": "prediction has no evidence spans",
+          "record_id": "gan_11748"
+        },
+        {
+          "reason": "prediction has no evidence spans",
+          "record_id": "gan_11763"
+        },
+        {
+          "reason": "prediction has no evidence spans",
+          "record_id": "gan_11874"
+        }
+      ],
+      "evidence.unsupported_quote": [
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_3791"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_5974"
+        }
+      ],
+      "normalization.invalid_label": [
+        {
+          "gold_label": "seizure free for multiple year",
+          "predicted_label": "\"seizure free for n unit\" wait, let me reconsider. the note says \"seizure free for years\" \u2014 this is qualitative (\"years\") without a specific number. however, the policy says \"use seizure free for n unit only when seizure freedom is at least 6 months.\" the duration is clearly multiple years, which qualifies. but the format requires a specific n. since \"years\" is vague (no specific number), i should treat this as a qualitative description. however, the note does say \"multiple years\" and \"long-term remission\" \u2014 still no exact count. given the policy: when seizure freedom is described but no exact duration is given, this falls under qualitative description. the closest applicable label would be \"unknown\" since seizures are discussed but no exact count+window for current frequency. but actually, seizure freedom is the current state \u2014 the patient is seizure free. the label \"seizure free for n unit\" requires a specific n. since only \"years\" (vague) is given, i'll use the best approximation. the note says \"multiple years\" \u2014 i'll treat this as unknown since no specific count is extractable. actually, re-reading: \"seizure free for years\" with no specific number \u2192 unknown is appropriate since we can't extract a precise n for the seizure-free label.",
+          "reason": "Unsupported Gan frequency label: '\"seizure free for n unit\" wait, let me reconsider. the note says \"seizure free for year\" \u2014 this is qualitative (\"year\") without a specific number. however, the policy says \"use seizure free for n unit only when seizure freedom is at least 6 month.\" the duration is clearly multiple year, which qualifies. but the format requires a specific n. since \"year\" is vague (no specific number), i should treat this as a qualitative description. however, the note does say \"multiple year\" and \"long-term remission\" \u2014 still no exact count. given the policy: when seizure freedom is described but no exact duration is given, this falls under qualitative description. the closest applicable label would be \"unknown\" since seizures are discussed but no exact count+window for current frequency. but actually, seizure freedom is the current state \u2014 the patient is seizure free. the label \"seizure free for n unit\" requires a specific n. since only \"year\" (vague) is given, i\\'ll use the best approximation. the note says \"multiple year\" \u2014 i\\'ll treat this as unknown since no specific count is extractable. actually, re-reading: \"seizure free for year\" with no specific number \u2192 unknown is appropriate since we can\\'t extract a precise n for the seizure-free label.'",
+          "record_id": "gan_13598"
+        },
+        {
+          "gold_label": "5 per 7 month",
+          "predicted_label": "\"5 per year\" wait, let me reconsider. the note describes: a cluster of three seizures in august, one nocturnal seizure in november, and one tonic seizure in february. the clinic date is 20 february 2024. these events span roughly from august 2023 to february 2024 \u2014 approximately 6 to 7 months. the cluster in august: 3 seizures in a cluster. then individual seizures in november and february. total: 5 seizures over roughly 6 to 7 months (august through february). but the august events are described as a \"cluster of three seizures.\" the highest current rate would be the cluster period vs individual seizures. let me think about whether to use cluster format. the note says \"a cluster of three seizures in august\" \u2014 this is one cluster event with 3 seizures. then individual seizures in november and february. the cluster format would apply to the august event specifically. looking at the overall pattern: 5 seizures over ~6 months (aug 2023 - feb 2024). the highest rate is the cluster in august (3 per cluster, 1 cluster that month). for the overall frequency: 5 seizures over approximately 6 to 7 months. but the cluster in august is the highest density. the most straightforward reading: total events over the described period. the period described is roughly august 2023 to february 2024 = ~6 months, with 5 total seizures (3 in cluster + 1 in november + 1 in february). since the august events are explicitly called a \"cluster,\" i should use cluster format for the highest rate. the cluster was in august: 1 cluster, 3 per cluster. but the ongoing rate across the period is 5 seizures over ~6 months. i'll go with the overall quantified rate: 5 per 6 month, as the note gives a clear count over a clear window.",
+          "reason": "Unsupported Gan frequency label: '\"5 per year\" wait, let me reconsider. the note describes: a cluster of three seizures in august, one nocturnal seizure in november, and one tonic seizure in february. the clinic date is 20 february 2024. these events span roughly from august 2023 to february 2024 \u2014 approximately 6 to 7 month. the cluster in august: 3 seizures in a cluster. then individual seizures in november and february. total: 5 seizures over roughly 6 to 7 month (august through february). but the august events are described as a \"cluster of three seizures.\" the highest current rate would be the cluster period vs individual seizures. let me think about whether to use cluster format. the note says \"a cluster of three seizures in august\" \u2014 this is one cluster event with 3 seizures. then individual seizures in november and february. the cluster format would apply to the august event specifically. looking at the overall pattern: 5 seizures over ~6 month (aug 2023 - feb 2024). the highest rate is the cluster in august (3 per cluster, 1 cluster that month). for the overall frequency: 5 seizures over approximately 6 to 7 month. but the cluster in august is the highest density. the most straightforward reading: total events over the described period. the period described is roughly august 2023 to february 2024 = ~6 month, with 5 total seizures (3 in cluster + 1 in november + 1 in february). since the august events are explicitly called a \"cluster,\" i should use cluster format for the highest rate. the cluster was in august: 1 cluster, 3 per cluster. but the ongoing rate across the period is 5 seizures over ~6 month. i\\'ll go with the overall quantified rate: 5 per 6 month, as the note gives a clear count over a clear window.'",
+          "record_id": "gan_16645"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "\"4 per hour\" wait, the policy says never use \"hour\" as a unit. let me reconsider. the note states \"electrographic seizures frequent on eeg (~4/h).\" the policy says to use singular units: day/week/month/year. never use hour or other units. 4 per hour = approximately 96 per day. i should convert to per day. 4/hour \u00d7 24 hours = ~96 per day.",
+          "reason": "Unsupported Gan frequency label: '\"4 per hour\" wait, the policy says never use \"hour\" as a unit. let me reconsider. the note states \"electrographic seizures frequent on eeg (~4/h).\" the policy says to use singular units: day/week/month/year. never use hour or other units. 4 per hour = approximately 96 per day. i should convert to per day. 4/hour \u00d7 24 hours = ~96 per day.'",
+          "record_id": "gan_4700"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "4 per hour\" wait - the policy says never use \"hour\" as a unit. the note states \"~4/h\" for electrographic seizures on eeg. the policy states \"use singular units: day, week, month, year. never use hour or other units.\" since the only quantified rate is in hours (~4/h), and i cannot convert it to a valid canonical unit without distorting the meaning, i should treat this as unknown since the unit \"hour\" is not permitted. actually, let me reconsider. the note does give a quantified rate (~4/h) but the policy prohibits \"hour\" as a unit. the policy says to use day/week/month/year only. converting 4/hour to ~96/day would be a derived calculation not directly stated in the note. the evidence is an eeg finding rather than a clinical seizure frequency per se. the note discusses seizures/episodes clinically but doesn't give a clinical frequency count+window in permissible units. the eeg rate is in hours which is prohibited. this makes the clinical frequency \"unknown.",
+          "reason": "Unsupported Gan frequency label: '4 per hour\" wait - the policy says never use \"hour\" as a unit. the note states \"~4/h\" for electrographic seizures on eeg. the policy states \"use singular units: day, week, month, year. never use hour or other units.\" since the only quantified rate is in hours (~4/h), and i cannot convert it to a valid canonical unit without distorting the meaning, i should treat this as unknown since the unit \"hour\" is not permitted. actually, let me reconsider. the note does give a quantified rate (~4/h) but the policy prohibits \"hour\" as a unit. the policy says to use day/week/month/year only. converting 4/hour to ~96/day would be a derived calculation not directly stated in the note. the evidence is an eeg finding rather than a clinical seizure frequency per se. the note discusses seizures/episodes clinically but doesn\\'t give a clinical frequency count+window in permissible units. the eeg rate is in hours which is prohibited. this makes the clinical frequency \"unknown.'",
+          "record_id": "gan_4702"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "\"6 per hour\" wait - the policy says \"never use hour or other units.\" i need to reconsider. the note mentions \"~6/h\" electrographic seizures on eeg. however, the policy states to use singular units: day/week/month/year, and never use hour. so i need to convert: 6 per hour \u00d7 24 = ~144 per day. but wait - these are electrographic/subclinical seizures on eeg, not necessarily the clinical seizure frequency. the note also mentions \"variable days with clusters, particularly late afternoon\" for clinical seizures, which is qualitative without a count+window. the highest current quantified rate is the eeg-recorded ~6/h electrographic seizures. converting to per day: ~144 per day. but the policy says never use hour - so i should convert to per day. however, the note says the patient only noticed \"subtle subjective correlates with only a proportion of these events\" - these are largely subclinical. the clinical seizure frequency is described qualitatively as \"variable days with clusters.\" the most prominent quantified frequency in the note is the electrographic seizure rate of ~6/h. converting: 6 \u00d7 24 = 144 per day. but this seems extreme and may not reflect clinical seizure frequency as intended by gan labeling. given the policy to choose the highest current quantified rate and convert hour to day, i'll output 144 per day. but let me reconsider whether electrographic-only seizures count for gan labeling purposes. the note explicitly states \"electrographic seizures frequent on eeg (~6/h)\" and this is the only quantified rate. i'll use this converted to per day.",
+          "reason": "Unsupported Gan frequency label: '\"6 per hour\" wait - the policy says \"never use hour or other units.\" i need to reconsider. the note mentions \"~6/h\" electrographic seizures on eeg. however, the policy states to use singular units: day/week/month/year, and never use hour. so i need to convert: 6 per hour \u00d7 24 = ~144 per day. but wait - these are electrographic/subclinical seizures on eeg, not necessarily the clinical seizure frequency. the note also mentions \"variable day with clusters, particularly late afternoon\" for clinical seizures, which is qualitative without a count+window. the highest current quantified rate is the eeg-recorded ~6/h electrographic seizures. converting to per day: ~144 per day. but the policy says never use hour - so i should convert to per day. however, the note says the patient only noticed \"subtle subjective correlates with only a proportion of these events\" - these are largely subclinical. the clinical seizure frequency is described qualitatively as \"variable day with clusters.\" the most prominent quantified frequency in the note is the electrographic seizure rate of ~6/h. converting: 6 \u00d7 24 = 144 per day. but this seems extreme and may not reflect clinical seizure frequency as intended by gan labeling. given the policy to choose the highest current quantified rate and convert hour to day, i\\'ll output 144 per day. but let me reconsider whether electrographic-only seizures count for gan labeling purposes. the note explicitly states \"electrographic seizures frequent on eeg (~6/h)\" and this is the only quantified rate. i\\'ll use this converted to per day.'",
+          "record_id": "gan_4709"
+        },
+        {
+          "gold_label": "seizure free for multiple month",
+          "predicted_label": "\"seizure free for n unit\" wait, let me reconsider. the note says the patient has been free of attacks since the last review, but the duration of that interval is not specified explicitly. the note says \"review in clinic in 6 months\" suggesting the last review was some time ago, but the exact duration isn't stated. without knowing the interval length, i can't confirm it's \u22656 months. the note says \"no witnessed episodes suggestive of a typical event\" and \"remaining free of his usual attacks over this interval\" but doesn't specify how long the interval is. since the duration is unclear and may be less than 6 months, i should treat this as unknown rather than seizure free.",
+          "reason": "Unsupported Gan frequency label: '\"seizure free for n unit\" wait, let me reconsider. the note says the patient has been free of attacks since the last review, but the duration of that interval is not specified explicitly. the note says \"review in clinic in 6 month\" suggesting the last review was some time ago, but the exact duration isn\\'t stated. without knowing the interval length, i can\\'t confirm it\\'s \u22656 month. the note says \"no witnessed episodes suggestive of a typical event\" and \"remaining free of his usual attacks over this interval\" but doesn\\'t specify how long the interval is. since the duration is unclear and may be less than 6 month, i should treat this as unknown rather than seizure free.'",
+          "record_id": "gan_8203"
+        }
+      ],
+      "normalization.label_mismatch": [
+        {
+          "normalized_gold_label": "unknown, 2 to 4 per cluster",
+          "normalized_predicted_label": "1 cluster per day, 2 to 4 per cluster",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "normalized_gold_label": "unknown, 2 to 3 per cluster",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10553"
+        },
+        {
+          "normalized_gold_label": "unknown, 2 to 3 per cluster",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10583"
+        },
+        {
+          "normalized_gold_label": "unknown, 4 to 6 per cluster",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10618"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "seizure free for 4 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "1 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "normalized_gold_label": "1 per day",
+          "normalized_predicted_label": "3 to 4 per week",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12562"
+        },
+        {
+          "normalized_gold_label": "1 per day",
+          "normalized_predicted_label": "1 to 2 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12679"
+        },
+        {
+          "normalized_gold_label": "2 per 7 month",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13058"
+        },
+        {
+          "normalized_gold_label": "1 per year",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13123"
+        },
+        {
+          "normalized_gold_label": "3 per year",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13149"
+        },
+        {
+          "normalized_gold_label": "4 per 6 month",
+          "normalized_predicted_label": "2 per week",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13290"
+        },
+        {
+          "normalized_gold_label": "seizure free for multiple year",
+          "normalized_predicted_label": "seizure free for 2 year",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13416"
+        },
+        {
+          "normalized_gold_label": "seizure free for multiple year",
+          "normalized_predicted_label": "seizure free for year",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13574"
+        },
+        {
+          "normalized_gold_label": "seizure free for multiple year",
+          "normalized_predicted_label": "seizure free for year",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_13595"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "2 per 6 week",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14025"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "2 to 3 per 3 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "5 per 6 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14092"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "3 to 4 per 3 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14137"
+        },
+        {
+          "normalized_gold_label": "2 per month",
+          "normalized_predicted_label": "2 per week",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14250"
+        }
+      ],
+      "normalization.monthly_frequency_mismatch": [
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 90.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 1.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "gold_monthly_frequency": 30.0,
+          "predicted_monthly_frequency": 15.155000000000001,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12562"
+        },
+        {
+          "gold_monthly_frequency": 30.0,
+          "predicted_monthly_frequency": 1.5,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12679"
+        },
+        {
+          "gold_monthly_frequency": 0.2857142857142857,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_13058"
+        },
+        {
+          "gold_monthly_frequency": 0.08333333333333333,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_13123"
+        },
+        {
+          "gold_monthly_frequency": 0.25,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_13149"
+        },
+        {
+          "gold_monthly_frequency": 0.6666666666666666,
+          "predicted_monthly_frequency": 8.66,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_13290"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 1.4433333333333334,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14025"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.8333333333333334,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14081"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.8333333333333334,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14092"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 1.1666666666666667,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14137"
+        },
+        {
+          "gold_monthly_frequency": 2.0,
+          "predicted_monthly_frequency": 8.66,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14250"
+        },
+        {
+          "gold_monthly_frequency": 2.5,
+          "predicted_monthly_frequency": 10.825,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14271"
+        },
+        {
+          "gold_monthly_frequency": 1.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14354"
+        },
+        {
+          "gold_monthly_frequency": 0.6666666666666666,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14390"
+        },
+        {
+          "gold_monthly_frequency": 0.5,
+          "predicted_monthly_frequency": 0.42857142857142855,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14562"
+        },
+        {
+          "gold_monthly_frequency": 1.0,
+          "predicted_monthly_frequency": 0.6666666666666666,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14628"
+        },
+        {
+          "gold_monthly_frequency": 1.5,
+          "predicted_monthly_frequency": 1.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14689"
+        }
+      ],
+      "schema.missing_prediction": [
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10002"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10009"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10010"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1005"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10057"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10063"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10097"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10123"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10147"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10149"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10159"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1017"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1018"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10183"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10186"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10189"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10200"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10206"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10213"
+        }
+      ]
+    }
+  },
+  "errors": {
+    "evidence_support_errors": [
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_3791",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "\"TC \u00d7ten/yr\" over the past 12 months"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_3791"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_5974",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "\"Seizures with missed ASM doses,\" typically occurring within 24\u201348 hours of a missed levetiracetam dose"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_5974"
+      }
+    ],
+    "extra_prediction_ids": [],
+    "invalid_predictions": [
+      {
+        "gold_label": "seizure free for multiple year",
+        "predicted_label": "\"seizure free for n unit\" wait, let me reconsider. the note says \"seizure free for years\" \u2014 this is qualitative (\"years\") without a specific number. however, the policy says \"use seizure free for n unit only when seizure freedom is at least 6 months.\" the duration is clearly multiple years, which qualifies. but the format requires a specific n. since \"years\" is vague (no specific number), i should treat this as a qualitative description. however, the note does say \"multiple years\" and \"long-term remission\" \u2014 still no exact count. given the policy: when seizure freedom is described but no exact duration is given, this falls under qualitative description. the closest applicable label would be \"unknown\" since seizures are discussed but no exact count+window for current frequency. but actually, seizure freedom is the current state \u2014 the patient is seizure free. the label \"seizure free for n unit\" requires a specific n. since only \"years\" (vague) is given, i'll use the best approximation. the note says \"multiple years\" \u2014 i'll treat this as unknown since no specific count is extractable. actually, re-reading: \"seizure free for years\" with no specific number \u2192 unknown is appropriate since we can't extract a precise n for the seizure-free label.",
+        "reason": "Unsupported Gan frequency label: '\"seizure free for n unit\" wait, let me reconsider. the note says \"seizure free for year\" \u2014 this is qualitative (\"year\") without a specific number. however, the policy says \"use seizure free for n unit only when seizure freedom is at least 6 month.\" the duration is clearly multiple year, which qualifies. but the format requires a specific n. since \"year\" is vague (no specific number), i should treat this as a qualitative description. however, the note does say \"multiple year\" and \"long-term remission\" \u2014 still no exact count. given the policy: when seizure freedom is described but no exact duration is given, this falls under qualitative description. the closest applicable label would be \"unknown\" since seizures are discussed but no exact count+window for current frequency. but actually, seizure freedom is the current state \u2014 the patient is seizure free. the label \"seizure free for n unit\" requires a specific n. since only \"year\" (vague) is given, i\\'ll use the best approximation. the note says \"multiple year\" \u2014 i\\'ll treat this as unknown since no specific count is extractable. actually, re-reading: \"seizure free for year\" with no specific number \u2192 unknown is appropriate since we can\\'t extract a precise n for the seizure-free label.'",
+        "record_id": "gan_13598"
+      },
+      {
+        "gold_label": "5 per 7 month",
+        "predicted_label": "\"5 per year\" wait, let me reconsider. the note describes: a cluster of three seizures in august, one nocturnal seizure in november, and one tonic seizure in february. the clinic date is 20 february 2024. these events span roughly from august 2023 to february 2024 \u2014 approximately 6 to 7 months. the cluster in august: 3 seizures in a cluster. then individual seizures in november and february. total: 5 seizures over roughly 6 to 7 months (august through february). but the august events are described as a \"cluster of three seizures.\" the highest current rate would be the cluster period vs individual seizures. let me think about whether to use cluster format. the note says \"a cluster of three seizures in august\" \u2014 this is one cluster event with 3 seizures. then individual seizures in november and february. the cluster format would apply to the august event specifically. looking at the overall pattern: 5 seizures over ~6 months (aug 2023 - feb 2024). the highest rate is the cluster in august (3 per cluster, 1 cluster that month). for the overall frequency: 5 seizures over approximately 6 to 7 months. but the cluster in august is the highest density. the most straightforward reading: total events over the described period. the period described is roughly august 2023 to february 2024 = ~6 months, with 5 total seizures (3 in cluster + 1 in november + 1 in february). since the august events are explicitly called a \"cluster,\" i should use cluster format for the highest rate. the cluster was in august: 1 cluster, 3 per cluster. but the ongoing rate across the period is 5 seizures over ~6 months. i'll go with the overall quantified rate: 5 per 6 month, as the note gives a clear count over a clear window.",
+        "reason": "Unsupported Gan frequency label: '\"5 per year\" wait, let me reconsider. the note describes: a cluster of three seizures in august, one nocturnal seizure in november, and one tonic seizure in february. the clinic date is 20 february 2024. these events span roughly from august 2023 to february 2024 \u2014 approximately 6 to 7 month. the cluster in august: 3 seizures in a cluster. then individual seizures in november and february. total: 5 seizures over roughly 6 to 7 month (august through february). but the august events are described as a \"cluster of three seizures.\" the highest current rate would be the cluster period vs individual seizures. let me think about whether to use cluster format. the note says \"a cluster of three seizures in august\" \u2014 this is one cluster event with 3 seizures. then individual seizures in november and february. the cluster format would apply to the august event specifically. looking at the overall pattern: 5 seizures over ~6 month (aug 2023 - feb 2024). the highest rate is the cluster in august (3 per cluster, 1 cluster that month). for the overall frequency: 5 seizures over approximately 6 to 7 month. but the cluster in august is the highest density. the most straightforward reading: total events over the described period. the period described is roughly august 2023 to february 2024 = ~6 month, with 5 total seizures (3 in cluster + 1 in november + 1 in february). since the august events are explicitly called a \"cluster,\" i should use cluster format for the highest rate. the cluster was in august: 1 cluster, 3 per cluster. but the ongoing rate across the period is 5 seizures over ~6 month. i\\'ll go with the overall quantified rate: 5 per 6 month, as the note gives a clear count over a clear window.'",
+        "record_id": "gan_16645"
+      },
+      {
+        "gold_label": "multiple per day",
+        "predicted_label": "\"4 per hour\" wait, the policy says never use \"hour\" as a unit. let me reconsider. the note states \"electrographic seizures frequent on eeg (~4/h).\" the policy says to use singular units: day/week/month/year. never use hour or other units. 4 per hour = approximately 96 per day. i should convert to per day. 4/hour \u00d7 24 hours = ~96 per day.",
+        "reason": "Unsupported Gan frequency label: '\"4 per hour\" wait, the policy says never use \"hour\" as a unit. let me reconsider. the note states \"electrographic seizures frequent on eeg (~4/h).\" the policy says to use singular units: day/week/month/year. never use hour or other units. 4 per hour = approximately 96 per day. i should convert to per day. 4/hour \u00d7 24 hours = ~96 per day.'",
+        "record_id": "gan_4700"
+      },
+      {
+        "gold_label": "multiple per day",
+        "predicted_label": "4 per hour\" wait - the policy says never use \"hour\" as a unit. the note states \"~4/h\" for electrographic seizures on eeg. the policy states \"use singular units: day, week, month, year. never use hour or other units.\" since the only quantified rate is in hours (~4/h), and i cannot convert it to a valid canonical unit without distorting the meaning, i should treat this as unknown since the unit \"hour\" is not permitted. actually, let me reconsider. the note does give a quantified rate (~4/h) but the policy prohibits \"hour\" as a unit. the policy says to use day/week/month/year only. converting 4/hour to ~96/day would be a derived calculation not directly stated in the note. the evidence is an eeg finding rather than a clinical seizure frequency per se. the note discusses seizures/episodes clinically but doesn't give a clinical frequency count+window in permissible units. the eeg rate is in hours which is prohibited. this makes the clinical frequency \"unknown.",
+        "reason": "Unsupported Gan frequency label: '4 per hour\" wait - the policy says never use \"hour\" as a unit. the note states \"~4/h\" for electrographic seizures on eeg. the policy states \"use singular units: day, week, month, year. never use hour or other units.\" since the only quantified rate is in hours (~4/h), and i cannot convert it to a valid canonical unit without distorting the meaning, i should treat this as unknown since the unit \"hour\" is not permitted. actually, let me reconsider. the note does give a quantified rate (~4/h) but the policy prohibits \"hour\" as a unit. the policy says to use day/week/month/year only. converting 4/hour to ~96/day would be a derived calculation not directly stated in the note. the evidence is an eeg finding rather than a clinical seizure frequency per se. the note discusses seizures/episodes clinically but doesn\\'t give a clinical frequency count+window in permissible units. the eeg rate is in hours which is prohibited. this makes the clinical frequency \"unknown.'",
+        "record_id": "gan_4702"
+      },
+      {
+        "gold_label": "multiple per day",
+        "predicted_label": "\"6 per hour\" wait - the policy says \"never use hour or other units.\" i need to reconsider. the note mentions \"~6/h\" electrographic seizures on eeg. however, the policy states to use singular units: day/week/month/year, and never use hour. so i need to convert: 6 per hour \u00d7 24 = ~144 per day. but wait - these are electrographic/subclinical seizures on eeg, not necessarily the clinical seizure frequency. the note also mentions \"variable days with clusters, particularly late afternoon\" for clinical seizures, which is qualitative without a count+window. the highest current quantified rate is the eeg-recorded ~6/h electrographic seizures. converting to per day: ~144 per day. but the policy says never use hour - so i should convert to per day. however, the note says the patient only noticed \"subtle subjective correlates with only a proportion of these events\" - these are largely subclinical. the clinical seizure frequency is described qualitatively as \"variable days with clusters.\" the most prominent quantified frequency in the note is the electrographic seizure rate of ~6/h. converting: 6 \u00d7 24 = 144 per day. but this seems extreme and may not reflect clinical seizure frequency as intended by gan labeling. given the policy to choose the highest current quantified rate and convert hour to day, i'll output 144 per day. but let me reconsider whether electrographic-only seizures count for gan labeling purposes. the note explicitly states \"electrographic seizures frequent on eeg (~6/h)\" and this is the only quantified rate. i'll use this converted to per day.",
+        "reason": "Unsupported Gan frequency label: '\"6 per hour\" wait - the policy says \"never use hour or other units.\" i need to reconsider. the note mentions \"~6/h\" electrographic seizures on eeg. however, the policy states to use singular units: day/week/month/year, and never use hour. so i need to convert: 6 per hour \u00d7 24 = ~144 per day. but wait - these are electrographic/subclinical seizures on eeg, not necessarily the clinical seizure frequency. the note also mentions \"variable day with clusters, particularly late afternoon\" for clinical seizures, which is qualitative without a count+window. the highest current quantified rate is the eeg-recorded ~6/h electrographic seizures. converting to per day: ~144 per day. but the policy says never use hour - so i should convert to per day. however, the note says the patient only noticed \"subtle subjective correlates with only a proportion of these events\" - these are largely subclinical. the clinical seizure frequency is described qualitatively as \"variable day with clusters.\" the most prominent quantified frequency in the note is the electrographic seizure rate of ~6/h. converting: 6 \u00d7 24 = 144 per day. but this seems extreme and may not reflect clinical seizure frequency as intended by gan labeling. given the policy to choose the highest current quantified rate and convert hour to day, i\\'ll output 144 per day. but let me reconsider whether electrographic-only seizures count for gan labeling purposes. the note explicitly states \"electrographic seizures frequent on eeg (~6/h)\" and this is the only quantified rate. i\\'ll use this converted to per day.'",
+        "record_id": "gan_4709"
+      },
+      {
+        "gold_label": "seizure free for multiple month",
+        "predicted_label": "\"seizure free for n unit\" wait, let me reconsider. the note says the patient has been free of attacks since the last review, but the duration of that interval is not specified explicitly. the note says \"review in clinic in 6 months\" suggesting the last review was some time ago, but the exact duration isn't stated. without knowing the interval length, i can't confirm it's \u22656 months. the note says \"no witnessed episodes suggestive of a typical event\" and \"remaining free of his usual attacks over this interval\" but doesn't specify how long the interval is. since the duration is unclear and may be less than 6 months, i should treat this as unknown rather than seizure free.",
+        "reason": "Unsupported Gan frequency label: '\"seizure free for n unit\" wait, let me reconsider. the note says the patient has been free of attacks since the last review, but the duration of that interval is not specified explicitly. the note says \"review in clinic in 6 month\" suggesting the last review was some time ago, but the exact duration isn\\'t stated. without knowing the interval length, i can\\'t confirm it\\'s \u22656 month. the note says \"no witnessed episodes suggestive of a typical event\" and \"remaining free of his usual attacks over this interval\" but doesn\\'t specify how long the interval is. since the duration is unclear and may be less than 6 month, i should treat this as unknown rather than seizure free.'",
+        "record_id": "gan_8203"
+      }
+    ],
+    "missing_prediction_ids": [
+      "gan_10",
+      "gan_10002",
+      "gan_10009",
+      "gan_10010",
+      "gan_1005",
+      "gan_10057",
+      "gan_10063",
+      "gan_10097",
+      "gan_10123",
+      "gan_10147",
+      "gan_10149",
+      "gan_10159",
+      "gan_1017",
+      "gan_1018",
+      "gan_10183",
+      "gan_10186",
+      "gan_10189",
+      "gan_10200",
+      "gan_10206",
+      "gan_10213"
+    ],
+    "monthly_frequency_mismatches": [
+      {
+        "gold_label": "unknown, 2 to 4 per cluster",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "1 cluster per day, 2 to 4 per cluster",
+        "predicted_monthly_frequency": 90.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_10542"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "seizure free for 4 month",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11216"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "1 per month",
+        "predicted_monthly_frequency": 1.0,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_11399"
+      },
+      {
+        "gold_label": "1 per day",
+        "gold_monthly_frequency": 30.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "3 to 4 per week",
+        "predicted_monthly_frequency": 15.155000000000001,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_12562"
+      },
+      {
+        "gold_label": "1 per day",
+        "gold_monthly_frequency": 30.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "1 to 2 per month",
+        "predicted_monthly_frequency": 1.5,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_12679"
+      },
+      {
+        "gold_label": "2 per 7 month",
+        "gold_monthly_frequency": 0.2857142857142857,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_13058"
+      },
+      {
+        "gold_label": "1 per year",
+        "gold_monthly_frequency": 0.08333333333333333,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_13123"
+      },
+      {
+        "gold_label": "3 per year",
+        "gold_monthly_frequency": 0.25,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_13149"
+      },
+      {
+        "gold_label": "4 per 6 month",
+        "gold_monthly_frequency": 0.6666666666666666,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "2 per week",
+        "predicted_monthly_frequency": 8.66,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_13290"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "2 per 6 week",
+        "predicted_monthly_frequency": 1.4433333333333334,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_14025"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "2 to 3 per 3 month",
+        "predicted_monthly_frequency": 0.8333333333333334,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_14081"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "5 per 6 month",
+        "predicted_monthly_frequency": 0.8333333333333334,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_14092"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "3 to 4 per 3 month",
+        "predicted_monthly_frequency": 1.1666666666666667,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_14137"
+      },
+      {
+        "gold_label": "2 per month",
+        "gold_monthly_frequency": 2.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 per week",
+        "predicted_monthly_frequency": 8.66,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_14250"
+      },
+      {
+        "gold_label": "2 to 3 per month",
+        "gold_monthly_frequency": 2.5,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 to 3 per week",
+        "predicted_monthly_frequency": 10.825,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_14271"
+      },
+      {
+        "gold_label": "2 to 4 per 3 month",
+        "gold_monthly_frequency": 1.0,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "seizure free for 3 month",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_14354"
+      },
+      {
+        "gold_label": "2 per 3 month",
+        "gold_monthly_frequency": 0.6666666666666666,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_14390"
+      },
+      {
+        "gold_label": "3 per 6 month",
+        "gold_monthly_frequency": 0.5,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "3 per 7 month",
+        "predicted_monthly_frequency": 0.42857142857142855,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_14562"
+      },
+      {
+        "gold_label": "2 per 2 month",
+        "gold_monthly_frequency": 1.0,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "2 per 3 month",
+        "predicted_monthly_frequency": 0.6666666666666666,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_14628"
+      },
+      {
+        "gold_label": "3 per 2 month",
+        "gold_monthly_frequency": 1.5,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "3 per 3 month",
+        "predicted_monthly_frequency": 1.0,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_14689"
+      }
+    ]
+  },
+  "runtime": {
+    "compile_duration_seconds": null,
+    "estimated_model_calls": 299,
+    "evaluation_duration_seconds": 0.8374560000374913,
+    "model_residency": "not_applicable",
+    "optimizer": null,
+    "prediction_duration_seconds": 1506.7305408000248,
+    "prediction_seconds_per_record": 5.039232577926504,
+    "records": 299,
+    "token_usage": {
+      "completion_tokens": 23951,
+      "history_entries": 296,
+      "prompt_tokens": 784166,
+      "total_tokens": 808117
+    },
+    "total_duration_seconds": 1507.594673500047
+  },
+  "schema_level": "gan_frequency_s0",
+  "scorer": "gan_frequency_deterministic_v1"
+}

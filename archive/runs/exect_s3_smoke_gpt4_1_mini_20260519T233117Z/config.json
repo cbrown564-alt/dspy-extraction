@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s3_smoke_gpt4_1_mini",
+  "hypothesis": "A capped ExECT S3 monolithic label-policy run extends frozen S2 v1.3 bridges to birth history, onset, epilepsy cause, and when diagnosed without changing S2 scorer semantics.",
+  "max_records": 3,
+  "metric_caveats": [
+    "This capped smoke run validates the ExECT S3 nine-family program contract only; it is not a performance estimate.",
+    "These are partial ExECT S3 diagnostics (S2 + four JSON entity families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across nine families is not comparable to frozen S2 five-family headlines.",
+    "S2 label-policy bridges from frozen v1.3 are reused for S1 and S2 families; see docs/exect_s3_phase1_overlap_policy.md.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s3_field_family_single_pass",
+  "prompt_version": "exect_s3_field_family_v1_0_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s3_field_family",
+  "scorer_mode": "exect_s3_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

@@ -1,0 +1,419 @@
+{
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication"
+  ],
+  "label_policy_examples": [
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "lamotrigine"
+        ]
+      },
+      "case": "planned_medication_exclusion",
+      "note_fragment": "Current anti-epileptic medication: lamotrigine 75mg bd. To start levetiracetam.",
+      "policy": "Exclude planned medication starts from the benchmark-facing medication list."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "sodium valproate"
+        ]
+      },
+      "case": "previous_medication_exclusion",
+      "note_fragment": "Previously tried carbamazepine. Current treatment is sodium valproate.",
+      "policy": "Exclude historical medication mentions from the benchmark-facing medication list."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "temporal lobe seizure",
+          "focal seizures"
+        ]
+      },
+      "case": "canonical_seizure_type_granularity",
+      "note_fragment": "The events are temporal-lobe-onset focal seizures.",
+      "policy": "Split the fused rich phrase into the audited benchmark seizure-type labels."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "symptomatic structural focal epilepsy"
+        ]
+      },
+      "case": "diagnosis_label_preservation",
+      "note_fragment": "Diagnosis: symptomatic structural focal epilepsy.",
+      "policy": "Preserve the audited diagnosis surface rather than forcing a five-label collapse."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "focal seizures with altered awareness"
+        ]
+      },
+      "case": "plural_seizure_type_preservation",
+      "note_fragment": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks.",
+      "policy": "Preserve audited plural seizure-type surfaces when that is the scorer label."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "occipital lobe seizures"
+        ],
+        "seizure_type_evidence": [
+          "occipital lobe seizures"
+        ]
+      },
+      "case": "evidence_quote_contiguity",
+      "note_fragment": "Seizure type: occipital lobe seizures. Previous medication: lamotrigine.",
+      "policy": "Evidence must be an exact contiguous quote, not a stitched or ellipsis quote."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": []
+      },
+      "case": "single_event_diagnosis_null",
+      "note_fragment": "This was a single focal seizure. There is no established epilepsy diagnosis.",
+      "policy": "Do not convert a single seizure event into an established epilepsy diagnosis."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "focal seizures",
+          "secondary generalisation",
+          "generalized tonic clonic seizure"
+        ]
+      },
+      "case": "secondary_generalisation_split",
+      "note_fragment": "Seizure type: focal seizures with secondary generalisation.",
+      "policy": "Split fused secondary-generalisation phrases into separate benchmark seizure types."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "focal to bilateral convulsive seizures"
+        ]
+      },
+      "case": "focal_to_bilateral_convulsive_modifier",
+      "note_fragment": "She has focal to bilateral seizures.",
+      "policy": "Preserve the convulsive modifier when that is the audited benchmark surface."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "juvenile myoclonic epilepsy"
+        ]
+      },
+      "case": "diagnosis_uncertainty_stripping",
+      "note_fragment": "Diagnosis: probable juvenile myoclonic epilepsy.",
+      "policy": "Strip uncertainty qualifiers when the benchmark-facing label is definite."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [],
+        "seizure_type": [
+          "focal seizures"
+        ]
+      },
+      "case": "cross_family_diagnosis_exclusion",
+      "note_fragment": "Diagnosis: hydrocephalus. Seizure type: focal seizures.",
+      "policy": "Do not place non-epilepsy conditions or seizure types in the diagnosis field."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "symptomatic structural focal epilepsy"
+        ]
+      },
+      "case": "symptomatic_structural_focal_preservation",
+      "note_fragment": "Diagnosis: symptomatic structural focal epilepsy.",
+      "policy": "Preserve the full audited focal diagnosis modifier rather than dropping focal."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "temporal lobe seizure",
+          "focal seizures",
+          "occipital lobe seizures"
+        ]
+      },
+      "case": "temporal_lobe_seizures_split_pair",
+      "note_fragment": "Seizure type: temporal lobe seizures with occipital lobe seizures.",
+      "policy": "Do not stop at temporal lobe seizures alone when focal seizures is also required."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "focal to bilateral convulsive seizure"
+        ]
+      },
+      "case": "focal_to_bilateral_annotation_surface",
+      "note_fragment": "Seizure type and frequency: focal onset convulsive seizure.",
+      "policy": "Use the audited bilateral convulsive benchmark surface when that is the scorer label."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "generalized seizures"
+        ]
+      },
+      "case": "coarse_generalized_seizure_surface",
+      "note_fragment": "She has absences and myoclonic jerks.",
+      "policy": "Prefer audited coarse generalized seizure labels over granular jerk/absence descriptors."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "generalized tonic clonic seizures"
+        ]
+      },
+      "case": "absence_events_to_gtcs_surface",
+      "note_fragment": "He reports absence events.",
+      "policy": "Map absence-event wording to the audited generalized tonic clonic seizure surface when required."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "epilepsy with generalized tonic clonic seizures on awakening"
+        ]
+      },
+      "case": "on_awakening_diagnosis_phrasing",
+      "note_fragment": "Diagnosis: epilepsy with generalized tonic clonic seizures on awakening.",
+      "policy": "Preserve on awakening wording in the audited diagnosis label."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "focal epilepsy",
+          "parietal lobe epilepsy"
+        ]
+      },
+      "case": "co_listed_lobe_epilepsy_diagnoses",
+      "note_fragment": "Diagnosis: focal epilepsy, probable parietal onset.",
+      "policy": "Emit separate lobe-specific epilepsy diagnoses when the note supports both."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "focal onset epilepsy",
+          "epilepsy"
+        ]
+      },
+      "case": "generic_epilepsy_co_list_with_focal_onset",
+      "note_fragment": "Diagnosis: focal onset epilepsy. He should contact us with any concerns with his epilepsy.",
+      "policy": "Include generic epilepsy when the note separately names epilepsy outside compound diagnosis phrases."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "focal epilepsy",
+          "focal onset epilepsy"
+        ]
+      },
+      "case": "focal_onset_and_focal_epilepsy_co_list",
+      "note_fragment": "Diagnosis: focal epilepsy. I think that this is focal onset epilepsy.",
+      "policy": "Keep both focal epilepsy and focal onset epilepsy when the note supports each."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "primary generalized epilepsy",
+          "epilepsy"
+        ]
+      },
+      "case": "generic_epilepsy_co_list_with_primary_generalized",
+      "note_fragment": "She has primary generalised epilepsy. Her epilepsy was not well controlled on carbamazepine monotherapy.",
+      "policy": "Co-list generic epilepsy when the note separately names epilepsy outside the primary generalized epilepsy phrase."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "epilepsy"
+        ]
+      },
+      "case": "unclassified_epilepsy_header",
+      "note_fragment": "Diagnosis: epilepsy unclassified",
+      "policy": "Map unclassified epilepsy header wording to the generic epilepsy label."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "temporal lobe epilepsy"
+        ],
+        "seizure_type": [
+          "focal seizures"
+        ]
+      },
+      "case": "possible_tle_header_preserves_temporal_lobe_epilepsy",
+      "note_fragment": "Diagnosis: Focal seizures, possible TLE",
+      "policy": "TLE in the diagnosis header is an epilepsy diagnosis surface, not a seizure-descriptor-only header."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "generalized tonic clonic seizures"
+        ]
+      },
+      "case": "reject_granular_jme_seizure_descriptors",
+      "note_fragment": "She reports absences and myoclonic jerks. Seizure type: generalized tonic clonic seizures.",
+      "policy": "Do not add jerks or absences when the audited label is already coarse."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "tonic clonic seizures"
+        ]
+      },
+      "case": "jme_coarse_gtcs_suppresses_myoclonic",
+      "note_fragment": "Diagnosis: juvenile myoclonic epilepsy. She also gets tonic clonic seizures and myoclonic jerks.",
+      "policy": "Prefer the coarse tonic clonic label; do not add myoclonic seizures."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "tonic clonic seizures"
+        ]
+      },
+      "case": "jme_tonic_clonic_surface_without_generalized_prefix",
+      "note_fragment": "Diagnosis: JME. Seizure type: tonic clonic seizures.",
+      "policy": "Use tonic clonic seizures when the note does not use a generalized tonic clonic prefix."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "generalized tonic seizures"
+        ]
+      },
+      "case": "jme_generalized_tonic_seizures_without_clonic",
+      "note_fragment": "Diagnosis: probably JME presenting with generalised tonic seizures, absences and myoclonic jerks.",
+      "policy": "Use generalized tonic seizures when the note names that surface without clonic."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "myoclonic seizures"
+        ]
+      },
+      "case": "myoclonic_jerks_to_myoclonic_seizures",
+      "note_fragment": "Seizure type: myoclonic jerks.",
+      "policy": "Map jerk wording to myoclonic seizures when that is the audited surface."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "lamotrigine"
+        ]
+      },
+      "case": "non_asm_medication_exclusion",
+      "note_fragment": "Current medication: lamotrigine 100mg bd, citalopram 20mg od.",
+      "policy": "Exclude non-anti-seizure medications from annotated_medication."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": []
+      },
+      "case": "empty_medication_without_prescription_list",
+      "note_fragment": "Seizure type: focal seizures. No current anti-epileptic medication documented.",
+      "policy": "Return empty medication when no prescription-style ASM list is present."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": []
+      },
+      "case": "prescription_request_exclusion",
+      "note_fragment": "I would be grateful if you could prescribe lamotrigine.",
+      "policy": "Exclude ASM mentioned only as a prescription request, not a current list."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "carbamazepine",
+          "zonisamide"
+        ]
+      },
+      "case": "planned_switch_exclusion",
+      "note_fragment": "Carbamazepine 400mg bd (to change to eslicarbazepine as below). Zonisamide 100mg bd.",
+      "policy": "Exclude planned switches; keep current prescription entries only."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": []
+      },
+      "case": "taper_stop_exclusion",
+      "note_fragment": "Reduce the levetiracetam by 250mg every week until stopped. Increase carbamazepine.",
+      "policy": "Exclude taper/stop instructions; do not treat dose-change plans as current ASM."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": []
+      },
+      "case": "restart_advice_after_self_stop",
+      "note_fragment": "She decided to stop her medication herself. We advised that she continues with lamotrigine.",
+      "policy": "Exclude ASM mentioned only as advice after self-discontinuation."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "Lamictal"
+        ]
+      },
+      "case": "brand_lamictal_preservation",
+      "note_fragment": "Current medication: Lamictal 100mg BD.",
+      "policy": "Preserve the brand prescription surface when the note uses Lamictal."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "Epilim Chrono"
+        ]
+      },
+      "case": "brand_epilim_chrono_preservation",
+      "note_fragment": "Current medication: Epilim Chrono 500mg nocte.",
+      "policy": "Preserve multi-word brand surfaces such as Epilim Chrono."
+    }
+  ],
+  "label_policy_guidance": [
+    "Return benchmark-facing annotation labels only; do not expand into clinically richer labels.",
+    "Diagnosis labels should preserve the explicit audited diagnosis surface after deterministic canonicalization; do not force all focal, temporal-lobe, symptomatic, refractory, or syndrome phrases into a five-label diagnosis set unless the scorer has an explicit mapping.",
+    "Do not output a diagnosis for a single seizure event unless the note separately states an established epilepsy diagnosis.",
+    "Use the audited seizure-type surface supported by the note. Preserve plural and modifier surfaces such as focal seizures with altered awareness or occipital lobe seizures when those are the benchmark-facing labels.",
+    "Split fused seizure-type surfaces into audited benchmark labels when the note combines a lobe-specific type with a broader focal seizure type; for example temporal lobe onset focal seizures should produce temporal lobe seizure and focal seizures.",
+    "When a note names focal seizures with secondary generalisation as one phrase, split it into focal seizures, secondary generalisation, and generalized tonic clonic seizure as separate benchmark-facing seizure-type labels.",
+    "Preserve convulsive modifiers on focal to bilateral seizure labels when the audited scorer expects focal to bilateral convulsive seizure or seizures.",
+    "Strip probable, possible, or similar uncertainty qualifiers from diagnosis labels when the benchmark-facing gold uses the definite audited diagnosis surface.",
+    "Preserve modifier-rich audited diagnosis surfaces such as symptomatic structural focal epilepsy; do not drop focal or other audited modifiers unless specificity collapse applies.",
+    "Keep seizure-type labels out of the diagnosis field and epilepsy diagnoses out of the seizure-type field; do not emit non-epilepsy conditions such as hydrocephalus as diagnosis.",
+    "Only emit diagnosis labels from the audited epilepsy diagnosis vocabulary; never place seizure-type phrases, fused secondary-generalisation wording, or seizure-event descriptors in the diagnosis field.",
+    "When splitting temporal-lobe-onset focal seizures, emit temporal lobe seizure and focal seizures as separate labels; do not replace them with temporal lobe seizures alone.",
+    "When the note lists both focal seizures and a temporal-lobe seizure type, include both in seizure_type rather than moving focal seizures into diagnosis.",
+    "For symptomatic structural focal epilepsy, keep the focal modifier; do not shorten to symptomatic structural epilepsy.",
+    "When a note separately names parietal lobe epilepsy alongside focal epilepsy, include both diagnosis labels.",
+    "When the note separately names generic epilepsy outside a compound diagnosis phrase (for example concerns with his epilepsy), include epilepsy alongside focal onset epilepsy, primary generalized epilepsy, symptomatic structural focal epilepsy, or other specific epilepsy diagnoses.",
+    "When the diagnosis header states epilepsy unclassified or unclassified epilepsy, emit epilepsy as the benchmark-facing diagnosis label.",
+    "Do not treat possible TLE or temporal lobe epilepsy in the diagnosis header as seizure-descriptor-only wording; preserve temporal lobe epilepsy when the header or impression names it.",
+    "When the note names both focal epilepsy and focal onset epilepsy, include both audited diagnosis surfaces rather than keeping only one.",
+    "Use epilepsy with generalized tonic clonic seizures on awakening when the note uses on awakening wording; do not substitute from sleep.",
+    "Prefer audited coarse seizure-type labels such as generalized seizures or generalized tonic clonic seizures over granular event descriptors such as jerks, absences, or absence events unless the note explicitly uses the audited benchmark surface.",
+    "When the benchmark-facing seizure label is focal to bilateral convulsive seizure, use that surface even if the note says focal onset convulsive seizure.",
+    "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a separate current seizure type unless the note independently names it as current.",
+    "Annotated medication means anti-seizure medications in the audited prescription annotation view only; do not include psychotropic or non-ASM drugs, planned starts, previous trials, taper/stop instructions, or medication-history mentions.",
+    "When the note has no prescription-style current medication list, return an empty annotated_medication list rather than inferring ASM from seizure history or past trials.",
+    "Do not emit ASM from prescription requests, planned switches, taper/stop instructions, or advice to restart after self-discontinuation.",
+    "Preserve audited brand medication surfaces from the note (for example lamictal, epilim chrono) rather than substituting generic chemical names when the letter uses the brand form in the prescription list.",
+    "Only emit a medication when its name appears in the note; do not infer ASM from discussion of past trials or hypothetical changes.",
+    "Medication evidence must be the shortest exact contiguous quote from the note without invented section headers; omit header labels such as Medication: when they are not part of the source text.",
+    "Do not emit jerks, absences, or absence events as separate seizure-type labels when the benchmark-facing surface is a coarse generalized or generalized tonic clonic label.",
+    "For juvenile myoclonic epilepsy or JME notes, prefer the audited coarse seizure-type surface named in the letter (tonic clonic seizures, generalized tonic clonic seizures, or generalized tonic seizures) and do not add myoclonic seizures when that coarse label is already the benchmark-facing seizure type.",
+    "When the note uses tonic clonic seizures without a generalized tonic clonic prefix, use tonic clonic seizures rather than generalized tonic clonic seizures.",
+    "When the note uses generalized tonic seizures without a clonic modifier, use generalized tonic seizures rather than generalized tonic clonic seizures.",
+    "Do not output an epilepsy diagnosis when the diagnosis header only lists seizure-type descriptors or possible JME without an established epilepsy diagnosis surface.",
+    "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or unsupported evidence."
+  ],
+  "module": "ExectS0S1FieldFamilyModule",
+  "predictor": "dspy.ChainOfThought",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_6_label_policy",
+  "signature": "ExectS0S1FieldFamilySignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

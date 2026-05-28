@@ -1,0 +1,519 @@
+{
+  "accuracies_valid_only": {
+    "monthly_frequency": 0.9285714285714286,
+    "normalized_label": 0.9285714285714286,
+    "pragmatic_category": 0.9285714285714286,
+    "purist_category": 0.9285714285714286
+  },
+  "analysis_scope": "record_ids_filter",
+  "boundary_case_counts": {
+    "monthly_match_label_surface_mismatch": 0,
+    "pragmatic_match_monthly_divergence": 0,
+    "purist_bin_boundary_within_pragmatic": 0,
+    "purist_match_monthly_divergence": 0
+  },
+  "divergence": {
+    "metric_pattern_counts": {
+      "0000": 1,
+      "1111": 13
+    },
+    "patterns": {
+      "0000": {
+        "count": 1,
+        "examples": [
+          {
+            "failure_class": "other_semantic_mismatch",
+            "gold_label": "1 per month",
+            "gold_monthly_frequency": 1.0,
+            "gold_pragmatic_category": "infrequent",
+            "gold_purist_category": "eq_1_per_month",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_14881"
+          }
+        ],
+        "label": "all_four_wrong",
+        "share_of_valid": 0.07142857142857142
+      },
+      "1111": {
+        "count": 13,
+        "examples": [
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_10509"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_10751"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_11221"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "no seizure frequency reference",
+            "gold_monthly_frequency": 0.0,
+            "gold_pragmatic_category": "no_seizure_information",
+            "gold_purist_category": "no_seizure_information",
+            "predicted_label": "no seizure frequency reference",
+            "predicted_monthly_frequency": 0.0,
+            "predicted_pragmatic_category": "no_seizure_information",
+            "predicted_purist_category": "no_seizure_information",
+            "record_id": "gan_11733"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "multiple per week",
+            "gold_monthly_frequency": 12.99,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+            "predicted_label": "multiple per week",
+            "predicted_monthly_frequency": 12.99,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_12130"
+          }
+        ],
+        "label": "all_four_match",
+        "share_of_valid": 0.9285714285714286
+      }
+    }
+  },
+  "failure_action_tier_counts": {
+    "benchmark_severe": 1
+  },
+  "failure_taxonomy_by_action_tier": {
+    "benchmark_severe": {
+      "other_semantic_mismatch": 1
+    },
+    "diagnostic_only": {},
+    "operational": {}
+  },
+  "failure_taxonomy_invalid": {},
+  "failure_taxonomy_scored_misses": {
+    "other_semantic_mismatch": 1
+  },
+  "metric_implications": {
+    "monthly_implies": {
+      "normalized_exact": 13,
+      "pragmatic": 13,
+      "purist": 13,
+      "total_monthly_match": 13
+    },
+    "normalized_exact_implies": {
+      "monthly": 13,
+      "pragmatic": 13,
+      "purist": 13,
+      "total_normalized_exact": 13
+    },
+    "purist_implies": {
+      "monthly": 13,
+      "pragmatic": 13,
+      "total_purist_match": 13
+    }
+  },
+  "record_counts": {
+    "analysis_total": 14,
+    "invalid_or_missing": 0,
+    "predicted": 14,
+    "scored_valid": 14,
+    "split_total": 299
+  },
+  "run_dir": "runs\\gan_s0_qwen35b_temporal_event_table_regression_slice_guardrails_20260519T233017Z",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "stratified_reporting": {
+    "gold_pragmatic_category": {
+      "frequent": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 1.0,
+          "normalized_label": 1.0,
+          "pragmatic_category": 1.0,
+          "purist_category": 1.0
+        },
+        "all_records": 6,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.0,
+        "operational_failures": 0,
+        "valid_scored": 6
+      },
+      "infrequent": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.75,
+          "normalized_label": 0.75,
+          "pragmatic_category": 0.75,
+          "purist_category": 0.75
+        },
+        "all_records": 4,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.25,
+        "operational_failures": 1,
+        "valid_scored": 4
+      },
+      "no_seizure_information": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 1.0,
+          "normalized_label": 1.0,
+          "pragmatic_category": 1.0,
+          "purist_category": 1.0
+        },
+        "all_records": 1,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.0,
+        "operational_failures": 0,
+        "valid_scored": 1
+      },
+      "unknown": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 1.0,
+          "normalized_label": 1.0,
+          "pragmatic_category": 1.0,
+          "purist_category": 1.0
+        },
+        "all_records": 3,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.0,
+        "operational_failures": 0,
+        "valid_scored": 3
+      }
+    },
+    "hard_case": {
+      "false": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.9285714285714286,
+          "normalized_label": 0.9285714285714286,
+          "pragmatic_category": 0.9285714285714286,
+          "purist_category": 0.9285714285714286
+        },
+        "all_records": 14,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.07142857142857142,
+        "operational_failures": 1,
+        "valid_scored": 14
+      },
+      "true": {
+        "accuracies_valid_only": {
+          "monthly_frequency": null,
+          "normalized_label": null,
+          "pragmatic_category": null,
+          "purist_category": null
+        },
+        "all_records": 0,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": null,
+        "operational_failures": 0,
+        "valid_scored": 0
+      }
+    },
+    "overall": {
+      "accuracies_valid_only": {
+        "monthly_frequency": 0.9285714285714286,
+        "normalized_label": 0.9285714285714286,
+        "pragmatic_category": 0.9285714285714286,
+        "purist_category": 0.9285714285714286
+      },
+      "all_records": 14,
+      "invalid_or_missing": 0,
+      "operational_failure_rate": 0.07142857142857142,
+      "operational_failures": 1,
+      "valid_scored": 14
+    },
+    "row_ok": {
+      "false": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 1.0,
+          "normalized_label": 1.0,
+          "pragmatic_category": 1.0,
+          "purist_category": 1.0
+        },
+        "all_records": 2,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.0,
+        "operational_failures": 0,
+        "valid_scored": 2
+      },
+      "true": {
+        "accuracies_valid_only": {
+          "monthly_frequency": 0.9166666666666666,
+          "normalized_label": 0.9166666666666666,
+          "pragmatic_category": 0.9166666666666666,
+          "purist_category": 0.9166666666666666
+        },
+        "all_records": 12,
+        "invalid_or_missing": 0,
+        "operational_failure_rate": 0.08333333333333333,
+        "operational_failures": 1,
+        "valid_scored": 12
+      }
+    }
+  },
+  "taxonomy_by_metric_misses": {
+    "monthly": {
+      "other_semantic_mismatch": 1
+    },
+    "normalized_exact": {
+      "other_semantic_mismatch": 1
+    },
+    "pragmatic": {
+      "other_semantic_mismatch": 1
+    },
+    "purist": {
+      "other_semantic_mismatch": 1
+    }
+  },
+  "temporal_candidate_diagnostics": {
+    "gold_covered_count": 10,
+    "gold_covered_rate": 0.7142857142857143,
+    "note": "Diagnostic temporal-candidate coverage only; benchmark-facing metrics use gan_frequency_deterministic_v1 on model predictions.",
+    "records": [
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_10509"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_10751"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "unknown",
+        "record_id": "gan_11221"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_labels": [],
+        "candidates": [],
+        "gold_in_candidates": false,
+        "gold_label": "no seizure frequency reference",
+        "record_id": "gan_11733"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "multiple per week"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "multiple per week",
+            "derivation": "qualitative several-times-per-week phrasing maps to multiple per week",
+            "event_count": "multiple",
+            "evidence_text": "focal sensory occur several times each week, particularly in the evenings",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "multiple per week",
+        "record_id": "gan_12130"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "5 per 2 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "5 per 2 month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "5",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just five generalised tonic-clonic seizures documented this year to date",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "5 per 2 month",
+        "record_id": "gan_12810"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "9 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "9 per month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "9",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just nine generalised tonic-clonic seizures documented this year to date",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "9 per month",
+        "record_id": "gan_12823"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "4 cluster per 3 month, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "4 cluster per 3 month, multiple per cluster",
+            "derivation": "explicit cluster count over a calendar quarter",
+            "event_count": "4 cluster",
+            "evidence_text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "4 cluster per 3 month, multiple per cluster",
+        "record_id": "gan_10052"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per week, multiple per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per week, multiple per cluster",
+            "derivation": "weekly cluster cadence without a documented per-cluster multiplier",
+            "event_count": "1 cluster",
+            "evidence_text": "Weekly morning clusters reported; number per cluster not documented",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "record_id": "gan_10003"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 cluster per week, 3 to 4 per cluster"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 cluster per week, 3 to 4 per cluster",
+            "derivation": "weekly cluster cadence with explicit per-cluster count range",
+            "event_count": "1 cluster",
+            "evidence_text": "Cluster burden increased since 28 Jun 2020; now weekly, 3 or 4 per cluster",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 cluster per week, 3 to 4 per cluster",
+        "record_id": "gan_10410"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per year"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per year",
+        "record_id": "gan_13123"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 per 3 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 per 3 month",
+        "record_id": "gan_14485"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "1 per month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last recorded event falls roughly one month before the clinic date",
+            "event_count": "1",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "1 per month",
+        "record_id": "gan_14881"
+      },
+      {
+        "candidate_count": 1,
+        "candidate_labels": [
+          "2 to 3 per 15 month"
+        ],
+        "candidates": [
+          {
+            "canonical_label": "2 to 3 per 15 month",
+            "derivation": "count range is anchored to an explicit prior month/year",
+            "event_count": "2 to 3",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep",
+            "window_count": "15",
+            "window_unit": "month"
+          }
+        ],
+        "gold_in_candidates": true,
+        "gold_label": "2 to 3 per 15 month",
+        "record_id": "gan_15306"
+      }
+    ]
+  }
+}

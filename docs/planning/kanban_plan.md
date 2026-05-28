@@ -2,50 +2,38 @@
 
 **Active steering doc** - future work only. Closed pathways, rejected arms, and detailed walkthroughs live in [kanban_frozen_threads_history.md](kanban_frozen_threads_history.md) and the linked experiment notes.
 
-**Last refreshed:** 2026-05-28
+**Last refreshed:** 2026-05-28 (morning refresh — ExECT deep review E1–E6 cards added)
 
 ## Current Priorities
 
-1. **Re-run the winning R11 D1 arm on full validation.** D1 (deterministic date/events candidates) won the cap-25 gate with +4pp (GPT-4) and +8pp (Qwen-35B) monthly accuracy. Confirmatory full validation is required for promotion.
-2. **Repository cleanup (R38).** Clean up and archive old configurations, runs, and scripts to prepare the codebase for full validation and test-holdout runs.
-3. **Keep optimizer work gated by the R14 postmortem.** Prior GEPA failures are arm rejects; Qwen GEPA remains blocked.
-4. **Use the paper-reproduction scorer before comparing to Gan 2026 paper numbers.** Keep canonical Gan metrics separate from author-evaluator compatibility metrics.
+1. **ExECT frequency fundamentals first (E1).** Build and audit the deterministic frequency event payload before any more model runs on ExECT frequency. No-model coverage was 11.6%; this must improve before E2.
+2. **Explain holdout drops before new tuning (E5).** S1 drops −14.5pp and S5 frequency drops −26.8pp validation→holdout. Do not reopen validation-side tuning until the shift is diagnosed.
+3. **Keep optimizer work gated by the R14 postmortem.** Prior GEPA failures are arm rejects; Qwen GEPA remains blocked until a hosted compact-delta gate clears.
+4. **Use the paper-reproduction scorer before comparing to Gan 2026 paper numbers.** Keep canonical Gan metrics separate from `gan2026_paper_reproduction` scorer mode.
 5. **Preserve reproducibility and scorer semantics.** No scorer, loader, gold-label, or test-holdout behavior changes without explicit tests and documentation.
 
 ## Carry-Forward Signals
 
 | Finding | Implication |
 | --- | --- |
-| ExECT paper defaults are stable. | Use the May 25 table pack and claims/caveats note; reopen ExECT only for a concrete paper claim or targeted S5 frequency iteration. |
-| Gan default remains GPT-led. | Builder-gap v1 is the operational default: GPT 80.6% monthly vs Qwen 70.7%; Qwen work should be narrow transfer/calibration, not broad mechanism search. |
-| Gan R9/Qwen recovery improved schema validity but did not become the holdout candidate. | Keep R9 as schema-recovery evidence after R10; do not tune from test-holdout outcomes. |
-| R11 D1 won; R12 C1 & R13 S1-S4 rejected. | Deterministic date/events (D1) passes to integration/full-val. Pre-tagging entities (C1) causes severe context-loss regression. Self-consistency aggregation (S1-S4) offers 0% variance and 0.0pp gain. |
+| ExECT paper defaults are stable on validation. | Use the May 25 table pack and claims/caveats note; reopen ExECT only for E1–E6 cards, a concrete paper claim, or targeted S5 frequency iteration. |
+| ExECT holdout drops are large and unexplained. | S1 GPT drops −14.5pp (92.3 → 77.8); S5 GPT frequency drops −26.8pp (73.9 → 47.1). Do not treat validation behavior as stable; E5 holdout shift audit is required before new paper frequency claims. |
+| ExECT frequency fundamentals are skipped. | No-model frequency candidate coverage was only 11.6% in the prior audit. The frequency verifier compensates for a weak substrate; E1 must expose a typed event payload before more model frequency tuning. |
+| Section-aware S1 failed as a prompt routing arm, not as a mechanism. | Deterministic family-span/list payload (E3) remains open. Do not conflate prompt-routing rejection with mechanism rejection. |
+| Medication temporality is benchmark-ambiguous. | S4 temporality is excluded from S5 defaults; target definition (E4) must precede further model work on this family. |
+| Gan default remains GPT-led. | Builder-gap v1 is the operational default: GPT 80.6% monthly vs Qwen 70.7%. D1 v1.2b reaches 79.9% with schema guard only; calculator + anchor guardrail discarded. Qwen work should be narrow transfer/calibration, not broad mechanism search. |
+| Gan Qwen exact-policy ceiling is 71.3% monthly. | R1.1 schema-guard full validation (299 records) achieved 71.3% monthly, 79.2% Purist, 83.9% Pragmatic, 93.3% schema validity. Held after R10; builder-gap v1 Qwen (70.7%) remains the test-holdout baseline. |
+| R11 D1 won; R12 C1 & R13 S1-S4 rejected. | Deterministic date/events (D1) integrated. Pre-tagging entities (C1) causes severe context-loss regression. Self-consistency (S1-S4) has 0% variance and 0.0pp gain at temp 0.7. |
 | R14 GEPA postmortem is complete. | Qwen GEPA is not justified now; reopen only through a hosted compact-delta gate with instruction-length, semantic-label, schema, evidence, and token/cost controls. |
+| Paper evidence is frozen. | Table pack (May 25), claims/caveats note, and experiment registry (215 rows) are current. Do not change scorer semantics or bridges without updating the table pack. |
 | Rejected arms remain rejected. | S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms need new preregistrations to reopen. |
 | Tool-during and GEPA remain open mechanisms with prior failed arms. | New work must isolate interface/objective/model track and compare against equivalent pre/post deterministic helpers. |
-| Gan scorer comparison found a paper-reproduction mismatch. | Current canonical metrics must not be compared to Gan 2026 paper numbers without an explicit `gan2026_paper_reproduction` scorer mode. |
+| Gan scorer has a paper-reproduction mismatch. | Current canonical metrics must not be compared to Gan 2026 paper numbers without the explicit `gan2026_paper_reproduction` scorer mode (infrastructure complete). |
 
 
 ### Ready
 
-### R38 - Clean up and Archive Historical Configurations, Runs, and Scripts
-
-- **Outcome:** Clean repository layout with historical items in archive directories, typo directories deleted, and runner scripts restructured.
-- **Axis:** Repository maintenance / ablation readiness.
-- **Dependencies:** None.
-- **Parallelizable:** Yes, does not affect active run queue logic.
-- **Owner:** unassigned.
-- **Validation:** `validate_primitives.py` checks pass; smoke run verifies path resolution is intact.
-- **Notes:** Move old config JSONs, local runs, and one-off/detached scripts to `archive/` directories. Delete `configs/experiments` typo directory.
-
-### R39 - Run R11 D1 Full Validation Replay
-
-- **Outcome:** Rerun the winning R11 D1 arm on the full Gan 2026 synthetic validation split (299 records) to confirm the accuracy improvement.
-- **Axis:** Gan S0 temporal/date validation.
-- **Dependencies:** D1 cap-25 gate pass.
-- **Parallelizable:** Yes, once local Ollama resources are free.
-- **Owner:** unassigned.
-- **Validation:** Full-validation metrics table, error analysis, and formal promotion review documentation.
+*(No active Ready cards)*
 
 ## In Progress
 
@@ -54,6 +42,60 @@
 ## Active Threads
 
 These threads are no longer backlog. Keep them visible and proceed as soon as their dependencies or gates clear.
+
+### E1 - ExECT Frequency Event Payload No-Model Audit
+
+- **Outcome:** Deterministic typed payload for ExECT seizure-frequency evidence; no-model coverage audit on validation split before any model run. Coverage must rise materially above 11.6% (prior audit) before proceeding to E2.
+- **Dependencies:** None. Implement alongside current `exect.primitives` and run against validation split.
+- **Parallelizable:** yes, no model calls required.
+- **Owner:** unassigned.
+- **Validation:** Report coverage by template class: quantified rate, implicit rate, qualitative change, seizure-free, seizure-free-since-year, zero-rate window, multi-type block. Stop if coverage stays low.
+- **Notes:** Direct analogue of Gan D1 deterministic date/event payload. Prior no-model coverage was only 11.6%; do not spend another model run on ExECT frequency until this audit improves that baseline. See [exect_task_deep_review_20260528.md](../experiments/exect/exect_task_deep_review_20260528.md).
+
+### E2 - ExECT Frequency Event Payload Cap-25 Integration
+
+- **Outcome:** Inject E1 payload into current S5 v2b stack; cap-25 comparison against promoted S5 baseline.
+- **Dependencies:** E1 (no-model coverage must be materially above 11.6% and inspectable).
+- **Parallelizable:** only after E1 gate clears.
+- **Owner:** unassigned.
+- **Validation:** Cap-25 S5; compare frequency precision/recall/F1, S5 micro, and non-frequency family regressions. Reject arm if gains come only from recall collapse or if diagnosis/seizure/medication/investigation regress materially.
+- **Notes:** Promotion gate: frequency F1 +3pp or precision +5pp without recall loss >3pp.
+
+### E3 - Deterministic Family-Span Primitive
+
+- **Outcome:** Implement `exect.sections.family_spans.v1` as a structured payload (not a section-aware prompt decomposition). No-model evidence coverage audit, then one-family cap-25 injection.
+- **Dependencies:** None for the primitive; E1 should guide which family to inject first (likely frequency or seizure type).
+- **Parallelizable:** primitive can be built in parallel with E1; cap-25 injection only after coverage audit.
+- **Owner:** unassigned.
+- **Validation:** No-model: gold evidence quote coverage, family-span recall, false-family span count. Cap-25: one high-error family first.
+- **Notes:** Section-aware S1 prompt arm rejection does NOT close this mechanism. This is a deterministic span payload, not a prompt routing arm.
+
+### E4 - Medication Lifecycle Audit
+
+- **Outcome:** Decide whether medication temporality is a benchmark target, clinical auxiliary target, or excluded noisy family. No-model audit first.
+- **Dependencies:** None.
+- **Parallelizable:** yes, no model calls for the audit.
+- **Owner:** unassigned.
+- **Validation:** Compare lifecycle table against annotated medication gold and medication-temporality gold separately; stratify by current/previous/planned/taper/stop/non-ASM/dose-only.
+- **Notes:** Do not tune further on medication temporality until E4 defines the target. S5 exclusion of temporality remains default.
+
+### E5 - S1/S5 Holdout Residual and Bridge/Prompt Causal Split
+
+- **Outcome:** Explain how much S1/S5 performance comes from prompt policy, model extraction, and deterministic bridge normalization. Produce holdout residual samples by family.
+- **Dependencies:** None; uses existing run artifacts.
+- **Parallelizable:** yes, analysis only.
+- **Owner:** unassigned.
+- **Validation:** Validation + holdout replay (no holdout tuning); raw vs post-bridge output; family-level residual taxonomy. Output informs whether Qwen-specific or holdout-specific fixes are warranted.
+- **Notes:** S1 validation 92.3 → holdout 77.8 for GPT (−14.5pp). S5 frequency validation 73.9 → holdout 47.1 for GPT (−26.8pp). These drops require explanation before new validation-tuning cycles.
+
+### E6 - CUI-Aware Scorer Replay
+
+- **Outcome:** Unblock Table 1-style benchmark reproduction; identify ontology-level sensitivity.
+- **Dependencies:** None for scorer-only replay; required before any published-benchmark reproduction claim.
+- **Parallelizable:** yes, scorer-only, no model calls.
+- **Owner:** unassigned.
+- **Validation:** Scorer-only replay over gold labels and current predictions; no program changes; report metric deltas and label classes affected.
+- **Notes:** Prerequisite for any CUI-aware Table 1 reproduction claim. Keep separate from canonical project metrics.
 
 ### A3 - Analyze S1 Qwen Seizure-Type Local Gap
 
@@ -191,45 +233,53 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 
 ## Done Or Frozen
 
-| Area | Status |
+Full decision notes and run IDs live in decision docs linked below and in [kanban_frozen_threads_history.md](kanban_frozen_threads_history.md).
+
+### Recent completions (May 28)
+
+| Item | Outcome | Decision doc |
+| --- | --- | --- |
+| R38 - Repo cleanup | 279 configs + 460 runs archived; typo dir deleted. | — |
+| R39 / R15 - D1 full val + guardrail ablation | D1 v1.2b: **79.9% monthly** (schema guard only). Calculator −6.2pp, anchor guardrail −4.6pp discarded. Not promoted; builder-gap v1 (80.6%) remains default. | [r15 decision](../experiments/gan/gan_s0_r15_d1_guardrail_ablation_decision_20260528.md) |
+| R32/R33 - Gan temporal/date ablations | D1 won cap-25. D2 (LLM) lifted 24%→40% with CoT but trails D1 (96%). | [r11 decision](../experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md) |
+| R34/R35 - CLINES entity-first gate | C1 rejected; severe context-loss regression. | [r12 decision](../experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md) |
+| R36/R37 - Self-consistency variance probe | S1–S4 rejected; 0% variance at temp 0.7, 0.0pp gain. | [r13 decision](../experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md) |
+| R14 - GEPA postmortem | Qwen GEPA blocked; compact-delta gate required before reopening. | [r14 doc](../experiments/gan/gan_s0_r14_gepa_failure_postmortem_qwen_gate_design_20260528.md) |
+| A5/A6 - Test-holdout runs + report | Holdout queue complete. Large drops flagged (see Carry-Forward). | [holdout report](../experiments/synthesis/test_holdout_evaluation_report_20260527.md) |
+| ExECT task deep review | E1–E6 cards added to Active Threads. Frequency fundamentals identified as primary gap. | [deep review](../experiments/exect/exect_task_deep_review_20260528.md) |
+
+### Earlier completions (May 25–27)
+
+| Item | Outcome |
 | --- | --- |
-| R32 / R33 - Run & Analyze Gan Temporal/Date Ablations | Done; D1 (deterministic date/events candidates) won the cap-25 gate. D2 (LLM extractor) was subsequently debugged and refined (ChainOfThought + calendar math cues), lifting D2 accuracy from 24% to 40% (GPT-4), though it still trails D1 (96%). [gan_s0_r11_temporal_date_stage_decision_20260528.md](../experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md). |
-| R34 / R35 - Run & Analyze CLINES Entity-First Pipeline Gate | Done; C1 (LLM entity tags) rejected due to severe regression from context-loss. [gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md](../experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md). |
-| R36 / R37 - Run & Analyze Self-Consistency Variance Probe | Done; S1-S4 majority aggregation rejected due to zero variance under temp 0.7 and 0.0pp gain. [gan_s0_r13_self_consistency_variance_probe_decision_20260528.md](../experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md). |
-| A5 - Test/Holdout Runs | Done; test-holdout queue completed successfully. |
-| A6 - Report Overnight Test-Holdout Queue | Done; test-holdout evaluation report completed in [test_holdout_evaluation_report_20260527.md](../experiments/synthesis/test_holdout_evaluation_report_20260527.md). |
-| R12 - Design CLINES-Style Entity-First Pipeline Gate | Done; [gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md](../experiments/gan/gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md) defines `gan_s0_entity_first_stage_graph_gpt_cap25_v1`, C0-C2 arms, entity tag interface, gates, and R11 integration decision rules. |
-| R11 - Preregister Gan Temporal/Date-Stage Ablation Grid | Done; [gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md](../experiments/gan/gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md) defines `gan_s0_temporal_date_stage_gpt_cap25_v1`, `g3_date_events_candidates_adjudicate`, D0-D4 arms, config plan, gates, and temporal-error slice reporting. |
-| R13 - Self-Consistency Variance Probe | Done; [gan_s0_self_consistency_variance_probe_preregistration_20260528.md](../experiments/gan/gan_s0_self_consistency_variance_probe_preregistration_20260528.md) defines `gan_s0_self_consistency_compute_allocation_gpt_cap25_v1` over frozen Gan builder-gap v1, S0-S4 aggregation arms, variance diagnostics, cost/latency reporting, and cap-25 gates. No model runs launched. |
-| R14 - GEPA Failure Postmortem And Qwen Gate Design | Done; [gan_s0_r14_gepa_failure_postmortem_qwen_gate_design_20260528.md](../experiments/gan/gan_s0_r14_gepa_failure_postmortem_qwen_gate_design_20260528.md) concludes compact Qwen GEPA is not justified now; Qwen GEPA stays blocked until a hosted compact-delta instruction clears a cap gate. No model runs launched. |
-| R31 - Implement Gan 2026 Paper-Reproduction Scorer Mode | Done; added explicit `gan2026_paper_reproduction` scorer infrastructure alongside canonical `gan_frequency_deterministic_v1`, with author-evaluator compatibility conversion, CLI mode/options reporting, regression coverage, and Gan audit caveat. Existing Gan metrics remain under their recorded scorer semantics until explicitly replayed. |
-| R10 - Write Gan Promotion/Holdout Selection Review | Done; [gan_s0_r10_promotion_holdout_selection_review_20260526.md](../experiments/gan/gan_s0_r10_promotion_holdout_selection_review_20260526.md) selects builder-gap v1 GPT/Qwen for Gan test-holdout reporting and holds R9 as schema-recovery validation evidence. |
-| A2 - Run Best-Closed Comparison Anchors | Done; [exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md](../experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md) adds the S5 GPT 5.5 fixed-stack anchor. S4 GPT 5.5 already existed; S5 GPT 5.5 did not improve the overall headline, so no further A2 anchor is pulled without a new paper claim need. |
-| R4 - Refresh Experiment Registry For Current Defaults | Done; registry row count is 215, with current ExECT clean-ladder/S5 defaults including the A2 GPT 5.5 S5 anchor, Gan builder-gap defaults, late R9 recovery evidence, GPT exact-policy comparison, and superseded F0/hybrid-resolution artifacts marked. |
-| Gan R9 - Address Gan Quantified Unknown Hybrids Upstream | Done; v1.8 prompt paired with prediction-bridge recovery policy improved schema validity (99.7%, 298 valid predictions) but is held after R10, not promoted to holdout. |
-| Gan R1.1 schema-guard cap-25 (R1.1c) | Done; run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260526T092006Z` has 100% schema validity, 100% evidence support, 68.0% monthly accuracy, 76.0% Purist, and 84.0% Pragmatic accuracy. Decision: Pass; proceed to full R1.1 replay. |
-| Gan R1.1 schema-guard full validation replay | Done; run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T092508Z` completed with 93.3% schema validity, 98.9% evidence support, 71.3% monthly, 79.2% Purist, and 83.9% Pragmatic accuracy. Clean rejections (20 records) successfully converted to abstentions; inequality operator bug fixed. |
-| ExECT S5 v2b verifier + AM guard | Promoted for current operational default. |
-| ExECT S5 Qwen true-v2b transfer | Done; accepted near-parity, not Qwen-leading. |
-| ExECT S1/S2/S3 clean-ladder Qwen correction/replay | Done; use clean ladder for current breadth story. |
-| ExECT S2/S3 clean-ladder GPT validation | Done. |
-| Gan G0 builder-gap v1 | Frozen operational default; GPT 80.6%, Qwen 70.7% monthly. |
-| Gan L2 Qwen forensics | Done; enables only the narrow exact-policy slice or surface-repair tests. |
-| Gan L2 Qwen exact-policy slice | Done; run `gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama_20260525T160918Z` has 82.4% monthly accuracy but failed schema/canonical gate (94.4% schema, "many per month" non-canonical). Decision: Hold/Redesign; v1.8 schema-validity patch is now ready for rerun. |
-| Gan L2 Qwen exact-policy cap-25 follow-up | Done and superseded by R1.1 full validation; v1.7 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T162702Z` has 69.6% monthly accuracy and 92% schema validity. v1.8 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T171037Z`, post-hoc re-evaluated under the tightened validator, has 72.0% monthly and 100% schema validity. |
-| Gan R1.1 exact-policy full validation | Done; run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T054752Z` has 70.3% monthly, 78.4% Purist, 83.3% Pragmatic, 90.0% schema validity, 58.0% normalized-label accuracy, and 98.9% evidence quote support over 299 validation records. Invalid-schema error report completed in [gan_s0_r1_1_invalid_schema_error_report_20260526.md](../experiments/gan/gan_s0_r1_1_invalid_schema_error_report_20260526.md). Decision: do not promote as-is; pursue R5-R8 schema-validity follow-ups. |
-| Gan R1.1 schema-guard follow-up R5-R8 | Done; regression fixtures, no-reference abstention repair, final-label canonical guard, and narrow inequality repair are implemented/tested. Decision note: [gan_s0_r1_1_schema_guard_followup_20260526.md](../experiments/gan/gan_s0_r1_1_schema_guard_followup_20260526.md). |
-| Paper result table pack refresh | Done; [paper_result_table_pack_20260525.md](../experiments/synthesis/paper_result_table_pack_20260525.md) supersedes the 2026-05-24 table pack for current manuscript tables. |
-| Manuscript claims/caveats draft | Done; [paper_claims_caveats_20260525.md](../experiments/synthesis/paper_claims_caveats_20260525.md) separates supported, plausible, risky, and unsupported claims. |
-| S5 per-family parallel ceiling | Rejected after cap-25; no full validation. |
-| Gan unknown-overuse, GEPA G1/G2 | Rejected. |
-| Paper evidence freeze D1-D3 and workflow readiness | Done. |
+| R31 - Gan paper-reproduction scorer | `gan2026_paper_reproduction` mode added alongside canonical scorer; regression tests pass. |
+| R10 - Gan holdout selection review | Builder-gap v1 GPT/Qwen selected; R9 held as schema-recovery evidence. |
+| Gan R1.1 schema-guard (cap-25 + full val) | 71.3% monthly, 93.3% schema validity (299 records); held, not promoted. Qwen ceiling characterized. |
+| Gan R9 unknown-hybrid recovery | 99.7% schema validity; held after R10, not promoted to holdout. |
+| A2 - Best-closed GPT-5.5 anchor | S5 GPT-5.5 anchor added; did not improve headline. No further anchor without new claim. |
+| R4 - Experiment registry refresh | 215 rows; current defaults and superseded artifacts marked. |
+| ExECT S5 v2b verifier + AM guard | Promoted; current ExECT S5 operational default. |
+| ExECT S1/S2/S3 clean-ladder Qwen | Clean ladder is the current breadth story baseline. |
+| Paper table pack + claims/caveats | May 25 table pack and claims/caveats note are current; paper evidence frozen. |
+
+### Rejected arms
+
+| Arm | Rejection reason |
+| --- | --- |
+| S5 per-family parallel ceiling | Cap-25 null; context fragmentation. |
+| Gan unknown-overuse guard | Cap-25 reject; overconstrained. |
+| GEPA G1/G2 (Qwen direct) | Mechanism failed; now postmortem-gated. |
+| C1 CLINES entity-first | Severe context-loss regression. |
+| S1–S4 self-consistency aggregation | Zero variance; zero gain. |
+| High-precision frequency pruning | Recall collapse. |
+| Medication temporal guard (broad) | Recall collapse; S4 family target undefined. |
 
 ## Operational Defaults
 
 | Surface | Current default | GPT 4.1-mini | Qwen3.6:35b | Caveat |
 | --- | --- | ---: | ---: | --- |
-| Gan S0 | builder-gap v1 | 80.6% monthly | 70.7% monthly | Synthetic validation; Qwen gap characterized but not closed. |
+| Gan S0 (paper default) | builder-gap v1 | 80.6% monthly | 70.7% monthly | Synthetic validation; Qwen gap characterized but not closed. |
+| Gan S0 D1 pipeline best | D1 v1.2b (`v1_2b_schema_guard_only`) | 79.9% monthly | — | Schema guard only; calculator + anchor guardrail discarded (R15 ablation). Within 0.7pp of builder-gap v1. |
 | ExECT S1 | clean v2 for Qwen ladder; GPT frozen S1 anchor | 92.3% micro | 85.9% micro | Qwen clean v2 is the comparable local ladder anchor. |
 | ExECT S2 | clean ladder v1 | 82.7% micro | 84.4% micro | Transferable AM guard included. |
 | ExECT S3 | clean ladder v1 | 74.4% micro | 75.3% micro | Cause remains sparse/weak. |
@@ -238,24 +288,25 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 
 ## Dependency Notes
 
-- R11/R12/R13 runs and analysis are complete.
-- R39 (R11 D1 full validation) requires the validated D1 candidate program variant.
-- R14 is complete; Qwen GEPA stays blocked unless a hosted compact-delta gate first produces a short passing instruction.
-- R31 scorer infrastructure is complete; direct Gan 2026 paper comparisons must use `gan2026_paper_reproduction` and report its options.
+- R11/R12/R13/R14/R31/R38/R39/R15: all complete; see Done Or Frozen.
+- Qwen GEPA stays blocked; a hosted compact-delta gate must clear first.
+- Direct Gan 2026 paper comparisons must use `gan2026_paper_reproduction` scorer mode and report its options.
+- E2 is gated by E1 coverage audit; do not run E2 if no-model coverage stays near 11.6%.
 - A3 depends on paper narrative need; A4 requires a new preregistration and cap-25 gate before full validation.
 - B1 and B2 require explicit protocol decisions before implementation.
 
 ## Parallelization Opportunities
 
-- **Safe now:** R38 cleanup, R39 full validation planning.
+- **Safe now (no model calls):** E1 frequency payload audit, E3 family-span primitive design, E4 medication lifecycle audit, E5 holdout causal split analysis, E6 CUI scorer replay.
 - **Single-threaded:** Any Qwen/Ollama model execution, full validation runs, and future GEPA gates.
-- **Blocked together:** B1 and B2 depend on reporting/scorer protocol decisions.
-- **Proceed after gates:** A7 after reviewing R11/R12 interfaces; A3 after paper-need confirmation; A4 after a new preregistration.
+- **Blocked together:** B1 and B2 depend on reporting/scorer protocol decisions; E2 is blocked by E1 coverage gate.
+- **Proceed after gates:** A7 after reviewing R11/R12 interfaces; A3 after paper-need confirmation; A4 after a new preregistration; E2 after E1.
 
 ## Recommended Next Pull
 
-1. **R39 - Run R11 D1 Full Validation Replay.** Confirm the D1 (+4pp/+8pp) signal on the full validation split.
-2. **R38 - Clean up and Archive Historical Configurations, Runs, and Scripts.** Prepare the codebase structure for cleaner run logging.
+1. **E1 - ExECT Frequency Event Payload No-Model Audit.** Build a deterministic typed ExECT frequency event payload and run a no-model coverage audit on the validation split. This is the Gan D1 analogue for ExECT: expose the weak LLM subproblem as a structured intermediate before spending more model runs on frequency. Requires no model calls.
+2. **E5 - S1/S5 Holdout Residual and Bridge/Prompt Causal Split.** Explain the large validation-to-holdout drops (S1: −14.5pp GPT, S5 frequency: −26.8pp GPT) before new validation tuning. Analysis only; no model calls.
+3. **E3 - Deterministic Family-Span Primitive (design phase).** Design and implement the `exect.sections.family_spans.v1` primitive. Can proceed in parallel with E1/E5.
 
 ## Standing Guardrails
 

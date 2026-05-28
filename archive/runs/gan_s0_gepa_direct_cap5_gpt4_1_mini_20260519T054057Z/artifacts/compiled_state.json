@@ -1,0 +1,25 @@
+{
+  "extract": {
+    "demos": [],
+    "lm": null,
+    "signature": {
+      "fields": [
+        {
+          "description": "Clinical neurology note text",
+          "prefix": "Note Text:"
+        },
+        {
+          "description": "Seizure frequency in Gan label format. One of: '{count} per {unit}' e.g. '2 per week', '1 per 3 month'; '{count} cluster per {unit}, {n} per cluster'; 'unknown'; 'no seizure frequency reference'; or null to abstain. Unit must be singular: day/week/month/year.",
+          "prefix": "Seizure Frequency Number:"
+        },
+        {
+          "description": "Direct verbatim quote from the note supporting the label. Null if abstaining.",
+          "prefix": "Evidence Text:"
+        }
+      ],
+      "instructions": "Extract the seizure-frequency label and the exact supporting evidence text from a clinical note, strictly following the Gan annotation vocabulary and normalization conventions described below. Output only the two fields: the seizure frequency label and the evidence text as an exact contiguous quote from the note. Do not include any additional reasoning or explanations.\n\nTask requirements and guidance:\n\n1. **Label vocabulary and format**  \n   Output only canonical Gan labels in one of these formats:  \n   - N per unit  \n   - N to M per unit  \n   - N per M unit  \n   - N cluster per unit  \n   - M per cluster  \n   - seizure free for N unit  \n   - unknown  \n   - no seizure frequency reference  \n\n2. **Units**  \n   Use only singular forms for temporal units: day, week, month, year.  \n   Always choose the highest current quantified seizure-type frequency mentioned in the note (if multiple frequencies described, pick the maximum).\n\n3. **Normalization rules**  \n   - Convert expressions such as \"daily\" or \"nightly\" to \"1 per day.\"  \n   - Convert \"every N unit\" to \"1 per N unit.\"  \n   - Convert numeric \u201cor\u201d ranges like \"2 or 3 per month\" to \"2 to 3 per month.\"  \n   - For clusters, use the full cluster format without dropping any part (e.g., \"3 cluster per week\" or \"4 per cluster\" must include both numbers if given).  \n   - For year-to-date seizure counts, divide the count by the number of months that have elapsed since January, to create a per-month rate.  \n   - When a note states observation is \"over the last quarter\" with a per-month seizure rate, treat this as a direct observation window and do not automatically aggregate or convert the unit to \"per 3 months.\"\n\n4. **Seizure freedom**  \n   Only output labels like \"seizure free for N unit\" if the period of seizure freedom is at least 6 months.  \n   If seizure freedom is reported for less than 6 months, instead compute the seizure frequency rate from the total events described over that period.\n\n5. **When to abstain**  \n   Output \"no seizure frequency reference\" if the note contains no usable or explicit seizure-frequency information.\n\n6. **Evidence text**  \n   The evidence supporting the extracted label must be an exact contiguous quote from the note text.  \n   Do not alter or add to the quoted text; do not paraphrase.\n\n7. **No hidden reasoning**  \n   Do not provide internal reasoning, assumptions, or additional interpretation in the output. Output only the seizure-frequency label and the exact evidence text as specified.\n\n8. **Additional considerations**  \n   - If multiple seizure types or frequencies are reported, choose the highest frequency for current seizures.  \n   - Carefully normalize all numeric ranges and temporal units as specified to match the Gan labels exactly.  \n   - Follow the example feedback tightly: e.g., a note stating \"2 to 3 events since May 2016\" observed today in September 2017 corresponds to \"3 to 4 per 16 month,\" because 16 months have elapsed since May 2016 to September 2017, and the label should reflect the highest rate within that period with correct rounding and denominators.\n\nThe final output must strictly respect the above detailed instructions to ensure alignment with Gan annotation standards and benchmark expectations."
+    },
+    "traces": [],
+    "train": []
+  }
+}

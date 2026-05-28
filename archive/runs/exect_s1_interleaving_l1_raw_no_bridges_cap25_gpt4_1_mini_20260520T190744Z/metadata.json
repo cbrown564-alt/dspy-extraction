@@ -1,0 +1,33 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-20T19:07:44.315221Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_interleaving_l1_raw_no_bridges_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Diagnostic cap-25 gate for exect_s1_interleaving_gpt_validation_v2; not a full-validation performance estimate.",
+    "L1 raw arm: repair_policy raw_no_benchmark_bridges.",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_interleaving_l1_raw_no_bridges_cap25_gpt4_1_mini_20260520T190744Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

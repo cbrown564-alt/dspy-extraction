@@ -1,0 +1,36 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T10:06:48.372095Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_semantic_gepa_cap25_gpt4_1_mini",
+    "prompt_version": "gan_frequency_s0_synthesis_v1_gepa_semantic",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The GEPA feedback metric semantic_frequency_with_evidence_feedback is optimizer-facing only and does not replace gan_frequency_deterministic_v1 scoring.",
+    "Report selected GEPA instruction length and compile/prediction latency alongside label metrics.",
+    "Compare against verify-repair v2 and semantic bootstrap on the same capped validation slice before any full validation.",
+    "This capped validation config is not published Gan benchmark reproduction."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "run_id": "gan_s0_semantic_gepa_cap25_gpt4_1_mini_20260519T100648Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

@@ -1,0 +1,12 @@
+{
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication"
+  ],
+  "label_policy": "Audited benchmark-facing diagnosis, seizure-type, and annotated-medication labels only; medication temporality is not scored.",
+  "module": "ExectS0S1FieldFamilyModule",
+  "prompt_version": "exect_s0_s1_field_family_v1",
+  "signature": "ExectS0S1FieldFamilySignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-21T00:52:26.123218Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_full_ladder_l0_bootstrap_cap25_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_l0_minimal",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Thesis group exect_s1_ladder_optimizer_automation_v1; see docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md.",
+    "Compile metric exect_field_family_micro_f1_raw (no bridges); eval raw_no_benchmark_bridges.",
+    "Contrast with exect_s1_optimizer_bootstrap_cap25 (v4_10 prompt, bridges on) which regressed to 90.7% micro.",
+    "Trainset: first 40 exectv2_fixed_v1:train records; cap-25 validation eval.",
+    "Success bar: within 3pp of 95.8% hand-crafted cap-25 without v4_10 policy in prediction path."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_full_ladder_l0_bootstrap_cap25_gpt4_1_mini_20260521T005226Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

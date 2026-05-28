@@ -1,0 +1,37 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-26T18:40:57.733743Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s0_s1_validation_test_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "schema_level": "exect_s0_s1_field_family",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This is the one-shot held-out ExECTv2 fixed test split (40 records); do not tune on these results.",
+    "Frozen prompt exect_s0_s1_field_family_v4_10_label_policy \u2014 compare to dev validation anchor 92.3% (runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z) with full partial-view caveats.",
+    "This is not published ExECTv2 benchmark reproduction (CUI-aware, all annotation families).",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Medication temporality is intentionally excluded from benchmark-facing metrics for this baseline.",
+    "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s0_s1_validation_test_gpt4_1_mini_20260526T184057Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:test"
+}

@@ -1,0 +1,66 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "artifact_epilepsy_cause_k0_k1_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s4_validation_full_gemini31_flash_lite",
+  "hypothesis": "Frozen ExECT S4 K0+K1 cause-bridge field-family pass on the full fixed validation split (40 records) with Gemini 3.1 Flash-Lite establishes hosted-model comparison evidence against GPT and Qwen S4 anchors under exect_gemini_ladder_replay_v1.",
+  "max_records": null,
+  "metric_caveats": [
+    "Comparison group exect_gemini_ladder_replay_v1; varied_factor model_track.",
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 Table 1 reproduction.",
+    "These are partial ExECT S4 diagnostics (eleven families), not CUI-aware all-family benchmark reproduction.",
+    "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
+    "GPT 4.1-mini frozen anchor: runs/exect_s4_validation_full_gpt4_1_mini_20260520T071248Z (65.5% micro F1).",
+    "Qwen3.6:35b anchor: runs/exect_s4_validation_full_qwen35b_ollama_20260520T160914Z (67.5% micro F1).",
+    "Operational program_variant exect_s4_field_family_cause_bridge_k0_k1_single_pass matches frozen GPT S4 default.",
+    "Qwen S4 anchor used pre-bridge L1 variant; Gemini replay uses current frozen K0+K1 path for GPT parity.",
+    "Do not compare this run to GPT full validation as the same experiment; same scorer, different model track.",
+    "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 full anchor (\u2026235439Z).",
+    "Record token usage, latency, and billing when inspecting artifacts.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "multi_family"
+    ],
+    "comparison_group": "exect_gemini_ladder_replay_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic",
+      "L1_llm_constrained"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during",
+      "post",
+      "eval_only"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s4",
+    "stage_executor": null,
+    "stage_graph_id": null,
+    "validation_ladder_rung": null,
+    "varied_factor": "model_track"
+  },
+  "taxonomy_exemption": null
+}

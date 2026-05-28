@@ -1,0 +1,33 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-18T20:18:40.306752Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_smoke_qwen35b_direct_ollama",
+    "prompt_version": "gan_frequency_s0_direct_latency_v1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This one-record smoke run validates provider/config/runtime compatibility only; it is not a performance estimate.",
+    "This config intentionally avoids ChainOfThought and BootstrapFewShot under the Qwen DSPy latency policy.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing when run at meaningful sample sizes.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction.",
+    "Record local Ollama residency/offload separately when inspecting this run."
+  ],
+  "model_name": "qwen3.6:35b",
+  "model_provider": "ollama",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "run_id": "gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

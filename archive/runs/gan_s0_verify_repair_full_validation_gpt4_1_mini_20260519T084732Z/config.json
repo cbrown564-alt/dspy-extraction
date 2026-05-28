@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm/repair/abstain with evidence-aware semantic checks for cluster completeness, temporal-window correctness, seizure-free threshold, unknown vs no-reference, and evidence quote support"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_verify_repair_full_validation_gpt4_1_mini",
+  "hypothesis": "Verify-repair v2 on the full Gan validation split improves evidence grounding versus direct extraction while preserving or improving normalized-label accuracy, without the v1 correct-to-wrong regressions seen on the cap-25 slice.",
+  "max_records": null,
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "Verifier decisions (confirm/repair/abstain) and reasons are preserved in prediction metadata.",
+    "Artifact-bridge surface normalization is applied identically to direct and verify-repair variants.",
+    "Compare against synthesis-backed baseline runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z and cap-25 v2 inspection docs/gan_s0_verify_repair_cap25_v2_inspection_20260519.md.",
+    "This full fixed synthetic validation run is not a published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_verify_repair",
+  "prompt_version": "gan_frequency_s0_direct_verify_repair_v2",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

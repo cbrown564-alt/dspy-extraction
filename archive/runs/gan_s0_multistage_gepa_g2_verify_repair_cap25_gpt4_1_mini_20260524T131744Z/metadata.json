@@ -1,0 +1,37 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-24T13:17:44.364031Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_multistage_gepa_g2_verify_repair_cap25_gpt4_1_mini",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+    "schema_level": "gan_frequency_s0",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_multistage_gepa_gpt_validation_v1; arm G2 optimizer_strategy over a multi-stage verify-repair path.",
+    "The GEPA feedback metric gan_s0_stage_attributed_frequency_feedback is optimizer-facing only and does not replace gan_frequency_deterministic_v1 scoring.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Evidence quote support, schema validity, optimizer stats, selected instruction length, and verifier over-repair rate are diagnostic gates.",
+    "Uses Gan gold seizure_frequency_number[0]; reference is diagnostic only.",
+    "This capped validation config is not published Gan benchmark reproduction."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "run_id": "gan_s0_multistage_gepa_g2_verify_repair_cap25_gpt4_1_mini_20260524T131744Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

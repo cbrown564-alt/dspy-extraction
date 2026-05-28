@@ -1,0 +1,1541 @@
+{
+  "benchmark_metrics": {
+    "monthly_frequency_accuracy": 0.556390977443609,
+    "pragmatic_category_accuracy": 0.6917293233082706,
+    "purist_category_accuracy": 0.6165413533834586
+  },
+  "caveats": [
+    "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+    "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
+    "Evidence metrics are diagnostic source-grounding checks: predicted evidence is evaluated by deterministic quote/offset support in the note text, not by overlap with Gan evidence annotations."
+  ],
+  "confidence_intervals": {
+    "evidence_offsets_present_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.9056603773584906,
+      "method": "percentile_bootstrap_mean",
+      "n": 265,
+      "point_estimate": 0.9358490566037736,
+      "seed": 0,
+      "upper": 0.9622641509433962
+    },
+    "evidence_offsets_valid_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 248,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_quote_support_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.9056603773584906,
+      "method": "percentile_bootstrap_mean",
+      "n": 265,
+      "point_estimate": 0.9358490566037736,
+      "seed": 0,
+      "upper": 0.9622641509433962
+    },
+    "monthly_frequency_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.5,
+      "method": "percentile_bootstrap_mean",
+      "n": 266,
+      "point_estimate": 0.556390977443609,
+      "seed": 0,
+      "upper": 0.6203007518796992
+    },
+    "normalized_label_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.39097744360902253,
+      "method": "percentile_bootstrap_mean",
+      "n": 266,
+      "point_estimate": 0.4473684210526316,
+      "seed": 0,
+      "upper": 0.5075187969924813
+    },
+    "pragmatic_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.6390977443609023,
+      "method": "percentile_bootstrap_mean",
+      "n": 266,
+      "point_estimate": 0.6917293233082706,
+      "seed": 0,
+      "upper": 0.7443609022556391
+    },
+    "purist_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.5601503759398496,
+      "method": "percentile_bootstrap_mean",
+      "n": 266,
+      "point_estimate": 0.6165413533834586,
+      "seed": 0,
+      "upper": 0.6766917293233082
+    },
+    "raw_exact_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.37969924812030076,
+      "method": "percentile_bootstrap_mean",
+      "n": 266,
+      "point_estimate": 0.43609022556390975,
+      "seed": 0,
+      "upper": 0.49624060150375937
+    },
+    "schema_valid_prediction_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.8528428093645485,
+      "method": "percentile_bootstrap_mean",
+      "n": 299,
+      "point_estimate": 0.8896321070234113,
+      "seed": 0,
+      "upper": 0.9264214046822743
+    }
+  },
+  "counts": {
+    "evaluated_records": 299,
+    "extra_predictions": 0,
+    "gold_records": 1500,
+    "invalid_predictions": 33,
+    "missing_predictions": 1201,
+    "predicted_records": 299,
+    "valid_predictions": 266
+  },
+  "dataset": "gan_2026",
+  "diagnostic_metrics": {
+    "evidence_offsets_present_rate": 0.9358490566037736,
+    "evidence_offsets_valid_rate": 1.0,
+    "evidence_quote_support_rate": 0.9358490566037736,
+    "normalized_label_accuracy": 0.4473684210526316,
+    "raw_exact_accuracy": 0.43609022556390975,
+    "schema_valid_prediction_rate": 0.8896321070234113
+  },
+  "error_analysis": {
+    "counts": {
+      "abstention.predicted_abstention": 8,
+      "classification.pragmatic_category_mismatch": 82,
+      "classification.purist_category_mismatch": 102,
+      "evidence.missing_prediction_evidence": 1,
+      "evidence.unsupported_quote": 17,
+      "normalization.invalid_label": 25,
+      "normalization.label_mismatch": 147,
+      "normalization.monthly_frequency_mismatch": 118,
+      "schema.missing_prediction": 1201,
+      "schema.missing_value": 8
+    },
+    "examples": {
+      "abstention.predicted_abstention": [
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_10447"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_11733"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_11734"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_11804"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_11874"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_13450"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_5977"
+        },
+        {
+          "reason": "prediction value is flagged as abstained",
+          "record_id": "gan_7894"
+        }
+      ],
+      "classification.pragmatic_category_mismatch": [
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10031"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "unknown",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10434"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10509"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10553"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10618"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10673"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_10751"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11221"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11259"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11380"
+        },
+        {
+          "gold_pragmatic_category": "unknown",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12130"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12810"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12823"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12871"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12877"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_12950"
+        },
+        {
+          "gold_pragmatic_category": "frequent",
+          "predicted_pragmatic_category": "infrequent",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_13019"
+        }
+      ],
+      "classification.purist_category_mismatch": [
+        {
+          "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10031"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "unknown",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10434"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10509"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10553"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10618"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10673"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10751"
+        },
+        {
+          "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_10984"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11221"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11259"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11380"
+        },
+        {
+          "gold_purist_category": "unknown",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12130"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12562"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12667"
+        },
+        {
+          "gold_purist_category": "gte_1_per_day",
+          "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12679"
+        },
+        {
+          "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12810"
+        },
+        {
+          "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+          "predicted_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_12823"
+        }
+      ],
+      "evidence.missing_prediction_evidence": [
+        {
+          "reason": "prediction has no evidence spans",
+          "record_id": "gan_10751"
+        }
+      ],
+      "evidence.unsupported_quote": [
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_11044"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_11408"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_11411"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_11748"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_11841"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_14092"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_14562"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_14748"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_14881"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_14965"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_15129"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_15240"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_16750"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_5837"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_8723"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_8852"
+        },
+        {
+          "reason": "predicted evidence quote or offsets not supported by document text",
+          "record_id": "gan_9943"
+        }
+      ],
+      "normalization.invalid_label": [
+        {
+          "gold_label": "1 cluster per week, multiple per cluster",
+          "predicted_label": "1 cluster per week",
+          "reason": "could not convert string to float: '1 cluster'",
+          "record_id": "gan_10003"
+        },
+        {
+          "gold_label": "2 cluster per 3 month, multiple per cluster",
+          "predicted_label": "2 cluster per quarter, 1 per cluster",
+          "reason": "Unsupported Gan frequency label: '2 cluster per quarter, 1 per cluster'",
+          "record_id": "gan_10047"
+        },
+        {
+          "gold_label": "4 cluster per 3 month, multiple per cluster",
+          "predicted_label": "4 cluster per quarter",
+          "reason": "Unsupported Gan frequency label: '4 cluster per quarter'",
+          "record_id": "gan_10052"
+        },
+        {
+          "gold_label": "1 cluster per week, 2 per cluster",
+          "predicted_label": "2 cluster per week",
+          "reason": "could not convert string to float: '2 cluster'",
+          "record_id": "gan_10398"
+        },
+        {
+          "gold_label": "1 cluster per week, 3 to 4 per cluster",
+          "predicted_label": "3 or 4 per week",
+          "reason": "could not convert string to float: '3 or 4'",
+          "record_id": "gan_10410"
+        },
+        {
+          "gold_label": "1 cluster per week, multiple per cluster",
+          "predicted_label": "1 cluster per week",
+          "reason": "could not convert string to float: '1 cluster'",
+          "record_id": "gan_10862"
+        },
+        {
+          "gold_label": "1 to 2 cluster per month, 4 per cluster",
+          "predicted_label": "1-2 per month",
+          "reason": "could not convert string to float: '1-2'",
+          "record_id": "gan_10996"
+        },
+        {
+          "gold_label": "multiple per week",
+          "predicted_label": "several per week",
+          "reason": "could not convert string to float: 'several'",
+          "record_id": "gan_12145"
+        },
+        {
+          "gold_label": "1 to 2 per day",
+          "predicted_label": "1-2 per day",
+          "reason": "could not convert string to float: '1-2'",
+          "record_id": "gan_12246"
+        },
+        {
+          "gold_label": "1 cluster per 4 month, 3 to 4 per cluster",
+          "predicted_label": "3 to 4 cluster per day",
+          "reason": "could not convert string to float: '3 to 4 cluster'",
+          "record_id": "gan_15404"
+        },
+        {
+          "gold_label": "1 per 2 to 3 day",
+          "predicted_label": "1 per 2-3 days",
+          "reason": "could not convert string to float: '2-3'",
+          "record_id": "gan_16422"
+        },
+        {
+          "gold_label": "1 per 4 day",
+          "predicted_label": "1 cluster per 4 days",
+          "reason": "could not convert string to float: '1 cluster'",
+          "record_id": "gan_16574"
+        },
+        {
+          "gold_label": "1 cluster per 2 week, 3 per cluster",
+          "predicted_label": "3 per fortnight",
+          "reason": "Unsupported Gan frequency label: '3 per fortnight'",
+          "record_id": "gan_1694"
+        },
+        {
+          "gold_label": "multiple per month",
+          "predicted_label": "few per month",
+          "reason": "could not convert string to float: 'few'",
+          "record_id": "gan_16991"
+        },
+        {
+          "gold_label": "8 per 2 month",
+          "predicted_label": "\"8 per 2 month\"",
+          "reason": "Unsupported Gan frequency label: '\"8 per 2 month\"'",
+          "record_id": "gan_1794"
+        },
+        {
+          "gold_label": "1 per 7 to 10 day",
+          "predicted_label": "1 per 7-10 days",
+          "reason": "could not convert string to float: '7-10'",
+          "record_id": "gan_4602"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "4 per hour",
+          "reason": "Unsupported Gan frequency label: '4 per hour'",
+          "record_id": "gan_4700"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "4 per hour",
+          "reason": "Unsupported Gan frequency label: '4 per hour'",
+          "record_id": "gan_4702"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "6 per hour",
+          "reason": "Unsupported Gan frequency label: '6 per hour'",
+          "record_id": "gan_4709"
+        },
+        {
+          "gold_label": "multiple per day",
+          "predicted_label": "several per day",
+          "reason": "could not convert string to float: 'several'",
+          "record_id": "gan_5551"
+        }
+      ],
+      "normalization.label_mismatch": [
+        {
+          "normalized_gold_label": "1 cluster per week, multiple per cluster",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10031"
+        },
+        {
+          "normalized_gold_label": "5 cluster per month, multiple per cluster",
+          "normalized_predicted_label": "5 cluster per month, 2 to 3 per cluster",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10074"
+        },
+        {
+          "normalized_gold_label": "multiple cluster per week, 2 to 3 per cluster",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10434"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10509"
+        },
+        {
+          "normalized_gold_label": "unknown, 2 to 4 per cluster",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "normalized_gold_label": "unknown, 2 to 3 per cluster",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10553"
+        },
+        {
+          "normalized_gold_label": "unknown, 2 to 3 per cluster",
+          "normalized_predicted_label": "unknown",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10583"
+        },
+        {
+          "normalized_gold_label": "unknown, 4 to 6 per cluster",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10618"
+        },
+        {
+          "normalized_gold_label": "1 cluster per month, multiple per cluster",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10673"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10751"
+        },
+        {
+          "normalized_gold_label": "3 cluster per month, 3 to 4 per cluster",
+          "normalized_predicted_label": "3 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10984"
+        },
+        {
+          "normalized_gold_label": "2 cluster per month, 2 to 4 per cluster",
+          "normalized_predicted_label": "2 to 4 cluster per month, 2 to 4 per cluster",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_10993"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "seizure free for 4 month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11221"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11259"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11380"
+        },
+        {
+          "normalized_gold_label": "unknown",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "normalized_gold_label": "multiple per week",
+          "normalized_predicted_label": "3 per year",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12130"
+        },
+        {
+          "normalized_gold_label": "1 per day",
+          "normalized_predicted_label": "4 per week",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12562"
+        },
+        {
+          "normalized_gold_label": "1 per day",
+          "normalized_predicted_label": "1 to 2 per month",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_12667"
+        }
+      ],
+      "normalization.monthly_frequency_mismatch": [
+        {
+          "gold_monthly_frequency": 12.99,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10031"
+        },
+        {
+          "gold_monthly_frequency": 15.0,
+          "predicted_monthly_frequency": 12.5,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10074"
+        },
+        {
+          "gold_monthly_frequency": 32.475,
+          "predicted_monthly_frequency": 1000.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10434"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10509"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10542"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10553"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10618"
+        },
+        {
+          "gold_monthly_frequency": 3.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10673"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10751"
+        },
+        {
+          "gold_monthly_frequency": 10.5,
+          "predicted_monthly_frequency": 3.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10984"
+        },
+        {
+          "gold_monthly_frequency": 6.0,
+          "predicted_monthly_frequency": 9.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_10993"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11216"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11221"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11259"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11380"
+        },
+        {
+          "gold_monthly_frequency": 1000.0,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_11399"
+        },
+        {
+          "gold_monthly_frequency": 12.99,
+          "predicted_monthly_frequency": 0.25,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12130"
+        },
+        {
+          "gold_monthly_frequency": 30.0,
+          "predicted_monthly_frequency": 17.32,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12562"
+        },
+        {
+          "gold_monthly_frequency": 30.0,
+          "predicted_monthly_frequency": 1.5,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12667"
+        },
+        {
+          "gold_monthly_frequency": 30.0,
+          "predicted_monthly_frequency": 1.5,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_12679"
+        }
+      ],
+      "schema.missing_prediction": [
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10002"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10009"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10010"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1005"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10057"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10063"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10097"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10123"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10147"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10149"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10159"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1017"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1018"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10183"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10186"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10189"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10200"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10206"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10213"
+        }
+      ],
+      "schema.missing_value": [
+        {
+          "gold_label": "unknown",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_10447"
+        },
+        {
+          "gold_label": "no seizure frequency reference",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_11733"
+        },
+        {
+          "gold_label": "no seizure frequency reference",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_11734"
+        },
+        {
+          "gold_label": "no seizure frequency reference",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_11804"
+        },
+        {
+          "gold_label": "no seizure frequency reference",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_11874"
+        },
+        {
+          "gold_label": "seizure free for 1 year",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_13450"
+        },
+        {
+          "gold_label": "unknown",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_5977"
+        },
+        {
+          "gold_label": "seizure free for multiple year",
+          "reason": "missing seizure_frequency_number label value",
+          "record_id": "gan_7894"
+        }
+      ]
+    }
+  },
+  "errors": {
+    "evidence_support_errors": [
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_11044",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "She has remained adherent to levetiracetam 1000 mg twice daily and denies missed doses. No adverse effects are reported other than transient irritability during the first postpartum month, which has settled. She is breastfeeding; she has not noted any issues in the infant. There is no history of intercurrent illness, alcohol use, or new medications. She uses a phone diary to log events and notes that the clusters have emerged roughly every three months since birth, aligning with periods of particularly fragmented sleep. No injuries, tongue biting is occasional, and recovery is spontaneous without rescue medication.\n\nWe discussed seizure precipitants and she recognises sleep deprivation as the predominant trigger. Safety advice around infant care has been reinforced, including avoiding bathing the baby alone, using a changing mat on the floor where feasible, and ensuring safe co-sleeping practices are avoided. She has a valid UK driving licence; as she has experienced recurrent generalised seizures, I have advised that she must not drive and should follow DVLA guidance, and we have signposted the relevant information.\n\nPlan:  \n- Continue levetiracetam 1000 mg twice daily for now.  \n- Optimise sleep hygiene as practicable with support from family where available; use scheduled rest periods when infant naps.  \n- Arrange serum levetiracetam level and routine bloods (FBC, U&Es, LFTs) to establish a postpartum baseline.  \n- Provide an up-to-date seizure management plan for the health visitor and partner.  \n- If clusters persist despite stabilising sleep, we will consider a cautious titration to 1500 mg twice daily after discussion at follow-up.  \n- We have discussed contraception choices; no enzyme-inducing medication is planned.  \n\nFollow-up in three months, or sooner if convulsions increase in frequency or if injuries occur. She knows how to contact the epilepsy nurse specialist for interim support.\n\nYours sincerely\n\nRespond with the corresponding output fields, starting with the field `[[ ## seizure_frequency_number ## ]]` (must be formatted as a valid Python Union[str, NoneType]), then `[[ ## evidence_text ## ]]` (must be formatted as a valid Python Union[str, NoneType]), and then ending with the marker for `[[ ## completed ## ]]`."
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_11044"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_11408",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "no seizure frequency reference"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_11408"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_11411",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "no seizure frequency reference"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_11411"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_11748",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "no seizure frequency reference"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_11748"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_11841",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "no seizure frequency reference"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_11841"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_14092",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "\"since her last clinic appointment she has had 5 myoclonic jerks, the last reported on 7 April\""
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_14092"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_14562",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "She experienced her first seizure in January 2021 while on holiday in Spain. ... Her second and third seizure was in July 2021 back home in France"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_14562"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_14748",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "following two reported nocturnal events this summer while travelling abroad. His initial event was in June 2019 in Germany, arising from sleep. A second event occurred in Italy the following September 2019"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_14748"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_14881",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "his last episode was recorded on 26 February and he has remained well since. Considering that he has now been free of seizures for three weeks"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_14881"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_14965",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "She has been stable since."
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_14965"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_15129",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "\"with four morning jerks since then\""
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_15129"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_15240",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "She reports intermittent brief myoclonic jerks"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_15240"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_16750",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "no seizure frequency reference"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_16750"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_5837",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "\"he reports an increase in brief absence episodes and two myoclonic clusters over the past three weeks, alongside one generalised tonic\u2013clonic seizure occurring late morning at work.\""
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_5837"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_8723",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "He tells me he has had no definite attacks since his rota was changed, and his diary has remained clear through this interval."
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_8723"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_8852",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "He reports a sustained improvement in his condition over the past eight months. ... wearable/device logs show no seizures since 14 January 2018"
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_8852"
+      },
+      {
+        "predicted_evidence": [
+          {
+            "document_id": "gan_9943",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "\"Within these burst periods the number of episodes varies and has not been reliably logged\""
+          }
+        ],
+        "reason": "predicted evidence quote or offsets not supported by document text",
+        "record_id": "gan_9943"
+      }
+    ],
+    "extra_prediction_ids": [],
+    "invalid_predictions": [
+      {
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "predicted_label": "1 cluster per week",
+        "reason": "could not convert string to float: '1 cluster'",
+        "record_id": "gan_10003"
+      },
+      {
+        "gold_label": "2 cluster per 3 month, multiple per cluster",
+        "predicted_label": "2 cluster per quarter, 1 per cluster",
+        "reason": "Unsupported Gan frequency label: '2 cluster per quarter, 1 per cluster'",
+        "record_id": "gan_10047"
+      },
+      {
+        "gold_label": "4 cluster per 3 month, multiple per cluster",
+        "predicted_label": "4 cluster per quarter",
+        "reason": "Unsupported Gan frequency label: '4 cluster per quarter'",
+        "record_id": "gan_10052"
+      },
+      {
+        "gold_label": "1 cluster per week, 2 per cluster",
+        "predicted_label": "2 cluster per week",
+        "reason": "could not convert string to float: '2 cluster'",
+        "record_id": "gan_10398"
+      },
+      {
+        "gold_label": "1 cluster per week, 3 to 4 per cluster",
+        "predicted_label": "3 or 4 per week",
+        "reason": "could not convert string to float: '3 or 4'",
+        "record_id": "gan_10410"
+      },
+      {
+        "gold_label": "unknown",
+        "reason": "missing seizure_frequency_number label value",
+        "record_id": "gan_10447"
+      },
+      {
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "predicted_label": "1 cluster per week",
+        "reason": "could not convert string to float: '1 cluster'",
+        "record_id": "gan_10862"
+      },
+      {
+        "gold_label": "1 to 2 cluster per month, 4 per cluster",
+        "predicted_label": "1-2 per month",
+        "reason": "could not convert string to float: '1-2'",
+        "record_id": "gan_10996"
+      },
+      {
+        "gold_label": "no seizure frequency reference",
+        "reason": "missing seizure_frequency_number label value",
+        "record_id": "gan_11733"
+      },
+      {
+        "gold_label": "no seizure frequency reference",
+        "reason": "missing seizure_frequency_number label value",
+        "record_id": "gan_11734"
+      },
+      {
+        "gold_label": "no seizure frequency reference",
+        "reason": "missing seizure_frequency_number label value",
+        "record_id": "gan_11804"
+      },
+      {
+        "gold_label": "no seizure frequency reference",
+        "reason": "missing seizure_frequency_number label value",
+        "record_id": "gan_11874"
+      },
+      {
+        "gold_label": "multiple per week",
+        "predicted_label": "several per week",
+        "reason": "could not convert string to float: 'several'",
+        "record_id": "gan_12145"
+      },
+      {
+        "gold_label": "1 to 2 per day",
+        "predicted_label": "1-2 per day",
+        "reason": "could not convert string to float: '1-2'",
+        "record_id": "gan_12246"
+      },
+      {
+        "gold_label": "seizure free for 1 year",
+        "reason": "missing seizure_frequency_number label value",
+        "record_id": "gan_13450"
+      },
+      {
+        "gold_label": "1 cluster per 4 month, 3 to 4 per cluster",
+        "predicted_label": "3 to 4 cluster per day",
+        "reason": "could not convert string to float: '3 to 4 cluster'",
+        "record_id": "gan_15404"
+      },
+      {
+        "gold_label": "1 per 2 to 3 day",
+        "predicted_label": "1 per 2-3 days",
+        "reason": "could not convert string to float: '2-3'",
+        "record_id": "gan_16422"
+      },
+      {
+        "gold_label": "1 per 4 day",
+        "predicted_label": "1 cluster per 4 days",
+        "reason": "could not convert string to float: '1 cluster'",
+        "record_id": "gan_16574"
+      },
+      {
+        "gold_label": "1 cluster per 2 week, 3 per cluster",
+        "predicted_label": "3 per fortnight",
+        "reason": "Unsupported Gan frequency label: '3 per fortnight'",
+        "record_id": "gan_1694"
+      },
+      {
+        "gold_label": "multiple per month",
+        "predicted_label": "few per month",
+        "reason": "could not convert string to float: 'few'",
+        "record_id": "gan_16991"
+      }
+    ],
+    "missing_prediction_ids": [
+      "gan_10",
+      "gan_10002",
+      "gan_10009",
+      "gan_10010",
+      "gan_1005",
+      "gan_10057",
+      "gan_10063",
+      "gan_10097",
+      "gan_10123",
+      "gan_10147",
+      "gan_10149",
+      "gan_10159",
+      "gan_1017",
+      "gan_1018",
+      "gan_10183",
+      "gan_10186",
+      "gan_10189",
+      "gan_10200",
+      "gan_10206",
+      "gan_10213"
+    ],
+    "monthly_frequency_mismatches": [
+      {
+        "gold_label": "1 cluster per week, multiple per cluster",
+        "gold_monthly_frequency": 12.99,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_10031"
+      },
+      {
+        "gold_label": "5 cluster per month, multiple per cluster",
+        "gold_monthly_frequency": 15.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "5 cluster per month, 2 to 3 per cluster",
+        "predicted_monthly_frequency": 12.5,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_10074"
+      },
+      {
+        "gold_label": "multiple cluster per week, 2 to 3 per cluster",
+        "gold_monthly_frequency": 32.475,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "unknown",
+        "predicted_monthly_frequency": 1000.0,
+        "predicted_pragmatic_category": "unknown",
+        "record_id": "gan_10434"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_10509"
+      },
+      {
+        "gold_label": "unknown, 2 to 4 per cluster",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_10542"
+      },
+      {
+        "gold_label": "unknown, 2 to 3 per cluster",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_10553"
+      },
+      {
+        "gold_label": "unknown, 4 to 6 per cluster",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_10618"
+      },
+      {
+        "gold_label": "1 cluster per month, multiple per cluster",
+        "gold_monthly_frequency": 3.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_10673"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_10751"
+      },
+      {
+        "gold_label": "3 cluster per month, 3 to 4 per cluster",
+        "gold_monthly_frequency": 10.5,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "3 per month",
+        "predicted_monthly_frequency": 3.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_10984"
+      },
+      {
+        "gold_label": "2 cluster per month, 2 to 4 per cluster",
+        "gold_monthly_frequency": 6.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "2 to 4 cluster per month, 2 to 4 per cluster",
+        "predicted_monthly_frequency": 9.0,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_10993"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "seizure free for 4 month",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11216"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11221"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11259"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11380"
+      },
+      {
+        "gold_label": "unknown",
+        "gold_monthly_frequency": 1000.0,
+        "gold_pragmatic_category": "unknown",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_11399"
+      },
+      {
+        "gold_label": "multiple per week",
+        "gold_monthly_frequency": 12.99,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "3 per year",
+        "predicted_monthly_frequency": 0.25,
+        "predicted_pragmatic_category": "infrequent",
+        "record_id": "gan_12130"
+      },
+      {
+        "gold_label": "1 per day",
+        "gold_monthly_frequency": 30.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "4 per week",
+        "predicted_monthly_frequency": 17.32,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_12562"
+      },
+      {
+        "gold_label": "1 per day",
+        "gold_monthly_frequency": 30.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "1 to 2 per month",
+        "predicted_monthly_frequency": 1.5,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_12667"
+      },
+      {
+        "gold_label": "1 per day",
+        "gold_monthly_frequency": 30.0,
+        "gold_pragmatic_category": "frequent",
+        "predicted_label": "1 to 2 per month",
+        "predicted_monthly_frequency": 1.5,
+        "predicted_pragmatic_category": "frequent",
+        "record_id": "gan_12679"
+      }
+    ]
+  },
+  "runtime": {
+    "compile_duration_seconds": null,
+    "estimated_model_calls": 299,
+    "evaluation_duration_seconds": 0.6668714999977965,
+    "model_residency": "not_recorded",
+    "optimizer": null,
+    "prediction_duration_seconds": 2988.220513100001,
+    "prediction_seconds_per_record": 9.99404853879599,
+    "records": 299,
+    "total_duration_seconds": 2988.906661699999
+  },
+  "schema_level": "gan_frequency_s0",
+  "scorer": "gan_frequency_deterministic_v1"
+}

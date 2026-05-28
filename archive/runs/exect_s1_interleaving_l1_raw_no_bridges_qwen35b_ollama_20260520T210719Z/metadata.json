@@ -1,0 +1,36 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-20T21:07:19.552130Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_interleaving_l1_raw_no_bridges_qwen35b_ollama",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "L1 raw arm: repair_policy raw_no_benchmark_bridges; canonicalization only, no benchmark_bridge flags.",
+    "Compare to exect_s1_interleaving_h1_post_bridge_qwen35b_ollama and GPT v2 reference docs/exect_s1_interleaving_gpt_validation_v2_inspection_20260520.md.",
+    "Frozen Qwen production anchor: exect_s0_s1_validation_full_qwen35b_ollama (repair_policy none, inline bridges).",
+    "Avoid ChainOfThought, BootstrapFewShot, and GEPA per docs/qwen_dspy_latency_policy.md.",
+    "Record Ollama GPU residency or RAM offload in inspection.",
+    "Benchmark-facing fields: diagnosis, seizure_type, annotated_medication only (exect_s1 scope)."
+  ],
+  "model_name": "qwen3.6:35b",
+  "model_provider": "ollama",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_interleaving_l1_raw_no_bridges_qwen35b_ollama_20260520T210719Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

@@ -1,0 +1,799 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.6:35b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_7_qwen_exact_policy",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10052",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2644,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2644,
+        "temporal_candidate_labels": [
+          "4 cluster per 3 month, multiple per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "4 cluster per 3 month, multiple per cluster",
+            "derivation": "explicit cluster count over a calendar quarter",
+            "event_count": "4 cluster",
+            "evidence_text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10052",
+              "end": 933,
+              "section": null,
+              "start": 804,
+              "text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "4 cluster per 3 month, multiple per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "'4 cluster per 3 month, multiple per cluster'",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10993",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3273,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3273,
+        "temporal_candidate_labels": [
+          "2 cluster per month, 2 to 4 per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 cluster per month, 2 to 4 per cluster",
+            "derivation": "morning-cluster shorthand with explicit per-cluster range",
+            "event_count": "2 cluster",
+            "evidence_text": "Morning clusters 2\u00d7/month; ~2 to 4 events over",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10993",
+              "end": 1332,
+              "section": null,
+              "start": 1278,
+              "text": "Morning clusters 2\u00d7/month; ~2 to 4 events over 90 min."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 cluster per month, 2 to 4 per cluster",
+          "quality_flags": [
+            "normalized_label_repaired"
+          ],
+          "raw_value": "\"2 cluster per month, 2 to 4 per cluster\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15442",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3020,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3020,
+        "temporal_candidate_labels": [
+          "1 cluster per 4 day, 2 per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 cluster per 4 day, 2 per cluster",
+            "derivation": "seizure-free interval followed by cluster count",
+            "event_count": "1 cluster, 2 per cluster",
+            "evidence_text": "seizure-free for 4 consecutive days, followed by a day with multiple events, typically two t",
+            "window_count": "4",
+            "window_unit": "day"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15442",
+              "end": 1141,
+              "section": null,
+              "start": 1015,
+              "text": "On occasions she is seizure-free for 4 consecutive days, followed by a day with multiple events, typically two tonic seizures."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 cluster per 4 day, 2 per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "'1 cluster per 4 day, 2 per cluster'",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10031",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2287,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2287,
+        "temporal_candidate_labels": [
+          "1 cluster per week, multiple per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 cluster per week, multiple per cluster",
+            "derivation": "grouped morning spells on some weeks without per-cluster count",
+            "event_count": "1 cluster",
+            "evidence_text": "zure history and current status:\n- Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded by the patient or witnesses.",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10031",
+              "end": 889,
+              "section": null,
+              "start": 655,
+              "text": "Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded by the patient or witnesses."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 cluster per week, multiple per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 cluster per week, multiple per cluster\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_3246",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2120,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2120,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_3246",
+              "end": 662,
+              "section": null,
+              "start": 591,
+              "text": "Patient reports 2 clusters this month; each \u22484 absences in the morning."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 to 4 per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"2 to 4 per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_11207",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2170,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2170,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_11207",
+              "end": 1330,
+              "section": null,
+              "start": 1269,
+              "text": "two Travel-related clusters this month; ~6 events per episode"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "6 to 12 per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"6 to 12 per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_714",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3554,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3554,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_714",
+              "end": 1331,
+              "section": null,
+              "start": 1260,
+              "text": "Over the past three weeks he has been experiencing seizures twice a day"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"2 per day\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_2513",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3024,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3024,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_2513",
+              "end": 722,
+              "section": null,
+              "start": 658,
+              "text": "he has experienced 2 to 3 drop attacks during the last two weeks"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 to 3 per 2 week",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"2 to 3 per 2 week\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15876",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 4854,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 4854,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15876",
+              "end": 2037,
+              "section": null,
+              "start": 1991,
+              "text": "Drop attacks are now reported six times weekly"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "6 per week",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"6 per week\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_12296",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2252,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2252,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_12296",
+              "end": 653,
+              "section": null,
+              "start": 590,
+              "text": "she continues to experience drop attack on three - four per day"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "3 to 4 per day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"3 to 4 per day\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13123",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2599,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2599,
+        "temporal_candidate_labels": [
+          "1 per year"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_13123",
+              "end": 937,
+              "section": null,
+              "start": 758,
+              "text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per year",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 per year\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_9365",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2876,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2876,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_9365",
+              "end": 1494,
+              "section": null,
+              "start": 1437,
+              "text": "the current pattern is focal sensory once every two days."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 2 day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 per 2 day\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_22",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2777,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2777,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_22",
+              "end": 671,
+              "section": null,
+              "start": 486,
+              "text": "reports episodes consistent with focal or generalised onset being unclear at present, with a current frequency of \u2264 3 per day on days with prolonged screen exposure and irregular sleep."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "3 per day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"3 per day\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4597",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 2576,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 2576,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4597",
+              "end": 1488,
+              "section": null,
+              "start": 1389,
+              "text": "Over the past four months, the patient reports that the Median inter-seizure interval \u2248 three weeks"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 3 week",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 per 3 week\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_6131",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3137,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3137,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_6131",
+              "end": 1042,
+              "section": null,
+              "start": 1001,
+              "text": "no unprovoked episodes for over 12 months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free for multiple month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"seizure free for multiple month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14036",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 1831,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 1831,
+        "temporal_candidate_labels": [
+          "unknown"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "unknown",
+            "derivation": "drop-attack count with latest-date anchor only",
+            "event_count": "4",
+            "evidence_text": "since starting ketogenic diet he has had 4 drop attacks, the latest one on",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14036",
+              "end": 719,
+              "section": null,
+              "start": 637,
+              "text": "since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"unknown\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_338",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3686,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3686,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_338",
+              "end": 1406,
+              "section": null,
+              "start": 1332,
+              "text": "Over the last four weeks he has experienced many convulsions in past month"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "many per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"many per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_3225",
+      "metadata": {
+        "context_policy": "full_note_plus_deterministic_temporal_candidates",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_note_text_char_count": 3607,
+        "prompt_note_text_is_full_note": true,
+        "source_note_text_char_count": 3607,
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_3225",
+              "end": 1675,
+              "section": null,
+              "start": 1588,
+              "text": "He and his partner maintain a seizure diary that confirms this pattern since June 2025."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "3 to 10 per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped",
+            "evidence_repaired:ellipsis_segment_selected"
+          ],
+          "raw_value": "\"3 to 10 per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

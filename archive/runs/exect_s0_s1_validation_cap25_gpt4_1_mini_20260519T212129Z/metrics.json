@@ -1,0 +1,402 @@
+{
+  "benchmark_metrics": {
+    "field_f1": {
+      "annotated_medication": 0.8928571428571429,
+      "diagnosis": 0.9500000000000001,
+      "seizure_type": 0.96875
+    },
+    "field_precision": {
+      "annotated_medication": 0.9259259259259259,
+      "diagnosis": 1.0,
+      "seizure_type": 1.0
+    },
+    "field_recall": {
+      "annotated_medication": 0.8620689655172413,
+      "diagnosis": 0.9047619047619048,
+      "seizure_type": 0.9393939393939394
+    },
+    "field_support": {
+      "annotated_medication": 29,
+      "diagnosis": 21,
+      "seizure_type": 33
+    },
+    "micro_f1": 0.9375,
+    "micro_precision": 0.974025974025974,
+    "micro_recall": 0.9036144578313253
+  },
+  "caveats": [
+    "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
+    "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
+    "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1."
+  ],
+  "counts": {
+    "evaluated_records": 25,
+    "extra_predictions": 0,
+    "gold_records": 200,
+    "missing_predictions": 175,
+    "predicted_records": 25
+  },
+  "dataset": "exect_v2",
+  "diagnostic_metrics": {
+    "documents_with_gold_quality_flags": 0.28,
+    "evidence_offsets_present_rate": 0.971830985915493,
+    "evidence_offsets_valid_rate": 1.0,
+    "evidence_quote_repair_rate": 0.0,
+    "evidence_quote_support_rate": 0.971830985915493,
+    "evidence_quote_support_rate_repaired": null,
+    "evidence_quote_support_rate_without_repairs": 0.971830985915493
+  },
+  "errors": {
+    "evidence_support_errors": [
+      {
+        "document_id": "EA0018",
+        "field_name": "annotated_medication",
+        "raw_value": "levetiracetam",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0026",
+        "field_name": "annotated_medication",
+        "raw_value": "topiramate",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0061",
+        "field_name": "diagnosis",
+        "raw_value": "parietal lobe epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0069",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0069",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Juvenile Myoclonic Epilepsy"
+          }
+        ],
+        "raw_value": "juvenile myoclonic epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0069",
+        "field_name": "seizure_type",
+        "raw_value": "generalized tonic clonic seizure",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0072",
+        "field_name": "seizure_type",
+        "raw_value": "secondary generalised seizures",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0098",
+        "field_name": "diagnosis",
+        "raw_value": "epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0098",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0098",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Seizure type and frequency:\tFocal onset convulsive seizure"
+          }
+        ],
+        "raw_value": "focal onset convulsive seizure",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      }
+    ],
+    "extra_prediction_ids": [],
+    "field_family_mismatches": [
+      {
+        "document_id": "EA0008",
+        "false_negatives": [
+          "lamotrigine"
+        ],
+        "false_positives": [],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0052",
+        "false_negatives": [
+          "carbamazepine"
+        ],
+        "false_positives": [],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0061",
+        "false_negatives": [
+          "lamotrigine"
+        ],
+        "false_positives": [],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0072",
+        "false_negatives": [
+          "focal motor seizure"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0078",
+        "false_negatives": [],
+        "false_positives": [
+          "levetiracetam",
+          "carbamazepine"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": [
+          "missing_gold"
+        ]
+      },
+      {
+        "document_id": "EA0098",
+        "false_negatives": [
+          "lamotrigine"
+        ],
+        "false_positives": [],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0109",
+        "false_negatives": [
+          "temporal lobe seizures"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0116",
+        "false_negatives": [
+          "epilepsy with generalized tonic clonic seizures on awakening"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0125",
+        "false_negatives": [
+          "jme"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      }
+    ],
+    "missing_prediction_ids": [
+      "EA0001",
+      "EA0002",
+      "EA0003",
+      "EA0004",
+      "EA0005",
+      "EA0006",
+      "EA0007",
+      "EA0009",
+      "EA0010",
+      "EA0011",
+      "EA0012",
+      "EA0013",
+      "EA0014",
+      "EA0015",
+      "EA0017",
+      "EA0019",
+      "EA0020",
+      "EA0021",
+      "EA0022",
+      "EA0023",
+      "EA0024",
+      "EA0025",
+      "EA0027",
+      "EA0028",
+      "EA0030",
+      "EA0031",
+      "EA0032",
+      "EA0033",
+      "EA0034",
+      "EA0035",
+      "EA0036",
+      "EA0037",
+      "EA0038",
+      "EA0039",
+      "EA0040",
+      "EA0041",
+      "EA0042",
+      "EA0043",
+      "EA0044",
+      "EA0046",
+      "EA0049",
+      "EA0051",
+      "EA0054",
+      "EA0055",
+      "EA0056",
+      "EA0057",
+      "EA0058",
+      "EA0060",
+      "EA0062",
+      "EA0063",
+      "EA0064",
+      "EA0065",
+      "EA0066",
+      "EA0067",
+      "EA0070",
+      "EA0071",
+      "EA0073",
+      "EA0074",
+      "EA0075",
+      "EA0076",
+      "EA0077",
+      "EA0079",
+      "EA0080",
+      "EA0081",
+      "EA0082",
+      "EA0083",
+      "EA0084",
+      "EA0085",
+      "EA0086",
+      "EA0087",
+      "EA0088",
+      "EA0089",
+      "EA0091",
+      "EA0092",
+      "EA0093",
+      "EA0094",
+      "EA0095",
+      "EA0096",
+      "EA0097",
+      "EA0099",
+      "EA0101",
+      "EA0103",
+      "EA0104",
+      "EA0105",
+      "EA0106",
+      "EA0107",
+      "EA0108",
+      "EA0110",
+      "EA0111",
+      "EA0112",
+      "EA0113",
+      "EA0114",
+      "EA0115",
+      "EA0117",
+      "EA0118",
+      "EA0119",
+      "EA0120",
+      "EA0121",
+      "EA0122",
+      "EA0123",
+      "EA0126",
+      "EA0127",
+      "EA0128",
+      "EA0129",
+      "EA0130",
+      "EA0131",
+      "EA0132",
+      "EA0133",
+      "EA0134",
+      "EA0135",
+      "EA0136",
+      "EA0137",
+      "EA0138",
+      "EA0139",
+      "EA0140",
+      "EA0141",
+      "EA0142",
+      "EA0143",
+      "EA0144",
+      "EA0145",
+      "EA0146",
+      "EA0147",
+      "EA0148",
+      "EA0149",
+      "EA0150",
+      "EA0151",
+      "EA0152",
+      "EA0153",
+      "EA0154",
+      "EA0155",
+      "EA0156",
+      "EA0157",
+      "EA0158",
+      "EA0159",
+      "EA0160",
+      "EA0161",
+      "EA0162",
+      "EA0163",
+      "EA0164",
+      "EA0165",
+      "EA0166",
+      "EA0167",
+      "EA0168",
+      "EA0169",
+      "EA0170",
+      "EA0171",
+      "EA0172",
+      "EA0173",
+      "EA0174",
+      "EA0175",
+      "EA0176",
+      "EA0177",
+      "EA0178",
+      "EA0179",
+      "EA0180",
+      "EA0181",
+      "EA0182",
+      "EA0183",
+      "EA0184",
+      "EA0185",
+      "EA0186",
+      "EA0187",
+      "EA0188",
+      "EA0189",
+      "EA0190",
+      "EA0191",
+      "EA0192",
+      "EA0193",
+      "EA0194",
+      "EA0195",
+      "EA0196",
+      "EA0197",
+      "EA0198",
+      "EA0199",
+      "EA0200"
+    ]
+  },
+  "runtime": {
+    "compile_duration_seconds": null,
+    "estimated_model_calls": 25,
+    "evaluation_duration_seconds": 0.03973559998848941,
+    "model_residency": "not_applicable",
+    "optimizer": null,
+    "prediction_duration_seconds": 0.42048899999645073,
+    "prediction_seconds_per_record": 0.016819559999858028,
+    "records": 25,
+    "token_usage": null,
+    "total_duration_seconds": 0.46330929998657666
+  },
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer": "exect_field_family_deterministic_v1"
+}

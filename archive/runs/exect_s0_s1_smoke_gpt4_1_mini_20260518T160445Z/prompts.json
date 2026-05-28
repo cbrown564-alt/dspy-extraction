@@ -1,0 +1,95 @@
+{
+  "field_families": [
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication"
+  ],
+  "label_policy_examples": [
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "lamotrigine"
+        ]
+      },
+      "case": "planned_medication_exclusion",
+      "note_fragment": "Current anti-epileptic medication: lamotrigine 75mg bd. To start levetiracetam.",
+      "policy": "Exclude planned medication starts from the benchmark-facing medication list."
+    },
+    {
+      "benchmark_output": {
+        "annotated_medication": [
+          "sodium valproate"
+        ]
+      },
+      "case": "previous_medication_exclusion",
+      "note_fragment": "Previously tried carbamazepine. Current treatment is sodium valproate.",
+      "policy": "Exclude historical medication mentions from the benchmark-facing medication list."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "temporal lobe seizure",
+          "focal seizures"
+        ]
+      },
+      "case": "canonical_seizure_type_granularity",
+      "note_fragment": "The events are temporal-lobe-onset focal seizures.",
+      "policy": "Split the fused rich phrase into the audited benchmark seizure-type labels."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": [
+          "symptomatic structural focal epilepsy"
+        ]
+      },
+      "case": "diagnosis_label_preservation",
+      "note_fragment": "Diagnosis: symptomatic structural focal epilepsy.",
+      "policy": "Preserve the audited diagnosis surface rather than forcing a five-label collapse."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "focal seizures with altered awareness"
+        ]
+      },
+      "case": "plural_seizure_type_preservation",
+      "note_fragment": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks.",
+      "policy": "Preserve audited plural seizure-type surfaces when that is the scorer label."
+    },
+    {
+      "benchmark_output": {
+        "seizure_type": [
+          "occipital lobe seizures"
+        ],
+        "seizure_type_evidence": [
+          "occipital lobe seizures"
+        ]
+      },
+      "case": "evidence_quote_contiguity",
+      "note_fragment": "Seizure type: occipital lobe seizures. Previous medication: lamotrigine.",
+      "policy": "Evidence must be an exact contiguous quote, not a stitched or ellipsis quote."
+    },
+    {
+      "benchmark_output": {
+        "diagnosis": []
+      },
+      "case": "single_event_diagnosis_null",
+      "note_fragment": "This was a single focal seizure. There is no established epilepsy diagnosis.",
+      "policy": "Do not convert a single seizure event into an established epilepsy diagnosis."
+    }
+  ],
+  "label_policy_guidance": [
+    "Return benchmark-facing annotation labels only; do not expand into clinically richer labels.",
+    "Diagnosis labels should preserve the explicit audited diagnosis surface after deterministic canonicalization; do not force all focal, temporal-lobe, symptomatic, refractory, or syndrome phrases into a five-label diagnosis set unless the scorer has an explicit mapping.",
+    "Do not output a diagnosis for a single seizure event unless the note separately states an established epilepsy diagnosis.",
+    "Use the audited seizure-type surface supported by the note. Preserve plural and modifier surfaces such as focal seizures with altered awareness or occipital lobe seizures when those are the benchmark-facing labels.",
+    "Split fused seizure-type surfaces into audited benchmark labels when the note combines a lobe-specific type with a broader focal seizure type; for example temporal lobe onset focal seizures should produce temporal lobe seizure and focal seizures.",
+    "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a separate current seizure type unless the note independently names it as current.",
+    "Annotated medication means medications in the audited prescription annotation view only; do not include planned starts, previous trials, taper/stop instructions, or medication history mentions unless they are also prescription-style annotated medication entries.",
+    "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or unsupported evidence."
+  ],
+  "module": "ExectS0S1FieldFamilyModule",
+  "prompt_version": "exect_s0_s1_field_family_v3_seizure_evidence_policy",
+  "signature": "ExectS0S1FieldFamilySignature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

@@ -1,0 +1,52 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "artifact_medication_temporality_post_classifier_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s4_temporality_h1_post_classifier_full_gpt4_1_mini",
+  "hypothesis": "Evidence-aligned medication-temporality post classification (H1) improves medication_temporality precision on the full fixed validation split (40 records) after cap-25 gate clearance (+14.5pp precision, F1 stable on cap-25).",
+  "max_records": null,
+  "metric_caveats": [
+    "Full fixed ExECTv2 validation split (40 records) for exect_s4_temporality_deterministic_v1; not published Table 1 reproduction.",
+    "Only medication_temporality recovery uses exect.medication_temporality.post_classifier.v1; other families unchanged.",
+    "Medication_temporality precision is the primary decision metric; recall and pooled micro are diagnostic.",
+    "Cap-25 anchor: H1 61.3% MT precision (+14.5pp vs L1 46.8%; F1 \u22120.4pp) at runs/exect_s4_temporality_h1_post_classifier_cap25_gpt4_1_mini_20260520T203803Z.",
+    "Non-ASM temporality predictions are dropped post-hoc to target precision collapse from over-extraction.",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_temporality_post_classifier_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "medication"
+    ],
+    "comparison_group": "exect_s4_temporality_deterministic_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic"
+    ],
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during",
+      "post"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s4",
+    "varied_factor": "interleaving_position"
+  },
+  "taxonomy_exemption": null
+}

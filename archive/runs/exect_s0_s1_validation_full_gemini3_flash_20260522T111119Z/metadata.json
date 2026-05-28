@@ -1,0 +1,41 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-22T11:11:19.195730Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s0_s1_validation_full_gemini3_flash",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "GPT 4.1-mini frozen anchor: runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro F1).",
+    "Gemini 3.1 Flash-Lite anchor: runs/exect_s0_s1_validation_full_gemini31_flash_lite_20260521T093501Z (90.3% micro F1).",
+    "Qwen3.6:35b anchor: runs/exect_s0_s1_validation_full_qwen35b_ollama_20260520T042117Z (79.0% micro F1).",
+    "Claude Sonnet 4.6 anchor: runs/exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic_20260522T090828Z (81.8% micro F1).",
+    "Do not compare this run to GPT full validation as the same experiment; same scorer, different model track.",
+    "Record token usage, latency, and billing when inspecting artifacts.",
+    "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "gemini-3-flash-preview",
+  "model_provider": "gemini",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s0_s1_validation_full_gemini3_flash_20260522T111119Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

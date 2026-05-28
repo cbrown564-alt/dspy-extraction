@@ -1,0 +1,37 @@
+{
+  "extract.predict": {
+    "demos": [
+      {
+        "augmented": true,
+        "evidence_text": "Seizure-free period now 14 months.",
+        "note_text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 15 July 2018 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH772194 NHS No. 9462013857  \n12 Brookside Close, London, SE15 3PL\n\nThank you for asking me to review your patient in the neurology clinic. He attended today with his partner and brought his seizure diary and VNS card. He reports that his overall stability has been good since his last review and he is engaging well with routine follow-up. Seizure-free period now 14 months. He attributes this improvement to consistent medication adherence and the implanted vagus nerve stimulator (VNS). He has an implanted VNS; there were no parameter changes at this review. He uses the magnet rarely and only for reassurance; there have been no magnet-triggered events in the past year. He denies any nocturnal events, tongue biting, injuries, or emergency attendances. There has been no loss of awareness reported by him or observed by family over this period. \n\nHe describes occasional brief spells of light-headedness when overtired, without behavioural change, automatisms, or post-event confusion; these are infrequent and self-limiting, and he has not associated them with triggers aside from sleep deprivation. He has not driven and remains compliant with DVLA guidance. Sleep and mood are reported as stable, with mild anticipatory anxiety around anniversaries of previous episodes, managed through simple relaxation strategies. There is no current concern for cognitive decline, and he has returned to part-time work without difficulties. \n\nExamination today was unremarkable. Cardiovascular and neurological examinations were within normal limits. VNS generator site is well healed without tenderness or skin breakdown. Device interrogation confirmed satisfactory battery status and lead impedance within expected range. No adjustments were made to stimulation parameters. \n\nPlan: \n- Continue current antiseizure medication at existing doses (unchanged today) and maintain VNS parameters.  \n- Reinforce sleep hygiene and ongoing seizure diary entries.  \n- Routine follow-up in 6 months, or sooner if any events recur or adverse effects arise.  \n- Patient is aware to contact the epilepsy specialist nurse should there be any change in pattern or concerns about the device. \n\nThank you for your continued care. Please let me know if there is anything further you would like me to address. \n\nYours sincerely",
+        "reasoning": "The clinical note explicitly states \"Seizure-free period now 14 months.\" Since this period is greater than 6 months, the label should be 'seizure free for 14 month'. The evidence text must be a direct quote.",
+        "seizure_frequency_number": "seizure free for 14 month"
+      }
+    ],
+    "lm": null,
+    "signature": {
+      "fields": [
+        {
+          "description": "Clinical neurology note text",
+          "prefix": "Note Text:"
+        },
+        {
+          "description": "${reasoning}",
+          "prefix": "Reasoning:"
+        },
+        {
+          "description": "Seizure frequency in Gan label format. One of: '{count} per {unit}' e.g. '2 per week', '1 per 3 month'; '{count} cluster per {unit}, {n} per cluster'; 'unknown'; 'no seizure frequency reference'; or null to abstain. Unit must be singular: day/week/month/year.",
+          "prefix": "Seizure Frequency Number:"
+        },
+        {
+          "description": "Direct verbatim quote from the note supporting the label. Null if abstaining.",
+          "prefix": "Evidence Text:"
+        }
+      ],
+      "instructions": "Extract the Gan seizure-frequency label and supporting evidence from a clinical note.\n\n/no_think\nDo not use hidden reasoning. Emit only the requested output fields.\n\nThe label must match the Gan annotation vocabulary exactly. Abstain (null) only when\nthe note contains no usable seizure-frequency information.\n\nSynthesis-backed policy:\n- Output only canonical Gan labels: N per unit, N to M per unit, N per M unit,\n  N cluster per unit, M per cluster, seizure free for N unit, unknown, or\n  no seizure frequency reference.\n- Use singular units: day, week, month, year.\n- Convert daily/nightly to 1 per day, every N unit to 1 per N unit, and\n  numeric \"or\" ranges to \"to\" ranges.\n- Choose the highest current quantified seizure-type frequency.\n- Use the full cluster format; do not drop either the cluster period or\n  the per-cluster count.\n- Use seizure free for N unit only when seizure freedom is at least 6 months.\n  If seizure freedom is shorter than 6 months, compute the rate from the\n  total events over the described period.\n- For year-to-date counts, use months elapsed since January as the denominator.\n- Treat \"over the last quarter\" as an observation window when the note gives\n  a per-month rate; do not automatically convert it to per 3 month.\n- evidence_text must be an exact contiguous quote from the note."
+    },
+    "traces": [],
+    "train": []
+  }
+}

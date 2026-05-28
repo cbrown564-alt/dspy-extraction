@@ -1,0 +1,37 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-24T20:17:46.751813Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_5_unknown_overuse_guard",
+    "schema_level": "gan_frequency_s0",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Cap-25 enriched slice; results are not full-validation claims.",
+    "Comparison group: gan_s0_candidate_builder_gap_v1 on v1.4 prompt.",
+    "Varied factor: prompt_policy (prompt version) only. All other controls frozen.",
+    "Scorer semantics unchanged: gold is seizure_frequency_number[0].",
+    "Evidence support is diagnostic only.",
+    "Slice is enriched for unknown-overuse patterns; accuracy on this slice is not generalizable to full validation without separate confirmation."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini_20260524T201746Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

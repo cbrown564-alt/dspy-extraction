@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-20T18:57:47.476161Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_interleaving_h1_post_bridge_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "H1 post-bridge arm: repair_policy artifact_benchmark_bridge_only with bridge_stage post metadata.",
+    "Benchmark-facing fields: diagnosis, seizure_type, annotated_medication only (exect_s1 scope).",
+    "Compare to frozen L1 anchor exect_s0_s1_validation_full_gpt4_1_mini (92.3% micro).",
+    "Scorer exect_field_family_deterministic_v1 unchanged; bridges affect artifact labels only.",
+    "See docs/exect_s1_interleaving_experiment_preregistration_20260520.md."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "run_id": "exect_s1_interleaving_h1_post_bridge_gpt4_1_mini_20260520T185747Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

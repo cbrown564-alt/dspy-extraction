@@ -1,0 +1,35 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair with deterministic temporal-candidate hints and v1.1 candidate-gated repair guards"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_cap25_guardrails_validation",
+  "hypothesis": "Temporal-candidates verify-repair v1.1 on GPT 4.1-mini improves cap-25 monthly frequency versus verify-repair v2 cap-25 anchor (34.8% monthly at runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T084511Z) while maintaining schema validity and evidence support.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This 25-record cap ports temporal-candidates verify-repair v1.1 from Qwen Tier 1 to hosted GPT 4.1-mini.",
+    "Temporal candidates are deterministic diagnostic hints; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "Verify-repair doubles model calls versus direct extraction; latency is not comparable to direct-only runs.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Normalized-label exact, schema validity, abstention, evidence support, temporal-candidate coverage, and verifier decisions are diagnostic.",
+    "Promotion gate (cap-25): monthly >=40%, schema 100%, evidence >=90%, no evidence-regression vs verify-repair cap-25 (34.8% monthly, 91.3% evidence at runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T084511Z). Hold 34.8-40%; stop below verify-repair cap-25.",
+    "On promote, compare full validation to hosted anchor runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z (65.4% monthly, 92.7% evidence).",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

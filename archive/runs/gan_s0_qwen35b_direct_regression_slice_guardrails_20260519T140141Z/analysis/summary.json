@@ -1,0 +1,133 @@
+{
+  "accuracies_valid_only": {
+    "monthly_frequency": 1.0,
+    "normalized_label": 1.0,
+    "pragmatic_category": 1.0,
+    "purist_category": 1.0
+  },
+  "analysis_scope": "record_ids_filter",
+  "boundary_case_counts": {
+    "monthly_match_label_surface_mismatch": 0,
+    "pragmatic_match_monthly_divergence": 0,
+    "purist_bin_boundary_within_pragmatic": 0,
+    "purist_match_monthly_divergence": 0
+  },
+  "divergence": {
+    "metric_pattern_counts": {
+      "1111": 9
+    },
+    "patterns": {
+      "1111": {
+        "count": 9,
+        "examples": [
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_10751"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "unknown",
+            "gold_monthly_frequency": 1000.0,
+            "gold_pragmatic_category": "unknown",
+            "gold_purist_category": "unknown",
+            "predicted_label": "unknown",
+            "predicted_monthly_frequency": 1000.0,
+            "predicted_pragmatic_category": "unknown",
+            "predicted_purist_category": "unknown",
+            "record_id": "gan_11221"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "no seizure frequency reference",
+            "gold_monthly_frequency": 0.0,
+            "gold_pragmatic_category": "no_seizure_information",
+            "gold_purist_category": "no_seizure_information",
+            "predicted_label": "no seizure frequency reference",
+            "predicted_monthly_frequency": 0.0,
+            "predicted_pragmatic_category": "no_seizure_information",
+            "predicted_purist_category": "no_seizure_information",
+            "record_id": "gan_11733"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "multiple per week",
+            "gold_monthly_frequency": 12.99,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_week_lt_1_per_day",
+            "predicted_label": "multiple per week",
+            "predicted_monthly_frequency": 12.99,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_week_lt_1_per_day",
+            "record_id": "gan_12130"
+          },
+          {
+            "failure_class": "all_metrics_match",
+            "gold_label": "5 per 2 month",
+            "gold_monthly_frequency": 2.5,
+            "gold_pragmatic_category": "frequent",
+            "gold_purist_category": "gt_1_per_month_lt_1_per_week",
+            "predicted_label": "5 per 2 month",
+            "predicted_monthly_frequency": 2.5,
+            "predicted_pragmatic_category": "frequent",
+            "predicted_purist_category": "gt_1_per_month_lt_1_per_week",
+            "record_id": "gan_12810"
+          }
+        ],
+        "label": "all_four_match",
+        "share_of_valid": 1.0
+      }
+    }
+  },
+  "failure_action_tier_counts": {},
+  "failure_taxonomy_by_action_tier": {
+    "benchmark_severe": {},
+    "diagnostic_only": {},
+    "operational": {}
+  },
+  "failure_taxonomy_invalid": {
+    "abstention_or_missing_value": 1
+  },
+  "failure_taxonomy_scored_misses": {},
+  "metric_implications": {
+    "monthly_implies": {
+      "normalized_exact": 9,
+      "pragmatic": 9,
+      "purist": 9,
+      "total_monthly_match": 9
+    },
+    "normalized_exact_implies": {
+      "monthly": 9,
+      "pragmatic": 9,
+      "purist": 9,
+      "total_normalized_exact": 9
+    },
+    "purist_implies": {
+      "monthly": 9,
+      "pragmatic": 9,
+      "total_purist_match": 9
+    }
+  },
+  "record_counts": {
+    "analysis_total": 10,
+    "invalid_or_missing": 1,
+    "predicted": 10,
+    "scored_valid": 9,
+    "split_total": 299
+  },
+  "run_dir": "runs\\gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T140141Z",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "taxonomy_by_metric_misses": {
+    "monthly": {},
+    "normalized_exact": {},
+    "pragmatic": {},
+    "purist": {}
+  }
+}

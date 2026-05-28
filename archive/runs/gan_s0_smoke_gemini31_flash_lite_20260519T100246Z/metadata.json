@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T10:02:46.067861Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_smoke_gemini31_flash_lite",
+    "prompt_version": "gan_frequency_s0_synthesis_v1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "This one-record smoke run validates provider/config/runtime compatibility only; it is not a performance estimate.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing when run at meaningful sample sizes.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The model string gemini-3.1-flash-lite must be confirmed against the live Gemini API before cost or quality comparisons.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_name": "gemini-3.1-flash-lite",
+  "model_provider": "gemini",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "run_id": "gan_s0_smoke_gemini31_flash_lite_20260519T100246Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

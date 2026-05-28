@@ -1,0 +1,65 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_plus_precomputed_seizure_frequency_candidates",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "frequency_evidence_verify_reject_only_v2b"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama",
+  "hypothesis": "L1.1 corrected local transfer: the paper-frozen ExECT S5 v2b stack (high-recall pre-vocab candidates, AM guard, reject-only v2b frequency verifier) transfers to Qwen3.6:35b on the full fixed validation split with acceptable per-family regression vs the GPT 4.1-mini v2b anchor.",
+  "max_records": null,
+  "metric_caveats": [
+    "Comparison group exect_s5_frequency_verify_v2b_model_comparison; varied_factor model_track.",
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across five families is not comparable to frozen S4 eleven-family or S3 nine-family headlines.",
+    "Program variant, prompt version, verifier policy, candidate builder, and AM guard are held fixed against GPT paper-frozen v2b run exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z.",
+    "Only seizure_frequency candidates are injected; S1-S3 and medication_temporality pre-vocab lists are omitted.",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
+    "Do not compare this run to GPT metrics as the same experiment without explicit model_track wording.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs\\models\\exect_qwen35b_ollama.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "frequency",
+      "medication"
+    ],
+    "comparison_group": "exect_s5_frequency_verify_v2b_model_comparison",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H1_post_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during",
+      "post"
+    ],
+    "program_architecture": "verify_repair",
+    "schema_complexity": "exect_s5",
+    "stage_executor": null,
+    "stage_graph_id": "g2_extract_verify",
+    "validation_ladder_rung": null,
+    "varied_factor": "model_track"
+  },
+  "taxonomy_exemption": null
+}

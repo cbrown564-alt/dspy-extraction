@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-19T09:21:17.110291Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_ladder_bootstrap_rs_cap25_gpt4_1_mini",
+    "prompt_version": "gan_frequency_s0_synthesis_v1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The optimizer metric is stricter than benchmark scoring: bootstrapped traces must match the normalized gold label and provide exact source-quote support for all non-no-reference labels.",
+    "BootstrapFewShotWithRandomSearch compile cost scales with num_candidate_programs; treat compile time as a first-class ladder metric.",
+    "This capped validation config compares optimizers on the direct single-pass path; it is not published Gan benchmark reproduction."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "run_id": "gan_s0_ladder_bootstrap_rs_cap25_gpt4_1_mini_20260519T092117Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

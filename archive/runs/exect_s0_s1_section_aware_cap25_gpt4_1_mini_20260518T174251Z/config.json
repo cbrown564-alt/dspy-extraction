@@ -1,0 +1,31 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "deterministic_section_aware_per_family",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s0_s1_section_aware_cap25_gpt4_1_mini",
+  "hypothesis": "A 25-record ExECT S0/S1 architecture ablation tests whether deterministic section-aware per-family context reduces cross-family leakage relative to the monolithic baseline while keeping the scorer, schema, prompt policy, and evidence bridge fixed.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This architecture ablation keeps ExECT scorer semantics fixed and is not published ExECTv2 benchmark reproduction.",
+    "These are partial ExECT S0/S1 diagnostics, not full-schema ExECT benchmark numbers.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Medication temporality is intentionally excluded from benchmark-facing metrics for this baseline.",
+    "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_section_aware",
+  "prompt_version": "exect_s0_s1_field_family_v3_seizure_evidence_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

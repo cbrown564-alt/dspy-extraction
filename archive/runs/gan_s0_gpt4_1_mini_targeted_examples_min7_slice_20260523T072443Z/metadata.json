@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-23T07:24:43.835644Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_gpt4_1_mini_targeted_examples_min7_slice",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_gpt4_1_mini_targeted_examples_v1; varied_factor example_strategy.",
+    "Record_ids are the same 25-record validation slice used for G1-G7, selected from pragmatic-category mismatches in runs/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama_20260522T131822Z.",
+    "The slice is enriched for gold quantified or seizure-free/no-information cases predicted as unknown by Qwen 35b F0.",
+    "This is an example-strategy test against the same g2 candidates-adjudicate architecture, deterministic temporal candidates, GPT 4.1-mini model track, and deterministic scorer.",
+    "Do not compare slice accuracy directly to full-validation metrics; use it as a pre-full-validation regression gate."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_gpt4_1_mini_targeted_examples_min7_slice_20260523T072443Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

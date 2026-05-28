@@ -1,0 +1,1056 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.6:35b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+    "prompt_version": "gan_frequency_s0_temporal_event_table_verify_repair_v1_0",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10509",
+      "metadata": {
+        "initial_evidence": "She reports a recent shift in her seizure pattern over the past three months, characterised by clusters arising after nights of curtailed sleep",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "recent shift in her seizure pattern over the past three months",
+              "raw_phrase": "recent shift in her seizure pattern over the past three months",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "clusters arising after nights of curtailed sleep, most often grouped during the latter half of the night with occasional continuation into the early morning period before waking fully",
+              "raw_phrase": "clusters arising after nights of curtailed sleep, most often grouped during the latter half of the night with occasional continuation into the early morning period before waking fully",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "brief impaired awareness episodes and occasional lip-smacking",
+              "raw_phrase": "brief impaired awareness episodes and occasional lip-smacking",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The note describes a \"recent shift\" and \"clusters\" but provides no specific frequency (e.g., number of events per day/week) or a defined denominator window for calculation. The initial label 'unknown' is correct because the text lacks the quantitative data required for a specific frequency label (like 'N per unit'). The evidence quote accurately reflects the descriptive nature of the seizure history provided."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10509",
+              "end": 733,
+              "section": null,
+              "start": 590,
+              "text": "She reports a recent shift in her seizure pattern over the past three months, characterised by clusters arising after nights of curtailed sleep"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10751",
+      "metadata": {
+        "initial_evidence": "Episodes remain infrequent at home (none in the last 4 months) but he describes short bursts occurring around long-distance travel",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "brief epigastric rising and metallic taste as typical auras",
+              "raw_phrase": "brief epigastric rising and metallic taste as typical auras",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "focal aware sensory onset evolving to impaired awareness on some occasions",
+              "raw_phrase": "focal aware sensory onset evolving to impaired awareness on some occasions",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "behavioural arrest lasting 30\u201360 seconds, with occasional right-hand automatisms",
+              "raw_phrase": "behavioural arrest lasting 30\u201360 seconds, with occasional right-hand automatisms",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "No generalised tonic-clonic events since May 2024",
+              "raw_phrase": "No generalised tonic-clonic events since May 2024",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "none in the last 4 months",
+              "raw_phrase": "none in the last 4 months",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "short bursts occurring around long-distance travel across multiple time zones",
+              "raw_phrase": "short bursts occurring around long-distance travel across multiple time zones",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The note describes seizures as \"infrequent\" and linked to specific triggers (travel/sleep disruption) without providing a quantifiable frequency (e.g., per month/year) or a clear seizure-free interval of >= 6 months. The initial label \"unknown\" is appropriate as no deterministic temporal frequency candidate exists."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10751",
+              "end": 1269,
+              "section": null,
+              "start": 1139,
+              "text": "Episodes remain infrequent at home (none in the last 4 months) but he describes short bursts occurring around long-distance travel"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_11221",
+      "metadata": {
+        "initial_evidence": "Last seizure on 30/5/2020. No further events since",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Last seizure on 30/5/2020",
+              "raw_phrase": "Last seizure on 30/5/2020",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "The 30/5/2020 event progressed to a focal impaired-awareness seizure with behavioural arrest and lip smacking, lasting approximately 2 minutes, followed by 10 minutes of confusion",
+              "raw_phrase": "The 30/5/2020 event progressed to a focal impaired-awareness seizure with behavioural arrest and lip smacking, lasting approximately 2 minutes, followed by 10 minutes of confusion",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "No auras since June 2020",
+              "raw_phrase": "No auras since June 2020",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [
+            {
+              "duration_phrase": null,
+              "evidence_text": "No further events since, including during recent night shifts",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "No further events since, including during recent night shifts"
+            }
+          ],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The note states the last seizure was on 30/5/2020 and there have been \"No further events since\" the clinic date of 01 October 2020. This is a seizure-free interval of approximately 4 months, which is less than the 6-month threshold required for the \"seizure free\" label. No deterministic frequency candidates (e.g., \"1 per month\") were extracted. Therefore, the initial \"unknown\" label is correct as the frequency cannot be determined from a single event with no recurrence."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_11221",
+              "end": 796,
+              "section": null,
+              "start": 770,
+              "text": "Last seizure on 30/5/2020."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "evidence_repaired:truncated_to_note_span"
+          ],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_11733",
+      "metadata": {
+        "initial_evidence": "These recommendations are non-clinical and intended to reduce avoidable disadvantage.",
+        "initial_label": "no seizure frequency reference",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_event_table_records": {
+          "events": [],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The note is a letter regarding exam access arrangements for a student, explicitly stating that the recommendations are \"non-clinical.\" There is no mention of seizures, epilepsy, or any neurological event frequency. The initial label and evidence are correct."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_11733",
+              "end": 1799,
+              "section": null,
+              "start": 1714,
+              "text": "These recommendations are non-clinical and intended to reduce avoidable disadvantage."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_12130",
+      "metadata": {
+        "initial_evidence": "focal sensory occur several times each week",
+        "initial_label": "multiple per week",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "multiple per week"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "multiple per week",
+            "derivation": "qualitative several-times-per-week phrasing maps to multiple per week",
+            "event_count": "multiple",
+            "evidence_text": "focal sensory occur several times each week, particularly in the evenings",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Generalised tonic-clonic seizures are rare, typically 3 events per year",
+              "raw_phrase": "Generalised tonic-clonic seizures are rare, typically 3 events per year",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "focal sensory occur several times each week",
+              "raw_phrase": "focal sensory occur several times each week",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The initial label 'multiple per week' is directly supported by the note text 'focal sensory occur several times each week'. The temporal candidates also identify this as the primary frequent pattern. While GTC seizures are mentioned as '3 events per year', the 'multiple per week' frequency for focal sensory seizures is the most prominent and frequent pattern described, justifying the confirmation of the initial label."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_12130",
+              "end": 891,
+              "section": null,
+              "start": 848,
+              "text": "focal sensory occur several times each week"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "multiple per week",
+          "quality_flags": [],
+          "raw_value": "multiple per week",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_12810",
+      "metadata": {
+        "initial_evidence": "five generalised tonic-clonic seizures documented this year to date",
+        "initial_label": "5 per 2 month",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "5 per 2 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "5 per 2 month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "5",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just five generalised tonic-clonic seizures documented this year to date",
+            "window_count": "2",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "five generalised tonic-clonic seizures documented this year to date",
+              "raw_phrase": "five generalised tonic-clonic seizures documented this year to date",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "brief auras on two further occasions",
+              "raw_phrase": "brief auras on two further occasions",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The initial label '5 per 2 month' is supported by the note stating \"five generalised tonic-clonic seizures documented this year to date\" relative to the clinic date of 24 February 2016. The window of ~2 months (Jan-Feb) is the most precise and accurate denominator for the count of 5 seizures. The initial evidence quote is exact and sufficient."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_12810",
+              "end": 952,
+              "section": null,
+              "start": 885,
+              "text": "five generalised tonic-clonic seizures documented this year to date"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "5 per 2 month",
+          "quality_flags": [],
+          "raw_value": "5 per 2 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_12823",
+      "metadata": {
+        "initial_evidence": "nine generalised tonic-clonic seizures documented this year to date",
+        "initial_label": "9 per month",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "9 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "9 per month",
+            "derivation": "year-to-date seizure count anchored to calendar months elapsed before the clinic date",
+            "event_count": "9",
+            "evidence_text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just nine generalised tonic-clonic seizures documented this year to date",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "nine generalised tonic-clonic seizures documented this year to date",
+              "raw_phrase": "nine generalised tonic-clonic seizures documented this year to date",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "focal impaired-awareness episodes, now occurring roughly once every three to four weeks",
+              "raw_phrase": "focal impaired-awareness episodes, now occurring roughly once every three to four weeks",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "Confirm-first guard preserved initial label '9 per month' instead of verifier repair to '9 per year'."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_12823",
+              "end": 1463,
+              "section": null,
+              "start": 1396,
+              "text": "nine generalised tonic-clonic seizures documented this year to date"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "9 per month",
+          "quality_flags": [],
+          "raw_value": "9 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10003",
+      "metadata": {
+        "initial_evidence": "Weekly morning clusters reported; number per cluster not documented.",
+        "initial_label": "1 cluster per week, multiple per cluster",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "1 cluster per week, multiple per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 cluster per week, multiple per cluster",
+            "derivation": "weekly cluster cadence without a documented per-cluster multiplier",
+            "event_count": "1 cluster",
+            "evidence_text": "Weekly morning clusters reported; number per cluster not documented",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Secondary generalisation is rare but has occurred twice this year",
+              "raw_phrase": "Secondary generalisation is rare but has occurred twice this year",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Weekly morning clusters reported",
+              "raw_phrase": "Weekly morning clusters reported",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Weekly morning clusters reported; number per cluster not documented",
+              "raw_phrase": "Weekly morning clusters reported; number per cluster not documented",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The initial label '1 cluster per week, multiple per cluster' is fully supported by the note text 'Weekly morning clusters reported; number per cluster not documented'. The temporal candidates and event table confirm this specific phrasing and cadence. No better canonical label exists given the lack of specific per-cluster counts."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10003",
+              "end": 1285,
+              "section": null,
+              "start": 1217,
+              "text": "Weekly morning clusters reported; number per cluster not documented."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 cluster per week, multiple per cluster",
+          "quality_flags": [],
+          "raw_value": "1 cluster per week, multiple per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10052",
+      "metadata": {
+        "initial_evidence": "confirm 4 clusters this quarter",
+        "initial_label": "4 cluster per 3 month, multiple per cluster",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "4 cluster per 3 month, multiple per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "4 cluster per 3 month, multiple per cluster",
+            "derivation": "explicit cluster count over a calendar quarter",
+            "event_count": "4 cluster",
+            "evidence_text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "confirm 4 clusters this quarter",
+              "raw_phrase": "4 clusters this quarter",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The initial label and evidence are explicitly supported by the note text \"confirm 4 clusters this quarter\". The temporal candidates also identify this as the primary explicit frequency reference. No repair is needed."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10052",
+              "end": 902,
+              "section": null,
+              "start": 871,
+              "text": "confirm 4 clusters this quarter"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "4 cluster per 3 month, multiple per cluster",
+          "quality_flags": [],
+          "raw_value": "4 cluster per 3 month, multiple per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10410",
+      "metadata": {
+        "initial_evidence": "now weekly, 3 or 4 per cluster",
+        "initial_label": "1 cluster per week, 3 to 4 per cluster",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "1 cluster per week, 3 to 4 per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 cluster per week, 3 to 4 per cluster",
+            "derivation": "weekly cluster cadence with explicit per-cluster count range",
+            "event_count": "1 cluster",
+            "evidence_text": "Cluster burden increased since 28 Jun 2020; now weekly, 3 or 4 per cluster",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Cluster burden increased since 28 Jun 2020; now weekly, 3 or 4 per cluster",
+              "raw_phrase": "Cluster burden increased since 28 Jun 2020; now weekly, 3 or 4 per cluster",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [],
+          "selected_window_note": null
+        },
+        "verifier_decision": "confirm",
+        "verifier_reason": "The initial label and evidence exactly match the deterministic candidate and the explicit statement in the note (\"now weekly, 3 or 4 per cluster\"). The temporal event table supports this with the same evidence text. No repair is needed."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10410",
+              "end": 1132,
+              "section": null,
+              "start": 1102,
+              "text": "now weekly, 3 or 4 per cluster"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 cluster per week, 3 to 4 per cluster",
+          "quality_flags": [],
+          "raw_value": "1 cluster per week, 3 to 4 per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13123",
+      "metadata": {
+        "initial_evidence": "She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago.",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "1 per year"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "no seizures for nearly a year following initiation of Valproate",
+              "raw_phrase": "no seizures for nearly a year following initiation of Valproate",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+              "raw_phrase": "developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "typical focal onset with awareness of a brief internal \"rising\" sensation and right facial twitching before generalisation",
+              "raw_phrase": "typical focal onset with awareness of a brief internal \"rising\" sensation and right facial twitching before generalisation",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [
+            {
+              "duration_phrase": null,
+              "evidence_text": "no seizures for nearly a year following initiation of Valproate",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "no seizures for nearly a year following initiation of Valproate"
+            }
+          ],
+          "selected_window_note": null
+        },
+        "verifier_decision": "repair",
+        "verifier_reason": "The initial label 'unknown' is incorrect because the note provides a clear temporal context: a nearly one-year seizure-free period followed by a single breakthrough seizure. This supports the canonical label '1 per year'. The evidence quote is preserved as it directly supports this derivation."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_13123",
+              "end": 938,
+              "section": null,
+              "start": 787,
+              "text": "She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per year",
+          "quality_flags": [],
+          "raw_value": "1 per year",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "initial_evidence": "Since returning to the UK, there have been no further events reported.",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "2 per 3 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching.",
+              "raw_phrase": "His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching.",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+              "raw_phrase": "A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [
+            {
+              "duration_phrase": null,
+              "evidence_text": "Since returning to the UK, there have been no further events reported.",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "Since returning to the UK, there have been no further events reported."
+            },
+            {
+              "duration_phrase": null,
+              "evidence_text": "no further events since July 2019",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "no further events since July 2019"
+            }
+          ],
+          "selected_window_note": null
+        },
+        "verifier_decision": "repair",
+        "verifier_reason": "The initial label 'unknown' is incorrect because the note explicitly documents two seizures within a defined 3-month window (April 2019 to July 2019). The deterministic candidate '2 per 3 month' is supported by the evidence text describing the initial event in April and the second in July. The subsequent seizure-free period does not negate the frequency within the observed window, nor does it qualify for a 'seizure free' label as the interval is less than 6 months."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": 1683,
+              "section": null,
+              "start": 1425,
+              "text": "His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 3 month",
+          "quality_flags": [],
+          "raw_value": "2 per 3 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14881",
+      "metadata": {
+        "initial_evidence": "His last episode was recorded on 26 February and he has remained well since.",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "1 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last recorded event falls roughly one month before the clinic date",
+            "event_count": "1",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "Following two episodes of dizziness and subsequent headaches",
+              "raw_phrase": "two episodes of dizziness and subsequent headaches",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "On 18 February the absences diminished after dose escalation",
+              "raw_phrase": "On 18 February the absences diminished",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "His last episode was recorded on 26 February",
+              "raw_phrase": "His last episode was recorded on 26 February",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [
+            {
+              "duration_phrase": null,
+              "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "he has remained well since"
+            },
+            {
+              "duration_phrase": null,
+              "evidence_text": "no further events since 26 February",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "no further events since 26 February"
+            }
+          ],
+          "selected_window_note": null
+        },
+        "verifier_decision": "repair",
+        "verifier_reason": "Event-table candidate rescue repaired from confirmed unknown to sole listed candidate '1 per month' (no qualifying seizure-free interval in event table)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14881",
+              "end": 978,
+              "section": null,
+              "start": 902,
+              "text": "His last episode was recorded on 26 February and he has remained well since."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per month",
+          "quality_flags": [],
+          "raw_value": "1 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15306",
+      "metadata": {
+        "initial_evidence": "two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+        "temporal_candidate_labels": [
+          "2 to 3 per 15 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 to 3 per 15 month",
+            "derivation": "count range is anchored to an explicit prior month/year",
+            "event_count": "2 to 3",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep",
+            "window_count": "15",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_event_table_records": {
+          "events": [
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep",
+              "raw_phrase": "two to three single jerks",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            },
+            {
+              "event_count": null,
+              "event_date_phrase": null,
+              "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020",
+              "raw_phrase": "No further tonic-clonic seizures have occurred since 12/2020",
+              "role": "seizure_event",
+              "seizure_type": null,
+              "window_phrase": null
+            }
+          ],
+          "seizure_free_intervals": [
+            {
+              "duration_phrase": null,
+              "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020",
+              "qualifies_for_seizure_free_label": false,
+              "raw_phrase": "No further tonic-clonic seizures have occurred since 12/2020"
+            }
+          ],
+          "selected_window_note": null
+        },
+        "verifier_decision": "repair",
+        "verifier_reason": "The initial label 'unknown' is incorrect because the note provides a specific frequency count ('two to three single jerks') anchored to a clear time window (since 12/2020 to 11 March 2022 is approximately 15 months). The deterministic candidate '2 to 3 per 15 month' accurately captures this information. The evidence quote is shortened to the contiguous span that contains both the time anchor and the event count."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15306",
+              "end": 810,
+              "section": null,
+              "start": 707,
+              "text": "No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 to 3 per 15 month",
+          "quality_flags": [],
+          "raw_value": "2 to 3 per 15 month",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

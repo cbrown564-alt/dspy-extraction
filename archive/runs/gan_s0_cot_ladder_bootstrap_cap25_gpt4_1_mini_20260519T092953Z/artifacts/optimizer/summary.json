@@ -1,0 +1,27 @@
+{
+  "artifact_files": {
+    "compiled_state": "../compiled_state.json",
+    "gepa_logs": null
+  },
+  "optimizer": {
+    "add_format_failure_as_feedback": false,
+    "auto": null,
+    "candidate_selection_strategy": "pareto",
+    "max_bootstrapped_demos": 4,
+    "max_full_evals": null,
+    "max_labeled_demos": 4,
+    "max_metric_calls": null,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence",
+    "name": "BootstrapFewShot",
+    "num_candidate_programs": 16,
+    "num_threads": null,
+    "reflection_minibatch_size": 3,
+    "seed": 0,
+    "skip_perfect_score": true,
+    "track_best_outputs": false,
+    "track_stats": false,
+    "trainset_size": 50,
+    "use_cloudpickle": false
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-20T19:13:45.016363Z",
+  "dataset": "exect_v2",
+  "metadata": {
+    "experiment_id": "exect_s1_interleaving_h2_medication_pre_vocab_slice_gpt4_1_mini",
+    "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "14-record slice from data/fixtures/exect_s1_medication_pre_vocab_regression_slice.json.",
+    "Only annotated_medication candidates are injected; diagnosis and seizure_type pre-vocab lists are omitted.",
+    "Medication F1 is the primary decision metric; pooled micro is diagnostic only.",
+    "Do not extrapolate slice metrics to full-validation performance.",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
+  "run_id": "exect_s1_interleaving_h2_medication_pre_vocab_slice_gpt4_1_mini_20260520T191345Z",
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_name": "exectv2_fixed_v1:validation"
+}

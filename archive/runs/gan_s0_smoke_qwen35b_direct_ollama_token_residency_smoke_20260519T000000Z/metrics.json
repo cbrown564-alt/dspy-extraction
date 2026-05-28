@@ -1,0 +1,299 @@
+{
+  "benchmark_metrics": {
+    "monthly_frequency_accuracy": 0.0,
+    "pragmatic_category_accuracy": 0.0,
+    "purist_category_accuracy": 0.0
+  },
+  "caveats": [
+    "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+    "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
+    "Evidence metrics are diagnostic source-grounding checks: predicted evidence is evaluated by deterministic quote/offset support in the note text, not by overlap with Gan evidence annotations."
+  ],
+  "confidence_intervals": {
+    "evidence_offsets_present_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_offsets_valid_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "evidence_quote_support_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    },
+    "monthly_frequency_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 0.0,
+      "seed": 0,
+      "upper": 0.0
+    },
+    "normalized_label_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 0.0,
+      "seed": 0,
+      "upper": 0.0
+    },
+    "pragmatic_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 0.0,
+      "seed": 0,
+      "upper": 0.0
+    },
+    "purist_category_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 0.0,
+      "seed": 0,
+      "upper": 0.0
+    },
+    "raw_exact_accuracy": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 0.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 0.0,
+      "seed": 0,
+      "upper": 0.0
+    },
+    "schema_valid_prediction_rate": {
+      "bootstrap_samples": 1000,
+      "confidence_level": 0.95,
+      "lower": 1.0,
+      "method": "percentile_bootstrap_mean",
+      "n": 1,
+      "point_estimate": 1.0,
+      "seed": 0,
+      "upper": 1.0
+    }
+  },
+  "counts": {
+    "evaluated_records": 1,
+    "extra_predictions": 0,
+    "gold_records": 1500,
+    "invalid_predictions": 0,
+    "missing_predictions": 1499,
+    "predicted_records": 1,
+    "valid_predictions": 1
+  },
+  "dataset": "gan_2026",
+  "diagnostic_metrics": {
+    "evidence_offsets_present_rate": 1.0,
+    "evidence_offsets_valid_rate": 1.0,
+    "evidence_quote_support_rate": 1.0,
+    "normalized_label_accuracy": 0.0,
+    "raw_exact_accuracy": 0.0,
+    "schema_valid_prediction_rate": 1.0
+  },
+  "error_analysis": {
+    "counts": {
+      "classification.pragmatic_category_mismatch": 1,
+      "classification.purist_category_mismatch": 1,
+      "normalization.label_mismatch": 1,
+      "normalization.monthly_frequency_mismatch": 1,
+      "schema.missing_prediction": 1499
+    },
+    "examples": {
+      "classification.pragmatic_category_mismatch": [
+        {
+          "gold_pragmatic_category": "infrequent",
+          "predicted_pragmatic_category": "no_seizure_information",
+          "reason": "Pragmatic category differs from gold",
+          "record_id": "gan_14485"
+        }
+      ],
+      "classification.purist_category_mismatch": [
+        {
+          "gold_purist_category": "gt_1_per_6_months_lt_1_per_month",
+          "predicted_purist_category": "no_seizure_information",
+          "reason": "Purist category differs from gold",
+          "record_id": "gan_14485"
+        }
+      ],
+      "normalization.label_mismatch": [
+        {
+          "normalized_gold_label": "2 per 3 month",
+          "normalized_predicted_label": "no seizure frequency reference",
+          "reason": "normalized predicted label differs from gold",
+          "record_id": "gan_14485"
+        }
+      ],
+      "normalization.monthly_frequency_mismatch": [
+        {
+          "gold_monthly_frequency": 0.6666666666666666,
+          "predicted_monthly_frequency": 0.0,
+          "reason": "monthly frequency differs from gold",
+          "record_id": "gan_14485"
+        }
+      ],
+      "schema.missing_prediction": [
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10002"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10003"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10009"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10010"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10031"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10047"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1005"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10052"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10057"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10063"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10074"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10097"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10123"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10147"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10149"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10159"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1017"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_1018"
+        },
+        {
+          "reason": "gold record has no prediction",
+          "record_id": "gan_10183"
+        }
+      ]
+    }
+  },
+  "errors": {
+    "evidence_support_errors": [],
+    "extra_prediction_ids": [],
+    "invalid_predictions": [],
+    "missing_prediction_ids": [
+      "gan_10",
+      "gan_10002",
+      "gan_10003",
+      "gan_10009",
+      "gan_10010",
+      "gan_10031",
+      "gan_10047",
+      "gan_1005",
+      "gan_10052",
+      "gan_10057",
+      "gan_10063",
+      "gan_10074",
+      "gan_10097",
+      "gan_10123",
+      "gan_10147",
+      "gan_10149",
+      "gan_10159",
+      "gan_1017",
+      "gan_1018",
+      "gan_10183"
+    ],
+    "monthly_frequency_mismatches": [
+      {
+        "gold_label": "2 per 3 month",
+        "gold_monthly_frequency": 0.6666666666666666,
+        "gold_pragmatic_category": "infrequent",
+        "predicted_label": "no seizure frequency reference",
+        "predicted_monthly_frequency": 0.0,
+        "predicted_pragmatic_category": "no_seizure_information",
+        "record_id": "gan_14485"
+      }
+    ]
+  },
+  "runtime": {
+    "compile_duration_seconds": null,
+    "estimated_model_calls": 1,
+    "evaluation_duration_seconds": 0.1192222000026959,
+    "model_residency": "72%/28% CPU/GPU (context=4096)",
+    "optimizer": null,
+    "prediction_duration_seconds": 0.20282500000030268,
+    "prediction_seconds_per_record": 0.20282500000030268,
+    "records": 1,
+    "token_usage": null,
+    "total_duration_seconds": 0.4855284999939613
+  },
+  "schema_level": "gan_frequency_s0",
+  "scorer": "gan_frequency_deterministic_v1"
+}

@@ -1,0 +1,57 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s3_cause_l1_baseline_full_gpt4_1_mini",
+  "hypothesis": "L1 control for exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1: frozen v1.2 nine-family pass on full fixed validation (40 records) without K0/K1 epilepsy_cause CUIPhrase bridges.",
+  "max_records": null,
+  "metric_caveats": [
+    "Comparison group exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1; varied_factor implementation_variant.",
+    "Full fixed ExECTv2 validation split (40 records); not published Table 1 reproduction.",
+    "Primary metric epilepsy_cause F1; regression guards investigation, seizure_type, comorbidity (>=2pp vs L1).",
+    "Qualitative queue docs EA0150, EA0016, EA0137 tagged in residual slice fixture.",
+    "Cap-25 anchor: L1 0.0% cause F1 (runs/exect_s3_cause_l1_baseline_cap25_gpt4_1_mini_20260521T090542Z).",
+    "External anchor: GPT S3 v1.2 full 72.1% micro (runs/exect_s3_validation_full_gpt4_1_mini_20260519T235439Z).",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s3_field_family_single_pass",
+  "prompt_version": "exect_s3_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s3_field_family",
+  "scorer_mode": "exect_s3_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "multi_family"
+    ],
+    "comparison_group": "exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "implementation_variant": "cause_bridge_l1_control",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s3",
+    "stage_executor": null,
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "validation_ladder_rung": null,
+    "varied_factor": "implementation_variant"
+  },
+  "taxonomy_exemption": null
+}

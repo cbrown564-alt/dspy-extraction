@@ -1,0 +1,38 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-22T10:42:42.638060Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_expanded_builders_prose_cap25_qwen35b_ollama",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_expanded_builders_prose_model_comparison_v1; varied_factor model_track.",
+    "Cap-25 gate only \u2014 not a full-validation performance claim.",
+    "GPT F0 full anchor: 68.1% monthly (\u2026073432Z); Gemini F0 full: 72.6% (\u2026094020Z).",
+    "Prior Qwen g2 cap-25 (40% monthly, pre-expansion builders) is not F0-comparable.",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
+    "Launch cap-25/full via detached PowerShell on Windows \u2014 not Cursor background terminals.",
+    "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "qwen3.6:35b",
+  "model_provider": "ollama",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_expanded_builders_prose_cap25_qwen35b_ollama_20260522T104242Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

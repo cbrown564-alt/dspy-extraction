@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_plus_precomputed_seizure_frequency_candidates",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s5_frequency_pre_vocab_full_gpt4_1_mini",
+  "hypothesis": "H2_pre arm: seizure-frequency-only pre-vocab candidate injection (using E6 deterministic candidates) improves S5 seizure_frequency F1 on full validation split without regressing guard families.",
+  "max_records": null,
+  "metric_caveats": [
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across five families is not comparable to frozen S4 eleven-family or S3 nine-family headlines.",
+    "Only seizure_frequency candidates are injected; S1\u2013S3 and medication_temporality pre-vocab lists are omitted.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_frequency_pre_vocab_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "frequency"
+    ],
+    "comparison_group": "exect_s5_axis1_axis2_decomposition_gpt_full_validation_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s5",
+    "stage_executor": null,
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "validation_ladder_rung": null,
+    "varied_factor": "interleaving_position"
+  },
+  "taxonomy_exemption": null
+}

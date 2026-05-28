@@ -1,0 +1,999 @@
+{
+  "benchmark_metrics": {
+    "field_f1": {
+      "annotated_medication": 0.9272727272727272,
+      "diagnosis": 0.7142857142857143,
+      "seizure_type": 0.6595744680851063
+    },
+    "field_precision": {
+      "annotated_medication": 0.8947368421052632,
+      "diagnosis": 0.8823529411764706,
+      "seizure_type": 0.6326530612244898
+    },
+    "field_recall": {
+      "annotated_medication": 0.9622641509433962,
+      "diagnosis": 0.6,
+      "seizure_type": 0.6888888888888889
+    },
+    "field_support": {
+      "annotated_medication": 53,
+      "diagnosis": 50,
+      "seizure_type": 45
+    },
+    "micro_f1": 0.7777777777777778,
+    "micro_precision": 0.8,
+    "micro_recall": 0.7567567567567568
+  },
+  "caveats": [
+    "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
+    "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
+    "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1."
+  ],
+  "counts": {
+    "evaluated_records": 40,
+    "extra_predictions": 0,
+    "gold_records": 200,
+    "missing_predictions": 160,
+    "predicted_records": 40
+  },
+  "dataset": "exect_v2",
+  "diagnostic_metrics": {
+    "documents_with_gold_quality_flags": 0.25,
+    "evidence_offsets_present_rate": 0.8852459016393442,
+    "evidence_offsets_valid_rate": 1.0,
+    "evidence_quote_repair_rate": 0.00819672131147541,
+    "evidence_quote_support_rate": 0.8852459016393442,
+    "evidence_quote_support_rate_repaired": 1.0,
+    "evidence_quote_support_rate_without_repairs": 0.8842975206611571
+  },
+  "errors": {
+    "evidence_support_errors": [
+      {
+        "document_id": "EA0007",
+        "field_name": "diagnosis",
+        "raw_value": "epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0010",
+        "field_name": "diagnosis",
+        "raw_value": "epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0015",
+        "field_name": "annotated_medication",
+        "raw_value": "levetiracetam",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0049",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0049",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Seizure type and frequency: generalised tonic clonic seizures 1 to 2 every month"
+          }
+        ],
+        "raw_value": "generalised tonic clonic seizures",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0056",
+        "field_name": "seizure_type",
+        "raw_value": "secondary",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0058",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0058",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis 1. Symptomatic structural epilepsy secondary probably caused by early life meningitis"
+          }
+        ],
+        "raw_value": "symptomatic structural epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0060",
+        "field_name": "seizure_type",
+        "raw_value": "secondary generalised seizures",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0060",
+        "field_name": "seizure_type",
+        "raw_value": "secondary",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0082",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0082",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Juvenile absence epilepsy"
+          }
+        ],
+        "raw_value": "juvenile absence epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0082",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0082",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "he is relatively well although the absences continue fairly frequent"
+          }
+        ],
+        "raw_value": "absence seizures",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0087",
+        "field_name": "seizure_type",
+        "raw_value": "generalized tonic clonic seizure",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0097",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0097",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Probable focal onset epilepsy"
+          }
+        ],
+        "raw_value": "focal onset epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0099",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0099",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Focal onset epilepsy"
+          }
+        ],
+        "raw_value": "focal onset epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0099",
+        "field_name": "diagnosis",
+        "raw_value": "epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0099",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0099",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Seizure type and frequency: Focal onset convulsive seizure"
+          }
+        ],
+        "raw_value": "focal onset convulsive seizure",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0108",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0108",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: 1. Symptomatic epilepsy presenting with focal motor seizures with secondary generalised tonic clonic seizures"
+          }
+        ],
+        "raw_value": "focal motor seizures",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0108",
+        "field_name": "seizure_type",
+        "raw_value": "secondary generalised tonic clonic seizures",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0122",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0122",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Epilepsy, probable generalised (epilepsy with generalised tonic clinic seizure alone)"
+          }
+        ],
+        "raw_value": "epilepsy with generalized tonic clonic seizures alone",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0122",
+        "field_name": "diagnosis",
+        "raw_value": "epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0141",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0141",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Epilepsy, probable focal onset"
+          }
+        ],
+        "raw_value": "focal epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0144",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0144",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Symptomatic structural epilepsy"
+          }
+        ],
+        "raw_value": "symptomatic structural epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0144",
+        "field_name": "seizure_type",
+        "raw_value": "secondary",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0145",
+        "field_name": "annotated_medication",
+        "raw_value": "lamotrigine",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0171",
+        "field_name": "diagnosis",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0171",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Diagnosis: Epilepsy, probable focal onset"
+          }
+        ],
+        "raw_value": "probable focal onset epilepsy",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0171",
+        "field_name": "diagnosis",
+        "raw_value": "epilepsy",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0180",
+        "field_name": "seizure_type",
+        "raw_value": "myoclonus",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0180",
+        "field_name": "seizure_type",
+        "raw_value": "generalised tonic clonic seizures",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0183",
+        "field_name": "seizure_type",
+        "raw_value": "secondary generalised tonic clonic seizures",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0193",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0193",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Seizure type and frequency Bilateral convulsive seizures, last event 3rd June 2007"
+          }
+        ],
+        "raw_value": "bilateral convulsive seizures",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0193",
+        "field_name": "seizure_type",
+        "predicted_evidence": [
+          {
+            "document_id": "EA0193",
+            "end": null,
+            "section": null,
+            "start": null,
+            "text": "Seizure type and frequency Additional \"blank\" events"
+          }
+        ],
+        "raw_value": "blank events",
+        "reason": "predicted evidence quote or offsets not supported by document text"
+      },
+      {
+        "document_id": "EA0198",
+        "field_name": "seizure_type",
+        "raw_value": "secondary",
+        "reason": "prediction has no evidence spans"
+      },
+      {
+        "document_id": "EA0199",
+        "field_name": "annotated_medication",
+        "raw_value": "Epilim",
+        "reason": "prediction has no evidence spans"
+      }
+    ],
+    "extra_prediction_ids": [],
+    "field_family_mismatches": [
+      {
+        "document_id": "EA0015",
+        "false_negatives": [],
+        "false_positives": [
+          "epilepsy"
+        ],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0015",
+        "false_negatives": [
+          "epileptic attack"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0020",
+        "false_negatives": [],
+        "false_positives": [
+          "generalized tonic clonic seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0039",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0049",
+        "false_negatives": [
+          "myoclonic seizures",
+          "generalized tonic clonic seizure"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0056",
+        "false_negatives": [
+          "localisation related epilepsy",
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0056",
+        "false_negatives": [],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0058",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0060",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0060",
+        "false_negatives": [],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0060",
+        "false_negatives": [
+          "midazolam"
+        ],
+        "false_positives": [
+          "buccal midazolam"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0062",
+        "false_negatives": [],
+        "false_positives": [
+          "lamotrigine"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0082",
+        "false_negatives": [],
+        "false_positives": [
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0097",
+        "false_negatives": [
+          "epileptic seizures"
+        ],
+        "false_positives": [
+          "focal seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0097",
+        "false_negatives": [],
+        "false_positives": [
+          "levetiracetam"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0099",
+        "false_negatives": [],
+        "false_positives": [
+          "lamotrigine"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0105",
+        "false_negatives": [
+          "focal epilepsy",
+          "epilepsy due to stroke"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0108",
+        "false_negatives": [
+          "symptomatic epilepsy",
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0108",
+        "false_negatives": [
+          "tonic clonic convulsion"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0114",
+        "false_negatives": [
+          "carbamazepine"
+        ],
+        "false_positives": [
+          "carbamazepine controlled release"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0122",
+        "false_negatives": [
+          "generalized epilepsy",
+          "epilepsy, generalized",
+          "epilepsy with generalized tonic clonic seizure alone"
+        ],
+        "false_positives": [
+          "epilepsy with generalized tonic clonic seizures alone",
+          "epilepsy"
+        ],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0122",
+        "false_negatives": [
+          "generalized tonic clonic seizure"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0128",
+        "false_negatives": [
+          "jme"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0128",
+        "false_negatives": [
+          "generalized"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0134",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0134",
+        "false_negatives": [],
+        "false_positives": [
+          "tonic clonic seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0141",
+        "false_negatives": [
+          "epileptic seizures"
+        ],
+        "false_positives": [
+          "focal seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0141",
+        "false_negatives": [],
+        "false_positives": [
+          "lamotrigine"
+        ],
+        "field_family": "annotated_medication",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0144",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0144",
+        "false_negatives": [
+          "complex",
+          "focal seizures"
+        ],
+        "false_positives": [
+          "complex partial seizures",
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0145",
+        "false_negatives": [
+          "grand mal"
+        ],
+        "false_positives": [
+          "absence seizures",
+          "generalized tonic clonic seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0146",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0146",
+        "false_negatives": [
+          "grand mal"
+        ],
+        "false_positives": [
+          "generalized tonic clonic seizures",
+          "myoclonic seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0147",
+        "false_negatives": [
+          "focal epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ]
+      },
+      {
+        "document_id": "EA0162",
+        "false_negatives": [
+          "status epilepticus"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0162",
+        "false_negatives": [],
+        "false_positives": [
+          "generalized tonic clonic seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0171",
+        "false_negatives": [],
+        "false_positives": [
+          "focal onset epilepsy"
+        ],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0171",
+        "false_negatives": [
+          "focal seizures"
+        ],
+        "false_positives": [
+          "focal epileptic seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0180",
+        "false_negatives": [],
+        "false_positives": [
+          "myoclonus"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0183",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0183",
+        "false_negatives": [
+          "generalized"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0193",
+        "false_negatives": [],
+        "false_positives": [
+          "blank events"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0198",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": []
+      },
+      {
+        "document_id": "EA0198",
+        "false_negatives": [],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": []
+      }
+    ],
+    "missing_prediction_ids": [
+      "EA0001",
+      "EA0002",
+      "EA0003",
+      "EA0004",
+      "EA0005",
+      "EA0006",
+      "EA0008",
+      "EA0009",
+      "EA0011",
+      "EA0012",
+      "EA0013",
+      "EA0014",
+      "EA0016",
+      "EA0017",
+      "EA0018",
+      "EA0019",
+      "EA0021",
+      "EA0022",
+      "EA0023",
+      "EA0025",
+      "EA0026",
+      "EA0027",
+      "EA0028",
+      "EA0029",
+      "EA0030",
+      "EA0031",
+      "EA0032",
+      "EA0034",
+      "EA0035",
+      "EA0036",
+      "EA0037",
+      "EA0038",
+      "EA0040",
+      "EA0041",
+      "EA0042",
+      "EA0043",
+      "EA0044",
+      "EA0045",
+      "EA0046",
+      "EA0047",
+      "EA0048",
+      "EA0050",
+      "EA0051",
+      "EA0052",
+      "EA0053",
+      "EA0054",
+      "EA0055",
+      "EA0057",
+      "EA0059",
+      "EA0061",
+      "EA0064",
+      "EA0065",
+      "EA0066",
+      "EA0067",
+      "EA0068",
+      "EA0069",
+      "EA0070",
+      "EA0071",
+      "EA0072",
+      "EA0074",
+      "EA0075",
+      "EA0077",
+      "EA0078",
+      "EA0079",
+      "EA0080",
+      "EA0081",
+      "EA0083",
+      "EA0084",
+      "EA0085",
+      "EA0086",
+      "EA0088",
+      "EA0089",
+      "EA0090",
+      "EA0091",
+      "EA0092",
+      "EA0093",
+      "EA0094",
+      "EA0095",
+      "EA0096",
+      "EA0098",
+      "EA0100",
+      "EA0101",
+      "EA0102",
+      "EA0103",
+      "EA0104",
+      "EA0106",
+      "EA0107",
+      "EA0109",
+      "EA0110",
+      "EA0111",
+      "EA0112",
+      "EA0113",
+      "EA0115",
+      "EA0116",
+      "EA0117",
+      "EA0118",
+      "EA0120",
+      "EA0121",
+      "EA0123",
+      "EA0124",
+      "EA0125",
+      "EA0126",
+      "EA0127",
+      "EA0129",
+      "EA0130",
+      "EA0131",
+      "EA0132",
+      "EA0133",
+      "EA0135",
+      "EA0136",
+      "EA0137",
+      "EA0138",
+      "EA0139",
+      "EA0140",
+      "EA0142",
+      "EA0143",
+      "EA0148",
+      "EA0150",
+      "EA0151",
+      "EA0152",
+      "EA0153",
+      "EA0154",
+      "EA0155",
+      "EA0156",
+      "EA0157",
+      "EA0158",
+      "EA0159",
+      "EA0160",
+      "EA0161",
+      "EA0163",
+      "EA0164",
+      "EA0165",
+      "EA0166",
+      "EA0167",
+      "EA0168",
+      "EA0169",
+      "EA0170",
+      "EA0172",
+      "EA0173",
+      "EA0174",
+      "EA0175",
+      "EA0176",
+      "EA0177",
+      "EA0178",
+      "EA0179",
+      "EA0181",
+      "EA0182",
+      "EA0184",
+      "EA0185",
+      "EA0186",
+      "EA0187",
+      "EA0188",
+      "EA0189",
+      "EA0190",
+      "EA0192",
+      "EA0194",
+      "EA0195",
+      "EA0196",
+      "EA0197",
+      "EA0200"
+    ]
+  },
+  "runtime": {
+    "compile_duration_seconds": null,
+    "estimated_model_calls": 40,
+    "evaluation_duration_seconds": 0.04445440000563394,
+    "model_residency": "not_applicable",
+    "optimizer": null,
+    "prediction_duration_seconds": 176.24435199999425,
+    "prediction_seconds_per_record": 4.406108799999856,
+    "records": 40,
+    "token_usage": {
+      "completion_tokens": 11342,
+      "history_entries": 39,
+      "prompt_tokens": 74745,
+      "total_tokens": 86087
+    },
+    "total_duration_seconds": 176.29348150000442
+  },
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer": "exect_field_family_deterministic_v1"
+}

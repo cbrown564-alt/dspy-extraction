@@ -1,0 +1,61 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s0_s1_smoke_gemini31_flash_lite",
+  "hypothesis": "A capped ExECT S0/S1 smoke run verifies Gemini 3.1 Flash-Lite provider compatibility with frozen v4.10 label policy before exect_gemini_ladder_replay_v1 full validation.",
+  "max_records": 3,
+  "metric_caveats": [
+    "Comparison group exect_gemini_ladder_replay_v1; varied_factor model_track.",
+    "This capped smoke run validates provider/config/runtime compatibility only; it is not a performance estimate.",
+    "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "GPT 4.1-mini frozen anchor: runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro F1).",
+    "Qwen3.6:35b anchor: runs/exect_s0_s1_validation_full_qwen35b_ollama_20260520T042117Z (79.0% micro F1).",
+    "The model string gemini-3.1-flash-lite must be confirmed against the live Gemini API before cost or quality comparisons.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_gemini_ladder_replay_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "implementation_variant": null,
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during",
+      "eval_only"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "stage_executor": null,
+    "stage_graph_id": null,
+    "validation_ladder_rung": null,
+    "varied_factor": "model_track"
+  },
+  "taxonomy_exemption": null
+}

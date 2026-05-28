@@ -1,0 +1,9 @@
+{
+  "module": "GanFrequencyS0DirectModule",
+  "predictor": "dspy.Predict",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1",
+  "signature": "GanFrequencyS0Signature",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "synthesis_guidance": "Synthesis-backed Gan frequency policy: output only canonical Gan labels; use singular units day/week/month/year; convert daily or nightly to 1 per day; convert every N unit to 1 per N unit; use 'to' for numeric ranges; choose the highest current quantified seizure-type frequency; use full cluster format 'N cluster per unit, M per cluster'; for year-to-date counts use months elapsed since January as the denominator; treat a quarter as an observation window when the note gives a per-month rate over the last quarter; use seizure free labels only for seizure freedom of 6 months or longer, otherwise compute the rate from total events over the described period; return an exact contiguous source quote for every present claim."
+}

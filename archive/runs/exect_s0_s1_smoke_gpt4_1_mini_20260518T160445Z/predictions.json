@@ -1,0 +1,240 @@
+{
+  "dataset": "exect_v2",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "exect_s0_s1_field_family_single_pass",
+    "prompt_version": "exect_s0_s1_field_family_v3_seizure_evidence_policy",
+    "scorer_mode": "exect_field_family_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0008",
+      "metadata": {
+        "program_variant": "exect_s0_s1_field_family_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 58,
+              "section": null,
+              "start": 10,
+              "text": "Diagnosis: symptomatic structural focal epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "symptomatic structural focal epilepsy",
+          "quality_flags": [],
+          "raw_value": "symptomatic structural focal epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 187,
+              "section": null,
+              "start": 108,
+              "text": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures with altered awareness",
+          "quality_flags": [],
+          "raw_value": "focal seizures with altered awareness",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0008",
+              "end": 282,
+              "section": null,
+              "start": 189,
+              "text": "Current anti-epileptic medication: lamotrigine 75mg bd (to reduce and stop as detailed below)"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "lamotrigine",
+          "quality_flags": [],
+          "raw_value": "lamotrigine",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0016",
+      "metadata": {
+        "program_variant": "exect_s0_s1_field_family_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0016",
+              "end": 489,
+              "section": null,
+              "start": 231,
+              "text": "He was sitting on the sofa when he developed shaking of the right arm. This continued for three minutes. The movements did not become generalised. It took him around four minutes to recover during which time his partner noticed that he had some lip smacking."
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizure",
+          "quality_flags": [],
+          "raw_value": "focal seizure",
+          "temporality": "not_applicable"
+        }
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "document_id": "EA0018",
+      "metadata": {
+        "program_variant": "exect_s0_s1_field_family_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "exect_s0_s1_field_family",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 56,
+              "section": null,
+              "start": 10,
+              "text": "I reviewed this 42 year old lady with epilepsy"
+            }
+          ],
+          "field_name": "diagnosis",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "epilepsy",
+          "quality_flags": [],
+          "raw_value": "epilepsy",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 387,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "temporal lobe seizure",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 387,
+              "section": null,
+              "start": 319,
+              "text": "I think these are in keeping with temporal lobe onset focal seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "focal seizures",
+          "quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "raw_value": "temporal lobe onset focal seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 534,
+              "section": null,
+              "start": 412,
+              "text": "previously she was getting events with coloured objects in her field of vision which were probably occipital lobe seizures"
+            }
+          ],
+          "field_name": "seizure_type",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "occipital lobe seizures",
+          "quality_flags": [],
+          "raw_value": "occipital lobe seizures",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": 596,
+              "section": null,
+              "start": 537,
+              "text": "Currently she is taking sodium valproate 500 mg twice a day"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "sodium valproate",
+          "quality_flags": [],
+          "raw_value": "sodium valproate",
+          "temporality": "not_applicable"
+        },
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "EA0018",
+              "end": null,
+              "section": null,
+              "start": null,
+              "text": "Currently she is taking ... levetiracetam 1000 mg twice today"
+            }
+          ],
+          "field_name": "annotated_medication",
+          "metadata": {},
+          "negation": "affirmed",
+          "normalized_value": "levetiracetam",
+          "quality_flags": [],
+          "raw_value": "levetiracetam",
+          "temporality": "not_applicable"
+        }
+      ]
+    }
+  ],
+  "schema_level": "exect_s0_s1_field_family"
+}

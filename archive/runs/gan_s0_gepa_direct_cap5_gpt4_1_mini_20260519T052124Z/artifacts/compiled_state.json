@@ -1,0 +1,25 @@
+{
+  "extract": {
+    "demos": [],
+    "lm": null,
+    "signature": {
+      "fields": [
+        {
+          "description": "Clinical neurology note text",
+          "prefix": "Note Text:"
+        },
+        {
+          "description": "Seizure frequency in Gan label format. One of: '{count} per {unit}' e.g. '2 per week', '1 per 3 month'; '{count} cluster per {unit}, {n} per cluster'; 'unknown'; 'no seizure frequency reference'; or null to abstain. Unit must be singular: day/week/month/year.",
+          "prefix": "Seizure Frequency Number:"
+        },
+        {
+          "description": "Direct verbatim quote from the note supporting the label. Null if abstaining.",
+          "prefix": "Evidence Text:"
+        }
+      ],
+      "instructions": "Extract the Gan seizure-frequency label and supporting evidence from a clinical note.\n\n/no_think\nDo not use hidden reasoning. Emit only the requested output fields.\n\nThe label must match the Gan annotation vocabulary exactly. Abstain (null) only when\nthe note contains no usable seizure-frequency information.\n\nSynthesis-backed policy:\n- Output only canonical Gan labels: N per unit, N to M per unit, N per M unit,\n  N cluster per unit, M per cluster, seizure free for N unit, unknown, or\n  no seizure frequency reference.\n- Use singular units: day, week, month, year.\n- Convert daily/nightly to 1 per day, every N unit to 1 per N unit, and\n  numeric \"or\" ranges to \"to\" ranges.\n- Choose the highest current quantified seizure-type frequency.\n- Use the full cluster format; do not drop either the cluster period or\n  the per-cluster count.\n- Use seizure free for N unit only when seizure freedom is at least 6 months.\n  If seizure freedom is shorter than 6 months, compute the rate from the\n  total events over the described period.\n- For year-to-date counts, use months elapsed since January as the denominator.\n- Treat \"over the last quarter\" as an observation window when the note gives\n  a per-month rate; do not automatically convert it to per 3 month.\n- evidence_text must be an exact contiguous quote from the note."
+    },
+    "traces": [],
+    "train": []
+  }
+}

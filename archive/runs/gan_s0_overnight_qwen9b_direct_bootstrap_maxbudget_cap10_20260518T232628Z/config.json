@@ -1,0 +1,40 @@
+{
+  "controls": {
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
+    "context_policy": "full_note",
+    "few_shot_policy": "BootstrapFewShot with synthesis exact-label and evidence-support metric; tiny local feasibility trainset",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_overnight_qwen9b_direct_bootstrap_maxbudget_cap10",
+  "hypothesis": "[overnight local LLM queue] Qwen3.5:9b can compile and run a tiny BootstrapFewShot direct Gan S0 program with thinking disabled and max_tokens raised to 81920, estimating optimizer overhead without visible reasoning truncation.",
+  "max_records": 10,
+  "metric_caveats": [
+    "This three-record cap is a local hardware and DSPy component latency check, not a quality estimate.",
+    "This max-budget config raises max_tokens to Qwen's complex-benchmark recommendation while keeping Ollama thinking disabled through the DSPy LM adapter.",
+    "The optimizer metric is stricter than benchmark scoring: bootstrapped traces must match the normalized gold label and provide exact source-quote support for all non-no-reference labels.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing when run at meaningful sample sizes.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction.",
+    "Record local Ollama residency/offload separately when inspecting this run."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_qwen9b_ollama_max81920.json",
+  "optimizer": {
+    "max_bootstrapped_demos": 1,
+    "max_labeled_demos": 1,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence",
+    "name": "BootstrapFewShot",
+    "trainset_size": 4
+  },
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_direct_bootstrap_maxbudget_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data\\splits\\gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

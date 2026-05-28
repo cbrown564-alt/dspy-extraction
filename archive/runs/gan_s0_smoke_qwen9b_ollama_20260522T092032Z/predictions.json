@@ -1,0 +1,46 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.5:9b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_single_pass",
+    "prompt_version": "gan_frequency_s0_v2_vocab_guided",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": 1754,
+              "section": null,
+              "start": 1684,
+              "text": "Since returning to the UK, there have been no further events reported."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 1 month",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped",
+            "evidence_repaired:ellipsis_segment_selected"
+          ],
+          "raw_value": "2 per 1 month",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

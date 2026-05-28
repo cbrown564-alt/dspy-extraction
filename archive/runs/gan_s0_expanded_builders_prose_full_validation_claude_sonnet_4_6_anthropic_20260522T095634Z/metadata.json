@@ -1,0 +1,39 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-22T09:56:34.150279Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+    "Same program, prompt, scorer, split, and expanded builders as GPT/Gemini F0 \u2014 only model_track differs.",
+    "GPT F0 anchor: runs/gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini_20260521T073432Z (68.1% monthly, 99.7% schema, 100% evidence).",
+    "Gemini F0 anchor: runs/gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite_20260521T094020Z (72.6% monthly).",
+    "Claude smoke gate: runs/gan_s0_expanded_builders_prose_smoke_claude_sonnet_4_6_anthropic_20260522T080527Z (3 records; schema 100%, evidence 100%).",
+    "Stale Gemini Gan direct full (63.9% monthly) used pre-F0 architecture \u2014 do not compare without caveat.",
+    "Anthropic OpenAI-compatible response_format support is limited; Pydantic validation remains the source of schema truth.",
+    "Record token usage, latency, and billing when inspecting artifacts.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_name": "claude-sonnet-4-6",
+  "model_provider": "anthropic",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "run_id": "gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic_20260522T095634Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}

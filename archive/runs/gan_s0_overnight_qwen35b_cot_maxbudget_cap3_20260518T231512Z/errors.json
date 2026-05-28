@@ -1,0 +1,83 @@
+{
+  "evidence_support_errors": [
+    {
+      "predicted_evidence": [
+        {
+          "document_id": "gan_14485",
+          "end": null,
+          "section": null,
+          "start": null,
+          "text": "\"Since returning to the UK, there have been no further events reported.\""
+        }
+      ],
+      "reason": "predicted evidence quote or offsets not supported by document text",
+      "record_id": "gan_14485"
+    },
+    {
+      "predicted_evidence": [
+        {
+          "document_id": "gan_6532",
+          "end": null,
+          "section": null,
+          "start": null,
+          "text": "\"The patient describes seizure activity occurring in flurries over several days with intervals of relative calm thereafter, i.e. a stop\u2013start pattern rather than a steady baseline.\""
+        }
+      ],
+      "reason": "predicted evidence quote or offsets not supported by document text",
+      "record_id": "gan_6532"
+    }
+  ],
+  "extra_prediction_ids": [],
+  "invalid_predictions": [],
+  "missing_prediction_ids": [
+    "gan_10",
+    "gan_10002",
+    "gan_10003",
+    "gan_10009",
+    "gan_10010",
+    "gan_10031",
+    "gan_10047",
+    "gan_1005",
+    "gan_10052",
+    "gan_10057",
+    "gan_10063",
+    "gan_10074",
+    "gan_10097",
+    "gan_10123",
+    "gan_10147",
+    "gan_10149",
+    "gan_10159",
+    "gan_1017",
+    "gan_1018",
+    "gan_10183"
+  ],
+  "monthly_frequency_mismatches": [
+    {
+      "gold_label": "multiple cluster per week, 2 to 3 per cluster",
+      "gold_monthly_frequency": 32.475,
+      "gold_pragmatic_category": "frequent",
+      "predicted_label": "unknown",
+      "predicted_monthly_frequency": 1000.0,
+      "predicted_pragmatic_category": "unknown",
+      "record_id": "gan_10434"
+    },
+    {
+      "gold_label": "2 per 3 month",
+      "gold_monthly_frequency": 0.6666666666666666,
+      "gold_pragmatic_category": "infrequent",
+      "predicted_label": "no seizure frequency reference",
+      "predicted_monthly_frequency": 0.0,
+      "predicted_pragmatic_category": "no_seizure_information",
+      "record_id": "gan_14485"
+    },
+    {
+      "gold_label": "unknown, multiple per cluster",
+      "gold_monthly_frequency": 1000.0,
+      "gold_pragmatic_category": "unknown",
+      "predicted_label": "no seizure frequency reference",
+      "predicted_monthly_frequency": 0.0,
+      "predicted_pragmatic_category": "no_seizure_information",
+      "record_id": "gan_6532"
+    }
+  ]
+}

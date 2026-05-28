@@ -1,0 +1,54 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s3_cause_l1_baseline_cap25_gpt4_1_mini",
+  "hypothesis": "L1 control for S3 epilepsy_cause bridge grid: frozen v1.2 nine-family pass without K0/K1 CUIPhrase bridges.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Comparison group exect_s3_epilepsy_cause_bridge_gpt_cap25_v1; varied_factor implementation_variant.",
+    "Primary metric epilepsy_cause F1; regression guards investigation, seizure_type, comorbidity (>=2pp vs L1).",
+    "I0 investigation guard applied on S3 recovery path (ladder regression guard).",
+    "Cap-25 search only \u2014 decision_scope arm; not mechanism closure."
+  ],
+  "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+  "optimizer": null,
+  "output_root": "runs",
+  "program_variant": "exect_s3_field_family_single_pass",
+  "prompt_version": "exect_s3_field_family_v1_2_label_policy",
+  "record_ids": null,
+  "report_on_test_split": false,
+  "schema_level": "exect_s3_field_family",
+  "scorer_mode": "exect_s3_field_family_deterministic_v1",
+  "split_file": "data\\splits\\exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "multi_family"
+    ],
+    "comparison_group": "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1",
+    "context_selection_policy": null,
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic"
+    ],
+    "implementation_variant": "cause_bridge_l1_control",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "post"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s3",
+    "stage_executor": null,
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "validation_ladder_rung": null,
+    "varied_factor": "implementation_variant"
+  },
+  "taxonomy_exemption": null
+}

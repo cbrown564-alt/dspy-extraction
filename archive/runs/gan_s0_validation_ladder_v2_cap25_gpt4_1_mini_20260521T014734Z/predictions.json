@@ -1,0 +1,1050 @@
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "gpt-4.1-mini",
+    "model_provider": "openai",
+    "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+    "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14485",
+      "metadata": {
+        "initial_evidence": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+        "initial_label": "2 per 3 month",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [
+          "2 per 3 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 per 3 month",
+            "derivation": "two explicitly dated events define the observation window",
+            "event_count": "2",
+            "evidence_text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology.",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14485",
+              "end": 1683,
+              "section": null,
+              "start": 1389,
+              "text": "Seizure history and current status: His initial event was in April 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following July 2019, once more during the night, lasting four minutes with similar semiology."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per 3 month",
+          "quality_flags": [],
+          "raw_value": "2 per 3 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_6532",
+      "metadata": {
+        "initial_evidence": "\"seizure activity occurring in flurries over several days with intervals of relative calm thereafter\"",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_6532",
+              "end": 709,
+              "section": null,
+              "start": 610,
+              "text": "seizure activity occurring in flurries over several days with intervals of relative calm thereafter"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10434",
+      "metadata": {
+        "initial_evidence": "\"Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed.\"",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10434",
+              "end": 747,
+              "section": null,
+              "start": 561,
+              "text": "Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4956",
+      "metadata": {
+        "initial_evidence": "The patient reports being free of events for the past seven months",
+        "initial_label": "seizure free for 7 month",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4956",
+              "end": 665,
+              "section": null,
+              "start": 599,
+              "text": "The patient reports being free of events for the past seven months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "seizure free for 7 month",
+          "quality_flags": [],
+          "raw_value": "seizure free for 7 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_13123",
+      "metadata": {
+        "initial_evidence": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+        "initial_label": "1 per year",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [
+          "1 per year"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per year",
+            "derivation": "single breakthrough event after a nearly one-year seizure-free window",
+            "event_count": "1",
+            "evidence_text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+            "window_count": "1",
+            "window_unit": "year"
+          }
+        ],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_13123",
+              "end": 937,
+              "section": null,
+              "start": 758,
+              "text": "In terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per year",
+          "quality_flags": [],
+          "raw_value": "1 per year",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4702",
+      "metadata": {
+        "initial_evidence": "\"He describes brief episodes of unresponsiveness with behavioural arrest, sometimes preceded by a rising internal sensation, occurring at work and at home.\"",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4702",
+              "end": 745,
+              "section": null,
+              "start": 591,
+              "text": "He describes brief episodes of unresponsiveness with behavioural arrest, sometimes preceded by a rising internal sensation, occurring at work and at home."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10052",
+      "metadata": {
+        "initial_evidence": "\"Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting\"",
+        "initial_label": "\"4 cluster per 3 month, multiple per cluster\"",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [
+          "4 cluster per 3 month, multiple per cluster"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "4 cluster per 3 month, multiple per cluster",
+            "derivation": "explicit cluster count over a calendar quarter",
+            "event_count": "4 cluster",
+            "evidence_text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10052",
+              "end": 932,
+              "section": null,
+              "start": 804,
+              "text": "Seizure frequency: the family have maintained a detailed diary and confirm 4 clusters this quarter, each brief and self-limiting"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "4 cluster per 3 month, multiple per cluster",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"4 cluster per 3 month, multiple per cluster\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_2609",
+      "metadata": {
+        "initial_evidence": "She reports nocturnal episodes occurring once per night on average for the past three months",
+        "initial_label": "1 per day",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_2609",
+              "end": 1183,
+              "section": null,
+              "start": 1091,
+              "text": "She reports nocturnal episodes occurring once per night on average for the past three months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per day",
+          "quality_flags": [],
+          "raw_value": "1 per day",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_1794",
+      "metadata": {
+        "initial_evidence": "\"she reports six drop attacks and two absence seizures in the past two months\"",
+        "initial_label": "2 per month",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_1794",
+              "end": 783,
+              "section": null,
+              "start": 707,
+              "text": "she reports six drop attacks and two absence seizures in the past two months"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 per month",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "2 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_10618",
+      "metadata": {
+        "initial_evidence": "\"episodes tend to come in small runs: typically around four to six short spells grouped together on days when they occur, most commonly later in the day towards the evening period. There may then be several days without events.\"",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_10618",
+              "end": 2005,
+              "section": null,
+              "start": 1779,
+              "text": "episodes tend to come in small runs: typically around four to six short spells grouped together on days when they occur, most commonly later in the day towards the evening period. There may then be several days without events."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15306",
+      "metadata": {
+        "initial_evidence": "\"No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep\"",
+        "initial_label": "\"2 to 3 per 15 month\"",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [
+          "2 to 3 per 15 month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "2 to 3 per 15 month",
+            "derivation": "count range is anchored to an explicit prior month/year",
+            "event_count": "2 to 3",
+            "evidence_text": "No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep",
+            "window_count": "15",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15306",
+              "end": 886,
+              "section": null,
+              "start": 707,
+              "text": "No further tonic-clonic seizures have occurred since 12/2020, although two to three single jerks remain, typically noted at the end of long shifts or on waking after reduced sleep"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 to 3 per 15 month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"2 to 3 per 15 month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_7894",
+      "metadata": {
+        "initial_evidence": "She has not experienced any episodes suggestive of epilepsy",
+        "initial_label": "no seizure frequency reference",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_7894",
+              "end": 606,
+              "section": null,
+              "start": 547,
+              "text": "She has not experienced any episodes suggestive of epilepsy"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "no seizure frequency reference",
+          "quality_flags": [],
+          "raw_value": "no seizure frequency reference",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_3246",
+      "metadata": {
+        "initial_evidence": "Patient reports 2 clusters this month; each \u22484 absences in the morning",
+        "initial_label": "2 cluster per month, 4 per cluster",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_3246",
+              "end": 661,
+              "section": null,
+              "start": 591,
+              "text": "Patient reports 2 clusters this month; each \u22484 absences in the morning"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 cluster per month, 4 per cluster",
+          "quality_flags": [],
+          "raw_value": "2 cluster per month, 4 per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4113",
+      "metadata": {
+        "initial_evidence": "\"events occurring q1 - 2d\"",
+        "initial_label": "\"1 per 1 to 2 day\"",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4113",
+              "end": 1158,
+              "section": null,
+              "start": 1134,
+              "text": "events occurring q1 - 2d"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 1 to 2 day",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 per 1 to 2 day\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_14881",
+      "metadata": {
+        "initial_evidence": "His last episode was recorded on 26 February and he has remained well since.",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [
+          "1 per month"
+        ],
+        "temporal_candidate_records": [
+          {
+            "canonical_label": "1 per month",
+            "derivation": "last recorded event falls roughly one month before the clinic date",
+            "event_count": "1",
+            "evidence_text": "His last episode was recorded on 26 February and he has remained well since.",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_14881",
+              "end": 978,
+              "section": null,
+              "start": 902,
+              "text": "His last episode was recorded on 26 February and he has remained well since."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_536",
+      "metadata": {
+        "initial_evidence": "brief focal impaired-awareness seizures occurring every 2 days",
+        "initial_label": "1 per 2 day",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_536",
+              "end": 754,
+              "section": null,
+              "start": 692,
+              "text": "brief focal impaired-awareness seizures occurring every 2 days"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 2 day",
+          "quality_flags": [],
+          "raw_value": "1 per 2 day",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_4709",
+      "metadata": {
+        "initial_evidence": "Since the last review, they report variable days with clusters, particularly late afternoon.",
+        "initial_label": "unknown",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_4709",
+              "end": 1959,
+              "section": null,
+              "start": 1867,
+              "text": "Since the last review, they report variable days with clusters, particularly late afternoon."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [],
+          "raw_value": "unknown",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_9566",
+      "metadata": {
+        "initial_evidence": "Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest.",
+        "initial_label": "1 to 2 per 8 week",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_9566",
+              "end": 781,
+              "section": null,
+              "start": 608,
+              "text": "Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 to 2 per 8 week",
+          "quality_flags": [],
+          "raw_value": "1 to 2 per 8 week",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_12679",
+      "metadata": {
+        "initial_evidence": "\"he continues to suffer one to two generalised tonic-clonic seizures per month\"",
+        "initial_label": "\"1 to 2 per month\"",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_12679",
+              "end": 1961,
+              "section": null,
+              "start": 1884,
+              "text": "he continues to suffer one to two generalised tonic-clonic seizures per month"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 to 2 per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"1 to 2 per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_1584",
+      "metadata": {
+        "initial_evidence": "\"reports five focal sensory and six focal non-motors in last month\"",
+        "initial_label": "11 per month",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_1584",
+              "end": 516,
+              "section": null,
+              "start": 451,
+              "text": "reports five focal sensory and six focal non-motors in last month"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "11 per month",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "11 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_15997",
+      "metadata": {
+        "initial_evidence": "In Nov he had 3 seizures during sleep and 1 while awake. In Jan he had five in sleep and one while awake.",
+        "initial_label": "6 per 3 month",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_15997",
+              "end": 1696,
+              "section": null,
+              "start": 1591,
+              "text": "In Nov he had 3 seizures during sleep and 1 while awake. In Jan he had five in sleep and one while awake."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "6 per 3 month",
+          "quality_flags": [],
+          "raw_value": "6 per 3 month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_17287",
+      "metadata": {
+        "initial_evidence": "\"She reports one absence seizure every one to two day\"",
+        "initial_label": "1 per 2 day",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_17287",
+              "end": 1492,
+              "section": null,
+              "start": 1440,
+              "text": "She reports one absence seizure every one to two day"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "1 per 2 day",
+          "quality_flags": [
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "1 per 2 day",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16251",
+      "metadata": {
+        "initial_evidence": "\"She had 7 convulsions so far in Sep\"",
+        "initial_label": "\"7 per month\"",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_16251",
+              "end": 771,
+              "section": null,
+              "start": 736,
+              "text": "She had 7 convulsions so far in Sep"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "7 per month",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"7 per month\"",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16772",
+      "metadata": {
+        "initial_evidence": "In December there was 7 further seizures at night",
+        "initial_label": "7 per month",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_16772",
+              "end": 1257,
+              "section": null,
+              "start": 1208,
+              "text": "In December there was 7 further seizures at night"
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "7 per month",
+          "quality_flags": [],
+          "raw_value": "7 per month",
+          "temporality": "unknown"
+        }
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_16825",
+      "metadata": {
+        "initial_evidence": "\"He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.\"",
+        "initial_label": "\"unknown\"",
+        "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "temporal_candidate_labels": [],
+        "temporal_candidate_records": [],
+        "temporal_candidate_source": "deterministic",
+        "validation_ladder_rung": "det_plausibility",
+        "verifier_decision": "confirm",
+        "verifier_reason": "Synthetic confirm for det-plausibility rung (no LLM verifier)."
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_16825",
+              "end": 1722,
+              "section": null,
+              "start": 1492,
+              "text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "unknown",
+          "quality_flags": [
+            "normalized_label_repaired",
+            "evidence_repaired:outer_quotes_stripped"
+          ],
+          "raw_value": "\"unknown\"",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}

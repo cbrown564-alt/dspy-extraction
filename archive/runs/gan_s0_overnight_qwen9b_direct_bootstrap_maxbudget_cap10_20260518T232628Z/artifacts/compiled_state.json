@@ -1,0 +1,31 @@
+{
+  "extract": {
+    "demos": [
+      {
+        "evidence_text": "In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake.",
+        "note_text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 March 2017 \n\nDr Priya Nayar\nRiverside Health Centre\n\n12 Bridgewater Way, Southwark, London SE1 9RT\nDear Dr Priya Nayar\nMs Sarah Bennett, DOB: 14-02-1986, Hospital No: K8374219 NHS No. 7483926158\nFlat 3, 29 Brook Crescent, London, SE16 4HQ \n\nI reviewed the above patient in the Neurology Clinic today. She attends following a period of deterioration in seizure control over the past two months. She reports recent cross-time-zone travel for work in late December, after which she experienced circadian disruption with perceived worsening of her events, particularly around early morning hours and late afternoons on return. \n\nSince I last saw her in October 2016, there has been a clear increase in frequency and functional impact. In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake. These were described as brief episodes with loss of awareness and subsequent confusion, occasionally preceded by a sense of unease, and two events were associated with tongue-biting and myalgia the following day. No injuries were reported, though she has required time off work and now avoids commuting alone at peak times. There is no current pregnancy and she denies alcohol or recreational drug use. Sleep has been fragmented since travel and she reports significant fatigue and stress related to work deadlines.\n\nMedication at present: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. She has tolerated these without rash or clear cognitive adverse effects, though she reports daytime somnolence and reduced concentration, which may relate to both medication and poor sleep. Adherence is reported as good; she uses phone reminders and a weekly pill organiser. There is no recent intercurrent illness. Family history is non-contributory. Neurological examination today is unremarkable. \n\nGiven the temporal association with circadian disruption following long-haul travel and the subsequent sustained worsening, I am concerned that her overall control is deteriorating. We discussed practical measures around sleep regularity, stress management, and maintaining a consistent routine. I have arranged an expedited ambulatory EEG with sleep capture and updated bloods (U&E, LFT, FBC, vitamin D, trough AED levels where available) to help contextualise the change. She will also keep a detailed seizure and sleep diary, noting travel, caffeine, and menstrual cycle correlations. We will review in six weeks with results, and sooner if there is any further escalation or injury.\n\nSafety advice regarding bathing, cooking with open flames, and public transport has been reinforced. She is aware of DVLA guidance and confirms she is not currently driving. She has contact details for our epilepsy nurse specialist for interim support.\n\nYours sincerely",
+        "seizure_frequency_number": "12 per 2 month"
+      }
+    ],
+    "lm": null,
+    "signature": {
+      "fields": [
+        {
+          "description": "Clinical neurology note text",
+          "prefix": "Note Text:"
+        },
+        {
+          "description": "Seizure frequency in Gan label format. One of: '{count} per {unit}' e.g. '2 per week', '1 per 3 month'; '{count} cluster per {unit}, {n} per cluster'; 'unknown'; 'no seizure frequency reference'; or null to abstain. Unit must be singular: day/week/month/year.",
+          "prefix": "Seizure Frequency Number:"
+        },
+        {
+          "description": "Direct verbatim quote from the note supporting the label. Null if abstaining.",
+          "prefix": "Evidence Text:"
+        }
+      ],
+      "instructions": "Extract the Gan seizure-frequency label and supporting evidence from a clinical note.\n\n/no_think\nDo not use hidden reasoning. Emit only the requested output fields.\n\nThe label must match the Gan annotation vocabulary exactly. Abstain (null) only when\nthe note contains no usable seizure-frequency information.\n\nSynthesis-backed policy:\n- Output only canonical Gan labels: N per unit, N to M per unit, N per M unit,\n  N cluster per unit, M per cluster, seizure free for N unit, unknown, or\n  no seizure frequency reference.\n- Use singular units: day, week, month, year.\n- Convert daily/nightly to 1 per day, every N unit to 1 per N unit, and\n  numeric \"or\" ranges to \"to\" ranges.\n- Choose the highest current quantified seizure-type frequency.\n- Use the full cluster format; do not drop either the cluster period or\n  the per-cluster count.\n- Use seizure free for N unit only when seizure freedom is at least 6 months.\n  If seizure freedom is shorter than 6 months, compute the rate from the\n  total events over the described period.\n- For year-to-date counts, use months elapsed since January as the denominator.\n- Treat \"over the last quarter\" as an observation window when the note gives\n  a per-month rate; do not automatically convert it to per 3 month.\n- evidence_text must be an exact contiguous quote from the note."
+    },
+    "traces": [],
+    "train": []
+  }
+}

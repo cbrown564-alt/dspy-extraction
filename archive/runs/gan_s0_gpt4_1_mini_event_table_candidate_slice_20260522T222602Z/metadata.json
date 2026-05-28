@@ -1,0 +1,36 @@
+{
+  "artifact_paths": {
+    "artifacts": "artifacts",
+    "compiled_state": "artifacts/compiled_state.json",
+    "config": "config.json",
+    "errors": "errors.json",
+    "metadata": "metadata.json",
+    "metrics": "metrics.json",
+    "optimizer_artifacts": "artifacts/optimizer",
+    "optimizer_logs": "artifacts/optimizer/logs",
+    "predictions": "predictions.json",
+    "prompts": "prompts.json"
+  },
+  "created_at": "2026-05-22T22:26:02.439172Z",
+  "dataset": "gan_2026",
+  "metadata": {
+    "experiment_id": "gan_s0_gpt4_1_mini_event_table_candidate_slice",
+    "prompt_version": "gan_frequency_s0_temporal_event_table_single_pass_v1_0",
+    "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  },
+  "metric_caveats": [
+    "Comparison group gan_s0_gpt4_1_mini_event_table_candidates_v1; varied_factor implementation_variant.",
+    "Record_ids are the same 25-record validation slice selected from pragmatic-category mismatches in runs/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama_20260522T131822Z.",
+    "The slice is enriched for over-unknown and short-stability errors; do not compare directly to full-validation metrics.",
+    "Two LLM calls per record: event-table extraction, then final adjudication. No verifier or repair pass.",
+    "Event-table rows are filtered to exact note-supported evidence spans before adjudication.",
+    "Cap-25/slice search only \u2014 decision_scope arm."
+  ],
+  "model_name": "gpt-4.1-mini",
+  "model_provider": "openai",
+  "program_variant": "gan_frequency_s0_temporal_event_table_single_pass",
+  "run_id": "gan_s0_gpt4_1_mini_event_table_candidate_slice_20260522T222602Z",
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_name": "gan_2026_fixed_v1:validation"
+}
