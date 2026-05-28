@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 G9/G10 Gan follow-up cards
+Last refreshed: 2026-05-29 G9 routed Gan follow-up to G11
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -69,28 +69,27 @@ promotes them.
 
 ## Ready
 
-### G9 - Gan G8 Exact-Miss And Special-Class Failure Inspection
+### G11 - Gan Candidate-Inventory Challenge-Set Pass
 
-- **Outcome:** No-model inspection of the G8 standard-50 failures decides
-  whether the four standard-50 exact-miss records require a candidate-inventory
-  challenge-set pass before another selector run, and separates
-  candidate-coverage failures from target-selection or label-policy failures.
-- **Dependencies:** G8 report
-  `docs/experiments/gan/gan_s0_g8_special_class_target_selector_report_20260529.md`;
-  G6 standard/challenge surfaces; G1 candidate inventory substrate; G2
-  target/label split; G5 scorer-mode forensics.
+- **Outcome:** Design and run a no-model candidate-inventory pass on the
+  candidate-coverage exact-miss surface before making another selector claim.
+- **Dependencies:** G9 routed the four G8 standard-50 exact-miss records to
+  candidate inventory:
+  `docs/experiments/gan/gan_s0_g9_exact_miss_failure_inspection_20260529.md`.
+  Use the G6 candidate-coverage exact-miss challenge set, G1 candidate
+  inventory substrate, G2 target/label split, and G5 scorer-mode forensics.
 - **Parallelizable:** yes, with ExECT mechanism-card drafting. Do not run in
-  parallel with another Gan selector model call.
+  parallel with changes to the candidate-builder contract.
 - **Owner:** unassigned.
-- **Validation:** Produce a record-level inspection table for the 13 G8
-  paper-monthly misses, with special focus on the four standard-50 exact-miss
-  records (`gan_15997`, `gan_16772`, `gan_16825`, `gan_16335`). Include
-  candidate labels, whether gold is present in candidates, selected label,
-  target semantic class, reason code, challenge tags, and a decision on whether
-  candidate inventory is the next bottleneck.
-- **Notes:** No model calls and no scorer, loader, split, bridge,
-  candidate-builder, or prediction-repair changes. The output should route the
-  next pull to either G10 or G11.
+- **Validation:** No-model candidate-coverage report over the named challenge
+  set, with gold exact/Purist/Pragmatic coverage, candidate diff versus the G1
+  substrate, and an explicit decision on whether candidate-builder changes are
+  needed before G10.
+- **Notes:** G9 found that all four standard-50 exact-miss records
+  (`gan_15997`, `gan_16772`, `gan_16825`, `gan_16335`) are true
+  candidate-inventory coverage failures for exact label reproduction. Do not
+  mutate candidate-builder behavior without a separate scoped implementation
+  card.
 
 ## Blocked
 
@@ -164,11 +163,11 @@ promotes them.
   `gan_s0_g6_standard50_v1` directly compares a candidate-constrained or
   answer-options selector against D1 v1.2b and builder-gap GPT on the same
   records.
-- **Dependencies:** G9 decides candidate inventory is adequate for this
-  comparator, or G11 has closed the exact-miss candidate-coverage issue; G6
-  evaluation surface; G8 negative report; stored D1 and builder-gap GPT
+- **Dependencies:** G11 closes the exact-miss candidate-coverage issue or a
+  separate scoped candidate-builder card resolves the gap; G6 evaluation
+  surface; G8/G9 negative and routing reports; stored D1 and builder-gap GPT
   predictions.
-- **Parallelizable:** only after G9 routing. Do not overlap with other local
+- **Parallelizable:** only after G11 routing. Do not overlap with other local
   model-backed Gan selector runs.
 - **Owner:** unassigned.
 - **Validation:** Dry-run config first, then standard-50 model run. Report both
@@ -181,23 +180,6 @@ promotes them.
   class-first prompt. The mechanism under test is candidate-constrained or
   answer-options selection with scorer, loader, split, bridge,
   candidate-builder, and prediction-repair semantics preserved.
-
-### G11 - Gan Candidate-Inventory Challenge-Set Pass
-
-- **Outcome:** If G9 finds the four exact-miss records are candidate-coverage
-  failures, design and run a candidate-inventory pass on a focused
-  exact-miss/challenge surface before making another selector claim.
-- **Dependencies:** blocked until G9 routes exact-miss failure to candidate
-  inventory.
-- **Parallelizable:** after G9, but not with changes to the candidate-builder
-  contract.
-- **Owner:** unassigned.
-- **Validation:** No-model candidate-coverage report over the named challenge
-  set, with gold exact/Purist/Pragmatic coverage, candidate diff versus the G1
-  substrate, and an explicit decision on whether candidate-builder changes are
-  needed before G10.
-- **Notes:** This card should remain blocked unless G9 identifies candidate
-  inventory as the bottleneck.
 
 ## Recent Developments For Context
 
@@ -306,6 +288,15 @@ indexes, and git history.
   unknown/no-reference (6/10 versus D1 9/10). Do not full-validate this arm.
   Report:
   `docs/experiments/gan/gan_s0_g8_special_class_target_selector_report_20260529.md`.
+- **G9 routed the next Gan pull to candidate inventory.** The no-model G8
+  failure inspection found 13 standard-50 paper-monthly misses: 4
+  candidate-coverage exact misses, 3 seizure-free-over-quantified target
+  selection failures, 3 unknown-policy target selection failures, and 3
+  quantified target-selection/temporal-anchoring failures. All four named
+  exact-miss standard-50 records (`gan_15997`, `gan_16772`, `gan_16825`,
+  `gan_16335`) lack the exact gold label in the current candidate inventory, so
+  G11 should run before G10. Report:
+  `docs/experiments/gan/gan_s0_g9_exact_miss_failure_inspection_20260529.md`.
 - **Gan S0 now has a plain-English component handoff.** The key-axes progress
   report translates the decomposition into reader-facing components:
   frequency-content gate, candidate inventory, temporal anchoring, target
@@ -351,14 +342,12 @@ clear active dependency.
   either compare a standard50 candidate-constrained/answer-options selector
   directly or first inspect the G8 standard50 exact-miss and special-class
   failures; do not rerun the same class-first prompt shape.
-- G9 is the required no-model gate before G10 or G11. It should classify the G8
-  misses by candidate coverage, target-selection failure, and label-policy
-  failure before any new Gan selector call.
-- G10 is blocked until G9 says exact-miss candidate coverage is adequate for a
-  selector comparison, or until G11 closes a candidate-inventory gap.
-- G11 starts only if G9 routes the exact-miss failures to candidate inventory.
-  It should not mutate candidate-builder behavior without a separate scoped
-  implementation card.
+- G9 completed the required no-model gate before G10 or G11 and routed the next
+  Gan pull to G11.
+- G10 is blocked until G11 closes the candidate-inventory exact-miss question
+  or a separate scoped candidate-builder card resolves the gap.
+- G11 is now ready. It should not mutate candidate-builder behavior without a
+  separate scoped implementation card.
 - The Gan key-axes progress report is the handoff reference for plain-English
   component names. Use it to keep G8 interpretation centered on the actual
   failure stage rather than on implementation jargon.
@@ -390,22 +379,20 @@ clear active dependency.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline.
-  G10 and other Gan selector model calls wait on G9 routing, and any Gan
+  G10 and other Gan selector model calls wait on G11 routing, and any Gan
   selector full-validation run should wait until the standard-50 mechanism has
-  cleared its stop rule. G11 candidate-inventory work waits unless G9 identifies
-  candidate coverage as the bottleneck.
+  cleared its stop rule.
 
 ## Recommended Next Pull
 
-1. Pull G9 first: inspect the G8 standard-50 misses and decide whether the four
-   exact-miss records are a candidate-inventory problem or a selector/policy
-   problem.
+1. Pull G11 first: run the no-model candidate-inventory challenge-set pass over
+   the exact-miss surface routed by G9.
 2. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
    transfer, frequency payload robustness/adjudication, or medication payload
    routing. Holdout rows remain residual evidence only.
-3. If G9 says candidate inventory is adequate, pull G10 and compare the
-   standard-50 candidate-constrained/answer-options selector directly against
-   D1. If not, pull G11 before G10.
+3. After G11, pull G10 only if candidate inventory is adequate for a
+   candidate-constrained/answer-options selector, or if a scoped
+   candidate-builder fix has closed the exact-miss gap.
 4. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.
