@@ -2372,6 +2372,30 @@ def test_exect_s0_s1_field_family_micro_f1_metric_returns_1_on_exact_match():
     assert score == 1.0
 
 
+def test_exect_s0_s1_metrics_are_domain_module_exports():
+    from clinical_extraction.exect.s0_s1 import metrics as exect_metrics
+    from clinical_extraction.programs import exect_s0_s1 as legacy_program
+
+    assert (
+        legacy_program.exect_s0_s1_field_family_micro_f1_metric
+        is exect_metrics.exect_s0_s1_field_family_micro_f1_metric
+    )
+    assert (
+        legacy_program.exect_s0_s1_field_family_micro_f1_raw_metric
+        is exect_metrics.exect_s0_s1_field_family_micro_f1_raw_metric
+    )
+    assert (
+        legacy_program.EXECT_S0_S1_OPTIMIZER_METRICS
+        is exect_metrics.EXECT_S0_S1_OPTIMIZER_METRICS
+    )
+    assert (
+        legacy_program.EXECT_S0_S1_OPTIMIZER_METRICS[
+            "exect_field_family_micro_f1"
+        ]
+        is exect_metrics.exect_s0_s1_field_family_micro_f1_metric
+    )
+
+
 def test_exect_s1_clean_ladder_variant_applies_annotated_medication_guard():
     record = load_exect_gold_document("EA0008")
     _configure_dummy(
