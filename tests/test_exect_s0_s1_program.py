@@ -2395,10 +2395,6 @@ def test_exect_s0_s1_program_is_import_compatible_facade():
         legacy_program.compile_exect_s0_s1_module
         is optimizer_setup.compile_exect_s0_s1_module
     )
-    assert (
-        legacy_program._build_s1_field_family_values
-        is prediction_artifacts._build_s1_field_family_values
-    )
 
 
 def test_exect_s1_clean_ladder_variant_applies_annotated_medication_guard():

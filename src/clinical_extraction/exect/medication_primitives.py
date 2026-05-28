@@ -320,6 +320,44 @@ def infer_exect_medication_temporality(evidence_text: str | None) -> Normalizati
 _VALID_RX_TEMPORALITIES = frozenset({"current", "planned", "previous"})
 
 
+def recover_exect_medication_temporality_basic_values(
+    raw_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Recover basic S4 medication-temporality labels from pipe or bare medication values."""
+
+    flags: list[str] = []
+    recovered: list[str] = []
+    seen: set[str] = set()
+
+    for raw in raw_values:
+        if not raw.strip():
+            continue
+        if "|" in raw:
+            medication, temporality = raw.split("|", 1)
+            medication_name = canonical_medication_name(medication)
+            status = canonical_clinical_phrase(temporality)
+            if not medication_name or status not in _VALID_RX_TEMPORALITIES:
+                flags.append("s4_bridge:medication_temporality_invalid_pipe")
+                continue
+            label = format_medication_temporality_label(medication_name, status)
+        else:
+            medication_name = canonical_medication_name(raw)
+            if not medication_name:
+                flags.append("s4_bridge:medication_temporality_unrecognized")
+                continue
+            status = infer_prescription_temporality(note_text)
+            label = format_medication_temporality_label(medication_name, status)
+            flags.append("s4_bridge:medication_temporality_status_inferred")
+
+        if label in seen:
+            continue
+        seen.add(label)
+        recovered.append(label)
+
+    return recovered, flags
+
+
 def recover_exect_medication_temporality_with_post_classifier(
     raw_values: list[str],
     evidence_values: list[str],
@@ -818,6 +856,7 @@ __all__ = [
     "infer_exect_medication_temporality",
     "recover_exect_annotated_medication_non_asm_brand_alias_guard",
     "recover_exect_annotated_medication_temporal_evidence_guard",
+    "recover_exect_medication_temporality_basic_values",
     "recover_exect_medication_temporality_non_asm_dose_current_guard",
     "recover_exect_medication_temporality_non_asm_guard",
     "recover_exect_medication_temporality_with_post_classifier",

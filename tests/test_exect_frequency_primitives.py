@@ -74,11 +74,17 @@ def test_exect_frequency_bridge_repairs_near_miss_quantified_rates():
 
 def test_exect_frequency_bridge_strips_seizure_types_and_blocks_non_audited_periods():
     recovered, flags = recover_exect_frequency_benchmark_values(
-        ["1 per 3 week", "focal seizures", "1 per 30 day"],
-        "Seizure type focal seizures. One per three weeks.",
+        [
+            "1 per 3 week",
+            "focal seizures",
+            "frequency increased",
+            "1 per 30 day",
+            "1 per previous appointment",
+        ],
+        "Seizure type focal seizures. One per three weeks. Frequency has increased.",
     )
 
-    assert recovered == ["1 per 3 week"]
+    assert recovered == ["1 per 3 week", "frequency increased"]
     assert "s4_bridge:seizure_type_removed_from_frequency" in flags
     assert "s4_bridge:non_audited_frequency_removed" in flags
 
@@ -98,7 +104,17 @@ def test_exect_frequency_bridge_adds_co_labels_when_note_supports_change_cues():
     assert "s4_bridge:frequency_co_label_augmented" in results[0].metadata["bridge_flags"]
 
 
-def test_exect_frequency_bridge_collapses_seizure_free_prose():
+def test_exect_frequency_bridge_repairs_s4_surface_edges():
+    repaired, flags = repair_exect_frequency_surface("1 per month")
+
+    assert repaired == "1 per 1 month"
+    assert "s4_bridge:frequency_missing_time_period_inserted" in flags
+
+    repaired, flags = repair_exect_frequency_surface("1 per 3 week")
+
+    assert repaired == "1 per 3 week"
+    assert flags == []
+
     repaired, flags = repair_exect_frequency_surface(
         "seizure free for more than five years"
     )
@@ -143,6 +159,16 @@ def test_exect_frequency_post_merge_abstains_when_note_has_no_frequency_support(
 
     assert recovered == []
     assert "s4_bridge:spurious_seizure_free_removed" in flags
+
+
+def test_exect_frequency_default_bridge_does_not_post_merge_note_labels():
+    recovered, flags = recover_exect_frequency_benchmark_values(
+        ["1 per 3 week"],
+        "He has about one focal seizure every three weeks.",
+    )
+
+    assert recovered == ["1 per 3 week"]
+    assert "s4_bridge:note_anchored_frequency_merged" not in flags
 
 
 def test_exect_frequency_post_merge_keeps_model_labels_when_note_parser_misses():

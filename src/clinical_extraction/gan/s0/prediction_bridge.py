@@ -149,12 +149,16 @@ def _is_unknown_or_abstain_label(label: str | None) -> bool:
     return label.strip().lower() in _ABSTAIN_STRINGS | {"unknown"}
 
 
-def _looks_like_no_reference_note(note_text: str) -> bool:
+def looks_like_gan_s0_no_reference_note(note_text: str) -> bool:
     """Detect administrative/no-frequency Gan notes without consulting gold labels."""
 
     return bool(_NO_REFERENCE_NOTE_RE.search(note_text)) and not bool(
         _FREQUENCY_CONTEXT_RE.search(note_text)
     )
+
+
+def _looks_like_no_reference_note(note_text: str) -> bool:
+    return looks_like_gan_s0_no_reference_note(note_text)
 
 
 def _seizure_free_window_in_months(label: str) -> float | None:
@@ -966,5 +970,6 @@ __all__ = [
     "apply_gan_s0_evidence_span_check_guard",
     "gan_frequency_s0_run_metadata",
     "guard_gan_s0_evidence_text",
+    "looks_like_gan_s0_no_reference_note",
     "predict_gan_records",
 ]

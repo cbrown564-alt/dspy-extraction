@@ -23,11 +23,6 @@ from clinical_extraction.programs.exect_s4 import (
     build_exect_s4_module,
     build_precomputed_seizure_frequency_candidates,
     format_note_with_precomputed_seizure_frequency_candidates,
-    _recover_s4_investigation_raw_values,
-    _recover_s4_medication_temporality_raw_values,
-    _recover_s4_seizure_frequency_raw_values,
-    _recover_s4_seizure_frequency_values,
-    _repair_s4_seizure_frequency_surface,
     predict_exect_s4_records,
 )
 
@@ -102,87 +97,6 @@ def test_exect_s4_label_policy_extends_s3_guidance():
     assert any("unknown" in rule.lower() for rule in EXECT_S4_LABEL_POLICY_GUIDANCE)
 
 
-def test_recover_s4_seizure_frequency_raw_values_keeps_rates_strips_types():
-    recovered, flags = _recover_s4_seizure_frequency_raw_values(
-        ["1 per 3 week", "focal seizures", "frequency increased"],
-        "Seizure type focal seizures. One per three weeks.",
-    )
-    assert recovered == ["1 per 3 week", "frequency increased"]
-    assert "s4_bridge:seizure_type_removed_from_frequency" in flags
-
-
-def test_recover_s4_medication_temporality_raw_values_accepts_pipe_format():
-    recovered, flags = _recover_s4_medication_temporality_raw_values(
-        ["lamotrigine|current"],
-        "Current anti-epileptic medication: lamotrigine 75mg bd.",
-    )
-    assert recovered == ["lamotrigine|current"]
-    assert flags == []
-
-
-def test_recover_s4_medication_temporality_raw_values_rejects_bare_medication():
-    recovered, flags = _recover_s4_medication_temporality_raw_values(
-        ["lamotrigine"],
-        "Current anti-epileptic medication: lamotrigine 75mg bd.",
-    )
-    assert recovered == ["lamotrigine|current"]
-    assert "s4_bridge:medication_temporality_status_inferred" in flags
-
-
-def test_repair_s4_seizure_frequency_surface_inserts_missing_time_period():
-    repaired, flags = _repair_s4_seizure_frequency_surface("1 per month")
-    assert repaired == "1 per 1 month"
-    assert "s4_bridge:frequency_missing_time_period_inserted" in flags
-
-
-def test_repair_s4_seizure_frequency_surface_leaves_dual_cardinal_unchanged():
-    repaired, flags = _repair_s4_seizure_frequency_surface("1 per 3 week")
-    assert repaired == "1 per 3 week"
-    assert flags == []
-
-
-def test_repair_s4_seizure_frequency_surface_collapses_seizure_free_prose():
-    repaired, flags = _repair_s4_seizure_frequency_surface("seizure free for more than five years")
-    assert repaired == "seizure free"
-    assert "s4_bridge:seizure_free_prose_collapsed" in flags
-
-
-def test_recover_s4_seizure_frequency_raw_values_repairs_near_miss_quantified():
-    recovered, flags = _recover_s4_seizure_frequency_raw_values(
-        ["1 per day", "1 per month", "frequency increased"],
-        "One seizure per day and one per month; frequency has increased.",
-    )
-    assert recovered == ["1 per 1 day", "1 per 1 month", "frequency increased"]
-    assert "s4_bridge:frequency_missing_time_period_inserted" in flags
-
-
-def test_recover_s4_seizure_frequency_raw_values_adds_co_labels_from_note():
-    recovered, flags = _recover_s4_seizure_frequency_raw_values(
-        ["1 per 3 week"],
-        "He has about one focal seizure every three weeks and the frequency has increased.",
-    )
-    assert recovered == ["1 per 3 week", "frequency increased"]
-    assert "s4_bridge:frequency_co_label_augmented" in flags
-
-
-def test_recover_s4_seizure_frequency_raw_values_blocks_non_audited_periods():
-    recovered, flags = _recover_s4_seizure_frequency_raw_values(
-        ["1 per 30 day", "1 per 3 week", "1 per previous appointment"],
-        "One every three weeks.",
-    )
-    assert recovered == ["1 per 3 week"]
-    assert "s4_bridge:non_audited_frequency_removed" in flags
-
-
-def test_recover_s4_investigation_raw_values_drops_planned_scan_unknown():
-    recovered, flags = _recover_s4_investigation_raw_values(
-        ["mri unknown", "eeg unknown"],
-        "I will arrange an MRI brain and an EEG.",
-    )
-    assert recovered == []
-    assert "s4_bridge:investigation_unknown_removed" in flags
-
-
 def test_build_exect_s4_module_returns_frequency_pre_vocab_single_pass():
     module = build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT)
     assert isinstance(module, ExectS4FrequencyPreVocabFieldFamilyModule)
@@ -216,46 +130,6 @@ def test_build_exect_s4_module_returns_same_single_pass_for_frequency_post_merge
 def test_build_exect_s4_module_returns_structured_slots_module():
     module = build_exect_s4_module(EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT)
     assert isinstance(module, ExectS4FrequencyStructuredSlotsFieldFamilyModule)
-
-
-def test_recover_s4_seizure_frequency_values_post_merge_abstains_without_note_support():
-    recovered, flags = _recover_s4_seizure_frequency_values(
-        ["seizure free"],
-        "Current medication: lamotrigine 75mg bd.",
-        program_variant=EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
-    )
-    assert recovered == []
-    assert "s4_bridge:spurious_seizure_free_removed" in flags
-
-
-def test_recover_s4_seizure_frequency_values_control_skips_post_merge():
-    recovered, flags = _recover_s4_seizure_frequency_values(
-        ["1 per 3 week"],
-        "He has about one focal seizure every three weeks.",
-        program_variant=EXECT_S4_VARIANT,
-    )
-    assert recovered == ["1 per 3 week"]
-    assert "s4_bridge:note_anchored_frequency_merged" not in flags
-
-
-def test_recover_s4_seizure_frequency_values_structured_slots_uses_retention():
-    recovered, flags = _recover_s4_seizure_frequency_values(
-        ["1 per 3 week"],
-        (
-            "He has about one focal seizure every three weeks and the frequency "
-            "has increased."
-        ),
-        program_variant=EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
-    )
-    assert recovered == ["1 per 3 week", "frequency increased"]
-    assert any(
-        flag in flags
-        for flag in (
-            "s4_bridge:multi_label_slot_filled",
-            "s4_bridge:frequency_co_label_multi_label_retained",
-            "s4_bridge:frequency_co_label_augmented",
-        )
-    )
 
 
 def test_predict_exect_s4_temporality_post_classifier_applies_evidence_aligned_recovery():
@@ -625,15 +499,3 @@ def test_predict_exect_s4_frequency_pre_vocab_records_candidate_metadata():
     metadata = prediction_set.predictions[0].metadata
     assert metadata["program_variant"] == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT
     assert "seizure_frequency" in metadata["precomputed_candidates"]
-
-
-def test_recover_s4_investigation_raw_values_keeps_unavailable_results_unknown():
-    recovered, flags = _recover_s4_investigation_raw_values(
-        ["eeg unknown", "mri normal"],
-        (
-            "He had an MRI scan which was normal. "
-            "I do not have the results of his recent EEG test."
-        ),
-    )
-    assert recovered == ["eeg unknown", "mri normal"]
-    assert flags == []

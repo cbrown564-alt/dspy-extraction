@@ -212,7 +212,7 @@ class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
         )
 
 
-def _prompt_note_text_for_context_policy(
+def prompt_note_text_for_context_policy(
     note_text: str,
     candidates: list[Any],
     *,
@@ -232,6 +232,19 @@ def _prompt_note_text_for_context_policy(
             return "\n\n---\n\n".join(spans)
         return GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB
     return note_text
+
+
+def _prompt_note_text_for_context_policy(
+    note_text: str,
+    candidates: list[Any],
+    *,
+    context_policy: str,
+) -> str:
+    return prompt_note_text_for_context_policy(
+        note_text,
+        candidates,
+        context_policy=context_policy,
+    )
 
 
 class GanFrequencyS0TemporalCandidatesSinglePassModule(dspy.Module):

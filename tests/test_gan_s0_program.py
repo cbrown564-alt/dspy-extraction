@@ -7,14 +7,8 @@ from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
 from clinical_extraction.gan.temporal_candidates import (
     GanTemporalFrequencyCandidate,
-    build_temporal_frequency_candidates_from_note,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
-    _looks_like_no_reference_note,
-    _prompt_note_text_for_context_policy,
-    GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
-    GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES,
-    GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_FIELD,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
@@ -361,46 +355,6 @@ def test_gan_s0_targeted_examples_prompt_adds_min7_example_pack():
     assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
 
 
-def test_gan_s0_retrieval_candidates_only_context_policy_assembles_evidence_windows():
-    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
-    candidates = build_temporal_frequency_candidates_from_note(record.note_text)
-    prompt_note = _prompt_note_text_for_context_policy(
-        record.note_text,
-        candidates,
-        context_policy=GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
-    )
-    assert prompt_note != record.note_text
-    for span in prompt_note.split("\n\n---\n\n"):
-        assert span in record.note_text
-
-    empty_prompt = _prompt_note_text_for_context_policy(
-        record.note_text,
-        [],
-        context_policy=GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
-    )
-    assert empty_prompt == GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB
-
-    module = build_gan_s0_module(
-        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-        context_policy=GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
-    )
-    assert isinstance(module, GanFrequencyS0TemporalCandidatesSinglePassModule)
-    assert (
-        module.context_policy
-        == GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY
-    )
-
-    default_module = build_gan_s0_module(
-        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-        context_policy=GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES,
-    )
-    assert isinstance(default_module, GanFrequencyS0TemporalCandidatesSinglePassModule)
-    assert (
-        default_module.context_policy
-        == GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES
-    )
-
-
 def test_gan_s0_temporal_candidates_single_pass_injects_candidates_without_verifier():
     record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
     _configure_dummy([
@@ -546,12 +500,6 @@ def test_gan_s0_prediction_bridge_keeps_narrow_inequality_repair():
     assert value.raw_value == "≤ 2 per day"
     assert value.normalized_value == "2 per day"
     assert "normalized_label_repaired" in value.quality_flags
-
-
-def test_gan_no_reference_note_heuristic_does_not_collapse_unknown_context():
-    assert not _looks_like_no_reference_note(
-        "The patient has epilepsy and reports clusters after poor sleep."
-    )
 
 
 def test_gan_s0_llm_temporal_candidates_single_pass_uses_llm_candidates():

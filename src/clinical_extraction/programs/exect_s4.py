@@ -10,7 +10,6 @@ from clinical_extraction.datasets.exect import (
     canonical_clinical_phrase,
     canonical_medication_name,
     format_medication_temporality_label,
-    infer_prescription_temporality,
 )
 from clinical_extraction.evaluation.exect import EXECT_S4_SCORER, EXECT_S5_SCORER
 from clinical_extraction.programs.exect_s0_s1 import (
@@ -47,7 +46,11 @@ from clinical_extraction.exect.frequency_payload import (
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
+from clinical_extraction.exect.investigation_primitives import (
+    recover_exect_s4_investigation_benchmark_values,
+)
 from clinical_extraction.exect.medication_primitives import (
+    recover_exect_medication_temporality_basic_values,
     recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
@@ -292,19 +295,6 @@ EXECT_S4_V1_3_POLICY_EXAMPLES = (
         "benchmark_output": {"seizure_frequency": ["infrequent"]},
         "policy": "Emit infrequent when the note explicitly uses infrequent or equivalent wording.",
     },
-)
-
-_VALID_RX_TEMPORALITIES = frozenset({"current", "planned", "previous"})
-_INVESTIGATION_MODALITIES = ("eeg", "mri", "ct")
-_PLANNED_INVESTIGATION_MARKERS = (
-    "will arrange",
-    "will request",
-    "requesting",
-    "due to have",
-    "plan to",
-    "arrange an",
-    "arrange a",
-    "which i will request",
 )
 
 
@@ -808,81 +798,11 @@ def _s4_field_values_from_prediction(
     return values
 
 
-def _note_supports_investigation_unknown(modality: str, note_text: str) -> bool:
-    note = note_text.lower()
-    if f"{modality} unknown" in note or f"{modality} result unknown" in note:
-        return True
-    if "unknown" in note and modality in note:
-        return True
-    if modality == "eeg" and any(
-        marker in note
-        for marker in (
-            "do not have the results of",
-            "don't have the results of",
-            "results of his recent eeg",
-            "results of her recent eeg",
-            "results of the recent eeg",
-            "results of recent eeg",
-        )
-    ):
-        return True
-    if modality == "mri" and any(
-        marker in note
-        for marker in (
-            "do not have the results of",
-            "don't have the results of",
-            "results of his recent mri",
-            "results of her recent mri",
-            "results of the recent mri",
-            "results of recent mri",
-        )
-    ):
-        return True
-    return False
-
-
-def _note_has_planned_investigation(modality: str, note_text: str) -> bool:
-    note = note_text.lower()
-    if modality not in note:
-        return False
-    return any(marker in note for marker in _PLANNED_INVESTIGATION_MARKERS)
-
-
 def _recover_s4_investigation_raw_values(
     raw_values: list[str],
     note_text: str,
 ) -> tuple[list[str], list[str]]:
-    flags: list[str] = []
-    recovered: list[str] = []
-    seen: set[str] = set()
-
-    for raw in raw_values:
-        if not raw.strip():
-            continue
-        canonical = _normalize_investigation_surface(raw)
-        if not canonical.endswith(" unknown"):
-            if canonical in seen:
-                continue
-            seen.add(canonical)
-            recovered.append(canonical)
-            continue
-
-        modality = canonical.split()[0]
-        if modality not in _INVESTIGATION_MODALITIES:
-            flags.append("s4_bridge:investigation_unknown_removed")
-            continue
-        if _note_supports_investigation_unknown(modality, note_text):
-            if canonical in seen:
-                continue
-            seen.add(canonical)
-            recovered.append(canonical)
-            continue
-        if _note_has_planned_investigation(modality, note_text):
-            flags.append("s4_bridge:investigation_unknown_removed")
-            continue
-        flags.append("s4_bridge:investigation_unknown_removed")
-
-    return recovered, flags
+    return recover_exect_s4_investigation_benchmark_values(raw_values, note_text)
 
 
 def _recover_s4_seizure_frequency_values(
@@ -922,36 +842,7 @@ def _recover_s4_medication_temporality_raw_values(
     raw_values: list[str],
     note_text: str,
 ) -> tuple[list[str], list[str]]:
-    flags: list[str] = []
-    recovered: list[str] = []
-    seen: set[str] = set()
-
-    for raw in raw_values:
-        if not raw.strip():
-            continue
-        if "|" in raw:
-            medication, temporality = raw.split("|", 1)
-            medication_name = canonical_medication_name(medication)
-            status = canonical_clinical_phrase(temporality)
-            if not medication_name or status not in _VALID_RX_TEMPORALITIES:
-                flags.append("s4_bridge:medication_temporality_invalid_pipe")
-                continue
-            label = format_medication_temporality_label(medication_name, status)
-        else:
-            medication_name = canonical_medication_name(raw)
-            if not medication_name:
-                flags.append("s4_bridge:medication_temporality_unrecognized")
-                continue
-            status = infer_prescription_temporality(note_text)
-            label = format_medication_temporality_label(medication_name, status)
-            flags.append("s4_bridge:medication_temporality_status_inferred")
-
-        if label in seen:
-            continue
-        seen.add(label)
-        recovered.append(label)
-
-    return recovered, flags
+    return recover_exect_medication_temporality_basic_values(raw_values, note_text)
 
 
 def exect_s4_run_metadata(

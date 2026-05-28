@@ -1,10 +1,29 @@
 from __future__ import annotations
 
 from clinical_extraction.exect.medication_primitives import (
+    recover_exect_medication_temporality_basic_values,
     recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
 )
+
+
+def test_recover_medication_temporality_basic_values_accepts_pipe_format():
+    recovered, flags = recover_exect_medication_temporality_basic_values(
+        ["lamotrigine|current"],
+        "Current anti-epileptic medication: lamotrigine 75mg bd.",
+    )
+    assert recovered == ["lamotrigine|current"]
+    assert flags == []
+
+
+def test_recover_medication_temporality_basic_values_infers_bare_medication_status():
+    recovered, flags = recover_exect_medication_temporality_basic_values(
+        ["lamotrigine"],
+        "Current anti-epileptic medication: lamotrigine 75mg bd.",
+    )
+    assert recovered == ["lamotrigine|current"]
+    assert "s4_bridge:medication_temporality_status_inferred" in flags
 
 
 def test_recover_medication_temporality_post_classifier_reclassifies_planned_to_current():
