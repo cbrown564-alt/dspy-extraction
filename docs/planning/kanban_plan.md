@@ -35,8 +35,32 @@ or `component_ceiling_registry.md` explicitly promotes them.
    `gan2026_paper_reproduction`; canonical Gan metrics remain diagnostic.
    ExECT Table 1 reproduction remains blocked until CUI-aware all-family
    scoring exists. Holdout is for residual analysis, not tuning.
+5. **Separate loadable config count from active experiment count.** The 59 JSON
+   configs that currently load are replay/provenance surfaces until a status
+   review classifies which ones are current, historical, rejected, blocked, or
+   diagnostic.
 
 ## Ready
+
+### C4 - Active Experiment Status Review
+
+- **Outcome:** The typed registry and experiment config inventory distinguish
+  genuinely current experiments from loadable replay/provenance surfaces,
+  historical arms, rejected variants, blocked work, and diagnostic baselines.
+- **Dependencies:** C3.
+- **Parallelizable:** no, because this is a status-authority review that should
+  settle terminology before more archive/delete work.
+- **Owner:** unassigned.
+- **Validation:** Every registry/config row used in current docs is classified
+  with an explicit status; generated registry report language no longer implies
+  all loadable configs are current; `uv run pytest
+  tests/test_program_variant_registry.py -q` still passes.
+- **Notes:** The earlier "59 experiment configs loaded" check proves contract
+  loadability only. It does not prove those experiments are current,
+  paper-facing, or active. Review should use `docs/current_research_program.md`,
+  `docs/experiments/synthesis/experiment_registry.json`,
+  `configs/experiments`, recent run artifacts, and the C1/C2 inventory before
+  changing active/frozen/archive language.
 
 ### E1 - ExECT Frequency Event/Rate Payload Gate
 
@@ -211,7 +235,7 @@ cards above.
 - **Validation:** Review artifact with file/line references, dataset/scorer
   preservation risks, and a ranked cleanup sequence.
 - **Notes:** C2 now provides the deletion map; broad deletions still wait on a
-  typed program variant registry.
+  typed program variant registry plus active-status review.
 
 ### C2 - Program Surface Inventory And Deletion Map
 
@@ -219,13 +243,32 @@ cards above.
   `docs/planning/program_surface_inventory_deletion_map_20260528.md`.
 - **Validation:** Inventory maps active surfaces, consolidation candidates,
   archive/delete candidates, retained provenance, and focused validation gates.
-- **Notes:** Do not delete code or move configs until a typed program variant
-  registry can preserve active/historical status and replay provenance.
+- **Notes:** Do not delete code or move configs until the typed program variant
+  registry and C4 status review preserve active/historical status and replay
+  provenance.
+
+### C3 - Typed Program Variant Registry
+
+- **Outcome:** Introduced a typed source of truth for program variant contracts,
+  dataset/schema/scorer compatibility, active status, and provenance notes.
+- **Evidence:** `src/clinical_extraction/experiments/program_variant_registry.py`;
+  `docs/experiments/synthesis/program_variant_registry.md`;
+  `scripts/report_program_variant_registry.py`.
+- **Validation:** `uv run pytest tests/test_program_variant_registry.py -q`
+  passed with 13 tests; selected Gan config compatibility tests passed; all 59
+  JSON configs under `configs/experiments` loaded through
+  `load_experiment_config`.
+- **Notes:** This completed the registry prerequisite from C2 and moved config
+  validation away from a large literal table in `config.py`. The 59-config check
+  is deliberately loadability evidence only; C4 must now review active versus
+  historical status before the board or paper narrative calls those experiments
+  current.
 
 Recent evidence that remains active:
 
 | Evidence | Current interpretation |
 | --- | --- |
+| Typed program variant registry, 2026-05-28 | Initial registry-backed config contract surface exists and can render a synthesis report; status labels still need C4 active-vs-historical review. |
 | ExECT deep review, 2026-05-28 | Current ExECT decomposition doctrine; component ceilings before stacking. |
 | Gan S0 deep dive, 2026-05-28 | Current Gan decomposition doctrine; split candidate inventory, target selection, label construction, and policy. |
 | Gan R11/R15 | D1 v1.2b schema-guard-only is the mechanism baseline; arithmetic and broad relative-anchor guardrails are diagnostic or rejected arms. |
@@ -237,20 +280,23 @@ Recent evidence that remains active:
 
 ## Dependency Notes
 
-- C1/C2 are complete; large cleanup PRs should start with a typed program
-  variant registry before broad moves or deletions.
+- C1/C2/C3 are complete enough to unblock status review, but C4 should precede
+  broad moves, deletions, or archive relabeling.
+- The typed program variant registry preserves loadable contracts; C4 now
+  decides which registry/config rows are truly current, merely replayable,
+  historical, rejected, blocked, or diagnostic.
 - E1, E2, E3, E4, and G1 are safe first pulls because they do not require model
   calls.
 - G2 and G3 depend on G1 because target-selection and policy probes need known
   candidate coverage strata.
 - B1 is blocked until component substrates and isolated ceilings exist.
-- X3 should not run until registry/component status is refreshed; otherwise it
-  will recreate stale navigation.
+- X3 should not run until C4 and X1 refresh registry/component status; otherwise
+  it will recreate stale navigation.
 
 ## Parallelization Opportunities
 
-- **Safe now:** E1, E2, E3, E4, G1, and the C2-recommended typed program
-  variant registry.
+- **Safe now:** C4 active-status review, E1, E2, E3, E4, and G1. Keep E1/G1
+  language careful until C4 resolves "current" versus "loadable" status.
 - **Single-threaded or carefully sequenced:** broad code deletions after C1/C2;
   any change to scorer, loader, split, benchmark bridge, or shared primitive
   contracts.
@@ -260,7 +306,9 @@ Recent evidence that remains active:
 
 ## Recommended Next Pull
 
-1. **E1 - ExECT Frequency Event/Rate Payload Gate** or **G1 - Gan Candidate
+1. **C4 - Active Experiment Status Review**, because the 59 loadable configs
+   should not be treated as current experiment evidence without a deeper review.
+2. **E1 - ExECT Frequency Event/Rate Payload Gate** or **G1 - Gan Candidate
    Inventory Coverage Report**, depending on whether the next implementation
    slot is ExECT or Gan.
 
@@ -275,6 +323,8 @@ Recent evidence that remains active:
   except inside explicitly named paper-reproduction scorer views.
 - Treat ExECT clean ladder results as diagnostic baselines, not component
   ceilings.
+- Do not describe `configs/experiments` loadability counts as active experiment
+  counts without a status review.
 - Treat rejected arms as rejected arms unless a mechanism-level review closes
   the mechanism.
 - Holdout metrics trigger residual analysis only; do not tune from holdout.

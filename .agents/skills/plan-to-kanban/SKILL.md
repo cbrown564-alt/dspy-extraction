@@ -24,12 +24,15 @@ The goal is to turn vague intent into a board where each card is independently u
 
 Use maintenance mode when a run, implementation task, or research note has changed the state of the project.
 
-1. Find the existing card or section that the work belongs to before adding a new card.
-2. Move completed work to `Done` or update its notes with concrete artifacts.
-3. Record run IDs, metric snapshots, important caveats, and validation commands.
-4. Move newly discovered failure modes into `Ready`, `Blocked`, or `Questions` instead of burying them in prose.
-5. Refresh `Dependency Notes`, `Parallelization Opportunities`, and `Recommended Next Pull` when the result changes sequencing.
-6. Avoid duplicating cards whose outcome is already represented elsewhere.
+1. Read the current `docs/planning/kanban_plan.md` and inventory its actual top-level sections and card titles before drafting an edit.
+2. Treat the live board shape as authoritative. Preserve custom sections such as `Done Or Frozen`, evidence tables, and project-specific priority sections instead of reverting to the default column set.
+3. Find the existing card or section that the work belongs to before adding a new card.
+4. Move completed work to the board's existing completed-work section or update its notes with concrete artifacts.
+5. Record run IDs, metric snapshots, important caveats, and validation commands.
+6. Move newly discovered failure modes into the appropriate live-board section, such as `Ready`, `Blocked`, or `Questions`, instead of burying them in prose.
+7. Refresh `Dependency Notes`, `Parallelization Opportunities`, and `Recommended Next Pull` when the result changes sequencing.
+8. Avoid duplicating cards whose outcome is already represented elsewhere.
+9. Patch against stable headings and card titles from the current file, not remembered prose from an earlier board snapshot; confirm the result with `git diff`.
 
 ## Visual Companion
 
@@ -61,6 +64,10 @@ For research-heavy work, add:
 - `Experiments`: runs or ablations with hypotheses and metrics.
 
 **Canonical board path:** write and refresh **`docs/planning/kanban_plan.md` only**. Do not create or restore a top-level `docs/kanban_plan.md` redirect.
+
+For existing boards, the default columns above are only a fallback. Preserve the
+board's current headings, ordering, and naming unless the task explicitly asks
+for a format migration.
 
 ## Card Format
 
