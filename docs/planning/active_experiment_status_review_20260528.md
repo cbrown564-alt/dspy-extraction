@@ -105,7 +105,7 @@ comparators, or one-shot holdout/residual evidence.
 - No scorer, dataset loader, split, benchmark bridge, or metric semantics were
   changed.
 - `docs/experiments/synthesis/experiment_registry.json` remains provenance and
-  still predates the May 28 R11-R15 decisions as a generated atlas source.
+  still predates the May 28 R11-R15 decisions.
 - The config inventory classifies runnable configs; it does not inspect every
   run artifact for metric validity.
 - Holdout configs stay classified through their parent baseline surfaces, but
@@ -132,5 +132,5 @@ as a hard gate for archive movement.
    archive/delete movement.
 2. Start E1 or G1 without describing `configs/experiments` loadability as active
    experiment volume.
-3. Defer registry-derived atlas/matrix regeneration until X1 backfills component
+3. Defer registry-derived matrix regeneration until X1 backfills component
    ceiling rows and C4 statuses are consumed by the export scripts.

@@ -30,10 +30,15 @@ evidence, not active steering. Use this map before citing any synthesis doc.
 `program_variant_registry.md` is the C4 current-authority/loadable-replay status
 view for program variants and live experiment configs.
 
-`experiment_registry.json` remains useful provenance, but its atlas-style rows
-still predate the May 28 R11-R15 status review as a generated navigation source.
-Do not use registry-derived atlas or matrix exports as current authority until
-they consume the C4 status classes and X1 component-ceiling backfill.
+`experiment_registry_matrix_20260520.md` was refreshed by X3 after the May 28
+component pivot, R11-R15 Gan decisions, X1 component-ceiling backfill, C4
+authority classes, and C10 provenance cleanup. It remains a registry-derived
+methods/provenance view, not current steering authority by itself.
+
+`experiment_registry.json` remains useful provenance. The old research atlas
+export has been deleted. Use `component_ceiling_registry.md` and
+`program_variant_registry.md` before treating matrix rows as current pulls,
+baselines, rejected arms, blocked claims, or diagnostic-only evidence.
 
 ## New Synthesis Rule
 

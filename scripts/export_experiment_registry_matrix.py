@@ -97,6 +97,15 @@ def render_matrix(reg: dict, mode: str) -> str:
     lines = [
         "# Experiment Registry Matrix (Paper-Ready Export)",
         "",
+        "Status: X3 refreshed registry-derived export / methods and provenance view",
+        "Authority: provenance and methods drafting only; current component status "
+        "lives in `docs/component_ceiling_registry.md`, and active/replay config "
+        "authority lives in `docs/experiments/synthesis/program_variant_registry.md`.",
+        "Refresh scope: generated after the May 28 component pivot, R11-R15 Gan "
+        "decisions, X1 component-ceiling backfill, C4 authority classes, and C10 "
+        "provenance cleanup. The legacy experiment registry remains the row source; "
+        "use the authority docs above before treating any row as current.",
+        "",
         f"**Generated:** {generated}  ",
         f"**Source:** `docs/experiments/synthesis/experiment_registry.json` (registry_rows={len(reg['experiments'])})  ",
         f"**Filter mode:** `{mode}`  ",
@@ -115,6 +124,8 @@ def render_matrix(reg: dict, mode: str) -> str:
         [
             "- This table is for methods/results drafting; it is not published ExECTv2 Table 1 "
             "or Gan Real-set reproduction.",
+            "- Do not treat rows as current pulls unless the C4 authority class and "
+            "component-ceiling registry also promote them.",
             "- Regenerate after registry updates: "
             "`uv run python scripts/export_experiment_registry_matrix.py`.",
             "",

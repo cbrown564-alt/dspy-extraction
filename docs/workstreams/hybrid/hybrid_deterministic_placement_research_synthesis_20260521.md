@@ -8,7 +8,7 @@ Related:
 - **Taxonomy north star:** `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md`
 - **Taxonomy implementation:** `docs/taxonomy/experiment_taxonomy_schema.md`, `docs/experiments/synthesis/experiment_registry.json`, `docs/taxonomy/experiment_taxonomy_research_synthesis_20260520.md`
 - **Operating plan:** `docs/planning/kanban_plan.md`
-- **Registry views:** `docs/archive/research_atlas/evidence_matrix.md`
+- **Registry views:** `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md`
 - **Closed ExECT probes:** `docs/experiments/exect/exect_negative_probe_synthesis_20260520.md`
 - **Latest measurements:** `docs/experiments/exect/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md`, `docs/experiments/exect/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md`, `docs/experiments/gan/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`, `docs/workstreams/optimizer/dspy_optimizer_investigation_20260521.md`
 

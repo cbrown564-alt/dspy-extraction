@@ -9,7 +9,6 @@ Related:
 - `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md`
 - `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md`
 - `docs/experiments/synthesis/experiment_registry.json`
-- `docs/archive/research_atlas/evidence_matrix.md`
 - `.agents/skills/skill-system-review/SKILL.md`
 - `.agents/skills/research-synthesis/SKILL.md`
 
@@ -27,7 +26,6 @@ The repo already has strong primary artifacts:
 - experiment-level preregistration and inspection docs
 - task-level skills under `.agents/skills`
 - structured experiment inventory in `docs/experiments/synthesis/experiment_registry.json`
-- visual/navigation exports in `docs/archive/research_atlas/`
 - policy and audit guardrails under `docs/policies/` and `docs/datasets/`
 
 The missing layer is not another plan. The missing layer is compact, periodically regenerated memory that answers:
@@ -81,8 +79,7 @@ This lifecycle is already partially enforced by:
 - `src/clinical_extraction/experiments/inspection_templates.py`
 - `src/clinical_extraction/experiments/registry_validation.py`
 - `scripts/export_experiment_registry_matrix.py`
-- `scripts/export_research_atlas.py`
-- tests such as `tests/test_inspection_templates.py`, `tests/test_experiment_registry_validation.py`, and `tests/test_export_research_atlas.py`
+- tests such as `tests/test_inspection_templates.py` and `tests/test_experiment_registry_validation.py`
 
 The memory layer should not replace these. It should read their outputs and identify what a new session needs to know.
 
@@ -106,7 +103,6 @@ Memory add-on: `docs/memory/session_brief.md`, regenerated or reviewed after mea
 | Preregistration docs | Experiment intent, controls, gates | Strong reproducibility contract | Hard to scan across many experiments. |
 | Inspection docs | Outcomes and interpretation | Strong decision record | Distributed across folders and dates. |
 | `experiment_registry.json` | Structured experiment rows | Machine-readable, validated | Dense; not enough narrative on stale claims or open mechanism questions. |
-| `docs/archive/research_atlas/*` | Registry-derived navigation | Good high-level map | Generated views summarize evidence, not workflow memory. |
 | `runs/*` | Raw artifacts | Reproducibility anchor | Too low-level for session start. |
 
 Memory add-on: derived decision caches such as `docs/memory/decision_cache.md`, `docs/memory/open_questions.md`, and `docs/memory/rejected_arms.md`.
@@ -380,7 +376,7 @@ Next recommended memory work:
 
 For the design note itself:
 
-- `uv run pytest tests/test_inspection_templates.py tests/test_experiment_registry_validation.py tests/test_export_research_atlas.py`
+- `uv run pytest tests/test_inspection_templates.py tests/test_experiment_registry_validation.py`
 
 For future memory automation:
 

@@ -32,19 +32,20 @@ Completed in the first pass:
 - rewrote `../README.md`;
 - added domain maps for `../experiments/gan/`, `../experiments/exect/`, and
   `../experiments/synthesis/`;
-- marked stale memory, atlas, matrix, and mechanism-status surfaces as
-  superseded.
+- marked stale memory, matrix, and mechanism-status surfaces as superseded, and
+  removed the obsolete generated atlas surface.
 
 ## Wave 2 - Stale Generated Navigation
 
 Status: completed
 
-Move or replace with archive redirects:
+Remove obsolete generated atlas files and de-authorize stale matrix exports:
 
-- `../research_atlas/evidence_matrix.md`
-- `../research_atlas/decision_map.mmd`
-- `../research_atlas/journey.mmd`
-- `../experiments/synthesis/experiment_registry_matrix_20260520.md`
+- deleted `research_atlas/evidence_matrix.md`
+- deleted `research_atlas/decision_map.mmd`
+- deleted `research_atlas/journey.mmd`
+- preserved `../experiments/synthesis/experiment_registry_matrix_20260520.md`
+  as a post-pivot X3 methods/provenance matrix with explicit authority caveats.
 
 Reason: generated before the May 28 pivot and newer R11-R15 decisions. These are
 not active navigation.
@@ -52,7 +53,8 @@ not active navigation.
 Replacement:
 
 - `../component_ceiling_registry.md`
-- refreshed registry/matrix only after the run registry includes May 28 decisions.
+- refreshed registry matrix with explicit pointers to the C4/X1 authority
+  surfaces and May 28 component-pivot caveats.
 
 ## Wave 3 - Pre-Pivot Synthesis
 

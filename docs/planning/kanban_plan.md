@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C18 complete
+Last refreshed: 2026-05-28 X3 complete; C19 partial
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -53,7 +53,7 @@ or `component_ceiling_registry.md` explicitly promotes them.
   paths, and generated registry/navigation outputs no longer present stale arms
   as current work.
 - **Dependencies:** C12 path resolution; C15-C18 behavior-preserving extraction;
-  X3 registry/atlas refresh should consume the same status classes.
+  X3 registry matrix refresh now consumes the same status classes.
 - **Parallelizable:** yes for doc-only archive maps; code deletion should stay
   sequenced with replay-provenance checks.
 - **Owner:** unassigned.
@@ -63,21 +63,10 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Notes:** Do not delete any path needed to trace active metrics to run ID,
   config, model/provider, split, scorer mode, and caveat. Archive by decision
   boundary, not age. C18 is complete, so C19 is now the primary architecture
-  pull.
-
-### X3 - Registry And Atlas Refresh
-
-- **Outcome:** Regenerated registry-derived navigation only after May 28
-  decisions and component-ceiling statuses are encoded.
-- **Dependencies:** X1 complete; C10 complete enough to prevent stale generated
-  navigation from hiding C4 status classes or X1 caveats.
-- **Parallelizable:** yes for doc-only refresh; coordinate if regenerated
-  registry/atlas material touches shared navigation files.
-- **Owner:** unassigned.
-- **Validation:** Generated artifacts explicitly state they postdate R11-R15,
-  X1, C10, and the May 28 component pivot.
-- **Notes:** Use the retained C10 manifest and explicit Gan scorer-mode
-  surfaces; do not revive the archived pre-pivot atlas as current authority.
+  pull. A first C19 slice removed the obsolete generated research atlas,
+  exporter script, and exporter test. X3 regenerated the registry matrix as a
+  post-pivot methods/provenance view; rejected/historical config and script
+  movement remains open.
 
 ### E5 - Medication Lifecycle Target Policy Decision
 
@@ -329,6 +318,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | G1/G2 Gan target split evidence, 2026-05-28 | Restrained high-recall deterministic candidates now cover 278/299 exact gold labels in G1, 292/299 Purist-equivalent labels, and 295/299 Pragmatic-equivalent labels; the G2 candidate-constrained arm has 299/299 selectable candidate support with no invalid candidate labels. Keep the remaining exact misses as a parser/adjudicator queue rather than forcing brittle 100% deterministic exact recall. |
 | G3 Gan unknown vs no-reference policy probe, 2026-05-28 | Post-adjudication rules simulated on G2 predictions shows that checking option ambiguity flags successfully isolates policy choices (e.g. abstaining on uncertain denominators), trading off category accuracy for conservative precision. |
 | X1 component ceiling registry backfill, 2026-05-28 | `component_ceiling_registry.md` now preserves row-level model/provider, split, scorer, config/run or artifact, bridge/normalization policy, classification, and caveat metadata for promoted baselines, diagnostic substrates, rejected arms, active risks, and blocked benchmark claims. |
+| X3 registry matrix refresh, 2026-05-28 | `experiment_registry_matrix_20260520.md` is regenerated as a post-pivot registry-derived methods/provenance view with explicit R11-R15, X1, C4, C10, and May 28 component-pivot caveats. The obsolete research atlas exporter, tests, and generated outputs are removed. The matrix is not current steering authority without `component_ceiling_registry.md` and `program_variant_registry.md`. |
 | Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
 | ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
@@ -409,14 +399,15 @@ artifacts, and git history; this section only keeps the steering implications.
   navigation is refreshed: historical cap-slice backfill rows are retained in
   an archive manifest, and Gan analysis scripts now expose scorer mode and
   paper-reproduction options explicitly.
-- X3 is unblocked by X1 and C10, but final registry/atlas navigation should be
-  coordinated with C19 so archived or deleted surfaces do not immediately make
-  regenerated navigation stale.
+- X3 is complete: the registry matrix is refreshed as a post-pivot
+  methods/provenance view with explicit authority caveats. Future regenerations
+  should still coordinate with C19 so archived or deleted surfaces do not make
+  navigation stale again.
 
 ## Parallelization Opportunities
 
 - **Safe now:** C19 archive/delete inventory and doc-only archive maps as the
-  next architecture pull; X3 doc-only prep if it does not regenerate stale navigation; G5
+  next architecture pull; G5
   paper-scorer rescore if needed for a paper table; E5 medication lifecycle
   policy decision. These should preserve scorer, loader, split, and benchmark
   bridge semantics.
@@ -425,8 +416,8 @@ artifacts, and git history; this section only keeps the steering implications.
 - **Research lane still safe, but secondary:** E6, E8, E10, G4, and E11 remain
   valid work, but new broad model/prompt changes should wait until the current
   architecture lane is no longer the bottleneck.
-- **Single-threaded or carefully sequenced:** C19 archive/delete,
-  registry/archive regeneration in X3, and any change to scorer, loader, split,
+- **Single-threaded or carefully sequenced:** C19 archive/delete, future
+  registry/archive regeneration, and any change to scorer, loader, split,
   benchmark bridge, or shared primitive contracts.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
@@ -443,7 +434,7 @@ artifacts, and git history; this section only keeps the steering implications.
    provenance.
 2. **C20 - Modularity Completion Review** should close the architecture lane by
    updating audit status, residual risks, and validation evidence.
-3. **Then resume research-lane pulls** such as X3, G5, E5, E6, E10, and E8
+3. **Then resume research-lane pulls** such as G5, E5, E6, E10, and E8
     according to paper/experiment need.
 
 ## Standing Guardrails

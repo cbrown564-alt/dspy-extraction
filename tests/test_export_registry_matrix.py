@@ -36,6 +36,12 @@ def test_curated_matrix_includes_s4_temporality_group():
 def test_render_matrix_contains_comparison_group_sections():
     reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     markdown = _export.render_matrix(reg, "decided")
+    assert "X3 refreshed registry-derived export" in markdown
+    assert "May 28 component pivot" in markdown
+    assert "R11-R15 Gan decisions" in markdown
+    assert "X1 component-ceiling backfill" in markdown
+    assert "C4 authority classes" in markdown
+    assert "C10 provenance cleanup" in markdown
     assert "## gan_s0_architecture_gpt_validation_v1" in markdown
     assert "monthly_frequency_accuracy=" in markdown
     assert "## exect_s4_temporality_deterministic_v1" in markdown

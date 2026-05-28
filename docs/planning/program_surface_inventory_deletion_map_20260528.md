@@ -71,7 +71,7 @@ provenance.
 | ExECT S4/S5 non-v2b stack variants with no live config | Rejected, diagnostic, or stale implementation branches inside `exect_s4.py`. | ExECT deep review plus S5 v2b config set. | Split S5 core first; then remove unreachable branches with S4/S5 tests green. |
 | `scripts/backfill_hybrid_cap25_registry.py` | Hard-coded historical registry backfill, 1k+ lines. | Current registry JSON plus decision docs; future generated views from typed program registry. | Registry validation/export tests pass; each hard-coded row has provenance in archive or registry. |
 | `scripts/register_gan_lane_a_cap25_registry.py` | One-off old registry registration. | Same registry-generation replacement as above. | Confirm no active docs instruct use of this script. |
-| Registry-derived atlas/matrix outputs predating May 28 | Superseded navigation. | `docs/experiments/synthesis/README.md` says registry exports must wait for May 28 statuses. | X1 component registry backfill complete before X3 regeneration. |
+| Registry-derived matrix outputs predating May 28 | Superseded navigation. | `docs/experiments/synthesis/README.md` says registry exports must wait for May 28 statuses. | X1 component registry backfill complete before X3 matrix regeneration. Obsolete research atlas has been permanently removed. |
 | `scripts/generate_qwen_configs.py` | Likely one-off config generator. | Model/config compatibility docs if still needed. | Keep only if C2 inventory finds an active model-config workflow using it. |
 | Cursor SDK workflow scripts/docs in active tree | Useful provenance but outside current decomposition priority. | `docs/workstreams/cursor_sdk/` index/archive. | Do not delete; file under workstream/archive unless active docs still cite it. |
 

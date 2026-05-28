@@ -280,7 +280,7 @@ Recommended simplification:
 
 Validation:
 
-- `uv run pytest tests/test_export_registry_matrix.py tests/test_export_research_atlas.py -q`
+- `uv run pytest tests/test_export_registry_matrix.py -q`
 - `uv run pytest tests/test_analyze_gan_frequency_run.py tests/test_gan_paper_reproduction_scoring.py -q`
 
 Preservation risk: archive run IDs, decision documents, and scorer caveats

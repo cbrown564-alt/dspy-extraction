@@ -11,8 +11,6 @@ The archive keeps provenance without letting old plans steer the project.
   project phases.
 - `memory/` - superseded promoted memory files and memory candidates from before
   the May 28 refocus.
-- `research_atlas/` - generated registry/atlas exports that predate the May 28
-  decomposition pivot.
 - `experiments/gan/` - older Gan S0 notes grouped by decision boundary:
   temporal candidates, prompt policy/examples, verify-repair/evidence,
   optimizer/GEPA, model diagnostics, and rejected or held arms.
@@ -24,6 +22,13 @@ The archive keeps provenance without letting old plans steer the project.
   manuscript, model-suite, and registry-matrix surfaces superseded by the
   component-ceiling program.
 - `may28_refocus_archive_plan.md` - completed archive plan for this refocus.
+
+## Deleted Generated Surfaces
+
+- `research_atlas/` - obsolete generated atlas exports from before the May 28
+  decomposition pivot. Their provenance is now routed through the archived
+  pre-pivot synthesis matrix, `component_ceiling_registry.md`, and the domain
+  experiment maps.
 
 ## Archive Rule
 

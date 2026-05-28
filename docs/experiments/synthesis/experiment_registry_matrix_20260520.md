@@ -1,5 +1,9 @@
 # Experiment Registry Matrix (Paper-Ready Export)
 
+Status: X3 refreshed registry-derived export / methods and provenance view
+Authority: provenance and methods drafting only; current component status lives in `docs/component_ceiling_registry.md`, and active/replay config authority lives in `docs/experiments/synthesis/program_variant_registry.md`.
+Refresh scope: generated after the May 28 component pivot, R11-R15 Gan decisions, X1 component-ceiling backfill, C4 authority classes, and C10 provenance cleanup. The legacy experiment registry remains the row source; use the authority docs above before treating any row as current.
+
 **Generated:** 2026-05-28  
 **Source:** `docs/experiments/synthesis/experiment_registry.json` (registry_rows=215)  
 **Filter mode:** `curated`  
@@ -18,6 +22,7 @@ Grouped by `comparison_group`, then dataset, schema, model, and run scope. Compa
 - Gan R9 recovery rows identify validation candidates only; Gan test-holdout selection still requires an explicit promotion/holdout review.
 - 2026-05-26 A2 added the ExECT S5 GPT 5.5 fixed-stack anchor as closed-model comparison evidence; it does not change the S5 operational default.
 - This table is for methods/results drafting; it is not published ExECTv2 Table 1 or Gan Real-set reproduction.
+- Do not treat rows as current pulls unless the C4 authority class and component-ceiling registry also promote them.
 - Regenerate after registry updates: `uv run python scripts/export_experiment_registry_matrix.py`.
 
 ## exect_gemini_ladder_replay_v1
@@ -254,8 +259,8 @@ Rows: 2
 
 | Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `exect_s2_clean_ladder_v1_full` | exect_v2 | exect_s2 | gpt4_1_mini | single_pass | H1_post_deterministic | post | full_validation | **freeze** | micro_f1=82.7% | [inspection](docs/experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md) |
-| `exect_s3_clean_ladder_v1_full` | exect_v2 | exect_s3 | gpt4_1_mini | single_pass | H1_post_deterministic | post | full_validation | **freeze** | micro_f1=74.4% | [inspection](docs/experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md) |
+| `exect_s2_clean_ladder_v1_full` | exect_v2 | exect_s2 | gpt4_1_mini | single_pass | H1_post_deterministic | post | full_validation | **freeze** | micro_f1=82.7% | [inspection](docs/archive/experiments/exect/s0_s1_label_policy_trail/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md) |
+| `exect_s3_clean_ladder_v1_full` | exect_v2 | exect_s3 | gpt4_1_mini | single_pass | H1_post_deterministic | post | full_validation | **freeze** | micro_f1=74.4% | [inspection](docs/archive/experiments/exect/s0_s1_label_policy_trail/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md) |
 
 ## exect_s3_epilepsy_cause_bridge_gpt_cap25_v1
 
