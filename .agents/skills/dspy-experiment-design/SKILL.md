@@ -7,14 +7,19 @@ description: Use when creating or modifying DSPy signatures, modules, compiled p
 
 Treat each experiment as a reproducible program variant, not a loose prompt edit.
 
-**Research program (2026-05-21 pivot):** use `hybrid-pipeline-exploration` for stage-count,
-det-vs-LLM placement, and arm-vs-mechanism decision discipline. This skill covers config
-metadata, primitives, and run hygiene; the hybrid skill covers *what* to test next.
+**Research program (2026-05-28 pivot):** the active frame is component
+decomposition and isolated ceilings before broad stacked optimization. Use
+`docs/current_research_program.md`, `docs/component_ceiling_registry.md`, and
+`docs/planning/kanban_plan.md` to decide whether a proposed run answers an
+active component question. Use `hybrid-pipeline-exploration` only when the task
+is still about stage count, deterministic-vs-LLM placement, or arm-vs-mechanism
+discipline inside that component frame.
 
 Follow this workflow:
 
 1. State the experiment hypothesis in one sentence.
-2. Identify the dataset, split, model config, schema level, and scorer before changing code.
+2. Identify the dataset, split, model config, component/stage, schema or field
+   family, and scorer before changing code.
 3. Search for existing DSPy signatures, modules, configs, primitive registry entries, and run artifact conventions.
 4. Compose deterministic helpers from typed primitives rather than ad hoc helper edits unless the experiment is explicitly testing a new primitive.
 5. Change one experimental factor at a time unless the experiment explicitly tests an interaction.
@@ -29,7 +34,9 @@ For model-backed experiments, use this sequence unless the task is only a code o
 3. Inspect the produced run artifacts before scaling up: config, prompts, predictions, metrics, errors, and compiled state when an optimizer is used.
 4. Promote to full validation only after the capped run clears the stated validity and evidence gates.
 5. After full validation, write or update an error-read note before choosing the next implementation target.
-6. Update the Kanban board with completed run IDs, metric caveats, and the recommended next pull.
+6. Update the Kanban board, component registry, or generated program-variant
+   registry when the run changes active status, completed evidence, or the
+   recommended next pull.
 
 ## Required Experiment Metadata
 
@@ -37,7 +44,7 @@ Every experiment should make these explicit:
 
 - dataset and split
 - model and provider
-- schema or field group
+- component/stage and schema or field group
 - DSPy signatures/modules used
 - prompt or instruction source
 - few-shot/demo policy
@@ -49,8 +56,10 @@ Every experiment should make these explicit:
 
 ## Hybrid Taxonomy (required on new configs)
 
-Add a `taxonomy` block to every new `configs/experiments/*.json` file, or add the
-experiment to `docs/experiments/synthesis/experiment_registry.json` in the same change. Controlled
+Add a `taxonomy` block to every new `configs/experiments/*.json` file and keep
+program/config authority aligned with
+`src/clinical_extraction/experiments/program_variant_registry.py` and the
+generated `docs/experiments/synthesis/program_variant_registry.md`. Controlled
 values live in `docs/taxonomy/experiment_taxonomy_schema.md`.
 
 Minimum config fields:
@@ -102,10 +111,11 @@ The taxonomy-primitives phase is complete enough that new model-backed runs shou
 compose existing primitives rather than quietly changing bridge behavior, evidence
 policy, or prompt surfaces in program code.
 
-Limit new model-backed experiments to cases that answer an active research decision
-already tracked in `docs/planning/kanban_plan.md`. Otherwise favor deterministic validation,
-fixture design, config generation, and inspection templates until the next
-systematic run batch.
+Limit new model-backed experiments to cases that answer an active research
+decision tracked in `docs/planning/kanban_plan.md` and
+`docs/component_ceiling_registry.md`. Otherwise favor deterministic component
+audits, fixture design, config generation, and inspection templates until the
+next systematic run batch.
 
 ## Program Variant Guidance
 
@@ -150,6 +160,7 @@ Do not write "verify-repair is rejected" or "H2 is closed" in summaries unless
 Before finishing, summarize:
 
 - hypothesis tested
+- component/stage targeted
 - experimental factor changed
 - fixed controls
 - artifacts produced or expected

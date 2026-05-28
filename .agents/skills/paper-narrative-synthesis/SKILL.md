@@ -13,14 +13,17 @@ Use alongside `research-synthesis` for artifact-grounded writeups, `research-sup
 
 Read the minimum set needed for the requested paper task:
 
-1. `docs/outline.md`
-2. `docs/planning/kanban_plan.md`, if present
-3. recent synthesis, experiment, error-analysis, or workstream docs relevant to the paper claim
-4. `docs/experiments/synthesis/experiment_registry.json` and registry summaries when discussing experiments
-5. dataset audits before making dataset, label, scorer, or benchmark claims:
+1. `docs/current_research_program.md`
+2. `docs/component_ceiling_registry.md`
+3. `docs/planning/kanban_plan.md`, if present
+4. `docs/outline.md` as original proposal context when needed
+5. recent synthesis, experiment, error-analysis, or workstream docs relevant to the paper claim
+6. `docs/experiments/synthesis/program_variant_registry.md` and registry
+   summaries when discussing experiments
+7. dataset audits before making dataset, label, scorer, or benchmark claims:
    - `docs/datasets/exect/exect_gold_label_audit.md`
    - `docs/datasets/gan/gan_2026_label_audit.md`
-6. policy docs that affect interpretation, especially scorer semantics, splits, deterministic foundations, and published benchmark metrics
+8. policy docs that affect interpretation, especially scorer semantics, splits, deterministic foundations, and published benchmark metrics
 
 Read `references/paper_argument_map.md` when building a full outline, introduction, discussion, or paper-wide revision plan.
 

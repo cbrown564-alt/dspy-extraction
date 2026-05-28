@@ -19,7 +19,7 @@ unknown/no-reference policy before another broad prompt pass?
 | Paper-comparison surface | blocked / benchmark-facing | Direct Gan paper comparison now requires `gan2026_paper_reproduction`; current headline rows mostly used `gan_frequency_deterministic_v1`. | Rescore current baselines before benchmark-comparison tables. |
 | Synthetic operational default | promoted baseline | Builder-gap v1 GPT: 80.6% monthly canonical validation; Qwen: 70.7%. | Keep as synthetic paper-default baseline until rescored or explicitly superseded. |
 | Mechanism baseline | operational default | D1 v1.2b schema guard only: 79.9% monthly, within 0.7pp of builder-gap v1 and more decomposed. | Use for mechanism experiments. |
-| Candidate inventory | mechanism open | Builder-gap v1 and D1 show value, but inventory recall/strata coverage are not yet a first-class ceiling report. | Audit candidate coverage by label family and hard strata. |
+| Candidate inventory | coverage gate measured / mechanism open | G1 no-model report: deterministic D1/builder substrate emits candidates for 65/299 validation records, covers 61/299 exact gold labels, and covers 63/299 Purist/Pragmatic-equivalent labels; no-reference coverage is 0/11. | Use G1 strata to split target selection from label construction before adding more adjudicator or prompt variants. |
 | Temporal anchoring | mechanism open | R11 D1 won; R15 showed arithmetic injection and broad relative-anchor guardrails regress. | Keep arithmetic diagnostic-only until parser is seizure-specific. |
 | Scope and target selection | mechanism open | Still bundled inside the final adjudicator. | Create residual strata for current/historical, multi-type, seizure-free conflict, and highest-current selection. |
 | Label construction and aggregation | mechanism open | Scorer normalization is post-prediction; label construction remains largely LLM-bundled. | Test label-construction helpers separately from target selection. |
@@ -32,6 +32,7 @@ unknown/no-reference policy before another broad prompt pass?
 Primary current docs:
 
 - `experiments/gan/gan_s0_pipeline_decomposition_deep_dive_20260528.md`
+- `experiments/gan/gan_s0_candidate_inventory_coverage_report_20260528.md`
 - `experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md`
 - `experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md`
 - `experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md`

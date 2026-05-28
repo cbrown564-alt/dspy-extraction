@@ -11,9 +11,11 @@ Use this skill when an experiment moves from code/config into model execution or
 
 1. Identify the experiment config, model config, dataset, split, schema level, program variant, scorer mode, and output root.
 2. Read the relevant experiment-design and audit docs before model calls:
-   - `docs/outline.md`
-   - `docs/architecture/first_dspy_schema_sequence.md`
+   - `docs/current_research_program.md`
+   - `docs/component_ceiling_registry.md`
+   - `docs/planning/kanban_plan.md`
    - `docs/policies/deterministic_scorer_semantics.md`
+   - `docs/policies/published_benchmark_metrics.md`, when making external benchmark claims
    - `docs/taxonomy/taxonomy_primitive_catalog.md`, when the run composes typed primitives
    - `docs/policies/qwen_dspy_latency_policy.md`, when using local Qwen models or changing DSPy reasoning/optimizer settings
    - dataset audit for the target dataset
@@ -43,7 +45,10 @@ Use this skill when an experiment moves from code/config into model execution or
    - `errors.json`
    - `artifacts/compiled_state.json`, when present
 10. Promote to full validation only if the capped run clears the explicit gate for schema validity, evidence support, latency feasibility, and the target benchmark-facing metric.
-11. After a full validation run, write or update an error-read note using the templates in `docs/templates/` and refresh `docs/planning/kanban_plan.md`.
+11. After a full validation run, write or update an error-read note using the
+    templates in `docs/templates/`; refresh `docs/planning/kanban_plan.md`,
+    `docs/component_ceiling_registry.md`, or the generated program-variant
+    registry when the result changes active status or the next pull.
 
 ## Reporting Rules
 
@@ -61,6 +66,8 @@ Use this skill when an experiment moves from code/config into model execution or
 - Include primitive IDs, taxonomy fields, scorer mode, normalization rules, and evidence rules in promotion, freeze, hold, or reject notes.
 - Do not describe Gan synthetic validation as published benchmark reproduction.
 - Do not report test-split results unless the config explicitly allows test reporting.
+- Do not use holdout metrics for tuning. Treat them as residual-analysis
+  triggers unless the current plan explicitly says otherwise.
 
 ## Common Commands
 
@@ -97,7 +104,7 @@ uv run python scripts/validate_primitives.py --errors-only
 Before finishing, summarize:
 
 - experiment config and model config
-- dataset, split, schema level, program variant, and scorer mode
+- dataset, split, component/stage, schema level, program variant, and scorer mode
 - dry run, capped run, or full validation status
 - run ID and artifact paths inspected
 - benchmark-facing and diagnostic metric caveats

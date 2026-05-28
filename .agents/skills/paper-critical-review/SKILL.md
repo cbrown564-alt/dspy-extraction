@@ -13,11 +13,13 @@ Use alongside `research-supervisor-review` for repo-level supervision, `gold-sco
 
 Read the paper draft, outline, section, or argument map first. Then inspect only the evidence needed to verify its claims:
 
-1. `docs/outline.md`
-2. `docs/planning/kanban_plan.md`, if the draft claims planned or completed scope
-3. experiment reports, preregistrations, inspections, and registry entries cited or implied by the draft
-4. scorer, split, and benchmark policy docs when metrics are discussed
-5. dataset audits when the paper makes ExECTv2 or Gan claims:
+1. `docs/current_research_program.md`
+2. `docs/component_ceiling_registry.md`
+3. `docs/planning/kanban_plan.md`, if the draft claims planned or completed scope
+4. `docs/outline.md` as original proposal context when needed
+5. experiment reports, preregistrations, inspections, and registry entries cited or implied by the draft
+6. scorer, split, and benchmark policy docs when metrics are discussed
+7. dataset audits when the paper makes ExECTv2 or Gan claims:
    - `docs/datasets/exect/exect_gold_label_audit.md`
    - `docs/datasets/gan/gan_2026_label_audit.md`
 

@@ -10,7 +10,10 @@ Use this skill when the user asks for a repo skills review or asks whether the s
 ## Workflow
 
 1. Inventory current skills under `.agents/skills`.
-2. Read `AGENTS.md`, `docs/outline.md`, `docs/planning/kanban_plan.md`, and relevant recent research or error-analysis docs.
+2. Read `AGENTS.md`, `docs/README.md`, `docs/current_research_program.md`,
+   `docs/component_ceiling_registry.md`, `docs/planning/kanban_plan.md`, and
+   relevant recent research or error-analysis docs. Treat `docs/outline.md` as
+   original proposal context, not the first active steering surface.
 3. Inspect recent git history for repeated file clusters, repeated fixes, reverted directions, or recurring validation patterns.
 4. Review available conversation context for workflows the user repeatedly asks Codex to perform.
 5. Compare skill instructions against actual development behavior:

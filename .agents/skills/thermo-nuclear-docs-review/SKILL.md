@@ -24,7 +24,12 @@ Active docs should clearly answer:
 
 ## Review Workflow
 
-1. Start from `AGENTS.md`, `docs/outline.md`, `docs/planning/kanban_plan.md`, dataset audits, scorer/policy docs, and the newest synthesis or deep-dive docs relevant to the request.
+1. Start from `AGENTS.md`, `docs/README.md`,
+   `docs/current_research_program.md`, `docs/component_ceiling_registry.md`,
+   `docs/planning/kanban_plan.md`, dataset audits, scorer/policy docs, and
+   the newest synthesis or deep-dive docs relevant to the request. Use
+   `docs/outline.md` as original proposal context rather than active
+   documentation authority.
 2. Inventory the target docs by role:
    - `entrypoint`
    - `active steering`

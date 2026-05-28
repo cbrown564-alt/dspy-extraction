@@ -115,25 +115,12 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Notes:** Section-aware prompt routing failed as an arm; this card tests the
   typed document-geometry mechanism.
 
-### G1 - Gan Candidate Inventory Coverage Report
-
-- **Outcome:** A first-class coverage report for Gan S0 candidate inventory
-  under the current D1/builder substrate.
-- **Dependencies:** none.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Candidate recall by label family and hard strata:
-  multi/highest, seizure-free conflict, cluster, vague frequency,
-  unknown-with-events, no-reference, and gold-equivalent Purist/Pragmatic
-  coverage.
-- **Notes:** Measure coverage before adding more adjudicator or prompt variants.
-
 ### G2 - Gan Target Selection And Label Construction Split
 
 - **Outcome:** An ablation plan, then implementation, that separates selected
   candidate/reason-code choice from exact Gan label emission.
-- **Dependencies:** G1 for coverage and strata.
-- **Parallelizable:** after G1.
+- **Dependencies:** G1 complete for coverage and strata.
+- **Parallelizable:** yes.
 - **Owner:** unassigned.
 - **Validation:** Compare free adjudication, candidate-constrained adjudication,
   reason-code selector, and deterministic label constructor where supported.
@@ -145,8 +132,10 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Outcome:** A narrow post-adjudication policy probe for `unknown`,
   `no seizure frequency reference`, weak quantified labels, and seizure-free
   conflict cases.
-- **Dependencies:** G1; ideally after G2 defines selected-candidate metadata.
-- **Parallelizable:** after G1.
+- **Dependencies:** G1 complete; ideally after G2 defines selected-candidate
+  metadata.
+- **Parallelizable:** yes for planning from G1 strata; run after G2 if the
+  probe needs selected-candidate metadata.
 - **Owner:** unassigned.
 - **Validation:** Stratified confusion report under canonical scorer and paper
   reproduction scorer. Must not repeat the broad unknown-overuse guard.
@@ -383,6 +372,24 @@ cards above.
   model-run behavior changed; test-holdout residuals are reported only as an
   existing transfer warning and are not tuning targets.
 
+### G1 - Gan Candidate Inventory Coverage Report
+
+- **Outcome:** Completed a no-model Gan S0 candidate-inventory coverage report
+  under the current deterministic D1/builder substrate.
+- **Evidence:**
+  `docs/experiments/gan/gan_s0_candidate_inventory_coverage_report_20260528.md`
+  and companion JSON report exact gold-label, Purist-equivalent, and
+  Pragmatic-equivalent coverage by label family and hard stratum.
+- **Validation:** `uv run pytest tests/test_gan_candidate_inventory.py
+  tests/test_gan_multi_event_flags.py -q` passed with 7 tests; `uv run python
+  scripts/export_gan_candidate_inventory_report.py` regenerated the report for
+  299 validation records with 61 exact gold candidates and 63 Purist/Pragmatic
+  equivalent candidates.
+- **Notes:** No loader, split, scorer, benchmark, or model-run behavior changed.
+  The report shows the deterministic substrate is a sparse inventory rather
+  than a near-ceiling component, so G2 should isolate target selection and label
+  construction before adding more prompt variants.
+
 Recent evidence that remains active:
 
 | Evidence | Current interpretation |
@@ -393,6 +400,7 @@ Recent evidence that remains active:
 | ExECT C7 S1 bridge boundary metadata, 2026-05-28 | S1 raw model output, prompt-policy provenance, deterministic bridge rows/flags, and final artifact values are inspectable separately without scorer or loader changes; use this as the substrate for E2. |
 | ExECT C8 frequency payload extraction, 2026-05-28 | Frequency candidate payload, high-precision mode, slot payload, and benchmark bridge now share a typed frequency module without changing C5 coverage or scorer semantics. |
 | ExECT E2 S1 split audit, 2026-05-28 | S1 full-validation GPT is near ceiling only after benchmark bridges; Qwen test holdout transfer drops keep S1 validation-aligned rather than mechanism-solved. |
+| Gan G1 candidate inventory coverage, 2026-05-28 | Deterministic D1/builder substrate covers 61/299 exact validation labels and 63/299 Purist/Pragmatic-equivalent labels; use strata for G2 target-selection and label-construction split. |
 | ExECT deep review, 2026-05-28 | Current ExECT decomposition doctrine; component ceilings before stacking. |
 | Gan S0 deep dive, 2026-05-28 | Current Gan decomposition doctrine; split candidate inventory, target selection, label construction, and policy. |
 | Gan R11/R15 | D1 v1.2b schema-guard-only is the mechanism baseline; arithmetic and broad relative-anchor guardrails are diagnostic or rejected arms. |
@@ -414,12 +422,13 @@ Recent evidence that remains active:
   bridge surfaces; C7 is complete for the ExECT S1 bridge-boundary surface; C8
   is complete for the ExECT frequency payload and bridge surface without
   changing dataset, split, scorer, or benchmark semantics.
-- E2 is complete as an artifact-only causal split audit. E3, E4, and G1 remain
-  safe first pulls because they do not require model calls. G1 should consume
-  the completed C6 Gan S0 stage surfaces; ExECT frequency candidate-selection
-  design can now consume C8, but is not a broad-stack model run.
-- G2 and G3 depend on G1 because target-selection and policy probes need known
-  candidate coverage strata.
+- E2 is complete as an artifact-only causal split audit, and G1 is complete as
+  a no-model Gan candidate-inventory coverage report. E3 and E4 remain safe
+  first pulls because they do not require model calls; ExECT frequency
+  candidate-selection design can now consume C8, but is not a broad-stack model
+  run.
+- G2 and G3 are unblocked by G1 because target-selection and policy probes now
+  have known candidate coverage strata.
 - B1 is blocked until component substrates and isolated ceilings exist.
 - C9 should wait until S1/frequency bridge boundaries are stable enough to avoid
   moving S5 stack logic twice.
@@ -431,21 +440,21 @@ Recent evidence that remains active:
 
 ## Parallelization Opportunities
 
-- **Safe now:** E3, E4, and G1. G1 should consume the completed C6 Gan S0 stage
-  surfaces; ExECT frequency candidate-selection work should consume the
-  completed C8 payload surface.
-- **Single-threaded or carefully sequenced:** broad code deletions after C1/C2;
--  C9 stack separation; any change to scorer, loader, split, benchmark bridge,
-  or shared primitive contracts.
+- **Safe now:** E3 and E4. Gan G2 is also unblocked by the completed G1 strata
+  report; ExECT frequency candidate-selection work should consume the completed
+  C8 payload surface.
+- **Single-threaded or carefully sequenced:** broad code deletions after C1/C2,
+  C9 stack separation, and any change to scorer, loader, split, benchmark
+  bridge, or shared primitive contracts.
 - **Blocked together:** C11 waits on extracted stage surfaces; B1 waits on
   ExECT component ceilings; X3 waits on X1 and C10.
-- **Model-call gated:** E1/E3/E4/G1 audits should finish before related model
-  runs.
+- **Model-call gated:** E3/E4 audits should finish before related model runs;
+  Gan G2 model work should be planned from the completed G1 coverage strata.
 
 ## Recommended Next Pull
 
-1. **G1 - Gan Candidate Inventory Coverage Report** if the next slot is Gan
-   decomposition analysis using the completed C6 stage surfaces.
+1. **G2 - Gan Target Selection And Label Construction Split** if the next slot
+   is Gan decomposition analysis using the completed G1 coverage strata.
 2. **E3 - Medication Current-Rx And Lifecycle Payload** if the next slot is an
    ExECT medication substrate that separates current-Rx extraction from
    lifecycle/temporality reasoning.

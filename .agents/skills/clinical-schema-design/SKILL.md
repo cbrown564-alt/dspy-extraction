@@ -9,17 +9,22 @@ The schema is the contract between clinical text, model output, validation, and 
 
 Follow this workflow:
 
-1. Identify the target task and schema level:
+1. Identify the target task and component surface:
    - Gan seizure-frequency extraction
-   - ExECTv2 broad epilepsy extraction
+   - ExECTv2 field-family or component extraction
    - shared clinical extraction infrastructure
-   - schema ladder level S0-S4 from `docs/outline.md`
+   - benchmark-facing bridge, clinically rich payload, or stacked schema surface
 2. Read the relevant project context:
-   - `docs/outline.md`
+   - `docs/current_research_program.md`
+   - `docs/component_ceiling_registry.md`
    - `docs/datasets/exect/exect_gold_label_audit.md` for ExECTv2 fields
    - `docs/datasets/gan/gan_2026_label_audit.md` for Gan frequency labels
+   - `docs/policies/deterministic_scorer_semantics.md` when the schema feeds a scorer
 3. Search for existing schema, validation, scorer, and primitive payload patterns before adding new types.
 4. Design fields so validators and scorers can tell the difference between absent, unknown, negated, historical, planned, and present facts.
+5. For May 28 decomposition work, prefer explicit component payloads, candidate
+   inventories, bridge metadata, and evidence diagnostics over expanding broad
+   stacked schemas before isolated ceilings are known.
 
 Deterministic hint and bridge payloads should align with shared primitive contracts when applicable:
 
@@ -35,6 +40,9 @@ Deterministic hint and bridge payloads should align with shared primitive contra
 - Do not collapse current, historical, planned, and resolved facts unless the experiment explicitly calls for a flat schema.
 - Do not encode clinical uncertainty only in prose. Use explicit fields where uncertainty affects scoring or review.
 - Make schema breadth an experimental parameter rather than letting fields accrete casually.
+- Do not treat ExECT S1-S5 ladder levels as the current organizing principle
+  for new schema work. Use them as diagnostic or stacked baselines unless the
+  active component registry says otherwise.
 
 ## Benchmark-Facing Versus Clinically Rich Schemas
 
@@ -57,7 +65,7 @@ Separate annotation-policy alignment from clinical expressiveness when they conf
 
 Before finishing, summarize:
 
-- schema level or task targeted
+- component surface or schema level targeted
 - fields added or changed
 - whether the schema is benchmark-facing, clinically rich, or a bridge between the two
 - how evidence, uncertainty, negation, and temporality are represented

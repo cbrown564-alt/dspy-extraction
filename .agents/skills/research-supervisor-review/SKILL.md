@@ -21,13 +21,16 @@ Use this skill to produce a repo-grounded supervisory review, not a generic code
 Start with the minimum evidence needed for the review:
 
 1. `AGENTS.md`
-2. `docs/outline.md`
-3. `docs/planning/kanban_plan.md`, if present
-4. relevant audit docs before judging dataset, schema, scorer, benchmark, or evaluation work:
+2. `docs/README.md`
+3. `docs/current_research_program.md`
+4. `docs/component_ceiling_registry.md`
+5. `docs/planning/kanban_plan.md`, if present
+6. `docs/outline.md` as original proposal context when needed
+7. relevant audit docs before judging dataset, schema, scorer, benchmark, or evaluation work:
    - `docs/datasets/exect/exect_gold_label_audit.md`
    - `docs/datasets/gan/gan_2026_label_audit.md`
-5. recent research logs, synthesis docs, error analyses, experiment reports, or run artifacts relevant to the active workstream
-6. recent git history and current changed files
+8. recent research logs, synthesis docs, error analyses, experiment reports, or run artifacts relevant to the active workstream
+9. recent git history and current changed files
 
 Read `references/supervisor_rubric.md` when you need the full review rubric or are producing a substantial supervisor-style report.
 
@@ -100,6 +103,8 @@ Call out these risks explicitly when present:
 - comparing metrics across changed scorer behavior without caveats
 - building broad architecture before a narrow benchmark contract passes tests
 - adding DSPy/program complexity without a named ablation or hypothesis
+- returning to broad prompt or stack optimization before component substrates
+  and isolated ceilings are defined
 - treating clinical plausibility as benchmark correctness when the audit says otherwise
 - evidence spans that support raw text but not normalized values
 - downstream-value claims without a measurable artifact or decision
