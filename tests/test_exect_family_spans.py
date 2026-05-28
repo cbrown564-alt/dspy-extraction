@@ -11,7 +11,7 @@ from clinical_extraction.exect.family_spans import (
     family_span_context,
 )
 from clinical_extraction.primitives import primitive_registry_by_id
-from scripts.audit_exect_family_span_payload import build_report
+from clinical_extraction.evaluation.exect_family_span_payload import build_report
 
 
 def test_family_span_payloads_emit_typed_family_spans_with_offsets():

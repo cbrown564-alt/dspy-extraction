@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import pytest
 from clinical_extraction.schemas import DocumentPrediction, ExtractedValue
-from scripts.analyze_gan_policy_probe_g3 import apply_g3_policy_rules
+from clinical_extraction.evaluation.gan_policy_probe_g3 import apply_g3_policy_rules
 
 
 def test_rule_unknown_vs_noref_adjusts_to_noref():

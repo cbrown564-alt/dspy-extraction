@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.audit_exect_frequency_event_rate_payload import build_report
+from clinical_extraction.evaluation.exect_frequency_event_rate_payload import build_report
 
 
 def test_exect_frequency_event_rate_payload_audit_covers_validation_gold():

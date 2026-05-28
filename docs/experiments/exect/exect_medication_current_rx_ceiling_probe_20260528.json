@@ -1,0 +1,270 @@
+{
+  "generated_at": "2026-05-28T20:10:09.156168+00:00",
+  "kanban_card": "E6 - Medication Isolated Current-Rx Ceiling Probe",
+  "dataset": "exect_v2",
+  "split_name": "validation",
+  "split_file": "data/splits/exectv2_splits.json",
+  "component": "annotated_medication current-Rx",
+  "scorer_mode": "medication-only slice of exect_field_family_deterministic_v1",
+  "bridge_normalization_policy": "canonical medication names from the current ExECT medication benchmark bridge; Prescription JSON annotations remain benchmark current-Rx.",
+  "lifecycle_policy": "Lifecycle rows are diagnostic residual strata only and are not scored as medication F1.",
+  "source_artifacts": {
+    "e3_payload": "docs/experiments/exect/exect_medication_current_rx_lifecycle_payload_audit_20260528.json",
+    "s1_run": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+    "s5_run": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z"
+  },
+  "surface_summaries": {
+    "isolated_current_rx_payload": {
+      "documents": 40,
+      "gold_support": 47,
+      "tp": 47,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "label": "Isolated E3 annotation current-Rx payload",
+      "classification": "isolated ceiling / no-model oracle substrate",
+      "model_provider": "none",
+      "run_id": null
+    },
+    "s1_gpt_surface": {
+      "documents": 40,
+      "gold_support": 47,
+      "tp": 45,
+      "fp": 5,
+      "fn": 2,
+      "precision": 0.9,
+      "recall": 0.9574468085106383,
+      "f1": 0.9278350515463918,
+      "label": "Existing S1 GPT medication surface",
+      "classification": "existing S1 operational surface",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "run_id": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z"
+    },
+    "s5_gpt_surface": {
+      "documents": 40,
+      "gold_support": 47,
+      "tp": 47,
+      "fp": 12,
+      "fn": 0,
+      "precision": 0.7966101694915254,
+      "recall": 1.0,
+      "f1": 0.8867924528301886,
+      "label": "Existing S5 GPT medication surface",
+      "classification": "existing stacked S5 operational surface",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z"
+    }
+  },
+  "residuals": {
+    "isolated_current_rx_payload": {
+      "row_count": 0,
+      "category_counts": {},
+      "rows": []
+    },
+    "s1_gpt_surface": {
+      "row_count": 4,
+      "category_counts": {
+        "fn:annotation_current_rx_missed_by_surface": 2,
+        "fp:dose_line_or_unknown_temporality_evidence": 2,
+        "fp:missing_gold_or_no_current_rx_gold": 3
+      },
+      "rows": [
+        {
+          "document_id": "EA0052",
+          "false_positives": [],
+          "false_negatives": [
+            "carbamazepine"
+          ],
+          "categories": [
+            "fn:annotation_current_rx_missed_by_surface"
+          ]
+        },
+        {
+          "document_id": "EA0078",
+          "false_positives": [
+            "levetiracetam",
+            "carbamazepine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:missing_gold_or_no_current_rx_gold",
+            "fp:missing_gold_or_no_current_rx_gold"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "carbamazepine",
+            "sodium valproate"
+          ],
+          "false_negatives": [
+            "epilim chrono"
+          ],
+          "categories": [
+            "fn:annotation_current_rx_missed_by_surface",
+            "fp:dose_line_or_unknown_temporality_evidence",
+            "fp:dose_line_or_unknown_temporality_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "false_positives": [
+            "lamotrigine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:missing_gold_or_no_current_rx_gold"
+          ]
+        }
+      ]
+    },
+    "s5_gpt_surface": {
+      "row_count": 10,
+      "category_counts": {
+        "fp:dose_line_or_unknown_temporality_evidence": 1,
+        "fp:missing_gold_or_no_current_rx_gold": 5,
+        "fp:over_emission_extra_current_rx_surface": 6
+      },
+      "rows": [
+        {
+          "document_id": "EA0016",
+          "false_positives": [
+            "levetiracetam"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:missing_gold_or_no_current_rx_gold"
+          ]
+        },
+        {
+          "document_id": "EA0052",
+          "false_positives": [
+            "levetiracetam",
+            "lamotrigine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:over_emission_extra_current_rx_surface",
+            "fp:over_emission_extra_current_rx_surface"
+          ]
+        },
+        {
+          "document_id": "EA0053",
+          "false_positives": [
+            "levetiracetam"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:missing_gold_or_no_current_rx_gold"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "false_positives": [
+            "gabapentin"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:over_emission_extra_current_rx_surface"
+          ]
+        },
+        {
+          "document_id": "EA0078",
+          "false_positives": [
+            "levetiracetam",
+            "carbamazepine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:missing_gold_or_no_current_rx_gold",
+            "fp:missing_gold_or_no_current_rx_gold"
+          ]
+        },
+        {
+          "document_id": "EA0098",
+          "false_positives": [
+            "levetiracetam"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:over_emission_extra_current_rx_surface"
+          ]
+        },
+        {
+          "document_id": "EA0131",
+          "false_positives": [
+            "carbamazepine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:over_emission_extra_current_rx_surface"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "carbamazepine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:dose_line_or_unknown_temporality_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "false_positives": [
+            "lamotrigine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:missing_gold_or_no_current_rx_gold"
+          ]
+        },
+        {
+          "document_id": "EA0188",
+          "false_positives": [
+            "lamotrigine"
+          ],
+          "false_negatives": [],
+          "categories": [
+            "fp:over_emission_extra_current_rx_surface"
+          ]
+        }
+      ]
+    }
+  },
+  "lifecycle_diagnostics": {
+    "case_counts": {
+      "dose_line_rows": 131,
+      "dose_only_rows": 60,
+      "non_asm_rows": 4,
+      "planned_rows": 11,
+      "prescription_list_rows": 78,
+      "previous_rows": 9,
+      "taper_or_stop_rows": 8,
+      "unknown_temporality_rows": 116
+    },
+    "status_counts": {
+      "current": 63,
+      "planned": 11,
+      "previous": 9,
+      "unknown": 116
+    }
+  },
+  "decision": {
+    "current_rx_ceiling": "reached by the annotation-derived no-model payload",
+    "isolated_ceiling_f1": 1.0,
+    "s1_gap": 0.07216494845360821,
+    "s5_gap": 0.1132075471698114,
+    "next_action": "Use E7 to attribute stack interference and over-emission before changing the stacked medication prompt or bridge."
+  },
+  "caveats": [
+    "This is a validation-split component probe; test remains holdout for residual analysis only.",
+    "The isolated payload is a no-model annotation substrate, not a deployed extraction model.",
+    "Lifecycle, temporality, planned, previous, taper, and dose-only rows do not enter medication F1.",
+    "S1 and S5 comparison runs are archived provenance artifacts resolved by explicit opt-in.",
+    "No loader, scorer, split, benchmark bridge, prompt, or model-output semantics changed."
+  ]
+}

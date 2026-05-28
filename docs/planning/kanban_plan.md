@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 ruff/vulture installed; C25/E6 ready
+Last refreshed: 2026-05-28 C25/E6 complete; ruff/vulture installed
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -53,38 +53,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
    provenance and require explicit replay/reporting opt-in.
 
 ## Ready
-
-### C25 - Script Hygiene And Report Exporter Split
-
-- **Outcome:** Classify active `scripts/` entrypoints as current report
-  exporters, validators, active experiment runners, or archived one-offs. Move
-  reusable report logic into `clinical_extraction.evaluation.*` only when a
-  current report needs tests, and archive/delete one-off scripts after their
-  artifact and decision doc are promoted.
-- **Dependencies:** C22; coordinate with C23/C24 where script behavior depends
-  on archive loadability or legacy facades.
-- **Parallelizable:** mostly no; touches script inventory, tests, and report
-  routing.
-- **Owner:** unassigned.
-- **Validation:** Targeted tests for each retained report builder plus static
-  `rg` checks for deleted filenames; keep scorer, loader, split, benchmark
-  bridge, and current component semantics unchanged.
-- **Notes:** This sets the entrypoint map needed before `ruff` and `vulture`
-  can distinguish intentional CLI-only functions from real dead code.
-
-### E6 - Medication Isolated Current-Rx Ceiling Probe
-
-- **Outcome:** A preregistered isolated medication component probe using the E3
-  annotation-current-Rx payload, reporting medication precision, recall, F1,
-  and residual categories without lifecycle scoring.
-- **Dependencies:** E3.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Compare the isolated medication component against existing S1
-  and S5 medication surfaces on validation; report dataset split, model/provider
-  if any, scorer mode, bridge/normalization policy, and evidence diagnostics.
-- **Notes:** This is the current-Rx ceiling path. Lifecycle rows remain
-  diagnostic per E5 and should not enter medication F1.
 
 ### E7 - Medication Stack-Interference Probe
 
@@ -305,6 +273,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | E2 S1 raw/bridge/prompt split, 2026-05-28 | S1 validation strength depends heavily on benchmark bridges; holdout transfer drops keep diagnosis and seizure-type mechanisms open. |
 | E3 medication payload, 2026-05-28 | Annotation-derived current-Rx payload reproduces 47/47 validation medication gold labels; lifecycle/temporality rows are diagnostic substrate for the E5 policy decision. |
 | E5 medication lifecycle target policy, 2026-05-28 | `docs/experiments/exect/exect_medication_lifecycle_target_policy_decision_20260528.md` classifies medication lifecycle/temporality as clinical-diagnostic and deferred from benchmark-facing medication F1. Annotated current-Rx remains the scored medication target; lifecycle categories can support residual and stack-interference attribution only. No scorer, loader, split, or bridge semantics changed. |
+| E6 medication isolated current-Rx ceiling probe, 2026-05-28 | `docs/experiments/exect/exect_medication_current_rx_ceiling_probe_20260528.md` reports the E3 annotation-derived current-Rx payload as a no-model isolated ceiling substrate: 100.0% medication F1 on validation (47 TP / 0 FP / 0 FN). Existing S1 GPT medication scores 92.8% F1; S5 GPT scores 88.7% F1 with 100.0% recall and lower precision. Lifecycle rows remain diagnostic only. E7 should attribute stacked over-emission before prompt or bridge changes. Validation: `uv run pytest tests/test_exect_medication_payload.py -q`; `uv run python scripts/export_exect_medication_current_rx_ceiling_probe.py`. |
 | E4 family-span payload, 2026-05-28 | `exect.sections.family_spans.v1` gives high evidence coverage and a cap-slice substrate; it is not promoted over full-note prompting until E8/E9. |
 | G1/G2 Gan target split evidence, 2026-05-28 | Restrained high-recall deterministic candidates now cover 278/299 exact gold labels in G1, 292/299 Purist-equivalent labels, and 295/299 Pragmatic-equivalent labels; the G2 candidate-constrained arm has 299/299 selectable candidate support with no invalid candidate labels. Keep the remaining exact misses as a parser/adjudicator queue rather than forcing brittle 100% deterministic exact recall. |
 | G3 Gan unknown vs no-reference policy probe, 2026-05-28 | Post-adjudication rules simulated on G2 predictions shows that checking option ambiguity flags successfully isolates policy choices (e.g. abstaining on uncertain denominators), trading off category accuracy for conservative precision. |
@@ -316,6 +285,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | C22 high-confidence deadweight deletion, 2026-05-28 | Active Cursor SDK runtime dependency and SDK workflow script/test were removed; active test coverage for archived self-consistency replay was deleted; stale Gan D1 launcher and one-off registry mutator scripts were deleted; `tests/test_export_registry_matrix.py` now reads retained cap-25 backfill provenance directly from `docs/archive/experiments/synthesis/pre_component_pivot/hybrid_cap25_registry_backfill_manifest_20260528.json`. Scorer, loader, split, benchmark bridge, current config, current component, and model-run semantics were not changed. Validation: active static scans for deleted filenames and Cursor SDK dependency references passed; focused export/config/registry, Gan scorer, ExECT scorer/program suites passed; taxonomy and primitive validators exited 0 with existing warnings only; full suite `uv run pytest -q` passed (995 tests, 16 warnings). |
 | C23 archive loadability retirement, 2026-05-28 | `resolve_config_path` and `resolve_run_directory` are active-only by default; archive-aware replay/reporting callers now pass an explicit archive opt-in. Archived config inventory is rendered as `docs_provenance`, registry canonical-run misses are warnings rather than active loadability errors, and `tests/test_experiment_configs.py` was reduced to current-authority config invariants instead of archived per-file replay contracts. Validation: C23 path/config/registry/export suite passed (41 tests); `uv run python scripts/validate_experiment_taxonomy.py --errors-only` exited 0 with provenance warnings for absent active run directories. |
 | C24 legacy facade import inversion, 2026-05-28 | Active Gan S0 and ExECT S0/S1 runtime imports in experiment config, backends, prompt metadata, registry code, S5 stack helpers, S2-S4 shared helper use, and the Gan smoke script now target domain-owned modules (`clinical_extraction.gan.s0.*` and `clinical_extraction.exect.s0_s1.*`) instead of the old compatibility facades. The facades remain for backward imports and compatibility tests, but active runtime/script scans no longer import the old Gan or S0/S1 facade paths. Validation: Gan S0 package/program/stage and ExECT S0/S1 boundary/config suite passed (223 tests); Gan and ExECT scorer suites passed (19 tests). |
+| C25 script hygiene and report exporter split, 2026-05-28 | `docs/planning/script_entrypoint_inventory_20260528.md` now classifies the active `scripts/` surface as validators, active runners/utilities, current report exporters, or archived one-offs. Tested ExECT E1/E3/E4/E6 report builders and the Gan G3 policy probe moved from script-local code into `clinical_extraction.evaluation.*`, with thin CLI wrappers left under `scripts/`. Historical ExECT error reads and residual replay one-offs moved to `archive/scripts/` after active-reference scans found no non-archive dependents. Validation: focused report-builder tests passed; static active-reference checks passed. |
 | Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
 | ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
@@ -366,6 +336,10 @@ artifacts, and git history; this section only keeps the steering implications.
 - C24 is complete for the Gan S0 and ExECT S0/S1 legacy facades: active runtime
   imports now use domain-owned modules, while compatibility facades remain only
   for backward import and parity coverage.
+- C25 is complete: active script entrypoints are classified in
+  `planning/script_entrypoint_inventory_20260528.md`, tested current report
+  builders now live under `clinical_extraction.evaluation.*`, and provenance
+  one-offs with only archived references have moved to `archive/scripts/`.
 - The typed program variant registry classifies active config rows as
   current-authority and archived rows as docs/file provenance, with explicit
   status labels for replay/provenance, historical, rejected, blocked, or
@@ -389,9 +363,10 @@ artifacts, and git history; this section only keeps the steering implications.
   benchmark-comparison tables or paper claims, and it does not create Real(300)
   or Real(150) evidence.
 - E5 is complete: medication lifecycle/temporality is clinical-diagnostic and
-  deferred from benchmark-facing medication F1. E6 is the current-Rx ceiling
-  path; E7 is the stack-interference path using lifecycle categories only as
-  diagnostics. E8 tests the family-span mechanism, and E9 is the
+  deferred from benchmark-facing medication F1. E6 is complete as the no-model
+  current-Rx ceiling substrate; E7 is the stack-interference path using
+  lifecycle categories only as diagnostics. E8 tests the family-span mechanism,
+  and E9 is the
   promotion/rejection decision after that comparison.
 - E11 routes holdout residual attribution without tuning from holdout. E12
   routes the registry's unproven investigation-near-ceiling action.
@@ -414,14 +389,13 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Parallelization Opportunities
 
-- **Safe now:** C25 script hygiene; G5 paper-scorer rescore if needed for a
-  paper table; E6, E8, E10, G4,
+- **Safe now:** G5 paper-scorer rescore if needed for a paper table; E7, E8, E10, G4,
   and E11 as preregistered component or residual-analysis pulls. These should
   preserve scorer, loader, split, and benchmark bridge semantics.
 - **Architecture lane closed as bottleneck, reopened as optional pruning:**
   C20 found no remaining P1 monolith blocker. C21 produced the pruning plan;
   C22 removed the high-confidence active deadweight, and C23/C24 completed the
-  replay/default-loadability and Gan/S0-S1 facade follow-ups. C25 should settle
+  replay/default-loadability and Gan/S0-S1 facade follow-ups. C25 settled
   script entrypoints before C26 runs `ruff`/`vulture` dead-code pruning.
 - **Single-threaded or carefully sequenced:** future registry/archive
   regeneration and any change to scorer, loader, split, benchmark bridge, or
@@ -436,7 +410,7 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. Pull **C25, G5, E6, E10, E8, or G4** according to cleanup, paper, or
+1. Pull **G5, E7, E10, E8, or G4** according to cleanup, paper, or
    experiment need; run **C26** only after C25, keeping each run preregistered
    and component-scoped.
 

@@ -9,7 +9,14 @@ from clinical_extraction.exect.medication_payload import (
     build_exect_medication_payload,
     summarize_medication_payload_rows,
 )
-from scripts.audit_exect_medication_current_rx_lifecycle_payload import build_report
+from clinical_extraction.evaluation.exect_medication_current_rx_lifecycle_payload import (
+    build_report,
+)
+from clinical_extraction.evaluation.exect_medication_current_rx_ceiling_probe import (
+    DEFAULT_S1_RUN,
+    DEFAULT_S5_RUN,
+    build_report as build_ceiling_report,
+)
 
 
 def test_medication_payload_separates_annotation_current_from_lifecycle_status():
@@ -102,3 +109,34 @@ def test_medication_payload_audit_reproduces_validation_current_rx_gold():
     assert report["decision"]["medication_lifecycle_temporality"] == (
         "diagnostic/deferred"
     )
+
+
+def test_medication_current_rx_ceiling_probe_compares_s1_and_s5_surfaces():
+    report = build_ceiling_report(
+        splits_path=Path("data/splits/exectv2_splits.json"),
+        split_name="validation",
+        e3_payload_path=Path(
+            "docs/experiments/exect/"
+            "exect_medication_current_rx_lifecycle_payload_audit_20260528.json"
+        ),
+        s1_run=DEFAULT_S1_RUN,
+        s5_run=DEFAULT_S5_RUN,
+    )
+
+    isolated = report["surface_summaries"]["isolated_current_rx_payload"]
+    s1 = report["surface_summaries"]["s1_gpt_surface"]
+    s5 = report["surface_summaries"]["s5_gpt_surface"]
+
+    assert isolated["gold_support"] == 47
+    assert isolated["tp"] == 47
+    assert isolated["fp"] == 0
+    assert isolated["fn"] == 0
+    assert isolated["f1"] == 1.0
+
+    assert s1["tp"] == 45
+    assert s1["fp"] == 5
+    assert s1["fn"] == 2
+    assert s5["tp"] == 47
+    assert s5["fp"] == 12
+    assert s5["fn"] == 0
+    assert report["lifecycle_policy"].startswith("Lifecycle rows are diagnostic")
