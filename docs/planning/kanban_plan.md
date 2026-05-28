@@ -38,33 +38,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Ready
 
-### C1 - Thermo-Nuclear Codebase Architecture Audit
-
-- **Outcome:** A strict repo-grounded code-quality review that identifies the
-  largest bloat, bundling, duplicated helper, mode-flag, and file-size risks
-  blocking the Gan and ExECT decomposition work.
-- **Dependencies:** none.
-- **Parallelizable:** yes, but it should precede broad refactors.
-- **Owner:** unassigned.
-- **Validation:** Review report with file/line references, preservation risks
-  for dataset/scorer/reproducibility semantics, and a ranked cleanup sequence.
-- **Notes:** Use `thermo-nuclear-code-quality-review`. Also invoke the relevant
-  domain guardrail skill when reviewing loaders, scorers, schemas, primitives,
-  DSPy programs, or benchmark-facing extraction logic.
-
-### C2 - Program Surface Inventory And Deletion Map
-
-- **Outcome:** A concise inventory of active versus obsolete Gan/ExECT programs,
-  configs, scripts, and helper modules, with candidates for deletion, archival,
-  or consolidation.
-- **Dependencies:** C1 recommended, but basic inventory can start immediately.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Inventory maps each cleanup candidate to replacement code,
-  retained run provenance, and focused tests needed before removal.
-- **Notes:** The goal is not cosmetic reorganization. Delete or isolate
-  complexity only when behavior and experiment provenance remain traceable.
-
 ### E1 - ExECT Frequency Event/Rate Payload Gate
 
 - **Outcome:** A no-model ExECT frequency payload audit that materially improves
@@ -231,6 +204,24 @@ The old R/A backlog is frozen as active guidance. Keep its evidence, but do not
 pull from it directly without translating the work into one of the current
 cards above.
 
+### C1 - Thermo-Nuclear Codebase Architecture Audit
+
+- **Outcome:** Completed as
+  `docs/planning/thermo_nuclear_codebase_architecture_audit_20260528.md`.
+- **Validation:** Review artifact with file/line references, dataset/scorer
+  preservation risks, and a ranked cleanup sequence.
+- **Notes:** C2 now provides the deletion map; broad deletions still wait on a
+  typed program variant registry.
+
+### C2 - Program Surface Inventory And Deletion Map
+
+- **Outcome:** Completed as
+  `docs/planning/program_surface_inventory_deletion_map_20260528.md`.
+- **Validation:** Inventory maps active surfaces, consolidation candidates,
+  archive/delete candidates, retained provenance, and focused validation gates.
+- **Notes:** Do not delete code or move configs until a typed program variant
+  registry can preserve active/historical status and replay provenance.
+
 Recent evidence that remains active:
 
 | Evidence | Current interpretation |
@@ -246,8 +237,8 @@ Recent evidence that remains active:
 
 ## Dependency Notes
 
-- C1 should happen before large cleanup PRs, but C2 can run in parallel as an
-  inventory.
+- C1/C2 are complete; large cleanup PRs should start with a typed program
+  variant registry before broad moves or deletions.
 - E1, E2, E3, E4, and G1 are safe first pulls because they do not require model
   calls.
 - G2 and G3 depend on G1 because target-selection and policy probes need known
@@ -258,7 +249,8 @@ Recent evidence that remains active:
 
 ## Parallelization Opportunities
 
-- **Safe now:** C1, C2, E1, E2, E3, E4, G1.
+- **Safe now:** E1, E2, E3, E4, G1, and the C2-recommended typed program
+  variant registry.
 - **Single-threaded or carefully sequenced:** broad code deletions after C1/C2;
   any change to scorer, loader, split, benchmark bridge, or shared primitive
   contracts.
@@ -268,11 +260,7 @@ Recent evidence that remains active:
 
 ## Recommended Next Pull
 
-1. **C1 - Thermo-Nuclear Codebase Architecture Audit.** Establish the cleanup
-   map before editing core programs.
-2. **C2 - Program Surface Inventory And Deletion Map.** Identify what can be
-   removed, consolidated, or isolated without losing provenance.
-3. **E1 - ExECT Frequency Event/Rate Payload Gate** or **G1 - Gan Candidate
+1. **E1 - ExECT Frequency Event/Rate Payload Gate** or **G1 - Gan Candidate
    Inventory Coverage Report**, depending on whether the next implementation
    slot is ExECT or Gan.
 

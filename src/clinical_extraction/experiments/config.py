@@ -6,89 +6,13 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from clinical_extraction.programs.exect_s0_s1 import (
-    EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
-    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
-    EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
-    EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
-    EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
-    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
-    EXECT_S0_S1_PRE_VOCAB_VARIANT,
-    EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
-    EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
-    EXECT_S0_S1_SCHEMA_LEVEL,
-    EXECT_S0_S1_SCORER,
-    EXECT_S0_S1_SECTION_AWARE_VARIANT,
-    EXECT_S0_S1_VARIANT,
-    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
-)
-from clinical_extraction.programs.exect_s2 import (
-    EXECT_S2_CLEAN_LADDER_V1_VARIANT,
-    EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
-    EXECT_S2_COMORBIDITY_C0_VARIANT,
-    EXECT_S2_INV_GUARD_I0_VARIANT,
-    EXECT_S2_SCHEMA_LEVEL,
-    EXECT_S2_SCORER,
-    EXECT_S2_VARIANT,
-)
-from clinical_extraction.programs.exect_s3 import (
-    EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
-    EXECT_S3_CLEAN_LADDER_V1_VARIANT,
-    EXECT_S3_SCHEMA_LEVEL,
-    EXECT_S3_SCORER,
-    EXECT_S3_VARIANT,
-)
-from clinical_extraction.programs.exect_s4 import (
-    EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
-    EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
-    EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT,
-    EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
-    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
-    EXECT_S4_L1_VARIANT,
-    EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
-    EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
-    EXECT_S4_SCHEMA_LEVEL,
-    EXECT_S4_SCORER,
-    EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
-    EXECT_S4_VARIANT,
-    EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
-    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
-)
-from clinical_extraction.evaluation.exect import EXECT_S5_SCORER
 from clinical_extraction.gan.scoring import GAN_PAPER_REPRODUCTION_SCORER
-
-EXECT_S5_SCHEMA_LEVEL = "exect_s5_core_field_family"
 from clinical_extraction.programs.gan_frequency_s0 import (
-    GAN_FREQUENCY_S0_DIRECT_VARIANT,
-    GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-    GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
-    GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
-    GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-    GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VARIANT,
-    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
-    GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
-    GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT,
+)
+from clinical_extraction.experiments.program_variant_registry import (
+    program_contract_allows,
 )
 from clinical_extraction.experiments.taxonomy import (
     ExperimentTaxonomy,
@@ -223,85 +147,9 @@ class ExperimentConfig(FrozenModel):
     split_name: str
     split_file: Path
     model_config_path: Path
-    schema_level: Literal[
-        "gan_frequency_s0",
-        "exect_s0_s1_field_family",
-        "exect_s2_field_family",
-        "exect_s3_field_family",
-        "exect_s4_field_family",
-        "exect_s5_core_field_family",
-    ] = GAN_FREQUENCY_S0_SCHEMA_LEVEL
-    program_variant: Literal[
-        "gan_frequency_s0_single_pass",
-        "gan_frequency_s0_direct_single_pass",
-        "gan_frequency_s0_direct_verify_repair",
-        "gan_frequency_s0_temporal_candidates_verify_repair",
-        "gan_frequency_s0_temporal_candidates_single_pass",
-        "gan_frequency_s0_llm_temporal_candidates_single_pass",
-        "gan_frequency_s0_hybrid_temporal_candidates_single_pass",
-        "gan_frequency_s0_date_events_candidates_single_pass",
-        "gan_frequency_s0_llm_date_events_candidates_single_pass",
-        "gan_frequency_s0_hybrid_date_events_candidates_single_pass",
-        "gan_frequency_s0_tool_date_resolver_single_pass",
-        "gan_frequency_s0_entity_tags_date_events_single_pass",
-        "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair",
-        "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier",
-        "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
-        "gan_frequency_s0_temporal_candidates_adjudicate_det_evidence",
-        "gan_frequency_s0_temporal_candidates_adjudicate_confirm_only",
-        "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_no_guards",
-        "gan_frequency_s0_llm_temporal_candidates_verify_repair",
-        "gan_frequency_s0_temporal_event_table_verify_repair",
-        "gan_frequency_s0_temporal_event_table_single_pass",
-        "gan_frequency_s0_multiple_answer_det_selector",
-        "gan_frequency_s0_seeded_multiple_answer_det_selector",
-        "gan_frequency_s0_react_temporal_tools",
-        "exect_s0_s1_field_family_single_pass",
-        "exect_s0_s1_field_family_pre_vocab_single_pass",
-        "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
-        "exect_s0_s1_field_family_seizure_pre_vocab_single_pass",
-        "exect_s1_clean_ladder_v1_single_pass",
-        "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble",
-        "exect_s0_s1_field_family_section_aware",
-        "exect_s0_s1_field_family_prompt_graph_parallel",
-        "exect_s0_s1_field_family_prompt_graph_sequential",
-        "exect_s0_s1_field_family_diagnosis_recall",
-        "exect_s0_s1_field_family_verify_repair",
-        "exect_s0_s1_field_family_deterministic_only",
-        "exect_s2_field_family_single_pass",
-        "exect_s2_field_family_comorbidity_c0_single_pass",
-        "exect_s2_field_family_comorbidity_c0_c1_single_pass",
-        "exect_s2_field_family_inv_guard_i0_single_pass",
-        "exect_s2_field_family_clean_ladder_v1_single_pass",
-        "exect_s3_field_family_single_pass",
-        "exect_s3_field_family_cause_bridge_k0_k1_single_pass",
-        "exect_s3_field_family_clean_ladder_v1_single_pass",
-        "exect_s4_field_family_single_pass",
-        "exect_s4_field_family_frequency_pre_vocab_single_pass",
-        "exect_s4_field_family_frequency_pre_vocab_high_precision_single_pass",
-        "exect_s4_field_family_frequency_post_merge_single_pass",
-        "exect_s4_field_family_frequency_structured_slots_single_pass",
-        "exect_s4_field_family_temporality_post_classifier_single_pass",
-        "exect_s4_field_family_mt_guard_non_asm_single_pass",
-        "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass",
-        "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
-        "exect_s5_am_guard_non_asm_brand_alias_v1",
-        "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1",
-        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1",
-        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2",
-        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b",
-        "exect_s5_frequency_pre_vocab_am_guard_temporal_frequency_verify_v1",
-        "exect_s5_core_field_family_parallel_v2b",
-    ] = GAN_FREQUENCY_S0_VARIANT
-    scorer_mode: Literal[
-        "gan2026_paper_reproduction",
-        "gan_frequency_deterministic_v1",
-        "exect_field_family_deterministic_v1",
-        "exect_s2_field_family_deterministic_v1",
-        "exect_s3_field_family_deterministic_v1",
-        "exect_s4_field_family_deterministic_v1",
-        "exect_s5_core_field_family_deterministic_v1",
-    ] = GAN_PAPER_REPRODUCTION_SCORER
+    schema_level: str = GAN_FREQUENCY_S0_SCHEMA_LEVEL
+    program_variant: str = GAN_FREQUENCY_S0_VARIANT
+    scorer_mode: str = GAN_PAPER_REPRODUCTION_SCORER
     prompt_version: str
     controls: ExperimentControls
     structured_output_strategy: StructuredOutputStrategy
@@ -339,132 +187,15 @@ class ExperimentConfig(FrozenModel):
             if not getattr(self, field).strip():
                 raise ValueError(f"{field} must be a non-empty string.")
 
-        expected_contracts = {
-            "gan_2026": [
-                (
-                    GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-                    {
-                        GAN_FREQUENCY_S0_VARIANT,
-                        GAN_FREQUENCY_S0_DIRECT_VARIANT,
-                        GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT,
-                        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
-                        GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
-                        GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
-                        GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
-                        GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
-                    },
-                    {GAN_FREQUENCY_S0_SCORER, GAN_PAPER_REPRODUCTION_SCORER},
-                )
-            ],
-            "exect_v2": [
-                (
-                    EXECT_S0_S1_SCHEMA_LEVEL,
-                    {
-                        EXECT_S0_S1_VARIANT,
-                        EXECT_S0_S1_PRE_VOCAB_VARIANT,
-                        EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
-                        EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
-                        EXECT_S0_S1_SECTION_AWARE_VARIANT,
-                        EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
-                        EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
-                        EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
-                        EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
-                        EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
-                        EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
-                        EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
-                    },
-                    EXECT_S0_S1_SCORER,
-                ),
-                (
-                    EXECT_S2_SCHEMA_LEVEL,
-                    {
-                        EXECT_S2_VARIANT,
-                        EXECT_S2_COMORBIDITY_C0_VARIANT,
-                        EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
-                        EXECT_S2_INV_GUARD_I0_VARIANT,
-                        EXECT_S2_CLEAN_LADDER_V1_VARIANT,
-                    },
-                    EXECT_S2_SCORER,
-                ),
-                (
-                    EXECT_S3_SCHEMA_LEVEL,
-                    {
-                        EXECT_S3_VARIANT,
-                        EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
-                        EXECT_S3_CLEAN_LADDER_V1_VARIANT,
-                    },
-                    EXECT_S3_SCORER,
-                ),
-                (
-                    EXECT_S4_SCHEMA_LEVEL,
-                    {
-                        EXECT_S4_VARIANT,
-                        EXECT_S4_L1_VARIANT,
-                        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
-                        EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT,
-                        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
-                        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
-                        EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
-                        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
-                        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
-                        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
-                    },
-                    EXECT_S4_SCORER,
-                ),
-                (
-                    EXECT_S5_SCHEMA_LEVEL,
-                    {
-                        EXECT_S4_VARIANT,
-                        EXECT_S4_L1_VARIANT,
-                        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
-                        EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT,
-                        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
-                        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
-                        EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
-                        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
-                        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
-                        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
-                        EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
-                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
-                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
-                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
-                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
-                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
-                        EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
-                    },
-                    EXECT_S5_SCORER,
-                ),
-            ],
-        }
-        valid_contracts = expected_contracts[self.dataset]
-        if not any(
-            self.schema_level == expected_schema
-            and self.program_variant in expected_variants
-            and (
-                self.scorer_mode in expected_scorer
-                if isinstance(expected_scorer, set)
-                else self.scorer_mode == expected_scorer
-            )
-            for expected_schema, expected_variants, expected_scorer in valid_contracts
+        if not program_contract_allows(
+            dataset=self.dataset,
+            schema_level=self.schema_level,
+            program_variant=self.program_variant,
+            scorer_mode=self.scorer_mode,
         ):
             raise ValueError(
-                f"{self.dataset} experiment configs must use one of the registered "
-                f"schema_level/program_variant/scorer_mode contracts."
+                f"{self.dataset} experiment configs must use a registered program "
+                f"variant contract for schema_level/program_variant/scorer_mode."
             )
 
         if self.split_name.endswith(":test") and not self.report_on_test_split:
