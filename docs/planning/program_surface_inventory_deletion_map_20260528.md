@@ -1,6 +1,6 @@
 # Program Surface Inventory And Deletion Map
 
-Status: active guidance / C19 archive pass applied
+Status: active guidance / C20 review applied
 Date: 2026-05-28
 Kanban card: C2 - Program Surface Inventory And Deletion Map
 Depends on: `docs/planning/thermo_nuclear_codebase_architecture_audit_20260528.md`
@@ -131,17 +131,16 @@ Before any deletion or archive move:
 6. ExECT Table 1 reproduction must remain blocked until a CUI-aware scorer path
    exists.
 
-## Recommended Next Cleanup Pull
+## Cleanup Lane Status After C20
 
-The behavior-preserving program variant registry and first archive/delete pass
-are complete. The next cleanup pull is C20:
+The behavior-preserving program variant registry, first archive/delete pass, and
+modularity completion review are complete. C20 reclassified the original P1
+monolith risks as closed or accepted residual P2/provenance risks in
+`thermo_nuclear_codebase_architecture_audit_20260528.md`.
 
-1. Re-run the strict architecture/modularity review against the C12-C19 end
-   state.
-2. Update the architecture audit status with closed risks, intentionally
-   retained replay-provenance surfaces, and any residual P1/P2 findings.
-3. Keep any further archive movement tied to a decision doc, registry row, and
-   replay validation.
+No broad cleanup pull is active after C20. Future archive movement should remain
+tied to a decision doc, registry row, replay validation, and a concrete
+research need.
 
 ## Validation Run For This Inventory
 

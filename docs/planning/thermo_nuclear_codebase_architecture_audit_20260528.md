@@ -1,7 +1,8 @@
 # Thermo-Nuclear Codebase Architecture Audit
 
-Status: active guidance
+Status: active guidance / C20 completion review applied
 Date: 2026-05-28
+Last reviewed: 2026-05-28 (C20 - Modularity Completion Review)
 Kanban card: C1 - Thermo-Nuclear Codebase Architecture Audit
 
 ## Scope And Guardrails
@@ -24,6 +25,59 @@ Skills and policies used as guardrails:
 - `docs/policies/published_benchmark_metrics.md`
 
 No code behavior was changed by this audit.
+
+## C20 Completion Review
+
+Status: complete, 2026-05-28.
+
+C20 re-ran the strict architecture review against the C12-C19 end state. The
+review found no remaining P1 monolith blocker from the original audit. The
+residual risks are intentionally retained P2/provenance surfaces, not blockers
+to resuming component-ceiling research.
+
+The findings below remain the original C1 audit record. The table here is the
+current status of those risks after the cleanup lane.
+
+| Original risk | C20 status | Current evidence |
+| --- | --- | --- |
+| P1 Gan S0 program monolith | Closed as P1; residual P2 size risk accepted. | `src/clinical_extraction/programs/gan_frequency_s0.py` is now a 47-line compatibility facade over `clinical_extraction.gan.s0`. Candidate inventory, target selection, date/events, metrics, optimizer setup, prediction bridge, signatures, modules, and variant routing now have domain-owned modules. The largest retained Gan S0 files are `gan/s0/modules.py` (1702 lines), `gan/s0/signatures.py` (1267), and `gan/s0/prediction_bridge.py` (855); these are accepted compatibility/prompt surfaces, not a cross-domain orchestration monolith. |
+| P1 ExECT S0/S1 raw/bridge/prompt entanglement | Closed as P1; residual P2 bridge-artifact size risk accepted. | `src/clinical_extraction/programs/exect_s0_s1.py` is now a 19-line import-compatible facade. S0/S1 constants, prompt routing, signatures, modules, prediction artifact assembly, optimizer setup, and metrics live under `clinical_extraction.exect.s0_s1`. `s0_s1/prediction_artifacts.py` remains large (1298 lines) because it preserves benchmark bridge, evidence repair, and raw/bridge/final artifact compatibility; C18 moved tests to public boundary surfaces so this is no longer a module-extraction blocker. |
+| P1 ExECT frequency candidate payload hidden in broad primitives | Closed as P1; residual P2 parser size risk accepted. | `clinical_extraction.exect.primitives` is now a 100-line legacy facade. Frequency payload logic lives in `exect/frequency_payload.py` (943 measured lines) with `exect/frequency_primitives.py` as a thin compatibility surface. The E1/C8 payload audit is now usable for E10 candidate-selection work; future changes should avoid putting adjudication policy into the payload parser. |
+| P1 ExECT S4/S5 stack bundling | Closed as P1; residual replay-routing risk accepted. | S5 verifier signatures/modules and stack helpers live in `exect/s5_signatures.py`, `exect/s5_modules.py`, and `exect/s5_stack.py`. `programs/exect_s4.py` remains 815 lines because it preserves S4/S5 legacy variant routing and replay compatibility, but S5 v2b is explicitly documented as an operational stack baseline, not an isolated component ceiling. |
+| P2 obsolete configs and replay surfaces sticky in validation | Reclassified as managed provenance. | `clinical_extraction.experiments.program_variant_registry` owns typed status, active/archive config inventory, and authority classification. It is large (1165 lines) but now centralizes the compatibility burden instead of scattering it through config validation and docs. |
+| P2 hard-coded historical script knowledge | Mostly closed; residual analysis-script size accepted. | `scripts/backfill_hybrid_cap25_registry.py` now loads a retained archive manifest and is down to 293 lines. `scripts/analyze_gan_frequency_run.py` remains 821 lines but now exposes explicit canonical versus paper-reproduction scorer modes and paper options. |
+| P2 monolithic tests blocking module extraction | Closed as an architecture blocker. | Public stage/domain tests now cover Gan S0 candidate inventory, target selection, label construction, bridge/evidence guards, ExECT S1 raw/bridge/final surfaces, ExECT frequency primitives, medication temporality primitives, investigation primitives, and S5 verifier surfaces. Large integration tests remain as compatibility nets. |
+
+File-size evidence was gathered with PowerShell `Get-Content | Measure-Object`
+line counts on 2026-05-28. The largest retained implementation/test files are:
+
+| Lines | Surface | C20 interpretation |
+| ---: | --- | --- |
+| 3187 | `tests/test_experiment_configs.py` | Compatibility net for config/replay contracts; not a program-boundary blocker. |
+| 2821 | `src/clinical_extraction/gan/temporal_candidates.py` | Shared deterministic temporal parser; high-value future split candidate, but outside the original C12-C19 monolith lane. |
+| 2237 | `tests/test_exect_s0_s1_program.py` | Legacy program parity net retained after public boundary tests were added. |
+| 2087 | `tests/test_gan_s0_program.py` | Legacy Gan facade/program parity net retained after public stage tests were added. |
+| 1702 | `src/clinical_extraction/gan/s0/modules.py` | Residual P2: DSPy module factory and stage wrappers remain bulky. Keep future G4/G5 work from adding new policy branches here without a typed stage surface. |
+| 1298 | `src/clinical_extraction/exect/s0_s1/prediction_artifacts.py` | Residual P2: benchmark bridge and artifact assembly remain broad but are covered by public boundary tests. |
+| 1267 | `src/clinical_extraction/gan/s0/signatures.py` | Residual P2: prompt history and signature variants retained for replay and config compatibility. |
+| 1165 | `src/clinical_extraction/experiments/program_variant_registry.py` | Accepted central registry/provenance surface. |
+| 943 | `src/clinical_extraction/exect/frequency_payload.py` | Accepted deterministic payload parser; selection/adjudication should stay outside it. |
+| 900 | `src/clinical_extraction/exect/s0_s1/constants.py` | Accepted prompt/policy constant surface for replay compatibility. |
+
+Validation run for C20:
+
+- `uv run pytest tests/test_paths.py tests/test_program_variant_registry.py tests/test_experiment_configs.py tests/test_experiment_registry_validation.py tests/test_export_registry_matrix.py tests/test_run_self_consistency.py tests/test_experiment_runner.py tests/test_run_experiment_runtime.py -q` passed: 268 tests, 15 warnings.
+- `uv run pytest tests/test_gan_s0_package_decomposition.py tests/test_gan_s0_program.py tests/test_gan_temporal_candidates.py tests/test_gan_temporal_events.py tests/test_gan_slot_payload.py tests/test_gan_s0_stage_surfaces.py tests/test_gan_candidate_inventory.py tests/test_gan_target_label_split.py tests/test_gan_scoring.py tests/test_gan_paper_reproduction_scoring.py -q` passed: 210 tests, 11 warnings.
+- `uv run pytest tests/test_exect_s0_s1_program.py tests/test_exect_s1_boundary_surfaces.py tests/test_exect_diagnosis_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_frequency_primitives.py tests/test_exect_frequency_slot_payload.py tests/test_exect_medication_temporality_primitives.py tests/test_exect_investigation_primitives.py tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py tests/test_exect_s5_frequency_verifier.py tests/test_exect_loader.py tests/test_exect_scoring.py tests/test_exect_primitive_module_split.py -q` passed: 190 tests, 11 warnings.
+- `uv run python scripts/validate_primitives.py --errors-only` exited 0 with existing warnings only: missing catalog rows for `exect.comorbidity.atomization_bridge.v1` and `exect.investigation.drop_ecg_guard.v1`, adapter-position metadata warnings, and two stale implementation references.
+- `uv run python scripts/validate_experiment_taxonomy.py --errors-only` exited 0 with the documented `canonical_run_missing_documented` warning and optional LiteLLM provider preload warnings.
+- `uv run pytest -q` passed: 1002 tests, 16 warnings.
+
+No C20 code behavior changed. The review preserves loader, split, scorer,
+benchmark bridge, registry, and replay semantics. Future architecture work
+should be pulled only when a concrete research card would otherwise add new
+policy branches or prompt variants into one of the accepted residual P2
+surfaces.
 
 ## Findings
 
