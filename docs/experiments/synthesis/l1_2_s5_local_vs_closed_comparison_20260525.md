@@ -81,7 +81,7 @@ L1.1/L1.2 should be marked **complete as accepted local transfer**, with the cav
 | Card | Status | Notes |
 | --- | --- | --- |
 | L1.1 S5 Qwen true v2b full-validation | Done | Run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z` |
-| L1.2 S5 local vs closed comparison | Done | This document; A2 GPT 5.5 anchor added in [exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md](../exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md). |
+| L1.2 S5 local vs closed comparison | Done | This document; A2 GPT 5.5 anchor added in [exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md](../../archive/experiments/exect/model_comparison_diagnostics/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md). |
 | L1.3 S2/S3 clean-ladder Qwen replay | Ready | Do not overlap with another local Ollama job |
 | L2 G0 Qwen error forensics | Backlog | 87 monthly mismatches |
 | L3 S1 Qwen seizure-type arm | Backlog | Largest remaining local gap |

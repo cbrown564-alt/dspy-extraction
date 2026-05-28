@@ -1,7 +1,8 @@
 # May 28 Documentation Refocus Archive Plan
 
-Status: active archive plan
+Status: completed archive plan
 Created: 2026-05-28
+Completed: 2026-05-28
 
 This plan translates the May 28 decomposition pivot into a physical docs cleanup.
 The goal is not to erase provenance. The goal is to make active guidance small
@@ -22,7 +23,7 @@ After cleanup, the active docs surface should be roughly:
 
 ## Wave 1 - Authority Reset
 
-Status: started
+Status: completed
 
 Completed in the first pass:
 
@@ -35,6 +36,8 @@ Completed in the first pass:
   superseded.
 
 ## Wave 2 - Stale Generated Navigation
+
+Status: completed
 
 Move or replace with archive redirects:
 
@@ -52,6 +55,8 @@ Replacement:
 - refreshed registry/matrix only after the run registry includes May 28 decisions.
 
 ## Wave 3 - Pre-Pivot Synthesis
+
+Status: completed
 
 Archive as `archive/synthesis/pre_component_pivot/`:
 
@@ -77,6 +82,8 @@ Replacement:
 
 ## Wave 4 - Gan Experiment Evidence
 
+Status: completed
+
 Keep active in `experiments/gan/`:
 
 - `README.md`
@@ -99,6 +106,8 @@ Older notes are evidence for why a path is held or rejected, not current
 planning surfaces.
 
 ## Wave 5 - ExECT Experiment Evidence
+
+Status: completed
 
 Keep active in `experiments/exect/`:
 
@@ -123,6 +132,8 @@ Reason: the ladder is now a baseline and warning system, not the organizing
 decomposition.
 
 ## Wave 6 - Memory Layer
+
+Status: completed
 
 Either refresh or archive:
 

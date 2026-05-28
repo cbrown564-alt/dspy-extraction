@@ -10,9 +10,9 @@ Review-only synthesis. Numbers below trace to `experiment_registry.json` and the
 | --- | --- |
 | `docs/outline.md` | Research goals, model suite, architecture, ablation plan |
 | `docs/experiments/synthesis/experiment_registry.json` | Canonical run IDs, headline metrics, outcomes, decision scopes (generated 2026-05-22; 185 rows) |
-| `docs/experiments/synthesis/experiments_narrative_report_20260520.md` | Chronological synthesis, promotion decisions, stratified residuals |
-| `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` | Curated comparison groups (72 rows; generated 2026-05-21) |
-| `docs/experiments/synthesis/experiments_methods_results_20260520.md` | Paper-style Methods/Results Tables 1–4 (referenced by narrative report) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | Chronological synthesis, promotion decisions, stratified residuals |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | Curated comparison groups (72 rows; generated 2026-05-21) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` | Paper-style Methods/Results Tables 1–4 (referenced by narrative report) |
 
 **Registry vs narrative lag:** The registry post-dates the narrative report. Notably, ExECT Qwen S4 full validation was *pending* in the narrative but is **complete** in the registry (`67.5%` micro F1). Rows dated 2026-05-22–23 (e.g. `gan_s0_candidate_builder_gap_*`) are **not** covered by the narrative report and are flagged as **open / unverified for paper use** below.
 

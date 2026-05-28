@@ -273,7 +273,7 @@ Validation:
 | A1R. Retrospective A1 Cursor review | Completed | Cursor review lane, Codex reviewer | A1 audit exists | yes | Review confirmed A1 and promoted one source-backed table correction. |
 | A2D. A2 verifier design brief | Completed | Codex | A1 audit | yes | Mission brief names hypothesis, controls, files, stop rules, and cap-25 gate. |
 | A2I. A2 verifier implementation pilot | Completed; hold as arm | Cursor implementation lane + Codex manual promotion/review | A0, A2D | no | Implemented verifier config and run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini_20260524T193119Z`; F1 improved but recall gate failed. |
-| A2R. A2 regression/critic review | Completed | Cursor critic + Codex | A2I | yes after implementation | Explain recall loss and verify scorer preservation. Report at [20260524T203900Z_pathway_a_card_report.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/workstreams/cursor_sdk/pathway_a/20260524T203900Z_pathway_a_card_report.md). |
+| A2R. A2 regression/critic review | Completed | Cursor critic + Codex | A2I | yes after implementation | Explain recall loss and verify scorer preservation. Report at [20260524T203900Z_pathway_a_card_report.md](pathway_a/20260524T203900Z_pathway_a_card_report.md). |
 | A3D. A3 prompt-policy design brief | Completed | Codex | A1 audit | yes | Brief names exact policy knobs and examples from A1. |
 | A3I. A3 prompt-policy pilot | Ready after A0/A3D | Cursor implementation lane | A0, A3D | no if touching same prompts as A2 | Cap-25 artifact and comparison report. |
 | A4P. A4 medication guard prereg | Backlog | Cursor draft + Codex reviewer | AM guard inspection | yes, separate from frequency | Prereg accepted or rejected before code changes. |

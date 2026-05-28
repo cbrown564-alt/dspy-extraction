@@ -8,7 +8,7 @@ Related:
 - **Taxonomy north star:** `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md`
 - **Taxonomy implementation:** `docs/taxonomy/experiment_taxonomy_schema.md`, `docs/experiments/synthesis/experiment_registry.json`, `docs/taxonomy/experiment_taxonomy_research_synthesis_20260520.md`
 - **Operating plan:** `docs/planning/kanban_plan.md`
-- **Registry views:** `docs/research_atlas/evidence_matrix.md`
+- **Registry views:** `docs/archive/research_atlas/evidence_matrix.md`
 - **Closed ExECT probes:** `docs/experiments/exect/exect_negative_probe_synthesis_20260520.md`
 - **Latest measurements:** `docs/experiments/exect/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md`, `docs/experiments/exect/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md`, `docs/experiments/gan/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`, `docs/workstreams/optimizer/dspy_optimizer_investigation_20260521.md`
 
@@ -35,7 +35,7 @@ This report states what the project **currently believes**, what it has **ruled 
 | Layer | Role | Primary docs |
 | --- | --- | --- |
 | **North star / ontology** | Defines `L0`–`D1`, intervention matrix, registry fields | `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md`, `docs/taxonomy/experiment_taxonomy_schema.md` |
-| **Evidence index** | Registry rows, comparison groups, outcomes | `docs/experiments/synthesis/experiment_registry.json`, `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` |
+| **Evidence index** | Registry rows, comparison groups, outcomes | `docs/experiments/synthesis/experiment_registry.json`, `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` |
 | **First taxonomy answers** | Registry-backed answers to taxonomy “near-term questions” (2026-05-20) | `docs/taxonomy/experiment_taxonomy_research_synthesis_20260520.md` |
 | **Execution tracker** | What ran, gates, next pull | `docs/planning/kanban_plan.md` |
 | **Closed mechanisms** | ExECT probes that should not repeat | `docs/experiments/exect/exect_negative_probe_synthesis_20260520.md` |

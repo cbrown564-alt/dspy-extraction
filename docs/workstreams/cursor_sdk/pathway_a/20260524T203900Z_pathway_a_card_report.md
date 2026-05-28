@@ -18,9 +18,9 @@
 * `runs/exect_s5_frequency_pre_vocab_am_guard_cap25_gpt4_1_mini_20260524T182134Z/errors.json` (baseline errors)
 
 **Source Code & Configs:**
-* [exect_s4.py](file:///c:/Users/cbrow/Code/dspy-extraction/src/clinical_extraction/programs/exect_s4.py) — Specifically verifier modules and `_apply_exect_s5_frequency_verifier_guards`
-* [kanban_plan.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/planning/kanban_plan.md) — Card requirements and baseline details
-* [exect_s5_frequency_verifier_cap25_inspection_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/exect/exect_s5_frequency_verifier_cap25_inspection_20260524.md)
+* [exect_s4.py](../../../../src/clinical_extraction/programs/exect_s4.py) — Specifically verifier modules and `_apply_exect_s5_frequency_verifier_guards`
+* [kanban_plan.md](../../../planning/kanban_plan.md) — Card requirements and baseline details
+* [exect_s5_frequency_verifier_cap25_inspection_20260524.md](../../../archive/experiments/exect/model_comparison_diagnostics/exect_s5_frequency_verifier_cap25_inspection_20260524.md)
 
 ---
 
@@ -29,7 +29,7 @@
 The A2 verifier cap-25 run achieved a precision lift (from 45.1% to 64.3%, **+19.2pp**) but triggered a severe recall collapse (from 92.0% to 72.0%, **-20.0pp**). A deep-dive analysis of the four target documents (`EA0008`, `EA0050`, `EA0059`, and `EA0069`) reveals three clear failure mechanisms:
 
 ### 1. Case-Sensitivity Substring Bug (Primary Technical Defect)
-In [exect_s4.py](file:///c:/Users/cbrow/Code/dspy-extraction/src/clinical_extraction/programs/exect_s4.py#L983), the verifier guard performs a case-sensitive substring match:
+In [exect_s4.py](../../../../src/clinical_extraction/programs/exect_s4.py#L983), the verifier guard performs a case-sensitive substring match:
 ```python
 if evidence_text not in note_text:
     flags.append("evidence_not_in_note")
@@ -64,7 +64,7 @@ No source changes were made during this review-only lane.
 We propose the following targeted code fixes to resolve the recall drop for the next implementation pilot:
 
 ### 1. Make Substring Matching Case-Insensitive
-Modify [exect_s4.py](file:///c:/Users/cbrow/Code/dspy-extraction/src/clinical_extraction/programs/exect_s4.py#L983) to check lowercased strings:
+Modify [exect_s4.py](../../../../src/clinical_extraction/programs/exect_s4.py#L983) to check lowercased strings:
 ```diff
 -        if evidence_text not in note_text:
 +        if evidence_text.lower() not in note_text.lower():

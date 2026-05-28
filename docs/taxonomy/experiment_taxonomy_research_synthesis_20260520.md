@@ -278,7 +278,7 @@ but it should become an explicit next experimental question.
 
 ## Caveats
 
-A paper-ready curated matrix export lives at `docs/experiments/synthesis/experiment_registry_matrix_20260520.md`
+A paper-ready curated matrix export lives at `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md`
 (regenerate with `uv run python scripts/export_experiment_registry_matrix.py`). Retrospective
 rows outside that export may still need clinical review.
 

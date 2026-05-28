@@ -13,9 +13,9 @@
 | --- | --- |
 | `docs/outline.md` | Research goals, architecture, ablation plan, model suite |
 | `docs/experiments/synthesis/experiment_registry.json` | Canonical run IDs, headline metrics, decision scopes, comparison groups (130 rows; curated matrix uses 72) |
-| `docs/experiments/synthesis/experiments_narrative_report_20260520.md` | Chronological experiment narrative through 2026-05-20 evening |
-| `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` | Paper-ready grouped export (generated 2026-05-21) |
-| `docs/experiments/synthesis/experiments_methods_results_20260520.md` | Referenced by narrative report as paper-style Methods/Results extract (Tables 1–4) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | Chronological experiment narrative through 2026-05-20 evening |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | Paper-ready grouped export (generated 2026-05-21) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` | Referenced by narrative report as paper-style Methods/Results extract (Tables 1–4) |
 
 **Registry–narrative freshness note (`stale_check`):** The matrix and registry include rows post-dating the 2026-05-20 narrative (e.g., ExECT Qwen S4 full validation, S1 interleaving/ladder arms, S4 temporality probes). Where they diverge, this draft prefers registry canonical metrics and flags the gap.
 

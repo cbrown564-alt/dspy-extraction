@@ -10,9 +10,9 @@
 | --- | --- | --- |
 | `docs/outline.md` | Research goals, architecture, ablation plan, schema ladder (S0–S4) | Aspirational; not all goals have run evidence |
 | `docs/experiments/synthesis/experiment_registry.json` | Canonical experiment rows, run IDs, headline metrics, decision scopes | `generated_on`: 2026-05-22; `row_count`: 186 |
-| `docs/experiments/synthesis/experiments_narrative_report_20260520.md` | Chronological narrative through 2026-05-20 evening | S4 Qwen full marked in-flight at draft time |
-| `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` | Curated paper-ready matrix (72 rows, 2026-05-21) | Subset of registry; some metrics stale vs registry |
-| `docs/experiments/synthesis/experiments_methods_results_20260520.md` | Referenced by narrative report (Tables 1–4) | Not in the primary-source list but used for per-family F1 where registry lacks secondary fields |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | Chronological narrative through 2026-05-20 evening | S4 Qwen full marked in-flight at draft time |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | Curated paper-ready matrix (72 rows, 2026-05-21) | Subset of registry; some metrics stale vs registry |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` | Referenced by narrative report (Tables 1–4) | Not in the primary-source list but used for per-family F1 where registry lacks secondary fields |
 
 **Temporal note:** Registry rows post-dating the 2026-05-20 narrative (notably `gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation`, 2026-05-23) are included below with explicit scope flags. They are **not** retroactively validated by the narrative report.
 

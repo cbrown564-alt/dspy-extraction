@@ -18,7 +18,7 @@ Before broad model comparisons or full-validation spend on a new provider/model 
 Smokes validate **runtime compatibility and artifact contract only**. They are not performance estimates and must not be cited as benchmark results.
 
 Companion policy: [model_config_smoke_tests.md](model_config_smoke_tests.md).  
-Model-suite full validations gated by these smokes: [model_suite_frozen_architecture_v1_preregistration_20260522.md](../experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md).
+Model-suite full validations gated by these smokes: [model_suite_frozen_architecture_v1_preregistration_20260522.md](../archive/experiments/synthesis/pre_component_pivot/model_suite_frozen_architecture_v1_preregistration_20260522.md).
 
 ## Gate Discipline
 
@@ -66,7 +66,7 @@ Structured output for all rows: `provider_json_schema_with_pydantic_validation`.
 | ExECT S1 | `exect_s0_s1_smoke_gpt5_5_openai.json` | `exect_s0_s1_smoke_gpt5_5_openai_20260522T113436Z` | 3 | — | 100% | Pass |
 | ExECT S4 | `exect_s4_smoke_gpt5_5_openai.json` | `exect_s4_smoke_gpt5_5_openai_20260522T113510Z` | 3 | — | 100% | Pass |
 
-Inspection: [model_suite_gpt5_5_full_validation_v1_inspection_20260522.md](../experiments/synthesis/model_suite_gpt5_5_full_validation_v1_inspection_20260522.md).
+Inspection: [model_suite_gpt5_5_full_validation_v1_inspection_20260522.md](../archive/experiments/synthesis/pre_component_pivot/model_suite_gpt5_5_full_validation_v1_inspection_20260522.md).
 
 ### Gemini 3 Flash (`configs/models/gan_s0_gemini3_flash.json`, `gemini-3-flash-preview`)
 
@@ -77,7 +77,7 @@ Inspection: [model_suite_gpt5_5_full_validation_v1_inspection_20260522.md](../ex
 | ExECT S1 | `exect_s0_s1_smoke_gemini3_flash.json` | `exect_s0_s1_smoke_gemini3_flash_20260522T104250Z` | 3 | — | 100% | Pass |
 | ExECT S4 | `exect_s4_smoke_gemini3_flash.json` | `exect_s4_smoke_gemini3_flash_20260522T105207Z` | 3 | — | 100% | Pass |
 
-Inspection: [model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md](../experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md).
+Inspection: [model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md](../archive/experiments/synthesis/pre_component_pivot/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md).
 
 ### Gemini 3.1 Flash-Lite (`configs/models/gan_s0_gemini31_flash_lite.json`, GA `gemini-3.1-flash-lite`)
 
@@ -97,7 +97,7 @@ Inspection: [model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md
 | ExECT S1 | `exect_s0_s1_smoke_claude_sonnet_4_6_anthropic.json` | `exect_s0_s1_smoke_claude_sonnet_4_6_anthropic_20260522T080538Z` | 3 | — | 100% | Pass |
 | ExECT S4 | `exect_s4_smoke_claude_sonnet_4_6_anthropic.json` | `exect_s4_smoke_claude_sonnet_4_6_anthropic_20260522T080625Z` | 3 | — | 96.4% | Pass |
 
-Inspection: [model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md](../experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md).
+Inspection: [model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md](../archive/experiments/synthesis/pre_component_pivot/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md).
 
 ### Qwen3.6:27b (`configs/models/gan_s0_qwen27b_ollama.json`, `configs/models/exect_qwen27b_ollama.json`)
 

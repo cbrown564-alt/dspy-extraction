@@ -19,9 +19,9 @@ evidence, not active steering. Use this map before citing any synthesis doc.
 
 | Doc family | Status | Reason |
 | --- | --- | --- |
-| `experiment_registry_matrix_20260520.md` | superseded | Generated from an older registry export. Do not use as current navigation. |
-| `experiments_methods_results_20260520.md` and `experiments_narrative_report_20260520.md` | archive | Early synthesis before May 24-28 refocus. |
-| `paper_*_20260524.md` | archive / paper evidence | Preserved for provenance; superseded by May 25 table pack and May 28 decomposition pivot unless explicitly cited. |
+| `../../archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | superseded | Generated from an older registry export. Do not use as current navigation. |
+| `../../archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` and `../../archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | archive | Early synthesis before May 24-28 refocus. |
+| `../../archive/experiments/synthesis/pre_component_pivot/paper_*_20260524.md` | archive / paper evidence | Preserved for provenance; superseded by May 25 table pack and May 28 decomposition pivot unless explicitly cited. |
 | model-suite inspection docs | diagnostic only | Model-profile evidence, not operational defaults unless a current index promotes the row. |
 | `experimentation_retrospective_report.md` | superseded synthesis | Useful historical bridge to the pivot, but R11-R15 and the decomposition docs now supersede its next-pull guidance. |
 

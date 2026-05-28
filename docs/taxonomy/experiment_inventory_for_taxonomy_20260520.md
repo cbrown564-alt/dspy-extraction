@@ -2,7 +2,7 @@
 
 Date: 2026-05-20  
 Purpose: Consolidated fact-finding from configs, runs, docs, and program code — input for designing a coherent experiment taxonomy and research pipeline.  
-Sources: four exploration passes, `configs/experiments/` (93 configs), local `runs/` (191 dirs, 162 with `metrics.json`, 80 unique `experiment_id`s), `docs/experiments/synthesis/experiments_narrative_report_20260520.md`, frozen-thread history, inspection/decision docs.
+Sources: four exploration passes, `configs/experiments/` (93 configs), local `runs/` (191 dirs, 162 with `metrics.json`, 80 unique `experiment_id`s), `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md`, frozen-thread history, inspection/decision docs.
 
 **Not a taxonomy yet.** This document inventories what exists. Taxonomy candidates are in §8.
 
@@ -291,8 +291,8 @@ PROMOTED_DEFAULT | FROZEN_REFERENCE | SUPERSEDED | REJECTED | EXPLORATORY | INCO
 
 Existing syntheses to keep as narrative layer:
 
-- `docs/experiments/synthesis/experiments_narrative_report_20260520.md`
-- `docs/experiments/synthesis/experiments_methods_results_20260520.md`
+- `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md`
+- `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md`
 - `docs/planning/kanban_frozen_threads_history.md`
 
 ---

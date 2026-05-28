@@ -67,6 +67,7 @@ a component ceiling registry.
 
 ## Active Entry Points
 
+- `README.md`
 - `component_ceiling_registry.md`
 - `planning/kanban_plan.md`
 - `experiments/gan/README.md`

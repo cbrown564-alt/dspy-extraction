@@ -13,10 +13,12 @@ If a memory file conflicts with a source artifact, trust the source artifact.
 2. Raw run artifacts: `runs/*`
 3. Experiment configs: `configs/experiments/`, `configs/models/`
 4. Preregistration and inspection docs: `docs/experiments/`
-5. Experiment registry: `docs/experiments/synthesis/experiment_registry.json`
+5. Active research program and component status: `docs/current_research_program.md`
+   and `docs/component_ceiling_registry.md`
 6. Active planning board: `docs/planning/kanban_plan.md`
-7. Mechanism doctrine/status: `docs/workstreams/hybrid/`
-8. This memory directory
+7. Experiment registry: `docs/experiments/synthesis/experiment_registry.json`
+8. Historical mechanism doctrine/status: `docs/workstreams/hybrid/`
+9. This memory directory
 
 Memory files are allowed to summarize, point, and warn. They should not silently change scorer semantics, gold-label policy, experiment outcomes, or operational defaults.
 

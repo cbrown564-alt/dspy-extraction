@@ -11,10 +11,10 @@
 | --- | --- |
 | `docs/outline.md` | Research goals, model list, schema ladder design, ablation plan |
 | `docs/experiments/synthesis/experiment_registry.json` | Canonical run IDs, headline metrics, outcomes, decision scopes |
-| `docs/experiments/synthesis/experiments_narrative_report_20260520.md` | Living synthesis through 2026-05-20; Tables 1–4 analog |
-| `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` | Curated 72-row paper-ready export grouped by `comparison_group` |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | Living synthesis through 2026-05-20; Tables 1–4 analog |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | Curated 72-row paper-ready export grouped by `comparison_group` |
 
-**Cross-source artifact:** `docs/experiments/synthesis/experiments_methods_results_20260520.md` (referenced by narrative; not in primary list but consistent with narrative Tables 1–4).
+**Cross-source artifact:** `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` (referenced by narrative; not in primary list but consistent with narrative Tables 1–4).
 
 ---
 

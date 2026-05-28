@@ -253,7 +253,7 @@ Run IDs below use the `…` prefix for the timestamp suffix under `runs/` (e.g. 
 **Paper-facing claims:** Hybrid deterministic→LLM placement wins on Gan S0; monthly–pragmatic gap (8.0pp) is attributable; negative arms captured in D2. Synthetic validation only — not Gan Real reproduction.
 
 **Promotion review:** `docs/experiments/gan/gan_s0_operational_default_promotion_review_20260523.md`  
-**Paper defaults:** `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`
+**Paper defaults:** `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_operational_defaults_20260524.md`
 
 ---
 

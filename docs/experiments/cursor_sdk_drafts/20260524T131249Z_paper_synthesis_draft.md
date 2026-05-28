@@ -12,9 +12,9 @@
 | --- | --- |
 | `docs/outline.md` | Research goals, architecture, ablation plan, model suite intent |
 | `docs/experiments/synthesis/experiment_registry.json` | Canonical run IDs, headline metrics, outcomes, decision scopes (204 rows) |
-| `docs/experiments/synthesis/experiments_narrative_report_20260520.md` | Phase narrative, stratified residuals, per-family F1, promotion gates |
-| `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` | Curated comparison groups (72 rows), matrix caveats |
-| `docs/experiments/synthesis/experiments_methods_results_20260520.md` | Paper-style Methods/Results tables R1–R6 (referenced by narrative report) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | Phase narrative, stratified residuals, per-family F1, promotion gates |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | Curated comparison groups (72 rows), matrix caveats |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` | Paper-style Methods/Results tables R1–R6 (referenced by narrative report) |
 
 ---
 

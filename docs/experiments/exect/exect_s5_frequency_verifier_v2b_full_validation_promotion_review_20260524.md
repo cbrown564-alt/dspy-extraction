@@ -48,9 +48,9 @@ Combined v2 arm (v1.3 extractor + strict qualitative guard + v2 verifier) remain
 
 ## Artifacts Updated
 
-- `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`
-- `docs/experiments/synthesis/paper_frozen_results_narrative_20260524.md`
-- `docs/experiments/synthesis/paper_frozen_arm_reject_table_20260524.md`
+- `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_operational_defaults_20260524.md`
+- `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_results_narrative_20260524.md`
+- `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_arm_reject_table_20260524.md`
 - `docs/planning/kanban_plan.md`
 
 Primary metric source: `runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z/metrics.json`

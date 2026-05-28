@@ -1,5 +1,13 @@
 # Outline
 
+Status: original proposal context
+Current steering replacement: `current_research_program.md`
+
+This outline records the broad project proposal and early architecture sketch.
+For active priorities after the May 28 component-decomposition pivot, start
+with `README.md`, `current_research_program.md`,
+`component_ceiling_registry.md`, and `planning/kanban_plan.md`.
+
 ## Goal
 
 We want to build a hybrid deterministic + LLM clinical extraction system, with DSPy orchestrating the pipeline and optimizing prompts/modules, and a local Qwen3.6:35b model doing the hard semantic extraction.

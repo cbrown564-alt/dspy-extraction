@@ -28,7 +28,7 @@ The first milestone will build deterministic infrastructure before any DSPy modu
 
 - `docs/datasets/exect/exect_gold_label_audit.md`: JSON primary source, certainty threshold, seizure types from `Diagnosis` rows, diagnosis specificity collapse, and warning flags.
 - `docs/datasets/gan/gan_2026_label_audit.md`: Gan gold source, reference as cross-check, plural unit normalization, year/month equivalence, cluster conversion, hard-case flags, and special labels.
-- [AGENTS.md](file:///c:/Users/cbrow/Code/dspy-extraction/AGENTS.md): deterministic loaders, validators, normalizers, and scorers around LLM components; no silent scorer semantic changes.
+- [AGENTS.md](../../AGENTS.md): deterministic loaders, validators, normalizers, and scorers around LLM components; no silent scorer semantic changes.
 
 ## Deferred
 

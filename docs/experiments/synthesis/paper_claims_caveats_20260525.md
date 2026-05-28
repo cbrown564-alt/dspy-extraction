@@ -45,13 +45,13 @@ Negative results should strengthen the methods narrative without overclosing mec
 | Evidence area | Primary artifacts |
 | --- | --- |
 | Current table pack | `docs/experiments/synthesis/paper_result_table_pack_20260525.md` |
-| Gan operational defaults | `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`; `docs/experiments/gan/gan_s0_operational_default_promotion_review_20260523.md` |
+| Gan operational defaults | `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_operational_defaults_20260524.md`; `docs/experiments/gan/gan_s0_operational_default_promotion_review_20260523.md` |
 | Gan L2 forensics | `docs/experiments/gan/gan_s0_qwen35b_builder_gap_l2_error_forensics_20260525.md` |
 | Gan exact-policy cap-25 | `docs/experiments/gan/gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_inspection_20260525.md` |
 | ExECT clean ladder | `docs/experiments/exect/exect_s1_clean_ladder_qwen_validation_v1_inspection_20260525.md`; `docs/experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md` |
 | ExECT S5 local transfer | `docs/experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md` |
 | ExECT S5 GPT 5.5 A2 anchor | `docs/experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md` |
-| Rejected arms | `docs/experiments/synthesis/paper_frozen_arm_reject_table_20260524.md` |
+| Rejected arms | `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_arm_reject_table_20260524.md` |
 
 ## Next Revision Loop
 

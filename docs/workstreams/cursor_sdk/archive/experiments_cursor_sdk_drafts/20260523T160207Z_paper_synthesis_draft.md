@@ -20,8 +20,8 @@ run IDs and metrics from the registry. Do not make edits.
 Primary sources:
 - docs/outline.md
 - docs/experiments/synthesis/experiment_registry.json
-- docs/experiments/synthesis/experiments_narrative_report_20260520.md
-- docs/experiments/synthesis/experiment_registry_matrix_20260520.md
+- docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md
+- docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md
 
 Output shape:
 # Paper Narrative Synthesis Draft

@@ -1,7 +1,7 @@
 # Gan Seizure Frequency Task: Paper-Reproduction Scorer Comparison and Evaluation Impact Report
 
 **Date**: May 28, 2026  
-**File Reference**: [gan_scorer_comparison_report.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/datasets/gan/gan_scorer_comparison_report.md)  
+**File Reference**: [gan_scorer_comparison_report.md](gan_scorer_comparison_report.md)  
 **Target File**: `docs/datasets/gan/gan_scorer_comparison_report.md`
 
 ---

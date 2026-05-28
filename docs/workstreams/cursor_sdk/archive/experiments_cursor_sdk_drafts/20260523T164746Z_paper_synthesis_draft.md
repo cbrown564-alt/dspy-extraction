@@ -10,9 +10,9 @@ Review-only artifact. Metrics below are drawn from `experiment_registry.json` he
 | --- | --- |
 | `docs/outline.md` | Research goals, model suite, schema ladder, ablation plan |
 | `docs/experiments/synthesis/experiment_registry.json` | Canonical run IDs, headline metrics, decision scopes, metric caveats |
-| `docs/experiments/synthesis/experiments_narrative_report_20260520.md` | Chronological experiment narrative through 2026-05-20 |
-| `docs/experiments/synthesis/experiment_registry_matrix_20260520.md` | Curated comparison-group matrix (72 rows; generated 2026-05-21) |
-| `docs/experiments/synthesis/experiments_methods_results_20260520.md` | Referenced by narrative report for Tables 1–4 (read for metric cross-check) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_narrative_report_20260520.md` | Chronological experiment narrative through 2026-05-20 |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiment_registry_matrix_20260520.md` | Curated comparison-group matrix (72 rows; generated 2026-05-21) |
+| `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md` | Referenced by narrative report for Tables 1–4 (read for metric cross-check) |
 
 **Temporal note:** Narrative report status is through 2026-05-20 evening; registry includes later rows (e.g. model-suite runs 2026-05-22, ExECT S4 Qwen full 2026-05-20T160914Z). Where they diverge, registry is treated as authoritative for run IDs; narrative staleness is flagged below.
 

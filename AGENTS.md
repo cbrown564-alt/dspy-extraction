@@ -4,7 +4,10 @@ This project uses Codex agents to help build a DSPy-based clinical extraction re
 
 ## Project Context
 
-Start with `docs/outline.md` for the overall research plan.
+Start with `docs/README.md`, then `docs/current_research_program.md` and
+`docs/planning/kanban_plan.md` for the active research plan and current
+priorities. `docs/outline.md` is original proposal context, not the current
+steering surface after the May 28 component-decomposition pivot.
 
 The two core datasets have important quirks. Read the relevant audit before touching loaders, schemas, scorers, benchmark reproduction, or evaluation logic:
 

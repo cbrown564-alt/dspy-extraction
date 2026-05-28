@@ -3,7 +3,7 @@
 Date: 2026-05-20  
 Status: Proposed research-operations standard  
 Related inventory: `docs/taxonomy/experiment_inventory_for_taxonomy_20260520.md`  
-Related synthesis: `docs/experiments/synthesis/experiments_methods_results_20260520.md`, `docs/workstreams/optimizer/dspy_optimizer_vs_manual_engineering_audit_20260520.md`, `docs/planning/kanban_plan.md`
+Related synthesis: `docs/archive/experiments/synthesis/pre_component_pivot/experiments_methods_results_20260520.md`, `docs/workstreams/optimizer/dspy_optimizer_vs_manual_engineering_audit_20260520.md`, `docs/planning/kanban_plan.md`
 
 ## Research Question
 
@@ -464,4 +464,3 @@ The immediate next pull should be:
 1. Create `docs/taxonomy/experiment_taxonomy_schema.md` with controlled values.
 2. Create `docs/experiment_registry.csv` with the first 10-15 canonical rows.
 3. Add a taxonomy block to the next Gan ReAct and ExECT Qwen S4 inspection/decision documents.
-

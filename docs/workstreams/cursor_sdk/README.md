@@ -96,7 +96,7 @@ not edit files.
 
 1. Use the promoted model compatibility backlog through `docs/policies/model_config_compatibility_backlog_20260524.md`, not the archived or active SDK reports. The promoted follow-ups are B6 (`build_dspy_lm` config-level coverage) and B7 (explicit Gemini `reasoning_effort` policy before broad Gemini comparisons).
 2. Use the reviewed Gan mutation-pilot outcome only through `docs/experiments/gan/gan_s0_cursor_sdk_mutation_pilot_review_20260524.md`. No mutation diff is promoted; the only technical lead is the narrow `seizure free for multiple year` candidate gap for `gan_13574`/`gan_13598`.
-3. Use the reviewed paper/core-research-question synthesis through `docs/experiments/synthesis/core_research_questions_pipeline_review_20260524.md` and its generated registry appendix, not the archived SDK paper draft.
+3. Use the reviewed paper/core-research-question synthesis through `docs/archive/experiments/synthesis/pre_component_pivot/core_research_questions_pipeline_review_20260524.md` and its generated registry appendix, not the archived SDK paper draft.
 4. Treat the fresh paper result-table source map `docs/experiments/cursor_sdk_drafts/20260524T131249Z_paper_synthesis_draft.md` as `keep_as_lead` only. It can guide table assembly, but no paper metric or operational-default wording was promoted from it.
 5. Use the reviewed ExECT S4/S5 frequency audit promotion only through its promoted audit doc and machine-readable artifact, not the archived SDK draft.
 6. Keep remaining Gan, paper-synthesis, memory, and hygiene drafts archived unless a current source task explicitly reopens them.

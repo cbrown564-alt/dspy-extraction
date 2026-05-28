@@ -6,7 +6,7 @@ Decision scope: paper table synthesis; no scorer, loader, registry, or model-out
 
 ## Purpose
 
-This note refreshes the manuscript-facing result tables after the May 25 clean-ladder and local-transfer work. It supersedes `docs/experiments/synthesis/paper_result_table_pack_20260524.md` for current manuscript tables, while preserving that earlier pack as historical evidence.
+This note refreshes the manuscript-facing result tables after the May 25 clean-ladder and local-transfer work. It supersedes `docs/archive/experiments/synthesis/pre_component_pivot/paper_result_table_pack_20260524.md` for current manuscript tables, while preserving that earlier pack as historical evidence.
 
 The rows below are intended for paper drafting, not for benchmark-reproduction claims. They separate full-validation headline evidence from cap-25 gates, arm rejections, and diagnostic forensics.
 
@@ -48,7 +48,7 @@ Primary source: `docs/experiments/gan/gan_s0_l2_qwen_exact_policy_cap25_qwen35b_
 | S3 | `exect_s3_clean_ladder_v1_full_gpt4_1_mini_20260525T073224Z` | 74.4% | Qwen clean ladder anchor reported in S1 clean-ladder inspection | **75.3%** | Sparse S3-only families remain weak; do not describe this as solved broad-schema extraction. |
 | S4 | `exect_s4_validation_full_gpt4_1_mini_20260520T071248Z` | 65.5% | `exect_s4_validation_full_qwen35b_ollama_20260520T160914Z` | **67.5%** | Pooled Qwen lead is family-profile dependent; avoid simple model-ranking language. |
 
-Primary sources: `docs/experiments/exect/exect_s1_clean_ladder_qwen_validation_v1_inspection_20260525.md`; `docs/experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md`; `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`.
+Primary sources: `docs/experiments/exect/exect_s1_clean_ladder_qwen_validation_v1_inspection_20260525.md`; `docs/experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md`; `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_operational_defaults_20260524.md`.
 
 ## Table 4 - ExECT S5 Promoted Core Surface And Local Transfer
 
@@ -68,9 +68,9 @@ Primary sources: `docs/experiments/synthesis/l1_2_s5_local_vs_closed_comparison_
 | ExECT S5 combined strict v2 verifier collapsed frequency recall. | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2_cap25_gpt4_1_mini_20260524T205934Z` | 60.0% seizure-frequency recall | Reject as tested | Supports using the isolated v2b verifier rather than stacked strict qualitative filtering. |
 | ExECT S5 temporal medication guard over-pruned benchmark-facing medication gold. | `exect_s5_frequency_pre_vocab_am_guard_temporal_frequency_verify_cap25_gpt4_1_mini_20260524T203942Z` | annotated-medication recall 79.3% | Reject as tested | Caveat that medication temporality precision work is not part of promoted S5 core. |
 | ExECT S5 high-precision frequency candidates reduced recall. | `exect_s5_frequency_pre_vocab_high_precision_cap25_gpt4_1_mini_20260524T141503Z` | seizure-frequency F1 56.3% | Reject as tested | Justifies keeping high-recall frequency candidates as the baseline. |
-| Gan unknown-overuse, GEPA G1, and GEPA G2 arms failed cap gates. | `docs/experiments/synthesis/paper_frozen_arm_reject_table_20260524.md` | monthly 16.0%, 60.0%, and 48.0% respectively | Reject as tested | Negative mechanism-search evidence with `decision_scope: arm`. |
+| Gan unknown-overuse, GEPA G1, and GEPA G2 arms failed cap gates. | `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_arm_reject_table_20260524.md` | monthly 16.0%, 60.0%, and 48.0% respectively | Reject as tested | Negative mechanism-search evidence with `decision_scope: arm`. |
 
-Primary source: `docs/experiments/synthesis/paper_frozen_arm_reject_table_20260524.md`.
+Primary source: `docs/archive/experiments/synthesis/pre_component_pivot/paper_frozen_arm_reject_table_20260524.md`.
 
 ## Claim Readiness
 
