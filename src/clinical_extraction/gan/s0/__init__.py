@@ -1,2 +1,1 @@
-"""Gan S0 decomposition surfaces."""
-
+"""Gan S0 decomposition package."""
