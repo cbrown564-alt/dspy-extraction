@@ -86,7 +86,7 @@ def test_current_authority_program_variant_specs_exclude_replay_rows():
     assert "gan.s0.date_events_candidates_single_pass" not in active_ids
 
 
-def test_registry_markdown_report_labels_loadable_config_counts_as_replay():
+def test_registry_markdown_report_labels_archive_configs_as_provenance():
     report = render_program_variant_registry_markdown(repo_root=Path.cwd())
 
     assert (
@@ -98,11 +98,11 @@ def test_registry_markdown_report_labels_loadable_config_counts_as_replay():
         "current_authority |"
     ) in report
     assert (
-        "| gan.s0.self_consistency | Gan 2026 | rejected_arm | loadable_replay |"
+        "| gan.s0.self_consistency | Gan 2026 | rejected_arm | docs_provenance |"
     ) in report
     assert "Active Config Count" in report
     assert "Archived Config Count" in report
-    assert "loadable configs are replay/provenance contracts" in report
+    assert "ordinary config loading is active-only" in report
     assert "rows under `Archived Config Inventory` are" in report
 
 
@@ -116,11 +116,11 @@ def test_experiment_config_inventory_assigns_one_explicit_status_per_config():
     assert all(not row.config_path.startswith("archive/") for row in rows)
 
 
-def test_archived_replay_config_inventory_preserves_rejected_and_historical_rows():
+def test_archived_config_inventory_preserves_rejected_and_historical_rows_as_provenance():
     rows = experiment_config_inventory(repo_root=Path.cwd(), source="archive")
     paths = {row.config_path: row for row in rows}
 
-    assert {row.authority_class for row in rows} == {"loadable_replay"}
+    assert {row.authority_class for row in rows} == {"docs_provenance"}
     assert (
         paths[
             "archive/configs/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"

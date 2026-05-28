@@ -107,7 +107,7 @@ def pipeline_steps(prediction: dict[str, Any], metrics: dict[str, Any]) -> list[
 
 
 def build_run(task: str, run_id: str, model_label: str, evidence_status: str, best: bool) -> dict[str, Any]:
-    run_dir = resolve_run_directory(run_id, root=ROOT)
+    run_dir = resolve_run_directory(run_id, root=ROOT, include_archive=True)
     metrics = read_json(run_dir / "metrics.json")
     config = read_json(run_dir / "config.json")
     predictions = read_json(run_dir / "predictions.json")

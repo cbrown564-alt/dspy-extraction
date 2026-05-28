@@ -7,7 +7,7 @@ from typing import Literal
 from pydantic import Field, model_validator
 
 from clinical_extraction.gan.scoring import GAN_PAPER_REPRODUCTION_SCORER
-from clinical_extraction.programs.gan_frequency_s0 import (
+from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
 )
@@ -212,8 +212,12 @@ class ExperimentConfig(FrozenModel):
         return self
 
 
-def load_experiment_config(path: Path) -> ExperimentConfig:
-    path = resolve_config_path(path)
+def load_experiment_config(
+    path: Path,
+    *,
+    include_archive: bool = False,
+) -> ExperimentConfig:
+    path = resolve_config_path(path, include_archive=include_archive)
     return ExperimentConfig.model_validate_json(path.read_text(encoding="utf-8"))
 
 

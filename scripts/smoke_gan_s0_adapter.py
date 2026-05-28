@@ -15,10 +15,8 @@ import dspy
 
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
-from clinical_extraction.programs.gan_frequency_s0 import (
-    GanFrequencyS0Module,
-    predict_gan_records,
-)
+from clinical_extraction.gan.s0.modules import GanFrequencyS0Module
+from clinical_extraction.gan.s0.prediction_bridge import predict_gan_records
 
 
 def main(argv: list[str] | None = None) -> int:

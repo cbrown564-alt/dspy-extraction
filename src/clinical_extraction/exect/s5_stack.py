@@ -20,8 +20,8 @@ from clinical_extraction.exect.frequency_payload import (
 from clinical_extraction.exect.medication_primitives import (
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
 )
-from clinical_extraction.programs.exect_s0_s1 import (
-    EXECT_DATASET,
+from clinical_extraction.exect.s0_s1.constants import EXECT_DATASET
+from clinical_extraction.exect.s0_s1.prediction_artifacts import (
     _as_list,
     _augment_current_prescription_medications,
     _augment_diagnosis_co_lists,

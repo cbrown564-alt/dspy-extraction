@@ -62,12 +62,12 @@ from clinical_extraction.exect.s5_stack import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
-from clinical_extraction.programs.exect_s0_s1 import (
-    build_exect_s0_s1_module,
+from clinical_extraction.exect.s0_s1.modules import build_exect_s0_s1_module
+from clinical_extraction.exect.s0_s1.optimizer_setup import (
     compile_exect_s0_s1_module,
     exect_s0_s1_run_metadata,
-    predict_exect_records,
 )
+from clinical_extraction.exect.s0_s1.prediction_artifacts import predict_exect_records
 from clinical_extraction.runs import RunMetadata
 
 EXECT_S5_SCHEMA_LEVEL = "exect_s5_core_field_family"

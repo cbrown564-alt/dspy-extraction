@@ -11,13 +11,10 @@ assert _spec and _spec.loader
 _export = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_export)
 
-_BACKFILL = Path("scripts/backfill_hybrid_cap25_registry.py")
-_backfill_spec = importlib.util.spec_from_file_location(
-    "backfill_hybrid_cap25_registry", _BACKFILL
+_BACKFILL_MANIFEST = Path(
+    "docs/archive/experiments/synthesis/pre_component_pivot/"
+    "hybrid_cap25_registry_backfill_manifest_20260528.json"
 )
-assert _backfill_spec and _backfill_spec.loader
-_backfill = importlib.util.module_from_spec(_backfill_spec)
-_backfill_spec.loader.exec_module(_backfill)
 
 
 def test_curated_matrix_includes_s4_temporality_group():
@@ -56,17 +53,15 @@ def test_render_matrix_table_rows_are_contiguous():
 
 
 def test_historical_registry_backfill_rows_live_in_retained_manifest():
-    manifest_path = _backfill.MANIFEST_PATH
-
     assert (
         "docs/archive/experiments/synthesis/pre_component_pivot"
-        in manifest_path.as_posix()
+        in _BACKFILL_MANIFEST.as_posix()
     )
-    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
-    rows = _backfill.load_backfill_specs()
+    payload = json.loads(_BACKFILL_MANIFEST.read_text(encoding="utf-8"))
+    rows = payload["rows"]
 
     assert payload["status"] == "archive / retained provenance"
-    assert payload["source_script"] == "scripts/backfill_hybrid_cap25_registry.py"
+    assert payload["source_script"].startswith("scripts/")
     assert len(rows) >= 40
     assert rows[0]["experiment_id"] == "gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini"
     assert "Cap-25 search grid" in payload["provenance_notes"][0]

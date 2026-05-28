@@ -17,8 +17,17 @@ def _repo_root(root: Path | None = None) -> Path:
     return (root or PROJECT_ROOT).resolve()
 
 
-def resolve_config_path(path: str | Path, *, root: Path | None = None) -> Path:
-    """Resolve an experiment config from active configs or the flat archive."""
+def resolve_config_path(
+    path: str | Path,
+    *,
+    root: Path | None = None,
+    include_archive: bool = False,
+) -> Path:
+    """Resolve an experiment config from active config locations.
+
+    Archived configs are provenance by default. Pass include_archive=True only
+    from explicit replay/reporting code that still needs historical artifacts.
+    """
 
     base = _repo_root(root)
     config_path = Path(path)
@@ -31,7 +40,8 @@ def resolve_config_path(path: str | Path, *, root: Path | None = None) -> Path:
         if len(config_path.parts) == 1:
             candidates.append(base / "configs" / "experiments" / config_path.name)
 
-    candidates.append(base / "archive" / "configs" / config_path.name)
+    if include_archive:
+        candidates.append(base / "archive" / "configs" / config_path.name)
     for candidate in candidates:
         if candidate.is_file():
             return candidate
@@ -44,8 +54,13 @@ def resolve_run_directory(
     root: Path | None = None,
     runs_root: Path | None = None,
     allow_prefix_match: bool = False,
+    include_archive: bool = False,
 ) -> Path:
-    """Resolve a run directory from active runs or archived runs."""
+    """Resolve a run directory from active runs.
+
+    Archived runs are provenance by default. Pass include_archive=True only from
+    explicit replay/reporting code that still needs historical artifacts.
+    """
 
     if runs_root is not None:
         active_runs_root = runs_root.resolve()
@@ -63,16 +78,18 @@ def resolve_run_directory(
     else:
         primary = base / run_path
 
-    candidates = [
-        primary,
-        archive_runs_root / run_path.name,
-    ]
+    candidates = [primary]
+    if include_archive:
+        candidates.append(archive_runs_root / run_path.name)
     for candidate in candidates:
         if candidate.is_dir():
             return candidate
 
     if allow_prefix_match:
-        for search_root in (active_runs_root, archive_runs_root):
+        search_roots = [active_runs_root]
+        if include_archive:
+            search_roots.append(archive_runs_root)
+        for search_root in search_roots:
             matches = sorted(
                 candidate
                 for candidate in search_root.glob(f"{run_path.name}*")

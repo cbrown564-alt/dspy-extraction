@@ -521,9 +521,13 @@ def validate_registry_row_canonical_run(
 
     issues.append(
         ValidationIssue(
-            level="error",
+            level="warning",
             code="canonical_run_missing",
-            message=f"canonical_run_id {canonical_run_id!r} has no runs/{canonical_run_id} directory.",
+            message=(
+                f"canonical_run_id {canonical_run_id!r} has no active "
+                f"runs/{canonical_run_id} directory; archived run artifacts are "
+                "docs/file provenance rather than default loadability contracts."
+            ),
             path=f"experiments[{experiment_id}].canonical_run_id",
         )
     )

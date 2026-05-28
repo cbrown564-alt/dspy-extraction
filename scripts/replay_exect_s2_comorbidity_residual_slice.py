@@ -44,6 +44,7 @@ def main() -> None:
     reference_run_dir = resolve_run_directory(
         args.reference_run_dir,
         allow_prefix_match=True,
+        include_archive=True,
     )
     if not reference_run_dir.is_dir():
         raise FileNotFoundError(

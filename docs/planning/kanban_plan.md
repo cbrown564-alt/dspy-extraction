@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C21 added; E5/C21 ready
+Last refreshed: 2026-05-28 ruff/vulture installed; C25/E6 ready
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -25,8 +25,11 @@ or `component_ceiling_registry.md` explicitly promotes them.
    C12-C20 are complete. The original P1 monolith risks are closed or
    explicitly reclassified as accepted residual P2/provenance risks in
    `planning/thermo_nuclear_codebase_architecture_audit_20260528.md`. C21
-   should now ask what can be deleted if old experiment reruns are no longer a
-   product requirement and git/docs/archive traceability is enough.
+   answered what can be deleted if old experiment reruns are no longer a
+   product requirement; follow-up deletion should now use
+   `planning/fresh_start_deadweight_pruning_review_20260528.md`. C22 removed
+   the high-confidence active deadweight, and C23/C24 retired default archive
+   loadability plus active Gan/S0-S1 facade imports.
 2. **Keep behavior-preserving cleanup separate from research claims.** Each
    architecture card must preserve scorer, loader, split, benchmark bridge, and
    replay semantics unless a focused policy/test change explicitly says
@@ -44,41 +47,44 @@ or `component_ceiling_registry.md` explicitly promotes them.
    `gan2026_paper_reproduction`; canonical Gan metrics remain diagnostic.
    ExECT Table 1 reproduction remains blocked until CUI-aware all-family
    scoring exists. Holdout is for residual analysis, not tuning.
-6. **Separate active configs from replay configs.** After C19, the 35 JSON
-   configs under `configs/experiments/` are current-authority rows; historical,
-   rejected, and replay/provenance configs live under `archive/configs/` and are
-   still resolvable by basename for reproducibility.
+6. **Separate active configs from replay configs.** After C23, ordinary config
+   and run resolution is active-only by default. Historical, rejected, and
+   replay/provenance configs live under `archive/configs/` as docs/file
+   provenance and require explicit replay/reporting opt-in.
 
 ## Ready
 
-### E5 - Medication Lifecycle Target Policy Decision
+### C25 - Script Hygiene And Report Exporter Split
 
-- **Outcome:** A short decision note states whether medication lifecycle /
-  temporality is benchmark-facing, clinical-diagnostic, deferred, or blocked,
-  with the gold/proxy source and scoring caveats explicit.
-- **Dependencies:** E3.
-- **Parallelizable:** yes; no model calls.
+- **Outcome:** Classify active `scripts/` entrypoints as current report
+  exporters, validators, active experiment runners, or archived one-offs. Move
+  reusable report logic into `clinical_extraction.evaluation.*` only when a
+  current report needs tests, and archive/delete one-off scripts after their
+  artifact and decision doc are promoted.
+- **Dependencies:** C22; coordinate with C23/C24 where script behavior depends
+  on archive loadability or legacy facades.
+- **Parallelizable:** mostly no; touches script inventory, tests, and report
+  routing.
 - **Owner:** unassigned.
-- **Validation:** Decision cites the E3 lifecycle inventory counts, ExECT gold
-  audit prescription-temporality caveat, and `deterministic_scorer_semantics.md`;
-  no scorer or loader change occurs unless a follow-up card is created.
-- **Notes:** ExECT prescription JSON has no native temporality column. Do not
-  treat planned/previous/taper/current status as a headline metric until this
-  target policy exists.
+- **Validation:** Targeted tests for each retained report builder plus static
+  `rg` checks for deleted filenames; keep scorer, loader, split, benchmark
+  bridge, and current component semantics unchanged.
+- **Notes:** This sets the entrypoint map needed before `ruff` and `vulture`
+  can distinguish intentional CLI-only functions from real dead code.
 
 ### E6 - Medication Isolated Current-Rx Ceiling Probe
 
 - **Outcome:** A preregistered isolated medication component probe using the E3
   annotation-current-Rx payload, reporting medication precision, recall, F1,
   and residual categories without lifecycle scoring.
-- **Dependencies:** E3; E5 only if the probe includes lifecycle labels.
+- **Dependencies:** E3.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
 - **Validation:** Compare the isolated medication component against existing S1
   and S5 medication surfaces on validation; report dataset split, model/provider
   if any, scorer mode, bridge/normalization policy, and evidence diagnostics.
 - **Notes:** This is the current-Rx ceiling path. Lifecycle rows remain
-  diagnostic unless E5 explicitly promotes a target.
+  diagnostic per E5 and should not enter medication F1.
 
 ### E7 - Medication Stack-Interference Probe
 
@@ -126,32 +132,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Notes:** C5/C8 cleared recall but not precision. Do not treat the 43/43
   payload coverage result as a frequency ceiling.
 
-### C21 - Fresh-Start Deadweight Pruning Review
-
-- **Outcome:** A ruthless current-only pruning plan identifies shims,
-  monkeypatches, unused classes/functions, legacy variant constants, replay-only
-  config loaders, archived-run compatibility tests, stale scripts, and
-  over-broad facades that exist mainly to keep old experiments rerunnable. The
-  report classifies each surface as delete now, keep only as archived
-  provenance, keep as active infrastructure, or split into a follow-up
-  implementation card.
-- **Dependencies:** C20 complete.
-- **Parallelizable:** yes as discovery alongside E5/G5; implementation follow-up
-  should be single-threaded if it touches loaders, scorers, config validation,
-  program facades, or shared primitive contracts.
-- **Owner:** unassigned.
-- **Validation:** Use static usage scans, import graph inspection, registry/config
-  inventory, and targeted tests to prove whether each candidate is active or
-  replay-only. The review must state which guarantees are intentionally dropped,
-  what remains traceable through git/docs/archive artifacts, and which minimal
-  test matrix should gate deletion.
-- **Notes:** This card intentionally reopens the C20 accepted-residual list under
-  a new assumption: we do not plan to rerun historical experiments. Do not
-  silently change scorer, loader, split, benchmark bridge, or current component
-  semantics. It is acceptable to propose breaking old config/run replay if the
-  plan says so explicitly and preserves research memory through documented
-  artifacts rather than live code paths.
-
 ## Blocked
 
 ### B1 - ExECT Optimized Stack Reconstruction
@@ -165,7 +145,7 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Validation:** Per-family deltas from isolated ceilings, pairwise
   interaction losses, pooled micro F1 as secondary, and holdout residual audit.
 - **Notes:** Do not start this until component ceilings exist.
-  E3/E4 provide substrates only; E5-E10 and pairwise interaction work are still
+  E3/E4 provide substrates only; E6-E10 and pairwise interaction work are still
   needed before an optimized ExECT stack claim.
 
 ### B2 - ExECT Table 1 Benchmark Reproduction
@@ -190,13 +170,30 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Backlog
 
+### C26 - Ruff/Vulture Static Dead-Code Sweep
+
+- **Outcome:** Use installed dev tools `ruff` and `vulture` to find unused
+  imports, unused locals, unreachable branches, dead helpers, stale constants,
+  and obsolete compatibility exports after C25 settles the active script
+  surface.
+- **Dependencies:** C25.
+- **Parallelizable:** no; batch by semantic area so findings do not blur
+  scorer, loader, benchmark bridge, and component contracts.
+- **Owner:** unassigned.
+- **Validation:** `uv run ruff check src scripts tests`; `uv run vulture src
+  scripts tests --min-confidence 80`; focused tests for every touched area; full
+  suite after deletion batches.
+- **Notes:** Do not run broad `ruff --fix` across scorer, loader, split,
+  benchmark bridge, or current component code. Create an explicit whitelist only
+  for justified dynamic/Pydantic/DSPy/CLI surfaces.
+
 ### X2 - Pairwise ExECT Interaction Plan
 
 - **Outcome:** A preregistered plan for diagnosis+seizure type,
   seizure type+frequency, medication+temporality, investigation+comorbidity,
   and other high-value pairwise interactions.
-- **Dependencies:** initial component ceiling reports; E5 before treating
-  medication+temporality as a scored pair.
+- **Dependencies:** initial component ceiling reports; a new lifecycle target
+  policy before treating medication+temporality as a scored pair.
 - **Parallelizable:** after E1-E4.
 - **Owner:** unassigned.
 - **Validation:** Each pair has hypothesis, support counts, primary family
@@ -306,7 +303,8 @@ artifacts, and git history; this section only keeps the steering implications.
 | C5/C8 ExECT frequency substrate, 2026-05-28 | Broad frequency payload covers 43/43 validation gold labels and 24/24 gold-bearing documents, but broad precision is 22.2%; selection/adjudication is the active problem. |
 | C6/C7/C9 boundary splits, 2026-05-28 | Gan S0 routing/bridge, ExECT S1 boundary metadata, and ExECT S5 stack surfaces were extracted as behavior-preserving architecture work. Use them for stage attribution; do not infer new metric claims. |
 | E2 S1 raw/bridge/prompt split, 2026-05-28 | S1 validation strength depends heavily on benchmark bridges; holdout transfer drops keep diagnosis and seizure-type mechanisms open. |
-| E3 medication payload, 2026-05-28 | Annotation-derived current-Rx payload reproduces 47/47 validation medication gold labels; lifecycle/temporality remains diagnostic or deferred until E5 decides the target policy. |
+| E3 medication payload, 2026-05-28 | Annotation-derived current-Rx payload reproduces 47/47 validation medication gold labels; lifecycle/temporality rows are diagnostic substrate for the E5 policy decision. |
+| E5 medication lifecycle target policy, 2026-05-28 | `docs/experiments/exect/exect_medication_lifecycle_target_policy_decision_20260528.md` classifies medication lifecycle/temporality as clinical-diagnostic and deferred from benchmark-facing medication F1. Annotated current-Rx remains the scored medication target; lifecycle categories can support residual and stack-interference attribution only. No scorer, loader, split, or bridge semantics changed. |
 | E4 family-span payload, 2026-05-28 | `exect.sections.family_spans.v1` gives high evidence coverage and a cap-slice substrate; it is not promoted over full-note prompting until E8/E9. |
 | G1/G2 Gan target split evidence, 2026-05-28 | Restrained high-recall deterministic candidates now cover 278/299 exact gold labels in G1, 292/299 Purist-equivalent labels, and 295/299 Pragmatic-equivalent labels; the G2 candidate-constrained arm has 299/299 selectable candidate support with no invalid candidate labels. Keep the remaining exact misses as a parser/adjudicator queue rather than forcing brittle 100% deterministic exact recall. |
 | G3 Gan unknown vs no-reference policy probe, 2026-05-28 | Post-adjudication rules simulated on G2 predictions shows that checking option ambiguity flags successfully isolates policy choices (e.g. abstaining on uncertain denominators), trading off category accuracy for conservative precision. |
@@ -314,6 +312,10 @@ artifacts, and git history; this section only keeps the steering implications.
 | X3 registry matrix refresh, 2026-05-28 | `experiment_registry_matrix_20260520.md` is regenerated as a post-pivot registry-derived methods/provenance view with explicit R11-R15, X1, C4, C10, and May 28 component-pivot caveats. The obsolete research atlas exporter, tests, and generated outputs are removed. The matrix is not current steering authority without `component_ceiling_registry.md` and `program_variant_registry.md`. |
 | C19 archive and obsolete-surface deletion, 2026-05-28 | Rejected, historical, and replay/provenance configs moved from `configs/experiments/` to `archive/configs/`, while `resolve_config_path` keeps basename replay working. Historical one-off scripts moved from `scripts/` to `archive/scripts/`, the program variant report now separates active and archived config inventory, and the live config tree contains current-authority rows only. Full suite validation passed (1002 tests). |
 | C20 modularity completion review, 2026-05-28 | The strict architecture review reclassified the original P1 monolith risks as closed or accepted residual P2/provenance risks. `programs/gan_frequency_s0.py` and `programs/exect_s0_s1.py` are now compatibility facades; S5 modules, ExECT family primitives, active/archive config inventory, and public stage tests are in place. Residual large files such as `gan/s0/modules.py`, `gan/s0/signatures.py`, `exect/s0_s1/prediction_artifacts.py`, and `experiments/program_variant_registry.py` are intentionally retained for prompt history, bridge/artifact compatibility, and replay provenance. Validation: focused config/registry matrix passed (268 tests); Gan matrix passed (210 tests); ExECT matrix passed (190 tests); primitive and taxonomy validators exited 0 with documented warnings; full suite passed (1002 tests, 16 warnings). Architecture lane is no longer blocking research-lane pulls. |
+| C21 fresh-start deadweight pruning review, 2026-05-28 | `planning/fresh_start_deadweight_pruning_review_20260528.md` classifies deadweight under the explicit assumption that historical reruns are no longer required. Delete-now surfaces include active Cursor SDK dependency/script/test, active tests for archived self-consistency replay, stale one-off launchers, and one-off registry mutators. Archive-loadability retirement and legacy facade import inversion are split into C23/C24 because they touch config loading, registry inventory, runtime imports, and compatibility tests. Validation was static/review-only: line counts, usage scans, import graph inspection, registry/config inventory counts, and targeted file reads. |
+| C22 high-confidence deadweight deletion, 2026-05-28 | Active Cursor SDK runtime dependency and SDK workflow script/test were removed; active test coverage for archived self-consistency replay was deleted; stale Gan D1 launcher and one-off registry mutator scripts were deleted; `tests/test_export_registry_matrix.py` now reads retained cap-25 backfill provenance directly from `docs/archive/experiments/synthesis/pre_component_pivot/hybrid_cap25_registry_backfill_manifest_20260528.json`. Scorer, loader, split, benchmark bridge, current config, current component, and model-run semantics were not changed. Validation: active static scans for deleted filenames and Cursor SDK dependency references passed; focused export/config/registry, Gan scorer, ExECT scorer/program suites passed; taxonomy and primitive validators exited 0 with existing warnings only; full suite `uv run pytest -q` passed (995 tests, 16 warnings). |
+| C23 archive loadability retirement, 2026-05-28 | `resolve_config_path` and `resolve_run_directory` are active-only by default; archive-aware replay/reporting callers now pass an explicit archive opt-in. Archived config inventory is rendered as `docs_provenance`, registry canonical-run misses are warnings rather than active loadability errors, and `tests/test_experiment_configs.py` was reduced to current-authority config invariants instead of archived per-file replay contracts. Validation: C23 path/config/registry/export suite passed (41 tests); `uv run python scripts/validate_experiment_taxonomy.py --errors-only` exited 0 with provenance warnings for absent active run directories. |
+| C24 legacy facade import inversion, 2026-05-28 | Active Gan S0 and ExECT S0/S1 runtime imports in experiment config, backends, prompt metadata, registry code, S5 stack helpers, S2-S4 shared helper use, and the Gan smoke script now target domain-owned modules (`clinical_extraction.gan.s0.*` and `clinical_extraction.exect.s0_s1.*`) instead of the old compatibility facades. The facades remain for backward imports and compatibility tests, but active runtime/script scans no longer import the old Gan or S0/S1 facade paths. Validation: Gan S0 package/program/stage and ExECT S0/S1 boundary/config suite passed (223 tests); Gan and ExECT scorer suites passed (19 tests). |
 | Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
 | ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
@@ -353,13 +355,21 @@ artifacts, and git history; this section only keeps the steering implications.
   navigation separates active and archived config inventory.
 - C20 is complete: the strict review updated the audit status with closed risks,
   accepted residual file-size/module-boundary risks, and validation evidence.
-- C21 is newly ready: now that old experiments are no longer assumed rerunnable,
-  it should audit which replay shims, monkeypatches, unused classes, archived
-  config paths, and compatibility tests can be deleted or demoted to pure
-  documentation provenance.
-- The typed program variant registry preserves loadable contracts and classifies
-  registry/config rows as current-authority, replay/provenance, historical,
-  rejected, blocked, or diagnostic.
+- C21 is complete: the fresh-start pruning review identifies delete-now
+  deadweight and splits archive-loadability retirement plus legacy facade import
+  inversion into C23/C24.
+- C22 is complete: high-confidence active deadweight has been deleted while
+  preserving archive/docs/git provenance.
+- C23 is complete: archived config/run fallback is no longer a default runtime
+  contract. Archive artifacts remain as docs/file provenance or explicit
+  replay/reporting opt-ins.
+- C24 is complete for the Gan S0 and ExECT S0/S1 legacy facades: active runtime
+  imports now use domain-owned modules, while compatibility facades remain only
+  for backward import and parity coverage.
+- The typed program variant registry classifies active config rows as
+  current-authority and archived rows as docs/file provenance, with explicit
+  status labels for replay/provenance, historical, rejected, blocked, or
+  diagnostic evidence.
 - C6-C9 completed the first behavior-preserving architecture extractions: Gan
   S0 routing/bridge surfaces, ExECT S1 boundary metadata, ExECT frequency
   payload/bridge surfaces, and the ExECT S5 stack boundary. C18 has now consumed
@@ -378,10 +388,11 @@ artifacts, and git history; this section only keeps the steering implications.
 - G5 is the registry-routed paper-scorer rescore pack; it is only needed before
   benchmark-comparison tables or paper claims, and it does not create Real(300)
   or Real(150) evidence.
-- E5 is the policy gate before medication lifecycle/temporality can become a
-  scored target. E6 is the current-Rx ceiling path; E7 is the stack-interference
-  path. E8 tests the family-span mechanism, and E9 is the promotion/rejection
-  decision after that comparison.
+- E5 is complete: medication lifecycle/temporality is clinical-diagnostic and
+  deferred from benchmark-facing medication F1. E6 is the current-Rx ceiling
+  path; E7 is the stack-interference path using lifecycle categories only as
+  diagnostics. E8 tests the family-span mechanism, and E9 is the
+  promotion/rejection decision after that comparison.
 - E11 routes holdout residual attribution without tuning from holdout. E12
   routes the registry's unproven investigation-near-ceiling action.
 - B1 is blocked until component substrates and isolated ceilings exist,
@@ -403,14 +414,15 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Parallelization Opportunities
 
-- **Safe now:** E5 medication lifecycle policy decision; C21 fresh-start pruning
-  review; G5 paper-scorer rescore if needed for a paper table; E6, E8, E10, G4,
+- **Safe now:** C25 script hygiene; G5 paper-scorer rescore if needed for a
+  paper table; E6, E8, E10, G4,
   and E11 as preregistered component or residual-analysis pulls. These should
-  preserve scorer, loader, split, and benchmark bridge semantics unless C21
-  explicitly proposes dropping old replay guarantees.
+  preserve scorer, loader, split, and benchmark bridge semantics.
 - **Architecture lane closed as bottleneck, reopened as optional pruning:**
-  C20 found no remaining P1 monolith blocker. C21 is a sharper follow-up under
-  the new assumption that historical reruns are not needed.
+  C20 found no remaining P1 monolith blocker. C21 produced the pruning plan;
+  C22 removed the high-confidence active deadweight, and C23/C24 completed the
+  replay/default-loadability and Gan/S0-S1 facade follow-ups. C25 should settle
+  script entrypoints before C26 runs `ruff`/`vulture` dead-code pruning.
 - **Single-threaded or carefully sequenced:** future registry/archive
   regeneration and any change to scorer, loader, split, benchmark bridge, or
   shared primitive contracts.
@@ -424,13 +436,9 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. **C21 - Fresh-Start Deadweight Pruning Review** should map what can be
-   deleted now that historical reruns are not a requirement, before more
-   compatibility code accretes around new experiments.
-2. **E5 - Medication Lifecycle Target Policy Decision** can run in parallel as a
-   no-model research-policy card.
-3. Then pull **G5, E6, E10, E8, or G4** according to paper/experiment need,
-   keeping each run preregistered and component-scoped.
+1. Pull **C25, G5, E6, E10, E8, or G4** according to cleanup, paper, or
+   experiment need; run **C26** only after C25, keeping each run preregistered
+   and component-scoped.
 
 ## Standing Guardrails
 
@@ -443,11 +451,10 @@ artifacts, and git history; this section only keeps the steering implications.
   except inside explicitly named paper-reproduction scorer views.
 - Treat ExECT clean ladder results as diagnostic baselines, not component
   ceilings.
-- Do not describe `archive/configs` loadability as active experiment count;
-  active config authority lives in `configs/experiments` and the generated
-  registry report's active inventory. C21 may propose removing archive
-  loadability, but only as an explicit decision with traceability preserved in
-  docs/git/archive artifacts.
+- Do not describe `archive/configs` as active experiment loadability; active
+  config authority lives in `configs/experiments` and the generated registry
+  report's active inventory. Archive artifacts remain traceable through docs,
+  git history, and explicit replay/reporting opt-ins.
 - Treat rejected arms as rejected arms unless a mechanism-level review closes
   the mechanism.
 - Holdout metrics trigger residual analysis only; do not tune from holdout.

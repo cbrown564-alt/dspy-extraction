@@ -12,11 +12,11 @@ from clinical_extraction.datasets.exect import (
     format_medication_temporality_label,
 )
 from clinical_extraction.evaluation.exect import EXECT_S4_SCORER, EXECT_S5_SCORER
-from clinical_extraction.programs.exect_s0_s1 import (
+from clinical_extraction.exect.s0_s1.constants import (
     EXECT_DATASET,
     EXECT_S0_S1_PROMPT_VERSION,
-    _as_list,
 )
+from clinical_extraction.exect.s0_s1.prediction_artifacts import _as_list
 from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_PROMPT_VERSION,
     _recover_s2_investigation_raw_values,

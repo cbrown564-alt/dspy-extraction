@@ -10,7 +10,7 @@ from pydantic import Field, model_validator
 from clinical_extraction.evaluation.exect import EXECT_S5_SCORER
 from clinical_extraction.experiments.taxonomy import DatasetValue
 from clinical_extraction.gan.scoring import GAN_PAPER_REPRODUCTION_SCORER
-from clinical_extraction.programs.exect_s0_s1 import (
+from clinical_extraction.exect.s0_s1.constants import (
     EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
@@ -130,14 +130,13 @@ CURRENT_AUTHORITY_STATUSES = frozenset(
         "operational_baseline",
     }
 )
-LOADABLE_REPLAY_STATUSES = frozenset(
+PROVENANCE_ONLY_STATUSES = frozenset(
     {
         "replay_provenance",
         "historical_arm",
         "rejected_arm",
     }
 )
-LOADABLE_STATUSES = CURRENT_AUTHORITY_STATUSES | LOADABLE_REPLAY_STATUSES
 
 
 class ProgramVariantSpec(FrozenModel):
@@ -177,7 +176,7 @@ class ProgramVariantSpec(FrozenModel):
 
     @property
     def is_loadable_config_contract(self) -> bool:
-        return self.status in LOADABLE_STATUSES
+        return self.status != "blocked"
 
     @property
     def is_current_authority(self) -> bool:
@@ -187,8 +186,8 @@ class ProgramVariantSpec(FrozenModel):
     def authority_class(self) -> str:
         if self.is_current_authority:
             return "current_authority"
-        if self.status in LOADABLE_REPLAY_STATUSES:
-            return "loadable_replay"
+        if self.status in PROVENANCE_ONLY_STATUSES:
+            return "docs_provenance"
         return "blocked"
 
     @property
@@ -1053,7 +1052,7 @@ def archived_config_count_for_spec(
 
 
 class ExperimentConfigInventoryRow(FrozenModel):
-    """Resolved status row for one loadable experiment config file."""
+    """Resolved status row for one active or archived experiment config file."""
 
     config_path: str
     experiment_id: str
@@ -1086,7 +1085,7 @@ def _config_authority_class(path: Path, spec: ProgramVariantSpec) -> str:
         and path.parts[0] == "archive"
         and path.parts[1] == "configs"
     ):
-        return "loadable_replay"
+        return "docs_provenance"
     return spec.authority_class
 
 
@@ -1125,23 +1124,26 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
         "",
         "Generated from `clinical_extraction.experiments.program_variant_registry`.",
         "",
-        "C4 status review rule: loadable configs are replay/provenance contracts,",
-        "not active experiment counts. A row is current authority only when",
+        "C23 status review rule: ordinary config loading is active-only; archived",
+        "configs are docs/file provenance, not active experiment counts. A row is",
+        "current authority only when",
         "`Authority Class` is `current_authority`; rejected, historical, and replay",
-        "rows remain loadable only to preserve provenance and reproducibility.",
+        "rows preserve provenance without default replay/loadability guarantees.",
         "",
         "Status glossary:",
         "",
         "- `promoted_baseline`, `mechanism_baseline`, `diagnostic_baseline`, and",
         "  `operational_baseline` are current-authority rows with different caveats.",
-        "- `replay_provenance` and `historical_arm` are loadable for replay, not current",
-        "  steering evidence.",
-        "- `rejected_arm` is loadable only to preserve failed-arm provenance.",
+        "- `replay_provenance` and `historical_arm` are docs/file provenance, not",
+        "  current steering evidence.",
+        "- `rejected_arm` preserves failed-arm provenance without an active replay",
+        "  guarantee.",
         "- `blocked` is not a loadable experiment contract.",
         "",
-        "C19 archive rule: rows under `Archived Config Inventory` are",
-        "replay/provenance rows by path, even when they replay a variant family",
-        "whose status is current authority.",
+        "C23 archive rule: rows under `Archived Config Inventory` are",
+        "docs/file provenance by path, even when they describe a variant family",
+        "whose status is current authority. Use explicit replay/reporting tools",
+        "for archive artifacts.",
         "",
         "## Variant Status",
         "",

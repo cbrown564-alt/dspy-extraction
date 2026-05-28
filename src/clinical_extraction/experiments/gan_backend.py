@@ -14,10 +14,12 @@ from clinical_extraction.experiments.gan_prompts import gan_prompts_data
 from clinical_extraction.gan.temporal_candidates import (
     presentation_for_implementation_variant,
 )
-from clinical_extraction.programs.gan_frequency_s0 import (
-    build_gan_s0_module,
+from clinical_extraction.gan.s0.modules import build_gan_s0_module
+from clinical_extraction.gan.s0.optimizer_setup import (
     compile_gan_s0_module,
     compile_gan_s0_module_gepa,
+)
+from clinical_extraction.gan.s0.prediction_bridge import (
     gan_frequency_s0_run_metadata,
     predict_gan_records,
 )

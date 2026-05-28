@@ -216,7 +216,7 @@ def render_model_arm_markdown(report: dict[str, Any]) -> str:
 
 
 def _load_arm_run(arm_id: str, run_dir: Path) -> ArmRun:
-    run_dir = resolve_run_directory(run_dir)
+    run_dir = resolve_run_directory(run_dir, include_archive=True)
     prediction_path = run_dir / "predictions.json"
     if not prediction_path.exists():
         raise FileNotFoundError(f"Missing predictions artifact: {prediction_path}")

@@ -57,7 +57,11 @@ def load_residual_slice_record_ids(fixture_path: Path) -> list[str]:
 
 
 def load_prediction_set(run_dir: Path) -> PredictionSet:
-    resolved_run_dir = resolve_run_directory(run_dir, allow_prefix_match=True)
+    resolved_run_dir = resolve_run_directory(
+        run_dir,
+        allow_prefix_match=True,
+        include_archive=True,
+    )
     predictions_path = resolved_run_dir / "predictions.json"
     if not predictions_path.is_file():
         raise FileNotFoundError(f"Missing predictions.json under {run_dir}")

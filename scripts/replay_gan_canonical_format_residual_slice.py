@@ -60,10 +60,12 @@ def main() -> None:
     control_run_dir = resolve_run_directory(
         args.control_run_dir,
         allow_prefix_match=True,
+        include_archive=True,
     )
     treatment_run_dir = resolve_run_directory(
         args.treatment_run_dir,
         allow_prefix_match=True,
+        include_archive=True,
     )
     for run_dir_arg, run_dir in (
         (args.control_run_dir, control_run_dir),

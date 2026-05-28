@@ -19,7 +19,7 @@ def test_resolve_config_path_prefers_active_config(tmp_path: Path):
     assert resolved == active
 
 
-def test_resolve_config_path_falls_back_to_archive_config_by_name(tmp_path: Path):
+def test_resolve_config_path_is_active_only_by_default(tmp_path: Path):
     archived = tmp_path / "archive" / "configs" / "historical.json"
     archived.parent.mkdir(parents=True)
     archived.write_text("{}", encoding="utf-8")
@@ -29,16 +29,43 @@ def test_resolve_config_path_falls_back_to_archive_config_by_name(tmp_path: Path
         root=tmp_path,
     )
 
+    assert resolved == tmp_path / "configs" / "experiments" / "historical.json"
+
+
+def test_resolve_config_path_can_opt_into_archive_config_by_name(tmp_path: Path):
+    archived = tmp_path / "archive" / "configs" / "historical.json"
+    archived.parent.mkdir(parents=True)
+    archived.write_text("{}", encoding="utf-8")
+
+    resolved = resolve_config_path(
+        Path("configs/experiments/historical.json"),
+        root=tmp_path,
+        include_archive=True,
+    )
+
     assert resolved == archived
 
 
-def test_resolve_run_directory_falls_back_to_archive_exact_match(tmp_path: Path):
+def test_resolve_run_directory_is_active_only_by_default(tmp_path: Path):
     archived = tmp_path / "archive" / "runs" / "historical_run"
     archived.mkdir(parents=True)
 
     resolved = resolve_run_directory(
         Path("runs/historical_run"),
         root=tmp_path,
+    )
+
+    assert resolved == tmp_path / "runs" / "historical_run"
+
+
+def test_resolve_run_directory_can_opt_into_archive_exact_match(tmp_path: Path):
+    archived = tmp_path / "archive" / "runs" / "historical_run"
+    archived.mkdir(parents=True)
+
+    resolved = resolve_run_directory(
+        Path("runs/historical_run"),
+        root=tmp_path,
+        include_archive=True,
     )
 
     assert resolved == archived

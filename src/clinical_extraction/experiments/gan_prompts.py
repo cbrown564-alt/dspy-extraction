@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from clinical_extraction.programs.gan_frequency_s0 import (
-    GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
+from clinical_extraction.gan.s0.signatures import GAN_FREQUENCY_SYNTHESIS_GUIDANCE
+from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,

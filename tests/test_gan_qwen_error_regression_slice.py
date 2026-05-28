@@ -38,7 +38,8 @@ def test_qwen_regression_slice_experiment_config_uses_record_ids_filter():
         Path(
             "configs/experiments/"
             "gan_s0_qwen35b_direct_regression_slice_guardrails.json"
-        )
+        ),
+        include_archive=True,
     )
     assert config.experiment_id == "gan_s0_qwen35b_direct_regression_slice_guardrails"
     assert set(config.record_ids) == set(gan_qwen_error_regression_record_ids())
@@ -73,7 +74,8 @@ def test_qwen35b_error_taxonomy_policy_config_uses_pragmatic_error_slice():
     )
     fixture_ids = [record["record_id"] for record in fixture["records"]]
     config = load_experiment_config(
-        Path("configs/experiments/gan_s0_qwen35b_error_taxonomy_policy_cap25.json")
+        Path("configs/experiments/gan_s0_qwen35b_error_taxonomy_policy_cap25.json"),
+        include_archive=True,
     )
 
     assert config.experiment_id == "gan_s0_qwen35b_error_taxonomy_policy_cap25"

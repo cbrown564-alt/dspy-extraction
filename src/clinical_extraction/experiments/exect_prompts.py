@@ -50,7 +50,7 @@ from clinical_extraction.exect.s5_stack import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
 )
-from clinical_extraction.programs.exect_s0_s1 import (
+from clinical_extraction.exect.s0_s1.constants import (
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
@@ -60,6 +60,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+)
+from clinical_extraction.exect.s0_s1.prompt_routing import (
     resolve_exect_s0_s1_extraction_prompt_version,
     resolve_exect_s0_s1_label_policy,
 )
