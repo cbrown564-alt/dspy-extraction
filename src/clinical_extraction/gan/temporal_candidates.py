@@ -1027,8 +1027,8 @@ def _breakthrough_after_months_seizure_free(
     # 2. General pattern for "seizure-free for [months] months, until a/an [event] occurred"
     # and "seizure-free for [months] months before experiencing a/an [event] ... preceded by [event]"
     match2 = re.search(
-        rf"(?P<evidence>[^.]*(?:seizure-free|no seizures)\s+for\s+(?P<months>seven|five|six|eight|nine|\d+)\s+months"
-        rf"[^.]*?(?:before experiencing|until)\s+(?P<events>[^.]+))",
+        r"(?P<evidence>[^.]*(?:seizure-free|no seizures)\s+for\s+(?P<months>seven|five|six|eight|nine|\d+)\s+months"
+        r"[^.]*?(?:before experiencing|until)\s+(?P<events>[^.]+))",
         note_text,
         flags=re.IGNORECASE,
     )
@@ -2266,8 +2266,8 @@ def _explicit_rate_high_recall_candidates(
                 "every-other-week frequency",
             )
     short_adverbial = re.compile(
-        rf"\b(?P<count>once|twice|thrice)\s+(?:a|per)\s+"
-        rf"(?P<unit>day|week|month|year|night|fortnight)\b",
+        r"\b(?P<count>once|twice|thrice)\s+(?:a|per)\s+"
+        r"(?P<unit>day|week|month|year|night|fortnight)\b",
         flags=re.IGNORECASE,
     )
     for match in short_adverbial.finditer(note_text):
@@ -2685,7 +2685,7 @@ def _cluster_high_recall_candidates(
             if events_over:
                 per_cluster = _quantity_to_label(events_over.group("count"))
         per_episode_count = re.search(
-            rf"(?:~|≈)?\s*(?P<count>\d+(?:\.\d+)?)\s+events?\s+per\s+episode\b",
+            r"(?:~|≈)?\s*(?P<count>\d+(?:\.\d+)?)\s+events?\s+per\s+episode\b",
             evidence,
             flags=re.IGNORECASE,
         )

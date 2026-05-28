@@ -151,8 +151,8 @@ _IMPLICIT_QUANTIFIED_FREQUENCY_RE = re.compile(
     flags=re.IGNORECASE,
 )
 _ADVERB_FREQUENCY_RE = re.compile(
-    rf"\b(?P<count>once|twice|thrice|one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*"
-    rf"(?:times?\s+)?(?P<adverb>daily|weekly|monthly|yearly|annually)\b",
+    r"\b(?P<count>once|twice|thrice|one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*"
+    r"(?:times?\s+)?(?P<adverb>daily|weekly|monthly|yearly|annually)\b",
     flags=re.IGNORECASE,
 )
 _ZERO_RATE_WINDOW_RE = re.compile(
@@ -167,7 +167,7 @@ _ZERO_RATE_FREE_RE = re.compile(
     flags=re.IGNORECASE,
 )
 _SEIZURE_FREE_CURRENT_RE = re.compile(
-    rf"\b(?:no|zero|0|not had|not happen|not happened)\s+(?:[a-zA-Z-]+\s+){{0,3}}?(?:seizures?|convulsions|episodes|events)\b",
+    r"\b(?:no|zero|0|not had|not happen|not happened)\s+(?:[a-zA-Z-]+\s+){0,3}?(?:seizures?|convulsions|episodes|events)\b",
     flags=re.IGNORECASE,
 )
 _AGO_ZERO_RATE_RE = re.compile(
@@ -176,19 +176,19 @@ _AGO_ZERO_RATE_RE = re.compile(
     flags=re.IGNORECASE,
 )
 _SEIZURE_FREE_SINCE_YEAR_RE = re.compile(
-    rf"\b(?:seizure[- ]free|free of seizures)\s+since\s+"
-    rf"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)?\s*"
-    rf"(?P<year>\d{{4}})\b",
+    r"\b(?:seizure[- ]free|free of seizures)\s+since\s+"
+    r"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)?\s*"
+    r"(?P<year>\d{4})\b",
     flags=re.IGNORECASE,
 )
 _LAST_EVENT_YEAR_RE = re.compile(
-    rf"\blast\s+(?:seizure|event|episode|convulsion)\s+(?:was\s+)?(?:in\s+)?"
-    rf"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)?\s*"
-    rf"(?P<year>\d{{4}})\b",
+    r"\blast\s+(?:seizure|event|episode|convulsion)\s+(?:was\s+)?(?:in\s+)?"
+    r"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)?\s*"
+    r"(?P<year>\d{4})\b",
     flags=re.IGNORECASE,
 )
 _LAST_SEIZURE_DATE_RE = re.compile(
-    rf"\blast\s+(?:seizure|event|episode|convulsion|seizures|convulsions|episodes|events)\s+(?:was\s+)?(?:on\s+the\s+|on\s+|in\s+)?(?:\d{{1,2}}(?:st|nd|rd|th)?\s+)?(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)\b",
+    r"\blast\s+(?:seizure|event|episode|convulsion|seizures|convulsions|episodes|events)\s+(?:was\s+)?(?:on\s+the\s+|on\s+|in\s+)?(?:\d{1,2}(?:st|nd|rd|th)?\s+)?(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)\b",
     flags=re.IGNORECASE,
 )
 _BREAKTHROUGH_AFTER_PERIOD_RE = re.compile(

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.paths import PROJECT_ROOT

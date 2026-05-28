@@ -234,10 +234,11 @@ def render_markdown(report: dict[str, Any]) -> str:
     )
     for family in sorted({row["failure_family"] for row in uncovered}):
         family_rows = [row for row in uncovered if row["failure_family"] == family]
+        record_ids = ", ".join(f"`{row['record_id']}`" for row in family_rows)
         lines.append(
             "| "
             f"`{family}` | "
-            f"{', '.join(f'`{row['record_id']}`' for row in family_rows)} | "
+            f"{record_ids} | "
             f"{_family_implication(family)} |"
         )
 

@@ -73,6 +73,7 @@ __all__ = [
     "EXECT_SEIZURE_TYPE_BENCHMARK_BRIDGE_PRIMITIVE_ID",
     "NormalizationResult",
     "PrimitiveCandidate",
+    "_BRAND_SURFACES",
     "build_exect_frequency_candidate_payloads",
     "build_exect_frequency_pre_vocab_labels",
     "build_exect_frequency_pre_vocab_labels_high_precision",

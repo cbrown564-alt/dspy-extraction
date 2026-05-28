@@ -9,7 +9,6 @@ from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_LABEL_POLICY_GUIDANCE,
     EXECT_S2_POLICY_EXAMPLES,
     EXECT_S2_PROMPT_VERSION,
-    EXECT_S2_VARIANT,
     _EXECT_S2_PROGRAM_VARIANTS,
 )
 from clinical_extraction.programs.exect_s3 import (
@@ -17,7 +16,6 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_LABEL_POLICY_GUIDANCE,
     EXECT_S3_POLICY_EXAMPLES,
     EXECT_S3_PROMPT_VERSION,
-    EXECT_S3_VARIANT,
     _EXECT_S3_PROGRAM_VARIANTS,
 )
 from clinical_extraction.programs.exect_s4 import (

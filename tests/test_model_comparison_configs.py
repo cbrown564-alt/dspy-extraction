@@ -5,7 +5,6 @@ import pytest
 
 from clinical_extraction.llms import (
     LLMProviderConfig,
-    MockChatAdapter,
     OpenAICompatibleChatAdapter,
     build_chat_adapter,
     build_dspy_lm,

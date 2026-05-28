@@ -1,7 +1,6 @@
 """ExECT S4 field-family DSPy program (S3 + seizure frequency + Rx temporality)."""
 from __future__ import annotations
 
-import re
 from collections.abc import Callable
 
 import dspy
@@ -44,7 +43,6 @@ from clinical_extraction.exect.frequency_payload import (
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
     recover_exect_frequency_benchmark_values_with_multi_label_retention as _recover_s4_seizure_frequency_multi_label_retention_raw_values,
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
-    repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
 from clinical_extraction.exect.investigation_primitives import (
     recover_exect_s4_investigation_benchmark_values,
@@ -57,20 +55,17 @@ from clinical_extraction.exect.medication_primitives import (
 )
 from clinical_extraction.exect.s5_stack import (
     EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
-    EXECT_S5_CORE_FIELD_FAMILIES,
     EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
-    EXECT_S5_STAGE_GRAPH_BY_VARIANT,
     apply_exect_s5_annotated_medication_guard,
     build_exect_s5_core_parallel_field_values,
     build_exect_s5_core_parallel_prediction,
     build_exect_s5_stack_metadata,
     is_exect_s5_frequency_verifier_variant,
-    stage_graph_id_for_s5_program_variant,
     verified_frequency_allowed_keys,
 )
 from clinical_extraction.exect.s5_modules import (
@@ -78,15 +73,6 @@ from clinical_extraction.exect.s5_modules import (
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule,
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module,
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule,
-    ExectS5SeizureFrequencyVerifierModule,
-    ExectS5SeizureFrequencyVerifierV2Module,
-)
-from clinical_extraction.exect.s5_signatures import (
-    ExectS5CoreInvestigationSignature,
-    ExectS5CoreSeizureFrequencySignature,
-    ExectS5SeizureFrequencyVerifierSignature,
-    ExectS5SeizureFrequencyVerifierV2Signature,
-    build_exect_s5_core_family_specific_signature,
 )
 from clinical_extraction.exect.slot_payload import format_exect_frequency_slot_payload_for_prompt
 from clinical_extraction.schemas import (

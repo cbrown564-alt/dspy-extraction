@@ -3,7 +3,16 @@ from __future__ import annotations
 
 import dspy
 
-from clinical_extraction.exect.s0_s1.constants import *  # noqa: F401,F403
+from clinical_extraction.exect.s0_s1.constants import (
+    EXECT_S0_S1_D1_PROMPT_VERSION,
+    EXECT_S0_S1_L0_PROMPT_VERSION,
+    EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
+    EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION,
+    EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION,
+    EXECT_S0_S1_V4_11_PROMPT_VERSION,
+    EXECT_S0_S1_V4_12_PROMPT_VERSION,
+)
 from clinical_extraction.exect.s0_s1.prompt_routing import (
     resolve_exect_s0_s1_extraction_prompt_version,
     resolve_exect_s0_s1_label_policy,

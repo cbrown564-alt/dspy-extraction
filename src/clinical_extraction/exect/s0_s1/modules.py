@@ -3,7 +3,23 @@ from __future__ import annotations
 
 import dspy
 
-from clinical_extraction.exect.s0_s1.constants import *  # noqa: F401,F403
+from clinical_extraction.exect.s0_s1.constants import (
+    EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+    EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+    EXECT_S0_S1_FIELD_FAMILIES,
+    EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
+    EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_SECTION_AWARE_VARIANT,
+    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_V4_11_PROMPT_VERSION,
+    EXECT_S0_S1_VARIANT,
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+)
 from clinical_extraction.exect.s0_s1.prediction_artifacts import (
     _apply_exect_verifier_guards,
     _as_list,

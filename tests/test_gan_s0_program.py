@@ -56,8 +56,6 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
     GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION,
     GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
-    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_HYBRID_RESOLUTION_PROMPT_VERSION,
@@ -1419,6 +1417,21 @@ def test_gan_frequency_s0_synthesis_feedback_metric_flags_abstention_failure():
     assert result.score == 0.0
     assert "abstention" in result.feedback
     assert "canonical Gan label" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_missing_gold_label():
+    example = dspy.Example(
+        note_text="There are multiple seizures each day.",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="multiple per day",
+        evidence_text="multiple seizures each day",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 0.0
+    assert "missing the gold Gan frequency label" in result.feedback
 
 
 def test_make_gan_dspy_examples_sets_note_text_as_input_and_gold_label_as_output():

@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import dspy
 
 from clinical_extraction.experiments.runner import (

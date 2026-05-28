@@ -510,7 +510,6 @@ def _interpret_s1_split(
     deltas: Mapping[str, Mapping[str, float]],
 ) -> list[str]:
     validation_bridge = run_summaries["policy_post_bridge_full_validation"]
-    holdout = run_summaries["qwen_clean_test_holdout"]
     raw_full = run_summaries["policy_raw_full_validation"]
     bridge_delta = deltas["bridge_full_validation"]
     holdout_delta = deltas["qwen_holdout_minus_validation"]

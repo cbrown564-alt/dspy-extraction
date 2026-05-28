@@ -6,8 +6,18 @@ from pathlib import Path
 import dspy
 
 from clinical_extraction.gan.s0.metrics import GAN_FREQUENCY_S0_OPTIMIZER_METRICS
-from clinical_extraction.gan.s0.modules import *  # noqa: F401,F403
-from clinical_extraction.gan.s0.variant_routing import *  # noqa: F401,F403
+from clinical_extraction.gan.s0.modules import (
+    GanFrequencyS0DirectModule,
+    GanFrequencyS0Module,
+    GanFrequencyS0TemporalCandidatesSinglePassModule,
+    GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+    GanFrequencyS0VerifyRepairModule,
+    build_gan_s0_module,
+)
+from clinical_extraction.gan.s0.variant_routing import (
+    GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_VARIANT,
+)
 from clinical_extraction.schemas import GanRecord
 
 

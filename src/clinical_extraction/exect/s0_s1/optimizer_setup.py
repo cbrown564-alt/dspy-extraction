@@ -3,7 +3,14 @@ from __future__ import annotations
 
 import dspy
 
-from clinical_extraction.exect.s0_s1.constants import *  # noqa: F401,F403
+from clinical_extraction.exect.s0_s1.constants import (
+    EXECT_DATASET,
+    EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_SCHEMA_LEVEL,
+    EXECT_S0_S1_SCORER,
+    EXECT_S0_S1_STAGE_GRAPH_BY_VARIANT,
+    EXECT_S0_S1_VARIANT,
+)
 from clinical_extraction.exect.s0_s1.metrics import EXECT_S0_S1_OPTIMIZER_METRICS
 from clinical_extraction.exect.s0_s1.modules import (
     ExectS0S1FieldFamilyModule,

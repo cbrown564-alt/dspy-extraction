@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, model_validator
+from pydantic import model_validator
 
 from clinical_extraction.experiments.config import (
     ExperimentConfig,

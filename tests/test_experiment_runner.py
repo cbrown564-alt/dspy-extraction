@@ -157,13 +157,13 @@ def test_exect_backend_routes_s4_g0g2_guard_variant_to_s4_builder():
 
 
 @pytest.mark.parametrize(
-    ("config_path", "fixture_name"),
+    "config_path",
     [
-        (GAN_ACTIVE_CONFIG, None),
-        (EXECT_ACTIVE_CONFIG, None),
+        GAN_ACTIVE_CONFIG,
+        EXECT_ACTIVE_CONFIG,
     ],
 )
-def test_backend_prompts_data_has_artifact_shape(config_path: Path, fixture_name: str | None):
+def test_backend_prompts_data_has_artifact_shape(config_path: Path):
     config = load_experiment_config(config_path)
     actual = get_backend(config.dataset).prompts_data(config)
     assert {"signature", "module", "predictor", "program_variant", "prompt_version"} <= set(actual)

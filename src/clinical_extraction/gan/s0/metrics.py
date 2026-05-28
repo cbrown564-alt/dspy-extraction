@@ -90,9 +90,6 @@ def gan_frequency_s0_synthesis_feedback_metric(
     gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
     note_text = getattr(example, "note_text", "") or ""
 
-    if not gold:
-        return base
-
     if not predicted:
         return ScoreWithFeedback(
             score=0.0,

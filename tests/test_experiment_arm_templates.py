@@ -16,7 +16,6 @@ from clinical_extraction.experiments.config import ExperimentConfig
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
-    EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
@@ -25,7 +24,6 @@ from clinical_extraction.programs.exect_s0_s1 import (
     REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
 )
 from clinical_extraction.programs.exect_s4 import (
-    EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -36,7 +34,6 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-    GAN_FREQUENCY_S0_VARIANT,
 )
 
 

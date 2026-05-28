@@ -30,7 +30,7 @@ from clinical_extraction.programs.exect_s3 import (
     _s3_bridge_tiers,
 )
 from clinical_extraction.paths import resolve_run_directory
-from clinical_extraction.schemas import DocumentPrediction, ExtractedValue, PredictionSet
+from clinical_extraction.schemas import DocumentPrediction, PredictionSet
 
 DEFAULT_COMORBIDITY_SLICE_FIXTURE = Path(
     "data/fixtures/exect_s2_comorbidity_residual_slice.json"

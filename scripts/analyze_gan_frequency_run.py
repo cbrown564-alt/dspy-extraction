@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -439,10 +439,8 @@ def _render_markdown(analysis: dict[str, Any], experiment_id: str) -> str:
     lines.append("## Metrics snapshot (valid predictions only)")
     lines.append("")
     acc = summary["accuracies_valid_only"]
-    lines.append(
-        f"| Metric | Accuracy | Correct | Denominator |"
-    )
-    lines.append(f"| --- | ---: | ---: | ---: |")
+    lines.append("| Metric | Accuracy | Correct | Denominator |")
+    lines.append("| --- | ---: | ---: | ---: |")
     n = summary["record_counts"]["scored_valid"]
     for name, value in acc.items():
         correct = round(value * n)

@@ -25,7 +25,7 @@ def test_active_experiment_configs_are_loadable_current_contracts():
 
     for path in config_paths:
         try:
-            config = load_experiment_config(path)
+            load_experiment_config(path)
         except ValidationError as exc:
             errors.append(f"{path}: {exc}")
             continue

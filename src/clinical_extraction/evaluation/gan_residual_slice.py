@@ -464,7 +464,6 @@ def compare_residual_slice_arms(
         c1_exact = treatment.get("normalized_exact_match") is True
         c0_monthly = control.get("monthly_match") is True
         c1_monthly = treatment.get("monthly_match") is True
-        ref_exact = reference.get("normalized_exact_match") is True
         ref_monthly = reference.get("monthly_match") is True
 
         exact_recovery = (not c0_exact) and c1_exact

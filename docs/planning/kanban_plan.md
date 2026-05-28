@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C25/E6 complete; ruff/vulture installed
+Last refreshed: 2026-05-28 C26 complete; static checks and full suite clean
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -138,23 +138,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Backlog
 
-### C26 - Ruff/Vulture Static Dead-Code Sweep
-
-- **Outcome:** Use installed dev tools `ruff` and `vulture` to find unused
-  imports, unused locals, unreachable branches, dead helpers, stale constants,
-  and obsolete compatibility exports after C25 settles the active script
-  surface.
-- **Dependencies:** C25.
-- **Parallelizable:** no; batch by semantic area so findings do not blur
-  scorer, loader, benchmark bridge, and component contracts.
-- **Owner:** unassigned.
-- **Validation:** `uv run ruff check src scripts tests`; `uv run vulture src
-  scripts tests --min-confidence 80`; focused tests for every touched area; full
-  suite after deletion batches.
-- **Notes:** Do not run broad `ruff --fix` across scorer, loader, split,
-  benchmark bridge, or current component code. Create an explicit whitelist only
-  for justified dynamic/Pydantic/DSPy/CLI surfaces.
-
 ### X2 - Pairwise ExECT Interaction Plan
 
 - **Outcome:** A preregistered plan for diagnosis+seizure type,
@@ -286,6 +269,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | C23 archive loadability retirement, 2026-05-28 | `resolve_config_path` and `resolve_run_directory` are active-only by default; archive-aware replay/reporting callers now pass an explicit archive opt-in. Archived config inventory is rendered as `docs_provenance`, registry canonical-run misses are warnings rather than active loadability errors, and `tests/test_experiment_configs.py` was reduced to current-authority config invariants instead of archived per-file replay contracts. Validation: C23 path/config/registry/export suite passed (41 tests); `uv run python scripts/validate_experiment_taxonomy.py --errors-only` exited 0 with provenance warnings for absent active run directories. |
 | C24 legacy facade import inversion, 2026-05-28 | Active Gan S0 and ExECT S0/S1 runtime imports in experiment config, backends, prompt metadata, registry code, S5 stack helpers, S2-S4 shared helper use, and the Gan smoke script now target domain-owned modules (`clinical_extraction.gan.s0.*` and `clinical_extraction.exect.s0_s1.*`) instead of the old compatibility facades. The facades remain for backward imports and compatibility tests, but active runtime/script scans no longer import the old Gan or S0/S1 facade paths. Validation: Gan S0 package/program/stage and ExECT S0/S1 boundary/config suite passed (223 tests); Gan and ExECT scorer suites passed (19 tests). |
 | C25 script hygiene and report exporter split, 2026-05-28 | `docs/planning/script_entrypoint_inventory_20260528.md` now classifies the active `scripts/` surface as validators, active runners/utilities, current report exporters, or archived one-offs. Tested ExECT E1/E3/E4/E6 report builders and the Gan G3 policy probe moved from script-local code into `clinical_extraction.evaluation.*`, with thin CLI wrappers left under `scripts/`. Historical ExECT error reads and residual replay one-offs moved to `archive/scripts/` after active-reference scans found no non-archive dependents. Validation: focused report-builder tests passed; static active-reference checks passed. |
+| C26 Ruff/Vulture static dead-code sweep, 2026-05-28 | `uv run ruff check src scripts tests` and `uv run vulture src scripts tests --min-confidence 80` now pass cleanly without broad auto-fix. The sweep removed unused imports/locals in active scripts, evaluation helpers, experiment tests, and ExECT/Gan component code; replaced wildcard-dependent imports in active Gan S0 and ExECT S0/S1 DSPy modules/signatures with explicit imports; fixed a Python 3.11-incompatible nested f-string in the Gan candidate-builder audit script; preserved the `_BRAND_SURFACES` ExECT primitive compatibility export explicitly; and repaired a Gan S0 synthesis feedback missing-gold path that had returned an undefined name. Scorer semantics, loader/split policy, benchmark bridges, and component contracts were preserved. Validation: focused Gan, ExECT, experiment/config, and compatibility suites passed; full suite `uv run pytest` passed (797 tests, 16 warnings). |
 | Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
 | ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
@@ -340,6 +324,10 @@ artifacts, and git history; this section only keeps the steering implications.
   `planning/script_entrypoint_inventory_20260528.md`, tested current report
   builders now live under `clinical_extraction.evaluation.*`, and provenance
   one-offs with only archived references have moved to `archive/scripts/`.
+- C26 is complete: `ruff` and `vulture` both pass on `src scripts tests`,
+  dead imports/locals were removed, active Gan/ExECT DSPy internals now use
+  explicit imports instead of wildcard-dependent names, and compatibility
+  exports needed for replay/tests are retained explicitly.
 - The typed program variant registry classifies active config rows as
   current-authority and archived rows as docs/file provenance, with explicit
   status labels for replay/provenance, historical, rejected, blocked, or
@@ -396,7 +384,7 @@ artifacts, and git history; this section only keeps the steering implications.
   C20 found no remaining P1 monolith blocker. C21 produced the pruning plan;
   C22 removed the high-confidence active deadweight, and C23/C24 completed the
   replay/default-loadability and Gan/S0-S1 facade follow-ups. C25 settled
-  script entrypoints before C26 runs `ruff`/`vulture` dead-code pruning.
+  script entrypoints, and C26 completed the `ruff`/`vulture` dead-code sweep.
 - **Single-threaded or carefully sequenced:** future registry/archive
   regeneration and any change to scorer, loader, split, benchmark bridge, or
   shared primitive contracts.
@@ -411,8 +399,7 @@ artifacts, and git history; this section only keeps the steering implications.
 ## Recommended Next Pull
 
 1. Pull **G5, E7, E10, E8, or G4** according to cleanup, paper, or
-   experiment need; run **C26** only after C25, keeping each run preregistered
-   and component-scoped.
+   experiment need, keeping each run preregistered and component-scoped.
 
 ## Standing Guardrails
 

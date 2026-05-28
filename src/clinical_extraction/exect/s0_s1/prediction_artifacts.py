@@ -15,7 +15,46 @@ from clinical_extraction.datasets.exect import (
 from clinical_extraction.exect.medication_primitives import (
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
 )
-from clinical_extraction.exect.s0_s1.constants import *  # noqa: F401,F403
+from clinical_extraction.exect.s0_s1.constants import (
+    ALLOWED_DIAGNOSIS_LABELS,
+    EXECT_DATASET,
+    EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+    EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+    EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_SCHEMA_LEVEL,
+    EXECT_S0_S1_SCORER,
+    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_VARIANT,
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+    REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
+    REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
+    _CURRENT_PRESCRIPTION_LINE_RE,
+    _DIAGNOSIS_HEADER_RE,
+    _DISSOCIATIVE_EPILEPTIC_FOCAL_SEIZURE_LABELS,
+    _EPILEPTIC_SEIZURES_LABEL,
+    _GENERIC_EPILEPSY_CO_LIST_TRIGGERS,
+    _GRANULAR_SEIZURE_TYPE_COARSENING,
+    _JME_COARSE_SEIZURE_LABELS,
+    _JME_MYCLONIC_SEIZURE_LABELS,
+    _KNOWN_PRESCRIPTION_MEDICATIONS,
+    _MEDICATION_BRAND_NOTE_SURFACES,
+    _MEDICATION_EVIDENCE_EXCLUSION_PHRASES,
+    _MEDICATION_EVIDENCE_PREFIXES,
+    _MEDICATION_PLANNED_OR_HISTORICAL_EVIDENCE_PHRASES,
+    _MEDICATION_SURFACE_REPAIRS,
+    _ON_AWAKENING_SYNDROME_DIAGNOSIS,
+    _ON_AWAKENING_SYNDROME_NOTE_RE,
+    _REJECTED_ANNOTATED_MEDICATIONS,
+    _REJECTED_GRANULAR_SEIZURE_TYPES,
+    _SECONDARY_COLLAPSED_SEIZURE_TOKEN,
+    _SECONDARY_GENERALISED_SEIZURE_LABELS,
+    _SECONDARY_GENERALISED_SEIZURE_NOTE_RE,
+    _SPECIFICITY_COLLAPSE_DIAGNOSIS_TOKENS,
+    _SPECIFICITY_COLLAPSE_TRIGGER_DIAGNOSES,
+)
 from clinical_extraction.exect.s0_s1.prompt_routing import (
     build_precomputed_family_candidates,
     build_precomputed_medication_candidates,
@@ -23,6 +62,7 @@ from clinical_extraction.exect.s0_s1.prompt_routing import (
     extract_d1_field_family_surfaces,
 )
 from clinical_extraction.exect.s1_boundary import build_s1_boundary_surfaces_metadata
+from clinical_extraction.pipeline.sectioning import select_context
 from clinical_extraction.schemas import (
     DocumentPrediction,
     EvidenceSpan,

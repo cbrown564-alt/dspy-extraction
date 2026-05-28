@@ -2,7 +2,6 @@ from clinical_extraction.datasets.exect import (
     canonical_birth_history_label,
     canonical_epilepsy_cause_label,
     canonical_onset_label,
-    canonical_when_diagnosed_label,
     load_exect_gold_document,
 )
 

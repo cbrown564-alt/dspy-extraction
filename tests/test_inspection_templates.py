@@ -4,8 +4,6 @@ from clinical_extraction.experiments.inspection_templates import (
     DECISION_REQUIRED_HEADINGS,
     INSPECTION_REQUIRED_HEADINGS,
     TEMPLATE_PATHS,
-    validate_decision_document,
-    validate_inspection_document,
     validate_template_file,
 )
 

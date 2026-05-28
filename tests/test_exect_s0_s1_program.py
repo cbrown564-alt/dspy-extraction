@@ -1514,9 +1514,6 @@ def test_exect_s0_s1_boundary_surfaces_expose_brand_medication_normalization():
 
 def test_exect_s0_s1_bridge_repairs_medication_evidence_header_prefix():
     record = load_exect_gold_document("EA0142")
-    note_line = next(
-        line for line in record.text.splitlines() if "lamictal" in line.lower()
-    )
     _configure_dummy([{
         "reasoning": "Evidence should be repaired to the note line despite spacing drift.",
         "diagnosis": [],
@@ -1798,7 +1795,7 @@ def test_exect_s0_s1_prompt_graph_parallel_module_uses_full_note_context():
         },
     ])
 
-    prediction_set = predict_exect_records(
+    predict_exect_records(
         ExectS0S1FieldFamilyPromptGraphParallelModule(),
         [record],
         model_provider="mock",
