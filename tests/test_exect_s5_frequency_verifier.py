@@ -79,19 +79,6 @@ def test_build_exect_s4_module_returns_frequency_verify_wrapper():
     assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule)
 
 
-def test_exect_s4_facade_reexports_s5_module_classes():
-    from clinical_extraction.programs import exect_s4
-
-    assert (
-        exect_s4.ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule
-        is ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule
-    )
-    assert (
-        exect_s4.ExectS5CoreFieldFamilyParallelV2bModule
-        is ExectS5CoreFieldFamilyParallelV2bModule
-    )
-
-
 def test_build_exect_s4_module_returns_frequency_verify_v2_wrapper():
     module = build_exect_s4_module(
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT

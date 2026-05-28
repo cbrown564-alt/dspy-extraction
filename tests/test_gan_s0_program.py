@@ -975,27 +975,6 @@ def test_gan_frequency_s0_metric_returns_1_on_pragmatic_category_match():
     assert score == 1.0
 
 
-def test_gan_frequency_s0_metrics_are_domain_module_exports():
-    from clinical_extraction.gan.s0 import metrics as gan_metrics
-    from clinical_extraction.programs import gan_frequency_s0 as legacy_program
-
-    assert legacy_program.gan_frequency_s0_metric is gan_metrics.gan_frequency_s0_metric
-    assert (
-        legacy_program.gan_frequency_s0_semantic_evidence_metric
-        is gan_metrics.gan_frequency_s0_semantic_evidence_metric
-    )
-    assert (
-        legacy_program.GAN_FREQUENCY_S0_OPTIMIZER_METRICS
-        is gan_metrics.GAN_FREQUENCY_S0_OPTIMIZER_METRICS
-    )
-    assert (
-        legacy_program.GAN_FREQUENCY_S0_OPTIMIZER_METRICS[
-            "gan_s0_stage_attributed_frequency_feedback"
-        ]
-        is gan_metrics.gan_frequency_s0_stage_attributed_feedback_metric
-    )
-
-
 def test_gan_frequency_s0_metric_returns_0_on_category_mismatch():
     example = dspy.Example(
         note_text="...",

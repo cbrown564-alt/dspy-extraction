@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C26 complete; static checks and full suite clean
+Last refreshed: 2026-05-28 C27 complete; static checks and full suite clean
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -270,6 +270,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | C24 legacy facade import inversion, 2026-05-28 | Active Gan S0 and ExECT S0/S1 runtime imports in experiment config, backends, prompt metadata, registry code, S5 stack helpers, S2-S4 shared helper use, and the Gan smoke script now target domain-owned modules (`clinical_extraction.gan.s0.*` and `clinical_extraction.exect.s0_s1.*`) instead of the old compatibility facades. The facades remain for backward imports and compatibility tests, but active runtime/script scans no longer import the old Gan or S0/S1 facade paths. Validation: Gan S0 package/program/stage and ExECT S0/S1 boundary/config suite passed (223 tests); Gan and ExECT scorer suites passed (19 tests). |
 | C25 script hygiene and report exporter split, 2026-05-28 | `docs/planning/script_entrypoint_inventory_20260528.md` now classifies the active `scripts/` surface as validators, active runners/utilities, current report exporters, or archived one-offs. Tested ExECT E1/E3/E4/E6 report builders and the Gan G3 policy probe moved from script-local code into `clinical_extraction.evaluation.*`, with thin CLI wrappers left under `scripts/`. Historical ExECT error reads and residual replay one-offs moved to `archive/scripts/` after active-reference scans found no non-archive dependents. Validation: focused report-builder tests passed; static active-reference checks passed. |
 | C26 Ruff/Vulture static dead-code sweep, 2026-05-28 | `uv run ruff check src scripts tests` and `uv run vulture src scripts tests --min-confidence 80` now pass cleanly without broad auto-fix. The sweep removed unused imports/locals in active scripts, evaluation helpers, experiment tests, and ExECT/Gan component code; replaced wildcard-dependent imports in active Gan S0 and ExECT S0/S1 DSPy modules/signatures with explicit imports; fixed a Python 3.11-incompatible nested f-string in the Gan candidate-builder audit script; preserved the `_BRAND_SURFACES` ExECT primitive compatibility export explicitly; and repaired a Gan S0 synthesis feedback missing-gold path that had returned an undefined name. Scorer semantics, loader/split policy, benchmark bridges, and component contracts were preserved. Validation: focused Gan, ExECT, experiment/config, and compatibility suites passed; full suite `uv run pytest` passed (797 tests, 16 warnings). |
+| C27 compatibility test shrink, 2026-05-28 | Explicit legacy facade/re-export assertions were retired where public domain/component tests now cover behavior: Gan package-surface legacy import parity, Gan/ExECT metrics facade parity, ExECT S0/S1 import-compatible facade parity, ExECT S4 facade re-export parity, and the ExECT primitive facade-only test file. The Gan package decomposition parity tests now call domain-owned Gan S0 modules, prediction bridge, and variant routing directly. Scorer, loader, split, benchmark bridge, current config, and component behavior semantics were not changed. Validation: focused Gan/ExECT component suite passed (214 tests); `uv run ruff check src scripts tests` passed; `uv run vulture src scripts tests --min-confidence 80` passed; full suite `uv run pytest -q` passed (790 tests, 16 warnings). |
 | Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
 | ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
@@ -328,6 +329,9 @@ artifacts, and git history; this section only keeps the steering implications.
   dead imports/locals were removed, active Gan/ExECT DSPy internals now use
   explicit imports instead of wildcard-dependent names, and compatibility
   exports needed for replay/tests are retained explicitly.
+- C27 is complete: explicit tests for old facade/re-export compatibility were
+  shrunk, while scorer, loader, split, benchmark bridge, current config, and
+  public component behavior coverage remained intact.
 - The typed program variant registry classifies active config rows as
   current-authority and archived rows as docs/file provenance, with explicit
   status labels for replay/provenance, historical, rejected, blocked, or
@@ -384,7 +388,8 @@ artifacts, and git history; this section only keeps the steering implications.
   C20 found no remaining P1 monolith blocker. C21 produced the pruning plan;
   C22 removed the high-confidence active deadweight, and C23/C24 completed the
   replay/default-loadability and Gan/S0-S1 facade follow-ups. C25 settled
-  script entrypoints, and C26 completed the `ruff`/`vulture` dead-code sweep.
+  script entrypoints, C26 completed the `ruff`/`vulture` dead-code sweep, and
+  C27 shrank obsolete compatibility test contracts.
 - **Single-threaded or carefully sequenced:** future registry/archive
   regeneration and any change to scorer, loader, split, benchmark bridge, or
   shared primitive contracts.

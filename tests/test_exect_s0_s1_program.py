@@ -3,6 +3,9 @@ import pytest
 from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document, load_exect_gold_documents
+from clinical_extraction.exect.s0_s1.metrics import (
+    exect_s0_s1_field_family_micro_f1_raw_metric,
+)
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
@@ -2350,50 +2353,6 @@ def test_exect_s0_s1_field_family_micro_f1_metric_returns_1_on_exact_match():
     assert score == 1.0
 
 
-def test_exect_s0_s1_metrics_are_domain_module_exports():
-    from clinical_extraction.exect.s0_s1 import metrics as exect_metrics
-    from clinical_extraction.programs import exect_s0_s1 as legacy_program
-
-    assert (
-        legacy_program.exect_s0_s1_field_family_micro_f1_metric
-        is exect_metrics.exect_s0_s1_field_family_micro_f1_metric
-    )
-    assert (
-        legacy_program.exect_s0_s1_field_family_micro_f1_raw_metric
-        is exect_metrics.exect_s0_s1_field_family_micro_f1_raw_metric
-    )
-    assert (
-        legacy_program.EXECT_S0_S1_OPTIMIZER_METRICS
-        is exect_metrics.EXECT_S0_S1_OPTIMIZER_METRICS
-    )
-    assert (
-        legacy_program.EXECT_S0_S1_OPTIMIZER_METRICS[
-            "exect_field_family_micro_f1"
-        ]
-        is exect_metrics.exect_s0_s1_field_family_micro_f1_metric
-    )
-
-
-def test_exect_s0_s1_program_is_import_compatible_facade():
-    from clinical_extraction.exect.s0_s1 import modules as exect_modules
-    from clinical_extraction.exect.s0_s1 import optimizer_setup, prediction_artifacts
-    from clinical_extraction.exect.s0_s1 import prompt_routing, signatures
-    from clinical_extraction.programs import exect_s0_s1 as legacy_program
-
-    assert legacy_program.ExectS0S1FieldFamilyModule is exect_modules.ExectS0S1FieldFamilyModule
-    assert legacy_program.ExectS0S1FieldFamilySignature is signatures.ExectS0S1FieldFamilySignature
-    assert legacy_program.build_exect_s0_s1_module is exect_modules.build_exect_s0_s1_module
-    assert legacy_program.predict_exect_records is prediction_artifacts.predict_exect_records
-    assert (
-        legacy_program.resolve_exect_s0_s1_label_policy
-        is prompt_routing.resolve_exect_s0_s1_label_policy
-    )
-    assert (
-        legacy_program.compile_exect_s0_s1_module
-        is optimizer_setup.compile_exect_s0_s1_module
-    )
-
-
 def test_exect_s1_clean_ladder_variant_applies_annotated_medication_guard():
     record = load_exect_gold_document("EA0008")
     _configure_dummy(
@@ -2501,10 +2460,6 @@ def test_exect_s0_s1_field_family_micro_f1_metric_penalizes_wrong_labels():
 
 
 def test_exect_s0_s1_field_family_micro_f1_raw_metric_omits_inline_bridges():
-    from clinical_extraction.programs.exect_s0_s1 import (
-        exect_s0_s1_field_family_micro_f1_raw_metric,
-    )
-
     record = load_exect_gold_documents()[0]
     example = dspy.Example(
         note_text=record.text,
