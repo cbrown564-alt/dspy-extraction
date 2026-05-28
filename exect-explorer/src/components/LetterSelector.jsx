@@ -14,12 +14,15 @@ function hasUserAnnotations(letterId) {
   }
 }
 
-export default function LetterSelector({ letters, currentId, onSelect }) {
+export default function LetterSelector({ letters, currentId, onSelect, predictedIds }) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all"); // all | notable | flawed | annotated
 
   const filtered = useMemo(() => {
     let result = letters;
+    if (predictedIds) {
+      result = result.filter((l) => predictedIds.includes(l.id));
+    }
     if (filter === "notable") {
       result = result.filter((l) => NOTABLE.includes(l.id));
     } else if (filter === "flawed") {
@@ -32,10 +35,15 @@ export default function LetterSelector({ letters, currentId, onSelect }) {
       result = result.filter((l) => l.id.toLowerCase().includes(q));
     }
     return result;
-  }, [letters, query, filter]);
+  }, [letters, query, filter, predictedIds]);
 
   return (
     <div className="letter-selector">
+      {predictedIds && (
+        <div className="selector-filter-banner">
+          Model predictions only ({filtered.length})
+        </div>
+      )}
       <div className="selector-search">
         <Search size={13} />
         <input

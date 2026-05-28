@@ -1,7 +1,7 @@
 # Synthesis And Paper Evidence Map
 
 Status: active guidance
-Last updated: 2026-05-28
+Last updated: 2026-05-28 after E11 residual attribution
 
 This folder contains multiple generations of synthesis. Most are historical
 evidence, not active steering. Use this map before citing any synthesis doc.
@@ -12,7 +12,7 @@ evidence, not active steering. Use this map before citing any synthesis doc.
 | --- | --- | --- |
 | `paper_result_table_pack_20260525.md` | paper evidence | Current manuscript table pack, but Gan benchmark-comparison tables still need `gan2026_paper_reproduction` rescoring. |
 | `paper_claims_caveats_20260525.md` | paper evidence | Supported and unsupported claim language. |
-| `test_holdout_evaluation_report_20260527.md` | current synthesis / active risk | One-shot holdout report; use as transfer warning, not tuning feedback. |
+| `test_holdout_evaluation_report_20260527.md` | current synthesis / diagnostic holdout baseline | One-shot holdout report; use with `../exect/exect_holdout_residual_attribution_e11_20260528.md` for ExECT residual attribution, not tuning feedback. |
 | `l1_2_s5_local_vs_closed_comparison_20260525.md` | paper evidence | Local-vs-closed ExECT S5 comparison. |
 
 ## Superseded Or Historical Surfaces

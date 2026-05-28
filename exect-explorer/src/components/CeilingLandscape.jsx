@@ -1,8 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Mountain, Flag, Lock, XCircle, TrendingUp, Activity,
   ChevronRight, Wind, MapPin, Anchor, ShieldAlert, Compass
 } from "lucide-react";
+
+/*
+  Elevation = current evidence strength (0-100).
+  CeilingGap = how much unknown summit sits above us in the clouds.
+  A tall elevation with small gap = near-ceiling, well-mapped.
+  A small elevation with large gap = early foothill, vast unknown above.
+*/
 
 const GAN_PEAKS = [
   {
@@ -10,8 +17,9 @@ const GAN_PEAKS = [
     name: "Frequency Gate",
     subtitle: "Content detection",
     status: "operational",
-    metric: null,
-    elevation: 85,
+    elevation: 82,
+    ceilingGap: 18,
+    widthFactor: 0.9,
     description: "Does the note contain any seizure-frequency reference? D1 v1.2b operates here silently.",
     experiments: [],
     nextAction: "Frozen into D1 v1.2b baseline; no independent ceiling claimed.",
@@ -22,56 +30,61 @@ const GAN_PEAKS = [
     name: "Candidate Inventory",
     subtitle: "G1 coverage probe",
     status: "mechanism_open",
-    metric: "63 / 299",
-    elevation: 65,
-    description: "What candidate frequencies exist? Deterministic substrate emits candidates for 65 records; exact-covers 61 gold labels.",
+    elevation: 22,
+    ceilingGap: 65,
+    widthFactor: 1.1,
+    description: "Deterministic substrate emits candidates for 65 records; exact-covers 61 gold labels. No-reference coverage is 0/11.",
     experiments: ["G1"],
     nextAction: "Split target selection from label construction before new adjudicator variants.",
-    detail: "No-reference coverage is 0/11. This is a coverage gate, not a ceiling."
+    detail: "A coverage gate, not a ceiling. The true summit is still deep in cloud."
   },
   {
     id: "temporal_anchor",
     name: "Temporal Anchoring",
     subtitle: "Date math & scope",
     status: "mechanism_open",
-    metric: "~80% monthly",
-    elevation: 78,
-    description: "Which time window does each candidate belong to? R11 showed D1 wins; arithmetic injection regressed.",
+    elevation: 68,
+    ceilingGap: 45,
+    widthFactor: 0.95,
+    description: "R11 showed D1 wins; arithmetic injection and broad anchor guardrails regressed.",
     experiments: ["R11", "R15"],
     nextAction: "Keep arithmetic diagnostic-only until parser is seizure-specific.",
-    detail: "Broad relative-anchor guardrails caused regression. Precision vs recall trade-off unresolved."
+    detail: "Precision vs recall trade-off unresolved. The summit is glimpsed but not reached."
   },
   {
     id: "target_selection",
     name: "Target Selection",
     subtitle: "Scope & benchmark target",
     status: "mechanism_open",
-    metric: "92.0% slice",
-    elevation: 88,
-    description: "Which candidate becomes the benchmark-facing label? G2 showed candidate-constrained hits 92% on enriched slice.",
+    elevation: 85,
+    ceilingGap: 55,
+    widthFactor: 1.0,
+    description: "G2 showed candidate-constrained hits 92% on enriched slice. Free adjudication fell to 16.0%.",
     experiments: ["G2"],
     nextAction: "G4 explicit reason-code adjudicator should beat same-slice baselines before full validation.",
-    detail: "Free adjudication fell to 16.0% monthly. Candidate-constrained is the current mechanism anchor."
+    detail: "Candidate-constrained is the current mechanism anchor, but slice metrics are not a full ceiling."
   },
   {
     id: "label_construction",
     name: "Label Construction",
     subtitle: "Canonical aggregation",
     status: "mechanism_open",
-    metric: "64 / 65 valid",
-    elevation: 75,
-    description: "How is the final monthly / per-4wk label built? Constructor validates most records; leaves malformed cases unsupported.",
+    elevation: 70,
+    ceilingGap: 48,
+    widthFactor: 0.9,
+    description: "Constructor validates 64/65 current candidate records. Malformed strings remain unsupported.",
     experiments: ["G2"],
     nextAction: "Inspect G2 differential records before adding new explicit reason-code logic.",
-    detail: "Malformed strings like 'a pair of per 4 month' are not scorer-repaired. Label construction must stay separated from target selection in reports."
+    detail: "Label construction must stay separated from target selection in reports."
   },
   {
     id: "unknown_policy",
-    name: "Unknown vs No-Ref",
-    subtitle: "Policy isolation",
+    name: "Unknown Policy",
+    subtitle: "No-ref isolation",
     status: "mechanism_open",
-    metric: null,
-    elevation: 60,
+    elevation: 35,
+    ceilingGap: 72,
+    widthFactor: 0.8,
     description: "Canonical scorer keeps them distinct; paper reproduction collapses them differently.",
     experiments: ["G3"],
     nextAction: "Use G3 policy-isolation cues to guide G4 adjudicator design.",
@@ -82,12 +95,13 @@ const GAN_PEAKS = [
     name: "Evidence & Schema",
     subtitle: "Validation gate",
     status: "diagnostic",
-    metric: "High rates",
-    elevation: 55,
+    elevation: 28,
+    ceilingGap: 78,
+    widthFactor: 0.75,
     description: "Schema validity and evidence presence are necessary but not sufficient for correctness.",
     experiments: [],
     nextAction: "Keep as gates and diagnostics, never as proof of semantic correctness.",
-    detail: "High schema/evidence rates often coexist with wrong frequency labels. Do not optimize for this alone."
+    detail: "High schema/evidence rates often coexist with wrong frequency labels."
   }
 ];
 
@@ -97,9 +111,10 @@ const EXECT_PEAKS = [
     name: "Frequency Payload",
     subtitle: "E1 / E10",
     status: "mechanism_open",
-    metric: "43/43 recall",
-    elevation: 72,
-    description: "Broad payload covers all validation gold labels but emits 151 extra candidates (22.2% precision).",
+    elevation: 55,
+    ceilingGap: 50,
+    widthFactor: 1.0,
+    description: "Broad payload covers all 43 validation gold labels but emits 151 extra candidates (22.2% precision).",
     experiments: ["E1", "E10"],
     nextAction: "Split candidate selection/adjudication from label construction.",
     detail: "Coverage gate is passed. Adjudication is wide open."
@@ -109,8 +124,9 @@ const EXECT_PEAKS = [
     name: "Medication Current-Rx",
     subtitle: "E6 ceiling",
     status: "promoted",
-    metric: "100.0% F1",
-    elevation: 95,
+    elevation: 100,
+    ceilingGap: 0,
+    widthFactor: 1.15,
     description: "Annotation-derived current-Rx payload reaches perfect F1 on validation. A true no-model ceiling substrate.",
     experiments: ["E6"],
     nextAction: "Route E7 to explain S5 over-emission before changing prompts or bridges.",
@@ -121,8 +137,9 @@ const EXECT_PEAKS = [
     name: "Family Spans",
     subtitle: "E4 / E8",
     status: "mechanism_open",
-    metric: "100% evidence",
-    elevation: 80,
+    elevation: 72,
+    ceilingGap: 38,
+    widthFactor: 1.05,
     description: "Typed document geometry covers core-family validation evidence. 88.8% of full-note characters used.",
     experiments: ["E4", "E8"],
     nextAction: "Preregister full-note vs family-span prompt comparison before promotion.",
@@ -133,8 +150,9 @@ const EXECT_PEAKS = [
     name: "Investigation",
     subtitle: "E12 confirmation",
     status: "mechanism_open",
-    metric: "High & stable",
-    elevation: 85,
+    elevation: 78,
+    ceilingGap: 30,
+    widthFactor: 0.9,
     description: "Appears near-ceiling in broad stacks, but isolated ceiling is unmeasured.",
     experiments: ["E12"],
     nextAction: "Confirm through isolated family probe before calling solved.",
@@ -171,12 +189,13 @@ function PeakDetail({ peak, onClose }) {
         <p className="landscape-detail-sub">{peak.subtitle}</p>
       </div>
 
-      {peak.metric && (
-        <div className="landscape-detail-metric">
-          <span className="landscape-detail-metric-val">{peak.metric}</span>
-          <span className="landscape-detail-metric-label">current evidence</span>
-        </div>
-      )}
+      <div className="landscape-detail-metric">
+        <span className="landscape-detail-metric-val">{peak.elevation}%</span>
+        <span className="landscape-detail-metric-label">known summit</span>
+        <span className="landscape-detail-metric-sep">·</span>
+        <span className="landscape-detail-metric-val is-gap">{peak.ceilingGap}%</span>
+        <span className="landscape-detail-metric-label">still in cloud</span>
+      </div>
 
       <div className="landscape-detail-body">
         <p>{peak.description}</p>
@@ -201,11 +220,45 @@ function PeakDetail({ peak, onClose }) {
   );
 }
 
+function buildPeakPath(x, baseY, elevation, gap, widthFactor) {
+  const knownH = elevation * 3.2;
+  const cloudH = gap * 2.0;
+  const totalH = knownH + cloudH;
+  const w = 70 * widthFactor;
+
+  const summitY = baseY - totalH;
+  const rockTopY = baseY - knownH;
+
+  // Asymmetric mountain silhouette
+  const leftShoulder = { x: x - w * 0.55, y: baseY - knownH * 0.35 };
+  const rightShoulder = { x: x + w * 0.5, y: baseY - knownH * 0.3 };
+  const leftMid = { x: x - w * 0.3, y: rockTopY + cloudH * 0.15 };
+  const rightMid = { x: x + w * 0.25, y: rockTopY + cloudH * 0.1 };
+
+  const rockPath = [
+    `M ${x - w * 0.5} ${baseY}`,
+    `L ${leftShoulder.x} ${leftShoulder.y}`,
+    `Q ${leftMid.x} ${leftMid.y} ${x} ${rockTopY}`,
+    `Q ${rightMid.x} ${rightMid.y} ${rightShoulder.x} ${rightShoulder.y}`,
+    `L ${x + w * 0.45} ${baseY}`,
+    "Z"
+  ].join(" ");
+
+  // Summit spike that disappears into cloud
+  const summitPath = [
+    `M ${x - w * 0.12} ${rockTopY}`,
+    `L ${x} ${summitY}`,
+    `L ${x + w * 0.1} ${rockTopY + cloudH * 0.05}`,
+    "Z"
+  ].join(" ");
+
+  return { rockPath, summitPath, rockTopY, summitY, w };
+}
+
 export default function CeilingLandscape() {
   const [domain, setDomain] = useState("gan");
   const [selectedId, setSelectedId] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
-  const svgRef = useRef(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
@@ -213,39 +266,26 @@ export default function CeilingLandscape() {
   const peaks = domain === "gan" ? GAN_PEAKS : EXECT_PEAKS;
   const selectedPeak = peaks.find(p => p.id === selectedId) || null;
 
-  const W = 1000;
-  const H = 520;
-  const baseY = H - 80;
+  const W = 1200;
+  const H = 600;
+  const baseY = H - 75;
 
-  function peakPos(index, total) {
-    const gap = W / (total + 1);
-    const x = gap * (index + 1);
-    const elevationScale = 2.2;
-    const y = baseY - peaks[index].elevation * elevationScale;
-    return { x, y };
-  }
-
-  function peakPoly(index, total) {
-    const { x, y } = peakPos(index, total);
-    const w = 64;
-    const h = baseY - y;
-    return `${x},${baseY} ${x - w * 0.5},${baseY} ${x - w * 0.25},${y + h * 0.3} ${x},${y} ${x + w * 0.25},${y + h * 0.3} ${x + w * 0.5},${baseY}`;
+  function peakX(index, total) {
+    const margin = 90;
+    const usable = W - margin * 2;
+    return margin + (usable / (total - 1)) * index;
   }
 
   function pathBetween(i, j, total) {
-    const a = peakPos(i, total);
-    const b = peakPos(j, total);
-    const midY = Math.min(a.y, b.y) - 40;
-    return `M ${a.x} ${a.y + 20} Q ${(a.x + b.x) / 2} ${midY} ${b.x} ${b.y + 20}`;
+    const a = peakX(i, total);
+    const b = peakX(j, total);
+    const ax = a;
+    const ay = baseY - peaks[i].elevation * 3.2 - peaks[i].ceilingGap * 2.0 + 15;
+    const bx = b;
+    const by = baseY - peaks[j].elevation * 3.2 - peaks[j].ceilingGap * 2.0 + 15;
+    const midY = Math.min(ay, by) - 50;
+    return `M ${ax} ${ay} Q ${(ax + bx) / 2} ${midY} ${bx} ${by}`;
   }
-
-  const contours = [
-    "M 0 480 Q 200 460 400 470 T 800 465 T 1000 480",
-    "M 0 440 Q 250 400 500 420 T 1000 430",
-    "M 0 380 Q 300 320 600 350 T 1000 360",
-    "M 0 300 Q 350 220 700 260 T 1000 280",
-    "M 0 200 Q 400 120 800 160 T 1000 180"
-  ];
 
   return (
     <div className="ceiling-landscape">
@@ -256,8 +296,8 @@ export default function CeilingLandscape() {
             <h2 className="landscape-title">Component Ceiling Landscape</h2>
             <p className="landscape-subtitle">
               {domain === "gan"
-                ? "Gan S0 decomposition — seven peaks, one summit"
-                : "ExECT component map — ceilings, substrates, and open terrain"}
+                ? "Gan S0 — solid rock is what we know; clouds hide the true ceiling"
+                : "ExECT — solid rock is what we know; clouds hide the true ceiling"}
             </p>
           </div>
         </div>
@@ -273,178 +313,194 @@ export default function CeilingLandscape() {
       </div>
 
       <div className="landscape-canvas-wrap">
+        {/* HTML labels layer — sits above SVG, unaffected by viewBox scaling */}
+        <div className="peak-labels-layer">
+          {peaks.map((peak, i) => {
+            const x = peakX(i, peaks.length);
+            const meta = STATUS_META[peak.status] || STATUS_META.diagnostic;
+            return (
+              <div
+                key={`label-${peak.id}`}
+                className="peak-label-wrap"
+                style={{
+                  left: `${(x / W) * 100}%`,
+                  top: `${(baseY / H) * 100}%`,
+                  color: meta.colour,
+                  animationDelay: `${0.4 + i * 0.1}s`
+                }}
+              >
+                <div className="peak-label-name">{peak.name}</div>
+                <div className="peak-label-metric">
+                  {peak.elevation}% known
+                  {peak.ceilingGap > 0 ? ` · ${peak.ceilingGap}% cloud` : " · ceiling visible"}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
         <svg
-          ref={svgRef}
           viewBox={`0 0 ${W} ${H}`}
           preserveAspectRatio="xMidYMid meet"
           className="landscape-svg"
+          style={{ pointerEvents: 'none' }}
         >
           <defs>
             <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#f3f1ee" />
               <stop offset="100%" stopColor="#faf9f7" />
             </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
+            <linearGradient id="rockGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#e8e4df" />
+              <stop offset="100%" stopColor="#d4cfc8" />
+            </linearGradient>
+            <filter id="cloudBlur">
+              <feGaussianBlur stdDeviation="14" />
+            </filter>
+            <filter id="softShadow">
+              <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="#000" floodOpacity="0.06" />
             </filter>
           </defs>
 
           {/* Background */}
-          <rect width={W} height={H} fill="url(#skyGrad)" />
+          <rect width={W} height={H} fill="url(#skyGrad)" pointerEvents="none" />
 
-          {/* Fog layers */}
-          <g className={mounted ? "fog-layer is-visible" : "fog-layer"}>
-            <ellipse cx="200" cy="420" rx="180" ry="30" fill="#e4e2df" opacity="0.35" />
-            <ellipse cx="750" cy="400" rx="220" ry="40" fill="#e4e2df" opacity="0.3" />
-            <ellipse cx="500" cy="350" rx="300" ry="50" fill="#e4e2df" opacity="0.2" />
-          </g>
+          {/* Horizon line */}
+          <line x1="0" y1={baseY} x2={W} y2={baseY} stroke="#d4d2cf" strokeWidth="1.5" />
 
-          {/* Contour lines */}
-          <g className="contour-lines">
-            {contours.map((d, i) => (
-              <path
-                key={i}
-                d={d}
-                className={mounted ? "contour-line is-drawn" : "contour-line"}
-                style={{ animationDelay: `${i * 0.15}s` }}
-              />
-            ))}
-          </g>
+          {/* Subtle distant contour */}
+          <path
+            d={`M 0 ${baseY - 30} Q ${W * 0.3} ${baseY - 55} ${W * 0.5} ${baseY - 40} T ${W} ${baseY - 35}`}
+            fill="none"
+            stroke="#e4e2df"
+            strokeWidth="1"
+            opacity="0.6"
+          />
 
-          {/* Flowing rivers between peaks */}
-          <g className="flow-paths">
+          {/* Flow paths */}
+          <g pointerEvents="none">
             {peaks.map((_, i) => {
               if (i >= peaks.length - 1) return null;
               const d = pathBetween(i, i + 1, peaks.length);
               return (
                 <g key={`flow-${i}`}>
                   <path d={d} className="flow-river" />
-                  <path d={d} className="flow-particle" style={{ animationDelay: `${i * 0.4}s` }} />
+                  <path d={d} className="flow-particle" style={{ animationDelay: `${i * 0.6}s` }} />
                 </g>
               );
             })}
           </g>
 
-          {/* Base line */}
-          <line x1="0" y1={baseY} x2={W} y2={baseY} className="landscape-base" />
-
           {/* Peaks */}
           {peaks.map((peak, i) => {
-            const { x, y } = peakPos(i, peaks.length);
+            const x = peakX(i, peaks.length);
             const meta = STATUS_META[peak.status] || STATUS_META.diagnostic;
             const isHovered = hoveredId === peak.id;
             const isSelected = selectedId === peak.id;
             const isOpen = peak.status === "mechanism_open";
 
+            const { rockPath, summitPath, rockTopY, summitY, w } = buildPeakPath(
+              x, baseY, peak.elevation, peak.ceilingGap, peak.widthFactor
+            );
+
             return (
               <g
                 key={peak.id}
                 className={`peak-group ${isHovered ? "is-hovered" : ""} ${isSelected ? "is-selected" : ""} ${mounted ? "is-mounted" : ""}`}
-                style={{ animationDelay: `${0.3 + i * 0.12}s` }}
+                style={{ animationDelay: `${0.2 + i * 0.1}s`, pointerEvents: 'all' }}
                 onMouseEnter={() => setHoveredId(peak.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => setSelectedId(selectedId === peak.id ? null : peak.id)}
-                transform={`translate(${x}, ${y})`}
               >
-                {/* Pulse halo for open mechanisms */}
+                {/* Known rock (solid) */}
+                <path
+                  d={rockPath}
+                  fill={meta.colour}
+                  opacity={peak.status === "rejected" ? 0.2 : 0.42}
+                  stroke={meta.colour}
+                  strokeWidth={isSelected ? 2.2 : 1.2}
+                  strokeLinejoin="round"
+                  filter="url(#softShadow)"
+                  className="peak-rock"
+                />
+
+                {/* Summit spike (fades into cloud) */}
+                {peak.ceilingGap > 5 && (
+                  <path
+                    d={summitPath}
+                    fill={meta.colour}
+                    opacity={0.12}
+                    stroke={meta.colour}
+                    strokeWidth={0.8}
+                    strokeLinejoin="round"
+                  />
+                )}
+
+                {/* Snow cap on known rock */}
+                {peak.elevation > 15 && (
+                  <path
+                    d={[
+                      `M ${x - w * 0.08} ${rockTopY + 6}`,
+                      `L ${x} ${rockTopY - 4}`,
+                      `L ${x + w * 0.07} ${rockTopY + 6}`,
+                      "Z"
+                    ].join(" ")}
+                    fill="#fff"
+                    opacity={0.85}
+                  />
+                )}
+
+                {/* Cloud layer sitting on the rock top */}
+                {peak.ceilingGap > 5 && (
+                  <ellipse
+                    cx={x}
+                    cy={rockTopY + 8}
+                    rx={w * 0.55}
+                    ry={16 + peak.ceilingGap * 0.25}
+                    fill="#f3f1ee"
+                    opacity={0.85}
+                    filter="url(#cloudBlur)"
+                    className="peak-cloud"
+                  />
+                )}
+
+                {/* Status icon badge on the rock face */}
+                <g transform={`translate(${x - 7}, ${baseY - peak.elevation * 1.6})`}>
+                  <meta.icon size={14} color={meta.colour} strokeWidth={2.2} />
+                </g>
+
+                {/* Open pulse ring */}
                 {isOpen && (
-                  <circle
-                    cx="0"
-                    cy={(baseY - y) * 0.3}
-                    r="50"
+                  <ellipse
+                    cx={x}
+                    cy={baseY - peak.elevation * 1.6}
+                    rx={w * 0.4}
+                    ry={8}
                     fill="none"
                     stroke={meta.colour}
-                    strokeWidth="1.5"
-                    opacity="0.25"
+                    strokeWidth="1.2"
+                    opacity="0.2"
                     className="pulse-halo"
                   />
                 )}
 
-                {/* Mountain body */}
-                <polygon
-                  points={peakPoly(i, peaks.length).split(" ").map((pair, idx) => {
-                    const [px, py] = pair.split(",");
-                    return `${parseFloat(px) - x},${parseFloat(py) - y}`;
-                  }).join(" ")}
-                  fill={meta.colour}
-                  opacity={peak.status === "rejected" ? 0.25 : 0.12}
-                  stroke={meta.colour}
-                  strokeWidth={isSelected ? 2.5 : 1.5}
-                  strokeLinejoin="round"
-                  className="peak-body"
+                {/* Invisible hit area for easier clicking */}
+                <rect
+                  x={x - w * 0.6}
+                  y={baseY - peak.elevation * 3.2 - peak.ceilingGap * 2.0}
+                  width={w * 1.2}
+                  height={peak.elevation * 3.2 + peak.ceilingGap * 2.0 + 40}
+                  fill="transparent"
+                  pointerEvents="all"
                 />
-
-                {/* Snow cap */}
-                <polygon
-                  points={(() => {
-                    const w = 64;
-                    const h = baseY - y;
-                    const pts = [
-                      `0,0`,
-                      `${-w * 0.12},${h * 0.15}`,
-                      `${w * 0.12},${h * 0.15}`
-                    ];
-                    return pts.join(" ");
-                  })()}
-                  fill="#ffffff"
-                  opacity={peak.status === "rejected" ? 0.3 : 0.9}
-                  className="peak-cap"
-                />
-
-                {/* Status icon */}
-                <g transform={`translate(-6, ${(baseY - y) * 0.45})`}>
-                  <meta.icon size={12} color={meta.colour} strokeWidth={2.5} />
-                </g>
-
-                {/* Label */}
-                <text
-                  y={baseY - y + 22}
-                  textAnchor="middle"
-                  className="peak-label"
-                >
-                  {peak.name}
-                </text>
-                {peak.metric && (
-                  <text
-                    y={baseY - y + 38}
-                    textAnchor="middle"
-                    className="peak-metric"
-                  >
-                    {peak.metric}
-                  </text>
-                )}
-
-                {/* Elevation tick */}
-                <line
-                  x1="-40"
-                  y1={baseY - y}
-                  x2="-28"
-                  y2={baseY - y}
-                  stroke={meta.colour}
-                  strokeWidth="1"
-                  opacity="0.4"
-                />
-                <text
-                  x="-46"
-                  y={baseY - y + 4}
-                  textAnchor="end"
-                  className="peak-elev-label"
-                >
-                  {peak.elevation}m
-                </text>
               </g>
             );
           })}
 
           {/* Compass */}
-          <g transform="translate(920, 60)" className={mounted ? "compass is-visible" : "compass"}>
-            <circle r="28" fill="#fff" stroke="#d4d2cf" strokeWidth="1.5" />
-            <Compass size={20} color="#6b6b6b" strokeWidth={1.5} transform="translate(-10, -10)" />
-            <text y="42" textAnchor="middle" className="compass-label">Axis 1-3</text>
+          <g transform="translate(1140, 50)" className={mounted ? "compass is-visible" : "compass"}>
+            <circle r="26" fill="#fff" stroke="#d4d2cf" strokeWidth="1.5" />
+            <Compass size={18} color="#6b6b6b" strokeWidth={1.5} transform="translate(-9, -9)" />
           </g>
         </svg>
 
@@ -461,6 +517,11 @@ export default function CeilingLandscape() {
               {meta.pulse && <span className="landscape-legend-pulse" />}
             </div>
           ))}
+          <div className="landscape-legend-divider" />
+          <div className="landscape-legend-note">
+            <span className="landscape-legend-swatch is-cloud" />
+            <span className="landscape-legend-name">Ceiling cloud</span>
+          </div>
         </div>
       </div>
 
@@ -496,20 +557,6 @@ export default function CeilingLandscape() {
       {selectedPeak && (
         <PeakDetail peak={selectedPeak} onClose={() => setSelectedId(null)} />
       )}
-
-      {/* Ambient wind particles */}
-      <div className="wind-layer">
-        {[...Array(6)].map((_, i) => (
-          <Wind
-            key={i}
-            size={16 + i * 4}
-            className="wind-particle"
-            style={{ animationDelay: `${i * 1.2}s`, top: `${15 + i * 12}%` }}
-            color="#d4d2cf"
-            strokeWidth={1}
-          />
-        ))}
-      </div>
     </div>
   );
 }

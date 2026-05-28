@@ -6,21 +6,8 @@ import {
   Database,
   FlaskConical,
   GitBranch,
-  ListFilter,
-  RadioTower,
+  ArrowUpRight
 } from "lucide-react";
-
-const STATUS_LABEL = {
-  paper_frozen: "paper-frozen",
-  workspace_candidate: "workspace candidate",
-};
-
-const DEFAULT_METRIC_LABELS = {
-  micro_f1: "Micro F1",
-  micro_precision: "Precision",
-  micro_recall: "Recall",
-  evidence_support: "Evidence",
-};
 
 function formatValue(value) {
   if (value === null || value === undefined || value === "") return "not stated";
@@ -34,20 +21,11 @@ function outcomeClass(outcome) {
 }
 
 export default function ModelPanel({
-  catalog,
   letterId,
-  selectedTask,
-  selectedRunId,
   selectedRun,
   pipeline,
-  onSelectTask,
-  onSelectRun,
+  onNavigateToRuns
 }) {
-  const tasks = catalog?.tasks || [];
-  const task = tasks.find((item) => item.id === selectedTask);
-  const taskRuns = (catalog?.runs || []).filter((run) => run.task === selectedTask);
-  const metrics = selectedRun?.metrics || {};
-  const metricLabels = catalog?.metric_labels || DEFAULT_METRIC_LABELS;
   const steps = pipeline?.pipeline || [];
 
   return (
@@ -57,75 +35,17 @@ export default function ModelPanel({
         <span>Model pipeline</span>
       </div>
 
-      <div className="panel-section">
-        <div className="model-control-grid">
-          <label>
-            <span><ListFilter size={12} /> Task</span>
-            <select value={selectedTask} onChange={(e) => onSelectTask(e.target.value)}>
-              {tasks.map((item) => (
-                <option key={item.id} value={item.id}>{item.label}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span><RadioTower size={12} /> Model run</span>
-            <select value={selectedRunId || ""} onChange={(e) => onSelectRun(e.target.value)}>
-              {taskRuns.map((run) => (
-                <option key={run.run_id} value={run.run_id}>
-                  {run.best ? "Best - " : ""}{run.model_label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        {task && <p className="panel-lead">{task.scope}</p>}
-      </div>
-
       {selectedRun && (
         <div className="panel-section">
-          <div className="model-run-card">
-            <div className="run-card-top">
-              <div>
-                <div className="candidate-name">{selectedRun.model_label}</div>
-                <div className="candidate-meta">{selectedRun.run_id}</div>
-              </div>
-              <span className={`run-status ${selectedRun.evidence_status}`}>
-                {STATUS_LABEL[selectedRun.evidence_status] || selectedRun.evidence_status}
-              </span>
+          <div className="model-sidebar-run-summary">
+            <div className="sidebar-run-label">
+              <span>Active Model Run</span>
+              <strong>{selectedRun.model_label}</strong>
             </div>
-            <div className="candidate-scores">
-              <div className="c-score">
-                <span className="c-label">{metricLabels.micro_f1}</span>
-                <span className="c-val">{formatValue(metrics.micro_f1)}%</span>
-              </div>
-              <div className="c-score">
-                <span className="c-label">{metricLabels.micro_precision}</span>
-                <span className="c-val">{formatValue(metrics.micro_precision)}%</span>
-              </div>
-              <div className="c-score">
-                <span className="c-label">{metricLabels.micro_recall}</span>
-                <span className="c-val">{formatValue(metrics.micro_recall)}%</span>
-              </div>
-              <div className="c-score">
-                <span className="c-label">{metricLabels.evidence_support}</span>
-                <span className="c-val">{formatValue(metrics.evidence_support)}%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {selectedRun && (
-        <div className="panel-section">
-          <div className="section-title">
-            <GitBranch size={12} />
-            Run surface
-          </div>
-          <div className="surface-list">
-            <div><span>Schema</span><strong>{selectedRun.schema_level}</strong></div>
-            <div><span>Scorer</span><strong>{selectedRun.scorer_mode}</strong></div>
-            <div><span>Program</span><strong>{selectedRun.program_variant}</strong></div>
-            <div><span>Prompt</span><strong>{selectedRun.prompt_version}</strong></div>
+            <button className="sidebar-change-run-btn" onClick={onNavigateToRuns} title="Change run or view overall validation stats">
+              <span>Runs Dashboard</span>
+              <ArrowUpRight size={12} />
+            </button>
           </div>
         </div>
       )}
@@ -172,27 +92,6 @@ export default function ModelPanel({
             ))}
           </div>
         )}
-      </div>
-
-      <div className="panel-section">
-        <div className="section-title">Family F1</div>
-        <div className="field-f1-list">
-          {Object.entries(metrics.field_f1 || {}).map(([field, value]) => (
-            <div key={field} className="field-f1-row">
-              <span>{field.replace(/_/g, " ")}</span>
-              <div>
-                <i style={{ width: `${Math.max(0, Math.min(100, value || 0))}%` }} />
-              </div>
-              <strong>{formatValue(value)}%</strong>
-            </div>
-          ))}
-          {selectedRun?.evidence_status === "workspace_candidate" && (
-            <div className="challenge-box compact">
-              <AlertCircle size={12} />
-              <p>S5 is shown from current workspace artifacts, not the frozen paper table.</p>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );

@@ -1,0 +1,2028 @@
+{
+  "generated_at": "2026-05-28T22:47:02.026530+00:00",
+  "kanban_card": "E11 - ExECT Holdout Residual Attribution",
+  "status": "current synthesis; diagnostic holdout residual analysis",
+  "dataset": "exect_v2",
+  "splits": [
+    "exectv2_fixed_v1:validation",
+    "exectv2_fixed_v1:test"
+  ],
+  "model_calls": 0,
+  "scorer_semantics_changed": false,
+  "loader_split_bridge_prompt_changed": false,
+  "run_summaries": {
+    "s1_gpt_validation": {
+      "label": "S1 GPT validation",
+      "run_id": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+      "run_dir": "archive/runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "split_name": "exectv2_fixed_v1:validation",
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "micro_precision": 0.9197080291970803,
+      "micro_recall": 0.9264705882352942,
+      "micro_f1": 0.9230769230769231,
+      "field_precision": {
+        "diagnosis": 0.9743589743589743,
+        "seizure_type": 0.8958333333333334,
+        "annotated_medication": 0.9
+      },
+      "field_recall": {
+        "diagnosis": 0.9047619047619048,
+        "seizure_type": 0.9148936170212766,
+        "annotated_medication": 0.9574468085106383
+      },
+      "field_f1": {
+        "diagnosis": 0.9382716049382716,
+        "seizure_type": 0.9052631578947369,
+        "annotated_medication": 0.9278350515463918
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47,
+        "annotated_medication": 47
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9576271186440678,
+        "documents_with_gold_quality_flags": 0.225
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s1_gpt_test": {
+      "label": "S1 GPT test holdout",
+      "run_id": "exect_s0_s1_validation_test_gpt4_1_mini_20260526T184057Z",
+      "run_dir": "archive/runs/exect_s0_s1_validation_test_gpt4_1_mini_20260526T184057Z",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "split_name": "exectv2_fixed_v1:test",
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "micro_precision": 0.8,
+      "micro_recall": 0.7567567567567568,
+      "micro_f1": 0.7777777777777778,
+      "field_precision": {
+        "diagnosis": 0.8823529411764706,
+        "seizure_type": 0.6326530612244898,
+        "annotated_medication": 0.8947368421052632
+      },
+      "field_recall": {
+        "diagnosis": 0.6,
+        "seizure_type": 0.6888888888888889,
+        "annotated_medication": 0.9622641509433962
+      },
+      "field_f1": {
+        "diagnosis": 0.7142857142857143,
+        "seizure_type": 0.6595744680851063,
+        "annotated_medication": 0.9272727272727272
+      },
+      "field_support": {
+        "diagnosis": 50,
+        "seizure_type": 45,
+        "annotated_medication": 53
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.8852459016393442,
+        "documents_with_gold_quality_flags": 0.25
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s1_qwen_validation": {
+      "label": "S1 Qwen validation",
+      "run_id": "exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z",
+      "run_dir": "archive/runs/exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z",
+      "model_provider": "Qwen3.6:35b / Ollama",
+      "split_name": "exectv2_fixed_v1:validation",
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "micro_precision": 0.8656716417910447,
+      "micro_recall": 0.8529411764705882,
+      "micro_f1": 0.8592592592592593,
+      "field_precision": {
+        "diagnosis": 0.975,
+        "seizure_type": 0.72,
+        "annotated_medication": 0.9318181818181818
+      },
+      "field_recall": {
+        "diagnosis": 0.9285714285714286,
+        "seizure_type": 0.7659574468085106,
+        "annotated_medication": 0.8723404255319149
+      },
+      "field_f1": {
+        "diagnosis": 0.951219512195122,
+        "seizure_type": 0.7422680412371133,
+        "annotated_medication": 0.9010989010989012
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47,
+        "annotated_medication": 47
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9478260869565217,
+        "documents_with_gold_quality_flags": 0.225
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s1_qwen_test": {
+      "label": "S1 Qwen test holdout",
+      "run_id": "test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260526T184101Z",
+      "run_dir": "runs/test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260526T184101Z",
+      "model_provider": "Qwen3.6:35b / Ollama",
+      "split_name": "exectv2_fixed_v1:test",
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "micro_precision": 0.75,
+      "micro_recall": 0.6891891891891891,
+      "micro_f1": 0.7183098591549296,
+      "field_precision": {
+        "diagnosis": 0.7837837837837838,
+        "seizure_type": 0.5106382978723404,
+        "annotated_medication": 0.9423076923076923
+      },
+      "field_recall": {
+        "diagnosis": 0.58,
+        "seizure_type": 0.5333333333333333,
+        "annotated_medication": 0.9245283018867925
+      },
+      "field_f1": {
+        "diagnosis": 0.6666666666666666,
+        "seizure_type": 0.5217391304347825,
+        "annotated_medication": 0.9333333333333333
+      },
+      "field_support": {
+        "diagnosis": 50,
+        "seizure_type": 45,
+        "annotated_medication": 53
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9512195121951219,
+        "documents_with_gold_quality_flags": 0.25
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s5_gpt_validation": {
+      "label": "S5 GPT validation",
+      "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z",
+      "run_dir": "archive/runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "split_name": "exectv2_fixed_v1:validation",
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+      "micro_precision": 0.8209606986899564,
+      "micro_recall": 0.8995215311004785,
+      "micro_f1": 0.858447488584475,
+      "field_precision": {
+        "diagnosis": 0.9473684210526315,
+        "seizure_type": 0.7924528301886793,
+        "annotated_medication": 0.7966101694915254,
+        "investigation": 0.9666666666666667,
+        "seizure_frequency": 0.6938775510204082
+      },
+      "field_recall": {
+        "diagnosis": 0.8571428571428571,
+        "seizure_type": 0.8936170212765957,
+        "annotated_medication": 1.0,
+        "investigation": 0.9666666666666667,
+        "seizure_frequency": 0.7906976744186046
+      },
+      "field_f1": {
+        "diagnosis": 0.9,
+        "seizure_type": 0.8400000000000001,
+        "annotated_medication": 0.8867924528301886,
+        "investigation": 0.9666666666666667,
+        "seizure_frequency": 0.7391304347826086
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47,
+        "annotated_medication": 47,
+        "investigation": 30,
+        "seizure_frequency": 43
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9405940594059405,
+        "documents_with_gold_quality_flags": 0.225
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s5_gpt_test": {
+      "label": "S5 GPT test holdout",
+      "run_id": "test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260527T055059Z",
+      "run_dir": "runs/test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260527T055059Z",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "split_name": "exectv2_fixed_v1:test",
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+      "micro_precision": 0.6866952789699571,
+      "micro_recall": 0.7017543859649122,
+      "micro_f1": 0.6941431670281996,
+      "field_precision": {
+        "diagnosis": 0.8823529411764706,
+        "seizure_type": 0.5,
+        "annotated_medication": 0.7619047619047619,
+        "investigation": 0.8918918918918919,
+        "seizure_frequency": 0.4878048780487805
+      },
+      "field_recall": {
+        "diagnosis": 0.6,
+        "seizure_type": 0.6444444444444445,
+        "annotated_medication": 0.9056603773584906,
+        "investigation": 0.9166666666666666,
+        "seizure_frequency": 0.45454545454545453
+      },
+      "field_f1": {
+        "diagnosis": 0.7142857142857143,
+        "seizure_type": 0.5631067961165049,
+        "annotated_medication": 0.8275862068965516,
+        "investigation": 0.9041095890410958,
+        "seizure_frequency": 0.4705882352941176
+      },
+      "field_support": {
+        "diagnosis": 50,
+        "seizure_type": 45,
+        "annotated_medication": 53,
+        "investigation": 36,
+        "seizure_frequency": 44
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9121951219512195,
+        "documents_with_gold_quality_flags": 0.25
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s5_qwen_validation": {
+      "label": "S5 Qwen validation",
+      "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z",
+      "run_dir": "archive/runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z",
+      "model_provider": "Qwen3.6:35b / Ollama",
+      "split_name": "exectv2_fixed_v1:validation",
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+      "micro_precision": 0.8387096774193549,
+      "micro_recall": 0.8708133971291866,
+      "micro_f1": 0.8544600938967136,
+      "field_precision": {
+        "diagnosis": 0.9736842105263158,
+        "seizure_type": 0.8,
+        "annotated_medication": 0.7966101694915254,
+        "investigation": 0.9655172413793104,
+        "seizure_frequency": 0.7317073170731707
+      },
+      "field_recall": {
+        "diagnosis": 0.8809523809523809,
+        "seizure_type": 0.851063829787234,
+        "annotated_medication": 1.0,
+        "investigation": 0.9333333333333333,
+        "seizure_frequency": 0.6976744186046512
+      },
+      "field_f1": {
+        "diagnosis": 0.925,
+        "seizure_type": 0.8247422680412372,
+        "annotated_medication": 0.8867924528301886,
+        "investigation": 0.9491525423728815,
+        "seizure_frequency": 0.7142857142857143
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47,
+        "annotated_medication": 47,
+        "investigation": 30,
+        "seizure_frequency": 43
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9545454545454546,
+        "documents_with_gold_quality_flags": 0.225
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    },
+    "s5_qwen_test": {
+      "label": "S5 Qwen test holdout",
+      "run_id": "test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260527T055854Z",
+      "run_dir": "runs/test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260527T055854Z",
+      "model_provider": "Qwen3.6:35b / Ollama",
+      "split_name": "exectv2_fixed_v1:test",
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+      "micro_precision": 0.7377777777777778,
+      "micro_recall": 0.7280701754385965,
+      "micro_f1": 0.7328918322295804,
+      "field_precision": {
+        "diagnosis": 0.9393939393939394,
+        "seizure_type": 0.5087719298245614,
+        "annotated_medication": 0.7205882352941176,
+        "investigation": 0.9722222222222222,
+        "seizure_frequency": 0.7096774193548387
+      },
+      "field_recall": {
+        "diagnosis": 0.62,
+        "seizure_type": 0.6444444444444445,
+        "annotated_medication": 0.9245283018867925,
+        "investigation": 0.9722222222222222,
+        "seizure_frequency": 0.5
+      },
+      "field_f1": {
+        "diagnosis": 0.7469879518072288,
+        "seizure_type": 0.5686274509803921,
+        "annotated_medication": 0.8099173553719008,
+        "investigation": 0.9722222222222222,
+        "seizure_frequency": 0.5866666666666667
+      },
+      "field_support": {
+        "diagnosis": 50,
+        "seizure_type": 45,
+        "annotated_medication": 53,
+        "investigation": 36,
+        "seizure_frequency": 44
+      },
+      "diagnostic_metrics": {
+        "evidence_quote_support_rate": 0.9473684210526315,
+        "documents_with_gold_quality_flags": 0.25
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      }
+    }
+  },
+  "transfer_deltas": {
+    "s1_gpt_validation_to_test": {
+      "validation_run": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+      "test_run": "exect_s0_s1_validation_test_gpt4_1_mini_20260526T184057Z",
+      "micro_f1_delta": -0.14529914529914534,
+      "field_f1_delta": {
+        "annotated_medication": -0.0005623242736645384,
+        "diagnosis": -0.22398589065255725,
+        "seizure_type": -0.24568868980963054
+      },
+      "field_support_delta": {
+        "annotated_medication": 6,
+        "diagnosis": 8,
+        "seizure_type": -2
+      },
+      "evidence_quote_support_delta": -0.07238121700472355
+    },
+    "s1_qwen_validation_to_test": {
+      "validation_run": "exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z",
+      "test_run": "test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260526T184101Z",
+      "micro_f1_delta": -0.14094940010432966,
+      "field_f1_delta": {
+        "annotated_medication": 0.03223443223443212,
+        "diagnosis": -0.2845528455284554,
+        "seizure_type": -0.22052891080233084
+      },
+      "field_support_delta": {
+        "annotated_medication": 6,
+        "diagnosis": 8,
+        "seizure_type": -2
+      },
+      "evidence_quote_support_delta": 0.0033934252386002006
+    },
+    "s5_gpt_validation_to_test": {
+      "validation_run": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z",
+      "test_run": "test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260527T055059Z",
+      "micro_f1_delta": -0.1643043215562754,
+      "field_f1_delta": {
+        "annotated_medication": -0.05920624593363699,
+        "diagnosis": -0.18571428571428572,
+        "investigation": -0.06255707762557083,
+        "seizure_frequency": -0.26854219948849106,
+        "seizure_type": -0.27689320388349514
+      },
+      "field_support_delta": {
+        "annotated_medication": 6,
+        "diagnosis": 8,
+        "investigation": 6,
+        "seizure_frequency": 1,
+        "seizure_type": -2
+      },
+      "evidence_quote_support_delta": -0.028398937454720996
+    },
+    "s5_qwen_validation_to_test": {
+      "validation_run": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z",
+      "test_run": "test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260527T055854Z",
+      "micro_f1_delta": -0.12156826166713319,
+      "field_f1_delta": {
+        "annotated_medication": -0.0768750974582878,
+        "diagnosis": -0.17801204819277128,
+        "investigation": 0.02306967984934072,
+        "seizure_frequency": -0.12761904761904763,
+        "seizure_type": -0.25611481706084505
+      },
+      "field_support_delta": {
+        "annotated_medication": 6,
+        "diagnosis": 8,
+        "investigation": 6,
+        "seizure_frequency": 1,
+        "seizure_type": -2
+      },
+      "evidence_quote_support_delta": -0.0071770334928230595
+    }
+  },
+  "s1_raw_bridge_prompt_context": {
+    "source_artifact": "docs/experiments/exect/exect_s1_raw_bridge_prompt_split_audit_20260528.json",
+    "stage_deltas": {
+      "bridge_cap25": {
+        "diagnosis": 0.26132404181184665,
+        "seizure_type": 0.390465872156013
+      },
+      "bridge_full_validation": {
+        "diagnosis": 0.32288698955365625,
+        "seizure_type": 0.33100573215216256
+      },
+      "prompt_policy_raw_cap25": {
+        "diagnosis": 0.20448179271708689,
+        "seizure_type": -0.05633802816901412
+      },
+      "qwen_holdout_minus_validation": {
+        "diagnosis": -0.2845528455284554,
+        "seizure_type": -0.22052891080233084
+      }
+    },
+    "qwen_holdout_residual_classes": {
+      "bridge": 10,
+      "extraction": 9,
+      "policy": 6,
+      "scope": 6,
+      "specificity_collapse": 7
+    },
+    "caveat": "Raw/bridge prompt split is available for validation and Qwen holdout artifact replay; GPT holdout raw-no-bridge replay was not newly run."
+  },
+  "s1_residual_attribution": {
+    "s1_gpt_validation": {
+      "run_id": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+      "split_name": "exectv2_fixed_v1:validation",
+      "micro_f1": 0.9230769230769231,
+      "field_f1": {
+        "diagnosis": 0.9382716049382716,
+        "seizure_type": 0.9052631578947369
+      },
+      "bridge_flag_counts": {
+        "diagnosis": 22,
+        "seizure_type": 28
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 10,
+        "benchmark_bridge:dissociative_focal_seizure_suppressed": 1,
+        "benchmark_bridge:epileptic_seizures_surface_restored": 1,
+        "benchmark_bridge:focal_onset_to_bilateral_surface": 2,
+        "benchmark_bridge:fused_seizure_type_split": 14,
+        "benchmark_bridge:granular_seizure_surface_coarsened": 2,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 7,
+        "benchmark_bridge:jme_tonic_clonic_surface": 3,
+        "benchmark_bridge:on_awakening_diagnosis_surface": 1,
+        "benchmark_bridge:secondary_token_co_listed": 8,
+        "benchmark_bridge:seizure_temporal_modifier_stripped": 2,
+        "benchmark_bridge:seizure_type_convulsive_modifier": 2,
+        "benchmark_bridge:specificity_collapse_diagnosis_co_listed": 3,
+        "benchmark_bridge:specificity_collapse_seizure_surface": 1,
+        "benchmark_bridge:symptomatic_structural_focal_restored": 2,
+        "benchmark_bridge:unclassified_epilepsy_surface": 3,
+        "specificity_collapsed": 12
+      },
+      "residual_class_counts": {
+        "extraction": 1,
+        "bridge": 5,
+        "policy": 2,
+        "specificity_collapse": 1,
+        "scope": 2
+      },
+      "residual_sample": [
+        {
+          "document_id": "EA0072",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "secondary"
+          ],
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [],
+          "false_negatives": [
+            "temporal lobe seizures"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split"
+          ]
+        },
+        {
+          "document_id": "EA0125",
+          "field_family": "diagnosis",
+          "residual_class": "specificity_collapse",
+          "false_positives": [],
+          "false_negatives": [
+            "jme"
+          ],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0135",
+          "field_family": "diagnosis",
+          "residual_class": "policy",
+          "false_positives": [],
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0137",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0137",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "secondary"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "field_family": "diagnosis",
+          "residual_class": "bridge",
+          "false_positives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "focal seizures with altered awareness"
+          ],
+          "false_negatives": [
+            "focal"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0150",
+          "field_family": "diagnosis",
+          "residual_class": "bridge",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ]
+        },
+        {
+          "document_id": "EA0174",
+          "field_family": "seizure_type",
+          "residual_class": "scope",
+          "false_positives": [
+            "prolonged bilateral episodes of limb shaking with retained awareness"
+          ],
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0179",
+          "field_family": "seizure_type",
+          "residual_class": "scope",
+          "false_positives": [
+            "complex partial seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        }
+      ]
+    },
+    "s1_gpt_test": {
+      "run_id": "exect_s0_s1_validation_test_gpt4_1_mini_20260526T184057Z",
+      "split_name": "exectv2_fixed_v1:test",
+      "micro_f1": 0.7777777777777778,
+      "field_f1": {
+        "diagnosis": 0.7142857142857143,
+        "seizure_type": 0.6595744680851063
+      },
+      "bridge_flag_counts": {
+        "diagnosis": 15,
+        "seizure_type": 19
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 8,
+        "benchmark_bridge:diagnosis_uncertainty_stripped": 1,
+        "benchmark_bridge:focal_onset_to_bilateral_surface": 2,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 5,
+        "benchmark_bridge:secondary_token_co_listed": 13,
+        "benchmark_bridge:symptomatic_structural_focal_restored": 3,
+        "benchmark_bridge:unclassified_epilepsy_surface": 2,
+        "specificity_collapsed": 3
+      },
+      "residual_class_counts": {
+        "extraction": 10,
+        "bridge": 10,
+        "policy": 8,
+        "specificity_collapse": 6,
+        "scope": 4
+      },
+      "residual_sample": [
+        {
+          "document_id": "EA0015",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [
+            "epilepsy"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0015",
+          "field_family": "seizure_type",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epileptic attack"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0020",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "generalized tonic clonic seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0039",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0049",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [],
+          "false_negatives": [
+            "myoclonic seizures",
+            "generalized tonic clonic seizure"
+          ],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0056",
+          "field_family": "diagnosis",
+          "residual_class": "specificity_collapse",
+          "false_positives": [],
+          "false_negatives": [
+            "localisation related epilepsy",
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0056",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "secondary"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0058",
+          "field_family": "diagnosis",
+          "residual_class": "bridge",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ]
+        },
+        {
+          "document_id": "EA0060",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0060",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "secondary"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0082",
+          "field_family": "seizure_type",
+          "residual_class": "scope",
+          "false_positives": [
+            "absence seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0097",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "focal seizures"
+          ],
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        }
+      ]
+    },
+    "s1_qwen_validation": {
+      "run_id": "exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z",
+      "split_name": "exectv2_fixed_v1:validation",
+      "micro_f1": 0.8592592592592593,
+      "field_f1": {
+        "diagnosis": 0.951219512195122,
+        "seizure_type": 0.7422680412371133
+      },
+      "bridge_flag_counts": {
+        "diagnosis": 21,
+        "seizure_type": 20
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 11,
+        "benchmark_bridge:epileptic_seizures_surface_restored": 1,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 12,
+        "benchmark_bridge:jme_tonic_clonic_surface": 3,
+        "benchmark_bridge:on_awakening_diagnosis_surface": 1,
+        "benchmark_bridge:secondary_token_co_listed": 6,
+        "benchmark_bridge:specificity_collapse_diagnosis_co_listed": 3,
+        "benchmark_bridge:specificity_collapse_seizure_surface": 1,
+        "benchmark_bridge:unclassified_epilepsy_surface": 3,
+        "specificity_collapsed": 12
+      },
+      "residual_class_counts": {
+        "extraction": 3,
+        "bridge": 6,
+        "policy": 7,
+        "specificity_collapse": 1,
+        "scope": 1
+      },
+      "residual_sample": [
+        {
+          "document_id": "EA0016",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "focal seizures"
+          ],
+          "false_negatives": [
+            "focal seizure"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0029",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "absence seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0047",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "generalized tonic clonic seizures",
+            "absence seizures"
+          ],
+          "false_negatives": [
+            "generalized seizures"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0050",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "absence seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "field_family": "diagnosis",
+          "residual_class": "bridge",
+          "false_positives": [
+            "epilepsy"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ]
+        },
+        {
+          "document_id": "EA0072",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "secondary"
+          ],
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0090",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [],
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "field_family": "seizure_type",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "temporal lobe seizures"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0124",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "absence seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0125",
+          "field_family": "diagnosis",
+          "residual_class": "specificity_collapse",
+          "false_positives": [],
+          "false_negatives": [
+            "jme"
+          ],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0125",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "generalized tonic seizure",
+            "absence seizure"
+          ],
+          "false_negatives": [
+            "generalized tonic seizures"
+          ],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0135",
+          "field_family": "diagnosis",
+          "residual_class": "policy",
+          "false_positives": [],
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        }
+      ]
+    },
+    "s1_qwen_test": {
+      "run_id": "test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260526T184101Z",
+      "split_name": "exectv2_fixed_v1:test",
+      "micro_f1": 0.7183098591549296,
+      "field_f1": {
+        "diagnosis": 0.6666666666666666,
+        "seizure_type": 0.5217391304347825
+      },
+      "bridge_flag_counts": {
+        "diagnosis": 17,
+        "seizure_type": 17
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 9,
+        "benchmark_bridge:focal_onset_to_bilateral_surface": 2,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 9,
+        "benchmark_bridge:secondary_token_co_listed": 7,
+        "benchmark_bridge:symptomatic_structural_focal_restored": 3,
+        "benchmark_bridge:unclassified_epilepsy_surface": 2,
+        "specificity_collapsed": 6
+      },
+      "residual_class_counts": {
+        "extraction": 9,
+        "bridge": 10,
+        "policy": 6,
+        "specificity_collapse": 7,
+        "scope": 6
+      },
+      "residual_sample": [
+        {
+          "document_id": "EA0007",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "focal seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0015",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [
+            "epilepsy"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0015",
+          "field_family": "seizure_type",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epileptic attack"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0020",
+          "field_family": "seizure_type",
+          "residual_class": "policy",
+          "false_positives": [
+            "generalized tonic clonic seizure",
+            "absence seizure"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0033",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "absence seizures"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0039",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0049",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "absence seizures"
+          ],
+          "false_negatives": [
+            "myoclonic seizures",
+            "generalized tonic clonic seizure"
+          ],
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ]
+        },
+        {
+          "document_id": "EA0056",
+          "field_family": "diagnosis",
+          "residual_class": "specificity_collapse",
+          "false_positives": [],
+          "false_negatives": [
+            "localisation related epilepsy",
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0056",
+          "field_family": "seizure_type",
+          "residual_class": "scope",
+          "false_positives": [
+            "focal aware seizures",
+            "focal motor seizures",
+            "focal to bilateral convulsive seizures"
+          ],
+          "false_negatives": [
+            "partial motor seizures",
+            "secondary generalized seizures"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ]
+        },
+        {
+          "document_id": "EA0058",
+          "field_family": "diagnosis",
+          "residual_class": "bridge",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ]
+        },
+        {
+          "document_id": "EA0060",
+          "field_family": "diagnosis",
+          "residual_class": "extraction",
+          "false_positives": [],
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": []
+        },
+        {
+          "document_id": "EA0060",
+          "field_family": "seizure_type",
+          "residual_class": "bridge",
+          "false_positives": [
+            "secondary"
+          ],
+          "false_negatives": [],
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ]
+        }
+      ]
+    }
+  },
+  "frequency_attribution": {
+    "validation": {
+      "split_name": "validation",
+      "surface_summaries": {
+        "broad_event_rate_payload": {
+          "tp": 43,
+          "fp": 151,
+          "fn": 0,
+          "precision": 0.22164948453608246,
+          "recall": 1.0,
+          "f1": 0.36286919831223624,
+          "gold_support": 43
+        },
+        "candidate_constrained_oracle": {
+          "tp": 43,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "gold_support": 43
+        },
+        "s4_gpt_frequency_surface": {
+          "tp": 21,
+          "fp": 28,
+          "fn": 22,
+          "precision": 0.42857142857142855,
+          "recall": 0.4883720930232558,
+          "f1": 0.45652173913043476,
+          "gold_support": 43
+        },
+        "s5_gpt_frequency_surface": {
+          "tp": 34,
+          "fp": 15,
+          "fn": 9,
+          "precision": 0.6938775510204082,
+          "recall": 0.7906976744186046,
+          "f1": 0.7391304347826086,
+          "gold_support": 43
+        }
+      },
+      "broad_payload_category_counts": {
+        "fp:target_selection_extra_candidate:note_regex_quantified": 114,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 35,
+        "fp:target_selection_extra_candidate:seizure_free_surface": 2
+      },
+      "s5_frequency_category_counts": {
+        "fn:adjudication_missed_broad_candidate:qualitative_change": 4,
+        "fn:adjudication_missed_broad_candidate:seizure_free": 3,
+        "fn:adjudication_missed_high_precision_candidate": 2,
+        "fp:label_construction_not_in_broad_payload": 1,
+        "fp:target_selection_extra_candidate:note_regex_quantified": 8,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 5,
+        "fp:target_selection_extra_candidate:seizure_free_surface": 1
+      },
+      "s5_frequency_error_docs": 19,
+      "s5_frequency_residual_sample": [
+        {
+          "document_id": "EA0008",
+          "false_positives": [],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 3 week"
+          ],
+          "gold_values": [
+            "1 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0016",
+          "false_positives": [
+            "1 per 12 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 12 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0018",
+          "false_positives": [
+            "2 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0045",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0047",
+          "false_positives": [
+            "frequency increased"
+          ],
+          "false_negatives": [
+            "2 per 1 day"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "frequency increased"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "2 per 1 day"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0048",
+          "false_positives": [
+            "3 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 1 day",
+            "0 per 3 week"
+          ],
+          "gold_values": [
+            "0 per 3 week"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0053",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "false_positives": [],
+          "false_negatives": [
+            "infrequent"
+          ],
+          "predicted_values": [
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "gold_values": [
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0069",
+          "false_positives": [
+            "seizure free"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "seizure free"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:seizure_free_surface"
+          ]
+        },
+        {
+          "document_id": "EA0090",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "false_positives": [
+            "3 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "seizure free"
+          ],
+          "false_negatives": [
+            "0 per 3 year",
+            "frequency same"
+          ],
+          "predicted_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "0 per 5 year",
+            "frequency same"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        }
+      ]
+    },
+    "test": {
+      "split_name": "test",
+      "surface_summaries": {
+        "broad_event_rate_payload": {
+          "tp": 31,
+          "fp": 140,
+          "fn": 13,
+          "precision": 0.18128654970760233,
+          "recall": 0.7045454545454546,
+          "f1": 0.2883720930232558,
+          "gold_support": 44
+        },
+        "candidate_constrained_oracle": {
+          "tp": 31,
+          "fp": 0,
+          "fn": 13,
+          "precision": 1.0,
+          "recall": 0.7045454545454546,
+          "f1": 0.8266666666666667,
+          "gold_support": 44
+        },
+        "s4_gpt_frequency_surface": {
+          "tp": 22,
+          "fp": 42,
+          "fn": 22,
+          "precision": 0.34375,
+          "recall": 0.5,
+          "f1": 0.4074074074074074,
+          "gold_support": 44
+        },
+        "s5_gpt_frequency_surface": {
+          "tp": 20,
+          "fp": 21,
+          "fn": 24,
+          "precision": 0.4878048780487805,
+          "recall": 0.45454545454545453,
+          "f1": 0.4705882352941176,
+          "gold_support": 44
+        }
+      },
+      "broad_payload_category_counts": {
+        "fn:payload_coverage_gap:qualitative_change": 5,
+        "fn:payload_coverage_gap:quantified_rate": 1,
+        "fn:payload_coverage_gap:seizure_free": 6,
+        "fn:payload_coverage_gap:zero_rate": 1,
+        "fp:target_selection_extra_candidate:gan_temporal_filtered": 26,
+        "fp:target_selection_extra_candidate:note_regex_quantified": 88,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 24,
+        "fp:target_selection_extra_candidate:seizure_free_surface": 2
+      },
+      "s5_frequency_category_counts": {
+        "fn:adjudication_missed_broad_candidate:qualitative_change": 3,
+        "fn:adjudication_missed_broad_candidate:seizure_free": 3,
+        "fn:adjudication_missed_high_precision_candidate": 7,
+        "fn:payload_coverage_gap:qualitative_change": 5,
+        "fn:payload_coverage_gap:quantified_rate": 1,
+        "fn:payload_coverage_gap:seizure_free": 4,
+        "fn:payload_coverage_gap:zero_rate": 1,
+        "fp:label_construction_not_in_broad_payload": 5,
+        "fp:target_selection_extra_candidate:gan_temporal_filtered": 1,
+        "fp:target_selection_extra_candidate:note_regex_quantified": 11,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 2,
+        "fp:target_selection_extra_candidate:seizure_free_surface": 2
+      },
+      "s5_frequency_error_docs": 24,
+      "s5_frequency_residual_sample": [
+        {
+          "document_id": "EA0007",
+          "false_positives": [
+            "1 per 3 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 3 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0010",
+          "false_positives": [
+            "0 per 1 year"
+          ],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "0 per 1 year"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fn:payload_coverage_gap:seizure_free",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0049",
+          "false_positives": [
+            "2 per 1 month"
+          ],
+          "false_negatives": [
+            "1 per 1 day",
+            "frequency frequent"
+          ],
+          "predicted_values": [
+            "1 per 1 month",
+            "2 per 1 month",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "frequency frequent",
+            "infrequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fn:payload_coverage_gap:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0056",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free since 2009"
+          ],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 1 year"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "1 per 1 year",
+            "seizure free since 2009"
+          ],
+          "categories": [
+            "fn:payload_coverage_gap:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0062",
+          "false_positives": [
+            "3 per 2 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 2 year"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0082",
+          "false_positives": [
+            "3 per 1 day"
+          ],
+          "false_negatives": [
+            "1 per 1 day",
+            "frequency frequent"
+          ],
+          "predicted_values": [
+            "3 per 1 day",
+            "0 per 2 year"
+          ],
+          "gold_values": [
+            "0 per 2 year",
+            "1 per 1 day",
+            "frequency frequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fn:payload_coverage_gap:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0087",
+          "false_positives": [
+            "seizure free"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "seizure free"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:seizure_free_surface"
+          ]
+        },
+        {
+          "document_id": "EA0099",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free",
+            "seizure free since 2019"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "seizure free",
+            "seizure free since 2019"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fn:adjudication_missed_high_precision_candidate"
+          ]
+        },
+        {
+          "document_id": "EA0105",
+          "false_positives": [],
+          "false_negatives": [
+            "infrequent"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "infrequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0108",
+          "false_positives": [
+            "2 per 1 month",
+            "3 per 1 month"
+          ],
+          "false_negatives": [
+            "1 per 1 month"
+          ],
+          "predicted_values": [
+            "2 per 1 month",
+            "3 per 1 month",
+            "frequency increased"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0114",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0119",
+          "false_positives": [],
+          "false_negatives": [
+            "1 per 1 month",
+            "frequency frequent"
+          ],
+          "predicted_values": [
+            "1 per 1 week"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "1 per 1 week",
+            "frequency frequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fn:payload_coverage_gap:qualitative_change"
+          ]
+        }
+      ]
+    },
+    "interpretation": {
+      "broad_payload_recall_delta": -0.2954545454545454,
+      "candidate_constrained_oracle_f1_delta": -0.17333333333333334,
+      "s5_frequency_f1_delta": -0.26854219948849106,
+      "test_s5_gap_to_payload_oracle": -0.3560784313725491
+    }
+  },
+  "medication_attribution": {
+    "split_name": "test",
+    "surface_summaries": {
+      "isolated_current_rx_payload": {
+        "tp": 53,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "gold_support": 53
+      },
+      "s1_gpt_surface": {
+        "tp": 51,
+        "fp": 6,
+        "fn": 2,
+        "precision": 0.8947368421052632,
+        "recall": 0.9622641509433962,
+        "f1": 0.9272727272727272,
+        "gold_support": 53
+      },
+      "s5_gpt_surface": {
+        "tp": 48,
+        "fp": 15,
+        "fn": 5,
+        "precision": 0.7619047619047619,
+        "recall": 0.9056603773584906,
+        "f1": 0.8275862068965516,
+        "gold_support": 53
+      }
+    },
+    "s1_medication_category_counts": {
+      "fn:annotation_current_rx_missed_by_surface": 2,
+      "fp:missing_gold_or_no_current_rx_gold": 3,
+      "fp:over_emission_no_e3_payload_row": 2,
+      "fp:planned_or_future_evidence": 1
+    },
+    "s5_medication_category_counts": {
+      "fn:annotation_current_rx_missed_by_surface": 5,
+      "fp:dose_line_or_unknown_temporality_evidence": 2,
+      "fp:historical_or_previous_evidence": 1,
+      "fp:missing_gold_or_no_current_rx_gold": 3,
+      "fp:over_emission_extra_current_rx_surface": 7,
+      "fp:over_emission_no_e3_payload_row": 1,
+      "fp:planned_or_future_evidence": 1
+    },
+    "s5_medication_residual_sample": [
+      {
+        "document_id": "EA0015",
+        "false_positives": [],
+        "false_negatives": [
+          "tegretol"
+        ],
+        "categories": [
+          "fn:annotation_current_rx_missed_by_surface"
+        ]
+      },
+      {
+        "document_id": "EA0033",
+        "false_positives": [
+          "topiramate"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:historical_or_previous_evidence"
+        ]
+      },
+      {
+        "document_id": "EA0049",
+        "false_positives": [
+          "clobazam"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:over_emission_extra_current_rx_surface"
+        ]
+      },
+      {
+        "document_id": "EA0058",
+        "false_positives": [
+          "gabapentin",
+          "brivaracetam"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:dose_line_or_unknown_temporality_evidence",
+          "fp:over_emission_extra_current_rx_surface"
+        ]
+      },
+      {
+        "document_id": "EA0060",
+        "false_positives": [],
+        "false_negatives": [
+          "midazolam"
+        ],
+        "categories": [
+          "fn:annotation_current_rx_missed_by_surface"
+        ]
+      },
+      {
+        "document_id": "EA0062",
+        "false_positives": [
+          "lamotrigine"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:missing_gold_or_no_current_rx_gold"
+        ]
+      },
+      {
+        "document_id": "EA0097",
+        "false_positives": [
+          "levetiracetam"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:missing_gold_or_no_current_rx_gold"
+        ]
+      },
+      {
+        "document_id": "EA0105",
+        "false_positives": [
+          "zonisamide"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:dose_line_or_unknown_temporality_evidence"
+        ]
+      },
+      {
+        "document_id": "EA0114",
+        "false_positives": [],
+        "false_negatives": [
+          "carbamazepine"
+        ],
+        "categories": [
+          "fn:annotation_current_rx_missed_by_surface"
+        ]
+      },
+      {
+        "document_id": "EA0119",
+        "false_positives": [
+          "pregabalin"
+        ],
+        "false_negatives": [
+          "lamotrigine"
+        ],
+        "categories": [
+          "fn:annotation_current_rx_missed_by_surface",
+          "fp:over_emission_extra_current_rx_surface"
+        ]
+      },
+      {
+        "document_id": "EA0134",
+        "false_positives": [
+          "phenytoin",
+          "brivaracetam"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:over_emission_extra_current_rx_surface",
+          "fp:over_emission_no_e3_payload_row"
+        ]
+      },
+      {
+        "document_id": "EA0141",
+        "false_positives": [
+          "lamotrigine"
+        ],
+        "false_negatives": [],
+        "categories": [
+          "fp:missing_gold_or_no_current_rx_gold"
+        ]
+      }
+    ]
+  },
+  "stack_interference": {
+    "gpt_validation_s5_minus_s1": {
+      "diagnosis": -0.03827160493827153,
+      "seizure_type": -0.0652631578947368,
+      "annotated_medication": -0.041042598716203194
+    },
+    "gpt_test_s5_minus_s1": {
+      "diagnosis": 0.0,
+      "seizure_type": -0.0964676719686014,
+      "annotated_medication": -0.09968652037617565
+    },
+    "qwen_validation_s5_minus_s1": {
+      "diagnosis": -0.026219512195121975,
+      "seizure_type": 0.08247422680412386,
+      "annotated_medication": -0.014306448268712635
+    },
+    "qwen_test_s5_minus_s1": {
+      "diagnosis": 0.08032128514056214,
+      "seizure_type": 0.04688832054560965,
+      "annotated_medication": -0.12341597796143255
+    }
+  },
+  "decision": {
+    "s1_drop_attribution": "Diagnosis and seizure-type transfer dominate the S1 drop; medication remains stable. Residuals expand in extraction, bridge, policy, specificity, and scope classes, so S1 remains validation-aligned rather than an isolated ceiling.",
+    "s5_frequency_drop_attribution": "S5 frequency loss is split between holdout payload representability and candidate adjudication/label construction. The broad validation payload covers 43/43 validation labels but only 31/44 holdout labels.",
+    "s5_medication_drop_attribution": "Medication current-Rx is representable on holdout by the annotation-derived payload, but S5 loses precision and recall relative to S1 under the stacked prompt.",
+    "next_exect_action": "Use validation-only component probes for S1 diagnosis/seizure transfer, frequency payload generalization, and medication payload routing/prompt isolation before rebuilding broad stacks."
+  },
+  "caveats": [
+    "Holdout is used for residual attribution only, not prompt, scorer, loader, split, bridge, or repair tuning.",
+    "Current ExECT project scorers are field-family diagnostic/project scorers, not CUI-aware Table 1 reproduction.",
+    "Frequency labels use ExECT SeizureFrequency annotation surfaces, not Gan monthly-frequency normalization.",
+    "Medication lifecycle categories remain diagnostic; annotated current-Rx is the benchmark-facing medication surface.",
+    "Stack-interference attribution is inferred from stored S1-vs-S5 behavior, not from a randomized prompt-isolation run."
+  ]
+}

@@ -1,7 +1,7 @@
 # ExECT Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-28
+Last updated: 2026-05-28 after E9 family-span decision
 
 ## Current Question
 
@@ -28,8 +28,8 @@ The current program is:
 | S1 raw/bridge/prompt split | current synthesis | GPT S1 full validation is near ceiling only after benchmark bridges; Qwen test holdout transfer drop keeps S1 validation-aligned rather than mechanism-solved. |
 | Medication current-Rx ceiling | isolated ceiling / no-model oracle substrate | E6 annotation-derived current-Rx payload scores 100.0% medication F1 on validation; S1 GPT scores 92.8% and S5 GPT scores 88.7% on the same target. Lifecycle rows remain diagnostic/deferred. |
 | Medication stack interference | current synthesis | E7 attributes S5 medication loss to over-emission: S5 adds 8 false positives that S1 avoided, mostly planned/future, historical/switched, other-medication, and annotation-policy cases, while recovering both S1 false negatives. |
-| Family-span prompting | rejected arm / mechanism open | E4 `exect.sections.family_spans.v1` covers validation evidence for core families, but E8 cap-25 family-span prompting regressed micro F1 from 95.8% to 90.2%, driven by seizure-type F1 dropping from 95.4% to 81.8%. Keep the substrate diagnostic; do not promote this prompt shape. |
-| Holdout report | active risk | S1 and S5 frequency drops require residual analysis before new claims. |
+| Family-span prompting | rejected arm / diagnostic substrate | E9 rejects the E8 single-pass S1 family-span replacement arm: E4 `exect.sections.family_spans.v1` covers validation evidence for core families, but E8 cap-25 family-span prompting regressed micro F1 from 95.8% to 90.2%, driven by seizure-type F1 dropping from 95.4% to 81.8%. Keep the substrate diagnostic; do not promote this prompt shape. |
+| Holdout residual attribution | current synthesis / diagnostic holdout | E11 attributes S1 transfer loss to diagnosis/seizure-type extraction, bridge, policy, specificity, and scope residuals while medication stays stable. S5 frequency loss is mixed payload-generalization plus adjudication: broad payload coverage drops from 43/43 validation labels to 31/44 holdout labels. |
 | ExECT Table 1 reproduction | blocked | Requires CUI-aware all-family scorer. |
 
 ## Read First
@@ -44,6 +44,8 @@ The current program is:
 - `exect_medication_stack_interference_probe_20260528.md` - E7 S1-vs-S5 medication over-emission attribution.
 - `exect_family_span_payload_audit_20260528.md` - E4 typed family-span substrate and cap-slice comparison.
 - `exect_family_span_prompt_comparison_e8_results_20260528.md` - E8 full-note versus family-span cap-25 prompt comparison.
+- `exect_family_span_promotion_decision_e9_20260528.md` - E9 rejection/diagnostic-substrate decision for the tested family-span prompt arm.
+- `exect_holdout_residual_attribution_e11_20260528.md` - E11 diagnostic holdout residual attribution.
 - `../synthesis/test_holdout_evaluation_report_20260527.md` - holdout warning.
 - `../synthesis/paper_result_table_pack_20260525.md` - current paper table pack.
 - `../../datasets/exect/exect_gold_label_audit.md` - gold-label policy.
@@ -52,10 +54,11 @@ The current program is:
 
 ## Active Next Work
 
-1. Route E9 as a family-span promotion/rejection decision using E4 and E8.
-2. Frequency candidate adjudication/ranking follow-up against the fixed E1/E10 broad payload.
+1. Use E11 to preregister validation-only component probes for S1 diagnosis/seizure-type transfer, frequency payload robustness/adjudication, and medication payload routing. Do not tune from holdout rows.
+2. Frequency candidate adjudication/ranking follow-up should account for the E11 payload-transfer caveat before any promotion claim.
 3. Medication payload-routing/prompt-isolation follow-up before any broad stack.
-4. Component ceiling reports before any new broad stack.
+4. Use E12 to confirm investigation before calling it solved.
+5. Component ceiling reports before any new broad stack.
 
 ## Do Not Overread
 

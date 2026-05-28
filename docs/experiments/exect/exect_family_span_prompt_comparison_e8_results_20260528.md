@@ -50,6 +50,6 @@ The likely mechanism is not evidence absence. The stronger explanation is that s
 
 ## Next Steps
 
-- Route E9 as a rejection/diagnostic-only decision for this specific family-span prompting arm unless a narrower follow-up has a new mechanism.
+- E9 now records the rejection/diagnostic-substrate decision for this specific family-span prompting arm.
 - If family spans are revisited, test a more targeted one-family or candidate-adjudication surface rather than replacing the whole S1 note context.
 - Keep `exect.sections.family_spans.v1` as a document-geometry substrate and diagnostic coverage tool, not a promoted prompt-routing default.

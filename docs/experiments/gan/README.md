@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-28
+Last updated: 2026-05-28 after G6 evaluation-surface decision
 
 ## Current Question
 
@@ -35,6 +35,7 @@ The system must separate:
 - `gan_s0_g4_explicit_reason_code_adjudicator_report_20260528.md` - G4 explicit reason-code adjudicator result; traceability worked, but the tested arm did not promote because it chose seizure-free candidates over quantified candidates on five enriched-slice records.
 - `gan_s0_g5_paper_scorer_rescore_pack_20260528.md` - G5 synthetic-validation paper-scorer rescore pack for current promoted baselines.
 - `gan_s0_g5_scorer_mode_forensics_for_g4_20260528.md` - G5 scorer-discordance analysis for G4 follow-up and special-class target-selection design.
+- `gan_s0_g6_evaluation_slice_standard_decision_20260528.md` - G6 decision: use a locked 50-record mechanism slice plus named challenge sets; keep the old 25-record enriched slice as smoke-only.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
 - `gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md` - entity-first rejected arm.
@@ -51,14 +52,18 @@ listed above or in `../../component_ceiling_registry.md`.
 
 ## Active Next Work
 
-1. Use the G4 negative result and G5 scorer-mode forensics before trying any
+1. Use G6 before any new selector or adjudicator run: the old enriched
+   25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
+   mechanism-comparison surface, and named challenge sets are diagnostic
+   overlays.
+2. Use the G4 negative result and G5 scorer-mode forensics before trying any
    new seizure-free, quantified-rate, unknown, or no-reference selector.
-2. Decide whether the seeded reason-code/answer-options selector surrogate
-   deserves a full-validation confirmation after policy isolation; G4 as tested
-   is a negative traceability result, not a promotion path.
-3. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+3. Decide whether the seeded reason-code/answer-options selector surrogate
+   deserves a full-validation confirmation only through a G6-aligned protocol;
+   G4 as tested is a negative traceability result, not a promotion path.
+4. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-4. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+5. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance

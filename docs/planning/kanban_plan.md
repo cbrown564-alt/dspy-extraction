@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 G4 completion and Gan slice-standard planning
+Last refreshed: 2026-05-28 E9 completion and next-pull reset
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -21,16 +21,16 @@ promotes them.
 
 ## Current Priorities
 
-1. **Pull component experiments, not broad-pipeline polish.** The active board
-   should move G6, E9, or E11 according to the immediate research
-   or paper need. Do not add new ExECT schema grids or Gan "better prompt"
-   loops unless the varied factor maps to a component in
-   `component_ceiling_registry.md`.
+1. **Use E11 as a completed residual router, not a tuning source.** E11
+   attributes the ExECT validation-to-holdout drop without scorer, loader,
+   split, bridge, prompt, prediction-repair, or artifact changes. S1 loss is
+   concentrated in diagnosis/seizure-type transfer while medication is stable;
+   S5 frequency loss is mixed payload-generalization plus adjudication.
 2. **ExECT work starts from isolated family questions.** Use the completed
    frequency, medication, S1 raw/bridge/prompt, and family-span substrates to
-   measure ceilings or explain interference: family-span decisioning (E9),
-   holdout residual attribution (E11), investigation confirmation (E12), and
-   the next frequency adjudicator/ranker mechanism after E10.
+   measure ceilings or explain interference: investigation confirmation (E12),
+   validation-only S1 transfer probes, frequency payload
+   robustness/adjudication, and medication payload routing or prompt isolation.
    Optimized S1*/S2*/S3*/S4*/S5* stacks remain blocked until isolated ceilings
    and pairwise interactions exist.
 3. **Gan S0 work stays decomposed.** Use D1 v1.2b and the G1/G2/G3 artifacts to
@@ -38,10 +38,11 @@ promotes them.
    construction, and unknown/no-reference policy. G4 is completed as a negative
    same-slice traceability result; use its failure records and the G5
    scorer-mode forensics before trying another seizure-free-versus-quantified
-   selector. The 25-record enriched slice is already saturated for selector
-   comparisons, so use G6 to decide when a 50-record slice or named challenge
-   set should replace more one- or two-label same-slice variation. Use the
-   completed G5 rescore pack before any synthetic paper-facing comparison.
+   selector. G6 now fixes the evaluation surface: use the old 25-record
+   enriched slice only for smoke checks, use `gan_s0_g6_standard50_v1` for
+   default mechanism comparisons, and use named challenge sets only with their
+   declared decision scopes. Use the completed G5 rescore pack before any
+   synthetic paper-facing comparison.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -61,31 +62,25 @@ promotes them.
 
 ## Ready
 
-### G6 - Gan Evaluation Slice Standard And Challenge Sets
+### G7 - Gan G6 Special-Class Target Selector Preregistration
 
-- **Outcome:** A decision report defines the default evaluation surface for new
-  Gan S0 selector/adjudicator mechanisms: retain 25-record enriched slices only
-  for smoke checks, expand standard mechanism comparisons to a 50-record slice,
-  introduce named challenge sets, or use both with distinct decision scopes.
-- **Dependencies:** G2 model-arm comparison, G3 policy isolation, G4 explicit
-  reason-code adjudicator result, and G5 scorer-mode forensics complete.
-- **Parallelizable:** yes for no-model slice design and record selection; any
-  model-backed reruns should wait until the slice/challenge-set protocol is
-  fixed.
+- **Outcome:** A preregistered Gan S0 selector/adjudicator mechanism card names
+  the varied component, evaluation surface, scorer views, preserved trace
+  fields, and stop rule before any new model calls.
+- **Dependencies:** G1, G2, G3, G4, G5, and G6 complete.
+- **Parallelizable:** yes for preregistration; model execution only after the
+  protocol is explicit.
 - **Owner:** unassigned.
-- **Validation:** Report record IDs, label-family strata, gold labels, challenge
-  tags, scorer views, denominator effects, and stop rules. Quantify how one-
-  and two-record deltas behave on 25-record versus 50-record surfaces, and name
-  which challenge sets are intended for target selection, seizure-free versus
-  quantified policy, unknown/no-reference policy, candidate coverage, clusters,
-  and temporal anchoring.
-- **Notes:** The G2/G4 25-record slice is useful but near-saturated: at 25
-  records, one label is 4.0pp and two labels are 8.0pp, so many follow-up claims
-  would be minor variations around a small number of cases. This card should
-  prevent small-slice tuning from masquerading as mechanism progress.
-
-No current ready ExECT card sits ahead of E9/E11. Pull from Backlog only when
-the dependency note below names the completed evidence needed for that card.
+- **Validation:** Preregistration states whether it targets
+  `gan_s0_g6_standard50_v1`, a named G6 challenge set, or full validation;
+  reports both `gan2026_paper_reproduction` and
+  `gan_frequency_deterministic_v1`; preserves selected candidate reference,
+  reason code, construction inputs, final label, and scorer-discordance flags;
+  and confirms no scorer, loader, split, benchmark bridge, or prediction repair
+  changed.
+- **Notes:** Start with special-class target semantics: quantified current
+  frequency versus seizure-free duration, plus unknown/no-reference boundary
+  behavior. The old 25-record slice is smoke-only.
 
 ## Blocked
 
@@ -136,35 +131,6 @@ the dependency note below names the completed evidence needed for that card.
 - **Owner:** unassigned.
 - **Validation:** Each pair has hypothesis, support counts, primary family
   metrics, interference criteria, and stop rule.
-
-### E9 - Family-Span Promotion Or Rejection Decision
-
-- **Outcome:** A decision note classifies family-span prompting as promoted,
-  diagnostic-only, rejected arm, or still mechanism-open.
-- **Dependencies:** E8.
-- **Parallelizable:** after E8.
-- **Owner:** unassigned.
-- **Validation:** Decision cites the E4 no-model coverage audit, E8 cap-slice
-  results, full-note baseline, false-family span counts, and recall/cost
-  tradeoffs.
-- **Notes:** Promotion requires evidence against a full-note baseline. Existence
-  of `exect.sections.family_spans.v1` is substrate evidence only.
-
-### E11 - ExECT Holdout Residual Attribution
-
-- **Outcome:** A residual-analysis report attributes S1 and S5 holdout drops to
-  raw extraction, benchmark bridges, prompt policy, stack interference, family
-  support, or scorer/label-policy effects without tuning from holdout.
-- **Dependencies:** E2 complete; E10, E6, and E7 helpful where frequency or
-  medication residuals dominate.
-- **Parallelizable:** yes for artifact replay and no-model error bucketing.
-- **Owner:** unassigned.
-- **Validation:** Report validation versus test split, family-level metrics,
-  residual categories, raw/bridge/prompt/stack attribution where available, and
-  explicit confirmation that no scorer, loader, split, bridge, or prompt was
-  tuned from holdout.
-- **Notes:** This routes the registry holdout-transfer action. Findings can
-  motivate validation-only component probes, not holdout-driven prompt edits.
 
 ### E12 - Investigation Isolated Ceiling Confirmation
 
@@ -224,13 +190,24 @@ indexes, and git history.
   100.0% F1, while S5 GPT reaches 73.9% frequency F1. The next frequency
   mechanism should be a candidate adjudicator or ranker against the fixed broad
   payload, not another coverage audit or broad-stack prompt loop.
-- **Family-span prompting failed the first promotion gate.** E8 compared full-note
+- **Family-span prompting is closed as a rejected arm.** E8 compared full-note
   S1 clean-ladder prompting with E4 family-span prompting on the same cap-25 GPT
   validation slice. Family-span context covered 116/116 selected-family gold
   annotations and used 88.8% of full-note characters, but micro F1 dropped from
   95.8% to 90.2%, driven by seizure-type F1 falling from 95.4% to 81.8%.
-  Route E9 as a rejection/diagnostic-only decision for this arm shape unless a
-  narrower mechanism is preregistered.
+  E9 classifies the E8 single-pass S1 family-span replacement arm as a rejected
+  arm while preserving `exect.sections.family_spans.v1` as a diagnostic
+  document-geometry substrate. Do not rerun the same broad context-substitution
+  arm; reopen only with a narrower preregistered mechanism and an explicit
+  comparator.
+- **E11 attributed the ExECT holdout drop without tuning.** S1 GPT drops from
+  92.3% to 77.8% micro because diagnosis and seizure-type transfer degrade
+  sharply while medication is stable. S5 GPT frequency drops from 73.9% to
+  47.1% F1 through both payload-generalization and adjudication: broad payload
+  coverage is 43/43 labels on validation but 31/44 on holdout. Medication
+  current-Rx remains representable on holdout at 53/53 labels, so S5 medication
+  loss is stack behavior rather than a substrate failure. Report:
+  `docs/experiments/exect/exect_holdout_residual_attribution_e11_20260528.md`.
 - **G4 is complete and should not be pulled again as tested.** The explicit
   reason-code adjudicator preserved selected-candidate references and
   label-construction inputs in 25/25 records, but scored only 80.0%
@@ -252,11 +229,13 @@ indexes, and git history.
   follow-up.
   External Gan benchmark claims remain blocked without Real(300)/Real(150) or
   an explicitly synthetic-only comparison protocol.
-- **Gan 25-record selector slices are now denominator-limited.** The G2/G4
-  enriched slice is valuable for fast mechanism checks, but one record equals
-  4.0pp and two records equal 8.0pp. Future Gan selector claims should first
-  pass through G6, which decides whether 50-record standard slices, named
-  challenge sets, or both are the right evaluation surface.
+- **G6 fixed the Gan selector evaluation surface.** The G2/G4 enriched slice is
+  now `gan_s0_g6_traceability_smoke_25` and is smoke-only: one record equals
+  4.0pp and two records equal 8.0pp. New selector/adjudicator mechanisms should
+  use `gan_s0_g6_standard50_v1` for default slice comparisons, named challenge
+  sets only for their declared component scope, and full validation before any
+  baseline promotion. Decision report:
+  `docs/experiments/gan/gan_s0_g6_evaluation_slice_standard_decision_20260528.md`.
 - **The component registry is the provenance map.** `component_ceiling_registry.md`
   carries row-level model/provider, split, scorer, run/artifact, bridge policy,
   classification, and caveat metadata. This Kanban should not duplicate that
@@ -274,9 +253,9 @@ clear active dependency.
 - E7 completed the medication stack-interference attribution. Treat lifecycle
   categories as diagnostic only; do not change the medication scorer or bundle
   temporality recovery into broad S5 prompts without a new mechanism card.
-- E8 completed the family-span cap-slice prompt comparison. E9 can now decide
-  whether this prompt shape is rejected, diagnostic-only, or still mechanism-open
-  for a narrower follow-up.
+- E8 completed the family-span cap-slice prompt comparison, and E9 rejected the
+  tested S1 family-span replacement arm while preserving the span substrate as
+  diagnostic. Any follow-up needs a narrower preregistered mechanism.
 - E10 completed the first frequency candidate-selection split. Treat the broad
   payload as fixed recall substrate and pull a new mechanism card for any
   model-backed adjudicator/ranker comparison.
@@ -284,23 +263,25 @@ clear active dependency.
   policy-isolation findings, and the G5 scorer-mode forensics; keep target
   selection, label construction, seizure-free, unknown/no-reference policy, and
   scorer-discordant records separable in artifacts and reports.
-- G6 consumes the completed G2/G3/G4/G5 evidence and should be model-call-free
-  until the 50-record slice or challenge-set protocol is fixed.
+- G6 completed the no-model evaluation-surface decision. Any new Gan selector
+  mechanism card should name whether it targets the 50-record standard slice,
+  a named challenge set, or full validation, and must preserve scorer, loader,
+  split, and benchmark bridge semantics.
 - G5 is complete and should be used for synthetic-only paper-facing Gan tables.
   Its scorer-mode forensics note is G4 follow-up input; it does not unblock Gan
   real-note reporting.
-- E11 may consume E2, E6/E7, and E10 evidence, but holdout remains residual
-  analysis only. Do not tune prompts, scorers, loaders, bridges, or splits from
-  holdout.
+- E11 completed the primary holdout residual attribution. Treat it as a router
+  for validation-only follow-ups; do not tune prompts, scorers, loaders,
+  bridges, repairs, or splits from holdout rows.
 - B1 stays blocked until isolated component ceilings and pairwise interaction
   evidence exist. Substrates alone are not enough to rebuild optimized stacks.
 
 ## Parallelization Opportunities
 
-- **Safe now:** G6, E9, and E11 as preregistered component or residual-analysis
-  pulls. G6 should be no-model evaluation-design work first; any downstream Gan
-  selector rerun should preserve scorer, loader, split, and benchmark bridge
-  semantics.
+- **Safe now:** G7 as Gan preregistration only, and drafting a new
+  validation-only ExECT mechanism card from E11 findings before any model calls.
+  Any downstream Gan selector/adjudicator run must use the G6 evaluation-surface
+  protocol and preserve scorer, loader, split, and benchmark bridge semantics.
 - **Architecture lane closed as bottleneck:** C31/C32 closed the currently
   scoped active-priority pruning pass. Any new cleanup should start from a
   concrete runtime contract or active-authority ambiguity, not from historical
@@ -314,16 +295,15 @@ clear active dependency.
   needs a preregistered comparison against the full-note/current-stack baseline;
   any Gan selector full-validation run should wait until G3 policy isolation
   explains the remaining unknown/no-reference and LLM-option tradeoffs. Any new
-  Gan selector slice rerun should wait for G6 to decide whether the correct
-  surface is a 50-record standard slice, named challenge set, or both.
+  Gan selector slice rerun should use the completed G6 50-record standard slice
+  or a named challenge set with its declared decision scope.
 
 ## Recommended Next Pull
 
-1. For Gan selector work, pull **G6** before running another small-slice model
-   variant; its first deliverable is an evaluation-surface decision, not model
-   calls.
-2. For ExECT research execution, pull **E9 or E11** according to paper or
-   experiment need.
+1. Draft **G7** before any more Gan selector or adjudicator model calls.
+2. Before any new ExECT model calls, draft a validation-only mechanism card from
+   E11 for S1 transfer, frequency payload robustness/adjudication, or medication
+   payload routing. Holdout rows remain residual evidence only.
 3. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.

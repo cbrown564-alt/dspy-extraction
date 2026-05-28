@@ -16,6 +16,7 @@ import AnnotateView from "./components/AnnotateView.jsx";
 import ShortcutsModal from "./components/ShortcutsModal.jsx";
 import CeilingLandscape from "./components/CeilingLandscape.jsx";
 import AnnotationProgress from "./components/AnnotationProgress.jsx";
+import RunsView from "./components/RunsView.jsx";
 
 const ENTITY_TYPES = [
   "Diagnosis",
@@ -41,13 +42,14 @@ const VIEWS = [
   { id: "reader", label: "Reader", icon: LayoutList },
   { id: "timeline", label: "Timeline", icon: Clock },
   { id: "annotate", label: "Annotate", icon: PenTool },
+  { id: "runs", label: "Runs", icon: BrainCircuit },
   { id: "landscape", label: "Landscape", icon: Mountain },
 ];
 
 function appReducer(state, action) {
   switch (action.type) {
     case "SET_DATASET": {
-      const defaultId = action.payload === "gan" ? "gan_0" : "EA0001";
+      const defaultId = action.payload === "gan" ? "gan_11118" : "EA0001";
       const layers = action.payload === "gan" ? ["SeizureFrequency"] : ENTITY_TYPES;
       return {
         ...state,
@@ -179,7 +181,9 @@ function AppContent() {
   const [state, dispatch] = useReducer(appReducer, initialState);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const currentMeta = state.index?.letters.find((l) => l.id === state.letterId);
+  const selectedRun = state.modelCatalog?.runs?.find((run) => run.run_id === state.selectedRunId) || null;
+  const selectedPipeline = selectedRun?.documents?.[state.letterId] || null;
   // Load index
   useEffect(() => {
     setLoading(true);
@@ -241,7 +245,15 @@ function AppContent() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
-
+  // Auto-route letter selection for Model lens / Runs view
+  useEffect(() => {
+    if ((state.lens === "model" || state.view === "runs") && selectedRun && selectedRun.documents) {
+      const docIds = Object.keys(selectedRun.documents);
+      if (docIds.length > 0 && !docIds.includes(state.letterId)) {
+        dispatch({ type: "SET_LETTER", payload: docIds[0] });
+      }
+    }
+  }, [state.lens, state.view, state.selectedRunId, selectedRun, state.letterId]);
   if (loading) {
     return (
       <div className="loading-screen">
@@ -266,9 +278,7 @@ function AppContent() {
     );
   }
 
-  const currentMeta = state.index?.letters.find((l) => l.id === state.letterId);
-  const selectedRun = state.modelCatalog?.runs?.find((run) => run.run_id === state.selectedRunId) || null;
-  const selectedPipeline = selectedRun?.documents?.[state.letterId] || null;
+
 
   return (
     <div className="app-shell">
@@ -296,6 +306,7 @@ function AppContent() {
           letters={state.index?.letters || []}
           currentId={state.letterId}
           onSelect={(id) => dispatch({ type: "SET_LETTER", payload: id })}
+          predictedIds={(state.lens === "model" || state.view === "runs") && selectedRun ? Object.keys(selectedRun.documents) : null}
         />
         <EntityLayers
           types={state.dataset === "gan" ? ["SeizureFrequency"] : ENTITY_TYPES}
@@ -363,6 +374,21 @@ function AppContent() {
               visibleLayers={state.visibleLayers}
             />
           )}
+          {state.view === "runs" && (
+            <RunsView
+              catalog={state.modelCatalog}
+              selectedTask={state.selectedTask}
+              selectedRunId={state.selectedRunId}
+              selectedRun={selectedRun}
+              onSelectTask={(id) => dispatch({ type: "SET_MODEL_TASK", payload: id })}
+              onSelectRun={(id) => dispatch({ type: "SET_MODEL_RUN", payload: id })}
+              onViewDocument={(id) => {
+                dispatch({ type: "SET_LETTER", payload: id });
+                dispatch({ type: "SET_VIEW", payload: "reader" });
+                dispatch({ type: "SET_LENS", payload: "model" });
+              }}
+            />
+          )}
           {state.view === "landscape" && <CeilingLandscape />}
 
           {state.view === "reader" && state.lens === "oracle" && state.letterData && (
@@ -373,14 +399,10 @@ function AppContent() {
           )}
           {state.view === "reader" && state.lens === "model" && (
             <ModelPanel
-              catalog={state.modelCatalog}
               letterId={state.letterId}
-              selectedTask={state.selectedTask}
-              selectedRunId={state.selectedRunId}
               selectedRun={selectedRun}
               pipeline={selectedPipeline}
-              onSelectTask={(id) => dispatch({ type: "SET_MODEL_TASK", payload: id })}
-              onSelectRun={(id) => dispatch({ type: "SET_MODEL_RUN", payload: id })}
+              onNavigateToRuns={() => dispatch({ type: "SET_VIEW", payload: "runs" })}
             />
           )}
         </div>
