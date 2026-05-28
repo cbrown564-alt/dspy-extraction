@@ -1,0 +1,54 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "family_span_context_diagnosis_seizure_medication_investigation",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "post_prediction_clean_ladder_v1",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_family_span_e8_cap25_gpt4_1_mini",
+  "hypothesis": "E8 mechanism probe: E4 family-span context can preserve S1 family recall while reducing false-family context exposure or prompt substrate size relative to the matched full-note cap-25 baseline.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Kanban E8 preregistered cap-slice mechanism probe; not a published ExECTv2 benchmark reproduction.",
+    "Varied factor is context selection only: E4 exect.sections.family_spans.v1 context for diagnosis_problem, seizure, medication, and investigation-bearing lines.",
+    "S1 benchmark-facing families only: diagnosis, seizure_type, and annotated_medication; investigation spans are reported as context diagnostics, not scored labels.",
+    "Compare only with configs/experiments/exect_s1_full_note_e8_cap25_gpt4_1_mini.json under the same split, cap, model, prompt, scorer, and repair policy.",
+    "Promotion requires recall preservation plus a real precision, evidence, or cost benefit; this cap slice cannot by itself promote family-span prompting."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s1_clean_ladder_v1_family_span_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_family_span_prompt_comparison_e8",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H1_post_deterministic"
+    ],
+    "implementation_variant": "clean_ladder_v1_family_span_context",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during",
+      "post"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "varied_factor": "context_selection_policy"
+  }
+}

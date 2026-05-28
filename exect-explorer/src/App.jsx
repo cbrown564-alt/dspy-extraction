@@ -1,7 +1,8 @@
 import React, { useEffect, useReducer, useState, useCallback } from "react";
 import {
   BookOpen, Microscope, Stethoscope, BrainCircuit,
-  Clock, LayoutList, PenTool, ChevronLeft, ChevronRight, AlertTriangle
+  Clock, LayoutList, PenTool, Mountain,
+  ChevronLeft, ChevronRight, AlertTriangle
 } from "lucide-react";
 import LetterSelector from "./components/LetterSelector.jsx";
 import LensBar from "./components/LensBar.jsx";
@@ -13,6 +14,7 @@ import ClinicianPanel from "./components/ClinicianPanel.jsx";
 import ModelPanel from "./components/ModelPanel.jsx";
 import AnnotateView from "./components/AnnotateView.jsx";
 import ShortcutsModal from "./components/ShortcutsModal.jsx";
+import CeilingLandscape from "./components/CeilingLandscape.jsx";
 import AnnotationProgress from "./components/AnnotationProgress.jsx";
 
 const ENTITY_TYPES = [
@@ -39,6 +41,7 @@ const VIEWS = [
   { id: "reader", label: "Reader", icon: LayoutList },
   { id: "timeline", label: "Timeline", icon: Clock },
   { id: "annotate", label: "Annotate", icon: PenTool },
+  { id: "landscape", label: "Landscape", icon: Mountain },
 ];
 
 function appReducer(state, action) {
@@ -360,6 +363,7 @@ function AppContent() {
               visibleLayers={state.visibleLayers}
             />
           )}
+          {state.view === "landscape" && <CeilingLandscape />}
 
           {state.view === "reader" && state.lens === "oracle" && state.letterData && (
             <OraclePanel data={state.letterData} oracleRates={state.index?.oracle_rates || {}} />

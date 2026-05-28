@@ -1,0 +1,1241 @@
+{
+  "generated_at": "2026-05-28T21:50:25.491293+00:00",
+  "kanban_card": "G5 - Gan Paper-Scorer Rescore Pack",
+  "dataset": "gan_2026",
+  "schema_level": "gan_frequency_s0",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "gold_source": "check__Seizure Frequency Number.seizure_frequency_number[0]",
+  "reference_policy": "reference[0] is a secondary cross-check and difficulty signal, not gold.",
+  "scope": "Post-hoc rescore of stored synthetic-validation predictions; no model calls were made.",
+  "paper_scorer_options": {
+    "apply_paper_prediction_repair": false,
+    "allow_paper_prediction_range": false,
+    "allow_paper_error_tolerance": false
+  },
+  "scorer_views": {
+    "paper_reproduction": {
+      "scorer": "gan2026_paper_reproduction",
+      "claim_scope": "Benchmark-facing Gan 2026 compatibility scorer for synthetic-only paper-table sensitivity."
+    },
+    "canonical": {
+      "scorer": "gan_frequency_deterministic_v1",
+      "claim_scope": "Audited project diagnostic scorer that keeps unknown and no seizure frequency reference distinct."
+    }
+  },
+  "summary": {
+    "baselines": [
+      {
+        "baseline_id": "builder_gap_v1_gpt",
+        "label": "Builder-gap v1 GPT",
+        "role": "promoted synthetic operational default",
+        "run_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+        "run_dir": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+        "config_path": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z\\config.json",
+        "experiment_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation",
+        "model": "gpt-4.1-mini / openai",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+        "paper_reproduction": {
+          "scorer": "gan2026_paper_reproduction",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7993311036789298,
+            "purist_category_accuracy": 0.8528428093645485,
+            "pragmatic_category_accuracy": 0.8795986622073578
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.7123745819397993,
+            "normalized_label_accuracy": 0.7123745819397993,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7993311036789298,
+              "lower": 0.7525083612040134,
+              "upper": 0.8494983277591973,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8528428093645485,
+              "lower": 0.8127090301003345,
+              "upper": 0.8929765886287625,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8795986622073578,
+              "lower": 0.842809364548495,
+              "upper": 0.9163879598662207,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 36,
+            "classification.purist_category_mismatch": 44,
+            "evidence.missing_prediction_evidence": 9,
+            "normalization.label_mismatch": 86,
+            "normalization.monthly_frequency_mismatch": 60,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "canonical": {
+          "scorer": "gan_frequency_deterministic_v1",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.8060200668896321,
+            "purist_category_accuracy": 0.8595317725752508,
+            "pragmatic_category_accuracy": 0.8862876254180602
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.7123745819397993,
+            "normalized_label_accuracy": 0.7123745819397993,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.8060200668896321,
+              "lower": 0.7625418060200669,
+              "upper": 0.8528428093645485,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8595317725752508,
+              "lower": 0.8193979933110368,
+              "upper": 0.8963210702341137,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8862876254180602,
+              "lower": 0.8494983277591973,
+              "upper": 0.9198160535117057,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 34,
+            "classification.purist_category_mismatch": 42,
+            "evidence.missing_prediction_evidence": 9,
+            "normalization.label_mismatch": 86,
+            "normalization.monthly_frequency_mismatch": 58,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "paper_minus_canonical": {
+          "monthly_frequency_accuracy": -0.006688963210702337,
+          "purist_category_accuracy": -0.006688963210702337,
+          "pragmatic_category_accuracy": -0.006688963210702337
+        }
+      },
+      {
+        "baseline_id": "builder_gap_v1_qwen",
+        "label": "Builder-gap v1 Qwen",
+        "role": "accepted local-transfer baseline",
+        "run_id": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
+        "run_dir": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
+        "config_path": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z\\config.json",
+        "experiment_id": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation",
+        "model": "qwen3.6:35b / ollama",
+        "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+        "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+        "paper_reproduction": {
+          "scorer": "gan2026_paper_reproduction",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7023411371237458,
+            "purist_category_accuracy": 0.8127090301003345,
+            "pragmatic_category_accuracy": 0.8963210702341137
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6020066889632107,
+            "normalized_label_accuracy": 0.6020066889632107,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 0.9966555183946488,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 0.9966555183946488
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7023411371237458,
+              "lower": 0.6520903010033445,
+              "upper": 0.7525083612040134,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8127090301003345,
+              "lower": 0.7692307692307693,
+              "upper": 0.8561872909698997,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8963210702341137,
+              "lower": 0.862876254180602,
+              "upper": 0.9297658862876255,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 31,
+            "classification.purist_category_mismatch": 56,
+            "evidence.unsupported_quote": 1,
+            "normalization.label_mismatch": 119,
+            "normalization.monthly_frequency_mismatch": 89,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "canonical": {
+          "scorer": "gan_frequency_deterministic_v1",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 297,
+            "invalid_predictions": 2,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7070707070707071,
+            "purist_category_accuracy": 0.8316498316498316,
+            "pragmatic_category_accuracy": 0.9057239057239057
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6060606060606061,
+            "normalized_label_accuracy": 0.6060606060606061,
+            "schema_valid_prediction_rate": 0.9933110367892977,
+            "evidence_quote_support_rate": 0.9966329966329966,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 0.9966329966329966
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7070707070707071,
+              "lower": 0.6565656565656566,
+              "upper": 0.7575757575757576,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 297
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8316498316498316,
+              "lower": 0.7912457912457912,
+              "upper": 0.8720538720538721,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 297
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.9057239057239057,
+              "lower": 0.8720538720538721,
+              "upper": 0.936026936026936,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 297
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 0.9933110367892977,
+              "lower": 0.9832775919732442,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 28,
+            "classification.purist_category_mismatch": 50,
+            "evidence.unsupported_quote": 1,
+            "normalization.invalid_label": 2,
+            "normalization.label_mismatch": 117,
+            "normalization.monthly_frequency_mismatch": 87,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "paper_minus_canonical": {
+          "monthly_frequency_accuracy": -0.004729569946961276,
+          "purist_category_accuracy": -0.018940801549497177,
+          "pragmatic_category_accuracy": -0.009402835489792039
+        }
+      },
+      {
+        "baseline_id": "d1_v1_2b_schema_guard_gpt",
+        "label": "D1 v1.2b schema guard GPT",
+        "role": "mechanism baseline / operational D1 surface",
+        "run_id": "gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z",
+        "run_dir": "C:\\Users\\cbrow\\Code\\dspy-extraction\\runs\\gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z",
+        "config_path": "C:\\Users\\cbrow\\Code\\dspy-extraction\\runs\\gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z\\config.json",
+        "experiment_id": "gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini",
+        "model": "gpt-4.1-mini / openai",
+        "program_variant": "gan_frequency_s0_date_events_candidates_single_pass",
+        "prompt_version": "gan_frequency_s0_date_events_candidates_v1_2b_schema_guard_only",
+        "paper_reproduction": {
+          "scorer": "gan2026_paper_reproduction",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7658862876254181,
+            "purist_category_accuracy": 0.8093645484949833,
+            "pragmatic_category_accuracy": 0.8361204013377926
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6889632107023411,
+            "normalized_label_accuracy": 0.6889632107023411,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7658862876254181,
+              "lower": 0.7190635451505016,
+              "upper": 0.8127090301003345,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8093645484949833,
+              "lower": 0.7625418060200669,
+              "upper": 0.8528428093645485,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8361204013377926,
+              "lower": 0.7926421404682275,
+              "upper": 0.8762541806020067,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 49,
+            "classification.purist_category_mismatch": 57,
+            "evidence.missing_prediction_evidence": 19,
+            "normalization.label_mismatch": 93,
+            "normalization.monthly_frequency_mismatch": 70,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "canonical": {
+          "scorer": "gan_frequency_deterministic_v1",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 298,
+            "invalid_predictions": 1,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7986577181208053,
+            "purist_category_accuracy": 0.8489932885906041,
+            "pragmatic_category_accuracy": 0.8758389261744967
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6912751677852349,
+            "normalized_label_accuracy": 0.6912751677852349,
+            "schema_valid_prediction_rate": 0.9966555183946488,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7986577181208053,
+              "lower": 0.7516778523489933,
+              "upper": 0.8456375838926175,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 298
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8489932885906041,
+              "lower": 0.8087248322147651,
+              "upper": 0.889261744966443,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 298
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8758389261744967,
+              "lower": 0.8355704697986577,
+              "upper": 0.912751677852349,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 298
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 0.9966555183946488,
+              "lower": 0.9899665551839465,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 37,
+            "classification.purist_category_mismatch": 45,
+            "evidence.missing_prediction_evidence": 19,
+            "normalization.invalid_label": 1,
+            "normalization.label_mismatch": 92,
+            "normalization.monthly_frequency_mismatch": 60,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "paper_minus_canonical": {
+          "monthly_frequency_accuracy": -0.03277143049538722,
+          "purist_category_accuracy": -0.039628740095620785,
+          "pragmatic_category_accuracy": -0.03971852483670402
+        }
+      }
+    ],
+    "best_by_metric": {
+      "paper_reproduction": {
+        "monthly_frequency_accuracy": {
+          "accuracy": 0.7993311036789298,
+          "baseline_ids": [
+            "builder_gap_v1_gpt"
+          ]
+        },
+        "purist_category_accuracy": {
+          "accuracy": 0.8528428093645485,
+          "baseline_ids": [
+            "builder_gap_v1_gpt"
+          ]
+        },
+        "pragmatic_category_accuracy": {
+          "accuracy": 0.8963210702341137,
+          "baseline_ids": [
+            "builder_gap_v1_qwen"
+          ]
+        }
+      },
+      "canonical": {
+        "monthly_frequency_accuracy": {
+          "accuracy": 0.8060200668896321,
+          "baseline_ids": [
+            "builder_gap_v1_gpt"
+          ]
+        },
+        "purist_category_accuracy": {
+          "accuracy": 0.8595317725752508,
+          "baseline_ids": [
+            "builder_gap_v1_gpt"
+          ]
+        },
+        "pragmatic_category_accuracy": {
+          "accuracy": 0.9057239057239057,
+          "baseline_ids": [
+            "builder_gap_v1_qwen"
+          ]
+        }
+      }
+    }
+  },
+  "baselines": [
+    {
+      "baseline_id": "builder_gap_v1_gpt",
+      "label": "Builder-gap v1 GPT",
+      "role": "promoted synthetic operational default",
+      "run_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+      "run_dir": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+      "config_path": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z\\config.json",
+      "experiment_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation",
+      "dataset": "gan_2026",
+      "schema_level": "gan_frequency_s0",
+      "split_name": "gan_2026_fixed_v1:validation",
+      "model_provider": "openai",
+      "model_name": "gpt-4.1-mini",
+      "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+      "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "prior_scorer_mode": "gan_frequency_deterministic_v1",
+      "prior_canonical_metrics": {
+        "benchmark_metrics": {
+          "monthly_frequency_accuracy": 0.8060200668896321,
+          "pragmatic_category_accuracy": 0.8862876254180602,
+          "purist_category_accuracy": 0.8595317725752508
+        },
+        "diagnostic_metrics": {
+          "evidence_offsets_present_rate": 1.0,
+          "evidence_offsets_valid_rate": 1.0,
+          "evidence_quote_support_rate": 1.0,
+          "normalized_label_accuracy": 0.7123745819397993,
+          "raw_exact_accuracy": 0.7123745819397993,
+          "schema_valid_prediction_rate": 1.0
+        },
+        "counts": {
+          "evaluated_records": 299,
+          "extra_predictions": 0,
+          "gold_records": 1500,
+          "invalid_predictions": 0,
+          "missing_predictions": 1201,
+          "predicted_records": 299,
+          "valid_predictions": 299
+        }
+      },
+      "score_views": {
+        "paper_reproduction": {
+          "scorer": "gan2026_paper_reproduction",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7993311036789298,
+            "purist_category_accuracy": 0.8528428093645485,
+            "pragmatic_category_accuracy": 0.8795986622073578
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.7123745819397993,
+            "normalized_label_accuracy": 0.7123745819397993,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7993311036789298,
+              "lower": 0.7525083612040134,
+              "upper": 0.8494983277591973,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8528428093645485,
+              "lower": 0.8127090301003345,
+              "upper": 0.8929765886287625,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8795986622073578,
+              "lower": 0.842809364548495,
+              "upper": 0.9163879598662207,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 36,
+            "classification.purist_category_mismatch": 44,
+            "evidence.missing_prediction_evidence": 9,
+            "normalization.label_mismatch": 86,
+            "normalization.monthly_frequency_mismatch": 60,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "canonical": {
+          "scorer": "gan_frequency_deterministic_v1",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.8060200668896321,
+            "purist_category_accuracy": 0.8595317725752508,
+            "pragmatic_category_accuracy": 0.8862876254180602
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.7123745819397993,
+            "normalized_label_accuracy": 0.7123745819397993,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.8060200668896321,
+              "lower": 0.7625418060200669,
+              "upper": 0.8528428093645485,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8595317725752508,
+              "lower": 0.8193979933110368,
+              "upper": 0.8963210702341137,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8862876254180602,
+              "lower": 0.8494983277591973,
+              "upper": 0.9198160535117057,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 34,
+            "classification.purist_category_mismatch": 42,
+            "evidence.missing_prediction_evidence": 9,
+            "normalization.label_mismatch": 86,
+            "normalization.monthly_frequency_mismatch": 58,
+            "schema.missing_prediction": 1201
+          }
+        }
+      },
+      "paper_minus_canonical": {
+        "monthly_frequency_accuracy": -0.006688963210702337,
+        "purist_category_accuracy": -0.006688963210702337,
+        "pragmatic_category_accuracy": -0.006688963210702337
+      }
+    },
+    {
+      "baseline_id": "builder_gap_v1_qwen",
+      "label": "Builder-gap v1 Qwen",
+      "role": "accepted local-transfer baseline",
+      "run_id": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
+      "run_dir": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
+      "config_path": "C:\\Users\\cbrow\\Code\\dspy-extraction\\archive\\runs\\gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z\\config.json",
+      "experiment_id": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation",
+      "dataset": "gan_2026",
+      "schema_level": "gan_frequency_s0",
+      "split_name": "gan_2026_fixed_v1:validation",
+      "model_provider": "ollama",
+      "model_name": "qwen3.6:35b",
+      "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+      "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama.json",
+      "prior_scorer_mode": "gan_frequency_deterministic_v1",
+      "prior_canonical_metrics": {
+        "benchmark_metrics": {
+          "monthly_frequency_accuracy": 0.7070707070707071,
+          "pragmatic_category_accuracy": 0.9057239057239057,
+          "purist_category_accuracy": 0.8316498316498316
+        },
+        "diagnostic_metrics": {
+          "evidence_offsets_present_rate": 0.9966329966329966,
+          "evidence_offsets_valid_rate": 1.0,
+          "evidence_quote_support_rate": 0.9966329966329966,
+          "normalized_label_accuracy": 0.6060606060606061,
+          "raw_exact_accuracy": 0.6060606060606061,
+          "schema_valid_prediction_rate": 0.9933110367892977
+        },
+        "counts": {
+          "evaluated_records": 299,
+          "extra_predictions": 0,
+          "gold_records": 1500,
+          "invalid_predictions": 2,
+          "missing_predictions": 1201,
+          "predicted_records": 299,
+          "valid_predictions": 297
+        }
+      },
+      "score_views": {
+        "paper_reproduction": {
+          "scorer": "gan2026_paper_reproduction",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7023411371237458,
+            "purist_category_accuracy": 0.8127090301003345,
+            "pragmatic_category_accuracy": 0.8963210702341137
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6020066889632107,
+            "normalized_label_accuracy": 0.6020066889632107,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 0.9966555183946488,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 0.9966555183946488
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7023411371237458,
+              "lower": 0.6520903010033445,
+              "upper": 0.7525083612040134,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8127090301003345,
+              "lower": 0.7692307692307693,
+              "upper": 0.8561872909698997,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8963210702341137,
+              "lower": 0.862876254180602,
+              "upper": 0.9297658862876255,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 31,
+            "classification.purist_category_mismatch": 56,
+            "evidence.unsupported_quote": 1,
+            "normalization.label_mismatch": 119,
+            "normalization.monthly_frequency_mismatch": 89,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "canonical": {
+          "scorer": "gan_frequency_deterministic_v1",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 297,
+            "invalid_predictions": 2,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7070707070707071,
+            "purist_category_accuracy": 0.8316498316498316,
+            "pragmatic_category_accuracy": 0.9057239057239057
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6060606060606061,
+            "normalized_label_accuracy": 0.6060606060606061,
+            "schema_valid_prediction_rate": 0.9933110367892977,
+            "evidence_quote_support_rate": 0.9966329966329966,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 0.9966329966329966
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7070707070707071,
+              "lower": 0.6565656565656566,
+              "upper": 0.7575757575757576,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 297
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8316498316498316,
+              "lower": 0.7912457912457912,
+              "upper": 0.8720538720538721,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 297
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.9057239057239057,
+              "lower": 0.8720538720538721,
+              "upper": 0.936026936026936,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 297
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 0.9933110367892977,
+              "lower": 0.9832775919732442,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 28,
+            "classification.purist_category_mismatch": 50,
+            "evidence.unsupported_quote": 1,
+            "normalization.invalid_label": 2,
+            "normalization.label_mismatch": 117,
+            "normalization.monthly_frequency_mismatch": 87,
+            "schema.missing_prediction": 1201
+          }
+        }
+      },
+      "paper_minus_canonical": {
+        "monthly_frequency_accuracy": -0.004729569946961276,
+        "purist_category_accuracy": -0.018940801549497177,
+        "pragmatic_category_accuracy": -0.009402835489792039
+      }
+    },
+    {
+      "baseline_id": "d1_v1_2b_schema_guard_gpt",
+      "label": "D1 v1.2b schema guard GPT",
+      "role": "mechanism baseline / operational D1 surface",
+      "run_id": "gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z",
+      "run_dir": "C:\\Users\\cbrow\\Code\\dspy-extraction\\runs\\gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z",
+      "config_path": "C:\\Users\\cbrow\\Code\\dspy-extraction\\runs\\gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z\\config.json",
+      "experiment_id": "gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_level": "gan_frequency_s0",
+      "split_name": "gan_2026_fixed_v1:validation",
+      "model_provider": "openai",
+      "model_name": "gpt-4.1-mini",
+      "program_variant": "gan_frequency_s0_date_events_candidates_single_pass",
+      "prompt_version": "gan_frequency_s0_date_events_candidates_v1_2b_schema_guard_only",
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "prior_scorer_mode": "gan_frequency_deterministic_v1",
+      "prior_canonical_metrics": {
+        "benchmark_metrics": {
+          "monthly_frequency_accuracy": 0.7986577181208053,
+          "pragmatic_category_accuracy": 0.8758389261744967,
+          "purist_category_accuracy": 0.8489932885906041
+        },
+        "diagnostic_metrics": {
+          "evidence_offsets_present_rate": 1.0,
+          "evidence_offsets_valid_rate": 1.0,
+          "evidence_quote_support_rate": 1.0,
+          "normalized_label_accuracy": 0.6912751677852349,
+          "raw_exact_accuracy": 0.6912751677852349,
+          "schema_valid_prediction_rate": 0.9966555183946488
+        },
+        "counts": {
+          "evaluated_records": 299,
+          "extra_predictions": 0,
+          "gold_records": 1500,
+          "invalid_predictions": 1,
+          "missing_predictions": 1201,
+          "predicted_records": 299,
+          "valid_predictions": 298
+        }
+      },
+      "score_views": {
+        "paper_reproduction": {
+          "scorer": "gan2026_paper_reproduction",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 299,
+            "invalid_predictions": 0,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7658862876254181,
+            "purist_category_accuracy": 0.8093645484949833,
+            "pragmatic_category_accuracy": 0.8361204013377926
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6889632107023411,
+            "normalized_label_accuracy": 0.6889632107023411,
+            "schema_valid_prediction_rate": 1.0,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7658862876254181,
+              "lower": 0.7190635451505016,
+              "upper": 0.8127090301003345,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8093645484949833,
+              "lower": 0.7625418060200669,
+              "upper": 0.8528428093645485,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8361204013377926,
+              "lower": 0.7926421404682275,
+              "upper": 0.8762541806020067,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 1.0,
+              "lower": 1.0,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 49,
+            "classification.purist_category_mismatch": 57,
+            "evidence.missing_prediction_evidence": 19,
+            "normalization.label_mismatch": 93,
+            "normalization.monthly_frequency_mismatch": 70,
+            "schema.missing_prediction": 1201
+          }
+        },
+        "canonical": {
+          "scorer": "gan_frequency_deterministic_v1",
+          "scorer_options": {
+            "apply_paper_prediction_repair": false,
+            "allow_paper_prediction_range": false,
+            "allow_paper_error_tolerance": false
+          },
+          "counts": {
+            "gold_records": 1500,
+            "predicted_records": 299,
+            "evaluated_records": 299,
+            "valid_predictions": 298,
+            "invalid_predictions": 1,
+            "missing_predictions": 1201,
+            "extra_predictions": 0
+          },
+          "benchmark_metrics": {
+            "monthly_frequency_accuracy": 0.7986577181208053,
+            "purist_category_accuracy": 0.8489932885906041,
+            "pragmatic_category_accuracy": 0.8758389261744967
+          },
+          "diagnostic_metrics": {
+            "raw_exact_accuracy": 0.6912751677852349,
+            "normalized_label_accuracy": 0.6912751677852349,
+            "schema_valid_prediction_rate": 0.9966555183946488,
+            "evidence_quote_support_rate": 1.0,
+            "evidence_offsets_valid_rate": 1.0,
+            "evidence_offsets_present_rate": 1.0
+          },
+          "confidence_intervals": {
+            "monthly_frequency_accuracy": {
+              "point_estimate": 0.7986577181208053,
+              "lower": 0.7516778523489933,
+              "upper": 0.8456375838926175,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 298
+            },
+            "purist_category_accuracy": {
+              "point_estimate": 0.8489932885906041,
+              "lower": 0.8087248322147651,
+              "upper": 0.889261744966443,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 298
+            },
+            "pragmatic_category_accuracy": {
+              "point_estimate": 0.8758389261744967,
+              "lower": 0.8355704697986577,
+              "upper": 0.912751677852349,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 298
+            },
+            "schema_valid_prediction_rate": {
+              "point_estimate": 0.9966555183946488,
+              "lower": 0.9899665551839465,
+              "upper": 1.0,
+              "confidence_level": 0.95,
+              "method": "percentile_bootstrap_mean",
+              "bootstrap_samples": 1000,
+              "seed": 0,
+              "n": 299
+            }
+          },
+          "error_analysis_counts": {
+            "classification.pragmatic_category_mismatch": 37,
+            "classification.purist_category_mismatch": 45,
+            "evidence.missing_prediction_evidence": 19,
+            "normalization.invalid_label": 1,
+            "normalization.label_mismatch": 92,
+            "normalization.monthly_frequency_mismatch": 60,
+            "schema.missing_prediction": 1201
+          }
+        }
+      },
+      "paper_minus_canonical": {
+        "monthly_frequency_accuracy": -0.03277143049538722,
+        "purist_category_accuracy": -0.039628740095620785,
+        "pragmatic_category_accuracy": -0.03971852483670402
+      }
+    }
+  ],
+  "caveats": [
+    "Synthetic validation only: this is not Real(300), Real(150), or a published Gan benchmark reproduction.",
+    "Paper-reproduction metrics are the benchmark-facing view for direct Gan scorer compatibility; canonical metrics remain diagnostic sensitivity analyses.",
+    "The primary paper-reproduction rows report the repair, range, and tolerance options explicitly.",
+    "Stored prediction artifacts were rescored as-is; no scorer, loader, split, bridge, prompt, or prediction artifact was tuned."
+  ]
+}

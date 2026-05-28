@@ -1,0 +1,52 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "post_prediction_clean_ladder_v1",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_full_note_e8_cap25_gpt4_1_mini",
+  "hypothesis": "E8 matched baseline: full-note S1 clean-ladder prompting on the first 25 ExECT validation documents establishes the control for a family-span context comparison with scorer, split, prompt, model, and post-prediction bridge policy fixed.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Kanban E8 preregistered cap-slice baseline; not a published ExECTv2 benchmark reproduction.",
+    "S1 benchmark-facing families only: diagnosis, seizure_type, and annotated_medication.",
+    "This arm uses full-note context; compare only with the matched E8 family-span arm under the same split, cap, model, prompt, scorer, and repair policy.",
+    "Medication temporality and investigation are not benchmark-facing S1 metrics; investigation spans are included only in the E4/E8 context substrate diagnostics.",
+    "Validation is the component-development split; test remains holdout and must not be tuned from."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s1_clean_ladder_v1_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "exect_family_span_prompt_comparison_e8",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "H1_post_deterministic"
+    ],
+    "implementation_variant": "clean_ladder_v1_full_note_context",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during",
+      "post"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "varied_factor": "context_selection_policy"
+  }
+}

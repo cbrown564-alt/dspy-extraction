@@ -244,6 +244,30 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         ),
     ),
     _spec(
+        variant_id="gan.s0.explicit_reason_code_adjudicator",
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        program_variant="gan_frequency_s0_explicit_reason_code_adjudicator",
+        scorer_modes=("gan_frequency_deterministic_v1", "gan2026_paper_reproduction"),
+        prompt_default="gan_frequency_s0_explicit_reason_code_adjudicator_v1_0",
+        stage_graph_id="g4_reason_code_adjudicator",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/gan/"
+            "gan_s0_g4_explicit_reason_code_adjudicator_report_20260528.md"
+        ),
+        implementation_variant="explicit_reason_code_adjudicator_v1",
+        config_examples=(
+            "configs/experiments/"
+            "gan_s0_g4_explicit_reason_code_adjudicator_gpt4_1_mini_slice.json",
+        ),
+        notes=(
+            "G4 same-slice reason-code adjudicator. Preserves trace fields but did "
+            "not promote as tested because it underperformed the G2 constrained "
+            "baselines via seizure-free-over-quantified target-selection failures."
+        ),
+    ),
+    _spec(
         variant_id="exect.s1.clean_ladder_v1",
         dataset="exect_v2",
         schema_level="exect_s0_s1_field_family",
@@ -251,6 +275,28 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         scorer_modes=("exect_field_family_deterministic_v1",),
         prompt_default="exect_s0_s1_field_family_v4_10_label_policy",
         status="diagnostic_baseline",
+    ),
+    _spec(
+        variant_id="exect.s1.clean_ladder_v1_family_span",
+        dataset="exect_v2",
+        schema_level="exect_s0_s1_field_family",
+        program_variant="exect_s1_clean_ladder_v1_family_span_single_pass",
+        scorer_modes=("exect_field_family_deterministic_v1",),
+        prompt_default="exect_s0_s1_field_family_v4_10_label_policy",
+        stage_graph_id="g1_l1_policy_bridges",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/exect/"
+            "exect_family_span_prompt_comparison_e8_preregistration_20260528.md"
+        ),
+        implementation_variant="clean_ladder_v1_family_span_context",
+        config_examples=(
+            "configs/experiments/exect_s1_family_span_e8_cap25_gpt4_1_mini.json",
+        ),
+        notes=(
+            "E8 cap-slice mechanism probe: same S1 clean-ladder prompt/scorer as "
+            "the full-note baseline, with E4 family-span context as the varied factor."
+        ),
     ),
     _spec(
         variant_id="exect.s1.clean_ladder_v2_diagnosis_stable",

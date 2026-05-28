@@ -23,6 +23,7 @@ from clinical_extraction.gan.s0.signatures import (
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_GENERATOR_ADDENDUM,
     GanFrequencyS0DateEventsExtractionSignature,
     GanFrequencyS0EntityTagsSignature,
+    GanFrequencyS0ExplicitReasonCodeAdjudicatorSignature,
     GanFrequencyS0LlmTemporalCandidatesSignature,
     GanFrequencyS0MultipleAnswerSignature,
     GanFrequencyS0ReactTemporalToolsSignature,
@@ -47,6 +48,8 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT,
     GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
@@ -1606,6 +1609,195 @@ def select_gan_multiple_answer_option(
     return max(options, key=_multiple_answer_selector_score)
 
 
+def _coerce_candidate_index(value: Any) -> int | None:
+    if isinstance(value, bool) or value is None:
+        return None
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    if isinstance(value, str):
+        stripped = value.strip()
+        if stripped.isdigit():
+            return int(stripped)
+    return None
+
+
+def _parse_reason_code_adjudication_json(payload: str | dict[str, Any] | None) -> dict[str, Any]:
+    if payload is None:
+        return {"rejection_reason": "missing_adjudication_json"}
+    if isinstance(payload, str):
+        stripped = payload.strip()
+        if not stripped or stripped.lower() in {"none", "null"}:
+            return {"rejection_reason": "empty_adjudication_json"}
+        try:
+            raw = json.loads(stripped)
+        except json.JSONDecodeError:
+            return {
+                "rejection_reason": "invalid_json",
+                "raw_adjudication": payload,
+            }
+    else:
+        raw = payload
+
+    if not isinstance(raw, dict):
+        return {"rejection_reason": "adjudication_not_object"}
+
+    inputs = raw.get("label_construction_inputs") or {}
+    if not isinstance(inputs, dict):
+        inputs = {"raw": inputs}
+
+    return {
+        "reason_code": str(raw.get("reason_code") or "missing_reason_code").strip(),
+        "selected_candidate_index": _coerce_candidate_index(
+            raw.get("selected_candidate_index")
+        ),
+        "selected_candidate_label": raw.get("selected_candidate_label"),
+        "selected_evidence_text": raw.get("selected_evidence_text"),
+        "label_construction_inputs": inputs,
+        "final_benchmark_label": raw.get("final_benchmark_label"),
+        "final_evidence_text": raw.get("final_evidence_text"),
+        "error_class": str(raw.get("error_class") or "none").strip(),
+    }
+
+
+def _candidate_label_construction_inputs(candidate: Any) -> dict[str, Any]:
+    return {
+        "event_count": candidate.event_count,
+        "window_count": candidate.window_count,
+        "window_unit": candidate.window_unit,
+    }
+
+
+def _selected_candidate_reference(
+    *,
+    candidate: Any,
+    candidate_index: int,
+    constructed_label: str | None,
+    construction_status: str,
+    failure_reason: str | None,
+) -> dict[str, Any]:
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    return {
+        "candidate_index": candidate_index,
+        **temporal_candidate_to_dict(candidate),
+        "construction_status": construction_status,
+        "constructed_label": constructed_label,
+        "failure_reason": failure_reason,
+    }
+
+
+def _prediction_from_reason_code_adjudication(
+    *,
+    adjudication: dict[str, Any],
+    candidates: list[Any],
+    temporal_candidates_text: str,
+) -> dspy.Prediction:
+    from clinical_extraction.gan.s0.target_selection import (
+        construct_gan_s0_label_from_candidate_record,
+    )
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    candidate_records = [temporal_candidate_to_dict(candidate) for candidate in candidates]
+    reason_code = str(adjudication.get("reason_code") or "missing_reason_code")
+    selected_index = adjudication.get("selected_candidate_index")
+    selected_reference: dict[str, Any] | None = None
+    label_inputs = adjudication.get("label_construction_inputs") or {}
+    rejection_reason = adjudication.get("rejection_reason")
+
+    if isinstance(selected_index, int) and 1 <= selected_index <= len(candidates):
+        candidate = candidates[selected_index - 1]
+        constructed = construct_gan_s0_label_from_candidate_record(
+            temporal_candidate_to_dict(candidate)
+        )
+        selected_reference = _selected_candidate_reference(
+            candidate=candidate,
+            candidate_index=selected_index,
+            constructed_label=constructed.constructed_label,
+            construction_status=constructed.status,
+            failure_reason=constructed.failure_reason,
+        )
+        if not label_inputs:
+            label_inputs = _candidate_label_construction_inputs(candidate)
+        if constructed.constructed_label is not None:
+            model_final = adjudication.get("final_benchmark_label")
+            if (
+                isinstance(model_final, str)
+                and _normalize_predicted_label(model_final) != constructed.constructed_label
+            ):
+                adjudication = {
+                    **adjudication,
+                    "model_final_label_mismatch": {
+                        "model_final_benchmark_label": model_final,
+                        "constructed_label": constructed.constructed_label,
+                    },
+                }
+            return dspy.Prediction(
+                seizure_frequency_number=constructed.constructed_label,
+                evidence_text=candidate.evidence_text,
+                temporal_candidates=temporal_candidates_text,
+                temporal_candidate_labels=[c.canonical_label for c in candidates],
+                temporal_candidate_records=candidate_records,
+                reason_code_adjudication=adjudication,
+                selected_candidate_reference=selected_reference,
+                label_construction_inputs=label_inputs,
+                target_selection_reason_code=reason_code,
+                target_selection_error_class=adjudication.get("error_class") or "none",
+                temporal_candidate_source="explicit_reason_code_adjudicator",
+                verifier_decision="reason_code_candidate_select",
+                verifier_reason=(
+                    "Constructed final label from explicit selected candidate "
+                    f"{selected_index} with reason code {reason_code}."
+                ),
+            )
+        rejection_reason = constructed.failure_reason or "invalid_selected_candidate"
+
+    fallback_label = _normalize_predicted_label(adjudication.get("final_benchmark_label"))
+    fallback_evidence = adjudication.get("final_evidence_text")
+    if fallback_label is not None:
+        try:
+            _multiple_answer_label_class(fallback_label)
+        except ValueError:
+            fallback_label = None
+
+    if fallback_label is None:
+        fallback = select_gan_multiple_answer_option(
+            _temporal_candidates_to_multiple_answer_options(candidates)
+        )
+        if fallback is not None:
+            fallback_label = fallback["canonical_label"]
+            fallback_evidence = fallback.get("evidence_text")
+            reason_code = f"{reason_code}:deterministic_candidate_fallback"
+        else:
+            fallback_label = "unknown"
+            fallback_evidence = None
+            reason_code = f"{reason_code}:unknown_fallback"
+
+    adjudication = {
+        **adjudication,
+        "rejection_reason": rejection_reason or "no_valid_selected_candidate",
+    }
+    return dspy.Prediction(
+        seizure_frequency_number=fallback_label,
+        evidence_text=fallback_evidence if isinstance(fallback_evidence, str) else None,
+        temporal_candidates=temporal_candidates_text,
+        temporal_candidate_labels=[c.canonical_label for c in candidates],
+        temporal_candidate_records=candidate_records,
+        reason_code_adjudication=adjudication,
+        selected_candidate_reference=selected_reference,
+        label_construction_inputs=label_inputs,
+        target_selection_reason_code=reason_code,
+        target_selection_error_class=adjudication.get("error_class") or "policy",
+        temporal_candidate_source="explicit_reason_code_adjudicator",
+        verifier_decision="reason_code_fallback",
+        verifier_reason=(
+            "Explicit reason-code adjudication did not provide a valid selected "
+            "candidate; used deterministic fallback while preserving rejection metadata."
+        ),
+    )
+
+
 def _temporal_candidates_to_multiple_answer_options(
     candidates: list[Any],
 ) -> list[dict[str, Any]]:
@@ -1786,6 +1978,45 @@ class GanFrequencyS0SeededMultipleAnswerDetSelectorModule(dspy.Module):
         )
 
 
+class GanFrequencyS0ExplicitReasonCodeAdjudicatorModule(dspy.Module):
+    """LLM reason-code target selector with deterministic label construction."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.adjudicate = dspy.Predict(GanFrequencyS0ExplicitReasonCodeAdjudicatorSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation="table",
+        )
+        generated = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        adjudication = _parse_reason_code_adjudication_json(
+            generated.adjudication_json
+        )
+        prediction = _prediction_from_reason_code_adjudication(
+            adjudication=adjudication,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+        )
+        prediction.prompt_version = self.prompt_version
+        return prediction
+
+
 class GanFrequencyS0ReactTemporalToolsModule(dspy.Module):
     """Bounded ReAct probe with deterministic temporal helper tools."""
 
@@ -1850,12 +2081,14 @@ def build_gan_s0_module(
     | GanFrequencyS0TemporalEventTableSinglePassModule
     | GanFrequencyS0MultipleAnswerDetSelectorModule
     | GanFrequencyS0SeededMultipleAnswerDetSelectorModule
+    | GanFrequencyS0ExplicitReasonCodeAdjudicatorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     active_variants = {
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
         GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
         GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+        GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT,
     }
     if not include_archive and program_variant not in active_variants:
         raise ValueError(
@@ -1958,6 +2191,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
         return GanFrequencyS0SeededMultipleAnswerDetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT:
+        return GanFrequencyS0ExplicitReasonCodeAdjudicatorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:

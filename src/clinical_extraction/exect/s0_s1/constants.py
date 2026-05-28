@@ -14,6 +14,9 @@ EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT = (
     "exect_s0_s1_field_family_seizure_pre_vocab_single_pass"
 )
 EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT = "exect_s1_clean_ladder_v1_single_pass"
+EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT = (
+    "exect_s1_clean_ladder_v1_family_span_single_pass"
+)
 EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT = (
     "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble"
 )
@@ -39,6 +42,7 @@ EXECT_S0_S1_ACTIVE_VARIANTS = frozenset(
     {
         EXECT_S0_S1_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     }
 )

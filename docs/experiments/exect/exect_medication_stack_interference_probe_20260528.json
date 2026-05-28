@@ -1,0 +1,465 @@
+{
+  "generated_at": "2026-05-28T21:52:14.386959+00:00",
+  "kanban_card": "E7 - Medication Stack-Interference Probe",
+  "dataset": "exect_v2",
+  "split_name": "validation",
+  "split_file": "data/splits/exectv2_splits.json",
+  "component": "annotated_medication current-Rx stack interference",
+  "model_provider": "GPT 4.1-mini / OpenAI for S1/S5 comparison surfaces",
+  "scorer_mode": "medication-only slice of exect_field_family_deterministic_v1",
+  "lifecycle_policy": "Lifecycle rows are diagnostic attribution strata only; they do not change benchmark-facing medication F1.",
+  "source_artifacts": {
+    "e3_payload": "docs/experiments/exect/exect_medication_current_rx_lifecycle_payload_audit_20260528.json",
+    "e6_ceiling_probe": "docs/experiments/exect/exect_medication_current_rx_ceiling_probe_20260528.json",
+    "s1_run": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+    "s5_run": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z"
+  },
+  "surface_summaries": {
+    "s1_gpt_surface": {
+      "documents": 40,
+      "gold_support": 47,
+      "tp": 45,
+      "fp": 5,
+      "fn": 2,
+      "precision": 0.9,
+      "recall": 0.9574468085106383,
+      "f1": 0.9278350515463918,
+      "label": "Existing S1 GPT medication surface",
+      "classification": "existing S1 operational surface",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "run_id": "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z"
+    },
+    "s5_gpt_surface": {
+      "documents": 40,
+      "gold_support": 47,
+      "tp": 47,
+      "fp": 12,
+      "fn": 0,
+      "precision": 0.7966101694915254,
+      "recall": 1.0,
+      "f1": 0.8867924528301886,
+      "label": "Existing S5 GPT medication surface",
+      "classification": "existing stacked S5 operational surface",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z"
+    }
+  },
+  "stack_delta_summary": {
+    "s1_false_positives": 5,
+    "s5_false_positives": 12,
+    "s5_only_false_positives": 8,
+    "shared_s1_s5_false_positives": 4,
+    "s5_recovered_s1_false_negatives": 2,
+    "s1_medication_f1": 0.9278350515463918,
+    "s5_medication_f1": 0.8867924528301886,
+    "s5_precision_loss_vs_s1": 0.10338983050847461,
+    "s5_recall_gain_vs_s1": 0.04255319148936165
+  },
+  "interference_category_counts": {
+    "historical_failed_or_switched_evidence": 6,
+    "missing_gold_or_annotation_policy": 2,
+    "other_medication_or_non_current_section": 1,
+    "planned_or_future_evidence": 3
+  },
+  "interference_rows": [
+    {
+      "document_id": "EA0016",
+      "medication": "levetiracetam",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "planned_or_future_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "I would suggest maybe Levetiracetam 250 mg once-a-day, increasing by 250 mg every two weeks to 250 milligrams twice a day."
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "Levetiracetam",
+          "lifecycle_status": "planned",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": true,
+          "taper_or_stop": false,
+          "section": "diagnosis",
+          "evidence_text": "\u00b7 If you went on to have another seizure or if he decided to start medication then I would suggest maybe Levetiracetam 250 mg once-a-day, increasing by 250 mg every two weeks to 250 milligrams twice a day."
+        }
+      ],
+      "gold_current_medications": []
+    },
+    {
+      "document_id": "EA0052",
+      "medication": "levetiracetam",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "historical_failed_or_switched_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "levetiracetam gave her mood disorder"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "levetiracetam",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "medication",
+          "evidence_text": "Looking through her old notes it seems that levetiracetam gave her mood disorder, lamotrigine wasn\u2019t effective."
+        }
+      ],
+      "gold_current_medications": [
+        "carbamazepine",
+        "zonisamide"
+      ]
+    },
+    {
+      "document_id": "EA0052",
+      "medication": "lamotrigine",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "historical_failed_or_switched_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "lamotrigine wasn\u2019t effective"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "lamotrigine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "medication",
+          "evidence_text": "Looking through her old notes it seems that levetiracetam gave her mood disorder, lamotrigine wasn\u2019t effective."
+        }
+      ],
+      "gold_current_medications": [
+        "carbamazepine",
+        "zonisamide"
+      ]
+    },
+    {
+      "document_id": "EA0053",
+      "medication": "levetiracetam",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "planned_or_future_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "I would therefore suggest starting levetiracetam 250mg od increasing by 250mg every fortnight until she is taking 500mg bd."
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "levetiracetam",
+          "lifecycle_status": "planned",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "medication",
+          "evidence_text": "To start levetiracetam as detailed below"
+        },
+        {
+          "source_kind": "note_surface",
+          "raw_text": "levetiracetam",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": true,
+          "taper_or_stop": false,
+          "section": "diagnosis",
+          "evidence_text": "I would therefore suggest starting levetiracetam 250mg od increasing by 250mg every fortnight until she is taking 500mg bd."
+        }
+      ],
+      "gold_current_medications": []
+    },
+    {
+      "document_id": "EA0059",
+      "medication": "gabapentin",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "other_medication_or_non_current_section",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "gabapentin"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "gabapentin",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "investigations",
+          "evidence_text": "Other medication include warfarin, ramipril, bisprolol, gabapentin"
+        }
+      ],
+      "gold_current_medications": [
+        "brivaracetam",
+        "lamotrigine"
+      ]
+    },
+    {
+      "document_id": "EA0078",
+      "medication": "levetiracetam",
+      "stack_delta": "shared_s1_s5_fp",
+      "primary_category": "historical_failed_or_switched_evidence",
+      "s1_predicted": true,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "I think that the levetiracetam she is taking could well be contributing to this"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "levetiracetam",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "re",
+          "evidence_text": "I think that the levetiracetam she is taking could well be contributing to this and so I would recommend reducing and stopping this over the next 2 months and increasing the carbamazepine instead."
+        },
+        {
+          "source_kind": "note_surface",
+          "raw_text": "levetiracetam",
+          "lifecycle_status": "previous",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": true,
+          "taper_or_stop": true,
+          "section": "re",
+          "evidence_text": "Reduce the levetiracetam by 250mg every week until it is stopped completely."
+        }
+      ],
+      "gold_current_medications": []
+    },
+    {
+      "document_id": "EA0078",
+      "medication": "carbamazepine",
+      "stack_delta": "shared_s1_s5_fp",
+      "primary_category": "missing_gold_or_annotation_policy",
+      "s1_predicted": true,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "Increase the carbamazepine to 600mg twice a day"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "carbamazepine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "re",
+          "evidence_text": "I think that the levetiracetam she is taking could well be contributing to this and so I would recommend reducing and stopping this over the next 2 months and increasing the carbamazepine instead."
+        },
+        {
+          "source_kind": "note_surface",
+          "raw_text": "carbamazepine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": true,
+          "taper_or_stop": false,
+          "section": "re",
+          "evidence_text": "Increase the carbamazepine to 600mg twice a day."
+        }
+      ],
+      "gold_current_medications": []
+    },
+    {
+      "document_id": "EA0098",
+      "medication": "levetiracetam",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "historical_failed_or_switched_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "He has changed from levetiracetam to lamotrigine"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "levetiracetam",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "seizure_type_and_frequency",
+          "evidence_text": "He has changed from levetiracetam to lamotrigine and feels a bit better but still feels very anxious."
+        }
+      ],
+      "gold_current_medications": [
+        "lamotrigine"
+      ]
+    },
+    {
+      "document_id": "EA0131",
+      "medication": "carbamazepine",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "historical_failed_or_switched_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "Her epilepsy was not well controlled on carbamazepine monotherapy."
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "carbamazepine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "re",
+          "evidence_text": "Her epilepsy was not well controlled on carbamazepine monotherapy."
+        }
+      ],
+      "gold_current_medications": [
+        "sodium valproate"
+      ]
+    },
+    {
+      "document_id": "EA0136",
+      "medication": "carbamazepine",
+      "stack_delta": "shared_s1_s5_fp",
+      "primary_category": "missing_gold_or_annotation_policy",
+      "s1_predicted": true,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "He is currently taking Carbamazepine and Eplim Chrono 1000mg bd"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "Carbamazepine",
+          "lifecycle_status": "current",
+          "benchmark_role": "note_lifecycle_current_candidate",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": true,
+          "taper_or_stop": false,
+          "section": "diagnosis",
+          "evidence_text": "He is currently taking Carbamazepine and Eplim Chrono 1000mg bd, he does not know the does of carbazmazepine that he takes."
+        }
+      ],
+      "gold_current_medications": [
+        "epilim chrono"
+      ]
+    },
+    {
+      "document_id": "EA0143",
+      "medication": "lamotrigine",
+      "stack_delta": "shared_s1_s5_fp",
+      "primary_category": "historical_failed_or_switched_evidence",
+      "s1_predicted": true,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "Initially she was treated with lamotrigine."
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "lamotrigine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "document",
+          "evidence_text": "Initially she was treated with lamotrigine."
+        },
+        {
+          "source_kind": "note_surface",
+          "raw_text": "lamotrigine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "document",
+          "evidence_text": "We advised that Ms Jenkins continues with the lamotrigine."
+        }
+      ],
+      "gold_current_medications": []
+    },
+    {
+      "document_id": "EA0188",
+      "medication": "lamotrigine",
+      "stack_delta": "s5_only_fp",
+      "primary_category": "planned_or_future_evidence",
+      "s1_predicted": false,
+      "s5_predicted": true,
+      "s5_evidence": [
+        "In the future we can consider an increase in the lamotrigine"
+      ],
+      "e3_payload_matches": [
+        {
+          "source_kind": "note_surface",
+          "raw_text": "lamotrigine",
+          "lifecycle_status": "unknown",
+          "benchmark_role": "lifecycle_diagnostic",
+          "is_asm": true,
+          "prescription_list_member": false,
+          "dose_line": false,
+          "taper_or_stop": false,
+          "section": "medication",
+          "evidence_text": "In the future we can consider an increase in the lamotrigine"
+        }
+      ],
+      "gold_current_medications": [
+        "brivaracetam",
+        "zonisamide"
+      ]
+    }
+  ],
+  "recovered_s1_false_negatives": [
+    {
+      "document_id": "EA0052",
+      "medication": "carbamazepine"
+    },
+    {
+      "document_id": "EA0136",
+      "medication": "epilim chrono"
+    }
+  ],
+  "decision": {
+    "dominant_failure": "S5 preserves and recovers current-Rx recall, but broad-stack context adds eight S5-only medication false positives.",
+    "next_mechanism": "payload routing or prompt isolation before a broader medication temporality guard",
+    "am_guard_status": "The current non-ASM/brand guard is useful but insufficient for planned, historical, other-medication, and annotation-policy leakage."
+  },
+  "caveats": [
+    "This is a validation-split no-model/artifact replay analysis.",
+    "S1 and S5 comparison runs are archived provenance artifacts resolved by explicit opt-in.",
+    "Cross-family prompt interference is inferred from S1-vs-S5 differential behavior, not from a randomized prompt isolation run.",
+    "No loader, scorer, split, benchmark bridge, prompt, model-output, or run artifact semantics changed."
+  ]
+}

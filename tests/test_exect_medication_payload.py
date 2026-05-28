@@ -17,6 +17,9 @@ from clinical_extraction.evaluation.exect_medication_current_rx_ceiling_probe im
     DEFAULT_S5_RUN,
     build_report as build_ceiling_report,
 )
+from clinical_extraction.evaluation.exect_medication_stack_interference_probe import (
+    build_report as build_stack_interference_report,
+)
 
 
 def test_medication_payload_separates_annotation_current_from_lifecycle_status():
@@ -140,3 +143,32 @@ def test_medication_current_rx_ceiling_probe_compares_s1_and_s5_surfaces():
     assert s5["fp"] == 12
     assert s5["fn"] == 0
     assert report["lifecycle_policy"].startswith("Lifecycle rows are diagnostic")
+
+
+def test_medication_stack_interference_probe_attributes_s5_false_positives():
+    report = build_stack_interference_report(
+        splits_path=Path("data/splits/exectv2_splits.json"),
+        split_name="validation",
+        e3_payload_path=Path(
+            "docs/experiments/exect/"
+            "exect_medication_current_rx_lifecycle_payload_audit_20260528.json"
+        ),
+        s1_run=DEFAULT_S1_RUN,
+        s5_run=DEFAULT_S5_RUN,
+    )
+
+    delta = report["stack_delta_summary"]
+    categories = report["interference_category_counts"]
+
+    assert delta["s5_false_positives"] == 12
+    assert delta["s5_only_false_positives"] == 8
+    assert delta["shared_s1_s5_false_positives"] == 4
+    assert delta["s5_recovered_s1_false_negatives"] == 2
+
+    assert categories["planned_or_future_evidence"] == 3
+    assert categories["historical_failed_or_switched_evidence"] == 6
+    assert categories["missing_gold_or_annotation_policy"] == 2
+    assert categories["other_medication_or_non_current_section"] == 1
+    assert report["decision"]["next_mechanism"] == (
+        "payload routing or prompt isolation before a broader medication temporality guard"
+    )

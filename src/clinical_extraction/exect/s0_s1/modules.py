@@ -6,6 +6,7 @@ import dspy
 from clinical_extraction.exect.s0_s1.constants import (
     EXECT_S0_S1_ACTIVE_VARIANTS,
     EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
@@ -43,7 +44,15 @@ from clinical_extraction.exect.s0_s1.signatures import (
     build_exect_s0_s1_family_specific_signature,
     build_exect_s0_s1_field_family_signature,
 )
+from clinical_extraction.exect.family_spans import family_span_context
 from clinical_extraction.pipeline.sectioning import select_context
+
+EXECT_S0_S1_FAMILY_SPAN_CONTEXT_FAMILIES = (
+    "diagnosis_problem",
+    "seizure",
+    "medication",
+    "investigation",
+)
 
 class ExectS0S1DeterministicOnlyModule(dspy.Module):
     """D1 ladder rung: primitive-only substring extraction, no model calls."""
@@ -77,6 +86,26 @@ class ExectS0S1FieldFamilyModule(dspy.Module):
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(note_text=note_text)
+
+
+class ExectS0S1FamilySpanFieldFamilyModule(dspy.Module):
+    """Single-pass S1 extractor over E4 typed family-span context."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        signature_cls = build_exect_s0_s1_field_family_signature(prompt_version)
+        self.extract = dspy.ChainOfThought(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        span_context = family_span_context(
+            note_text,
+            families=EXECT_S0_S1_FAMILY_SPAN_CONTEXT_FAMILIES,
+        )
+        return self.extract(note_text=span_context or note_text)
 
 
 class ExectS0S1PreVocabFieldFamilyModule(dspy.Module):
@@ -474,6 +503,8 @@ def build_exect_s0_s1_module(
         return ExectS0S1DeterministicOnlyModule()
     if program_variant == EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT:
         return ExectS1CleanLadderDiagnosisStableEnsembleModule()
+    if program_variant == EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT:
+        return ExectS0S1FamilySpanFieldFamilyModule(prompt_version=prompt_version)
     if program_variant in {EXECT_S0_S1_VARIANT, EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT}:
         return ExectS0S1FieldFamilyModule(prompt_version=prompt_version)
     raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")

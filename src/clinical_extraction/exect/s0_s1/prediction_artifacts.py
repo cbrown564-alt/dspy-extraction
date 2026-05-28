@@ -19,6 +19,7 @@ from clinical_extraction.exect.s0_s1.constants import (
     ALLOWED_DIAGNOSIS_LABELS,
     EXECT_DATASET,
     EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
@@ -61,6 +62,7 @@ from clinical_extraction.exect.s0_s1.prompt_routing import (
     build_precomputed_seizure_type_candidates,
     extract_d1_field_family_surfaces,
 )
+from clinical_extraction.exect.family_spans import family_span_context
 from clinical_extraction.exect.s1_boundary import build_s1_boundary_surfaces_metadata
 from clinical_extraction.pipeline.sectioning import select_context
 from clinical_extraction.schemas import (
@@ -258,6 +260,7 @@ def _s1_single_pass_variants() -> frozenset[str]:
             EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
             EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
             EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+            EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
             EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
         }
     )
@@ -325,6 +328,30 @@ def _predict_record(
             }
         if program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:
             metadata["d1_surfaces"] = extract_d1_field_family_surfaces(record.text)
+        if program_variant == EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT:
+            span_context = family_span_context(
+                record.text,
+                families=(
+                    "diagnosis_problem",
+                    "seizure",
+                    "medication",
+                    "investigation",
+                ),
+            )
+            metadata["family_span_context"] = {
+                "primitive_id": "exect.sections.family_spans.v1",
+                "families": [
+                    "diagnosis_problem",
+                    "seizure",
+                    "medication",
+                    "investigation",
+                ],
+                "full_note_chars": len(record.text),
+                "family_span_chars": len(span_context),
+                "family_span_char_ratio": (
+                    len(span_context) / len(record.text) if record.text else 0.0
+                ),
+            }
         return DocumentPrediction(
             document_id=record.document_id,
             dataset=EXECT_DATASET,
@@ -500,6 +527,7 @@ def _build_s1_field_family_values(
     medication_guard_flags: list[str] = []
     if apply_benchmark_bridges and program_variant in {
         EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     }:
         medication_raw, medication_guard_flags = (

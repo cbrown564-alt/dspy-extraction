@@ -575,6 +575,16 @@ def _predict_record(
         )
     if hasattr(pred, "selected_answer_option"):
         metadata["selected_answer_option"] = pred.selected_answer_option
+    if hasattr(pred, "reason_code_adjudication"):
+        metadata["reason_code_adjudication"] = pred.reason_code_adjudication
+    if hasattr(pred, "selected_candidate_reference"):
+        metadata["selected_candidate_reference"] = pred.selected_candidate_reference
+    if hasattr(pred, "label_construction_inputs"):
+        metadata["label_construction_inputs"] = pred.label_construction_inputs
+    if hasattr(pred, "target_selection_reason_code"):
+        metadata["target_selection_reason_code"] = pred.target_selection_reason_code
+    if hasattr(pred, "target_selection_error_class"):
+        metadata["target_selection_error_class"] = pred.target_selection_error_class
     if hasattr(pred, "react_trajectory"):
         metadata["react_trajectory"] = pred.react_trajectory
     if hasattr(pred, "react_tool_call_count"):

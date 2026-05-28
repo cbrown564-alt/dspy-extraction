@@ -135,6 +135,7 @@ Allowed values:
 - `verify_repair`
 - `temporal_candidates_verify_repair`
 - `temporal_event_table_verify_repair`
+- `explicit_reason_code_adjudicator`
 - `react_temporal_tools`
 - `section_aware`
 - `diagnosis_recall`

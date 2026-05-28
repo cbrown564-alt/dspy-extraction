@@ -7,6 +7,7 @@ from typing import Any
 from clinical_extraction.gan.s0.signatures import GAN_FREQUENCY_SYNTHESIS_GUIDANCE
 from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT,
     GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
@@ -99,6 +100,12 @@ def gan_prompts_data(
         predictor_name = (
             "deterministic temporal candidates + dspy.Predict(answer options) + "
             "deterministic selector"
+        )
+    elif program_variant == GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT:
+        module_name = "GanFrequencyS0ExplicitReasonCodeAdjudicatorModule"
+        predictor_name = (
+            "deterministic temporal candidates + dspy.Predict(reason-code "
+            "adjudication) + deterministic label construction"
         )
     elif program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
         module_name = "GanFrequencyS0ReactTemporalToolsModule"

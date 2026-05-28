@@ -1,0 +1,2803 @@
+{
+  "generated_at": "2026-05-28T21:52:30.826266+00:00",
+  "kanban_card": "E10 - ExECT Frequency Candidate Selection Split",
+  "dataset": "exect_v2",
+  "split_name": "validation",
+  "split_file": "data/splits/exectv2_splits.json",
+  "component": "seizure_frequency candidate selection and benchmark-label construction",
+  "scorer_mode": "seizure-frequency slice of exect_s4_field_family_deterministic_v1",
+  "bridge_normalization_policy": "Current ExECT frequency benchmark-facing labels from load_exect_gold_documents(); no Gan monthly normalization.",
+  "source_artifacts": {
+    "e1_payload": "docs/experiments/exect/exect_frequency_event_rate_payload_audit_20260528.json",
+    "s4_run": "exect_s4_validation_full_gpt4_1_mini_20260520T071248Z",
+    "s5_run": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z"
+  },
+  "surface_summaries": {
+    "broad_event_rate_payload": {
+      "documents": 40,
+      "gold_support": 43,
+      "tp": 43,
+      "fp": 151,
+      "fn": 0,
+      "precision": 0.22164948453608246,
+      "recall": 1.0,
+      "f1": 0.36286919831223624,
+      "label": "Broad event/rate payload",
+      "classification": "diagnostic coverage substrate",
+      "model_provider": "none",
+      "run_id": null
+    },
+    "high_precision_payload": {
+      "documents": 40,
+      "gold_support": 43,
+      "tp": 25,
+      "fp": 103,
+      "fn": 18,
+      "precision": 0.1953125,
+      "recall": 0.5813953488372093,
+      "f1": 0.29239766081871343,
+      "label": "High-precision payload",
+      "classification": "diagnostic narrowed substrate",
+      "model_provider": "none",
+      "run_id": null
+    },
+    "candidate_constrained_oracle": {
+      "documents": 40,
+      "gold_support": 43,
+      "tp": 43,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "label": "Candidate-constrained gold oracle",
+      "classification": "oracle upper bound / not deployable",
+      "model_provider": "none",
+      "run_id": null
+    },
+    "s4_gpt_frequency_surface": {
+      "documents": 40,
+      "gold_support": 43,
+      "tp": 21,
+      "fp": 28,
+      "fn": 22,
+      "precision": 0.42857142857142855,
+      "recall": 0.4883720930232558,
+      "f1": 0.45652173913043476,
+      "label": "Existing S4 GPT frequency surface",
+      "classification": "existing S4 diagnostic surface",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "run_id": "exect_s4_validation_full_gpt4_1_mini_20260520T071248Z"
+    },
+    "s5_gpt_frequency_surface": {
+      "documents": 40,
+      "gold_support": 43,
+      "tp": 34,
+      "fp": 15,
+      "fn": 9,
+      "precision": 0.6938775510204082,
+      "recall": 0.7906976744186046,
+      "f1": 0.7391304347826086,
+      "label": "Existing S5 GPT frequency surface",
+      "classification": "existing stacked operational surface",
+      "model_provider": "GPT 4.1-mini / OpenAI",
+      "run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z"
+    }
+  },
+  "extra_candidate_strata": {
+    "broad_event_rate_payload": {
+      "note_regex_quantified": 114,
+      "qualitative_change_cue": 35,
+      "seizure_free_surface": 2
+    },
+    "high_precision_payload": {
+      "note_regex_quantified": 103
+    }
+  },
+  "error_attribution": {
+    "broad_event_rate_payload": {
+      "row_count": 36,
+      "category_counts": {
+        "fp:target_selection_extra_candidate:note_regex_quantified": 114,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 35,
+        "fp:target_selection_extra_candidate:seizure_free_surface": 2
+      },
+      "rows": [
+        {
+          "document_id": "EA0008",
+          "false_positives": [
+            "2 per 1 day",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 3 week",
+            "2 per 1 day",
+            "frequency increased",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0016",
+          "false_positives": [
+            "1 per 1 week",
+            "1 per 12 month",
+            "1 per 2 week",
+            "250 per 1 day",
+            "250 per 2 week",
+            "3 per 1 week",
+            "frequency increased",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 12 month",
+            "1 per 2 week",
+            "250 per 1 day",
+            "250 per 2 week",
+            "3 per 1 week",
+            "frequency increased",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0018",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 4 month",
+            "2 per 1 week",
+            "200 per 1 week",
+            "25 per 1 day",
+            "500 per 1 day",
+            "75 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 4 month",
+            "2 per 1 week",
+            "200 per 1 week",
+            "25 per 1 day",
+            "500 per 1 day",
+            "75 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0026",
+          "false_positives": [
+            "1 per 2 week",
+            "1 per 4 month",
+            "100 per 1 day",
+            "25 per 1 day",
+            "25 per 2 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 2 week",
+            "1 per 4 month",
+            "100 per 1 day",
+            "15 per 4 month",
+            "25 per 1 day",
+            "25 per 2 week"
+          ],
+          "gold_values": [
+            "15 per 4 month"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0029",
+          "false_positives": [
+            "1000 per 1 day",
+            "150 per 1 day",
+            "1500 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1000 per 1 day",
+            "150 per 1 day",
+            "1500 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0045",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 5 year",
+            "16 per 1 week",
+            "2 per 1 day",
+            "infrequent",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 5 year",
+            "16 per 1 week",
+            "2 per 1 day",
+            "infrequent",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0047",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 2 week",
+            "100 per 2 week",
+            "200 per 1 day",
+            "3 per 1 day",
+            "frequency increased",
+            "frequency same",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 2 week",
+            "100 per 2 week",
+            "2 per 1 day",
+            "200 per 1 day",
+            "3 per 1 day",
+            "frequency increased",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "2 per 1 day"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0048",
+          "false_positives": [
+            "1 per 1 day",
+            "100 per 1 day",
+            "2 per 1 day",
+            "3 per 1 day",
+            "400 per 1 day",
+            "frequency same",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 3 week",
+            "1 per 1 day",
+            "100 per 1 day",
+            "2 per 1 day",
+            "3 per 1 day",
+            "400 per 1 day",
+            "frequency same",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 3 week"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0052",
+          "false_positives": [
+            "1 per 6 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 6 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0053",
+          "false_positives": [
+            "1 per 1 year",
+            "1 per 3 month",
+            "frequency same",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year",
+            "1 per 3 month",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "false_positives": [
+            "2 per 1 day",
+            "frequency same"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 per 1 day",
+            "frequency same",
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "gold_values": [
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0061",
+          "false_positives": [
+            "1 per 1 year",
+            "1 per 2 year",
+            "2 per 1 day",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 10 year",
+            "0 per 3 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "2 per 1 day",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 10 year",
+            "0 per 3 year"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0069",
+          "false_positives": [
+            "1 per 2 week",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 2 week",
+            "4 per 3 week",
+            "frequency increased",
+            "seizure free"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:seizure_free_surface"
+          ]
+        },
+        {
+          "document_id": "EA0072",
+          "false_positives": [
+            "frequency increased"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "frequency increased"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0078",
+          "false_positives": [
+            "1 per 1 week",
+            "1 per 2 month",
+            "2 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 2 month",
+            "2 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0090",
+          "false_positives": [
+            "1 per 1 year",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0098",
+          "false_positives": [
+            "2 per 1 day",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 per 1 day",
+            "frequency increased",
+            "seizure free",
+            "seizure free since 2019"
+          ],
+          "gold_values": [
+            "frequency increased",
+            "seizure free since 2019"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0100",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "frequency increased",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "frequency increased",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0102",
+          "false_positives": [
+            "0 per 5 year",
+            "2 per 1 day",
+            "200 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 5 year",
+            "2 per 1 day",
+            "200 per 1 day",
+            "seizure free"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "false_positives": [
+            "1 per 1 week",
+            "1 per 1 year",
+            "1 per 2 week",
+            "1 per 6 month",
+            "3 per 1 week",
+            "frequency increased",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 1 year",
+            "1 per 2 week",
+            "1 per 6 month",
+            "3 per 1 week",
+            "frequency increased",
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0116",
+          "false_positives": [
+            "0 per 12 month",
+            "1 per 1 day",
+            "1 per 12 month",
+            "1 per 2 week",
+            "infrequent",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 12 month",
+            "1 per 1 day",
+            "1 per 12 month",
+            "1 per 2 week",
+            "infrequent",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:seizure_free_surface"
+          ]
+        },
+        {
+          "document_id": "EA0124",
+          "false_positives": [
+            "100 per 1 day",
+            "50 per 1 week",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 3 year",
+            "1 per 1 week",
+            "100 per 1 day",
+            "50 per 1 week",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "1 per 1 week"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0125",
+          "false_positives": [
+            "400 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "400 per 1 day",
+            "frequency increased"
+          ],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0131",
+          "false_positives": [
+            "1 per 1 year",
+            "2 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year",
+            "2 per 1 day",
+            "frequency increased",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "0 per 2 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "1 per 3 year",
+            "infrequent",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 2 year",
+            "0 per 3 year",
+            "0 per 5 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "1 per 3 year",
+            "frequency same",
+            "infrequent",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "0 per 5 year",
+            "frequency same"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0137",
+          "false_positives": [
+            "0 per 2 month",
+            "1 per 1 month",
+            "1 per 1 year",
+            "2 per 1 day",
+            "frequency same"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 2 month",
+            "1 per 1 month",
+            "1 per 1 year",
+            "2 per 1 day",
+            "2 per 1 year",
+            "frequency same",
+            "seizure free"
+          ],
+          "gold_values": [
+            "2 per 1 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0142",
+          "false_positives": [
+            "1 per 1 month",
+            "1 per 6 month",
+            "3 per 1 month",
+            "frequency increased",
+            "frequency same"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 6 month",
+            "3 per 1 month",
+            "frequency increased",
+            "frequency same",
+            "seizure free"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "false_positives": [
+            "1 per 1 week",
+            "frequency same"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 5 year",
+            "1 per 1 week",
+            "frequency same",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0148",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 3 month",
+            "1 per 6 month",
+            "15 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 3 month",
+            "1 per 6 month",
+            "15 per 1 day"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0150",
+          "false_positives": [
+            "1 per 2 week",
+            "2 per 1 year",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 1 year",
+            "1 per 2 week",
+            "2 per 1 year",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "1 per 1 year"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0153",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "1 per 1 week",
+            "1 per 6 year",
+            "2 per 1 month",
+            "20 per 1 week",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "1 per 1 week",
+            "1 per 6 year",
+            "2 per 1 month",
+            "20 per 1 week",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0170",
+          "false_positives": [
+            "2 per 1 day",
+            "frequency same"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "2 per 1 day",
+            "frequency same",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "infrequent"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0173",
+          "false_positives": [
+            "frequency increased"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "frequency increased",
+            "seizure free"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0174",
+          "false_positives": [
+            "2 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 per 1 day",
+            "frequency increased"
+          ],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0185",
+          "false_positives": [
+            "1 per 1 month",
+            "1 per 10 month",
+            "2 per 1 day",
+            "5 per 1 month",
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 10 month",
+            "2 per 1 day",
+            "5 per 1 month",
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0188",
+          "false_positives": [
+            "1 per 2 week",
+            "10 per 1 day",
+            "2 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "1 per 2 week",
+            "10 per 1 day",
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "1 per 1 day",
+            "1 per 1 month"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        }
+      ]
+    },
+    "high_precision_payload": {
+      "row_count": 37,
+      "category_counts": {
+        "fn:adjudication_missed_broad_candidate:qualitative_change": 12,
+        "fn:adjudication_missed_broad_candidate:seizure_free": 6,
+        "fp:target_selection_extra_candidate:note_regex_quantified": 103
+      },
+      "rows": [
+        {
+          "document_id": "EA0008",
+          "false_positives": [
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 3 week",
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "1 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0016",
+          "false_positives": [
+            "1 per 1 week",
+            "1 per 12 month",
+            "1 per 2 week",
+            "250 per 1 day",
+            "250 per 2 week",
+            "3 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 12 month",
+            "1 per 2 week",
+            "250 per 1 day",
+            "250 per 2 week",
+            "3 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0018",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 4 month",
+            "2 per 1 week",
+            "200 per 1 week",
+            "25 per 1 day",
+            "500 per 1 day",
+            "75 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 4 month",
+            "2 per 1 week",
+            "200 per 1 week",
+            "25 per 1 day",
+            "500 per 1 day",
+            "75 per 1 day"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0026",
+          "false_positives": [
+            "1 per 2 week",
+            "1 per 4 month",
+            "100 per 1 day",
+            "25 per 1 day",
+            "25 per 2 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 2 week",
+            "1 per 4 month",
+            "100 per 1 day",
+            "15 per 4 month",
+            "25 per 1 day",
+            "25 per 2 week"
+          ],
+          "gold_values": [
+            "15 per 4 month"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0029",
+          "false_positives": [
+            "1000 per 1 day",
+            "150 per 1 day",
+            "1500 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1000 per 1 day",
+            "150 per 1 day",
+            "1500 per 1 day"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0045",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 5 year",
+            "16 per 1 week",
+            "2 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 5 year",
+            "16 per 1 week",
+            "2 per 1 day"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0047",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 2 week",
+            "100 per 2 week",
+            "200 per 1 day",
+            "3 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week",
+            "1 per 2 week",
+            "100 per 2 week",
+            "2 per 1 day",
+            "200 per 1 day",
+            "3 per 1 day"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "2 per 1 day"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0048",
+          "false_positives": [
+            "1 per 1 day",
+            "100 per 1 day",
+            "2 per 1 day",
+            "3 per 1 day",
+            "400 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 3 week",
+            "1 per 1 day",
+            "100 per 1 day",
+            "2 per 1 day",
+            "3 per 1 day",
+            "400 per 1 day"
+          ],
+          "gold_values": [
+            "0 per 3 week"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0050",
+          "false_positives": [],
+          "false_negatives": [
+            "frequency decreased",
+            "infrequent"
+          ],
+          "predicted_values": [
+            "1 per 1 week"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "frequency decreased",
+            "infrequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0052",
+          "false_positives": [
+            "1 per 6 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 6 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0053",
+          "false_positives": [
+            "1 per 1 year",
+            "1 per 3 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year",
+            "1 per 3 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "false_positives": [
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "infrequent"
+          ],
+          "predicted_values": [
+            "2 per 1 day",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "gold_values": [
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0061",
+          "false_positives": [
+            "1 per 1 year",
+            "1 per 2 year",
+            "2 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 10 year",
+            "0 per 3 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "0 per 10 year",
+            "0 per 3 year"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0068",
+          "false_positives": [],
+          "false_negatives": [
+            "infrequent",
+            "seizure free"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "infrequent",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0069",
+          "false_positives": [
+            "1 per 2 week"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 2 week",
+            "4 per 3 week"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0078",
+          "false_positives": [
+            "1 per 1 week",
+            "1 per 2 month",
+            "2 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 2 month",
+            "2 per 1 day"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0090",
+          "false_positives": [
+            "1 per 1 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0098",
+          "false_positives": [
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "2 per 1 day",
+            "seizure free since 2019"
+          ],
+          "gold_values": [
+            "frequency increased",
+            "seizure free since 2019"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0100",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0102",
+          "false_positives": [
+            "0 per 5 year",
+            "2 per 1 day",
+            "200 per 1 day"
+          ],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "0 per 5 year",
+            "2 per 1 day",
+            "200 per 1 day"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "false_positives": [
+            "1 per 1 week",
+            "1 per 1 year",
+            "1 per 2 week",
+            "1 per 6 month",
+            "3 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 week",
+            "1 per 1 year",
+            "1 per 2 week",
+            "1 per 6 month",
+            "3 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0116",
+          "false_positives": [
+            "0 per 12 month",
+            "1 per 1 day",
+            "1 per 12 month",
+            "1 per 2 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 12 month",
+            "1 per 1 day",
+            "1 per 12 month",
+            "1 per 2 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0124",
+          "false_positives": [
+            "100 per 1 day",
+            "50 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 3 year",
+            "1 per 1 week",
+            "100 per 1 day",
+            "50 per 1 week"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "1 per 1 week"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0125",
+          "false_positives": [
+            "400 per 1 day"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "400 per 1 day"
+          ],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0131",
+          "false_positives": [
+            "1 per 1 year",
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 1 year",
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "0 per 2 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "1 per 3 year"
+          ],
+          "false_negatives": [
+            "frequency same"
+          ],
+          "predicted_values": [
+            "0 per 2 year",
+            "0 per 3 year",
+            "0 per 5 year",
+            "1 per 1 year",
+            "1 per 2 year",
+            "1 per 3 year"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "0 per 5 year",
+            "frequency same"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0137",
+          "false_positives": [
+            "0 per 2 month",
+            "1 per 1 month",
+            "1 per 1 year",
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "0 per 2 month",
+            "1 per 1 month",
+            "1 per 1 year",
+            "2 per 1 day",
+            "2 per 1 year"
+          ],
+          "gold_values": [
+            "2 per 1 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0142",
+          "false_positives": [
+            "1 per 1 month",
+            "1 per 6 month",
+            "3 per 1 month"
+          ],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 6 month",
+            "3 per 1 month"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "false_positives": [
+            "1 per 1 week"
+          ],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "0 per 5 year",
+            "1 per 1 week"
+          ],
+          "gold_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0148",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 3 month",
+            "1 per 6 month",
+            "15 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 3 month",
+            "1 per 6 month",
+            "15 per 1 day"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0150",
+          "false_positives": [
+            "1 per 2 week",
+            "2 per 1 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 1 year",
+            "1 per 2 week",
+            "2 per 1 year"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "1 per 1 year"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0153",
+          "false_positives": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "1 per 1 week",
+            "1 per 6 year",
+            "2 per 1 month",
+            "20 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "1 per 1 week",
+            "1 per 6 year",
+            "2 per 1 month",
+            "20 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0170",
+          "false_positives": [
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "infrequent"
+          ],
+          "predicted_values": [
+            "1 per 1 month",
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "infrequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0173",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0174",
+          "false_positives": [
+            "2 per 1 day"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0185",
+          "false_positives": [
+            "1 per 1 month",
+            "1 per 10 month",
+            "2 per 1 day",
+            "5 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 10 month",
+            "2 per 1 day",
+            "5 per 1 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0188",
+          "false_positives": [
+            "1 per 2 week",
+            "10 per 1 day",
+            "2 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 day",
+            "1 per 1 month",
+            "1 per 2 week",
+            "10 per 1 day",
+            "2 per 1 day"
+          ],
+          "gold_values": [
+            "1 per 1 day",
+            "1 per 1 month"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        }
+      ]
+    },
+    "candidate_constrained_oracle": {
+      "row_count": 0,
+      "category_counts": {},
+      "rows": []
+    },
+    "s4_gpt_frequency_surface": {
+      "row_count": 29,
+      "category_counts": {
+        "fn:adjudication_missed_broad_candidate:qualitative_change": 7,
+        "fn:adjudication_missed_broad_candidate:seizure_free": 4,
+        "fn:adjudication_missed_high_precision_candidate": 11,
+        "fp:label_construction_not_in_broad_payload": 20,
+        "fp:target_selection_extra_candidate:note_regex_quantified": 6,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 2
+      },
+      "rows": [
+        {
+          "document_id": "EA0008",
+          "false_positives": [],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 3 week"
+          ],
+          "gold_values": [
+            "1 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0016",
+          "false_positives": [
+            "1 per 1 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0018",
+          "false_positives": [
+            "2 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0029",
+          "false_positives": [
+            "frequency decreased"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "frequency decreased"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0047",
+          "false_positives": [],
+          "false_negatives": [
+            "2 per 1 day"
+          ],
+          "predicted_values": [
+            "1 per 1 week"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "2 per 1 day"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate"
+          ]
+        },
+        {
+          "document_id": "EA0048",
+          "false_positives": [
+            "1 per 21 day"
+          ],
+          "false_negatives": [
+            "0 per 3 week"
+          ],
+          "predicted_values": [
+            "1 per 21 day"
+          ],
+          "gold_values": [
+            "0 per 3 week"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0050",
+          "false_positives": [],
+          "false_negatives": [
+            "1 per 1 week",
+            "frequency decreased",
+            "infrequent"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "1 per 1 week",
+            "frequency decreased",
+            "infrequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_high_precision_candidate"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "false_positives": [
+            "0 per 1 year"
+          ],
+          "false_negatives": [
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "predicted_values": [
+            "0 per 1 year"
+          ],
+          "gold_values": [
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_high_precision_candidate",
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0061",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 3 year",
+            "0 per 10 year",
+            "infrequent"
+          ],
+          "gold_values": [
+            "0 per 10 year",
+            "0 per 3 year"
+          ],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0068",
+          "false_positives": [
+            "0 per 6 month"
+          ],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "infrequent",
+            "0 per 6 month"
+          ],
+          "gold_values": [
+            "infrequent",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0069",
+          "false_positives": [
+            "0 per 5 week"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "0 per 5 week"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0072",
+          "false_positives": [
+            "1 per since last contact (infrequent)"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per since last contact (infrequent)"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0090",
+          "false_positives": [
+            "1 per 1 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0098",
+          "false_positives": [
+            "0 per 5 month"
+          ],
+          "false_negatives": [
+            "seizure free since 2019"
+          ],
+          "predicted_values": [
+            "0 per 5 month",
+            "frequency increased"
+          ],
+          "gold_values": [
+            "frequency increased",
+            "seizure free since 2019"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0100",
+          "false_positives": [
+            "1 per 1 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 year"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0102",
+          "false_positives": [
+            "0 per 5 year"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "false_positives": [
+            "2 3 per 1 week",
+            "frequency increased"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 3 per 1 week",
+            "frequency increased"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0135",
+          "false_positives": [
+            "frequency increased"
+          ],
+          "false_negatives": [
+            "1 per 6 month"
+          ],
+          "predicted_values": [
+            "frequency increased"
+          ],
+          "gold_values": [
+            "1 per 6 month"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "a few per year"
+          ],
+          "false_negatives": [
+            "0 per 3 year",
+            "frequency same"
+          ],
+          "predicted_values": [
+            "0 per 5 year",
+            "a few per year"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "0 per 5 year",
+            "frequency same"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0137",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "2 per 1 year"
+          ],
+          "gold_values": [
+            "2 per 1 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0142",
+          "false_positives": [
+            "3 per 1 month",
+            "0 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 1 month",
+            "0 per 1 month",
+            "seizure free"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "false_positives": [
+            "1 per 1 week",
+            "seizure free since 2013"
+          ],
+          "false_negatives": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "seizure free since 2013"
+          ],
+          "gold_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free",
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0150",
+          "false_positives": [
+            "1.5 per 1 year",
+            "infrequent"
+          ],
+          "false_negatives": [
+            "1 per 1 year"
+          ],
+          "predicted_values": [
+            "1 per 1 month",
+            "1.5 per 1 year",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "1 per 1 year"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0153",
+          "false_positives": [
+            "1 2 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 2 per 1 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0170",
+          "false_positives": [
+            "1 per 2 week"
+          ],
+          "false_negatives": [
+            "1 per 1 month"
+          ],
+          "predicted_values": [
+            "1 per 2 week",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "infrequent"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0173",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0174",
+          "false_positives": [],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0179",
+          "false_positives": [
+            "seizure free"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "seizure free"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        },
+        {
+          "document_id": "EA0185",
+          "false_positives": [
+            "4 per 1 month",
+            "5 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "4 per 1 month",
+            "5 per 1 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        }
+      ]
+    },
+    "s5_gpt_frequency_surface": {
+      "row_count": 19,
+      "category_counts": {
+        "fn:adjudication_missed_broad_candidate:qualitative_change": 4,
+        "fn:adjudication_missed_broad_candidate:seizure_free": 3,
+        "fn:adjudication_missed_high_precision_candidate": 2,
+        "fp:label_construction_not_in_broad_payload": 1,
+        "fp:target_selection_extra_candidate:note_regex_quantified": 8,
+        "fp:target_selection_extra_candidate:qualitative_change_cue": 5,
+        "fp:target_selection_extra_candidate:seizure_free_surface": 1
+      },
+      "rows": [
+        {
+          "document_id": "EA0008",
+          "false_positives": [],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 3 week"
+          ],
+          "gold_values": [
+            "1 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0016",
+          "false_positives": [
+            "1 per 12 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 12 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0018",
+          "false_positives": [
+            "2 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "2 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0045",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0047",
+          "false_positives": [
+            "frequency increased"
+          ],
+          "false_negatives": [
+            "2 per 1 day"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "frequency increased"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "2 per 1 day"
+          ],
+          "categories": [
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0048",
+          "false_positives": [
+            "3 per 1 day"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 1 day",
+            "0 per 3 week"
+          ],
+          "gold_values": [
+            "0 per 3 week"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0053",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0059",
+          "false_positives": [],
+          "false_negatives": [
+            "infrequent"
+          ],
+          "predicted_values": [
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "gold_values": [
+            "infrequent",
+            "seizure free since 2015",
+            "seizure free since 2017"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change"
+          ]
+        },
+        {
+          "document_id": "EA0069",
+          "false_positives": [
+            "seizure free"
+          ],
+          "false_negatives": [
+            "frequency increased"
+          ],
+          "predicted_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "seizure free"
+          ],
+          "gold_values": [
+            "1 per 1 week",
+            "4 per 3 week",
+            "frequency increased"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fp:target_selection_extra_candidate:seizure_free_surface"
+          ]
+        },
+        {
+          "document_id": "EA0090",
+          "false_positives": [
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "infrequent"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0109",
+          "false_positives": [
+            "3 per 1 week"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 1 week"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0136",
+          "false_positives": [
+            "seizure free"
+          ],
+          "false_negatives": [
+            "0 per 3 year",
+            "frequency same"
+          ],
+          "predicted_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "gold_values": [
+            "0 per 3 year",
+            "0 per 5 year",
+            "frequency same"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:qualitative_change",
+            "fn:adjudication_missed_high_precision_candidate",
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0137",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "2 per 1 year"
+          ],
+          "gold_values": [
+            "2 per 1 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0142",
+          "false_positives": [
+            "3 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "3 per 1 month",
+            "seizure free"
+          ],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0143",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [
+            "0 per 5 year"
+          ],
+          "gold_values": [
+            "0 per 5 year",
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0150",
+          "false_positives": [
+            "2 per 1 year",
+            "infrequent"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month",
+            "1 per 1 year",
+            "2 per 1 year",
+            "infrequent"
+          ],
+          "gold_values": [
+            "1 per 1 month",
+            "1 per 1 year"
+          ],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified",
+            "fp:target_selection_extra_candidate:qualitative_change_cue"
+          ]
+        },
+        {
+          "document_id": "EA0153",
+          "false_positives": [
+            "1 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "1 per 1 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:target_selection_extra_candidate:note_regex_quantified"
+          ]
+        },
+        {
+          "document_id": "EA0173",
+          "false_positives": [],
+          "false_negatives": [
+            "seizure free"
+          ],
+          "predicted_values": [],
+          "gold_values": [
+            "seizure free"
+          ],
+          "categories": [
+            "fn:adjudication_missed_broad_candidate:seizure_free"
+          ]
+        },
+        {
+          "document_id": "EA0185",
+          "false_positives": [
+            "4 per 1 month"
+          ],
+          "false_negatives": [],
+          "predicted_values": [
+            "4 per 1 month"
+          ],
+          "gold_values": [],
+          "categories": [
+            "fp:label_construction_not_in_broad_payload"
+          ]
+        }
+      ]
+    }
+  },
+  "decision": {
+    "payload_coverage": "broad payload covers all validation gold labels",
+    "candidate_selection": "open; broad payload precision is too low for direct promotion",
+    "label_construction": "not the main blocker for payload rows: oracle selection over broad candidate labels reaches perfect validation F1",
+    "next_action": "Design a candidate adjudicator/ranker against the broad payload before another stacked prompt or full-validation promotion."
+  },
+  "caveats": [
+    "This is a validation-split component probe; test remains holdout for residual analysis only.",
+    "The candidate-constrained oracle uses gold labels and is not deployable.",
+    "S4 and S5 comparison runs are archived provenance artifacts resolved by explicit opt-in.",
+    "No model calls, scorer changes, loader changes, split changes, benchmark bridge changes, or prompt changes were made.",
+    "Frequency rows are not seizure-type gold; type-associated frequency rows stay within the frequency component."
+  ]
+}

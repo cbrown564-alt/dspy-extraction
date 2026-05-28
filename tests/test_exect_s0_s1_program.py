@@ -24,6 +24,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_D1_PROMPT_VERSION,
     EXECT_S0_S1_L0_PROMPT_VERSION,
@@ -49,6 +50,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     ExectS0S1VerifyRepairModule,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
+    ExectS0S1FamilySpanFieldFamilyModule,
     ExectS1CleanLadderDiagnosisStableEnsembleModule,
     ExectS0S1SectionAwareFieldFamilyModule,
     ExectS0S1FieldFamilyPromptGraphParallelModule,
@@ -122,6 +124,7 @@ def test_s0_s1_prompt_archaeology_is_archive_only_by_default():
     assert EXECT_S0_S1_ACTIVE_VARIANTS == {
         EXECT_S0_S1_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     }
     assert EXECT_S0_S1_ACTIVE_VARIANTS.isdisjoint(EXECT_S0_S1_ARCHIVE_VARIANTS)
@@ -1832,6 +1835,35 @@ def test_exect_s0_s1_prompt_graph_parallel_module_uses_full_note_context():
         prompt = call["messages"][-1]["content"]
         assert record.text in prompt
         assert "Section:" not in prompt
+
+
+def test_exect_s0_s1_family_span_module_uses_typed_span_context():
+    _configure_dummy([{
+        "reasoning": "The family spans include the benchmark-facing fields.",
+        "diagnosis": ["focal epilepsy"],
+        "diagnosis_evidence": ["Diagnosis: Focal epilepsy."],
+        "seizure_type": ["focal seizures"],
+        "seizure_type_evidence": ["Seizure type: focal seizures."],
+        "annotated_medication": ["lamotrigine"],
+        "annotated_medication_evidence": ["Medication: lamotrigine 100mg bd."],
+    }])
+    note = (
+        "Administrative header that should not enter the span prompt.\n"
+        "Diagnosis: Focal epilepsy.\n"
+        "Seizure type: focal seizures.\n"
+        "Medication: lamotrigine 100mg bd.\n"
+        "Plan: Review in six months.\n"
+    )
+
+    module = ExectS0S1FamilySpanFieldFamilyModule()
+    module(note_text=note)
+
+    prompt = dspy.settings.lm.history[0]["messages"][-1]["content"]
+    assert "diagnosis_problem" in prompt
+    assert "seizure" in prompt
+    assert "medication" in prompt
+    assert "Administrative header" not in prompt
+    assert "Plan: Review" not in prompt
 
 
 def test_exect_s0_s1_prompt_graph_sequential_module_chains_prior_context():

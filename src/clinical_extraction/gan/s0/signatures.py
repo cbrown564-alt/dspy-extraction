@@ -1406,6 +1406,68 @@ class GanFrequencyS0SeededMultipleAnswerSignature(dspy.Signature):
     )
 
 
+class GanFrequencyS0ExplicitReasonCodeAdjudicatorSignature(dspy.Signature):
+    """Select a Gan S0 target with explicit reason-code and construction metadata.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output field.
+
+    This is the G4 explicit adjudicator surface. Deterministic temporal
+    candidates are note-derived options; they are not gold labels. Select the
+    benchmark target by emitting a JSON object with audit metadata separate from
+    the final label.
+
+    Output adjudication_json as a JSON object with:
+    - reason_code: one of select_current_quantified_rate,
+      select_highest_current_rate, select_cluster_label,
+      select_seizure_free_duration, select_unknown_context,
+      select_no_reference, select_policy_fallback.
+    - selected_candidate_index: 1-based candidate number from temporal_candidates,
+      or null only when no candidate supports the decision.
+    - selected_candidate_label: selected candidate canonical_label, or null.
+    - selected_evidence_text: exact contiguous note quote for the selected
+      candidate, or null for no seizure frequency reference.
+    - label_construction_inputs: object preserving the exact inputs used to
+      construct the label, such as event_count, window_count, window_unit,
+      per_cluster_count, per_cluster_window, source, and caveats.
+    - final_benchmark_label: final canonical Gan label produced from the selected
+      target, not a separate free-text rewrite.
+    - final_evidence_text: exact contiguous quote supporting final_benchmark_label,
+      or null for no seizure frequency reference.
+    - error_class: target_selection, label_construction, policy, evidence, or none.
+
+    Policy:
+    - Keep target selection separate from label construction. Prefer referencing a
+      deterministic candidate index and preserve its slots in
+      label_construction_inputs.
+    - Quantified count+window candidates beat unknown when the candidate evidence
+      supports a current frequency target.
+    - Use unknown when seizures or episodes are discussed but no candidate has a
+      usable denominator.
+    - Use no seizure frequency reference only for administrative/no-frequency
+      notes.
+    - Do not use reference labels or any gold-label information.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    temporal_candidates: str = dspy.InputField(
+        desc=(
+            "Indexed deterministic candidate labels with slots, derivations, and "
+            "evidence text."
+        )
+    )
+    adjudication_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with reason_code, selected_candidate_index, "
+            "selected_candidate_label, selected_evidence_text, "
+            "label_construction_inputs, final_benchmark_label, "
+            "final_evidence_text, and error_class."
+        )
+    )
+
+
 class GanFrequencyS0ReactTemporalToolsSignature(dspy.Signature):
     """Extract Gan seizure frequency using bounded ReAct temporal tools.
 
