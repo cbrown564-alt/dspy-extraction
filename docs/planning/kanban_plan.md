@@ -60,25 +60,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
   `unknown` versus `no seizure frequency reference` policy, and label scorer
   mode explicitly in any generated report.
 
-### C7 - ExECT S1 Bridge Boundary Split
-
-- **Outcome:** S1 raw model outputs, deterministic benchmark-bridge values,
-  bridge flags, prompt-policy effects, and final benchmark-facing artifact
-  values are inspectable as separate surfaces.
-- **Dependencies:** C2, C3, C4.
-- **Parallelizable:** yes, but coordinate with E2 because this is the
-  architecture substrate for the causal split.
-- **Owner:** unassigned.
-- **Validation:** Raw/bridge parity fixtures for diagnosis specificity collapse,
-  seizure-type co-listing, brand medication normalization, and current Rx lines;
-  `uv run pytest tests/test_exect_s0_s1_program.py
-  tests/test_exect_diagnosis_primitives.py
-  tests/test_exect_medication_primitives.py -q`; `uv run pytest
-  tests/test_exect_scoring.py tests/test_exect_loader.py -q`.
-- **Notes:** Preserve ExECT JSON diagnosis/seizure-type source policy,
-  certainty threshold, medication CUIPhrase preference, and specificity
-  collapse unless scorer policy and tests change in the same work.
-
 ### C8 - ExECT Frequency Payload Extraction
 
 - **Outcome:** Frequency event/rate/cue parsing is extracted from the broad
@@ -363,12 +344,36 @@ cards above.
   the next frequency work should split candidate selection/adjudication from
   label construction before any model-backed stack work.
 
+### C7 - ExECT S1 Bridge Boundary Split
+
+- **Outcome:** Completed by adding a typed S1 boundary metadata contract at
+  `src/clinical_extraction/exect/s1_boundary.py` and attaching
+  `s1_boundary_surfaces` to S1 `DocumentPrediction.metadata` from
+  `src/clinical_extraction/programs/exect_s0_s1.py`.
+- **Evidence:** The metadata now separates raw model outputs, deterministic
+  benchmark-bridge rows, bridge flags, prompt-policy provenance, and final
+  benchmark-facing artifact values without changing the scored
+  `ExtractedValue` list.
+- **Validation:** Added raw/bridge parity fixtures for diagnosis specificity
+  collapse, seizure-type split/co-listing, brand medication normalization, and
+  current Rx augmentation in `tests/test_exect_s0_s1_program.py`.
+  `uv run pytest tests/test_exect_s0_s1_program.py
+  tests/test_exect_diagnosis_primitives.py
+  tests/test_exect_medication_primitives.py -q` passed with 104 tests;
+  `uv run pytest tests/test_exect_scoring.py tests/test_exect_loader.py -q`
+  passed with 11 tests; `uv run pytest
+  tests/test_exect_seizure_type_primitives.py -q` passed with 6 tests.
+- **Notes:** No loader, scorer, split, benchmark-source, certainty-threshold,
+  CUIPhrase preference, medication temporality, or specificity-collapse
+  semantics changed. C7 now provides the architecture substrate for E2.
+
 Recent evidence that remains active:
 
 | Evidence | Current interpretation |
 | --- | --- |
 | Typed program variant registry + C4 status review, 2026-05-28 | Registry-backed config contract surface exists, renders a synthesis report, and classifies each live config as current-authority or loadable replay/provenance. |
 | ExECT E1 frequency event/rate payload audit, 2026-05-28 | Broad deterministic frequency payload now covers all validation gold labels and gold-bearing docs, but low candidate precision keeps selection/adjudication open. |
+| ExECT C7 S1 bridge boundary metadata, 2026-05-28 | S1 raw model output, prompt-policy provenance, deterministic bridge rows/flags, and final artifact values are inspectable separately without scorer or loader changes; use this as the substrate for E2. |
 | ExECT deep review, 2026-05-28 | Current ExECT decomposition doctrine; component ceilings before stacking. |
 | Gan S0 deep dive, 2026-05-28 | Current Gan decomposition doctrine; split candidate inventory, target selection, label construction, and policy. |
 | Gan R11/R15 | D1 v1.2b schema-guard-only is the mechanism baseline; arithmetic and broad relative-anchor guardrails are diagnostic or rejected arms. |
@@ -386,11 +391,12 @@ Recent evidence that remains active:
   registry/config rows as current-authority, replay/provenance, historical,
   rejected, blocked, or diagnostic.
 - C6-C11 translate the C1 thermo-nuclear cleanup sequence into pullable
-  architecture batches. C6, C7, and C8 are the first code-shape priorities
-  because they expose Gan S0, ExECT S1, and ExECT frequency component surfaces
-  without changing dataset, split, scorer, or benchmark semantics.
+  architecture batches. C6 and C8 remain first code-shape priorities for Gan S0
+  and ExECT frequency surfaces without changing dataset, split, scorer, or
+  benchmark semantics; C7 is now complete for the ExECT S1 bridge-boundary
+  surface.
 - E2, E3, E4, and G1 are safe first pulls because they do not require model
-  calls. E2 should use C7 as its architecture substrate; G1 should coordinate
+  calls. E2 can now use C7 as its architecture substrate; G1 should coordinate
   with C6; E1 is complete enough to unblock C8 and frequency
   candidate-selection design, but not a broad-stack model run.
 - G2 and G3 depend on G1 because target-selection and policy probes need known
@@ -406,8 +412,9 @@ Recent evidence that remains active:
 
 ## Parallelization Opportunities
 
-- **Safe now:** C6, C7, C8, E3, E4, and G1. Coordinate C6 with G1 and C7 with
-  E2 so architecture splits and component analyses share the same stage names.
+- **Safe now:** C6, C8, E2, E3, E4, and G1. Coordinate C6 with G1; E2 should
+  consume the completed C7 boundary surfaces so architecture splits and
+  component analyses share the same stage names.
 - **Single-threaded or carefully sequenced:** broad code deletions after C1/C2;
 -  C9 stack separation; any change to scorer, loader, split, benchmark bridge,
   or shared primitive contracts.
@@ -419,8 +426,8 @@ Recent evidence that remains active:
 ## Recommended Next Pull
 
 1. **C6 - Gan S0 Surface Split** if the next slot is Gan architecture work.
-2. **C7 - ExECT S1 Bridge Boundary Split** if the next slot is ExECT diagnosis
-   and seizure-type causal analysis.
+2. **E2 - S1 Raw/Bridge/Prompt Causal Split** if the next slot is ExECT
+   diagnosis and seizure-type causal analysis.
 3. **C8 - ExECT Frequency Payload Extraction** if the next slot is to turn the
    completed E1 coverage gate into a reusable typed substrate.
 

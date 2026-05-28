@@ -76,7 +76,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
     EXECT_S5_STAGE_GRAPH_BY_VARIANT,
 )
-from clinical_extraction.programs.gan_frequency_s0 import (
+from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT,

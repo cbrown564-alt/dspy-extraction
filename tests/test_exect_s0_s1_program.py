@@ -167,6 +167,50 @@ def test_exect_s0_s1_bridge_collapses_diagnosis_specificity():
     assert "specificity_collapsed" in values[0].quality_flags
 
 
+def test_exect_s0_s1_boundary_surfaces_expose_diagnosis_specificity_collapse():
+    record = load_exect_gold_document("EA0029")
+    _configure_dummy([{
+        "reasoning": "The note states JME; parent epilepsy should not be duplicated.",
+        "diagnosis": ["epilepsy", "juvenile-myoclonic-epilepsy"],
+        "diagnosis_evidence": ["epilepsy", "JME"],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    surfaces = prediction_set.predictions[0].metadata["s1_boundary_surfaces"]
+    assert surfaces["boundary_version"] == "exect_s1_boundary_surfaces.v1"
+    assert [item["raw_value"] for item in surfaces["raw_model_outputs"]["diagnosis"]] == [
+        "epilepsy",
+        "juvenile-myoclonic-epilepsy",
+    ]
+
+    bridge_rows = surfaces["deterministic_bridge_values"]["diagnosis"]
+    dropped_parent = next(item for item in bridge_rows if item["raw_value"] == "epilepsy")
+    kept_specific = next(
+        item
+        for item in bridge_rows
+        if item["benchmark_value"] == "juvenile myoclonic epilepsy"
+    )
+
+    assert dropped_parent["bridge_status"] == "dropped"
+    assert dropped_parent["benchmark_value"] is None
+    assert kept_specific["bridge_status"] == "kept"
+    assert "specificity_collapsed" in kept_specific["bridge_flags"]
+    assert [
+        item["normalized_value"]
+        for item in surfaces["final_artifact_values"]["diagnosis"]
+    ] == ["juvenile myoclonic epilepsy"]
+
+
 def test_exect_s0_s1_bridge_does_not_infer_seizure_type_from_diagnosis():
     record = load_exect_gold_document("EA0142")
     _configure_dummy([{
@@ -485,6 +529,43 @@ def test_exect_s0_s1_bridge_splits_fused_secondary_generalisation_phrase():
     assert all(
         "benchmark_bridge:fused_seizure_type_split" in value.quality_flags
         for value in seizure_values
+    )
+
+
+def test_exect_s0_s1_boundary_surfaces_expose_seizure_bridge_split():
+    record = load_exect_gold_document("EA0090")
+    _configure_dummy([{
+        "reasoning": "The model emitted one fused secondary-generalisation phrase.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": ["focal seizures with secondary generalisation"],
+        "seizure_type_evidence": ["focal seizures with secondary generalisation"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    surfaces = prediction_set.predictions[0].metadata["s1_boundary_surfaces"]
+    bridge_rows = surfaces["deterministic_bridge_values"]["seizure_type"]
+
+    assert [item["raw_value"] for item in surfaces["raw_model_outputs"]["seizure_type"]] == [
+        "focal seizures with secondary generalisation"
+    ]
+    assert [item["benchmark_value"] for item in bridge_rows] == [
+        "focal seizures",
+        "secondary generalisation",
+        "generalized tonic clonic seizure",
+    ]
+    assert all(item["bridge_status"] == "kept" for item in bridge_rows)
+    assert all(
+        "benchmark_bridge:fused_seizure_type_split" in item["bridge_flags"]
+        for item in bridge_rows
     )
 
 
@@ -860,6 +941,40 @@ def test_exect_s0_s1_bridge_recovers_lamotrigine_from_current_prescription_line(
     assert "benchmark_bridge:current_prescription_medication_augmented" in (
         medication_values[0].quality_flags
     )
+
+
+def test_exect_s0_s1_boundary_surfaces_expose_current_rx_augmentation():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([{
+        "reasoning": "The model omitted medication despite a current prescription list.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    surfaces = prediction_set.predictions[0].metadata["s1_boundary_surfaces"]
+    medication_rows = surfaces["deterministic_bridge_values"]["annotated_medication"]
+
+    assert surfaces["raw_model_outputs"]["annotated_medication"] == []
+    assert [item["benchmark_value"] for item in medication_rows] == ["lamotrigine"]
+    assert medication_rows[0]["bridge_status"] == "augmented"
+    assert "benchmark_bridge:current_prescription_medication_augmented" in (
+        medication_rows[0]["bridge_flags"]
+    )
+    assert [
+        item["normalized_value"]
+        for item in surfaces["final_artifact_values"]["annotated_medication"]
+    ] == ["lamotrigine"]
 
 
 def test_exect_s0_s1_bridge_routes_dissociative_contrast_to_epileptic_seizures():
@@ -1358,6 +1473,45 @@ def test_exect_s0_s1_bridge_preserves_lamictal_brand_surface():
     assert "benchmark_bridge:medication_brand_surface_preserved" in (
         medication_values[0].quality_flags
     )
+
+
+def test_exect_s0_s1_boundary_surfaces_expose_brand_medication_normalization():
+    record = load_exect_gold_document("EA0142")
+    _configure_dummy([{
+        "reasoning": "The note uses the Lamictal brand in the current medication list.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": ["lamotrigine"],
+        "annotated_medication_evidence": ["Current medication: Lamictal 100mg BD"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    surfaces = prediction_set.predictions[0].metadata["s1_boundary_surfaces"]
+    medication_rows = surfaces["deterministic_bridge_values"]["annotated_medication"]
+
+    raw_medication_values = [
+        item["raw_value"]
+        for item in surfaces["raw_model_outputs"]["annotated_medication"]
+    ]
+    assert raw_medication_values == [
+        "lamotrigine"
+    ]
+    assert medication_rows[0]["canonical_value"] == "lamotrigine"
+    assert medication_rows[0]["benchmark_value"] == "lamictal"
+    assert "benchmark_bridge:medication_brand_surface_preserved" in (
+        medication_rows[0]["bridge_flags"]
+    )
+    assert surfaces["final_artifact_values"]["annotated_medication"][0][
+        "normalized_value"
+    ] == "lamictal"
 
 
 def test_exect_s0_s1_bridge_repairs_medication_evidence_header_prefix():
@@ -2173,6 +2327,20 @@ def test_exect_s0_s1_raw_repair_policy_records_bridge_free_metadata():
     assert metadata["bridge_stage"] == "none"
     assert metadata["apply_benchmark_bridges"] is False
     assert metadata["repair_policy"] == REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
+    surfaces = metadata["s1_boundary_surfaces"]
+    assert surfaces["bridge_policy"]["apply_benchmark_bridges"] is False
+    assert surfaces["deterministic_bridge_values"] == {
+        "diagnosis": [],
+        "seizure_type": [],
+        "annotated_medication": [],
+    }
+    final_seizure_values = [
+        item["normalized_value"]
+        for item in surfaces["final_artifact_values"]["seizure_type"]
+    ]
+    assert final_seizure_values == [
+        "focal seizures with altered awareness"
+    ]
 
 
 def test_build_exect_s0_s1_module_returns_verify_repair():

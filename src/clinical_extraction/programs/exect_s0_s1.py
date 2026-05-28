@@ -15,6 +15,9 @@ from clinical_extraction.datasets.exect import (
 from clinical_extraction.exect.primitives import (
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
 )
+from clinical_extraction.exect.s1_boundary import (
+    build_s1_boundary_surfaces_metadata,
+)
 from clinical_extraction.pipeline.sectioning import select_context
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.schemas import (
@@ -2076,6 +2079,7 @@ def predict_exect_records(
             _predict_record(
                 module,
                 record,
+                prompt_version=prompt_version,
                 program_variant=program_variant,
                 repair_policy=repair_policy,
             )
@@ -2198,6 +2202,7 @@ def _predict_record(
     module: dspy.Module,
     record: ExectGoldDocument,
     *,
+    prompt_version: str,
     program_variant: str,
     repair_policy: str = "none",
 ) -> DocumentPrediction:
@@ -2217,6 +2222,15 @@ def _predict_record(
             "apply_benchmark_bridges": apply_benchmark_bridges,
             "bridge_stage": bridge_stage,
             "repair_policy": repair_policy,
+            "s1_boundary_surfaces": build_s1_boundary_surfaces_metadata(
+                pred=pred,
+                values=values,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                repair_policy=repair_policy,
+                apply_benchmark_bridges=apply_benchmark_bridges,
+                bridge_stage=bridge_stage,
+            ),
         }
         if program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT:
             metadata["precomputed_candidates"] = build_precomputed_family_candidates(
@@ -2315,6 +2329,15 @@ def _predict_record(
             "apply_benchmark_bridges": apply_benchmark_bridges,
             "bridge_stage": bridge_stage,
             "repair_policy": repair_policy,
+            "s1_boundary_surfaces": build_s1_boundary_surfaces_metadata(
+                pred=pred,
+                values=values,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                repair_policy=repair_policy,
+                apply_benchmark_bridges=apply_benchmark_bridges,
+                bridge_stage=bridge_stage,
+            ),
         },
     )
 
@@ -3421,6 +3444,7 @@ def _document_prediction_from_field_family_pred(
         pred,
         apply_benchmark_bridges=apply_benchmark_bridges,
     )
+    bridge_stage = "inline" if apply_benchmark_bridges else "none"
     return DocumentPrediction(
         document_id=record.document_id,
         dataset=EXECT_DATASET,
@@ -3430,8 +3454,17 @@ def _document_prediction_from_field_family_pred(
         metadata={
             "program_variant": EXECT_S0_S1_VARIANT,
             "apply_benchmark_bridges": apply_benchmark_bridges,
-            "bridge_stage": "inline" if apply_benchmark_bridges else "none",
+            "bridge_stage": bridge_stage,
             "repair_policy": "none",
+            "s1_boundary_surfaces": build_s1_boundary_surfaces_metadata(
+                pred=pred,
+                values=values,
+                prompt_version=EXECT_S0_S1_PROMPT_VERSION,
+                program_variant=EXECT_S0_S1_VARIANT,
+                repair_policy="none",
+                apply_benchmark_bridges=apply_benchmark_bridges,
+                bridge_stage=bridge_stage,
+            ),
         },
     )
 
