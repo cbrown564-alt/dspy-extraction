@@ -246,13 +246,25 @@ def test_mock_runner_writes_full_artifact_layout_contract(tmp_path):
 
 
 def test_mock_runner_writes_optimizer_artifacts_when_config_has_optimizer(tmp_path):
-    config_path = Path("configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json")
-    config = load_experiment_config(config_path, include_archive=True)
+    config_path = Path(
+        "configs/experiments/"
+        "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice.json"
+    )
+    config = load_experiment_config(config_path)
+    config_payload = config.model_dump(mode="json")
+    config_payload["optimizer"] = {
+        "name": "BootstrapFewShot",
+        "metric_name": "synthesis_exact_with_evidence",
+        "max_bootstrapped_demos": 4,
+        "max_labeled_demos": 0,
+        "max_rounds": 1,
+        "num_candidate_programs": 1,
+    }
     run_config_path = tmp_path / "config.json"
     run_config_path.write_text(
         json.dumps(
             {
-                **config.model_dump(mode="json"),
+                **config_payload,
                 "max_records": 1,
                 "output_root": str(tmp_path / "runs"),
             }
@@ -328,19 +340,36 @@ def test_runner_validation_b2_api_key_env_missing(tmp_path, capsys):
     config_path = tmp_path / "experiment_config.json"
     config_path.write_text(
         json.dumps(
-            {
-                "experiment_id": "test_b2",
-                "hypothesis": "test B2",
-                "dataset": "gan_2026",
+                {
+                    "experiment_id": "test_b2",
+                    "hypothesis": "test B2",
+                    "dataset": "gan_2026",
                 "split_name": "gan_2026_fixed_v1:validation",
                 "split_file": "data/splits/gan_2026_splits.json",
                 "model_config_path": str(model_config_path),
                 "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
                 "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
                 "scorer_mode": "gan_frequency_deterministic_v1",
-                "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
-                "controls": {
-                    "few_shot_policy": "none",
+                    "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+                    "taxonomy": {
+                        "clinical_task_family": "frequency",
+                        "comparison_group": "test_runner_validation",
+                        "dataset": "gan_2026",
+                        "hybrid_balance_class": [
+                            "H2_pre_deterministic",
+                            "H4_deterministic_first_llm_adjudicates",
+                        ],
+                        "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+                        "intended_decision": "pending",
+                        "interleaving_positions": ["pre", "during"],
+                        "program_architecture": "temporal_candidates_single_pass",
+                        "schema_complexity": "gan_s0",
+                        "stage_executor": "det_candidates_llm_adjudicate",
+                        "stage_graph_id": "g2_candidates_adjudicate",
+                        "varied_factor": "implementation_variant",
+                    },
+                    "controls": {
+                        "few_shot_policy": "none",
                     "context_policy": "full_note_plus_deterministic_temporal_candidates",
                     "verifier_policy": "none",
                     "repair_policy": "artifact_bridge_surface_normalization_only",
@@ -386,19 +415,36 @@ def test_runner_validation_b3_qwen_timeout_warning(tmp_path, capsys):
     config_path = tmp_path / "experiment_config.json"
     config_path.write_text(
         json.dumps(
-            {
-                "experiment_id": "test_b3_warning",
-                "hypothesis": "test B3 warning",
-                "dataset": "gan_2026",
+                {
+                    "experiment_id": "test_b3_warning",
+                    "hypothesis": "test B3 warning",
+                    "dataset": "gan_2026",
                 "split_name": "gan_2026_fixed_v1:validation",
                 "split_file": "data/splits/gan_2026_splits.json",
                 "model_config_path": str(model_config_path),
                 "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
                 "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
                 "scorer_mode": "gan_frequency_deterministic_v1",
-                "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
-                "controls": {
-                    "few_shot_policy": "none",
+                    "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+                    "taxonomy": {
+                        "clinical_task_family": "frequency",
+                        "comparison_group": "test_runner_validation",
+                        "dataset": "gan_2026",
+                        "hybrid_balance_class": [
+                            "H2_pre_deterministic",
+                            "H4_deterministic_first_llm_adjudicates",
+                        ],
+                        "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+                        "intended_decision": "pending",
+                        "interleaving_positions": ["pre", "during"],
+                        "program_architecture": "temporal_candidates_single_pass",
+                        "schema_complexity": "gan_s0",
+                        "stage_executor": "det_candidates_llm_adjudicate",
+                        "stage_graph_id": "g2_candidates_adjudicate",
+                        "varied_factor": "implementation_variant",
+                    },
+                    "controls": {
+                        "few_shot_policy": "none",
                     "context_policy": "full_note_plus_deterministic_temporal_candidates",
                     "verifier_policy": "none",
                     "repair_policy": "artifact_bridge_surface_normalization_only",
@@ -419,19 +465,36 @@ def test_runner_validation_b3_qwen_timeout_warning(tmp_path, capsys):
     config_path_stress = tmp_path / "experiment_config_stress.json"
     config_path_stress.write_text(
         json.dumps(
-            {
-                "experiment_id": "test_b3_stress_run",
-                "hypothesis": "test B3 stress run",
-                "dataset": "gan_2026",
+                {
+                    "experiment_id": "test_b3_stress_run",
+                    "hypothesis": "test B3 stress run",
+                    "dataset": "gan_2026",
                 "split_name": "gan_2026_fixed_v1:validation",
                 "split_file": "data/splits/gan_2026_splits.json",
                 "model_config_path": str(model_config_path),
                 "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
                 "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
-                "scorer_mode": "gan_frequency_deterministic_v1",
-                "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
-                "controls": {
-                    "few_shot_policy": "none",
+                    "scorer_mode": "gan_frequency_deterministic_v1",
+                    "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+                    "taxonomy": {
+                        "clinical_task_family": "frequency",
+                        "comparison_group": "test_runner_validation",
+                        "dataset": "gan_2026",
+                        "hybrid_balance_class": [
+                            "H2_pre_deterministic",
+                            "H4_deterministic_first_llm_adjudicates",
+                        ],
+                        "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+                        "intended_decision": "pending",
+                        "interleaving_positions": ["pre", "during"],
+                        "program_architecture": "temporal_candidates_single_pass",
+                        "schema_complexity": "gan_s0",
+                        "stage_executor": "det_candidates_llm_adjudicate",
+                        "stage_graph_id": "g2_candidates_adjudicate",
+                        "varied_factor": "implementation_variant",
+                    },
+                    "controls": {
+                        "few_shot_policy": "none",
                     "context_policy": "full_note_plus_deterministic_temporal_candidates",
                     "verifier_policy": "none",
                     "repair_policy": "artifact_bridge_surface_normalization_only",

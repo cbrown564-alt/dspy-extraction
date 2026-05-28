@@ -9,17 +9,39 @@ from pydantic import ValidationError
 from clinical_extraction.experiments.config import ExperimentConfig, load_experiment_config
 from clinical_extraction.experiments.program_variant_registry import (
     PROGRAM_VARIANT_REGISTRY,
+    archived_program_variant_specs,
     current_authority_program_variant_specs,
     experiment_config_inventory,
     program_contract_allows,
     program_variant_registry_by_id,
     render_program_variant_registry_markdown,
+    resolve_program_variant_spec_for_config,
 )
 
 
 def test_program_variant_registry_has_unique_ids():
     ids = [spec.variant_id for spec in PROGRAM_VARIANT_REGISTRY]
     assert len(ids) == len(set(ids))
+
+
+def test_program_variant_registry_is_current_authority_only():
+    ids = {spec.variant_id for spec in PROGRAM_VARIANT_REGISTRY}
+
+    assert len(PROGRAM_VARIANT_REGISTRY) == 9
+    assert ids == {spec.variant_id for spec in current_authority_program_variant_specs()}
+    assert "gan.s0.self_consistency" not in ids
+    assert "gan.s0.date_events_candidates_single_pass" not in ids
+    assert all(spec.authority_class == "current_authority" for spec in PROGRAM_VARIANT_REGISTRY)
+
+
+def test_archived_program_variant_specs_preserve_provenance_rows():
+    archived = {spec.variant_id: spec for spec in archived_program_variant_specs()}
+
+    assert "gan.s0.self_consistency" in archived
+    assert archived["gan.s0.self_consistency"].status == "rejected_arm"
+    assert "gan.s0.date_events_candidates_single_pass" in archived
+    assert archived["gan.s0.date_events_candidates_single_pass"].status == "replay_provenance"
+    assert all(not spec.is_current_authority for spec in archived.values())
 
 
 @pytest.mark.parametrize(
@@ -84,6 +106,33 @@ def test_current_authority_program_variant_specs_exclude_replay_rows():
     assert "gan.s0.builder_gap_v1" in active_ids
     assert "gan.s0.self_consistency" not in active_ids
     assert "gan.s0.date_events_candidates_single_pass" not in active_ids
+
+
+def test_active_config_resolution_does_not_use_archived_variant_rows():
+    payload = json.loads(
+        Path(
+            "archive/configs/"
+            "gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"
+        ).read_text(encoding="utf-8")
+    )
+
+    assert resolve_program_variant_spec_for_config(payload) is None
+    assert (
+        resolve_program_variant_spec_for_config(payload, include_archive=True).variant_id
+        == "gan.s0.self_consistency"
+    )
+
+
+def test_active_config_validation_does_not_accept_archived_variant_rows():
+    payload = json.loads(
+        Path(
+            "archive/configs/"
+            "gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"
+        ).read_text(encoding="utf-8")
+    )
+
+    with pytest.raises(ValidationError, match="registered program variant"):
+        ExperimentConfig.model_validate(payload)
 
 
 def test_registry_markdown_report_labels_archive_configs_as_provenance():

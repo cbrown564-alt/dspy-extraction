@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, model_validator
+from pydantic import Field, ValidationInfo, model_validator
 
 from clinical_extraction.gan.scoring import GAN_PAPER_REPRODUCTION_SCORER
 from clinical_extraction.gan.s0.variant_routing import (
@@ -12,7 +12,7 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_VARIANT,
 )
 from clinical_extraction.experiments.program_variant_registry import (
-    program_contract_allows,
+    resolve_program_variant_spec_for_config,
 )
 from clinical_extraction.experiments.taxonomy import (
     ExperimentTaxonomy,
@@ -178,7 +178,7 @@ class ExperimentConfig(FrozenModel):
         return self
 
     @model_validator(mode="after")
-    def validate_experiment_context(self) -> ExperimentConfig:
+    def validate_experiment_context(self, info: ValidationInfo) -> ExperimentConfig:
         for field in [
             "experiment_id",
             "hypothesis",
@@ -188,12 +188,10 @@ class ExperimentConfig(FrozenModel):
             if not getattr(self, field).strip():
                 raise ValueError(f"{field} must be a non-empty string.")
 
-        if not program_contract_allows(
-            dataset=self.dataset,
-            schema_level=self.schema_level,
-            program_variant=self.program_variant,
-            scorer_mode=self.scorer_mode,
-        ):
+        if resolve_program_variant_spec_for_config(
+            self.model_dump(mode="json"),
+            include_archive=bool((info.context or {}).get("include_archive")),
+        ) is None:
             raise ValueError(
                 f"{self.dataset} experiment configs must use a registered program "
                 f"variant contract for schema_level/program_variant/scorer_mode."
@@ -218,7 +216,10 @@ def load_experiment_config(
     include_archive: bool = False,
 ) -> ExperimentConfig:
     path = resolve_config_path(path, include_archive=include_archive)
-    return ExperimentConfig.model_validate_json(path.read_text(encoding="utf-8"))
+    return ExperimentConfig.model_validate_json(
+        path.read_text(encoding="utf-8"),
+        context={"include_archive": include_archive},
+    )
 
 
 def write_experiment_config(config: ExperimentConfig, path: Path) -> None:

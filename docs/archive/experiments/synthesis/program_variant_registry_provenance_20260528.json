@@ -1,0 +1,1282 @@
+{
+  "date": "2026-05-28",
+  "description": "Program variant rows retained as docs/file provenance after C28. These rows are not active runtime authority and are loaded only by explicit archive/reporting paths.",
+  "source": "clinical_extraction.experiments.program_variant_registry before C28 active authority prune",
+  "status": "archive",
+  "variants": [
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_single_pass",
+      "prompt_default": "gan_frequency_s0_v1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_direct_single_pass",
+      "prompt_default": "gan_frequency_s0_direct_guardrails_v2_2",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g1_direct",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.direct_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_direct_verify_repair",
+      "prompt_default": "gan_frequency_s0_direct_verify_repair_v2_4",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_extract_repair",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.direct_verify_repair"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_candidates_extract_repair",
+      "status": "replay_provenance",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_verify_repair"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "R11 D0 control retained for date-stage ablation replay.",
+      "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "replay_provenance",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_temporal_date_stage_gpt_cap25_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.d0_det_candidate_control"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_llm_temporal_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_llm_temporal_candidates_single_pass_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.llm_temporal_candidates_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_hybrid_temporal_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_hybrid_temporal_candidates_single_pass_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.hybrid_temporal_candidates_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "R11 D1 v1 pass-to-integration surface, superseded by D1 v1.2b.",
+      "program_variant": "gan_frequency_s0_date_events_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_date_events_candidates_v1",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_date_events_candidates_adjudicate",
+      "status": "replay_provenance",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_temporal_date_stage_gpt_cap25_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.date_events_candidates_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r15_d1_guardrail_ablation_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "R15 broad relative-anchor and arithmetic guardrail arm regressed.",
+      "program_variant": "gan_frequency_s0_date_events_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_date_events_candidates_v1_2_guardrails",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_date_events_candidates_adjudicate",
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.d1_v1_2_guardrails"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_llm_date_events_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_llm_date_events_v1",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_date_events_candidates_adjudicate",
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.llm_date_events_candidates_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "R11 D3 held as replay evidence; it did not beat the cleaner D1 stage.",
+      "program_variant": "gan_frequency_s0_hybrid_date_events_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_hybrid_date_events_v1",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_date_events_candidates_adjudicate",
+      "status": "replay_provenance",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.hybrid_date_events_candidates_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "R12 C0 control retained only for entity-first gate replay.",
+      "program_variant": "gan_frequency_s0_date_events_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_date_events_candidates_v1",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_date_events_candidates_adjudicate",
+      "status": "replay_provenance",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_entity_first_stage_graph_gpt_cap25_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.entity_first_c0_date_events"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_entity_tags_date_events_single_pass",
+      "prompt_default": "gan_frequency_s0_entity_tags_v1",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g4_entity_tags_date_events_candidates_adjudicate",
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.entity_tags_date_events_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_adjudicate_verify_repair"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "replay_provenance",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_adjudicate_constrained_verifier"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_adjudicate_det_guards"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_det_evidence",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_adjudicate_det_evidence"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_confirm_only",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_confirm_only_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_adjudicate_confirm_only"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_no_guards",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_candidates_adjudicate_verify_repair_no_guards"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_llm_temporal_candidates_verify_repair",
+      "prompt_default": "gan_frequency_s0_llm_temporal_candidates_verify_repair_v1_1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.llm_temporal_candidates_verify_repair"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_event_table_verify_repair",
+      "prompt_default": "gan_frequency_s0_v1",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_event_table_verify_repair"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_event_table_single_pass",
+      "prompt_default": "gan_frequency_s0_temporal_event_table_single_pass_v1_0",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.temporal_event_table_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_multiple_answer_det_selector",
+      "prompt_default": "gan_frequency_s0_multiple_answer_det_selector_v1_0",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.multiple_answer_det_selector"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+      "prompt_default": "gan_frequency_s0_seeded_multiple_answer_det_selector_v1_0",
+      "replacement_target": null,
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.seeded_multiple_answer_det_selector"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_react_temporal_tools",
+      "prompt_default": "gan_frequency_s0_v1",
+      "replacement_target": "gan.s0.builder_gap_v1",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "gan.s0.react_temporal_tools"
+    },
+    {
+      "config_examples": [
+        "archive/configs/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json",
+        "archive/configs/gan_s0_self_consistency_sample5_cap25_qwen35b.json"
+      ],
+      "dataset": "gan_2026",
+      "decision_doc": "docs/experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md",
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "replacement_target": "gan.s0.d1_v1_2b_schema_guard_only",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "rejected_arm",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_self_consistency_compute_allocation_gpt_cap25_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.self_consistency"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_pre_vocab_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.pre_vocab"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.medication_pre_vocab"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_seizure_pre_vocab_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_v4_11_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.seizure_pre_vocab"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_section_aware",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": "g3_family_split_merge",
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.section_aware"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_prompt_graph_parallel",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": "g2_field_family_parallel",
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.prompt_graph_parallel"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_prompt_graph_sequential",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": "g2_field_family_prompt_graph",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.prompt_graph_sequential"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_diagnosis_recall",
+      "prompt_default": "exect_s0_s1_diagnosis_recall_v1",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.diagnosis_recall"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_verify_repair",
+      "prompt_default": "exect_s0_s1_field_family_verify_repair_v1",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": "g2_extract_verify",
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.verify_repair"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_deterministic_only",
+      "prompt_default": "exect_s0_s1_field_family_d1_feasibility",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.deterministic_only"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_l0_minimal",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.l0_minimal"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_l1_schema",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s1.l1_schema"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s2_field_family_single_pass",
+      "prompt_default": "exect_s2_field_family_v1_3_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s2_field_family",
+      "scorer_modes": [
+        "exect_s2_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s2.single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s2_field_family_comorbidity_c0_single_pass",
+      "prompt_default": "exect_s2_field_family_v1_3_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s2_field_family",
+      "scorer_modes": [
+        "exect_s2_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s2.comorbidity_c0"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s2_field_family_comorbidity_c0_c1_single_pass",
+      "prompt_default": "exect_s2_field_family_v1_3_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s2_field_family",
+      "scorer_modes": [
+        "exect_s2_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s2.comorbidity_c0_c1"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s2_field_family_inv_guard_i0_single_pass",
+      "prompt_default": "exect_s2_field_family_v1_3_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s2_field_family",
+      "scorer_modes": [
+        "exect_s2_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s2.investigation_guard_i0"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s3_field_family_single_pass",
+      "prompt_default": "exect_s3_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s3_field_family",
+      "scorer_modes": [
+        "exect_s3_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s3.single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s3_field_family_cause_bridge_k0_k1_single_pass",
+      "prompt_default": "exect_s3_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s3_field_family",
+      "scorer_modes": [
+        "exect_s3_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s3.cause_bridge_k0_k1"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.l1_single_pass"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_pre_vocab_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.frequency_pre_vocab"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_pre_vocab_high_precision_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.frequency_pre_vocab_high_precision"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_post_merge_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.frequency_post_merge"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_structured_slots_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy_structured_frequency_slots",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.frequency_structured_slots"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_temporality_post_classifier_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.temporality_post_classifier"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_mt_guard_non_asm_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.mt_guard_non_asm"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s4_field_family",
+      "scorer_modes": [
+        "exect_s4_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s4.mt_guard_non_asm_dose_current"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_l1_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_operational_k0_k1_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_pre_vocab_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_frequency_pre_vocab_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_pre_vocab_high_precision_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_frequency_pre_vocab_high_precision_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_post_merge_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_frequency_post_merge_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_frequency_structured_slots_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy_structured_frequency_slots",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_frequency_structured_slots_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_temporality_post_classifier_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_temporality_post_classifier_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_mt_guard_non_asm_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_mt_guard_non_asm_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.s4_mt_guard_non_asm_dose_current_compat"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s5_am_guard_non_asm_brand_alias_v1",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.am_guard_non_asm_brand_alias"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.frequency_pre_vocab_am_guard"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.frequency_verify_v1"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": "exect.s5.v2b_operational",
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.frequency_verify_v2"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s5_frequency_pre_vocab_am_guard_temporal_frequency_verify_v1",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.temporal_frequency_verify"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "",
+      "program_variant": "exect_s5_core_field_family_parallel_v2b",
+      "prompt_default": "exect_s4_field_family_v1_2_label_policy",
+      "replacement_target": "exect.s5.v2b_operational",
+      "schema_level": "exect_s5_core_field_family",
+      "scorer_modes": [
+        "exect_s5_core_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": "g2_s5_core_family_parallel",
+      "status": "rejected_arm",
+      "taxonomy_filters": [],
+      "variant_id": "exect.s5.core_parallel_v2b"
+    }
+  ]
+}
