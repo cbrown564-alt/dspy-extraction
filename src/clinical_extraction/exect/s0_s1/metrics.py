@@ -1,19 +1,21 @@
 """ExECT S0/S1 optimizer metrics."""
 from __future__ import annotations
 
-from typing import Optional
-
 import dspy
 
 from clinical_extraction.evaluation.exect import score_exect_document
+from clinical_extraction.exect.s0_s1.constants import (
+    EXECT_DATASET,
+    EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_SCHEMA_LEVEL,
+    EXECT_S0_S1_VARIANT,
+)
+from clinical_extraction.exect.s0_s1.prediction_artifacts import (
+    _as_list,
+    _build_s1_field_family_values,
+)
 from clinical_extraction.exect.s1_boundary import build_s1_boundary_surfaces_metadata
 from clinical_extraction.schemas import DocumentPrediction, ExectGoldDocument
-
-
-def _s0_s1_program():
-    from clinical_extraction.programs import exect_s0_s1
-
-    return exect_s0_s1
 
 
 def _gold_document_from_optimizer_example(example: dspy.Example) -> ExectGoldDocument:
@@ -34,8 +36,7 @@ def _document_prediction_from_field_family_pred(
     apply_benchmark_bridges: bool = True,
 ) -> DocumentPrediction:
     """Map an optimizer prediction to the scored S1 field-family document shape."""
-    program = _s0_s1_program()
-    values = program._build_s1_field_family_values(
+    values = _build_s1_field_family_values(
         record,
         pred,
         apply_benchmark_bridges=apply_benchmark_bridges,
@@ -43,20 +44,20 @@ def _document_prediction_from_field_family_pred(
     bridge_stage = "inline" if apply_benchmark_bridges else "none"
     return DocumentPrediction(
         document_id=record.document_id,
-        dataset=program.EXECT_DATASET,
-        schema_level=program.EXECT_S0_S1_SCHEMA_LEVEL,
+        dataset=EXECT_DATASET,
+        schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
         values=values,
         quality_flags=record.quality_flags,
         metadata={
-            "program_variant": program.EXECT_S0_S1_VARIANT,
+            "program_variant": EXECT_S0_S1_VARIANT,
             "apply_benchmark_bridges": apply_benchmark_bridges,
             "bridge_stage": bridge_stage,
             "repair_policy": "none",
             "s1_boundary_surfaces": build_s1_boundary_surfaces_metadata(
                 pred=pred,
                 values=values,
-                prompt_version=program.EXECT_S0_S1_PROMPT_VERSION,
-                program_variant=program.EXECT_S0_S1_VARIANT,
+                prompt_version=EXECT_S0_S1_PROMPT_VERSION,
+                program_variant=EXECT_S0_S1_VARIANT,
                 repair_policy="none",
                 apply_benchmark_bridges=apply_benchmark_bridges,
                 bridge_stage=bridge_stage,
@@ -103,18 +104,6 @@ def exect_s0_s1_field_family_micro_f1_raw_metric(
         trace,
         apply_benchmark_bridges=False,
     )
-
-
-def _as_list(value: Optional[object]) -> list[str]:
-    if value is None:
-        return []
-    if isinstance(value, str):
-        stripped = value.strip()
-        return [] if stripped.lower() in {"", "none", "null"} else [stripped]
-    if isinstance(value, list):
-        return [str(item).strip() for item in value if str(item).strip()]
-    return [str(value).strip()] if str(value).strip() else []
-
 
 EXECT_S0_S1_OPTIMIZER_METRICS = {
     "exect_field_family_micro_f1": exect_s0_s1_field_family_micro_f1_metric,

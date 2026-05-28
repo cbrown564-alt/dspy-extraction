@@ -2396,6 +2396,30 @@ def test_exect_s0_s1_metrics_are_domain_module_exports():
     )
 
 
+def test_exect_s0_s1_program_is_import_compatible_facade():
+    from clinical_extraction.exect.s0_s1 import modules as exect_modules
+    from clinical_extraction.exect.s0_s1 import optimizer_setup, prediction_artifacts
+    from clinical_extraction.exect.s0_s1 import prompt_routing, signatures
+    from clinical_extraction.programs import exect_s0_s1 as legacy_program
+
+    assert legacy_program.ExectS0S1FieldFamilyModule is exect_modules.ExectS0S1FieldFamilyModule
+    assert legacy_program.ExectS0S1FieldFamilySignature is signatures.ExectS0S1FieldFamilySignature
+    assert legacy_program.build_exect_s0_s1_module is exect_modules.build_exect_s0_s1_module
+    assert legacy_program.predict_exect_records is prediction_artifacts.predict_exect_records
+    assert (
+        legacy_program.resolve_exect_s0_s1_label_policy
+        is prompt_routing.resolve_exect_s0_s1_label_policy
+    )
+    assert (
+        legacy_program.compile_exect_s0_s1_module
+        is optimizer_setup.compile_exect_s0_s1_module
+    )
+    assert (
+        legacy_program._build_s1_field_family_values
+        is prediction_artifacts._build_s1_field_family_values
+    )
+
+
 def test_exect_s1_clean_ladder_variant_applies_annotated_medication_guard():
     record = load_exect_gold_document("EA0008")
     _configure_dummy(
