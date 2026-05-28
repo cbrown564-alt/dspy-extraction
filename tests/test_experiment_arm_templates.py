@@ -157,6 +157,7 @@ def test_build_experiment_arm_config_matches_exect_s1_h2_medication_slice_shape(
         primitive_ids=["exect.medication.rx_candidates.v1"],
         metric_caveats=["14-record medication slice."],
         record_ids=["EA0135", "EA0150"],
+        include_archive=True,
     )
 
     assert isinstance(config, ExperimentConfig)
@@ -192,6 +193,7 @@ def test_build_experiment_arm_config_matches_exect_s1_h2_seizure_slice_shape():
         prompt_version=EXECT_S0_S1_PROMPT_VERSION,
         metric_caveats=["15-record seizure slice."],
         record_ids=["EA0008", "EA0016"],
+        include_archive=True,
     )
 
     assert isinstance(config, ExperimentConfig)
@@ -258,6 +260,7 @@ def test_build_experiment_arm_config_h4_allows_temporal_candidate_primitive():
         prompt_version="gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
         primitive_ids=["gan.frequency.temporal_candidates.v1"],
         max_records=25,
+        include_archive=True,
     )
 
     assert "H4_deterministic_first_llm_adjudicates" in config.taxonomy.hybrid_balance_class
@@ -289,6 +292,7 @@ def test_build_experiment_arm_config_h3_react_tools_shape():
         scorer_mode=GAN_FREQUENCY_S0_SCORER,
         prompt_version="gan_frequency_s0_react_temporal_tools_v1_1",
         structured_output_strategy="strict_json_prompt_with_pydantic_validation",
+        include_archive=True,
     )
 
     assert config.taxonomy.hybrid_balance_class == ["H3_interleaved_tool_hybrid"]

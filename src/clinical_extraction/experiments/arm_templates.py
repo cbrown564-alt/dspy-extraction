@@ -387,6 +387,7 @@ def build_experiment_arm_config(
     verifier_policy: str | None = None,
     few_shot_policy: str | None = None,
     abstention_policy: str | None = None,
+    include_archive: bool = False,
 ) -> ExperimentConfig:
     primitive_ids = list(primitive_ids or [])
     if primitive_ids:
@@ -416,25 +417,28 @@ def build_experiment_arm_config(
     if metric_caveats:
         merged_caveats.extend(metric_caveats)
 
-    return ExperimentConfig(
-        experiment_id=experiment_id,
-        hypothesis=hypothesis,
-        dataset=dataset or context.dataset,
-        split_name=split_name,
-        split_file=Path(split_file),
-        model_config_path=Path(model_config_path),
-        schema_level=schema_level,
-        program_variant=program_variant,
-        scorer_mode=scorer_mode,
-        prompt_version=prompt_version,
-        controls=controls,
-        structured_output_strategy=structured_output_strategy,
-        output_root=Path(output_root),
-        max_records=max_records,
-        record_ids=record_ids,
-        report_on_test_split=report_on_test_split,
-        metric_caveats=merged_caveats,
-        taxonomy=taxonomy,
+    return ExperimentConfig.model_validate(
+        {
+            "experiment_id": experiment_id,
+            "hypothesis": hypothesis,
+            "dataset": dataset or context.dataset,
+            "split_name": split_name,
+            "split_file": Path(split_file),
+            "model_config_path": Path(model_config_path),
+            "schema_level": schema_level,
+            "program_variant": program_variant,
+            "scorer_mode": scorer_mode,
+            "prompt_version": prompt_version,
+            "controls": controls,
+            "structured_output_strategy": structured_output_strategy,
+            "output_root": Path(output_root),
+            "max_records": max_records,
+            "record_ids": record_ids,
+            "report_on_test_split": report_on_test_split,
+            "metric_caveats": merged_caveats,
+            "taxonomy": taxonomy,
+        },
+        context={"include_archive": include_archive},
     )
 
 

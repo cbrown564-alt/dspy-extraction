@@ -4,6 +4,7 @@ from __future__ import annotations
 import dspy
 
 from clinical_extraction.exect.s0_s1.constants import (
+    EXECT_S0_S1_ACTIVE_VARIANTS,
     EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
@@ -439,12 +440,7 @@ def build_exect_s0_s1_module(
     include_archive: bool = False,
 ) -> dspy.Module:
     """Build an ExECT S0/S1 module for the requested program variant."""
-    active_variants = {
-        EXECT_S0_S1_VARIANT,
-        EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
-        EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
-    }
-    if not include_archive and program_variant not in active_variants:
+    if not include_archive and program_variant not in EXECT_S0_S1_ACTIVE_VARIANTS:
         raise ValueError(
             f"ExECT S0/S1 program variant {program_variant!r} is archive-only; "
             "pass include_archive=True for explicit provenance replay."

@@ -7,6 +7,8 @@ from clinical_extraction.exect.s0_s1.metrics import (
     exect_s0_s1_field_family_micro_f1_raw_metric,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_ACTIVE_VARIANTS,
+    EXECT_S0_S1_ARCHIVE_VARIANTS,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
@@ -114,6 +116,19 @@ def test_exect_s0_s1_module_maps_dspy_prediction_to_prediction_set():
     )
     assert values_by_field["annotated_medication"].normalized_value == "lamotrigine"
     assert values_by_field["annotated_medication"].evidence[0].text == "lamotrigine"
+
+
+def test_s0_s1_prompt_archaeology_is_archive_only_by_default():
+    assert EXECT_S0_S1_ACTIVE_VARIANTS == {
+        EXECT_S0_S1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+    }
+    assert EXECT_S0_S1_ACTIVE_VARIANTS.isdisjoint(EXECT_S0_S1_ARCHIVE_VARIANTS)
+
+    for archive_variant in EXECT_S0_S1_ARCHIVE_VARIANTS:
+        with pytest.raises(ValueError, match="archive-only"):
+            build_exect_s0_s1_module(archive_variant)
 
 
 def test_exect_s0_s1_module_records_empty_lists_without_abstention_value():

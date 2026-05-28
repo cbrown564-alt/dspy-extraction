@@ -1,4 +1,5 @@
 import dspy
+import pytest
 from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document
@@ -19,6 +20,8 @@ from clinical_extraction.exect.s5_signatures import (
     build_exect_s5_core_family_specific_signature,
 )
 from clinical_extraction.exect.s5_stack import (
+    EXECT_S5_ACTIVE_VARIANTS,
+    EXECT_S5_ARCHIVE_VARIANTS,
     EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
@@ -95,6 +98,17 @@ def test_build_exect_s4_module_returns_frequency_verify_v2b_wrapper():
     )
 
     assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule)
+
+
+def test_only_s5_v2b_is_active_by_default():
+    assert EXECT_S5_ACTIVE_VARIANTS == {
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT
+    }
+    assert EXECT_S5_ACTIVE_VARIANTS.isdisjoint(EXECT_S5_ARCHIVE_VARIANTS)
+
+    for archive_variant in EXECT_S5_ARCHIVE_VARIANTS:
+        with pytest.raises(ValueError, match="archive-only"):
+            build_exect_s4_module(archive_variant)
 
 
 def test_frequency_verifier_v2_strict_qualitative_guard_blocks_unsupported_label():

@@ -61,6 +61,7 @@ from clinical_extraction.exect.s5_stack import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    EXECT_S5_ACTIVE_VARIANTS,
     apply_exect_s5_annotated_medication_guard,
     build_exect_s5_core_parallel_field_values,
     build_exect_s5_core_parallel_prediction,
@@ -496,7 +497,7 @@ def build_exect_s4_module(
     active_variants = {
         EXECT_S4_VARIANT,
         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
-        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+        *EXECT_S5_ACTIVE_VARIANTS,
     }
     if not include_archive and program_variant not in active_variants:
         raise ValueError(

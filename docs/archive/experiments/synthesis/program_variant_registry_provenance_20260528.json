@@ -85,6 +85,30 @@
       "dataset": "gan_2026",
       "decision_doc": null,
       "implementation_variant": null,
+      "notes": "Archived arm-template provenance for the temporal-candidates verify/repair interface.",
+      "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+      "replacement_target": "gan.s0.builder_gap_v1",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g3_candidates_extract_repair",
+      "status": "replay_provenance",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_architecture_gpt_validation_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.temporal_candidates_verify_repair_arm_template"
+    },
+    {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
       "notes": "",
       "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
       "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
@@ -122,6 +146,32 @@
         ]
       ],
       "variant_id": "gan.s0.d0_det_candidate_control"
+    },
+    {
+      "config_examples": [
+        "archive/configs/gan_s0_qwen35b_error_taxonomy_policy_cap25.json"
+      ],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": "cand_prose_expanded_builders_v1_error_taxonomy_policy",
+      "notes": "Archived Qwen 35B prompt-only error-taxonomy policy slice retained for provenance replay.",
+      "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+      "prompt_default": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "replacement_target": "gan.s0.builder_gap_v1",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": "g2_candidates_adjudicate",
+      "status": "replay_provenance",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_qwen35b_error_taxonomy_policy_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.qwen_error_taxonomy_policy"
     },
     {
       "config_examples": [],
@@ -514,6 +564,30 @@
       "variant_id": "gan.s0.react_temporal_tools"
     },
     {
+      "config_examples": [],
+      "dataset": "gan_2026",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "Archived arm-template provenance for the bounded ReAct temporal-tools guardrail slice.",
+      "program_variant": "gan_frequency_s0_react_temporal_tools",
+      "prompt_default": "gan_frequency_s0_react_temporal_tools_v1_1",
+      "replacement_target": "gan.s0.builder_gap_v1",
+      "schema_level": "gan_frequency_s0",
+      "scorer_modes": [
+        "gan_frequency_deterministic_v1",
+        "gan2026_paper_reproduction"
+      ],
+      "stage_graph_id": null,
+      "status": "rejected_arm",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "gan_s0_hard_slice_qwen_architecture_v1"
+        ]
+      ],
+      "variant_id": "gan.s0.react_temporal_tools_arm_template"
+    },
+    {
       "config_examples": [
         "archive/configs/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json",
         "archive/configs/gan_s0_self_consistency_sample5_cap25_qwen35b.json"
@@ -611,6 +685,29 @@
       "status": "historical_arm",
       "taxonomy_filters": [],
       "variant_id": "exect.s1.seizure_pre_vocab"
+    },
+    {
+      "config_examples": [],
+      "dataset": "exect_v2",
+      "decision_doc": null,
+      "implementation_variant": null,
+      "notes": "Archived arm-template provenance for the seizure-type pre-vocabulary slice before the v4.11 prompt row.",
+      "program_variant": "exect_s0_s1_field_family_seizure_pre_vocab_single_pass",
+      "prompt_default": "exect_s0_s1_field_family_v4_10_label_policy",
+      "replacement_target": null,
+      "schema_level": "exect_s0_s1_field_family",
+      "scorer_modes": [
+        "exect_field_family_deterministic_v1"
+      ],
+      "stage_graph_id": null,
+      "status": "historical_arm",
+      "taxonomy_filters": [
+        [
+          "comparison_group",
+          "exect_s1_seizure_pre_vocab_slice_gpt_v1"
+        ]
+      ],
+      "variant_id": "exect.s1.seizure_pre_vocab_v4_10_arm_template"
     },
     {
       "config_examples": [],
