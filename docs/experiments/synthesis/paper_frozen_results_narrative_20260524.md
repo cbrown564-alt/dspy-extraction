@@ -25,7 +25,7 @@ On synthetic validation splits with frozen deterministic scorers, the project sh
 
 ### Headline result (paper-frozen)
 
-The operational Gan S0 default is **candidate-builder gap v1** with GPT 4.1-mini on `gan_2026_fixed_v1:validation` (299 records), scored with `gan_frequency_deterministic_v1`:
+The historical operational Gan S0 default is **candidate-builder gap v1** with GPT 4.1-mini on `gan_2026_fixed_v1:validation` (299 records), scored with `gan_frequency_deterministic_v1`:
 
 | Metric | Value | Run ID |
 | --- | ---: | --- |
@@ -37,7 +37,7 @@ The operational Gan S0 default is **candidate-builder gap v1** with GPT 4.1-mini
 
 **Interpretation:** Deterministic temporal candidate builders that close documented recall gaps before LLM adjudication moved GPT monthly accuracy from the mid-60s (verify-repair and temporal-candidates eras) to 80.6%. The residual error map is now semantic adjudication and builder coverage, not missing temporal windows.
 
-**Required caveats:** Synthetic validation only; not Gan Real(300)/Real(150) reproduction. Primary gold is `seizure_frequency_number[0]`; `reference[0]` is diagnostic. Monthly accuracy is the primary benchmark-facing metric; pragmatic category (88.6%) is supporting with an 8.0pp gap largely attributable to pragmatic-monthly divergence sub-patterns documented in Pathway C3.
+**Required caveats:** Synthetic validation only; not Gan Real(300)/Real(150) reproduction. Primary gold is `seizure_frequency_number[0]`; `reference[0]` is diagnostic. After the 2026-05-27 author-evaluator handoff, direct benchmark-comparison claims should be rescored with `gan2026_paper_reproduction`; the monthly accuracy here is a canonical diagnostic/sensitivity metric.
 
 ### Local model transfer
 

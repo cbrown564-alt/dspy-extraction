@@ -53,7 +53,7 @@ We position this manuscript as a **methods and controlled negative-evidence** st
 
 ### 3.1 Datasets and splits
 
-**Gan 2026.** We evaluate on split `gan_2026_fixed_v1:validation` (N=299) using scorer `gan_frequency_deterministic_v1`. Primary gold for benchmark-facing accuracy is `seizure_frequency_number[0]`; `reference[0]` is retained as a secondary difficulty signal. Letters are synthetic; results do not constitute reproduction of Gan Real(300) or Real(150).
+**Gan 2026.** Historical tables evaluate split `gan_2026_fixed_v1:validation` (N=299) using scorer `gan_frequency_deterministic_v1`; those values are canonical diagnostics. Direct benchmark-comparison tables should use `gan2026_paper_reproduction` and report scorer options. Primary gold is `seizure_frequency_number[0]`; `reference[0]` is retained as a secondary difficulty signal. Letters are synthetic; results do not constitute reproduction of Gan Real(300) or Real(150).
 
 **ExECTv2.** We evaluate on a fixed **n=40** validation subset of synthetic ExECTv2 letters. Scorers are field-family deterministic modes (`exect_field_family_deterministic_v1` for S1; family-specific scorers for S2–S5). These are local diagnostic scores, not CUI-aware Table 1 reproduction.
 
@@ -115,7 +115,7 @@ GPT 4.1-mini is the hosted iteration and promotion anchor for most frozen arms. 
 
 ### 4.5 Evaluation metrics
 
-**Gan.** Monthly accuracy is the primary benchmark-facing metric; we also report Purist and Pragmatic category accuracy, schema validity, and evidence support. Evidence support is a **deterministic check** that an extracted quote appears in the source note; it is not clinician-adjudicated evidence quality.
+**Gan.** Direct benchmark comparisons use the author-compatible `gan2026_paper_reproduction` scorer, with Purist/Pragmatic metrics and scorer options reported. The previous monthly accuracy under `gan_frequency_deterministic_v1` is retained as a canonical diagnostic/sensitivity view. Evidence support is a **deterministic check** that an extracted quote appears in the source note; it is not clinician-adjudicated evidence quality.
 
 **ExECT.** We report pooled micro F1 with mandatory per-family F1. All ExECT tables in this draft assume **n=40** validation unless stated otherwise.
 

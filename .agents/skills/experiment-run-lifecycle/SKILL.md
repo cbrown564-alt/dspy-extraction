@@ -51,6 +51,9 @@ Use this skill when an experiment moves from code/config into model execution or
 - Always separate benchmark-facing metrics from diagnostic metrics.
 - Include confidence intervals when the report generated them.
 - Report optimizer metric and benchmark scorer mode separately.
+- For Gan S0 paper comparisons, use `gan2026_paper_reproduction` as the
+  primary benchmark-facing scorer. Treat canonical Gan metrics as diagnostics
+  or a clearly labeled sensitivity view.
 - For optimizer runs, report estimated model-call count, whether compilation was used, and whether demos expanded prediction prompts.
 - For local Qwen runs, report whether the model was fully GPU-resident or partially offloaded to system RAM.
 - Mention structured-output strategy and whether Pydantic validation was the acceptance gate.

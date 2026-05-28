@@ -54,7 +54,23 @@ Gold source:
 - `reference[0]` is a secondary cross-check and difficulty signal, not benchmark gold.
 - `label_reference_disagreement` and `hard_case` flag records where primary gold differs from the secondary reference label.
 
-Normalization:
+Scorer modes:
+
+- `gan2026_paper_reproduction` is the primary benchmark-facing scorer for
+  direct comparisons to Gan 2026 paper numbers. It follows the author-provided
+  evaluator in `data/Gan (2026)/previous_paper_scorer/`, including collapse of
+  `unknown` and `no seizure frequency reference`, dynamic `multiple` handling,
+  365-day/30-day conversion constants, range-bound averaging, and optional
+  prediction repair/range/tolerance controls when explicitly enabled.
+- `gan_frequency_deterministic_v1` is the canonical clinical/project diagnostic
+  scorer. It preserves the raw distinction between `unknown` and
+  `no seizure frequency reference` and keeps stricter label parsing for error
+  analysis.
+- Reports may include both modes, but direct paper comparisons should lead with
+  `gan2026_paper_reproduction` and label canonical metrics as diagnostic or
+  sensitivity analyses.
+
+Canonical clinical normalization:
 
 - Labels are lowercased and whitespace collapsed.
 - Plural time units normalize to singular units.
@@ -67,9 +83,13 @@ Normalization:
 
 Benchmark-facing metrics:
 
-- Monthly-frequency match compares deterministic seizures-per-month values.
-- Purist category match uses the multi-bin Gan/Holgate category view.
-- Pragmatic category match uses `infrequent`, `frequent`, `unknown`, and `no_seizure_information`.
+- Monthly-frequency match compares deterministic seizures-per-month values under
+  the selected scorer mode.
+- Purist category match uses the multi-bin Gan/Holgate category view; paper
+  reproduction mode emits the author-evaluator category names.
+- Pragmatic category match uses the coarse frequent/infrequent view plus special
+  categories; paper reproduction mode follows the author-evaluator special-class
+  policy.
 
 Diagnostic metrics:
 

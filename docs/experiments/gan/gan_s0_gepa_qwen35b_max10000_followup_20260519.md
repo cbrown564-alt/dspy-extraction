@@ -85,8 +85,9 @@ room to over-elaborate and drift away from the benchmark contract.
   reproduction.
 - GEPA used `4` training examples and no separate validation set, so DSPy
   explicitly overfit to the tiny train slice by design.
-- The scorer remains `gan_frequency_deterministic_v1`; benchmark-facing metrics
-  and diagnostic metrics should not be conflated.
+- The historical scorer remains `gan_frequency_deterministic_v1`; after the
+  2026-05-27 author-evaluator handoff, these are canonical diagnostic metrics
+  rather than like-for-like Gan paper-comparison metrics.
 - Gan label-policy quirks still matter here, especially around cluster labels,
   `unknown`, and `no seizure frequency reference`.
 

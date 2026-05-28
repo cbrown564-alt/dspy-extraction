@@ -413,7 +413,12 @@ def print_summary(
             file=file,
         )
     else:
-        print("\n--- Benchmark metrics (not published reproduction) ---", file=file)
+        gan_header = (
+            "Gan 2026 paper-reproduction metrics"
+            if report.get("scorer") == "gan2026_paper_reproduction"
+            else "Benchmark metrics (not published reproduction)"
+        )
+        print(f"\n--- {gan_header} ---", file=file)
         print(
             f"  Monthly frequency accuracy:  {pct(bm.get('monthly_frequency_accuracy'))}",
             file=file,
@@ -540,7 +545,12 @@ def run_experiment(
             "schema_level": config.schema_level,
         },
     )
-    metadata = metadata.model_copy(update={"metric_caveats": config.metric_caveats})
+    metadata = metadata.model_copy(
+        update={
+            "metric_caveats": config.metric_caveats,
+            "scorer_mode": config.scorer_mode,
+        }
+    )
     paths = create_run_artifact_layout(metadata, root=config.output_root)
     emit(f"\nRun directory: {paths['run']}")
 
@@ -599,6 +609,7 @@ def run_experiment(
             index, total, record_id, file=out
         ),
         schema_level=config.schema_level,
+        scorer_mode=config.scorer_mode,
     )
     prediction_duration_seconds = perf_counter() - prediction_started
     paths["predictions"].write_text(
@@ -608,7 +619,10 @@ def run_experiment(
 
     emit("Evaluating...")
     evaluation_started = perf_counter()
-    report = backend.evaluate_predictions(prediction_set)
+    report = backend.evaluate_predictions(
+        prediction_set,
+        scorer_mode=config.scorer_mode,
+    )
     evaluation_duration_seconds = perf_counter() - evaluation_started
     token_usage = collect_lm_token_usage(
         [candidate for candidate in [lm, reflection_lm] if candidate is not None]

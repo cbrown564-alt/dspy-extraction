@@ -36,7 +36,9 @@ When working with Gan:
 
 - Treat `seizure_frequency_number[0]` as the gold label.
 - Treat `reference` as a secondary cross-check, not gold.
-- Preserve the distinction between `unknown` and `no seizure frequency reference`.
+- Preserve the raw distinction between `unknown` and `no seizure frequency reference`.
+  Collapse them only inside the explicit `gan2026_paper_reproduction` scorer,
+  because the author-provided evaluator does so for paper benchmark comparison.
 - Account for label/reference disagreements as difficulty signals, not automatic gold failures.
 - Handle plural units, cluster labels, seizure-free labels, and administrative/no-clinical-content records according to the audit.
 - Do not treat summarized secondary evidence as verbatim span evidence.

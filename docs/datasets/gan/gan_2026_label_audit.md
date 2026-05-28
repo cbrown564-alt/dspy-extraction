@@ -259,13 +259,15 @@ The project now keeps two Gan scorer contracts separate:
   must be reported when enabled.
 
 Do not mix these metrics in one comparison table unless the scorer mode and options are explicit.
-Canonical Gan project metrics remain the default for experiment diagnostics; paper-reproduction
-metrics are for compatibility claims against the Gan 2026 paper.
+Going forward, direct benchmark-comparison reports should lead with `gan2026_paper_reproduction`.
+Canonical Gan project metrics remain valuable as diagnostics and sensitivity analyses, especially
+for clinically interpretable `unknown` versus `no seizure frequency reference` behavior.
 
 ### Converting labels to x per month
 
 The gold label string must be converted to a numeric seizures/month value before applying the
-Purist or Pragmatic evaluation boundaries from Table 1. Conversion rules (from Gan et al.):
+Purist or Pragmatic evaluation boundaries from Table 1. The canonical clinical scorer uses the
+paper's Section 2.6.1 label-scheme interpretation:
 
 1. `no seizure frequency reference` → x = 0 (NS)
 2. `seizure free for N <unit>` → x = 0 (NS) — the duration is informative for seizure-freedom
@@ -278,6 +280,11 @@ Purist or Pragmatic evaluation boundaries from Table 1. Conversion rules (from G
 5. Cluster labels: x = (cluster_rate_per_month) × (seizures_per_cluster), where both factors
    follow the same `N per M <unit>` and `multiple` rules
 
+The paper-reproduction scorer should not be simplified to this canonical interpretation. For
+like-for-like benchmark comparison it follows the author-provided evaluator, including
+`no seizure frequency reference -> 1000`, context-dependent `multiple` values, 365-day/30-day
+constants, and final-rate-bound averaging for ranges.
+
 ### Plural normalisation (must apply before conversion)
 
 Strip trailing `s` from time unit tokens: `months` → `month`, `years` → `year`, `weeks` → `week`,
@@ -288,9 +295,11 @@ Strip trailing `s` from time unit tokens: `months` → `month`, `years` → `yea
 - **Purist**: 8 fine-grained temporal categories with fuzzy boundaries (soft logic)
 - **Pragmatic**: 2 categories (infrequent ≤1.1/month vs frequent >1.1/month) + UNK + NS
 
-Gan et al. report micro-F1 as the primary metric. UNK and NS are always scored as separate
-categories. Seizure-freedom duration is not directly evaluated by either method (both map
-seizure-free to NS/0).
+Gan et al. report micro-F1 as the primary metric. Special-category handling depends on scorer mode:
+paper reproduction follows the author evaluator's `seizure_freq_unknown` and
+`currently_no_seizure` policy, while the canonical clinical scorer keeps `unknown` and
+`no_seizure_information` separate. Seizure-freedom duration is not directly evaluated by either
+method.
 
 ---
 
@@ -311,16 +320,17 @@ in Gan et al. Section 2.9 and Tables 2–3.
 
 ---
 
-## What Needs to Be Implemented
+## Implementation Status And Remaining Gaps
 
-The following are gaps between the papers' description and what exists in the codebase:
+The following gaps matter for keeping benchmark and diagnostic claims aligned:
 
-1. **Label normalisation function** — converts `seizure_frequency_number[0]` strings to x/month.
-   Must handle: plural stripping, `multiple→3`, range midpoints, unit factors, cluster
-   multiplication, `unknown→1000`, `no seizure frequency reference→0`, `seizure free→0`.
+1. **Scorer mode routing** — direct benchmark comparisons must use
+   `gan2026_paper_reproduction`; canonical metrics should be reported as diagnostics or
+   sensitivity views.
 
-2. **Purist and Pragmatic category assignment** — maps x/month values to the 8-class and 4-class
-   schemas in Table 1.
+2. **Label normalisation functions** — both scorer modes exist in code. Keep regression tests
+   covering plural stripping, cluster labels, `multiple`, ranges, special labels, and the
+   author-evaluator differences.
 
 3. **Hard-case flag** — mark the 197 records where `seizure_frequency_number[0] != reference[0]`
    for stratified reporting (to separately report performance on ambiguous letters).

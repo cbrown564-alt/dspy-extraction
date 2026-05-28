@@ -67,6 +67,8 @@ def test_gan_evaluation_cli_writes_metrics_and_error_samples(tmp_path):
             "200",
             "--bootstrap-seed",
             "17",
+            "--scorer-mode",
+            "gan_frequency_deterministic_v1",
         ]
     )
 
@@ -74,6 +76,7 @@ def test_gan_evaluation_cli_writes_metrics_and_error_samples(tmp_path):
     assert exit_code == 0
     assert report["dataset"] == "gan_2026"
     assert report["schema_level"] == "gan_frequency_s0"
+    assert report["scorer"] == "gan_frequency_deterministic_v1"
     assert report["counts"]["predicted_records"] == 2
     assert report["counts"]["valid_predictions"] == 2
     assert report["benchmark_metrics"]["monthly_frequency_accuracy"] == 0.5
@@ -181,7 +184,7 @@ def test_gan_evaluation_scores_evidence_against_source_text_only(monkeypatch):
     assert "evidence.partial_overlap" not in report["error_analysis"]["counts"]
 
 
-def test_gan_evaluation_can_use_paper_reproduction_mode_without_changing_default(
+def test_gan_evaluation_defaults_to_paper_reproduction_but_keeps_canonical_mode(
     monkeypatch,
 ):
     record = GanRecord(
@@ -221,18 +224,18 @@ def test_gan_evaluation_can_use_paper_reproduction_mode_without_changing_default
         ],
     )
 
-    canonical = evaluate_gan_predictions(predictions, bootstrap_samples=10)
-    paper = evaluate_gan_predictions(
+    paper_default = evaluate_gan_predictions(predictions, bootstrap_samples=10)
+    canonical = evaluate_gan_predictions(
         predictions,
         bootstrap_samples=10,
-        scorer_mode="gan2026_paper_reproduction",
+        scorer_mode="gan_frequency_deterministic_v1",
     )
 
+    assert paper_default["scorer"] == "gan2026_paper_reproduction"
+    assert paper_default["benchmark_metrics"]["monthly_frequency_accuracy"] == 1.0
+    assert "author-evaluator compatibility" in paper_default["caveats"][-1]
     assert canonical["scorer"] == "gan_frequency_deterministic_v1"
     assert canonical["benchmark_metrics"]["monthly_frequency_accuracy"] == 0.0
-    assert paper["scorer"] == "gan2026_paper_reproduction"
-    assert paper["benchmark_metrics"]["monthly_frequency_accuracy"] == 1.0
-    assert "author-evaluator compatibility" in paper["caveats"][-1]
 
 
 def test_gan_evaluation_cli_reports_invalid_labels(tmp_path):
@@ -267,6 +270,8 @@ def test_gan_evaluation_cli_reports_invalid_labels(tmp_path):
             str(output_path),
             "--max-errors",
             "3",
+            "--scorer-mode",
+            "gan_frequency_deterministic_v1",
         ]
     )
 
@@ -457,7 +462,12 @@ def test_gan_evaluation_surfaces_full_validation_failure_boundaries(monkeypatch)
         ],
     )
 
-    report = evaluate_gan_predictions(predictions, max_errors=10, bootstrap_samples=10)
+    report = evaluate_gan_predictions(
+        predictions,
+        max_errors=10,
+        bootstrap_samples=10,
+        scorer_mode="gan_frequency_deterministic_v1",
+    )
 
     assert report["counts"]["invalid_predictions"] == 2
     assert report["error_analysis"]["counts"]["normalization.invalid_label"] == 1

@@ -60,6 +60,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
 )
 from clinical_extraction.evaluation.exect import EXECT_S5_SCORER
+from clinical_extraction.gan.scoring import GAN_PAPER_REPRODUCTION_SCORER
 
 EXECT_S5_SCHEMA_LEVEL = "exect_s5_core_field_family"
 from clinical_extraction.programs.gan_frequency_s0 import (
@@ -293,13 +294,14 @@ class ExperimentConfig(FrozenModel):
         "exect_s5_core_field_family_parallel_v2b",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
+        "gan2026_paper_reproduction",
         "gan_frequency_deterministic_v1",
         "exect_field_family_deterministic_v1",
         "exect_s2_field_family_deterministic_v1",
         "exect_s3_field_family_deterministic_v1",
         "exect_s4_field_family_deterministic_v1",
         "exect_s5_core_field_family_deterministic_v1",
-    ] = GAN_FREQUENCY_S0_SCORER
+    ] = GAN_PAPER_REPRODUCTION_SCORER
     prompt_version: str
     controls: ExperimentControls
     structured_output_strategy: StructuredOutputStrategy
@@ -366,7 +368,7 @@ class ExperimentConfig(FrozenModel):
                         GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
                         GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
                     },
-                    GAN_FREQUENCY_S0_SCORER,
+                    {GAN_FREQUENCY_S0_SCORER, GAN_PAPER_REPRODUCTION_SCORER},
                 )
             ],
             "exect_v2": [
@@ -453,7 +455,11 @@ class ExperimentConfig(FrozenModel):
         if not any(
             self.schema_level == expected_schema
             and self.program_variant in expected_variants
-            and self.scorer_mode == expected_scorer
+            and (
+                self.scorer_mode in expected_scorer
+                if isinstance(expected_scorer, set)
+                else self.scorer_mode == expected_scorer
+            )
             for expected_schema, expected_variants, expected_scorer in valid_contracts
         ):
             raise ValueError(

@@ -120,7 +120,7 @@ note → LLM broad extraction with inline benchmark policy → structured field-
 
 ### 4. Evaluation design
 
-- **Gan:** monthly accuracy (primary benchmark-facing), Purist/Pragmatic category, schema validity, **evidence support** = deterministic check that an extracted quote appears in the source note (diagnostic grounding only; **not** clinician-adjudicated evidence quality).
+- **Gan:** primary benchmark comparisons should use `gan2026_paper_reproduction` Purist/Pragmatic metrics, with scorer options reported. Historical monthly accuracy under `gan_frequency_deterministic_v1` remains a canonical diagnostic/sensitivity view. **Evidence support** = deterministic check that an extracted quote appears in the source note (diagnostic grounding only; **not** clinician-adjudicated evidence quality).
 - **ExECT:** pooled micro F1 with mandatory per-family reporting on **n=40** validation; schema ladder S1→S4 changes **field-family scope** (report as scope expansion, not a calibrated difficulty curve).
 - **Promotion gates:** cap-25 for search; full validation for operational defaults; explicit recall/precision tradeoff thresholds for post-LLM guards. **Never** present cap-25 numbers as headline results without scope label.
 - **Model comparison:** GPT 4.1-mini (hosted iteration anchor); Qwen3.6:35b via Ollama (local transfer probes on frozen surfaces where run); frozen model-suite profiles (S1/S4/Gan F0) as supplementary bottleneck diagnosis—not operational decision source.

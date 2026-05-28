@@ -47,9 +47,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     parser.add_argument(
         "--scorer-mode",
-        default=GAN_CANONICAL_SCORER,
+        default=GAN_PAPER_REPRODUCTION_SCORER,
         choices=[GAN_CANONICAL_SCORER, GAN_PAPER_REPRODUCTION_SCORER],
-        help="Gan scorer semantics to use for frequency metrics.",
+        help=(
+            "Gan scorer semantics to use for frequency metrics. Defaults to the "
+            "author-compatible paper-reproduction scorer."
+        ),
     )
     parser.add_argument(
         "--apply-paper-prediction-repair",
@@ -101,7 +104,7 @@ def evaluate_gan_predictions(
     max_errors: int = 20,
     bootstrap_samples: int = 1000,
     bootstrap_seed: int = 0,
-    scorer_mode: str = GAN_CANONICAL_SCORER,
+    scorer_mode: str = GAN_PAPER_REPRODUCTION_SCORER,
     apply_paper_prediction_repair: bool = False,
     allow_paper_prediction_range: bool = False,
     allow_paper_error_tolerance: bool = False,

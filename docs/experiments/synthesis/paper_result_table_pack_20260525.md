@@ -12,7 +12,7 @@ The rows below are intended for paper drafting, not for benchmark-reproduction c
 
 ## Global Caveats
 
-- Gan rows use the synthetic `gan_2026_fixed_v1:validation` split and `gan_frequency_deterministic_v1`; they are not Gan Real(300) or Real(150) reporting.
+- Gan rows in this historical table use the synthetic `gan_2026_fixed_v1:validation` split and `gan_frequency_deterministic_v1`; they are not Gan Real(300) or Real(150) reporting. New benchmark-comparison tables should lead with `gan2026_paper_reproduction` and keep these canonical metrics as diagnostics/sensitivity analysis.
 - Gan gold remains `seizure_frequency_number[0]`; `reference[0]` is a secondary diagnostic cross-check.
 - ExECT rows use the fixed 40-record `exectv2_fixed_v1:validation` split and deterministic field-family scorers; they are not CUI-aware ExECTv2 Table 1 reproduction.
 - ExECT S1-S4 ladder rows change field-family scope across rungs, so pooled micro F1 should be read as schema-breadth pressure plus family-composition effects.
@@ -24,7 +24,7 @@ The rows below are intended for paper drafting, not for benchmark-reproduction c
 
 | Arm | Run ID | Program / variant | Split / N | Scorer | Monthly | Purist | Pragmatic | Schema valid | Evidence support | Decision / caveat |
 | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| GPT 4.1-mini candidate-builder gap v1 | `gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z` | `gan_frequency_s0_temporal_candidates_single_pass`; `gan_s0_candidate_builder_gap_v1` | validation / 299 evaluated | `gan_frequency_deterministic_v1` | **80.6%** | 86.0% | 88.6% | 100.0% | 100.0% | Current Gan S0 operational default on synthetic validation. |
+| GPT 4.1-mini candidate-builder gap v1 | `gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z` | `gan_frequency_s0_temporal_candidates_single_pass`; `gan_s0_candidate_builder_gap_v1` | validation / 299 evaluated | `gan_frequency_deterministic_v1` | **80.6%** | 86.0% | 88.6% | 100.0% | 100.0% | Historical canonical diagnostic default on synthetic validation; rescore with `gan2026_paper_reproduction` for benchmark comparison. |
 | Qwen3.6:35b candidate-builder gap v1 | `gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z` | same surface | validation / 299 predicted, 297 valid scored | `gan_frequency_deterministic_v1` | 70.7% | 83.2% | **90.6%** | 99.3% | 99.7% | Accepted local transfer arm, but not hosted parity; GPT remains +9.9pp monthly. |
 
 Primary sources: `runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z/metrics.json`; `runs/gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z/metrics.json`; `docs/experiments/gan/gan_s0_operational_default_promotion_review_20260523.md`; `docs/experiments/gan/gan_s0_qwen35b_builder_gap_l2_error_forensics_20260525.md`.

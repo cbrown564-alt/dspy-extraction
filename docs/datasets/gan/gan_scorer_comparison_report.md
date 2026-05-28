@@ -19,7 +19,9 @@ The correct remedy is not to silently replace current scorer semantics. The repo
 - `gan2026_paper_reproduction`: reproduces the author-provided evaluation behavior for comparison to Gan 2026 results.
 - `gan_canonical_clinical`: preserves the current repo's audited semantic distinction between `unknown` and `no seizure frequency reference`.
 
-All Gan result reports should state which scorer mode was used.
+Going forward, Gan result reports that make benchmark-comparison claims should lead with
+`gan2026_paper_reproduction`. Canonical clinical metrics can still be reported, but they should be
+clearly labeled as diagnostics or sensitivity analysis rather than like-for-like paper comparison.
 
 ---
 
@@ -102,6 +104,7 @@ This means paper-reproduction scoring can be substantially more permissive than 
 ### Mode 1: `gan2026_paper_reproduction`
 
 Purpose: reproduce the author-provided Gan 2026 evaluator for comparison with reported paper results.
+This is the primary benchmark-facing evaluation mode.
 
 Required behavior:
 

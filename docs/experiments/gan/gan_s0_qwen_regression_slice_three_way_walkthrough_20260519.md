@@ -10,7 +10,7 @@ End-to-end record-by-record comparison of three approaches on the same 14-record
 | Verify-repair v2.3 | `runs/gan_s0_qwen35b_verify_repair_regression_slice_guardrails_20260519T155438Z` | Extract (guardrails v2.2) → verify/repair (v2.3 infrequent rules) |
 | LabeledFewShot + v2.2 | `runs/gan_s0_qwen35b_labeled_fewshot_regression_slice_guardrails_20260519T160348Z` | Same guardrails v2.2 signature + 4 synthesis-labeled train demos |
 
-**Scorer:** `gan_frequency_deterministic_v1` (unchanged across all three). Monthly / Purist / Pragmatic are benchmark-facing; normalized exact is diagnostic.
+**Scorer:** `gan_frequency_deterministic_v1` (unchanged across all three). These historical monthly / Purist / Pragmatic values are canonical diagnostics; direct Gan paper comparisons now require `gan2026_paper_reproduction`. Normalized exact is diagnostic.
 
 ---
 

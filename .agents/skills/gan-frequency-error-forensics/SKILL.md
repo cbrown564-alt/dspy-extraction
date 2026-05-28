@@ -64,6 +64,9 @@ Add or reuse fixture cases in `data/fixtures/primitive_cases.json` for regressio
 
 - Gan `seizure_frequency_number[0]` remains gold.
 - `reference` remains a secondary cross-check and difficulty signal.
+- Direct benchmark comparisons to the Gan 2026 paper use
+  `gan2026_paper_reproduction`; canonical clinical scorer differences should be
+  reported as diagnostics or sensitivity analyses.
 - Evidence quote support is diagnostic unless the experiment defines an evidence-facing optimizer objective.
 - Exact contiguous source quotes are required for strict evidence support.
 - Do not treat elided, paraphrased, or secondary-reference evidence as simple gold quote failure without checking the audit caveats.

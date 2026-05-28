@@ -9,7 +9,7 @@
 1. **ExECT frequency fundamentals first (E1).** Build and audit the deterministic frequency event payload before any more model runs on ExECT frequency. No-model coverage was 11.6%; this must improve before E2.
 2. **Explain holdout drops before new tuning (E5).** S1 drops −14.5pp and S5 frequency drops −26.8pp validation→holdout. Do not reopen validation-side tuning until the shift is diagnosed.
 3. **Keep optimizer work gated by the R14 postmortem.** Prior GEPA failures are arm rejects; Qwen GEPA remains blocked until a hosted compact-delta gate clears.
-4. **Use the paper-reproduction scorer before comparing to Gan 2026 paper numbers.** Keep canonical Gan metrics separate from `gan2026_paper_reproduction` scorer mode.
+4. **Use the paper-reproduction scorer as the primary Gan benchmark-comparison view.** Keep canonical Gan metrics separate from `gan2026_paper_reproduction` scorer mode and label them as diagnostics or sensitivity analysis.
 5. **Preserve reproducibility and scorer semantics.** No scorer, loader, gold-label, or test-holdout behavior changes without explicit tests and documentation.
 
 ## Carry-Forward Signals

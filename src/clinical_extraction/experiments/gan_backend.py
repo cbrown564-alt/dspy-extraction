@@ -76,6 +76,7 @@ class GanExperimentBackend:
         repair_policy: str,
         progress_callback: Callable[[int, int, str], None] | None,
         schema_level: str | None = None,
+        scorer_mode: str | None = None,
     ) -> Any:
         del schema_level
         return predict_gan_records(
@@ -87,10 +88,18 @@ class GanExperimentBackend:
             program_variant=program_variant,
             repair_policy=repair_policy,
             progress_callback=progress_callback,
+            scorer_mode=scorer_mode,
         )
 
-    def evaluate_predictions(self, prediction_set: Any) -> dict[str, Any]:
-        return evaluate_gan_predictions(prediction_set)
+    def evaluate_predictions(
+        self,
+        prediction_set: Any,
+        *,
+        scorer_mode: str | None = None,
+    ) -> dict[str, Any]:
+        if scorer_mode is None:
+            return evaluate_gan_predictions(prediction_set)
+        return evaluate_gan_predictions(prediction_set, scorer_mode=scorer_mode)
 
     def prompts_data(self, config: ExperimentConfig) -> dict[str, Any]:
         return gan_prompts_data(

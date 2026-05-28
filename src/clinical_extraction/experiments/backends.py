@@ -50,9 +50,15 @@ class ExperimentBackend(Protocol):
         repair_policy: str,
         progress_callback: Callable[[int, int, str], None] | None,
         schema_level: str | None = None,
+        scorer_mode: str | None = None,
     ) -> Any: ...
 
-    def evaluate_predictions(self, prediction_set: Any) -> dict[str, Any]: ...
+    def evaluate_predictions(
+        self,
+        prediction_set: Any,
+        *,
+        scorer_mode: str | None = None,
+    ) -> dict[str, Any]: ...
 
     def prompts_data(self, config: ExperimentConfig) -> dict[str, Any]: ...
 

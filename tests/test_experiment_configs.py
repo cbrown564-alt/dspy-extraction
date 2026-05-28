@@ -97,6 +97,34 @@ def test_gan_s0_baseline_experiment_config_records_required_controls():
     assert "monthly-frequency" in " ".join(config.metric_caveats).lower()
 
 
+def test_gan_s0_experiment_config_accepts_paper_reproduction_scorer_mode():
+    payload = json.loads(
+        Path(
+            "configs/experiments/"
+            "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
+        ).read_text(encoding="utf-8")
+    )
+    payload["scorer_mode"] = "gan2026_paper_reproduction"
+
+    config = ExperimentConfig.model_validate(payload)
+
+    assert config.scorer_mode == "gan2026_paper_reproduction"
+
+
+def test_new_gan_s0_experiment_configs_default_to_paper_reproduction_scorer():
+    payload = json.loads(
+        Path(
+            "configs/experiments/"
+            "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
+        ).read_text(encoding="utf-8")
+    )
+    payload.pop("scorer_mode")
+
+    config = ExperimentConfig.model_validate(payload)
+
+    assert config.scorer_mode == "gan2026_paper_reproduction"
+
+
 def test_gan_s0_synthesis_bootstrap_config_records_optimizer_target():
     config = load_experiment_config(
         Path("configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json")

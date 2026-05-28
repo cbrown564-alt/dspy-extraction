@@ -194,7 +194,9 @@ class ExectExperimentBackend:
         repair_policy: str,
         progress_callback: Callable[[int, int, str], None] | None,
         schema_level: str | None = None,
+        scorer_mode: str | None = None,
     ) -> Any:
+        del scorer_mode
         if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return predict_exect_s4_records(
                 module,
@@ -237,7 +239,13 @@ class ExectExperimentBackend:
             progress_callback=progress_callback,
         )
 
-    def evaluate_predictions(self, prediction_set: Any) -> dict[str, Any]:
+    def evaluate_predictions(
+        self,
+        prediction_set: Any,
+        *,
+        scorer_mode: str | None = None,
+    ) -> dict[str, Any]:
+        del scorer_mode
         if prediction_set.schema_level == EXECT_S5_SCHEMA_LEVEL:
             return score_exect_s5_prediction_set(prediction_set)
         if prediction_set.schema_level == EXECT_S4_SCHEMA_LEVEL:

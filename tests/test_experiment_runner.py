@@ -181,7 +181,10 @@ def test_backend_prompts_data_matches_golden_fixture(config_path: Path, fixture_
 
 
 def test_mock_runner_writes_full_artifact_layout_contract(tmp_path):
-    config_path = Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json")
+    config_path = Path(
+        "configs/experiments/"
+        "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
+    )
     config = load_experiment_config(config_path)
     run_config_path = tmp_path / "config.json"
     run_config_path.write_text(
@@ -211,9 +214,13 @@ def test_mock_runner_writes_full_artifact_layout_contract(tmp_path):
     ), patch(
         "clinical_extraction.experiments.gan_backend.evaluate_gan_predictions",
         return_value=report,
-    ):
+    ) as evaluate_gan_predictions:
         build_lm.return_value = MagicMock(history=[])
         assert run_experiment(run_config_path, run_id="layout_run") == 0
+        evaluate_gan_predictions.assert_called_once_with(
+            prediction_set,
+            scorer_mode=config.scorer_mode,
+        )
 
     run_dir = tmp_path / "runs" / "layout_run"
     assert (run_dir / "metadata.json").is_file()

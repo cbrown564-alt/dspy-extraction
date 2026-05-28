@@ -55,6 +55,10 @@ Semantic repair requires evidence-aware logic, a verifier, or an explicit model/
 
 ## Gan Scoring Notes
 
+- For direct comparisons to Gan 2026 paper numbers, use
+  `gan2026_paper_reproduction` as the primary benchmark-facing scorer and
+  report its options. Keep `gan_frequency_deterministic_v1` as a canonical
+  clinical/project diagnostic scorer, not as a like-for-like paper comparator.
 - Convert seizure-frequency labels to the canonical numeric/month representation before ordinal or numeric scoring.
 - Preserve special labels such as `unknown`, `no seizure frequency reference`, and `seizure free`.
 - Handle cluster expressions through deterministic conversion.

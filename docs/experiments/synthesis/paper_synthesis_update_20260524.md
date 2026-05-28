@@ -28,7 +28,7 @@ The active research story has shifted from broad model-suite coverage to a clean
 
 ### Gan S0 Candidate-Builder Gap V1
 
-The verified GPT rerun should replace stale G16 and older Gan F0 rows when describing the current operational Gan S0 surface. The task remains Gan 2026 synthetic validation, split `gan_2026_fixed_v1:validation`, scored with `gan_frequency_deterministic_v1`. The primary gold remains `seizure_frequency_number[0]`; `reference[0]` remains a secondary difficulty signal.
+The verified GPT rerun should replace stale G16 and older Gan F0 rows when describing the historical canonical Gan S0 surface. The task remains Gan 2026 synthetic validation, split `gan_2026_fixed_v1:validation`, scored here with `gan_frequency_deterministic_v1`. Direct benchmark-comparison claims should be rescored with `gan2026_paper_reproduction`; the primary gold remains `seizure_frequency_number[0]`, and `reference[0]` remains a secondary difficulty signal.
 
 | Model / arm | Run ID | N | Monthly | Purist | Pragmatic | Schema | Evidence | Decision |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |

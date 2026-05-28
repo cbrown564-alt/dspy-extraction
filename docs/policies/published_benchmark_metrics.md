@@ -61,7 +61,10 @@ Published values:
 
 Current repo alignment:
 
-- Partially aligned for scorer semantics: labels are normalized to monthly frequency, then mapped to Purist and Pragmatic categories.
+- Scorer alignment now has two explicit modes. `gan2026_paper_reproduction` is
+  the primary mode for direct Gan 2026 comparisons because it ports the
+  author-provided evaluator supplied on 2026-05-27. `gan_frequency_deterministic_v1`
+  remains a canonical clinical/project diagnostic scorer.
 - Not directly comparable to the published real-letter benchmarks because the repo currently loads `synthetic_data_subset_1500.json`, not the Real(300) or Real(150) clinician-annotated evaluation sets.
 - The repo reports category accuracy for deterministic stored predictions, not micro-F1 across model-predicted category labels. For single-label multiclass classification these can coincide when every evaluated record has exactly one valid prediction, but reports should not claim equivalence unless that condition is explicit.
 - Evidence diagnostics in this repo are separate from benchmark-facing frequency/category metrics; the paper treats evidence-grounded outputs as clinically useful, but the benchmark tables above are frequency classification F1.
@@ -69,6 +72,6 @@ Current repo alignment:
 ## Reproduction Implications
 
 - ExECTv2 reproduction needs CUI/feature-aware scoring across all Table 1 annotation families before comparing to the published `All` F1 values.
-- Gan reproduction needs the paper's real-letter evaluation sets or a clear statement that a synthetic-only subset is being used.
+- Gan reproduction needs the paper's real-letter evaluation sets or a clear statement that a synthetic-only subset is being used, and direct comparisons must use `gan2026_paper_reproduction` with its repair/range/tolerance options reported.
 - Future reports should cite scorer mode, dataset split, schema level, and whether they are benchmark-aligned, partially aligned, or diagnostic-only.
 - `clinical_extraction.evaluation.benchmarks` may be used to attach reference values and caveats to reports. Values labeled `partial` or `not_comparable` are not reproduction claims.

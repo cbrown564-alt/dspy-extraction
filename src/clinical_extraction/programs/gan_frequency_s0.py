@@ -4644,6 +4644,7 @@ def predict_gan_records(
     program_variant: str = GAN_FREQUENCY_S0_VARIANT,
     repair_policy: str = "none",
     progress_callback: Callable[[int, int, str], None] | None = None,
+    scorer_mode: str | None = None,
 ) -> PredictionSet:
     """Run ``module`` on each Gan record and return a ``PredictionSet`` artifact."""
     predictions = []
@@ -4668,7 +4669,7 @@ def predict_gan_records(
             "model_provider": model_provider,
             "model_name": model_name,
             "prompt_version": prompt_version,
-            "scorer_mode": GAN_FREQUENCY_S0_SCORER,
+            "scorer_mode": scorer_mode or GAN_FREQUENCY_S0_SCORER,
             "repair_policy": repair_policy,
         },
     )
