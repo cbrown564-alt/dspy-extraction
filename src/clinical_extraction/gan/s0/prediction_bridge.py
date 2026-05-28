@@ -321,6 +321,25 @@ def _apply_constrained_verifier_guard(
     )
 
 
+def apply_gan_s0_constrained_verifier_guard(
+    *,
+    note_text: str,
+    verified: dspy.Prediction,
+    candidates: list[Any],
+    initial_label: str | None,
+    initial_evidence: str | None,
+) -> dspy.Prediction:
+    """Public Gan S0 constrained-verifier guard stage surface."""
+
+    return _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label=initial_label,
+        initial_evidence=initial_evidence,
+    )
+
+
 def _apply_temporal_verifier_guards(
     *,
     initial_label: str | None,
@@ -943,6 +962,7 @@ __all__ = [
     "_normalize_predicted_label",
     "_predict_record",
     "_requires_evidence_support",
+    "apply_gan_s0_constrained_verifier_guard",
     "apply_gan_s0_evidence_span_check_guard",
     "gan_frequency_s0_run_metadata",
     "guard_gan_s0_evidence_text",

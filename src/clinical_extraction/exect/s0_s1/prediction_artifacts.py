@@ -144,6 +144,23 @@ def _merge_diagnosis_recall(
     return merged_diagnosis, merged_evidence, recall_added
 
 
+def merge_exect_s1_diagnosis_recall(
+    *,
+    initial_diagnosis: list[str],
+    initial_diagnosis_evidence: list[str],
+    additional_diagnosis: list[str],
+    additional_diagnosis_evidence: list[str],
+) -> tuple[list[str], list[str], list[str]]:
+    """Public ExECT S1 diagnosis-recall merge stage surface."""
+
+    return _merge_diagnosis_recall(
+        initial_diagnosis=initial_diagnosis,
+        initial_diagnosis_evidence=initial_diagnosis_evidence,
+        additional_diagnosis=additional_diagnosis,
+        additional_diagnosis_evidence=additional_diagnosis_evidence,
+    )
+
+
 def _align_evidence(values: list[str], evidence_values: list[str]) -> list[str]:
     aligned = list(evidence_values)
     while len(aligned) < len(values):
@@ -478,6 +495,20 @@ def _recover_s1_clean_annotated_medication_raw_values(
         note_text,
     )
     return recovered, [f"s1_clean_bridge:{flag}" for flag in flags]
+
+
+def recover_exect_s1_clean_annotated_medication_raw_values(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Public ExECT S1 clean-ladder medication guard recovery surface."""
+
+    return _recover_s1_clean_annotated_medication_raw_values(
+        raw_values,
+        evidence_values,
+        note_text,
+    )
 
 
 def _family_context(note_text: str, *, target_field: str, max_sections: int) -> str:

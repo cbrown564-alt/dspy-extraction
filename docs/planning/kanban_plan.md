@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C17 completion
+Last refreshed: 2026-05-28 C18 ExECT S1 surface slice
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -82,7 +82,18 @@ or `component_ceiling_registry.md` explicitly promotes them.
   primitive suites pass; run the full suite before declaring this card complete.
 - **Notes:** Keep old tests as parity nets until replacement coverage is real.
   This card completes the test-isolation recommendation from
-  `modularity_audit_report.md`.
+  `modularity_audit_report.md`. 2026-05-28 first C18 slice retired direct
+  private-helper assertions for Gan S0 evidence quote repair, evidence
+  span-check, and constrained-verifier guard behavior from
+  `tests/test_gan_s0_program.py`. The same edge cases now sit on the public
+  `clinical_extraction.gan.s0.prediction_bridge` stage surfaces in
+  `tests/test_gan_s0_stage_surfaces.py`, including a new public
+  `apply_gan_s0_constrained_verifier_guard` wrapper. 2026-05-28 follow-up C18
+  slice moved direct ExECT S1 diagnosis-recall and clean-ladder medication
+  guard assertions out of `tests/test_exect_s0_s1_program.py` and onto public
+  `clinical_extraction.exect.s0_s1.prediction_artifacts` stage surfaces in
+  `tests/test_exect_s1_boundary_surfaces.py`. C18 remains open for the
+  remaining monolithic Gan and ExECT parity surfaces.
 
 ### X3 - Registry And Atlas Refresh
 
@@ -394,9 +405,13 @@ artifacts, and git history; this section only keeps the steering implications.
 - C17 is complete: ExECT primitive imports now route through family-owned
   diagnosis, seizure-type, medication, and frequency modules while
   `clinical_extraction.exect.primitives` remains the legacy facade.
-- C18 is now eligible but should still retire tests stage by stage. Monolithic
-  tests remain useful parity nets until replacement characterization tests cover
-  the same behavior on public module surfaces.
+- C18 has started and should still retire tests stage by stage. The first Gan
+  S0 guard-surface slice removed direct evidence/constrained guard private
+  helper assertions from the monolithic program test while preserving public
+  stage coverage. A follow-up ExECT S1 slice moved diagnosis-recall and
+  clean-ladder medication guard assertions onto public prediction-artifact
+  surfaces. Monolithic tests remain useful parity nets until replacement
+  characterization tests cover the same behavior on public module surfaces.
 - C19 is the first broad archive/delete pass. It depends on C12 path helpers and
   enough C15-C18 extraction to avoid deleting code that still carries active
   behavior.
@@ -453,8 +468,8 @@ artifacts, and git history; this section only keeps the steering implications.
   paper-scorer rescore if needed for a paper table; E5 medication lifecycle
   policy decision. These should preserve scorer, loader, split, and benchmark
   bridge semantics.
-- **Architecture lane now eligible:** C18 monolithic test retirement can proceed
-  stage by stage after checking replacement public surfaces.
+- **Architecture lane now in progress:** C18 monolithic test retirement can
+  proceed stage by stage after checking replacement public surfaces.
 - **After C18:** C19 archive/delete follows once path resolution and replacement
   surfaces make replay provenance safe.
 - **Research lane still safe, but secondary:** E6, E8, E10, G4, and E11 remain

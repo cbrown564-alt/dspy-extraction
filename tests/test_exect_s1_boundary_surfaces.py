@@ -4,6 +4,10 @@ from clinical_extraction.exect.s1_boundary import (
     EXECT_S1_BOUNDARY_SURFACE_VERSION,
     build_s1_boundary_surfaces_metadata,
 )
+from clinical_extraction.exect.s0_s1.prediction_artifacts import (
+    merge_exect_s1_diagnosis_recall,
+    recover_exect_s1_clean_annotated_medication_raw_values,
+)
 from clinical_extraction.schemas import EvidenceSpan, ExtractedValue
 
 
@@ -124,3 +128,31 @@ def test_s1_boundary_surface_records_prompt_split_and_bridge_free_state():
         row["normalized_value"]
         for row in surfaces["final_artifact_values"]["seizure_type"]
     ] == ["focal seizures with altered awareness"]
+
+
+def test_s1_diagnosis_recall_surface_adds_only_allowed_new_labels():
+    merged, evidence, added = merge_exect_s1_diagnosis_recall(
+        initial_diagnosis=["focal epilepsy"],
+        initial_diagnosis_evidence=["Diagnosis: focal epilepsy"],
+        additional_diagnosis=["parietal lobe epilepsy", "focal epilepsy", "hydrocephalus"],
+        additional_diagnosis_evidence=[
+            "probable parietal onset",
+            "Diagnosis: focal epilepsy",
+            "Diagnosis: hydrocephalus",
+        ],
+    )
+
+    assert merged == ["focal epilepsy", "parietal lobe epilepsy"]
+    assert evidence == ["Diagnosis: focal epilepsy", "probable parietal onset"]
+    assert added == ["parietal lobe epilepsy"]
+
+
+def test_s1_clean_medication_surface_reuses_promoted_guard():
+    recovered, flags = recover_exect_s1_clean_annotated_medication_raw_values(
+        ["aspirin", "eplim chrono", "lamotrigine"],
+        ["aspirin", "Epilim Chrono", "lamotrigine"],
+        "Current medication: Epilim Chrono and lamotrigine. Aspirin for migraine.",
+    )
+
+    assert recovered == ["epilim chrono", "lamotrigine"]
+    assert "s1_clean_bridge:benchmark_bridge:non_asm_medication_rejected" in flags

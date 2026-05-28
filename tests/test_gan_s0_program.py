@@ -10,7 +10,6 @@ from clinical_extraction.gan.temporal_candidates import (
     build_temporal_frequency_candidates_from_note,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
-    _guard_evidence_text,
     _looks_like_no_reference_note,
     _prompt_note_text_for_context_policy,
     GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
@@ -43,7 +42,6 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
     GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
     GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule,
-    _apply_constrained_verifier_guard,
     GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
     GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule,
     GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule,
@@ -73,7 +71,6 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0TemporalAdjudicateSignature,
     select_gan_multiple_answer_option,
     stage_graph_id_for_program_variant,
-    _apply_evidence_span_check_guard,
     build_gan_frequency_s0_extractor_signature,
     build_gan_frequency_s0_verifier_signature,
     build_gan_s0_module,
@@ -986,93 +983,6 @@ def test_gan_s0_module_strips_prompt_footer_from_evidence():
     assert "evidence_repaired:prompt_footer_stripped" in value.quality_flags
 
 
-def test_guard_evidence_text_strips_outer_double_quotes():
-    note_text = (
-        "Over the past six months; he continues to suffer one to two "
-        "generalised tonic-clonic seizures per month, with a longest "
-        "seizure-free interval of two weeks."
-    )
-    quoted = (
-        '"he continues to suffer one to two generalised tonic-clonic '
-        'seizures per month"'
-    )
-
-    repaired, flags = _guard_evidence_text(note_text, quoted)
-
-    assert repaired == (
-        "he continues to suffer one to two generalised tonic-clonic seizures per month"
-    )
-    assert repaired in note_text
-    assert "evidence_repaired:outer_quotes_stripped" in flags
-
-
-def test_guard_evidence_text_selects_locatable_ellipsis_segment():
-    note_text = (
-        "facial twitching. A second event occurred in Italy the following "
-        "July 2019, once more during the night, lasting four minutes. "
-        "Since returning to the UK, there have been no further events reported."
-    )
-    spliced = (
-        '"A second event occurred in Italy the following July 2019... '
-        'Since returning to the UK, there have been no further events reported."'
-    )
-
-    repaired, flags = _guard_evidence_text(note_text, spliced)
-
-    assert repaired in note_text
-    assert repaired.startswith("Since returning to the UK")
-    assert "evidence_repaired:outer_quotes_stripped" in flags
-    assert "evidence_repaired:ellipsis_segment_selected" in flags
-
-
-def test_guard_evidence_text_prefers_longest_temporal_candidate_fallback():
-    note_text = (
-        "Seizure history: His initial event was in April 2019 in Germany, arising "
-        "from sleep. He awoke with jerking. A second event occurred in Italy the "
-        "following July 2019, once more during the night, lasting four minutes."
-    )
-    bad_summary = (
-        '"A second event occurred in Italy the following July 2019... '
-        'Since returning to the UK, there have been no further events reported."'
-    )
-    candidate_span = (
-        "His initial event was in April 2019 in Germany, arising from sleep. "
-        "He awoke with jerking. A second event occurred in Italy the following "
-        "July 2019, once more during the night, lasting four minutes."
-    )
-
-    repaired, flags = _guard_evidence_text(
-        note_text,
-        bad_summary,
-        fallback_evidence_texts=[candidate_span],
-    )
-
-    assert repaired == candidate_span
-    assert "evidence_repaired:temporal_candidate_fallback" in flags
-
-
-def test_guard_evidence_text_repairs_gpt_temporal_cap25_failure_snippets():
-    by_id = {record.record_id: record for record in load_gan_records()}
-    cases = [
-        (
-            "gan_12679",
-            '"he continues to suffer one to two generalised tonic-clonic seizures per month"',
-        ),
-        (
-            "gan_16251",
-            '"She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun"',
-        ),
-        (
-            "gan_16825",
-            '"In October he had six nocturnal seizures"',
-        ),
-    ]
-    for record_id, quoted in cases:
-        record = by_id[record_id]
-        repaired, _flags = _guard_evidence_text(record.note_text, quoted)
-        assert repaired in record.note_text, record_id
-
-
 def test_gan_s0_module_truncates_evidence_to_longest_note_prefix():
     note_text = "Continue levetiracetam at 750 mg twice daily."
     record = GanRecord(
@@ -1865,24 +1775,6 @@ def test_build_gan_s0_module_accepts_prompt_version_for_temporal_verify_repair()
     )
 
 
-def test_apply_evidence_span_check_guard_preserves_note_supported_initial():
-    verified = dspy.Prediction(
-        final_label="2 per 3 month",
-        final_evidence="invented quote",
-        decision="repair",
-        reason="bad quote",
-    )
-    guarded = _apply_evidence_span_check_guard(
-        "She had two seizures in the last three months.",
-        verified,
-        initial_label="2 per 3 month",
-        initial_evidence="two seizures in the last three months",
-    )
-
-    assert guarded.decision == "confirm"
-    assert guarded.final_evidence == "two seizures in the last three months"
-
-
 def test_gan_s0_verifier_signature_documents_v2_4_policy_guardrails():
     doc = (GanFrequencyS0VerifierSignature.__doc__ or "").lower()
 
@@ -2565,124 +2457,6 @@ def test_gan_s0_confirm_only_module_wires_confirm_only_verifier_signature():
     doc = module.verifier.verify.signature.__doc__ or ""
     assert "confirm only" in doc.lower()
     assert "MUST be confirm" in doc
-
-
-def test_apply_constrained_verifier_guard_preserves_allowed():
-    from types import SimpleNamespace
-    note_text = "Patient has 3 seizures per week."
-    candidates = [
-        SimpleNamespace(canonical_label="3 per week", evidence_text="3 seizures per week")
-    ]
-
-    # Test case 1: label is in candidates
-    verified = dspy.Prediction(final_label="3 per week", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label="unknown",
-        initial_evidence="no reference",
-    )
-    assert res.final_label == "3 per week"
-    assert res.final_evidence == "3 seizures per week"
-    assert res.decision == "confirm"
-
-    # Test case 2: label is the initial label
-    verified = dspy.Prediction(final_label="1 per month", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label="1 per month",
-        initial_evidence="monthly events",
-    )
-    assert res.final_label == "1 per month"
-    assert res.final_evidence == "monthly events"
-    assert res.decision == "confirm"
-
-    # Test case 3: label is "unknown"
-    verified = dspy.Prediction(final_label="unknown", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label="3 per week",
-        initial_evidence="3 seizures per week",
-    )
-    assert res.final_label == "unknown"
-    assert res.final_evidence is None
-    assert res.decision == "confirm"
-
-
-def test_apply_constrained_verifier_guard_reverts_close_matches():
-    from types import SimpleNamespace
-    note_text = "Patient has 3 seizures per week."
-    candidates = [
-        SimpleNamespace(canonical_label="3 per week", evidence_text="3 seizures per week")
-    ]
-
-    # Test case 1: close match to candidate label
-    verified = dspy.Prediction(final_label="3 per wk", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label="unknown",
-        initial_evidence=None,
-    )
-    assert res.final_label == "3 per week"
-    assert res.final_evidence == "3 seizures per week"
-    assert res.decision == "repair"
-    assert "reverted to closest match" in res.reason
-
-    # Test case 2: close match to initial label
-    verified = dspy.Prediction(final_label="1 per mon", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label="1 per month",
-        initial_evidence="monthly events",
-    )
-    assert res.final_label == "1 per month"
-    assert res.final_evidence == "monthly events"
-    assert res.decision == "repair"
-
-
-def test_apply_constrained_verifier_guard_fallbacks():
-    from types import SimpleNamespace
-    note_text = "Patient has 3 seizures per week."
-    candidates = [
-        SimpleNamespace(canonical_label="3 per week", evidence_text="3 seizures per week")
-    ]
-
-    # Test case 1: no close match, fallback to initial label
-    verified = dspy.Prediction(final_label="rarely", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label="3 per week",
-        initial_evidence="3 seizures per week",
-    )
-    assert res.final_label == "3 per week"
-    assert res.final_evidence == "3 seizures per week"
-    assert res.decision == "repair"
-    assert "fallback to" in res.reason
-
-    # Test case 2: no close match, no initial label, fallback to "unknown"
-    verified = dspy.Prediction(final_label="rarely", decision="confirm", reason="ok")
-    res = _apply_constrained_verifier_guard(
-        note_text=note_text,
-        verified=verified,
-        candidates=candidates,
-        initial_label=None,
-        initial_evidence=None,
-    )
-    assert res.final_label == "unknown"
-    assert res.final_evidence is None
-    assert res.decision == "repair"
-    assert "fallback to" in res.reason
 
 
 def test_gan_s0_constrained_verifier_module_runs():

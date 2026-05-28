@@ -54,7 +54,6 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
     REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
-    _merge_diagnosis_recall,
     build_exect_s0_s1_module,
     build_precomputed_family_candidates,
     compile_exect_s0_s1_module,
@@ -66,7 +65,6 @@ from clinical_extraction.programs.exect_s0_s1 import (
     build_precomputed_seizure_type_candidates,
     make_exect_s0_s1_dspy_examples,
     predict_exect_records,
-    _recover_s1_clean_annotated_medication_raw_values,
 )
 
 
@@ -1933,23 +1931,6 @@ def test_exect_s0_s1_run_metadata_can_record_section_aware_variant():
     assert metadata.program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT
 
 
-def test_merge_diagnosis_recall_adds_only_allowed_new_labels():
-    merged, evidence, added = _merge_diagnosis_recall(
-        initial_diagnosis=["focal epilepsy"],
-        initial_diagnosis_evidence=["Diagnosis: focal epilepsy"],
-        additional_diagnosis=["parietal lobe epilepsy", "focal epilepsy", "hydrocephalus"],
-        additional_diagnosis_evidence=[
-            "probable parietal onset",
-            "Diagnosis: focal epilepsy",
-            "Diagnosis: hydrocephalus",
-        ],
-    )
-
-    assert merged == ["focal epilepsy", "parietal lobe epilepsy"]
-    assert evidence == ["Diagnosis: focal epilepsy", "probable parietal onset"]
-    assert added == ["parietal lobe epilepsy"]
-
-
 def test_exect_s0_s1_diagnosis_recall_probe_module_merges_recall_pass():
     record = load_exect_gold_document("EA0061")
     _configure_dummy(
@@ -2497,17 +2478,6 @@ def test_build_exect_s0_s1_module_returns_clean_ladder_v2_ensemble():
         EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT
     )
     assert isinstance(module, ExectS1CleanLadderDiagnosisStableEnsembleModule)
-
-
-def test_recover_s1_clean_annotated_medication_raw_values_reuses_promoted_guard():
-    recovered, flags = _recover_s1_clean_annotated_medication_raw_values(
-        ["aspirin", "eplim chrono", "lamotrigine"],
-        ["aspirin", "Epilim Chrono", "lamotrigine"],
-        "Current medication: Epilim Chrono and lamotrigine. Aspirin for migraine.",
-    )
-
-    assert recovered == ["epilim chrono", "lamotrigine"]
-    assert "s1_clean_bridge:benchmark_bridge:non_asm_medication_rejected" in flags
 
 
 def test_exect_s0_s1_field_family_micro_f1_metric_penalizes_wrong_labels():
