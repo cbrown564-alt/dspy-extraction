@@ -1,5 +1,12 @@
 # Experiment Registry Matrix (Paper-Ready Export)
 
+Status: superseded generated export
+Replacement: `README.md` for synthesis status and
+`../../component_ceiling_registry.md` for current component status.
+
+This export was generated from an older registry snapshot and predates the May
+28 decomposition pivot. It is preserved as historical evidence only.
+
 **Generated:** 2026-05-21  
 **Source:** `docs/experiments/synthesis/experiment_registry.json` (registry_rows=130)  
 **Filter mode:** `curated`  

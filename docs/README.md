@@ -1,43 +1,64 @@
 # Documentation Guide
 
-This folder separates stable project guidance from research memory. Keep top-level
-`docs/` small: the overall research plan stays in `outline.md`; everything else
-should live under the nearest topic folder.
+Status: active guidance
+Last updated: 2026-05-28
 
-## Start Here
+This docs tree is being refocused around the May 28 decomposition pivot. The
+active project question is no longer "which broad pipeline wins?" It is:
 
-- `outline.md` - overall research plan and system shape.
-- `planning/kanban_plan.md` - sole active execution board and active decisions.
-- `research_atlas/` - registry-derived decision maps and evidence summaries.
+> Which task components can be independently represented, optimized, and scored
+> before they are stacked into broader clinical extraction systems?
 
-## Stable Guidance
+## Read First
 
-- `datasets/exect/` - ExECTv2 gold-label audits and dataset-specific guidance.
-- `datasets/gan/` - Gan gold-label audits, normalization baselines, and dataset-specific guidance.
-- `policies/` - scorer semantics, split policy, model latency policy, JSON decoding, benchmark metrics, and other stable operating rules.
-- `architecture/` - codebase, runner, backend, and schema-sequencing design notes.
-- `taxonomy/` - primitive contracts, primitive catalog, experiment taxonomy schema, and taxonomy workstream notes.
+1. `current_research_program.md` - the current research doctrine and stop rules.
+2. `component_ceiling_registry.md` - current component status, baselines, open
+   mechanisms, rejected arms, and blocked claims.
+3. `planning/kanban_plan.md` - active execution board and next pull.
+4. `datasets/exect/exect_gold_label_audit.md` and
+   `datasets/gan/gan_2026_label_audit.md` - dataset and gold-label policy.
+5. `policies/deterministic_scorer_semantics.md` and
+   `policies/published_benchmark_metrics.md` - scorer and benchmark rules.
 
-## Research Memory
+## Domain Maps
 
-- `experiments/exect/` - ExECT preregistrations, inspections, label-policy implementation notes, residual analyses, and schema-ladder run notes.
-- `experiments/gan/` - Gan S0 preregistrations, inspections, error reads, validation notes, and frequency-specific experiment records.
-- `experiments/synthesis/` - experiment registry, registry matrix, cross-experiment reports, and best-pipeline syntheses.
-- `workstreams/hybrid/` - hybrid deterministic/LLM placement doctrine, mechanism status, and exploration plan.
-- `workstreams/optimizer/` - DSPy optimizer investigations, GEPA/ReAct practice notes, and Qwen latency experiment context.
-- `planning/` - Kanban history, drift audits, phase plans, status recaps, and literature-review planning notes.
-- `archive/prior-context/` - historical prompt/error-analysis context retained for traceability.
+- `experiments/gan/README.md` - Gan S0 decomposition map and evidence index.
+- `experiments/exect/README.md` - ExECT component-ceiling map and evidence index.
+- `experiments/synthesis/README.md` - paper, registry, holdout, and synthesis
+  status.
+
+## Authority Rule
+
+Everything outside the active docs above is historical evidence unless a current
+index explicitly promotes it. Old experiment notes are valuable provenance, but
+they are not active guidance by default.
+
+Use these status labels when adding or revising docs:
+
+- `active guidance`
+- `current synthesis`
+- `component ceiling registry`
+- `promoted baseline`
+- `operational default`
+- `mechanism open`
+- `rejected arm`
+- `mechanism rejected`
+- `diagnostic only`
+- `benchmark-facing`
+- `clinical diagnostic`
+- `superseded`
+- `blocked`
+- `paper evidence`
+- `archive`
 
 ## Filing Rules
 
-- Put new preregistrations and post-run inspections under the dataset-specific
-  experiment folder (`experiments/exect/` or `experiments/gan/`).
-- Put durable rules that should guide future code or evaluation behavior under
-  `policies/`, `datasets/`, or `taxonomy/`.
-- Put cross-experiment conclusions and registry exports under
-  `experiments/synthesis/`.
-- Keep old links repo-root relative (`docs/...`) so scripts, configs, and
-  Markdown references remain stable after moves.
-- Update `experiments/synthesis/experiment_registry.json` when a run becomes a
-  decision artifact, and regenerate the matrix with
-  `uv run python scripts/export_experiment_registry_matrix.py` when needed.
+- New decomposition plans go under the relevant domain folder and must link back
+  to `component_ceiling_registry.md`.
+- New preregistrations and post-run inspections go under
+  `experiments/gan/` or `experiments/exect/`.
+- New scorer, dataset, split, or benchmark semantics go under `policies/` or
+  `datasets/`, not inside experiment notes.
+- New cross-experiment conclusions go under `experiments/synthesis/` only when
+  they supersede or explicitly route older synthesis docs.
+- Archive by decision boundary, not by age. Keep run IDs and caveats traceable.

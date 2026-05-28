@@ -1,5 +1,15 @@
 # Hybrid Pipeline Mechanism Status
 
+Status: superseded historical registry
+Superseded on: 2026-05-28
+Replacement: `../../component_ceiling_registry.md`, plus
+`../../experiments/gan/README.md` and `../../experiments/exect/README.md`
+
+This file is preserved as historical mechanism-status evidence. It predates the
+May 28 decomposition pivot and still contains stale defaults and "not run yet"
+claims for later-completed R11-R13 work. Do not use it as current guidance until
+it is rewritten against the component ceiling registry.
+
 Date: 2026-05-21  
 Maintained under: `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md`  
 Update when an inspection doc with `decision_scope: mechanism` closes a class, or when a new arm reject is recorded.

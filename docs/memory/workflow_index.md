@@ -115,15 +115,19 @@ Skills:
 
 Read:
 
+- `docs/current_research_program.md`
+- `docs/component_ceiling_registry.md`
 - `docs/planning/kanban_plan.md`
-- `docs/research_atlas/evidence_matrix.md`
-- `docs/experiments/synthesis/experiment_registry_matrix_20260520.md`
+- `docs/experiments/gan/README.md` or `docs/experiments/exect/README.md`
+- `docs/experiments/synthesis/README.md`
 - relevant inspection docs and run IDs
 
 Validate:
 
 - check source paths and run IDs exist
 - avoid paper-facing claims from memory alone
+- avoid using stale registry-derived matrices or atlas exports as current
+  authority unless regenerated after the May 28 decomposition pivot
 
 Memory warning:
 

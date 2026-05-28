@@ -1,6 +1,7 @@
 # Published Benchmark Metrics And Alignment
 
 Date: 2026-05-17
+Last updated: 2026-05-28 for project-scorer versus published-benchmark distinction
 
 This note records the published benchmark values and metric definitions that are relevant to this repo. Code-level references live in `clinical_extraction.evaluation.benchmarks`, but those constants are comparison aids only: they carry alignment labels and caveats, and must not be used to claim published benchmark reproduction unless the relevant scorer and dataset caveats are resolved.
 
@@ -38,10 +39,11 @@ Published values from Table 1:
 
 Current repo alignment:
 
-- Partially aligned for audited S0/S1 diagnosis, seizure type, and annotated medication only.
-- Not directly comparable to the full ExECTv2 paper because the repo currently scores a narrower field-family view and uses normalized string labels, not CUI-plus-feature matching for all annotation families.
-- The repo deliberately excludes planned/current medication status from benchmark-facing medication scoring until reliable temporality gold exists.
-- Investigation, patient history, birth history, aetiology, onset, diagnosis-date, and seizure-frequency ExECT scorers remain out of scope until their source files are audited and loaded.
+- The repo now has project field-family scorers for S1-S4 and the S5 core surface, as documented in `docs/policies/deterministic_scorer_semantics.md`.
+- These project scorers are not direct ExECTv2 Table 1 reproduction. They use normalized project label views and selected field-family surfaces rather than full CUI-plus-feature matching across every paper annotation family.
+- The strongest audited alignment remains the S1 core families: diagnosis, seizure type, and annotated medication. Later family scorers are useful project diagnostics and stacked-surface metrics, but each needs its own benchmark-contract caveat.
+- The repo deliberately excludes planned/current medication status from benchmark-facing S5 medication scoring until reliable temporality gold exists.
+- Investigation, patient history/comorbidity, birth history, aetiology, onset, diagnosis-date, and seizure-frequency are no longer "not implemented" for project scoring, but they remain not sufficient for published ExECTv2 reproduction until CUI-aware, feature-aware Table 1 scoring is implemented.
 
 ## Gan 2026
 

@@ -1,5 +1,12 @@
 # Evidence Matrix
 
+Status: superseded generated index
+Replacement: `../component_ceiling_registry.md`
+
+This generated matrix predates the May 28 decomposition pivot and newer R11-R15
+decisions. It is retained as provenance only. Do not use it as current
+navigation until regenerated from a refreshed registry.
+
 Generated: 2026-05-21
 
 Each cell shows the strongest registered row for that schema and study type. Use this as a navigation surface, not as a claim that unlike cells are directly comparable.
