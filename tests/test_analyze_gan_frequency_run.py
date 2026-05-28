@@ -1,4 +1,5 @@
 import json
+import importlib.util
 from pathlib import Path
 
 from clinical_extraction.schemas import (
@@ -12,6 +13,14 @@ from clinical_extraction.evaluation.gan_failure_taxonomy import (
     classify_gan_frequency_failure,
     failure_action_tier,
 )
+
+_ANALYZE_SCRIPT = Path("scripts/analyze_gan_frequency_run.py")
+_analyze_spec = importlib.util.spec_from_file_location(
+    "analyze_gan_frequency_run", _ANALYZE_SCRIPT
+)
+assert _analyze_spec and _analyze_spec.loader
+_analyze = importlib.util.module_from_spec(_analyze_spec)
+_analyze_spec.loader.exec_module(_analyze)
 
 
 def test_analysis_record_ids_uses_config_record_ids_filter(tmp_path: Path):
@@ -137,6 +146,54 @@ def test_unknown_vs_no_reference_remains_benchmark_severe():
     failure_class = classify_gan_frequency_failure(row)
     assert failure_class == "unknown_vs_no_reference"
     assert failure_action_tier(failure_class) == "benchmark_severe"
+
+
+def test_analyze_run_exposes_paper_reproduction_scorer_mode(tmp_path: Path):
+    record_id = "gan_14036"
+    run_dir = tmp_path / "run"
+    run_dir.mkdir()
+    (run_dir / "config.json").write_text(
+        json.dumps({"experiment_id": "paper_scorer_probe"}),
+        encoding="utf-8",
+    )
+    (run_dir / "predictions.json").write_text(
+        _gan_prediction_set(
+            _gan_prediction(
+                record_id=record_id,
+                raw_label="no seizure frequency reference",
+                normalized_label="no seizure frequency reference",
+                evidence_text="No seizure frequency is described.",
+                start=0,
+                end=35,
+            )
+        ).model_dump_json(),
+        encoding="utf-8",
+    )
+
+    canonical = _analyze.analyze_run(
+        run_dir=run_dir,
+        split_file=Path("data/splits/gan_2026_splits.json"),
+        split_name="gan_2026_fixed_v1:validation",
+        record_ids_override=[record_id],
+    )
+    paper = _analyze.analyze_run(
+        run_dir=run_dir,
+        split_file=Path("data/splits/gan_2026_splits.json"),
+        split_name="gan_2026_fixed_v1:validation",
+        record_ids_override=[record_id],
+        scorer_mode="gan2026_paper_reproduction",
+    )
+
+    assert canonical["summary"]["scorer_mode"] == "gan_frequency_deterministic_v1"
+    assert not canonical["rows"][0]["monthly_match"]
+    assert paper["summary"]["scorer_mode"] == "gan2026_paper_reproduction"
+    assert paper["rows"][0]["scorer_mode"] == "gan2026_paper_reproduction"
+    assert paper["rows"][0]["monthly_match"]
+    assert paper["rows"][0]["gold_pragmatic_category"] == "seizure_freq_unknown"
+    assert "gan2026_paper_reproduction" in _analyze._render_markdown(
+        paper,
+        "paper_scorer_probe",
+    )
 
 
 def test_build_gan_stratified_reporting_includes_operational_and_valid_denominators():

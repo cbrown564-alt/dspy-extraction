@@ -9,87 +9,77 @@ Scorer semantics: unchanged; category-equivalent coverage is diagnostic.
 
 ## Summary
 
-Exact gold-label coverage is **61/299** (20.4%).
-Gold-equivalent Purist coverage is **63/299** (21.1%); Pragmatic coverage is **63/299** (21.1%).
-The current deterministic substrate emits at least one candidate for **65/299** records (21.7%).
+Exact gold-label coverage is **278/299** (93.0%).
+Gold-equivalent Purist coverage is **292/299** (97.7%); Pragmatic coverage is **295/299** (98.7%).
+The current deterministic substrate emits at least one candidate for **299/299** records (100.0%).
 
 ## Coverage By Label Family
 
 | Label family | Records | Any candidates | Exact | Purist equiv. | Pragmatic equiv. |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `cluster` | 29 | 13 (44.8%) | 13 (44.8%) | 13 (44.8%) | 13 (44.8%) |
-| `no_reference` | 11 | 0 (0.0%) | 0 (0.0%) | 0 (0.0%) | 0 (0.0%) |
-| `quantified_rate` | 162 | 38 (23.5%) | 36 (22.2%) | 37 (22.8%) | 37 (22.8%) |
-| `seizure_free` | 45 | 5 (11.1%) | 3 (6.7%) | 4 (8.9%) | 4 (8.9%) |
-| `unknown` | 35 | 4 (11.4%) | 4 (11.4%) | 4 (11.4%) | 4 (11.4%) |
-| `unknown_cluster` | 5 | 1 (20.0%) | 1 (20.0%) | 1 (20.0%) | 1 (20.0%) |
-| `vague_or_multiple_rate` | 12 | 4 (33.3%) | 4 (33.3%) | 4 (33.3%) | 4 (33.3%) |
+| `cluster` | 29 | 29 (100.0%) | 29 (100.0%) | 29 (100.0%) | 29 (100.0%) |
+| `no_reference` | 11 | 11 (100.0%) | 11 (100.0%) | 11 (100.0%) | 11 (100.0%) |
+| `quantified_rate` | 162 | 162 (100.0%) | 144 (88.9%) | 155 (95.7%) | 158 (97.5%) |
+| `seizure_free` | 45 | 45 (100.0%) | 43 (95.6%) | 45 (100.0%) | 45 (100.0%) |
+| `unknown` | 35 | 35 (100.0%) | 35 (100.0%) | 35 (100.0%) | 35 (100.0%) |
+| `unknown_cluster` | 5 | 5 (100.0%) | 4 (80.0%) | 5 (100.0%) | 5 (100.0%) |
+| `vague_or_multiple_rate` | 12 | 12 (100.0%) | 12 (100.0%) | 12 (100.0%) | 12 (100.0%) |
 
 ## Coverage By Hard Stratum
 
 | Hard stratum | Records | Any candidates | Exact | Purist equiv. | Pragmatic equiv. |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `cluster` | 141 | 31 (22.0%) | 30 (21.3%) | 31 (22.0%) | 31 (22.0%) |
-| `gold_evidence_multispan` | 19 | 7 (36.8%) | 7 (36.8%) | 7 (36.8%) | 7 (36.8%) |
-| `label_reference_disagreement` | 39 | 5 (12.8%) | 5 (12.8%) | 5 (12.8%) | 5 (12.8%) |
-| `multi_highest` | 109 | 24 (22.0%) | 23 (21.1%) | 24 (22.0%) | 24 (22.0%) |
-| `no_reference` | 11 | 0 (0.0%) | 0 (0.0%) | 0 (0.0%) | 0 (0.0%) |
-| `seizure_free_conflict` | 136 | 42 (30.9%) | 38 (27.9%) | 40 (29.4%) | 40 (29.4%) |
-| `unknown_with_events` | 35 | 4 (11.4%) | 4 (11.4%) | 4 (11.4%) | 4 (11.4%) |
-| `vague_frequency` | 54 | 18 (33.3%) | 16 (29.6%) | 17 (31.5%) | 17 (31.5%) |
+| `cluster` | 141 | 141 (100.0%) | 129 (91.5%) | 136 (96.5%) | 139 (98.6%) |
+| `gold_evidence_multispan` | 19 | 19 (100.0%) | 17 (89.5%) | 19 (100.0%) | 19 (100.0%) |
+| `label_reference_disagreement` | 39 | 39 (100.0%) | 33 (84.6%) | 36 (92.3%) | 37 (94.9%) |
+| `multi_highest` | 109 | 109 (100.0%) | 104 (95.4%) | 107 (98.2%) | 109 (100.0%) |
+| `no_reference` | 11 | 11 (100.0%) | 11 (100.0%) | 11 (100.0%) | 11 (100.0%) |
+| `seizure_free_conflict` | 136 | 136 (100.0%) | 123 (90.4%) | 132 (97.1%) | 134 (98.5%) |
+| `unknown_with_events` | 35 | 35 (100.0%) | 35 (100.0%) | 35 (100.0%) | 35 (100.0%) |
+| `vague_frequency` | 54 | 54 (100.0%) | 53 (98.1%) | 54 (100.0%) | 54 (100.0%) |
 
 ## Candidate Count Distribution
 
 | Candidate count | Records |
 | --- | ---: |
-| `0` | 234 |
-| `1` | 65 |
-| `2-3` | 0 |
-| `4+` | 0 |
+| `0` | 0 |
+| `1` | 10 |
+| `2-3` | 44 |
+| `4+` | 245 |
 
 ## Candidate Schema Diagnostics
 
-Records with non-canonical candidate labels: **1**.
+Records with non-canonical candidate labels: **0**.
 
 | Candidate label | Count |
 | --- | ---: |
-| `a pair of per 4 month` | 1 |
+| `none` | 0 |
 
 ## Uncovered Exact Gold Samples
 
 | Record | Family | Strata | Gold | Candidate labels |
 | --- | --- | --- | --- | --- |
-| `gan_6532` | `unknown_cluster` | `cluster`, `label_reference_disagreement`, `vague_frequency` | `unknown, multiple per cluster` | `none` |
-| `gan_4956` | `seizure_free` | `cluster`, `label_reference_disagreement`, `seizure_free_conflict` | `seizure free for 7 month` | `none` |
-| `gan_4702` | `vague_or_multiple_rate` | `cluster`, `multi_highest`, `vague_frequency` | `multiple per day` | `none` |
-| `gan_2609` | `quantified_rate` | `cluster`, `multi_highest` | `1 per day` | `none` |
-| `gan_1794` | `quantified_rate` | `multi_highest` | `8 per 2 month` | `none` |
-| `gan_7894` | `seizure_free` | `label_reference_disagreement`, `seizure_free_conflict`, `vague_frequency` | `seizure free for multiple year` | `none` |
-| `gan_3246` | `cluster` | `cluster` | `2 cluster per month, 4 per cluster` | `none` |
-| `gan_4113` | `quantified_rate` | `cluster` | `1 per 1 to 2 day` | `none` |
-| `gan_536` | `quantified_rate` | `none` | `1 per 2 day` | `none` |
-| `gan_4709` | `vague_or_multiple_rate` | `cluster`, `vague_frequency` | `multiple per day` | `none` |
-| `gan_9566` | `unknown` | `seizure_free_conflict`, `unknown_with_events` | `unknown` | `none` |
-| `gan_1584` | `quantified_rate` | `cluster`, `multi_highest` | `11 per month` | `none` |
-| `gan_15997` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `10 per 3 month` | `none` |
-| `gan_17287` | `quantified_rate` | `multi_highest`, `seizure_free_conflict` | `1 per 1 to 2 day` | `none` |
-| `gan_16772` | `quantified_rate` | `gold_evidence_multispan` | `9 per 5 month` | `none` |
-| `gan_16825` | `quantified_rate` | `cluster`, `gold_evidence_multispan`, `multi_highest`, `seizure_free_conflict` | `10 per 6 month` | `none` |
-| `gan_10398` | `cluster` | `cluster` | `1 cluster per week, 2 per cluster` | `none` |
-| `gan_16041` | `quantified_rate` | `none` | `9 per 3 month` | `none` |
-| `gan_714` | `quantified_rate` | `cluster`, `multi_highest` | `2 per day` | `none` |
-| `gan_12465` | `quantified_rate` | `multi_highest` | `1 per day` | `none` |
-| `gan_4011` | `quantified_rate` | `seizure_free_conflict` | `1 per month` | `none` |
-| `gan_804` | `quantified_rate` | `cluster`, `multi_highest`, `seizure_free_conflict` | `1 per month` | `none` |
-| `gan_22` | `quantified_rate` | `cluster`, `multi_highest` | `3 per day` | `none` |
-| `gan_16335` | `quantified_rate` | `none` | `7 per 3 month` | `none` |
-| `gan_3867` | `quantified_rate` | `none` | `3 per day` | `none` |
-| `gan_467` | `quantified_rate` | `multi_highest`, `seizure_free_conflict` | `9 per month` | `none` |
-| `gan_2513` | `quantified_rate` | `multi_highest` | `2 to 3 per 2 week` | `none` |
-| `gan_5974` | `unknown` | `seizure_free_conflict`, `unknown_with_events` | `unknown` | `none` |
-| `gan_6607` | `unknown` | `cluster`, `unknown_with_events` | `unknown` | `none` |
-| `gan_12438` | `quantified_rate` | `cluster`, `multi_highest` | `1 per day` | `none` |
-| ... | ... | ... | ... | 208 more in JSON report |
+| `gan_15997` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `10 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`3 per week`<br>`4 per month`<br>`3 per month`<br>`unknown, multiple per cluster` |
+| `gan_16772` | `quantified_rate` | `gold_evidence_multispan` | `9 per 5 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`8 per 2 month`<br>`11 per 3 month`<br>`11 per 10 month`<br>`11 per month`<br>`unknown, 1 per cluster` |
+| `gan_16825` | `quantified_rate` | `cluster`, `gold_evidence_multispan`, `multi_highest`, `seizure_free_conflict` | `10 per 6 month` | `no seizure frequency reference`<br>`unknown`<br>`12 per 2 month`<br>`12 per 3 month`<br>`8 per 3 month`<br>`8 per 10 month`<br>`8 per month`<br>`unknown, 3 per cluster` |
+| `gan_16335` | `quantified_rate` | `none` | `7 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`1 per month`<br>`4 per 3 month` |
+| `gan_10583` | `unknown_cluster` | `cluster`, `vague_frequency` | `unknown, 2 to 3 per cluster` | `no seizure frequency reference`<br>`unknown` |
+| `gan_1463` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `3 per month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`seizure free for 6 month`<br>`seizure free for multiple month`<br>`4 per month`<br>`1 per month` |
+| `gan_9424` | `quantified_rate` | `seizure_free_conflict` | `10 per 9 month` | `no seizure frequency reference`<br>`unknown`<br>`5 per 3 month` |
+| `gan_6094` | `quantified_rate` | `cluster`, `label_reference_disagreement`, `multi_highest` | `3 per month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per month`<br>`1 per month` |
+| `gan_1486` | `quantified_rate` | `cluster` | `3 per month` | `no seizure frequency reference`<br>`unknown`<br>`1 per month` |
+| `gan_7431` | `quantified_rate` | `label_reference_disagreement`, `seizure_free_conflict` | `1 per month` | `no seizure frequency reference`<br>`unknown`<br>`2 per 8 week`<br>`0.25 per week` |
+| `gan_16883` | `quantified_rate` | `none` | `4 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`3 per 2 month`<br>`3 per 3 month`<br>`5 per 3 month` |
+| `gan_4996` | `seizure_free` | `seizure_free_conflict` | `seizure free for 16 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`seizure free for multiple month` |
+| `gan_3355` | `quantified_rate` | `cluster`, `label_reference_disagreement`, `seizure_free_conflict` | `1 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`5 per day`<br>`3 per 6 month`<br>`0.5 per month`<br>`2 per 2 month`<br>`2 per 4 month`<br>`2 per 5 month` |
+| `gan_15129` | `quantified_rate` | `label_reference_disagreement` | `4 per 15 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per day` |
+| `gan_9063` | `seizure_free` | `seizure_free_conflict` | `seizure free for 8 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2017 per 8 month` |
+| `gan_13290` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `4 per 6 month` | `2 per 6 month`<br>`no seizure frequency reference`<br>`unknown`<br>`0.333 per month` |
+| `gan_6509` | `quantified_rate` | `cluster`, `label_reference_disagreement`, `multi_highest` | `1 per week` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per day`<br>`1 per day`<br>`1 per 2 week`<br>`0.5 per week` |
+| `gan_4378` | `quantified_rate` | `cluster`, `multi_highest`, `seizure_free_conflict` | `3 per 2 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per day` |
+| `gan_6296` | `quantified_rate` | `label_reference_disagreement`, `seizure_free_conflict` | `3 per 4 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month` |
+| `gan_13019` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `9 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month` |
+| `gan_9526` | `quantified_rate` | `cluster`, `multi_highest`, `seizure_free_conflict` | `4 per 8 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`5 per 4 month`<br>`5 per 6 month` |
 
 ## Hard-Stratum Misses With Candidates
 
@@ -97,10 +87,25 @@ These are target-selection or label-construction candidates for G2/G3: the subst
 
 | Record | Family | Strata | Gold | Candidate labels |
 | --- | --- | --- | --- | --- |
-| `gan_8858` | `seizure_free` | `multi_highest`, `seizure_free_conflict`, `vague_frequency` | `seizure free for multiple month` | `seizure free for multiple year` |
-| `gan_13416` | `seizure_free` | `seizure_free_conflict`, `vague_frequency` | `seizure free for multiple year` | `1 per day` |
-| `gan_13290` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `4 per 6 month` | `2 per 6 month` |
-| `gan_14390` | `quantified_rate` | `seizure_free_conflict` | `2 per 3 month` | `a pair of per 4 month` |
+| `gan_15997` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `10 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`3 per week`<br>`4 per month`<br>`3 per month`<br>`unknown, multiple per cluster` |
+| `gan_16772` | `quantified_rate` | `gold_evidence_multispan` | `9 per 5 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`8 per 2 month`<br>`11 per 3 month`<br>`11 per 10 month`<br>`11 per month`<br>`unknown, 1 per cluster` |
+| `gan_16825` | `quantified_rate` | `cluster`, `gold_evidence_multispan`, `multi_highest`, `seizure_free_conflict` | `10 per 6 month` | `no seizure frequency reference`<br>`unknown`<br>`12 per 2 month`<br>`12 per 3 month`<br>`8 per 3 month`<br>`8 per 10 month`<br>`8 per month`<br>`unknown, 3 per cluster` |
+| `gan_10583` | `unknown_cluster` | `cluster`, `vague_frequency` | `unknown, 2 to 3 per cluster` | `no seizure frequency reference`<br>`unknown` |
+| `gan_1463` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `3 per month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`seizure free for 6 month`<br>`seizure free for multiple month`<br>`4 per month`<br>`1 per month` |
+| `gan_9424` | `quantified_rate` | `seizure_free_conflict` | `10 per 9 month` | `no seizure frequency reference`<br>`unknown`<br>`5 per 3 month` |
+| `gan_6094` | `quantified_rate` | `cluster`, `label_reference_disagreement`, `multi_highest` | `3 per month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per month`<br>`1 per month` |
+| `gan_1486` | `quantified_rate` | `cluster` | `3 per month` | `no seizure frequency reference`<br>`unknown`<br>`1 per month` |
+| `gan_7431` | `quantified_rate` | `label_reference_disagreement`, `seizure_free_conflict` | `1 per month` | `no seizure frequency reference`<br>`unknown`<br>`2 per 8 week`<br>`0.25 per week` |
+| `gan_4996` | `seizure_free` | `seizure_free_conflict` | `seizure free for 16 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`seizure free for multiple month` |
+| `gan_3355` | `quantified_rate` | `cluster`, `label_reference_disagreement`, `seizure_free_conflict` | `1 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`5 per day`<br>`3 per 6 month`<br>`0.5 per month`<br>`2 per 2 month`<br>`2 per 4 month`<br>`2 per 5 month` |
+| `gan_15129` | `quantified_rate` | `label_reference_disagreement` | `4 per 15 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per day` |
+| `gan_9063` | `seizure_free` | `seizure_free_conflict` | `seizure free for 8 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2017 per 8 month` |
+| `gan_13290` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `4 per 6 month` | `2 per 6 month`<br>`no seizure frequency reference`<br>`unknown`<br>`0.333 per month` |
+| `gan_6509` | `quantified_rate` | `cluster`, `label_reference_disagreement`, `multi_highest` | `1 per week` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per day`<br>`1 per day`<br>`1 per 2 week`<br>`0.5 per week` |
+| `gan_4378` | `quantified_rate` | `cluster`, `multi_highest`, `seizure_free_conflict` | `3 per 2 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`2 per day` |
+| `gan_6296` | `quantified_rate` | `label_reference_disagreement`, `seizure_free_conflict` | `3 per 4 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month` |
+| `gan_13019` | `quantified_rate` | `cluster`, `seizure_free_conflict` | `9 per 3 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month` |
+| `gan_9526` | `quantified_rate` | `cluster`, `multi_highest`, `seizure_free_conflict` | `4 per 8 month` | `no seizure frequency reference`<br>`unknown`<br>`seizure free for multiple month`<br>`seizure free for multiple month`<br>`5 per 4 month`<br>`5 per 6 month` |
 
 ## Interpretation
 

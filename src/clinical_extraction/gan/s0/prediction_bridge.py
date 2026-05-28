@@ -213,6 +213,23 @@ def _apply_evidence_span_check_guard(
     )
 
 
+def apply_gan_s0_evidence_span_check_guard(
+    note_text: str,
+    verified: dspy.Prediction,
+    *,
+    initial_label: str | None,
+    initial_evidence: str | None,
+) -> dspy.Prediction:
+    """Public Gan S0 evidence span-check stage surface."""
+
+    return _apply_evidence_span_check_guard(
+        note_text,
+        verified,
+        initial_label=initial_label,
+        initial_evidence=initial_evidence,
+    )
+
+
 def _apply_constrained_verifier_guard(
     *,
     note_text: str,
@@ -752,6 +769,21 @@ def _guard_evidence_text(
     return best, flags
 
 
+def guard_gan_s0_evidence_text(
+    note_text: str,
+    evidence_text: str | None,
+    *,
+    fallback_evidence_texts: Iterable[str] | None = None,
+) -> tuple[str | None, list[str]]:
+    """Public Gan S0 evidence quote normalization stage surface."""
+
+    return _guard_evidence_text(
+        note_text,
+        evidence_text,
+        fallback_evidence_texts=fallback_evidence_texts,
+    )
+
+
 def _format_number(value: float) -> str:
     if value.is_integer():
         return str(int(value))
@@ -911,6 +943,8 @@ __all__ = [
     "_normalize_predicted_label",
     "_predict_record",
     "_requires_evidence_support",
+    "apply_gan_s0_evidence_span_check_guard",
     "gan_frequency_s0_run_metadata",
+    "guard_gan_s0_evidence_text",
     "predict_gan_records",
 ]

@@ -1,0 +1,271 @@
+{
+  "run_dir": "runs\\gan_s0_g2_reason_code_selector_gpt4_1_mini_slice_20260528T155000Z",
+  "total_records": 25,
+  "rules_config": {
+    "enable_rule_unknown_vs_noref": true,
+    "enable_rule_weak_rate_to_unknown": true,
+    "enable_rule_seizure_free_conflict": true
+  },
+  "original_metrics": {
+    "gan_frequency_deterministic_v1_monthly": 0.92,
+    "gan_frequency_deterministic_v1_purist": 0.92,
+    "gan_frequency_deterministic_v1_pragmatic": 1.0,
+    "gan_frequency_deterministic_v1_exact": 0.92,
+    "gan2026_paper_reproduction_monthly": 0.92,
+    "gan2026_paper_reproduction_purist": 0.92,
+    "gan2026_paper_reproduction_pragmatic": 1.0,
+    "gan2026_paper_reproduction_exact": 0.92
+  },
+  "probed_metrics": {
+    "gan_frequency_deterministic_v1_monthly": 0.92,
+    "gan_frequency_deterministic_v1_purist": 0.92,
+    "gan_frequency_deterministic_v1_pragmatic": 0.96,
+    "gan_frequency_deterministic_v1_exact": 0.92,
+    "gan2026_paper_reproduction_monthly": 0.92,
+    "gan2026_paper_reproduction_purist": 0.92,
+    "gan2026_paper_reproduction_pragmatic": 0.96,
+    "gan2026_paper_reproduction_exact": 0.92
+  },
+  "confusion_matrix": {
+    "2 per 7 month": {
+      "1 per 1 month": 1
+    },
+    "1 per year": {
+      "unknown": 1
+    },
+    "3 per year": {
+      "3 per year": 1
+    },
+    "1 per 5 month": {
+      "1 per 5 month": 1
+    },
+    "seizure free for multiple year": {
+      "seizure free for multiple year": 2
+    },
+    "2 to 4 per month": {
+      "2 to 4 per month": 1
+    },
+    "2 per month": {
+      "2 per month": 1
+    },
+    "2 per 3 month": {
+      "2 per 3 month": 1
+    },
+    "3 per 6 month": {
+      "3 per 6 month": 1
+    },
+    "2 per 2 month": {
+      "2 per 2 month": 1
+    },
+    "3 per 2 month": {
+      "3 per 2 month": 1
+    },
+    "1 per month": {
+      "1 per month": 4
+    },
+    "1 per 3 month": {
+      "1 per 3 month": 1
+    },
+    "5 per 13 month": {
+      "5 per 13 month": 1
+    },
+    "multiple per 15 month": {
+      "multiple per 15 month": 1
+    },
+    "multiple per 13 month": {
+      "multiple per 13 month": 1
+    },
+    "1 to 2 per 14 month": {
+      "1 to 2 per 14 month": 1
+    },
+    "1 cluster per 4 day, 2 per cluster": {
+      "1 cluster per 4 day, 2 per cluster": 1
+    },
+    "1 per 5 day": {
+      "1 per 5 day": 1
+    },
+    "5 per 7 month": {
+      "5 per 7 month": 1
+    },
+    "6 per 7 month": {
+      "6 per 7 month": 1
+    }
+  },
+  "details": [
+    {
+      "record_id": "gan_13058",
+      "gold": "2 per 7 month",
+      "original": "1 per 1 month",
+      "probed": "1 per 1 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_13123",
+      "gold": "1 per year",
+      "original": "1 per multiple months",
+      "probed": "unknown",
+      "changed": true
+    },
+    {
+      "record_id": "gan_13149",
+      "gold": "3 per year",
+      "original": "3 per year",
+      "probed": "3 per year",
+      "changed": false
+    },
+    {
+      "record_id": "gan_13190",
+      "gold": "1 per 5 month",
+      "original": "1 per 5 month",
+      "probed": "1 per 5 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_13574",
+      "gold": "seizure free for multiple year",
+      "original": "seizure free for multiple year",
+      "probed": "seizure free for multiple year",
+      "changed": false
+    },
+    {
+      "record_id": "gan_13598",
+      "gold": "seizure free for multiple year",
+      "original": "seizure free for multiple year",
+      "probed": "seizure free for multiple year",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14214",
+      "gold": "2 to 4 per month",
+      "original": "2 to 4 per month",
+      "probed": "2 to 4 per month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14250",
+      "gold": "2 per month",
+      "original": "2 per month",
+      "probed": "2 per month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14485",
+      "gold": "2 per 3 month",
+      "original": "2 per 3 month",
+      "probed": "2 per 3 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14562",
+      "gold": "3 per 6 month",
+      "original": "3 per 6 month",
+      "probed": "3 per 6 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14628",
+      "gold": "2 per 2 month",
+      "original": "2 per 2 month",
+      "probed": "2 per 2 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14689",
+      "gold": "3 per 2 month",
+      "original": "3 per 2 month",
+      "probed": "3 per 2 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14792",
+      "gold": "1 per month",
+      "original": "1 per month",
+      "probed": "1 per month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14821",
+      "gold": "1 per month",
+      "original": "1 per month",
+      "probed": "1 per month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14881",
+      "gold": "1 per month",
+      "original": "1 per month",
+      "probed": "1 per month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14965",
+      "gold": "1 per 3 month",
+      "original": "1 per 3 month",
+      "probed": "1 per 3 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_14973",
+      "gold": "1 per month",
+      "original": "1 per month",
+      "probed": "1 per month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_15127",
+      "gold": "5 per 13 month",
+      "original": "5 per 13 month",
+      "probed": "5 per 13 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_15168",
+      "gold": "multiple per 15 month",
+      "original": "multiple per 15 month",
+      "probed": "multiple per 15 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_15193",
+      "gold": "multiple per 13 month",
+      "original": "multiple per 13 month",
+      "probed": "multiple per 13 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_15302",
+      "gold": "1 to 2 per 14 month",
+      "original": "1 to 2 per 14 month",
+      "probed": "1 to 2 per 14 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_15442",
+      "gold": "1 cluster per 4 day, 2 per cluster",
+      "original": "1 cluster per 4 day, 2 per cluster",
+      "probed": "1 cluster per 4 day, 2 per cluster",
+      "changed": false
+    },
+    {
+      "record_id": "gan_16529",
+      "gold": "1 per 5 day",
+      "original": "1 per 5 day",
+      "probed": "1 per 5 day",
+      "changed": false
+    },
+    {
+      "record_id": "gan_16645",
+      "gold": "5 per 7 month",
+      "original": "5 per 7 month",
+      "probed": "5 per 7 month",
+      "changed": false
+    },
+    {
+      "record_id": "gan_16750",
+      "gold": "6 per 7 month",
+      "original": "6 per 7 month",
+      "probed": "6 per 7 month",
+      "changed": false
+    }
+  ]
+}

@@ -119,6 +119,7 @@ def build_temporal_frequency_candidates_from_note(
     candidates.extend(_no_major_seizures_since_but_minor_continues(note_text))
     candidates.extend(_interval_spacing_candidates(note_text))
     candidates.extend(_seizure_free_for_multiple_year(note_text))
+    candidates.extend(_high_recall_frequency_candidates(note_text))
     return _dedupe_candidates(candidates)
 
 
@@ -487,6 +488,17 @@ NUMBER_WORDS = {
     "eight": "8",
     "nine": "9",
     "ten": "10",
+    "eleven": "11",
+    "twelve": "12",
+    "thirteen": "13",
+    "fourteen": "14",
+    "fifteen": "15",
+    "sixteen": "16",
+    "seventeen": "17",
+    "eighteen": "18",
+    "nineteen": "19",
+    "twenty": "20",
+    "thirty": "30",
 }
 
 
@@ -1096,11 +1108,10 @@ def _withdrawal_moment_seizure_count(
     window_months = max(1, (clinic_date.year - withdrawal_year) * 12 + clinic_date.month - withdrawal_month)
     event_count = _count_range_text_to_label(match.group("count"))
     
-    label = _simple_rate_label(event_count, window_months, "month")
     evidence = match.group("evidence").strip()
-    return [
+    candidates = [
         GanTemporalFrequencyCandidate(
-            canonical_label=label,
+            canonical_label=_simple_rate_label(event_count, window_months, "month"),
             event_count=event_count,
             window_count=str(window_months),
             window_unit="month",
@@ -1108,6 +1119,21 @@ def _withdrawal_moment_seizure_count(
             derivation="withdrawal-moment seizure count anchored to elapsed months before clinic",
         )
     ]
+    if window_months > 1:
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=_simple_rate_label(event_count, window_months - 1, "month"),
+                event_count=event_count,
+                window_count=str(window_months - 1),
+                window_unit="month",
+                evidence_text=evidence,
+                derivation=(
+                    "withdrawal-moment seizure count anchored to completed "
+                    "post-withdrawal months before clinic"
+                ),
+            )
+        )
+    return candidates
 
 
 def _vague_grouped_spells_unknown(
@@ -1444,6 +1470,1509 @@ def _seizure_free_for_multiple_year(
     ]
 
 
+def _high_recall_frequency_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    """Emit a recall-first candidate substrate using the Gan 2.6.1 label scheme.
+
+    The candidates are intentionally over-complete: they enumerate plausible
+    benchmark label surfaces from supported text spans, while selection and
+    precision are left to later G2/C-style adjudication.
+    """
+
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    _append_supported_candidate(
+        candidates,
+        "no seizure frequency reference",
+        _fallback_evidence(note_text),
+        "high-recall null-label candidate; later selection decides applicability",
+    )
+    if _has_seizure_context(note_text):
+        _append_supported_candidate(
+            candidates,
+            "unknown",
+            _first_context_evidence(note_text),
+            "high-recall unknown-frequency candidate for seizure-context notes",
+        )
+
+    candidates.extend(_seizure_free_high_recall_candidates(note_text))
+    candidates.extend(_explicit_rate_high_recall_candidates(note_text))
+    candidates.extend(_count_window_high_recall_candidates(note_text))
+    candidates.extend(_named_month_clause_high_recall_candidates(note_text))
+    candidates.extend(_month_tally_high_recall_candidates(note_text))
+    candidates.extend(_cluster_high_recall_candidates(note_text))
+    return candidates
+
+
+QUANTITY_TOKEN_PATTERN = (
+    r"(?:a pair of|a pair|pair of|once|twice|thrice|single|multiple|several|"
+    r"many|few|one|two|three|four|five|six|seven|eight|nine|ten|eleven|"
+    r"twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|"
+    r"nineteen|twenty|thirty|an|a|\d+(?:\.\d+)?)"
+)
+QUANTITY_RANGE_PATTERN = (
+    rf"{QUANTITY_TOKEN_PATTERN}(?:\s*(?:to|or|-|–|—|−)\s*"
+    rf"{QUANTITY_TOKEN_PATTERN})?"
+)
+EVENT_NOUN_PATTERN = (
+    r"(?:seizures?|events?|episodes?|absences?|convulsions?|attacks?|"
+    r"drop attacks?|tonic[- ]clonic(?: seizures?)?|gtc(?: seizures?)?|"
+    r"tcs?|focal(?: aware| impaired-awareness)? events?|myoclonic jerks?|"
+    r"focal sensory|focal non-?motors?|focal clonic|petit mal|"
+    r"simple partial seizures?|myoclonic|epileptic spasms?|jerks?|"
+    r"spasms?|spells?|auras?|seizure days?|nights?)"
+)
+PERIOD_UNIT_PATTERN = (
+    r"(?:days?|nights?|weeks?|months?|years?|fortnights?|quarters?|"
+    r"d|wk|wks|mo|mos|yr|yrs)"
+)
+
+
+def _append_supported_candidate(
+    candidates: list[GanTemporalFrequencyCandidate],
+    label: str,
+    evidence_text: str,
+    derivation: str,
+    *,
+    event_count: str | None = None,
+    window_count: str | None = None,
+    window_unit: str | None = None,
+) -> None:
+    from clinical_extraction.gan.frequency import label_to_monthly_frequency, normalize_label
+
+    canonical_label = normalize_label(label)
+    try:
+        monthly_frequency = label_to_monthly_frequency(canonical_label)
+    except (TypeError, ValueError):
+        return
+    if (
+        monthly_frequency > 999
+        and canonical_label != "unknown"
+        and not canonical_label.startswith("unknown,")
+    ):
+        return
+
+    if not evidence_text.strip():
+        return
+    inferred = _candidate_label_parts(canonical_label)
+    candidates.append(
+        GanTemporalFrequencyCandidate(
+            canonical_label=canonical_label,
+            event_count=event_count if event_count is not None else inferred[0],
+            window_count=window_count if window_count is not None else inferred[1],
+            window_unit=window_unit if window_unit is not None else inferred[2],
+            evidence_text=evidence_text.strip(),
+            derivation=derivation,
+        )
+    )
+
+
+def _candidate_label_parts(label: str) -> tuple[str, str, str]:
+    if label == "unknown" or label == "no seizure frequency reference":
+        return "", "", ""
+    if label.startswith("unknown,"):
+        per_cluster = label.removeprefix("unknown, ").removesuffix(" per cluster")
+        return per_cluster, "", ""
+    if label.startswith("seizure free for "):
+        duration = label.removeprefix("seizure free for ")
+        parts = duration.split()
+        if len(parts) >= 2:
+            return "0", parts[0], parts[1]
+        return "0", "", ""
+    cluster_match = re.fullmatch(
+        r"(?P<clusters>.+?) cluster per (?:(?P<period>.+?) )?"
+        r"(?P<unit>day|week|month|year), (?P<per_cluster>.+?) per cluster",
+        label,
+    )
+    if cluster_match:
+        return (
+            f"{cluster_match.group('clusters')} cluster",
+            cluster_match.group("period") or "1",
+            cluster_match.group("unit"),
+        )
+    rate_match = re.fullmatch(
+        r"(?P<count>.+?) per (?:(?P<period>.+?) )?"
+        r"(?P<unit>day|week|month|year)",
+        label,
+    )
+    if rate_match:
+        return (
+            rate_match.group("count"),
+            rate_match.group("period") or "1",
+            rate_match.group("unit"),
+        )
+    return "", "", ""
+
+
+def _fallback_evidence(note_text: str) -> str:
+    stripped = note_text.strip()
+    if len(stripped) <= 240:
+        return stripped
+    return stripped[:240].rstrip()
+
+
+def _first_context_evidence(note_text: str) -> str:
+    for start, end, sentence in _iter_sentence_spans(note_text):
+        if _has_seizure_context(sentence):
+            return note_text[start:end].strip()
+    return _fallback_evidence(note_text)
+
+
+def _iter_sentence_spans(note_text: str) -> list[tuple[int, int, str]]:
+    spans: list[tuple[int, int, str]] = []
+    start = 0
+    for match in re.finditer(r"(?<=[.!?])\s+|\n{2,}", note_text):
+        end = match.start()
+        sentence = note_text[start:end].strip()
+        if sentence:
+            spans.append((start, end, sentence))
+        start = match.end()
+    tail = note_text[start:].strip()
+    if tail:
+        spans.append((start, len(note_text), tail))
+    return spans
+
+
+def _sentence_around(note_text: str, start: int, end: int) -> str:
+    left_candidates = [
+        note_text.rfind(".", 0, start),
+        note_text.rfind("!", 0, start),
+        note_text.rfind("?", 0, start),
+        note_text.rfind("\n\n", 0, start),
+    ]
+    left = max(left_candidates)
+    left = 0 if left < 0 else left + 1
+    right_candidates = [
+        pos for pos in (
+            note_text.find(".", end),
+            note_text.find("!", end),
+            note_text.find("?", end),
+            note_text.find("\n\n", end),
+        )
+        if pos >= 0
+    ]
+    right = min(right_candidates) + 1 if right_candidates else len(note_text)
+    evidence = note_text[left:right].strip()
+    if len(evidence) > 700:
+        evidence = note_text[start:end].strip()
+    return evidence
+
+
+def _has_seizure_context(text: str) -> bool:
+    return re.search(
+        r"\b(?:seizure|seizures|epilep|episode|episodes|event|events|"
+        r"convulsion|convulsions|absence|absences|drop attack|tonic|clonic|"
+        r"drop attacks|myoclonic|focal|petit mal|jerk|jerks|spasm|spasms|"
+        r"spell|spells|aura|auras|"
+        r"cluster|clusters|gtc|tc|sz)\b",
+        text,
+        flags=re.IGNORECASE,
+    ) is not None
+
+
+def _quantity_to_label(quantity_text: str) -> str:
+    normalized = re.sub(r"\s+", " ", quantity_text.lower().strip())
+    normalized = normalized.strip(".,;:()[]")
+    normalized = normalized.replace("–", "-").replace("—", "-").replace("−", "-")
+    normalized = normalized.replace("≤", "<=").replace("≥", ">=")
+    normalized = re.sub(
+        r"^(?:about|approximately|approx\.?|around|roughly|circa|~|≈|"
+        r"<=|>=|<|>|up to|at most|no more than)\s+",
+        "",
+        normalized,
+    )
+    normalized = normalized.replace(" times", "")
+    normalized = normalized.replace(" or ", " to ")
+    normalized = re.sub(r"\s*-\s*", " to ", normalized)
+    if " to " in normalized:
+        left, right = [part.strip() for part in normalized.split(" to ", maxsplit=1)]
+        return f"{_quantity_to_label(left)} to {_quantity_to_label(right)}"
+    if normalized in {"a pair", "a pair of", "pair", "pair of"}:
+        return "2"
+    if normalized in {"a", "an", "single", "once", "one"}:
+        return "1"
+    if normalized in {"twice", "two"}:
+        return "2"
+    if normalized in {"thrice", "three"}:
+        return "3"
+    if normalized in {"few", "several", "many", "multiple"}:
+        return "multiple"
+    return NUMBER_WORDS.get(normalized, normalized)
+
+
+def _period_parts(
+    period_count_text: str | None,
+    period_unit_text: str,
+) -> tuple[str, str]:
+    unit_raw = period_unit_text.lower().strip().rstrip(".")
+    period_count = _quantity_to_label(period_count_text or "1")
+    if unit_raw in {"d", "day", "days", "night", "nights"}:
+        return period_count, "day"
+    if unit_raw in {"wk", "wks", "week", "weeks"}:
+        return period_count, "week"
+    if unit_raw in {"mo", "mos", "month", "months"}:
+        return period_count, "month"
+    if unit_raw in {"yr", "yrs", "year", "years"}:
+        return period_count, "year"
+    if unit_raw in {"fortnight", "fortnights"}:
+        if period_count == "1":
+            return "2", "week"
+        if " to " in period_count:
+            return period_count, "fortnight"
+        return str(float(period_count) * 2).removesuffix(".0"), "week"
+    if unit_raw in {"quarter", "quarters"}:
+        if period_count == "1":
+            return "3", "month"
+        if " to " in period_count:
+            return period_count, "quarter"
+        return str(float(period_count) * 3).removesuffix(".0"), "month"
+    return period_count, unit_raw
+
+
+def _rate_label(count: str, period_count: str, period_unit: str) -> str:
+    if period_count == "1":
+        return f"{count} per {period_unit}"
+    return f"{count} per {period_count} {period_unit}"
+
+
+def _cluster_rate_label(
+    cluster_count: str,
+    period_count: str,
+    period_unit: str,
+    per_cluster: str,
+) -> str:
+    if period_count == "1":
+        return f"{cluster_count} cluster per {period_unit}, {per_cluster} per cluster"
+    return (
+        f"{cluster_count} cluster per {period_count} {period_unit}, "
+        f"{per_cluster} per cluster"
+    )
+
+
+def _seizure_free_high_recall_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    free_pattern = re.compile(
+        r"(?:seizure[-‑– ]free|free of (?:events|seizures|attacks)|"
+        r"no (?:[^.;]{0,70} )?"
+        r"(?:seizures|events|attacks|episodes|auras|spells|convulsions)|"
+        r"without (?:any )?recurrence|without clear seizures|"
+        r"complete cessation|sustained period without (?:any )?recurrence)",
+        flags=re.IGNORECASE,
+    )
+    for match in free_pattern.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        emitted = False
+        for duration in re.finditer(
+            rf"\b(?:for|over|past|last|previous|during|since|follow.?up)\s+"
+            rf"(?:the\s+)?(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+            rf"(?P<unit>months?|years?)(?:\s+ago)?\b",
+            evidence,
+            flags=re.IGNORECASE,
+        ):
+            count = _quantity_to_label(duration.group("count"))
+            _, unit = _period_parts("1", duration.group("unit"))
+            _append_supported_candidate(
+                candidates,
+                f"seizure free for {count} {unit}",
+                evidence,
+                "explicit seizure-free duration in Gan label-scheme units",
+            )
+            if count not in {"1", "multiple"} and unit == "month":
+                _append_supported_candidate(
+                    candidates,
+                    "seizure free for multiple month",
+                    evidence,
+                    "specific month count also supports vague multi-month seizure freedom",
+                )
+            emitted = True
+        if re.search(r"\b(?:last|past|previous)\s+year\b", evidence, flags=re.IGNORECASE):
+            for label in ("seizure free for 1 year", "seizure free for 12 month"):
+                _append_supported_candidate(
+                    candidates,
+                    label,
+                    evidence,
+                    "seizure-free last-year expression",
+                )
+            emitted = True
+        clinic_date = _clinic_date(note_text)
+        for parsed_date in _dates_in_text(evidence):
+            if clinic_date is None or parsed_date > clinic_date:
+                continue
+            if re.search(r"\bno auras?\b", evidence, flags=re.IGNORECASE) and not re.search(
+                r"\bno [^.;]*(?:seizures|events|episodes|attacks|convulsions)\b",
+                evidence,
+                flags=re.IGNORECASE,
+            ):
+                continue
+            months = _months_between_dates(clinic_date, parsed_date)
+            _append_supported_candidate(
+                candidates,
+                f"seizure free for {months} month",
+                evidence,
+                "seizure-free since-date interval to clinic date",
+            )
+            if months >= 12:
+                _append_supported_candidate(
+                    candidates,
+                    f"seizure free for {months // 12} year",
+                    evidence,
+                    "seizure-free since-date interval rounded down to completed years",
+                )
+            if months > 1:
+                _append_supported_candidate(
+                    candidates,
+                    "seizure free for multiple month",
+                    evidence,
+                    "since-date no-event interval also supports vague multi-month label",
+                )
+            emitted = True
+        if re.search(
+            r"\b(?:several|many|multiple)\s+months?\b|"
+            r"\bsince (?:last review|last visit|last appointment|last clinic|"
+            r"initial referral|rota changed|dose escalation|current regimen)\b|"
+            r"\bno (?:[^.;]{0,50} )?events suggestive of seizures\b|"
+            r"\bno interval events\b",
+            evidence,
+            flags=re.IGNORECASE,
+        ):
+            _append_supported_candidate(
+                candidates,
+                "seizure free for multiple month",
+                evidence,
+                "vague multi-month seizure-free expression",
+            )
+            emitted = True
+        if re.search(
+            r"\b(?:several|many|multiple|recent)\s+years?\b|adult life",
+            evidence,
+            flags=re.IGNORECASE,
+        ):
+            _append_supported_candidate(
+                candidates,
+                "seizure free for multiple year",
+                evidence,
+                "vague multi-year seizure-free expression",
+            )
+            emitted = True
+        if not emitted:
+            _append_supported_candidate(
+                candidates,
+                "seizure free for multiple month",
+                evidence,
+                "seizure-free/no-event expression without exact duration",
+            )
+        date_range = re.search(
+            rf"\bfrom\s+(?P<start_day>\d{{1,2}})\s+"
+            rf"(?P<start_month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\s+"
+            rf"(?P<start_year>\d{{4}})\s+to\s+(?P<end_day>\d{{1,2}})\s+"
+            rf"(?P<end_month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\s+"
+            rf"(?P<end_year>\d{{4}})\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if date_range:
+            months = max(
+                1,
+                (
+                    int(date_range.group("end_year"))
+                    - int(date_range.group("start_year"))
+                )
+                * 12
+                + _month_number(date_range.group("end_month"))
+                - _month_number(date_range.group("start_month"))
+                + 1,
+            )
+            _append_supported_candidate(
+                candidates,
+                f"seizure free for {months} month",
+                evidence,
+                "explicit no-event calendar date range",
+            )
+    for date_range in re.finditer(
+        rf"\bfrom\s+(?P<start_day>\d{{1,2}})\s+"
+        rf"(?P<start_month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\s+"
+        rf"(?P<start_year>\d{{4}})\s+to\s+(?P<end_day>\d{{1,2}})\s+"
+        rf"(?P<end_month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\s+"
+        rf"(?P<end_year>\d{{4}})\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, date_range.start(), date_range.end())
+        following = note_text[date_range.end(): date_range.end() + 400]
+        if not re.search(r"\bno (?:auras|events|episodes|seizures|spells|convulsive)", following, flags=re.IGNORECASE):
+            continue
+        months = max(
+            1,
+            (int(date_range.group("end_year")) - int(date_range.group("start_year")))
+            * 12
+            + _month_number(date_range.group("end_month"))
+            - _month_number(date_range.group("start_month"))
+            + 1,
+        )
+        _append_supported_candidate(
+            candidates,
+            f"seizure free for {months} month",
+            evidence,
+            "calendar date range followed by no-event statement",
+        )
+    return candidates
+
+
+def _explicit_rate_high_recall_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    event_rate = re.compile(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:brief |further |clinical |definite |nocturnal |daytime |"
+        rf"focal aware |focal impaired-awareness |generalised |generalized |"
+        rf"tonic[- ]clonic |myoclonic )?"
+        rf"{EVENT_NOUN_PATTERN}\s+"
+        rf"(?:per|a|each|every|/)\s+"
+        rf"(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in event_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if "per cluster" in evidence.lower():
+            continue
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "explicit event count per period",
+        )
+
+    times_rate = re.compile(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:times?|nights?)\s+(?:per|a|each)\s+"
+        rf"(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in times_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "explicit times/nights per period in seizure context",
+        )
+
+    slash_rate = re.compile(
+        rf"\b(?:{EVENT_NOUN_PATTERN}|tc|gtc|sz)?\s*"
+        rf"(?:x|×|/)?\s*(?P<count>{QUANTITY_RANGE_PATTERN})\s*/\s*"
+        rf"(?P<unit>d|day|wk|week|mo|month|yr|year)\b",
+        flags=re.IGNORECASE,
+    )
+    for match in slash_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts("1", match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "shorthand count/unit seizure frequency",
+        )
+
+    every_rate = re.compile(
+        rf"\b(?:(?P<count>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?:{EVENT_NOUN_PATTERN}\s+)?"
+        rf"(?:occurring\s+|occur(?:s|ring)?\s+|happen(?:s|ing)?\s+)?"
+        rf"(?:every|q)\s+(?P<period>{QUANTITY_RANGE_PATTERN})\s*"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in every_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = _quantity_to_label(match.group("count") or "1")
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "every/q interval seizure frequency",
+        )
+
+    once_every = re.compile(
+        rf"\b(?P<count>once|twice|thrice|one|two|three|"
+        rf"{QUANTITY_RANGE_PATTERN})\s+every\s+"
+        rf"(?P<period>{QUANTITY_RANGE_PATTERN})\s*"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in once_every.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "once/twice every period seizure frequency",
+        )
+
+    adverbial_rate = re.compile(
+        rf"\b(?:(?P<count>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?:{EVENT_NOUN_PATTERN}\s+)?"
+        rf"(?P<adverb>daily|nightly|weekly|monthly|yearly)\b",
+        flags=re.IGNORECASE,
+    )
+    adverb_units = {
+        "daily": "day",
+        "nightly": "day",
+        "weekly": "week",
+        "monthly": "month",
+        "yearly": "year",
+    }
+    for match in adverbial_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = _quantity_to_label(match.group("count") or "1")
+        unit = adverb_units[match.group("adverb").lower()]
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, "1", unit),
+            evidence,
+            "adverbial daily/weekly/monthly/yearly seizure frequency",
+        )
+
+    for match in re.finditer(
+        r"\bmost (?:weekdays|days of the working week)\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            _append_supported_candidate(
+                candidates,
+                "multiple per week",
+                evidence,
+                "most-weekdays seizure frequency maps to nonspecific recurrent weekly count",
+            )
+
+    for match in re.finditer(
+        r"\b(?P<count>multiple|several|many)\s+"
+        r"(?:times\s+)?(?:daily|per day|each day)\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            _append_supported_candidate(
+                candidates,
+                "multiple per day",
+                evidence,
+                "nonspecific multiple daily seizure frequency",
+            )
+    frequency_rate = re.compile(
+        rf"\b(?:frequency|average frequency|estimated seizure frequency|"
+        rf"current seizure frequency|current average frequency)\s+"
+        rf"(?:is|of|=|:)?\s*(?:<=|≤|up to|approximately|approx\.?|~|≈)?\s*"
+        rf"(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:per|/)\s+(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in frequency_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "frequency field states count per period",
+        )
+
+    context_rate = re.compile(
+        rf"\b(?:typically|usually|approximately|approx\.?|around|about|~|≈|<=|≤)?\s*"
+        rf"(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:per|/)\s+(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in context_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence) or "per cluster" in evidence.lower():
+            continue
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "bare count-per-period in seizure context",
+        )
+
+    event_on_rate = re.compile(
+        rf"\b{EVENT_NOUN_PATTERN}\s+(?:on|at|to|of)\s+"
+        rf"(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:per|/)\s+(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in event_on_rate.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        count = _quantity_to_label(match.group("count"))
+        period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+        _append_supported_candidate(
+            candidates,
+            _rate_label(count, period_count, period_unit),
+            evidence,
+            "event noun followed by count-per-period",
+        )
+
+    q_interval = re.compile(
+        rf"\bq\s*(?P<period>{QUANTITY_RANGE_PATTERN})\s*"
+        rf"(?P<unit>d|day|wk|week|mo|month|yr|year)\b",
+        flags=re.IGNORECASE,
+    )
+    for match in q_interval.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            period_count, period_unit = _period_parts(match.group("period"), match.group("unit"))
+            _append_supported_candidate(
+                candidates,
+                _rate_label("1", period_count, period_unit),
+                evidence,
+                "q-interval shorthand in seizure context",
+            )
+
+    for match in re.finditer(
+        r"\b(?:electrographic seizures?|seizures?)\s+frequent on EEG\s*"
+        r"\(~?\d+(?:\.\d+)?/h\)",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        _append_supported_candidate(
+            candidates,
+            "multiple per day",
+            evidence,
+            "hourly EEG seizure frequency maps to nonspecific multiple per day",
+        )
+
+    for match in re.finditer(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+times\s+"
+        rf"(?P<adverb>daily|weekly|monthly|yearly)\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        unit = {
+            "daily": "day",
+            "weekly": "week",
+            "monthly": "month",
+            "yearly": "year",
+        }[match.group("adverb").lower()]
+        _append_supported_candidate(
+            candidates,
+            _rate_label(_quantity_to_label(match.group("count")), "1", unit),
+            evidence,
+            "times-weekly/daily seizure frequency",
+        )
+
+    for match in re.finditer(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+days?\s+of\s+the\s+week\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            _append_supported_candidate(
+                candidates,
+                _rate_label(_quantity_to_label(match.group("count")), "1", "week"),
+                evidence,
+                "event days per week frequency",
+            )
+
+    for match in re.finditer(
+        rf"\bfrequency\s+(?:of\s+)?(?:up to\s+)?"
+        rf"(?P<count>{QUANTITY_RANGE_PATTERN})\s+in\s+(?:bad\s+)?weeks\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            _append_supported_candidate(
+                candidates,
+                _rate_label(_quantity_to_label(match.group("count")), "1", "week"),
+                evidence,
+                "bad-week frequency expression",
+            )
+
+    for match in re.finditer(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:seizures?|events?|episodes?)\s+last\s+week\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        _append_supported_candidate(
+            candidates,
+            _rate_label(_quantity_to_label(match.group("count")), "1", "week"),
+            evidence,
+            "last-week event count",
+        )
+
+    for match in re.finditer(
+        rf"\b(?:inter-seizure interval|intervals? ranging|events occurring at intervals ranging)"
+        rf"[^.;]{{0,40}}?(?P<period>{QUANTITY_RANGE_PATTERN})\s*"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        _append_supported_candidate(
+            candidates,
+            _rate_label("1", *_period_parts(match.group("period"), match.group("unit"))),
+            evidence,
+            "inter-seizure interval converted to one event per interval",
+        )
+
+    for match in re.finditer(
+        r"\bevery other week\b",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            _append_supported_candidate(
+                candidates,
+                "1 per 2 week",
+                evidence,
+                "every-other-week frequency",
+            )
+    short_adverbial = re.compile(
+        rf"\b(?P<count>once|twice|thrice)\s+(?:a|per)\s+"
+        rf"(?P<unit>day|week|month|year|night|fortnight)\b",
+        flags=re.IGNORECASE,
+    )
+    for match in short_adverbial.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            period_count, period_unit = _period_parts("1", match.group("unit"))
+            _append_supported_candidate(
+                candidates,
+                _rate_label(_quantity_to_label(match.group("count")), period_count, period_unit),
+                evidence,
+                "once/twice/thrice a period seizure frequency",
+            )
+
+    fortnight_range = re.compile(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+a\s+fortnight\b",
+        flags=re.IGNORECASE,
+    )
+    for match in fortnight_range.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            _append_supported_candidate(
+                candidates,
+                _rate_label(_quantity_to_label(match.group("count")), "2", "week"),
+                evidence,
+                "count per fortnight seizure frequency",
+            )
+    return candidates
+
+
+def _count_window_high_recall_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    window_re = re.compile(
+        rf"\b(?:over|during|within|across|in|for)\s+(?:the\s+)?"
+        rf"(?:(?:past|last|previous|preceding|recent)\s+)?"
+        rf"(?:(?P<count>{QUANTITY_RANGE_PATTERN})\s+)?"
+        rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+        flags=re.IGNORECASE,
+    )
+    for sentence_start, sentence_end, sentence in _iter_sentence_spans(note_text):
+        if not _has_seizure_context(sentence):
+            continue
+        event_counts = _event_counts_in_text(sentence)
+        if not event_counts:
+            continue
+        event_count = _combine_event_counts(event_counts)
+        for match in window_re.finditer(sentence):
+            period_count, period_unit = _period_parts(match.group("count"), match.group("unit"))
+            evidence = note_text[sentence_start:sentence_end].strip()
+            _append_supported_candidate(
+                candidates,
+                _rate_label(event_count, period_count, period_unit),
+                evidence,
+                "event count over explicit observation window",
+            )
+            simplified = _single_unit_rate(event_count, period_count, period_unit)
+            if simplified is not None:
+                _append_supported_candidate(
+                    candidates,
+                    simplified,
+                    evidence,
+                    "event/window count converted to single-period rate",
+                )
+            if period_count == "4" and period_unit == "week":
+                _append_supported_candidate(
+                    candidates,
+                    _rate_label(event_count, "1", "month"),
+                    evidence,
+                    "four-week observation window also maps to benchmark month",
+                )
+        if re.search(r"\b(?:yesterday|today|overnight)\b", sentence, flags=re.IGNORECASE):
+            evidence = note_text[sentence_start:sentence_end].strip()
+            _append_supported_candidate(
+                candidates,
+                _rate_label(event_count, "1", "day"),
+                evidence,
+                "single-day deictic observation window",
+            )
+        if re.search(r"\bthis month\b", sentence, flags=re.IGNORECASE):
+            evidence = note_text[sentence_start:sentence_end].strip()
+            _append_supported_candidate(
+                candidates,
+                _rate_label(event_count, "1", "month"),
+                evidence,
+                "event count within this-month window",
+            )
+        if re.search(r"\b(?:this|current)\s+week\b", sentence, flags=re.IGNORECASE):
+            evidence = note_text[sentence_start:sentence_end].strip()
+            _append_supported_candidate(
+                candidates,
+                _rate_label(event_count, "1", "week"),
+                evidence,
+                "event count within this-week window",
+            )
+        if re.search(r"\b(?:this year|year to date|so far this year)\b", sentence, flags=re.IGNORECASE):
+            evidence = note_text[sentence_start:sentence_end].strip()
+            clinic_date = _clinic_date(note_text)
+            if clinic_date is not None:
+                _append_supported_candidate(
+                    candidates,
+                    _rate_label(event_count, str(max(1, clinic_date.month)), "month"),
+                    evidence,
+                    "year-to-date count anchored to clinic month",
+                )
+            _append_supported_candidate(
+                candidates,
+                _rate_label(event_count, "1", "year"),
+                evidence,
+                "calendar-year count treated as yearly rate candidate",
+            )
+        year_so_far = re.search(r"\b(?:in|documented in|recorded in)\s+(?P<year>\d{4})\s+so far\b", sentence, flags=re.IGNORECASE)
+        if year_so_far:
+            evidence = note_text[sentence_start:sentence_end].strip()
+            clinic_date = _clinic_date(note_text)
+            if clinic_date is not None and int(year_so_far.group("year")) == clinic_date.year:
+                _append_supported_candidate(
+                    candidates,
+                    _rate_label(event_count, str(max(1, clinic_date.month)), "month"),
+                    evidence,
+                    "same-calendar-year count anchored to clinic month",
+                )
+            _append_supported_candidate(
+                candidates,
+                _rate_label(event_count, "1", "year"),
+                evidence,
+                "explicit calendar-year-so-far count treated as yearly candidate",
+            )
+        since_month_year = re.search(
+            r"\bsince\s+(?P<month>\d{1,2})/(?P<year>\d{4})\b",
+            sentence,
+            flags=re.IGNORECASE,
+        )
+        if since_month_year:
+            clinic_date = _clinic_date(note_text)
+            if clinic_date is not None:
+                months = _months_between_month_year(
+                    clinic_date,
+                    int(since_month_year.group("month")),
+                    int(since_month_year.group("year")),
+                )
+                evidence = note_text[sentence_start:sentence_end].strip()
+                _append_supported_candidate(
+                    candidates,
+                    _rate_label(event_count, str(months), "month"),
+                    evidence,
+                    "event count since month/year diary anchor",
+                )
+    return candidates
+
+
+def _single_unit_rate(
+    event_count: str,
+    period_count: str,
+    period_unit: str,
+) -> str | None:
+    if period_unit not in {"day", "week", "month", "year"}:
+        return None
+    if " to " in event_count or " to " in period_count:
+        return None
+    if event_count == "multiple" or period_count == "multiple":
+        return None
+    try:
+        numerator = float(event_count)
+        denominator = float(period_count)
+    except ValueError:
+        return None
+    if denominator <= 1:
+        return None
+    value = numerator / denominator
+    if value >= 1:
+        return None
+    value_text = str(round(value, 3)).rstrip("0").rstrip(".")
+    return _rate_label(value_text, "1", period_unit)
+
+
+def _event_counts_in_text(text: str) -> list[str]:
+    counts: list[str] = []
+    count_before_event = re.compile(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:brief |further |clinical |definite |nocturnal |daytime |"
+        rf"focal aware |focal impaired-awareness |generalised |generalized |"
+        rf"tonic[- ]clonic |myoclonic |recorded |reported |short )*"
+        rf"{EVENT_NOUN_PATTERN}\b",
+        flags=re.IGNORECASE,
+    )
+    for match in count_before_event.finditer(text):
+        count = _quantity_to_label(match.group("count"))
+        if count not in {"", "0"}:
+            counts.append(count)
+    for match in re.finditer(
+        rf"\b(?:tc|gtc|sz)\s*(?:x|×)\s*(?P<count>{QUANTITY_RANGE_PATTERN})\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        counts.append(_quantity_to_label(match.group("count")))
+    seizure_days = re.search(
+        rf"\bseizure days?:\s*(?P<count>{QUANTITY_RANGE_PATTERN})(?:/30)?\b",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if seizure_days:
+        counts.append(_quantity_to_label(seizure_days.group("count")))
+    for match in re.finditer(
+        rf"\band\s+(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:while awake|overnight|on waking)\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        counts.append(_quantity_to_label(match.group("count")))
+    return counts
+
+
+def _combine_event_counts(counts: list[str]) -> str:
+    if not counts:
+        return ""
+    if any(count == "multiple" for count in counts):
+        return "multiple"
+    if len(counts) == 1:
+        return counts[0]
+    numeric_total = 0.0
+    for count in counts:
+        if " to " in count:
+            if len(counts) == 1:
+                return count
+            return count
+        try:
+            numeric_total += float(count)
+        except ValueError:
+            return count
+    return str(numeric_total).removesuffix(".0")
+
+
+def _named_month_clause_high_recall_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    month_rows = _named_month_clause_counts(note_text)
+    if not month_rows:
+        return []
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    total = _combine_event_counts([row[1] for row in month_rows])
+    first_month = min(row[0] for row in month_rows)
+    last_month = max(row[0] for row in month_rows)
+    first_start = min(row[2] for row in month_rows)
+    last_end = max(row[3] for row in month_rows)
+    evidence = _sentence_around(note_text, first_start, last_end)
+    windows = {
+        len({row[0] for row in month_rows}),
+        _inclusive_month_span(first_month, last_month),
+    }
+    clinic_date = _clinic_date(note_text)
+    if clinic_date is not None:
+        elapsed = clinic_date.month - first_month
+        if elapsed > 0:
+            windows.add(elapsed)
+    for window in sorted(window for window in windows if window >= 1):
+        _append_supported_candidate(
+            candidates,
+            _rate_label(total, str(window), "month"),
+            evidence,
+            "named-month clauses summed over plausible diary windows",
+        )
+    return candidates
+
+
+def _named_month_clause_counts(note_text: str) -> list[tuple[int, str, int, int]]:
+    rows: list[tuple[int, str, int, int]] = []
+    month_names = rf"{MONTH_PATTERN}|{SHORT_MONTH_PATTERN}"
+    in_month = re.compile(
+        rf"\b(?:in|during)\s+(?P<month>{month_names})\b"
+        rf"(?P<body>.*?)(?=(?:\b(?:in|during)\s+(?:{month_names})\b)|[.\n])",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    for match in in_month.finditer(note_text):
+        body = match.group("body")
+        evidence = match.group(0)
+        if not _has_seizure_context(evidence):
+            continue
+        counts = _event_counts_in_text(evidence)
+        if re.search(r"\banother\b", body, flags=re.IGNORECASE) and not counts:
+            counts.append("1")
+        if counts:
+            rows.append(
+                (
+                    _month_number(match.group("month")),
+                    _combine_event_counts(counts),
+                    match.start(),
+                    match.end(),
+                )
+            )
+
+    event_in_month = re.compile(
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN}|another)\s+"
+        rf"(?:brief |further |single |nocturnal |daytime |generalised |generalized |"
+        rf"tonic[- ]clonic |myoclonic |focal |short )*"
+        rf"{EVENT_NOUN_PATTERN}\s+in\s+(?P<month>{month_names})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in event_in_month.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = "1" if match.group("count").lower() == "another" else _quantity_to_label(match.group("count"))
+        rows.append((_month_number(match.group("month")), count, match.start(), match.end()))
+
+    cluster_of_in_month = re.compile(
+        rf"\bcluster of (?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"{EVENT_NOUN_PATTERN}\s+in\s+(?P<month>{month_names})\b",
+        flags=re.IGNORECASE,
+    )
+    for match in cluster_of_in_month.finditer(note_text):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if _has_seizure_context(evidence):
+            rows.append(
+                (
+                    _month_number(match.group("month")),
+                    _quantity_to_label(match.group("count")),
+                    match.start(),
+                    match.end(),
+                )
+            )
+    return rows
+
+
+def _inclusive_month_span(first_month: int, last_month: int) -> int:
+    if last_month >= first_month:
+        return last_month - first_month + 1
+    return (12 - first_month + 1) + last_month
+
+
+def _month_tally_high_recall_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    month_count_matches = list(
+        re.finditer(
+            rf"\b(?P<month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\b"
+            rf"[^.\n;:]{{0,80}}?"
+            rf"(?:x|×|had|with|there (?:were|was)|experienced|recorded)?\s*"
+            rf"(?P<count>{QUANTITY_RANGE_PATTERN})\s*"
+            rf"(?:{EVENT_NOUN_PATTERN})?",
+            note_text,
+            flags=re.IGNORECASE,
+        )
+    )
+    usable: list[tuple[int, str, int, int]] = []
+    for match in month_count_matches:
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if not _has_seizure_context(evidence):
+            continue
+        count = _quantity_to_label(match.group("count"))
+        if count == "0" or " to " in count or count == "multiple":
+            continue
+        month_number = _month_number(match.group("month"))
+        usable.append((month_number, count, match.start(), match.end()))
+    if not usable:
+        return candidates
+    total = _combine_event_counts([count for _, count, _, _ in usable])
+    first_month = min(month for month, _, _, _ in usable)
+    last_month = max(month for month, _, _, _ in usable)
+    evidence = _sentence_around(
+        note_text,
+        min(start for _, _, start, _ in usable),
+        max(end for _, _, _, end in usable),
+    )
+    for window in sorted({len({month for month, _, _, _ in usable}), last_month - first_month + 1}):
+        if window >= 1:
+            _append_supported_candidate(
+                candidates,
+                _rate_label(total, str(window), "month"),
+                evidence,
+                "named-month event tallies summed over listed months",
+            )
+    clinic_date = _clinic_date(note_text)
+    if clinic_date is not None:
+        elapsed = clinic_date.month - first_month
+        if elapsed >= 1:
+            _append_supported_candidate(
+                candidates,
+                _rate_label(total, str(elapsed), "month"),
+                evidence,
+                "named-month event tallies summed from first month to clinic month",
+            )
+    return candidates
+
+
+def _cluster_high_recall_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    candidates: list[GanTemporalFrequencyCandidate] = []
+    cluster_mentions = list(
+        re.finditer(
+            r"\b(?:clusters?|batches|burst periods?|group together|run of)\b",
+            note_text,
+            flags=re.IGNORECASE,
+        )
+    )
+    for mention in cluster_mentions:
+        evidence = _sentence_around(note_text, mention.start(), mention.end())
+        per_cluster = _per_cluster_count_from_text(evidence)
+        if per_cluster is None:
+            per_cluster = "multiple" if re.search(
+                r"\b(?:var(?:y|ies)|brief episodes|multiple|several|bursts?|batches|flurries)\b",
+                evidence,
+                flags=re.IGNORECASE,
+            ) else None
+        if re.search(r"\bcomprising brief episodes\b", evidence, flags=re.IGNORECASE):
+            per_cluster = "multiple"
+        if per_cluster is None or per_cluster == "multiple":
+            events_over = re.search(
+                rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+events?\s+over\s+",
+                evidence,
+                flags=re.IGNORECASE,
+            )
+            if events_over:
+                per_cluster = _quantity_to_label(events_over.group("count"))
+        per_episode_count = re.search(
+            rf"(?:~|≈)?\s*(?P<count>\d+(?:\.\d+)?)\s+events?\s+per\s+episode\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if per_episode_count:
+            per_cluster = _quantity_to_label(per_episode_count.group("count"))
+        if per_cluster is None and re.search(r"\b(?:run of|batches|burst periods?)\b", evidence, flags=re.IGNORECASE):
+            counts = _event_counts_in_text(evidence)
+            per_cluster = _combine_event_counts(counts) if counts else "multiple"
+        if per_cluster is not None and re.search(
+            r"\b(?:unknown|uncertain|not tracked|not documented|unable to quantify|"
+            r"no reliable|without reliable|frequency (?:is )?unclear)\b",
+            evidence,
+            flags=re.IGNORECASE,
+        ):
+            _append_supported_candidate(
+                candidates,
+                f"unknown, {per_cluster} per cluster",
+                evidence,
+                "per-cluster count present but cluster spacing unknown",
+            )
+
+        explicit_count = re.search(
+            rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+            rf"(?:[A-Za-z-]+\s+){{0,3}}clusters?\s+"
+            rf"(?:this|per|each)\s+month\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if explicit_count:
+            cluster_count = _quantity_to_label(explicit_count.group("count"))
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label(cluster_count, "1", "month", per_cluster or "multiple"),
+                evidence,
+                "explicit cluster count this/per month",
+            )
+
+        window_count = re.search(
+            rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+            rf"(?:[A-Za-z-]+\s+){{0,3}}clusters?\s+"
+            rf"(?:over|during|in|within)\s+(?:the\s+)?(?:past|last)?\s*"
+            rf"(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if window_count:
+            clusters = _quantity_to_label(window_count.group("count"))
+            period_count, period_unit = _period_parts(
+                window_count.group("period"),
+                window_count.group("unit"),
+            )
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label(
+                    clusters,
+                    period_count,
+                    period_unit,
+                    per_cluster or "multiple",
+                ),
+                evidence,
+                "cluster count over explicit observation window",
+            )
+
+        run_window = re.search(
+            rf"\b(?:over|during|in|within)\s+(?:the\s+)?(?:past|last)?\s*"
+            rf"(?:(?P<period>{QUANTITY_RANGE_PATTERN})\s+)?(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if run_window and re.search(r"\b(?:run of|batches|burst periods?)\b", evidence, flags=re.IGNORECASE):
+            period_count, period_unit = _period_parts(
+                run_window.group("period"),
+                run_window.group("unit"),
+            )
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label("1", period_count, period_unit, per_cluster or "multiple"),
+                evidence,
+                "single run/batch cluster over explicit observation window",
+            )
+
+        cluster_x_rate = re.search(
+            rf"\bclusters?\s*(?P<count>{QUANTITY_RANGE_PATTERN})?\s*"
+            rf"(?:x|×|/|per)\s*/?\s*(?P<unit>week|wk|month|mo|year|yr|day|d)\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if cluster_x_rate:
+            clusters = _quantity_to_label(cluster_x_rate.group("count") or "1")
+            _, period_unit = _period_parts("1", cluster_x_rate.group("unit"))
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label(clusters, "1", period_unit, per_cluster or "multiple"),
+                evidence,
+                "cluster shorthand count per period",
+            )
+
+        for adverb, period_count, period_unit in (
+            ("weekly", "1", "week"),
+            ("monthly", "1", "month"),
+            ("quarterly", "3", "month"),
+        ):
+            if re.search(rf"\b{adverb}\s+clusters?\b|\bclusters?\s+{adverb}\b", evidence, flags=re.IGNORECASE):
+                _append_supported_candidate(
+                    candidates,
+                    _cluster_rate_label(
+                        "1",
+                        period_count,
+                        period_unit,
+                        per_cluster or "multiple",
+                    ),
+                    evidence,
+                    f"{adverb} cluster frequency",
+                )
+
+        if re.search(r"\bweekly\b", evidence, flags=re.IGNORECASE) and "cluster" in evidence.lower():
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label("1", "1", "week", per_cluster or "multiple"),
+                evidence,
+                "weekly cluster frequency in cluster context",
+            )
+
+        every_spacing = re.search(
+            rf"\b(?:every|spaced|spacing|without seizures for)\s+"
+            rf"(?P<period>{QUANTITY_RANGE_PATTERN})\s*"
+            rf"(?P<unit>{PERIOD_UNIT_PATTERN})\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if every_spacing:
+            period_count, period_unit = _period_parts(
+                every_spacing.group("period"),
+                every_spacing.group("unit"),
+            )
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label(
+                    "1",
+                    period_count,
+                    period_unit,
+                    per_cluster or "multiple",
+                ),
+                evidence,
+                "cluster spacing interval with per-cluster burden",
+            )
+            _append_supported_candidate(
+                candidates,
+                _rate_label("1", period_count, period_unit),
+                evidence,
+                "cluster spacing interval also supports simple frequency label",
+            )
+
+        batch_spacing = re.search(
+            rf"\bgo\s+(?P<period>{QUANTITY_RANGE_PATTERN})\s*"
+            rf"(?P<unit>{PERIOD_UNIT_PATTERN})\s+without seizures\b",
+            evidence,
+            flags=re.IGNORECASE,
+        )
+        if batch_spacing and re.search(r"\bbatches\b", evidence, flags=re.IGNORECASE):
+            period_count, period_unit = _period_parts(
+                batch_spacing.group("period"),
+                batch_spacing.group("unit"),
+            )
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label("1", period_count, period_unit, per_cluster or "multiple"),
+                evidence,
+                "batch spacing interval with per-batch burden",
+            )
+
+        if re.search(r"\bone cluster this week\b", evidence, flags=re.IGNORECASE):
+            _append_supported_candidate(
+                candidates,
+                _cluster_rate_label("1", "1", "week", per_cluster or "multiple"),
+                evidence,
+                "one cluster in current week",
+            )
+
+        if per_cluster is not None:
+            _append_supported_candidate(
+                candidates,
+                f"unknown, {per_cluster} per cluster",
+                evidence,
+                "fallback unknown-spacing cluster candidate",
+            )
+    for match in re.finditer(
+        rf"\b(?P<count1>{QUANTITY_RANGE_PATTERN})\s+(?:brief\s+)?events?\s+on\s+"
+        rf"\d{{1,2}}/\d{{1,2}}\s+and\s+(?P<count2>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:overnight|events?)\s+on\s+\d{{1,2}}/\d{{1,2}}",
+        note_text,
+        flags=re.IGNORECASE,
+    ):
+        evidence = _sentence_around(note_text, match.start(), match.end())
+        if "cluster" in note_text.lower():
+            _append_supported_candidate(
+                candidates,
+                "unknown, multiple per cluster",
+                evidence,
+                "dated event bursts with cluster context but unknown spacing",
+            )
+    return candidates
+
+
+def _per_cluster_count_from_text(text: str) -> str | None:
+    patterns = [
+        rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+per\s+(?:cluster|episode|run)\b",
+        rf"\b(?:each|per cluster|per episode|per run|comprising|usually|typically)"
+        rf"[^.;:]{{0,35}}?(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:{EVENT_NOUN_PATTERN})?",
+        rf"\b(?:with|usually|typically|comprising|characteri[sz]ed by)\s+"
+        rf"(?P<count>{QUANTITY_RANGE_PATTERN})\s+(?:{EVENT_NOUN_PATTERN})",
+        rf"\bclusters? of (?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:{EVENT_NOUN_PATTERN})",
+        rf"\bbatches,?\s+with\s+(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:occurring|{EVENT_NOUN_PATTERN})",
+        rf"\brun of (?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+        rf"(?:{EVENT_NOUN_PATTERN})",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return _quantity_to_label(match.group("count"))
+    if re.search(r"\b(?:per cluster|per episode)\b", text, flags=re.IGNORECASE):
+        before_per = re.search(
+            rf"\b(?P<count>{QUANTITY_RANGE_PATTERN})\s+"
+            rf"(?:{EVENT_NOUN_PATTERN})\s+per\s+(?:cluster|episode)\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if before_per:
+            return _quantity_to_label(before_per.group("count"))
+        return "multiple"
+    return None
+
+
+def _dates_in_text(text: str) -> list[date]:
+    parsed: list[date] = []
+    for match in re.finditer(
+        rf"\b(?P<day>\d{{1,2}})[-/ ](?P<month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})[-/ ](?P<year>\d{{4}})\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        parsed.append(
+            date(
+                int(match.group("year")),
+                _month_number(match.group("month")),
+                int(match.group("day")),
+            )
+        )
+    for match in re.finditer(
+        rf"\b(?P<day>\d{{1,2}})\s+(?P<month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\s+(?P<year>\d{{4}})\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        parsed.append(
+            date(
+                int(match.group("year")),
+                _month_number(match.group("month")),
+                int(match.group("day")),
+            )
+        )
+    for match in re.finditer(
+        r"\b(?P<day>\d{1,2})/(?P<month>\d{1,2})/(?P<year>\d{4})\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        parsed.append(
+            date(
+                int(match.group("year")),
+                int(match.group("month")),
+                int(match.group("day")),
+            )
+        )
+    for match in re.finditer(
+        rf"\b(?P<month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})\s+(?P<year>\d{{4}})\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        parsed.append(date(int(match.group("year")), _month_number(match.group("month")), 1))
+    return parsed
+
+
+def _months_between_dates(clinic_date: date, start_date: date) -> int:
+    return max(1, (clinic_date.year - start_date.year) * 12 + clinic_date.month - start_date.month)
+
+
 def _clinic_date(note_text: str) -> date | None:
     match = re.search(
         rf"(?:Clinic Date|Date):\s*(?P<day>\d{{1,2}}) "
@@ -1493,7 +3022,22 @@ def _number_token_to_label(token: str) -> str:
 
 def _count_range_text_to_label(count_text: str) -> str:
     normalized = re.sub(r"\s+", " ", count_text.lower().strip())
+    normalized = normalized.strip(".,;:()[]")
+    normalized = normalized.replace("–", "-").replace("—", "-").replace("−", "-")
     normalized = normalized.replace(" - ", " to ").replace("-", " to ")
+    normalized = re.sub(r"^(?:about|approximately|around|roughly|circa|~|≈|<=|≤|up to|at most)\s+", "", normalized)
+    normalized = re.sub(r"\b(?:seizures?|events?|episodes?|absences?|convulsions?|attacks?|jerks?|spells?)\b.*$", "", normalized).strip()
+    if normalized in {"a pair", "a pair of", "pair", "pair of"}:
+        return "2"
+    if normalized in {"once", "one time"}:
+        return "1"
+    if normalized in {"twice", "two times"}:
+        return "2"
+    if normalized in {"thrice", "three times"}:
+        return "3"
+    if normalized in {"few", "several", "many", "multiple"}:
+        return "multiple"
+    normalized = normalized.replace(" or ", " to ")
     if normalized == "one or two":
         return "1 to 2"
     if normalized == "two to three":

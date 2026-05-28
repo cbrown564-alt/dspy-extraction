@@ -9,8 +9,8 @@ Scorer semantics: unchanged; paper reproduction and canonical views are both rep
 
 ## Summary
 
-Candidate-constrained oracle reaches **20.7%** monthly accuracy under `gan2026_paper_reproduction` and **20.7%** under the canonical diagnostic scorer.
-The deterministic label constructor handled **64/65** candidate records; invalid candidate labels remain unsupported rather than repaired.
+Candidate-constrained oracle reaches **93.3%** monthly accuracy under `gan2026_paper_reproduction` and **94.0%** under the canonical diagnostic scorer.
+The deterministic label constructor handled **1605/1605** candidate records; invalid candidate labels remain unsupported rather than repaired.
 
 ## Ablation Plan
 
@@ -25,26 +25,26 @@ The deterministic label constructor handled **64/65** candidate records; invalid
 
 | Arm | Supported | Canonical monthly | Canonical pragmatic | Paper monthly | Paper pragmatic |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `candidate_constrained_oracle` | 64/299 | 20.7% | 21.1% | 20.7% | 21.1% |
-| `reason_code_selector_family_oracle` | 63/299 | 20.7% | 21.1% | 20.7% | 21.1% |
+| `candidate_constrained_oracle` | 299/299 | 94.0% | 98.7% | 93.3% | 98.0% |
+| `reason_code_selector_family_oracle` | 296/299 | 83.9% | 94.3% | 83.9% | 94.3% |
 
 ## Constructor Diagnostics
 
 | Candidate records | Constructed | Invalid |
 | ---: | ---: | ---: |
-| 65 | 64 | 1 |
+| 1605 | 1605 | 0 |
 
 ## Label-Family View
 
 | Family | Records | Candidate-constrained paper monthly | Reason-code paper monthly |
 | --- | ---: | ---: | ---: |
-| `cluster` | 29 | 44.8% | 44.8% |
-| `no_reference` | 11 | 0.0% | 0.0% |
-| `quantified_rate` | 162 | 22.2% | 22.2% |
-| `seizure_free` | 45 | 8.9% | 8.9% |
-| `unknown` | 35 | 11.4% | 11.4% |
-| `unknown_cluster` | 5 | 20.0% | 20.0% |
-| `vague_or_multiple_rate` | 12 | 33.3% | 33.3% |
+| `cluster` | 29 | 100.0% | 100.0% |
+| `no_reference` | 11 | 100.0% | 100.0% |
+| `quantified_rate` | 162 | 88.9% | 71.6% |
+| `seizure_free` | 45 | 95.6% | 100.0% |
+| `unknown` | 35 | 100.0% | 100.0% |
+| `unknown_cluster` | 5 | 100.0% | 80.0% |
+| `vague_or_multiple_rate` | 12 | 100.0% | 91.7% |
 
 ## Interpretation
 

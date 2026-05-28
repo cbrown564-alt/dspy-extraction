@@ -4,7 +4,10 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.exect.s5_stack import (
     apply_exect_s5_annotated_medication_guard,
+    apply_exect_s5_frequency_verifier_guards,
     build_exect_s5_stack_metadata,
+    qualitative_label_supported_by_evidence,
+    stage_graph_id_for_s5_program_variant,
 )
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
@@ -16,9 +19,6 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     ExectS5CoreFieldFamilyParallelV2bModule,
     build_exect_s5_core_family_specific_signature,
-    stage_graph_id_for_s5_program_variant,
-    _apply_exect_s5_frequency_verifier_guards,
-    _qualitative_label_supported_by_evidence,
     build_exect_s4_module,
     predict_exect_s4_records,
 )
@@ -26,7 +26,7 @@ from clinical_extraction.schemas import ExtractedValue
 
 
 def test_frequency_verifier_guard_blocks_added_labels_and_candidate_echo():
-    guarded = _apply_exect_s5_frequency_verifier_guards(
+    guarded = apply_exect_s5_frequency_verifier_guards(
         note_text="Current seizures occur one per month.",
         initial_frequency=["1 per 1 month"],
         verified=dspy.Prediction(
@@ -48,7 +48,7 @@ def test_frequency_verifier_guard_blocks_added_labels_and_candidate_echo():
 
 
 def test_frequency_verifier_guard_rejects_medication_control_change():
-    guarded = _apply_exect_s5_frequency_verifier_guards(
+    guarded = apply_exect_s5_frequency_verifier_guards(
         note_text="We increased lamotrigine and seizure control has improved.",
         initial_frequency=["frequency decreased"],
         verified=dspy.Prediction(
@@ -90,7 +90,7 @@ def test_build_exect_s4_module_returns_frequency_verify_v2b_wrapper():
 
 
 def test_frequency_verifier_v2_strict_qualitative_guard_blocks_unsupported_label():
-    guarded = _apply_exect_s5_frequency_verifier_guards(
+    guarded = apply_exect_s5_frequency_verifier_guards(
         note_text="Current seizures occur one per month.",
         initial_frequency=["1 per 1 month", "infrequent"],
         verified=dspy.Prediction(
@@ -110,11 +110,11 @@ def test_frequency_verifier_v2_strict_qualitative_guard_blocks_unsupported_label
 
 
 def test_qualitative_label_supported_by_evidence_accepts_explicit_wording():
-    assert _qualitative_label_supported_by_evidence(
+    assert qualitative_label_supported_by_evidence(
         "infrequent",
         "She continues to have infrequent focal seizures.",
     )
-    assert _qualitative_label_supported_by_evidence(
+    assert qualitative_label_supported_by_evidence(
         "frequency decreased",
         "seizures have improved since reducing the lamotrigine",
     )
@@ -193,7 +193,7 @@ def test_frequency_verify_wrapper_is_reject_only_and_preserves_am_guard():
 
 
 def test_frequency_verifier_guard_allows_seizures_improved_with_medication():
-    guarded = _apply_exect_s5_frequency_verifier_guards(
+    guarded = apply_exect_s5_frequency_verifier_guards(
         note_text="I was pleased to hear that his seizures have improved since reducing the lamotrigine.",
         initial_frequency=["frequency decreased"],
         verified=dspy.Prediction(
@@ -214,7 +214,7 @@ def test_frequency_verifier_guard_allows_seizures_improved_with_medication():
 
 
 def test_frequency_verifier_guard_case_insensitive_and_recovery():
-    guarded = _apply_exect_s5_frequency_verifier_guards(
+    guarded = apply_exect_s5_frequency_verifier_guards(
         note_text="She thinks that she has about one a week.",
         initial_frequency=["1 per 1 week"],
         verified=dspy.Prediction(

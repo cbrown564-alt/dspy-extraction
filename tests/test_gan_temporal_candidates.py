@@ -451,3 +451,42 @@ def test_temporal_candidates_represent_multi_year_seizure_free_remission():
     candidates_13598 = build_temporal_frequency_candidates(_record("gan_13598"))
     assert "seizure free for multiple year" in {c.canonical_label for c in candidates_13598}
 
+
+def test_validation_split_candidate_inventory_is_restrained_high_recall_surface():
+    from pathlib import Path
+
+    from clinical_extraction.evaluation.gan_run_analysis import load_split_ids
+    from clinical_extraction.gan.frequency import label_to_monthly_frequency
+
+    record_ids = load_split_ids(
+        Path("data/splits/gan_2026_splits.json"),
+        "gan_2026_fixed_v1:validation",
+    )
+    misses = []
+    invalid_labels = []
+    overlarge_labels = []
+    candidate_counts = []
+    for record_id in record_ids:
+        record = _record(record_id)
+        candidates = build_temporal_frequency_candidates(record)
+        labels = {candidate.canonical_label for candidate in candidates}
+        candidate_counts.append(len(candidates))
+        if record.gold_label not in labels:
+            misses.append((record_id, record.gold_label, sorted(labels)))
+        for label in labels:
+            try:
+                monthly_frequency = label_to_monthly_frequency(label)
+            except ValueError as exc:
+                invalid_labels.append((record_id, label, str(exc)))
+                continue
+            if (
+                monthly_frequency > 999
+                and label != "unknown"
+                and not label.startswith("unknown,")
+            ):
+                overlarge_labels.append((record_id, label, monthly_frequency))
+
+    assert len(record_ids) - len(misses) >= 260
+    assert max(candidate_counts) <= 20
+    assert invalid_labels == []
+    assert overlarge_labels == []

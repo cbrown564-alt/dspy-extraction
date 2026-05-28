@@ -11,7 +11,6 @@ from typing import Any
 
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.evaluation.cli import _gan_frequency_value, _prediction_label
-from clinical_extraction.gan.frequency import pragmatic_category, purist_category
 from clinical_extraction.evaluation.gan_failure_taxonomy import (
     classify_gan_frequency_failure,
     failure_action_tier,
@@ -22,7 +21,11 @@ from clinical_extraction.evaluation.gan_run_analysis import (
     build_temporal_candidate_diagnostics,
     load_split_ids,
 )
-from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+from clinical_extraction.gan.scoring import (
+    GAN_CANONICAL_SCORER,
+    GAN_PAPER_REPRODUCTION_SCORER,
+    score_gan_frequency_prediction,
+)
 from clinical_extraction.schemas import PredictionSet
 
 
@@ -44,12 +47,38 @@ def _metric_pattern(row: dict[str, Any]) -> str:
     return "".join(bits)
 
 
+def _gold_category_snapshot(
+    gold_label: str,
+    *,
+    scorer_mode: str,
+    apply_paper_prediction_repair: bool,
+    allow_prediction_range: bool,
+    allow_error_tolerance: bool,
+) -> dict[str, str]:
+    score = score_gan_frequency_prediction(
+        gold_label=gold_label,
+        predicted_label=gold_label,
+        scorer_mode=scorer_mode,
+        apply_paper_prediction_repair=apply_paper_prediction_repair,
+        allow_prediction_range=allow_prediction_range,
+        allow_error_tolerance=allow_error_tolerance,
+    )
+    return {
+        "gold_purist_category": score.gold_purist_category,
+        "gold_pragmatic_category": score.gold_pragmatic_category,
+    }
+
+
 def analyze_run(
     *,
     run_dir: Path,
     split_file: Path,
     split_name: str,
     record_ids_override: list[str] | None = None,
+    scorer_mode: str = GAN_CANONICAL_SCORER,
+    apply_paper_prediction_repair: bool = False,
+    allow_prediction_range: bool = False,
+    allow_error_tolerance: bool = False,
 ) -> dict[str, Any]:
     prediction_set = PredictionSet.model_validate_json(
         (run_dir / "predictions.json").read_text(encoding="utf-8")
@@ -66,10 +95,22 @@ def analyze_run(
         predictions_by_id=predictions_by_id,
         record_ids_override=record_ids_override,
     )
+    scorer_options = {
+        "apply_paper_prediction_repair": apply_paper_prediction_repair,
+        "allow_prediction_range": allow_prediction_range,
+        "allow_error_tolerance": allow_error_tolerance,
+    }
 
     rows: list[dict[str, Any]] = []
     for record_id in analysis_record_ids_list:
         gold = gold_by_id[record_id]
+        gold_categories = _gold_category_snapshot(
+            gold.gold_label,
+            scorer_mode=scorer_mode,
+            apply_paper_prediction_repair=apply_paper_prediction_repair,
+            allow_prediction_range=allow_prediction_range,
+            allow_error_tolerance=allow_error_tolerance,
+        )
         base = {
             "record_id": record_id,
             "gold_label": gold.gold_label,
@@ -78,8 +119,10 @@ def analyze_run(
             "hard_case": "hard_case" in gold.flags,
             "label_reference_disagreement": gold.reference_label is not None
             and gold.reference_label != gold.gold_label,
-            "gold_pragmatic_category": pragmatic_category(gold.gold_label),
-            "gold_purist_category": purist_category(gold.gold_label),
+            "scorer_mode": scorer_mode,
+            "scorer_options": scorer_options,
+            "gold_pragmatic_category": gold_categories["gold_pragmatic_category"],
+            "gold_purist_category": gold_categories["gold_purist_category"],
         }
         prediction = predictions_by_id.get(record_id)
         if prediction is None:
@@ -131,6 +174,10 @@ def analyze_run(
             score = score_gan_frequency_prediction(
                 gold_label=gold.gold_label,
                 predicted_label=predicted_label,
+                scorer_mode=scorer_mode,
+                apply_paper_prediction_repair=apply_paper_prediction_repair,
+                allow_prediction_range=allow_prediction_range,
+                allow_error_tolerance=allow_error_tolerance,
             )
         except ValueError as exc:
             rows.append(
@@ -149,11 +196,15 @@ def analyze_run(
             **base,
             **extras,
             "status": "scored",
+            "scorer_mode": score.scorer_mode,
+            "scorer_options": score.scorer_options or scorer_options,
             "predicted_label": predicted_label,
             "normalized_gold_label": score.normalized_gold_label,
             "normalized_predicted_label": score.normalized_predicted_label,
             "gold_monthly_frequency": score.gold_monthly_frequency,
             "predicted_monthly_frequency": score.predicted_monthly_frequency,
+            "gold_pragmatic_category": score.gold_pragmatic_category,
+            "gold_purist_category": score.gold_purist_category,
             "predicted_pragmatic_category": score.predicted_pragmatic_category,
             "predicted_purist_category": score.predicted_purist_category,
             "raw_exact_match": gold.gold_label == predicted_label,
@@ -317,6 +368,8 @@ def analyze_run(
     summary = {
         "run_dir": str(run_dir),
         "split_name": split_name,
+        "scorer_mode": scorer_mode,
+        "scorer_options": scorer_options,
         "analysis_scope": analysis_scope,
         "record_counts": {
             "split_total": len(load_split_ids(split_file, split_name)),
@@ -371,6 +424,8 @@ def _render_markdown(analysis: dict[str, Any], experiment_id: str) -> str:
     lines.append("")
     lines.append(f"- Artifact directory: `{summary['run_dir']}`")
     lines.append(f"- Split: `{summary['split_name']}`")
+    lines.append(f"- Scorer mode: `{summary['scorer_mode']}`")
+    lines.append(f"- Scorer options: `{summary.get('scorer_options', {})}`")
     lines.append(f"- Analysis scope: `{summary.get('analysis_scope', 'full_split')}`")
     lines.append(f"- Records in split: {summary['record_counts']['split_total']}")
     lines.append(
@@ -397,6 +452,8 @@ def _render_markdown(analysis: dict[str, Any], experiment_id: str) -> str:
         "Benchmark-facing metrics are monthly frequency, Purist category, and Pragmatic category. "
         "Normalized-label exact is diagnostic format fidelity."
     )
+    lines.append("")
+    lines.append(_scorer_mode_note(summary))
     lines.append("")
     lines.append("## Stratified operational reporting")
     lines.append("")
@@ -592,6 +649,26 @@ def _render_markdown(analysis: dict[str, Any], experiment_id: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _scorer_mode_note(summary: dict[str, Any]) -> str:
+    scorer_mode = summary.get("scorer_mode", GAN_CANONICAL_SCORER)
+    if scorer_mode == GAN_PAPER_REPRODUCTION_SCORER:
+        options = summary.get("scorer_options", {})
+        enabled = [name for name, value in options.items() if value]
+        enabled_text = (
+            ", ".join(enabled)
+            if enabled
+            else "no optional repair/range/tolerance flags enabled"
+        )
+        return (
+            "`gan2026_paper_reproduction` follows the author-evaluator compatibility "
+            f"surface for Gan paper-facing comparisons ({enabled_text})."
+        )
+    return (
+        "`gan_frequency_deterministic_v1` is the canonical clinical/project diagnostic "
+        "scorer; use `gan2026_paper_reproduction` for direct Gan paper comparisons."
+    )
+
+
 def _interpretation(
     summary: dict[str, Any],
     valid: list[dict[str, Any]],
@@ -698,6 +775,30 @@ def main() -> None:
         default=None,
         help="Optional markdown output path",
     )
+    parser.add_argument(
+        "--scorer-mode",
+        choices=(GAN_CANONICAL_SCORER, GAN_PAPER_REPRODUCTION_SCORER),
+        default=GAN_CANONICAL_SCORER,
+        help=(
+            "Gan scorer mode. Canonical mode is the project diagnostic default; "
+            "paper reproduction is required for direct Gan 2026 paper comparisons."
+        ),
+    )
+    parser.add_argument(
+        "--apply-paper-prediction-repair",
+        action="store_true",
+        help="Paper-reproduction scorer option; ignored by canonical mode.",
+    )
+    parser.add_argument(
+        "--allow-prediction-range",
+        action="store_true",
+        help="Paper-reproduction scorer option; ignored by canonical mode.",
+    )
+    parser.add_argument(
+        "--allow-error-tolerance",
+        action="store_true",
+        help="Paper-reproduction scorer option; ignored by canonical mode.",
+    )
     record_ids_group = parser.add_mutually_exclusive_group()
     record_ids_group.add_argument(
         "--record-ids",
@@ -727,6 +828,10 @@ def main() -> None:
         split_file=args.split_file,
         split_name=args.split_name,
         record_ids_override=record_ids_override,
+        scorer_mode=args.scorer_mode,
+        apply_paper_prediction_repair=args.apply_paper_prediction_repair,
+        allow_prediction_range=args.allow_prediction_range,
+        allow_error_tolerance=args.allow_error_tolerance,
     )
     output_dir = args.output_dir or (args.run_dir / "analysis")
     output_dir.mkdir(parents=True, exist_ok=True)
