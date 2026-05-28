@@ -18,7 +18,11 @@ Read first:
 - `docs/planning/kanban_plan.md` — active execution queue and next pull
 - `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md` — historical hybrid doctrine still useful inside component studies
 - `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md` — ontology (`L0`–`D1`, interleaving positions)
-- `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md` — open vs arm-reject vs operational freeze
+
+Read `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md`
+only when a task explicitly changes hybrid mechanism status. The component
+registry is the current authority for active baselines, rejected arms, blocked
+claims, and next actions.
 
 Pair with `dspy-experiment-design` and `experiment-run-lifecycle` for configs and runs.
 
@@ -155,10 +159,15 @@ until component substrates and isolated ceilings exist.
 
 ## When updating Kanban or registry
 
+- Use `docs/component_ceiling_registry.md` as the primary status ledger after
+  the May 28 pivot.
 - Maintain **Operational defaults** (frozen configs) separately from **Open mechanism classes**.
 - Move a mechanism from `open` → `arm-reject` with inspection link, not prose.
 - Move to `mechanism-reject` only after mechanism review section exists.
 - Deprioritize "closed probe" reruns unless `implementation_variant` is new in prereg.
+- Update the historical hybrid mechanism status doc only when the decision is
+  genuinely mechanism-level, not when a component card merely accepts or rejects
+  a single arm.
 
 ---
 
@@ -171,4 +180,5 @@ Before finishing a task under this skill:
 - Run IDs and comparison group cited
 - Open cells listed (what was not tested)
 - Kanban/registry updated if outcomes changed
-- `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md` updated if mechanism status changed
+- historical hybrid mechanism status updated only if a mechanism-level status
+  actually changed

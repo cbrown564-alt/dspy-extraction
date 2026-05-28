@@ -56,6 +56,26 @@ uv run pytest tests/test_experiment_arm_templates.py tests/test_interleaving_ada
 uv run python scripts/validate_experiment_taxonomy.py --errors-only
 ```
 
+## Validation Warning Triage
+
+Treat `--errors-only` warnings as known debt, not as noise to ignore blindly.
+Before changing nearby primitive metadata, catalog rows, implementation refs, or
+interleaving adapters:
+
+1. Run the relevant validator and note the current warning count.
+2. Fix warnings that are in the touched primitive family when the fix is
+   mechanical and semantics-preserving.
+3. Preserve unrelated warnings only when they are documented existing debt.
+4. Do not add new warnings without explaining why the primitive is intentionally
+   catalog-only, planned, adapter-extended, or provenance-only.
+
+As of the May 28 review, expected primitive warnings include missing catalog rows
+for `exect.comorbidity.atomization_bridge.v1` and
+`exect.investigation.drop_ecg_guard.v1`, adapter-extended interleaving
+positions for selected Gan/ExECT primitives, and stale implementation refs for
+some older ExECT primitive docs. Prefer shrinking this list when touching those
+families.
+
 ## Scope Boundaries
 
 - Minimal H3/tool-during support only. Do not build a broad tool-wrapper framework. See `docs/taxonomy/taxonomy_tool_interface_decision_20260520.md`.
