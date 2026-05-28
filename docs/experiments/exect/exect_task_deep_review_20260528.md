@@ -37,16 +37,16 @@ Core project and policy:
 
 ExECT experiment references:
 
-- [Post-Gan ExECT experiment structure](exect_post_gan_s0_experiment_structure_20260524.md)
-- [S1 pipeline decomposition audit](exect_s1_pipeline_decomposition_audit_20260524.md)
+- [Post-Gan ExECT experiment structure](../../archive/experiments/exect/model_comparison_diagnostics/exect_post_gan_s0_experiment_structure_20260524.md)
+- [S1 pipeline decomposition audit](../../archive/experiments/exect/model_comparison_diagnostics/exect_s1_pipeline_decomposition_audit_20260524.md)
 - [S4/S5 frequency gold template audit](exect_s4_s5_frequency_gold_template_audit_20260524.md)
-- [S5 frequency residual audit](exect_s5_frequency_residual_audit_20260524.md)
-- [S5 frequency post-promotion residual audit](exect_s5_frequency_post_promotion_residual_audit_20260524.md)
+- [S5 frequency residual audit](../../archive/experiments/exect/model_comparison_diagnostics/exect_s5_frequency_residual_audit_20260524.md)
+- [S5 frequency post-promotion residual audit](../../archive/experiments/exect/model_comparison_diagnostics/exect_s5_frequency_post_promotion_residual_audit_20260524.md)
 - [S5 frequency verifier v2b full validation promotion review](exect_s5_frequency_verifier_v2b_full_validation_promotion_review_20260524.md)
 - [S5 annotated medication precision assessment](exect_s5_annotated_medication_precision_assessment_20260524.md)
-- [S5 medication temporal guard walkthrough](exect_s5_medication_temporal_guard_walkthrough_20260524.md)
-- [S4 temporality planned/taper error read](exect_s4_temporality_planned_taper_error_read_20260520.md)
-- [S4 medication precision guard inspection](exect_s4_medication_precision_guard_gpt_full_validation_v1_inspection_20260521.md)
+- [S5 medication temporal guard walkthrough](../../archive/experiments/exect/medication_temporality_rejected_arms/exect_s5_medication_temporal_guard_walkthrough_20260524.md)
+- [S4 temporality planned/taper error read](../../archive/experiments/exect/frequency_pre_payload_attempts/exect_s4_temporality_planned_taper_error_read_20260520.md)
+- [S4 medication precision guard inspection](../../archive/experiments/exect/medication_temporality_rejected_arms/exect_s4_medication_precision_guard_gpt_full_validation_v1_inspection_20260521.md)
 
 Synthesis and holdout:
 

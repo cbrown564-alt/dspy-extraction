@@ -1,7 +1,7 @@
 # ExECT S5 Frequency Verifier v2b Preregistration
 
 Date: 2026-05-24
-Parent: v2 rejection — [exect_s5_frequency_verifier_v2_cap25_rejection_20260524.md](exect_s5_frequency_verifier_v2_cap25_rejection_20260524.md)
+Parent: v2 rejection — [exect_s5_frequency_verifier_v2_cap25_rejection_20260524.md](../../archive/experiments/exect/model_comparison_diagnostics/exect_s5_frequency_verifier_v2_cap25_rejection_20260524.md)
 Decision scope: arm (isolated factor)
 
 ## Hypothesis

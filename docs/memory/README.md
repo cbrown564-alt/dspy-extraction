@@ -45,9 +45,16 @@ Before adding or updating a memory item, check:
 
 | File | Purpose |
 | --- | --- |
-| `session_brief.md` | Fast-start brief for new sessions. |
-| `workflow_index.md` | Task-to-skill/doc/validation map. |
 | `dreams/TEMPLATE.md` | Template for reviewable memory consolidation candidates. |
+
+## Archived Memory Files
+
+Superseded memory routing notes were moved to `docs/archive/memory/` during the
+May 28 archive pass:
+
+- `session_brief.md`
+- `workflow_index.md`
+- `20260522_model_suite_handoff_candidate.md`
 
 ## Dream Candidates
 

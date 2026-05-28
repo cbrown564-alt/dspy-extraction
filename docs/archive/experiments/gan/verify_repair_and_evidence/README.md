@@ -1,0 +1,58 @@
+# Gan Verify/Repair and Evidence
+
+Status: archived; reproducibility evidence
+Last updated: 2026-05-28
+
+## Decision-Boundary Summary
+
+- Reason: Verification and error-analysis runs that are no longer primary decision drivers.
+- Active replacement: ../gan/README.md and relevant promoted component docs
+
+## Contents
+| File | Status Label | Reason | Replacement |
+| --- | --- | --- | --- |
+| gan_s0_candidate_builder_gap_v1_constrained_verifier_gpt4_1_mini_full_validation_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_canonical_format_residual_slice_replay_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_exact_frequency_residual_manual_read_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_exact_frequency_residual_slice_error_read_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_exact_frequency_slot_payload_residual_slice_replay_v2_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_expanded_builders_residual_slice_replay_v3_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_full_validation_error_read.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_gemini31_flash_lite_verify_repair_cap25_inspection_20260519.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_regression_slice_from_full_validation_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_l2_qwen_exact_policy_v1_8_cap25_schema_gate_20260525.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_l2_qwen_hybrid_resolution_cap25_qwen35b_ollama_inspection_20260526.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_post_repair_validation_replay.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_direct_cap25_guardrails_validation_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_direct_full_validation_guardrails_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_g2_candidates_adjudicate_cap25_v1_inspection_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_g2_candidates_adjudicate_cap25_v1_preregistration_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_guardrails_cap25_validation_20260519.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails_inspection_20260520.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_regression_slice_inspection_20260519.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_b1_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_from_full_validation_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_temporal_event_table_regression_slice_b2_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_qwen35b_verify_repair_regression_slice_guardrails_error_analysis.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_r1_1_invalid_schema_error_report_20260526.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_r1_1_schema_guard_followup_20260526.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_r1_1_schema_guard_full_validation_inspection_20260526.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_r1_1c_schema_guard_cap25_qwen35b_ollama_inspection_20260526.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_r9_recovery_and_exact_policy_summary_20260526.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_residual_candidate_builder_expansion_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_residual_exact_frequency_error_analysis_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_residual_taxonomy_consolidation_20260524.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_unknown_overuse_arm_preregistration_20260524.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini_rejection_20260524.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_verification_gpt_validation_v1_preregistration_20260521.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_verify_repair_cap25_inspection_20260519.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_verify_repair_cap25_v2_inspection_20260519.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
+| gan_s0_verify_repair_full_validation_v2_20260519.md | archived; reproducibility evidence | Verification and error-analysis runs that are no longer primary decision drivers. | ../gan/README.md and relevant promoted component docs |
