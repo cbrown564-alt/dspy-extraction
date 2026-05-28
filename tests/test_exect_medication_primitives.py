@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     build_exect_medication_candidate_payloads,
     exect_medication_benchmark_bridge,
     infer_exect_medication_temporality,
@@ -95,7 +95,7 @@ def test_exect_medication_pack_primitives_are_registered():
 
 
 def test_exect_annotated_medication_non_asm_brand_alias_guard():
-    from clinical_extraction.exect.primitives import (
+    from clinical_extraction.exect.medication_primitives import (
         recover_exect_annotated_medication_non_asm_brand_alias_guard,
     )
     # Test spelling repair, non-ASM drop, and deduplication
@@ -122,7 +122,7 @@ def test_exect_annotated_medication_non_asm_brand_alias_guard():
 
 
 def test_exect_annotated_medication_non_asm_brand_alias_guard_eplim_repair():
-    from clinical_extraction.exect.primitives import (
+    from clinical_extraction.exect.medication_primitives import (
         recover_exect_annotated_medication_non_asm_brand_alias_guard,
     )
     note = "She is taking eplim and lamotrigine."
@@ -141,7 +141,7 @@ def test_exect_annotated_medication_non_asm_brand_alias_guard_eplim_repair():
 
 
 def test_exect_annotated_medication_guard_preserves_benchmark_brand_policy():
-    from clinical_extraction.exect.primitives import (
+    from clinical_extraction.exect.medication_primitives import (
         recover_exect_annotated_medication_non_asm_brand_alias_guard,
     )
 
@@ -155,7 +155,7 @@ def test_exect_annotated_medication_guard_preserves_benchmark_brand_policy():
 
 
 def test_exect_annotated_medication_temporal_evidence_guard():
-    from clinical_extraction.exect.primitives import (
+    from clinical_extraction.exect.medication_primitives import (
         recover_exect_annotated_medication_temporal_evidence_guard,
     )
 

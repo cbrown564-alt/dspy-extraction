@@ -11,7 +11,7 @@ from clinical_extraction.datasets.exect import (
     normalize_investigation_phrase,
 )
 from clinical_extraction.evaluation.exect import EXECT_S2_SCORER
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
 )
 from clinical_extraction.programs.exect_s0_s1 import (

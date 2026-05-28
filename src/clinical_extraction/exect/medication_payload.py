@@ -9,7 +9,7 @@ from typing import Any, Literal
 from pydantic import Field
 
 from clinical_extraction.datasets.exect import canonical_medication_name
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     build_exect_medication_candidate_payloads,
     exect_medication_benchmark_bridge,
     infer_exect_medication_temporality,

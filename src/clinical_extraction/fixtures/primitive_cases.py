@@ -9,16 +9,20 @@ from typing import Any, Literal
 
 from pydantic import Field
 
-from clinical_extraction.exect.frequency_payload import (
+from clinical_extraction.exect.frequency_primitives import (
     build_exect_frequency_candidate_payloads,
     exect_frequency_benchmark_bridge,
 )
-from clinical_extraction.exect.primitives import (
-    build_exect_medication_candidate_payloads,
+from clinical_extraction.exect.diagnosis_primitives import (
     exect_diagnosis_benchmark_bridge,
+)
+from clinical_extraction.exect.medication_primitives import (
+    build_exect_medication_candidate_payloads,
     exect_medication_benchmark_bridge,
-    exect_seizure_type_benchmark_bridge,
     infer_exect_medication_temporality,
+)
+from clinical_extraction.exect.seizure_type_primitives import (
+    exect_seizure_type_benchmark_bridge,
 )
 from clinical_extraction.gan.primitives import (
     build_gan_frequency_candidate_payloads,

@@ -47,7 +47,7 @@ from clinical_extraction.exect.frequency_payload import (
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,

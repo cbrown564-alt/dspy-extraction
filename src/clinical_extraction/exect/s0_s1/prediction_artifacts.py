@@ -12,7 +12,7 @@ from clinical_extraction.datasets.exect import (
     canonical_medication_name,
     collapse_diagnoses_to_most_specific,
 )
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
 )
 from clinical_extraction.exect.s0_s1.constants import *  # noqa: F401,F403

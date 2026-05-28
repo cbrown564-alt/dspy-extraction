@@ -405,7 +405,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         ],
         implementation_refs=[
             "src/clinical_extraction/exect/medication_payload.py",
-            "src/clinical_extraction/exect/primitives.py",
+            "src/clinical_extraction/exect/medication_primitives.py",
         ],
     ),
     PrimitiveMetadata(
@@ -429,7 +429,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Brand surfaces are preserved when the note uses an audited brand form.",
             "Non-ASM medications are rejected from benchmark-facing annotated medication output.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/medication_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.medication_temporality.post_classifier.v1",
@@ -452,7 +452,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "MarkupPrescriptions has no temporality column; this is cue-based support, not raw gold.",
             "Current prescription lines with taper instructions remain current for S1 unless the medication is only a separate stop/plan mention.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/medication_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.medication_temporality.non_asm_guard.v1",
@@ -475,7 +475,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Does not reclassify planned/previous/current from evidence (unlike post_classifier.v1).",
             "Does not drop dose-only current ASM rows when model status is current.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/medication_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.medication_temporality.non_asm_dose_current_guard.v1",
@@ -506,7 +506,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "This is a narrow follow-up to the rejected broad post-classifier; it should not be treated as default behavior without a model-backed gate.",
             "Dose-line current fallback applies only to ASM labels already emitted as current by the model.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/medication_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.medication.am_guard_non_asm_brand_alias.v1",
@@ -531,7 +531,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Repairs spelling variations eplim/eplim chrono and preserves benchmark-facing brand policy.",
             "Deduplicates same-canonical medications while preserving explicit generic predictions."
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/medication_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.medication.am_guard_temporal_evidence.v1",
@@ -558,7 +558,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Deduplicates same-canonical medications while preserving explicit generic predictions.",
             "Prunes planned/previous/history ASM mentions unless the note contains a current medication candidate."
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/medication_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.seizure_type.benchmark_bridge.v1",
@@ -582,7 +582,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Benchmark-facing labels may be coarser than clinically rich ILAE surfaces.",
             "Full-note pre-vocabulary prompting remains rejected for S1 seizure type.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/seizure_type_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.diagnosis.benchmark_bridge.v1",
@@ -606,7 +606,7 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Single-event seizure diagnosis headers must not become established epilepsy diagnoses.",
             "Certainty and specificity rules follow the audited ExECT JSON diagnosis policy.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=["src/clinical_extraction/exect/diagnosis_primitives.py"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.frequency.rate_candidates.v1",
@@ -633,7 +633,10 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Cap-25 H2 pre-vocab probe was rejected; keep this primitive off default S4 paths.",
             "Gan temporal hints are accepted only when they map to audited ExECT templates.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+        implementation_refs=[
+            "src/clinical_extraction/exect/frequency_payload.py",
+            "src/clinical_extraction/exect/frequency_primitives.py",
+        ],
     ),
     PrimitiveMetadata(
         primitive_id="exect.frequency.benchmark_bridge.v1",

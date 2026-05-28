@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.diagnosis_primitives import (
     exect_diagnosis_annotation_policy,
     exect_diagnosis_benchmark_bridge,
 )

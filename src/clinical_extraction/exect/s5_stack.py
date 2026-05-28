@@ -17,7 +17,7 @@ from clinical_extraction.exect.frequency_payload import (
     build_exect_frequency_pre_vocab_labels as build_precomputed_seizure_frequency_candidates,
     repair_exect_frequency_surface as _repair_s5_seizure_frequency_surface,
 )
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
@@ -216,7 +216,7 @@ def _guarded_annotated_medication_values(
     )
 
     if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT:
-        from clinical_extraction.exect.primitives import (
+        from clinical_extraction.exect.medication_primitives import (
             recover_exect_annotated_medication_temporal_evidence_guard,
         )
 

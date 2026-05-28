@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,

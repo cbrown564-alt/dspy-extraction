@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from clinical_extraction.exect.primitives import exect_seizure_type_benchmark_bridge
+from clinical_extraction.exect.seizure_type_primitives import (
+    exect_seizure_type_benchmark_bridge,
+)
 from clinical_extraction.primitives import primitive_registry_by_id
 
 

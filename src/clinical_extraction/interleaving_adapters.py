@@ -15,7 +15,7 @@ from pydantic import Field
 
 from clinical_extraction.experiments.taxonomy import InterleavingPositionValue
 from clinical_extraction.experiments.taxonomy import InterleavingPositionValue as Position
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.medication_primitives import (
     build_exect_medication_candidate_payloads,
     exect_medication_benchmark_bridge,
 )

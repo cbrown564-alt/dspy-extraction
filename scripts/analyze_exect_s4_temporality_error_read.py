@@ -9,7 +9,9 @@ from pathlib import Path
 
 from clinical_extraction.datasets.exect import load_exect_gold_documents
 from clinical_extraction.evaluation.exect import score_exect_s4_prediction_set
-from clinical_extraction.exect.primitives import infer_exect_medication_temporality
+from clinical_extraction.exect.medication_primitives import (
+    infer_exect_medication_temporality,
+)
 from clinical_extraction.schemas import PredictionSet
 
 PLANNED_MARKERS = (
