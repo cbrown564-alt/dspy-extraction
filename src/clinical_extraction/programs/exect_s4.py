@@ -38,7 +38,7 @@ from clinical_extraction.programs.exect_s3 import (
     _s3_field_values_from_prediction,
 )
 from clinical_extraction.runs import RunMetadata
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.frequency_payload import (
     build_exect_frequency_pre_vocab_labels as build_precomputed_seizure_frequency_candidates,
     build_exect_frequency_pre_vocab_labels_high_precision as build_precomputed_seizure_frequency_candidates_high_precision,
     format_exect_frequency_pre_vocab_note as format_note_with_precomputed_seizure_frequency_candidates,
@@ -46,11 +46,13 @@ from clinical_extraction.exect.primitives import (
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
     recover_exect_frequency_benchmark_values_with_multi_label_retention as _recover_s4_seizure_frequency_multi_label_retention_raw_values,
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
+    repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
+)
+from clinical_extraction.exect.primitives import (
     recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
     recover_exect_annotated_medication_non_asm_brand_alias_guard,
-    repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
 from clinical_extraction.exect.slot_payload import format_exect_frequency_slot_payload_for_prompt
 from clinical_extraction.schemas import (

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T13:19:51.419308+00:00",
+  "generated_at": "2026-05-28T14:18:18.750767+00:00",
   "dataset": "exect_v2",
   "split_name": "validation",
   "split_file": "data/splits/exectv2_splits.json",
@@ -209,11 +209,11 @@
           }
         },
         {
-          "benchmark_value": "infrequent",
-          "raw_text": "occasional",
-          "source_span_text": "occasional",
-          "start": 706,
-          "end": 716,
+          "benchmark_value": "frequency increased",
+          "raw_text": "seizures have returned",
+          "source_span_text": "seizures have returned",
+          "start": 451,
+          "end": 473,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
@@ -221,11 +221,11 @@
           }
         },
         {
-          "benchmark_value": "frequency increased",
-          "raw_text": "seizures have returned",
-          "source_span_text": "seizures have returned",
-          "start": 451,
-          "end": 473,
+          "benchmark_value": "infrequent",
+          "raw_text": "occasional",
+          "source_span_text": "occasional",
+          "start": 706,
+          "end": 716,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
@@ -258,24 +258,12 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "3 per 1 week",
-          "raw_text": "three cans of lager every week",
-          "source_span_text": "three cans of lager every week",
-          "start": 701,
+          "benchmark_value": "1 per 1 week",
+          "raw_text": "every week",
+          "source_span_text": "every week",
+          "start": 721,
           "end": 731,
           "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "seizure free",
-          "raw_text": "not had any the previous seizures",
-          "source_span_text": "not had any the previous seizures",
-          "start": 498,
-          "end": 531,
-          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -287,6 +275,18 @@
           "source_span_text": "for 12 months",
           "start": 1329,
           "end": 1342,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "1 per 2 week",
+          "raw_text": "every two weeks",
+          "source_span_text": "every two weeks",
+          "start": 1532,
+          "end": 1547,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -318,23 +318,11 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 week",
-          "raw_text": "every week",
-          "source_span_text": "every week",
-          "start": 721,
+          "benchmark_value": "3 per 1 week",
+          "raw_text": "three cans of lager every week",
+          "source_span_text": "three cans of lager every week",
+          "start": 701,
           "end": 731,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 2 week",
-          "raw_text": "every two weeks",
-          "source_span_text": "every two weeks",
-          "start": 1532,
-          "end": 1547,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -350,6 +338,18 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "not had any the previous seizures",
+          "source_span_text": "not had any the previous seizures",
+          "start": 498,
+          "end": 531,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         }
@@ -385,95 +385,11 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "25 per 1 day",
-          "raw_text": "25 mg every day",
-          "source_span_text": "25 mg every day",
-          "start": 1190,
-          "end": 1205,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "200 per 1 week",
-          "raw_text": "200 mg every week",
-          "source_span_text": "200 mg every week",
-          "start": 1117,
-          "end": 1134,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "75 per 1 day",
-          "raw_text": "75 mg twice a day",
-          "source_span_text": "75 mg twice a day",
-          "start": 1264,
-          "end": 1281,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 day",
           "raw_text": "a day",
           "source_span_text": "a day",
           "start": 591,
           "end": 596,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "2 per 1 week",
-          "raw_text": "twice a week",
-          "source_span_text": "twice a week",
-          "start": 157,
-          "end": 169,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "infrequent",
-          "raw_text": "rare",
-          "source_span_text": "rare",
-          "start": 1364,
-          "end": 1368,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "500 per 1 day",
-          "raw_text": "500 mg twice a day",
-          "source_span_text": "500 mg twice a day",
-          "start": 578,
-          "end": 596,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 4 month",
-          "raw_text": "in four months",
-          "source_span_text": "in four months",
-          "start": 1585,
-          "end": 1599,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -493,11 +409,95 @@
           }
         },
         {
+          "benchmark_value": "1 per 4 month",
+          "raw_text": "in four months",
+          "source_span_text": "in four months",
+          "start": 1585,
+          "end": 1599,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "2 per 1 week",
+          "raw_text": "twice a week",
+          "source_span_text": "twice a week",
+          "start": 157,
+          "end": 169,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "200 per 1 week",
+          "raw_text": "200 mg every week",
+          "source_span_text": "200 mg every week",
+          "start": 1117,
+          "end": 1134,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "25 per 1 day",
+          "raw_text": "25 mg every day",
+          "source_span_text": "25 mg every day",
+          "start": 1190,
+          "end": 1205,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "500 per 1 day",
+          "raw_text": "500 mg twice a day",
+          "source_span_text": "500 mg twice a day",
+          "start": 578,
+          "end": 596,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "75 per 1 day",
+          "raw_text": "75 mg twice a day",
+          "source_span_text": "75 mg twice a day",
+          "start": 1264,
+          "end": 1281,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "frequency same",
           "raw_text": "continue to get",
           "source_span_text": "continue to get",
           "start": 1405,
           "end": 1420,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
+          "raw_text": "rare",
+          "source_span_text": "rare",
+          "start": 1364,
+          "end": 1368,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
@@ -551,35 +551,11 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "100 per 1 day",
-          "raw_text": "100 mg twice a day",
-          "source_span_text": "100 mg twice a day",
-          "start": 291,
-          "end": 309,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "25 per 1 day",
-          "raw_text": "25 mg once a day",
-          "source_span_text": "25 mg once a day",
-          "start": 725,
-          "end": 741,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "15 per 4 month",
-          "raw_text": "15 seizures over 4 months",
-          "source_span_text": "15 seizures over 4 months",
-          "start": 354,
-          "end": 379,
+          "benchmark_value": "1 per 2 week",
+          "raw_text": "every 2 weeks",
+          "source_span_text": "every 2 weeks",
+          "start": 763,
+          "end": 776,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -599,11 +575,11 @@
           }
         },
         {
-          "benchmark_value": "25 per 2 week",
-          "raw_text": "25 mg every 2 weeks",
-          "source_span_text": "25 mg every 2 weeks",
-          "start": 757,
-          "end": 776,
+          "benchmark_value": "100 per 1 day",
+          "raw_text": "100 mg twice a day",
+          "source_span_text": "100 mg twice a day",
+          "start": 291,
+          "end": 309,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -611,10 +587,34 @@
           }
         },
         {
-          "benchmark_value": "1 per 2 week",
-          "raw_text": "every 2 weeks",
-          "source_span_text": "every 2 weeks",
-          "start": 763,
+          "benchmark_value": "15 per 4 month",
+          "raw_text": "15 seizures over 4 months",
+          "source_span_text": "15 seizures over 4 months",
+          "start": 354,
+          "end": 379,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "25 per 1 day",
+          "raw_text": "25 mg once a day",
+          "source_span_text": "25 mg once a day",
+          "start": 725,
+          "end": 741,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "25 per 2 week",
+          "raw_text": "25 mg every 2 weeks",
+          "source_span_text": "25 mg every 2 weeks",
+          "start": 757,
           "end": 776,
           "rule_name": "quantified_rate_surface",
           "metadata": {
@@ -649,26 +649,14 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "1500 per 1 day",
-          "raw_text": "1500 mg twice a day",
-          "source_span_text": "1500 mg twice a day",
-          "start": 532,
-          "end": 551,
+          "benchmark_value": "1000 per 1 day",
+          "raw_text": "1000 milligrams twice a day",
+          "source_span_text": "1000 milligrams twice a day",
+          "start": 161,
+          "end": 188,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "infrequent",
-          "raw_text": "controlled",
-          "source_span_text": "controlled",
-          "start": 391,
-          "end": 401,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
             "gan_temporal_filtered": false
           }
         },
@@ -685,11 +673,11 @@
           }
         },
         {
-          "benchmark_value": "1000 per 1 day",
-          "raw_text": "1000 milligrams twice a day",
-          "source_span_text": "1000 milligrams twice a day",
-          "start": 161,
-          "end": 188,
+          "benchmark_value": "1500 per 1 day",
+          "raw_text": "1500 mg twice a day",
+          "source_span_text": "1500 mg twice a day",
+          "start": 532,
+          "end": 551,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -698,6 +686,18 @@
         },
         {
           "benchmark_value": "frequency same",
+          "raw_text": "controlled",
+          "source_span_text": "controlled",
+          "start": 391,
+          "end": 401,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
           "raw_text": "controlled",
           "source_span_text": "controlled",
           "start": 391,
@@ -734,30 +734,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": null,
-          "end": null,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 5 year",
-          "raw_text": "for 5 years",
-          "source_span_text": "for 5 years",
-          "start": 1141,
-          "end": 1152,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 day",
           "raw_text": "once a day",
           "source_span_text": "once a day",
@@ -770,23 +746,23 @@
           }
         },
         {
-          "benchmark_value": "infrequent",
-          "raw_text": "occasional",
-          "source_span_text": "occasional",
-          "start": 2287,
-          "end": 2297,
-          "rule_name": "qualitative_frequency_change_cue",
+          "benchmark_value": "1 per 1 week",
+          "raw_text": "per week",
+          "source_span_text": "per week",
+          "start": 1258,
+          "end": 1266,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
-            "candidate_source": "qualitative_change_cue",
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
         {
-          "benchmark_value": "2 per 1 day",
-          "raw_text": "twice a day",
-          "source_span_text": "twice a day",
-          "start": 2230,
-          "end": 2241,
+          "benchmark_value": "1 per 5 year",
+          "raw_text": "for 5 years",
+          "source_span_text": "for 5 years",
+          "start": 1141,
+          "end": 1152,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -806,12 +782,36 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 week",
-          "raw_text": "per week",
-          "source_span_text": "per week",
-          "start": 1258,
-          "end": 1266,
+          "benchmark_value": "2 per 1 day",
+          "raw_text": "twice a day",
+          "source_span_text": "twice a day",
+          "start": 2230,
+          "end": 2241,
           "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
+          "raw_text": "occasional",
+          "source_span_text": "occasional",
+          "start": 2287,
+          "end": 2297,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": null,
+          "end": null,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -878,10 +878,10 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "200 per 1 day",
-          "raw_text": "200 mg twice a day",
-          "source_span_text": "200 mg twice a day",
-          "start": 163,
+          "benchmark_value": "1 per 1 day",
+          "raw_text": "a day",
+          "source_span_text": "a day",
+          "start": 176,
           "end": 181,
           "rule_name": "quantified_rate_surface",
           "metadata": {
@@ -890,11 +890,11 @@
           }
         },
         {
-          "benchmark_value": "3 per 1 day",
-          "raw_text": "several times a day",
-          "source_span_text": "several times a day",
-          "start": 436,
-          "end": 455,
+          "benchmark_value": "1 per 1 week",
+          "raw_text": "once a week",
+          "source_span_text": "once a week",
+          "start": 369,
+          "end": 380,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -910,30 +910,6 @@
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 1 day",
-          "raw_text": "a day",
-          "source_span_text": "a day",
-          "start": 176,
-          "end": 181,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "infrequent",
-          "raw_text": "controlled",
-          "source_span_text": "controlled",
-          "start": 327,
-          "end": 337,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
             "gan_temporal_filtered": false
           }
         },
@@ -962,14 +938,38 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 week",
-          "raw_text": "once a week",
-          "source_span_text": "once a week",
-          "start": 369,
-          "end": 380,
+          "benchmark_value": "200 per 1 day",
+          "raw_text": "200 mg twice a day",
+          "source_span_text": "200 mg twice a day",
+          "start": 163,
+          "end": 181,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "3 per 1 day",
+          "raw_text": "several times a day",
+          "source_span_text": "several times a day",
+          "start": 436,
+          "end": 455,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "frequency increased",
+          "raw_text": "more frequent",
+          "source_span_text": "more frequent",
+          "start": 412,
+          "end": 425,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
             "gan_temporal_filtered": false
           }
         },
@@ -986,11 +986,11 @@
           }
         },
         {
-          "benchmark_value": "frequency increased",
-          "raw_text": "more frequent",
-          "source_span_text": "more frequent",
-          "start": 412,
-          "end": 425,
+          "benchmark_value": "infrequent",
+          "raw_text": "controlled",
+          "source_span_text": "controlled",
+          "start": 327,
+          "end": 337,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
@@ -1045,36 +1045,12 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "100 per 1 day",
-          "raw_text": "100 mg twice a day",
-          "source_span_text": "100 mg twice a day",
-          "start": 134,
-          "end": 152,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": null,
-          "end": null,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "3 per 1 day",
-          "raw_text": "several times a day",
-          "source_span_text": "several times a day",
-          "start": 415,
-          "end": 434,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "0 per 3 week",
+          "raw_text": "last one of these happened around three weeks ago",
+          "source_span_text": "last one of these happened around three weeks ago",
+          "start": 477,
+          "end": 526,
+          "rule_name": "zero_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -1085,6 +1061,18 @@
           "raw_text": "a day",
           "source_span_text": "a day",
           "start": 147,
+          "end": 152,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "100 per 1 day",
+          "raw_text": "100 mg twice a day",
+          "source_span_text": "100 mg twice a day",
+          "start": 134,
           "end": 152,
           "rule_name": "quantified_rate_surface",
           "metadata": {
@@ -1105,12 +1093,24 @@
           }
         },
         {
-          "benchmark_value": "0 per 3 week",
-          "raw_text": "last one of these happened around three weeks ago",
-          "source_span_text": "last one of these happened around three weeks ago",
-          "start": 477,
-          "end": 526,
-          "rule_name": "zero_rate_surface",
+          "benchmark_value": "3 per 1 day",
+          "raw_text": "several times a day",
+          "source_span_text": "several times a day",
+          "start": 415,
+          "end": 434,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "400 per 1 day",
+          "raw_text": "400 mg twice a day",
+          "source_span_text": "400 mg twice a day",
+          "start": 160,
+          "end": 178,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -1129,12 +1129,12 @@
           }
         },
         {
-          "benchmark_value": "400 per 1 day",
-          "raw_text": "400 mg twice a day",
-          "source_span_text": "400 mg twice a day",
-          "start": 160,
-          "end": 178,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": null,
+          "end": null,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -1290,6 +1290,18 @@
       ],
       "broad_candidate_records": [
         {
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "for years",
+          "source_span_text": "for years",
+          "start": 880,
+          "end": 889,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "1 per 3 month",
           "raw_text": "in 3 months",
           "source_span_text": "in 3 months",
@@ -1310,18 +1322,6 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "for years",
-          "source_span_text": "for years",
-          "start": 880,
-          "end": 889,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
@@ -1399,30 +1399,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free since 2015",
-          "raw_text": "last event 2015",
-          "source_span_text": "last event 2015",
-          "start": 433,
-          "end": 448,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "infrequent",
-          "raw_text": "well controlled",
-          "source_span_text": "well controlled",
-          "start": 926,
-          "end": 941,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "2 per 1 day",
           "raw_text": "twice daily",
           "source_span_text": "twice daily",
@@ -1443,6 +1419,30 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
+          "raw_text": "well controlled",
+          "source_span_text": "well controlled",
+          "start": 926,
+          "end": 941,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free since 2015",
+          "raw_text": "last event 2015",
+          "source_span_text": "last event 2015",
+          "start": 433,
+          "end": 448,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
@@ -1525,11 +1525,23 @@
           }
         },
         {
-          "benchmark_value": "1 per 2 year",
-          "raw_text": "for the last two years",
-          "source_span_text": "for the last two years",
-          "start": 724,
-          "end": 746,
+          "benchmark_value": "0 per 3 year",
+          "raw_text": "last event 3 years ago",
+          "source_span_text": "last event 3 years ago",
+          "start": 297,
+          "end": 319,
+          "rule_name": "zero_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "for the last year",
+          "source_span_text": "for the last year",
+          "start": 1030,
+          "end": 1047,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -1537,24 +1549,12 @@
           }
         },
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": null,
-          "end": null,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "0 per 3 year",
-          "raw_text": "last event 3 years ago",
-          "source_span_text": "last event 3 years ago",
-          "start": 297,
-          "end": 319,
-          "rule_name": "zero_rate_surface",
+          "benchmark_value": "1 per 2 year",
+          "raw_text": "for the last two years",
+          "source_span_text": "for the last two years",
+          "start": 724,
+          "end": 746,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -1573,12 +1573,12 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "for the last year",
-          "source_span_text": "for the last year",
-          "start": 1030,
-          "end": 1047,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": null,
+          "end": null,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -1632,18 +1632,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "no further seizures",
-          "source_span_text": "no further seizures",
-          "start": 337,
-          "end": 356,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "infrequent",
           "raw_text": "Infrequent",
           "source_span_text": "Infrequent",
@@ -1652,6 +1640,18 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "no further seizures",
+          "source_span_text": "no further seizures",
+          "start": 337,
+          "end": 356,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         }
@@ -1716,30 +1716,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": 771,
-          "end": 783,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "seizure_free_surface",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "4 per 3 week",
-          "raw_text": "four in the last three weeks",
-          "source_span_text": "four in the last three weeks",
-          "start": 713,
-          "end": 741,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 week",
           "raw_text": "one a week",
           "source_span_text": "one a week",
@@ -1764,6 +1740,18 @@
           }
         },
         {
+          "benchmark_value": "4 per 3 week",
+          "raw_text": "four in the last three weeks",
+          "source_span_text": "four in the last three weeks",
+          "start": 713,
+          "end": 741,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "frequency increased",
           "raw_text": "having more",
           "source_span_text": "having more",
@@ -1772,6 +1760,18 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": 771,
+          "end": 783,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "seizure_free_surface",
             "gan_temporal_filtered": false
           }
         }
@@ -1826,23 +1826,11 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "infrequent",
-          "raw_text": "controlled",
-          "source_span_text": "controlled",
-          "start": 301,
-          "end": 311,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "2 per 1 day",
-          "raw_text": "twice a day",
-          "source_span_text": "twice a day",
-          "start": 649,
-          "end": 660,
+          "benchmark_value": "1 per 1 week",
+          "raw_text": "every week",
+          "source_span_text": "every week",
+          "start": 696,
+          "end": 706,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -1862,11 +1850,11 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 week",
-          "raw_text": "every week",
-          "source_span_text": "every week",
-          "start": 696,
-          "end": 706,
+          "benchmark_value": "2 per 1 day",
+          "raw_text": "twice a day",
+          "source_span_text": "twice a day",
+          "start": 649,
+          "end": 660,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -1875,6 +1863,18 @@
         },
         {
           "benchmark_value": "frequency same",
+          "raw_text": "controlled",
+          "source_span_text": "controlled",
+          "start": 301,
+          "end": 311,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
           "raw_text": "controlled",
           "source_span_text": "controlled",
           "start": 301,
@@ -1908,12 +1908,12 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "no other episodes",
-          "source_span_text": "no other episodes",
-          "start": 655,
-          "end": 672,
-          "rule_name": "seizure_free_surface",
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "in Year",
+          "source_span_text": "in Year",
+          "start": 692,
+          "end": 699,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -1932,18 +1932,6 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "in Year",
-          "source_span_text": "in Year",
-          "start": 692,
-          "end": 699,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "infrequent",
           "raw_text": "occasional",
           "source_span_text": "occasional",
@@ -1952,6 +1940,18 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "no other episodes",
+          "source_span_text": "no other episodes",
+          "start": 655,
+          "end": 672,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         }
@@ -2028,6 +2028,18 @@
           }
         },
         {
+          "benchmark_value": "frequency increased",
+          "raw_text": "another seizure",
+          "source_span_text": "another seizure",
+          "start": 786,
+          "end": 801,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "seizure free",
           "raw_text": "seizure free",
           "source_span_text": "seizure free",
@@ -2048,18 +2060,6 @@
           "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "frequency increased",
-          "raw_text": "another seizure",
-          "source_span_text": "another seizure",
-          "start": 786,
-          "end": 801,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
             "gan_temporal_filtered": false
           }
         }
@@ -2087,18 +2087,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "not had any subsequent episodes",
-          "source_span_text": "not had any subsequent episodes",
-          "start": 900,
-          "end": 931,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 day",
           "raw_text": "for days",
           "source_span_text": "for days",
@@ -2107,18 +2095,6 @@
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "infrequent",
-          "raw_text": "controlled",
-          "source_span_text": "controlled",
-          "start": 1183,
-          "end": 1193,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
             "gan_temporal_filtered": false
           }
         },
@@ -2135,6 +2111,18 @@
           }
         },
         {
+          "benchmark_value": "frequency increased",
+          "raw_text": "another seizure",
+          "source_span_text": "another seizure",
+          "start": 1705,
+          "end": 1720,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "frequency same",
           "raw_text": "controlled",
           "source_span_text": "controlled",
@@ -2147,14 +2135,26 @@
           }
         },
         {
-          "benchmark_value": "frequency increased",
-          "raw_text": "another seizure",
-          "source_span_text": "another seizure",
-          "start": 1705,
-          "end": 1720,
+          "benchmark_value": "infrequent",
+          "raw_text": "controlled",
+          "source_span_text": "controlled",
+          "start": 1183,
+          "end": 1193,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "not had any subsequent episodes",
+          "source_span_text": "not had any subsequent episodes",
+          "start": 900,
+          "end": 931,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         }
@@ -2197,12 +2197,12 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "200 per 1 day",
-          "raw_text": "200 milligrammes twice a day",
-          "source_span_text": "200 milligrammes twice a day",
-          "start": 572,
-          "end": 600,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "0 per 5 year",
+          "raw_text": "seizure free for more than five years",
+          "source_span_text": "seizure free for more than five years",
+          "start": 405,
+          "end": 442,
+          "rule_name": "zero_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -2221,6 +2221,18 @@
           }
         },
         {
+          "benchmark_value": "200 per 1 day",
+          "raw_text": "200 milligrammes twice a day",
+          "source_span_text": "200 milligrammes twice a day",
+          "start": 572,
+          "end": 600,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "seizure free",
           "raw_text": "seizure free",
           "source_span_text": "seizure free",
@@ -2229,18 +2241,6 @@
           "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "seizure_free_surface",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "0 per 5 year",
-          "raw_text": "seizure free for more than five years",
-          "source_span_text": "seizure free for more than five years",
-          "start": 405,
-          "end": 442,
-          "rule_name": "zero_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         }
@@ -2270,59 +2270,11 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "3 per 1 week",
-          "raw_text": "3 times a week",
-          "source_span_text": "3 times a week",
-          "start": 612,
-          "end": 626,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "infrequent",
-          "raw_text": "rare",
-          "source_span_text": "rare",
-          "start": 535,
-          "end": 539,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 6 month",
-          "raw_text": "for the last 6 months",
-          "source_span_text": "for the last 6 months",
-          "start": 627,
-          "end": 648,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 week",
           "raw_text": "a week",
           "source_span_text": "a week",
           "start": 620,
           "end": 626,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 2 week",
-          "raw_text": "every two weeks",
-          "source_span_text": "every two weeks",
-          "start": 1417,
-          "end": 1432,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -2342,11 +2294,59 @@
           }
         },
         {
+          "benchmark_value": "1 per 2 week",
+          "raw_text": "every two weeks",
+          "source_span_text": "every two weeks",
+          "start": 1417,
+          "end": 1432,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "1 per 6 month",
+          "raw_text": "for the last 6 months",
+          "source_span_text": "for the last 6 months",
+          "start": 627,
+          "end": 648,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "3 per 1 week",
+          "raw_text": "3 times a week",
+          "source_span_text": "3 times a week",
+          "start": 612,
+          "end": 626,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "frequency increased",
           "raw_text": "more frequent",
           "source_span_text": "more frequent",
           "start": 568,
           "end": 581,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
+          "raw_text": "rare",
+          "source_span_text": "rare",
+          "start": 535,
+          "end": 539,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
@@ -2392,14 +2392,14 @@
           }
         },
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": 2110,
-          "end": 2122,
-          "rule_name": "seizure_free_surface",
+          "benchmark_value": "1 per 1 day",
+          "raw_text": "once a day",
+          "source_span_text": "once a day",
+          "start": 276,
+          "end": 286,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
-            "candidate_source": "seizure_free_surface",
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
@@ -2416,11 +2416,11 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 day",
-          "raw_text": "once a day",
-          "source_span_text": "once a day",
-          "start": 276,
-          "end": 286,
+          "benchmark_value": "1 per 2 week",
+          "raw_text": "every 2 weeks",
+          "source_span_text": "every 2 weeks",
+          "start": 309,
+          "end": 322,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -2440,14 +2440,14 @@
           }
         },
         {
-          "benchmark_value": "1 per 2 week",
-          "raw_text": "every 2 weeks",
-          "source_span_text": "every 2 weeks",
-          "start": 309,
-          "end": 322,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": 2110,
+          "end": 2122,
+          "rule_name": "seizure_free_surface",
           "metadata": {
-            "candidate_source": "note_regex_quantified",
+            "candidate_source": "seizure_free_surface",
             "gan_temporal_filtered": false
           }
         }
@@ -2507,30 +2507,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "100 per 1 day",
-          "raw_text": "100 milligrams twice a day",
-          "source_span_text": "100 milligrams twice a day",
-          "start": 1657,
-          "end": 1683,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": null,
-          "end": null,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "0 per 3 year",
           "raw_text": "last occurred three years ago",
           "source_span_text": "last occurred three years ago",
@@ -2555,12 +2531,36 @@
           }
         },
         {
+          "benchmark_value": "100 per 1 day",
+          "raw_text": "100 milligrams twice a day",
+          "source_span_text": "100 milligrams twice a day",
+          "start": 1657,
+          "end": 1683,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "50 per 1 week",
           "raw_text": "50 milligrams every week",
           "source_span_text": "50 milligrams every week",
           "start": 1607,
           "end": 1631,
           "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": null,
+          "end": null,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -2663,14 +2663,14 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "infrequent",
-          "raw_text": "well controlled",
-          "source_span_text": "well controlled",
-          "start": 291,
-          "end": 306,
-          "rule_name": "qualitative_frequency_change_cue",
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "in the last year",
+          "source_span_text": "in the last year",
+          "start": 463,
+          "end": 479,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
-            "candidate_source": "qualitative_change_cue",
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
@@ -2687,6 +2687,18 @@
           }
         },
         {
+          "benchmark_value": "frequency increased",
+          "raw_text": "seizures have been worse",
+          "source_span_text": "seizures have been worse",
+          "start": 438,
+          "end": 462,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "frequency same",
           "raw_text": "well controlled",
           "source_span_text": "well controlled",
@@ -2699,23 +2711,11 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "in the last year",
-          "source_span_text": "in the last year",
-          "start": 463,
-          "end": 479,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "frequency increased",
-          "raw_text": "seizures have been worse",
-          "source_span_text": "seizures have been worse",
-          "start": 438,
-          "end": 462,
+          "benchmark_value": "infrequent",
+          "raw_text": "well controlled",
+          "source_span_text": "well controlled",
+          "start": 291,
+          "end": 306,
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
@@ -2836,24 +2836,12 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "1 per 2 year",
-          "raw_text": "for several years",
-          "source_span_text": "for several years",
-          "start": 294,
-          "end": 311,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "seizure free",
-          "raw_text": "not had any generalised convulsions",
-          "source_span_text": "not had any generalised convulsions",
+          "benchmark_value": "0 per 2 year",
+          "raw_text": "not had any generalised convulsions now for several years",
+          "source_span_text": "not had any generalised convulsions now for several years",
           "start": 254,
-          "end": 289,
-          "rule_name": "seizure_free_surface",
+          "end": 311,
+          "rule_name": "zero_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -2872,23 +2860,11 @@
           }
         },
         {
-          "benchmark_value": "infrequent",
-          "raw_text": "well controlled",
-          "source_span_text": "well controlled",
-          "start": 230,
-          "end": 245,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "0 per 2 year",
-          "raw_text": "not had any generalised convulsions now for several years",
-          "source_span_text": "not had any generalised convulsions now for several years",
-          "start": 254,
-          "end": 311,
+          "benchmark_value": "0 per 5 year",
+          "raw_text": "not happen now for at least 5 years",
+          "source_span_text": "not happen now for at least 5 years",
+          "start": 671,
+          "end": 706,
           "rule_name": "zero_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -2896,12 +2872,24 @@
           }
         },
         {
-          "benchmark_value": "0 per 5 year",
-          "raw_text": "not happen now for at least 5 years",
-          "source_span_text": "not happen now for at least 5 years",
-          "start": 671,
-          "end": 706,
-          "rule_name": "zero_rate_surface",
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "a years",
+          "source_span_text": "a years",
+          "start": 897,
+          "end": 904,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "1 per 2 year",
+          "raw_text": "for several years",
+          "source_span_text": "for several years",
+          "start": 294,
+          "end": 311,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -2932,12 +2920,24 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "a years",
-          "source_span_text": "a years",
-          "start": 897,
-          "end": 904,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "infrequent",
+          "raw_text": "well controlled",
+          "source_span_text": "well controlled",
+          "start": 230,
+          "end": 245,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "not had any generalised convulsions",
+          "source_span_text": "not had any generalised convulsions",
+          "start": 254,
+          "end": 289,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -3015,23 +3015,23 @@
           }
         },
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": null,
-          "end": null,
-          "rule_name": "seizure_free_surface",
+          "benchmark_value": "1 per 1 month",
+          "raw_text": "every month",
+          "source_span_text": "every month",
+          "start": 1149,
+          "end": 1160,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
         {
-          "benchmark_value": "1 per 1 month",
-          "raw_text": "every month",
-          "source_span_text": "every month",
-          "start": 1149,
-          "end": 1160,
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "per year",
+          "source_span_text": "per year",
+          "start": 392,
+          "end": 400,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -3075,12 +3075,12 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "per year",
-          "source_span_text": "per year",
-          "start": 392,
-          "end": 400,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": null,
+          "end": null,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -3130,34 +3130,10 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "not had any more seizures",
-          "source_span_text": "not had any more seizures",
-          "start": 370,
-          "end": 395,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "seizure_free_surface",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 month",
           "raw_text": "per month",
           "source_span_text": "per month",
           "start": 324,
-          "end": 333,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "3 per 1 month",
-          "raw_text": "3 seizures per month",
-          "source_span_text": "3 seizures per month",
-          "start": 313,
           "end": 333,
           "rule_name": "quantified_rate_surface",
           "metadata": {
@@ -3178,14 +3154,14 @@
           }
         },
         {
-          "benchmark_value": "frequency same",
-          "raw_text": "no change",
-          "source_span_text": "no change",
-          "start": 750,
-          "end": 759,
-          "rule_name": "qualitative_frequency_change_cue",
+          "benchmark_value": "3 per 1 month",
+          "raw_text": "3 seizures per month",
+          "source_span_text": "3 seizures per month",
+          "start": 313,
+          "end": 333,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
-            "candidate_source": "qualitative_change_cue",
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
@@ -3198,6 +3174,30 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "frequency same",
+          "raw_text": "no change",
+          "source_span_text": "no change",
+          "start": 750,
+          "end": 759,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "not had any more seizures",
+          "source_span_text": "not had any more seizures",
+          "start": 370,
+          "end": 395,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "seizure_free_surface",
             "gan_temporal_filtered": false
           }
         }
@@ -3254,30 +3254,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "not had any seizure",
-          "source_span_text": "not had any seizure",
-          "start": 1105,
-          "end": 1124,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "frequency same",
-          "raw_text": "no change",
-          "source_span_text": "no change",
-          "start": 941,
-          "end": 950,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "0 per 5 year",
           "raw_text": "last event was more than five years ago",
           "source_span_text": "last event was more than five years ago",
@@ -3296,6 +3272,30 @@
           "start": 644,
           "end": 651,
           "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "frequency same",
+          "raw_text": "no change",
+          "source_span_text": "no change",
+          "start": 941,
+          "end": 950,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "not had any seizure",
+          "source_span_text": "not had any seizure",
+          "start": 1105,
+          "end": 1124,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -3323,23 +3323,11 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "15 per 1 day",
-          "raw_text": "15 cigarettes a day",
-          "source_span_text": "15 cigarettes a day",
-          "start": 1297,
-          "end": 1316,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 6 month",
-          "raw_text": "in 6 months",
-          "source_span_text": "in 6 months",
-          "start": 1661,
-          "end": 1672,
+          "benchmark_value": "1 per 1 day",
+          "raw_text": "once a day",
+          "source_span_text": "once a day",
+          "start": 179,
+          "end": 189,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -3359,11 +3347,23 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 day",
-          "raw_text": "once a day",
-          "source_span_text": "once a day",
-          "start": 179,
-          "end": 189,
+          "benchmark_value": "1 per 6 month",
+          "raw_text": "in 6 months",
+          "source_span_text": "in 6 months",
+          "start": 1661,
+          "end": 1672,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "15 per 1 day",
+          "raw_text": "15 cigarettes a day",
+          "source_span_text": "15 cigarettes a day",
+          "start": 1297,
+          "end": 1316,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -3437,22 +3437,10 @@
           }
         },
         {
-          "benchmark_value": "infrequent",
-          "raw_text": "infrequent",
-          "source_span_text": "infrequent",
-          "start": 962,
-          "end": 972,
-          "rule_name": "qualitative_frequency_change_cue",
-          "metadata": {
-            "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "2 per 1 year",
-          "raw_text": "2 secondary generalised seizures per year",
-          "source_span_text": "2 secondary generalised seizures per year",
-          "start": 801,
+          "benchmark_value": "1 per 1 year",
+          "raw_text": "per year",
+          "source_span_text": "per year",
+          "start": 834,
           "end": 842,
           "rule_name": "quantified_rate_surface",
           "metadata": {
@@ -3473,14 +3461,26 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 year",
-          "raw_text": "per year",
-          "source_span_text": "per year",
-          "start": 834,
+          "benchmark_value": "2 per 1 year",
+          "raw_text": "2 secondary generalised seizures per year",
+          "source_span_text": "2 secondary generalised seizures per year",
+          "start": 801,
           "end": 842,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "infrequent",
+          "raw_text": "infrequent",
+          "source_span_text": "infrequent",
+          "start": 962,
+          "end": 972,
+          "rule_name": "qualitative_frequency_change_cue",
+          "metadata": {
+            "candidate_source": "qualitative_change_cue",
             "gan_temporal_filtered": false
           }
         }
@@ -3511,11 +3511,11 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "1 per 6 year",
-          "raw_text": "for 6 years",
-          "source_span_text": "for 6 years",
-          "start": 309,
-          "end": 320,
+          "benchmark_value": "1 per 1 day",
+          "raw_text": "once a day",
+          "source_span_text": "once a day",
+          "start": 1599,
+          "end": 1609,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -3523,23 +3523,35 @@
           }
         },
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "not had febrile seizures",
-          "source_span_text": "not had febrile seizures",
-          "start": 1097,
-          "end": 1121,
-          "rule_name": "seizure_free_surface",
+          "benchmark_value": "1 per 1 month",
+          "raw_text": "per month",
+          "source_span_text": "per month",
+          "start": 348,
+          "end": 357,
+          "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
         {
-          "benchmark_value": "1 per 1 day",
-          "raw_text": "once a day",
-          "source_span_text": "once a day",
-          "start": 1599,
-          "end": 1609,
+          "benchmark_value": "1 per 1 week",
+          "raw_text": "per week",
+          "source_span_text": "per week",
+          "start": 1021,
+          "end": 1029,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "1 per 6 year",
+          "raw_text": "for 6 years",
+          "source_span_text": "for 6 years",
+          "start": 309,
+          "end": 320,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -3571,24 +3583,12 @@
           }
         },
         {
-          "benchmark_value": "1 per 1 month",
-          "raw_text": "per month",
-          "source_span_text": "per month",
-          "start": 348,
-          "end": 357,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 1 week",
-          "raw_text": "per week",
-          "source_span_text": "per week",
-          "start": 1021,
-          "end": 1029,
-          "rule_name": "quantified_rate_surface",
+          "benchmark_value": "seizure free",
+          "raw_text": "not had febrile seizures",
+          "source_span_text": "not had febrile seizures",
+          "start": 1097,
+          "end": 1121,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -3648,6 +3648,18 @@
       ],
       "broad_candidate_records": [
         {
+          "benchmark_value": "1 per 1 month",
+          "raw_text": "once to twice per month",
+          "source_span_text": "once to twice per month",
+          "start": 434,
+          "end": 457,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
           "benchmark_value": "2 per 1 day",
           "raw_text": "twice a day",
           "source_span_text": "twice a day",
@@ -3668,18 +3680,6 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
-          "benchmark_value": "1 per 1 month",
-          "raw_text": "once to twice per month",
-          "source_span_text": "once to twice per month",
-          "start": 434,
-          "end": 457,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         },
@@ -3732,18 +3732,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "seizure free",
-          "source_span_text": "seizure free",
-          "start": null,
-          "end": null,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "frequency increased",
           "raw_text": "seizures worse",
           "source_span_text": "seizures worse",
@@ -3752,6 +3740,18 @@
           "rule_name": "qualitative_frequency_change_cue",
           "metadata": {
             "candidate_source": "qualitative_change_cue",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "seizure free",
+          "source_span_text": "seizure free",
+          "start": null,
+          "end": null,
+          "rule_name": "seizure_free_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
           }
         }
@@ -3843,18 +3843,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "seizure free",
-          "raw_text": "no history of febrile seizures",
-          "source_span_text": "no history of febrile seizures",
-          "start": 576,
-          "end": 606,
-          "rule_name": "seizure_free_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 month",
           "raw_text": "a month",
           "source_span_text": "a month",
@@ -3897,6 +3885,18 @@
           "start": 523,
           "end": 541,
           "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "seizure free",
+          "raw_text": "no history of febrile seizures",
+          "source_span_text": "no history of febrile seizures",
+          "start": 576,
+          "end": 606,
+          "rule_name": "seizure_free_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
             "gan_temporal_filtered": false
@@ -3957,18 +3957,6 @@
       ],
       "broad_candidate_records": [
         {
-          "benchmark_value": "1 per 1 month",
-          "raw_text": "once a month",
-          "source_span_text": "once a month",
-          "start": 785,
-          "end": 797,
-          "rule_name": "quantified_rate_surface",
-          "metadata": {
-            "candidate_source": "note_regex_quantified",
-            "gan_temporal_filtered": false
-          }
-        },
-        {
           "benchmark_value": "1 per 1 day",
           "raw_text": "1 seizure per day",
           "source_span_text": "1 seizure per day",
@@ -3981,11 +3969,23 @@
           }
         },
         {
-          "benchmark_value": "2 per 1 day",
-          "raw_text": "twice a day",
-          "source_span_text": "twice a day",
-          "start": 1529,
-          "end": 1540,
+          "benchmark_value": "1 per 1 month",
+          "raw_text": "once a month",
+          "source_span_text": "once a month",
+          "start": 785,
+          "end": 797,
+          "rule_name": "quantified_rate_surface",
+          "metadata": {
+            "candidate_source": "note_regex_quantified",
+            "gan_temporal_filtered": false
+          }
+        },
+        {
+          "benchmark_value": "1 per 2 week",
+          "raw_text": "every two weeks",
+          "source_span_text": "every two weeks",
+          "start": 1491,
+          "end": 1506,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",
@@ -4005,11 +4005,11 @@
           }
         },
         {
-          "benchmark_value": "1 per 2 week",
-          "raw_text": "every two weeks",
-          "source_span_text": "every two weeks",
-          "start": 1491,
-          "end": 1506,
+          "benchmark_value": "2 per 1 day",
+          "raw_text": "twice a day",
+          "source_span_text": "twice a day",
+          "start": 1529,
+          "end": 1540,
           "rule_name": "quantified_rate_surface",
           "metadata": {
             "candidate_source": "note_regex_quantified",

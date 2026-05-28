@@ -6,7 +6,9 @@ import json
 import re
 from dataclasses import dataclass
 
-from clinical_extraction.exect.primitives import build_exect_frequency_pre_vocab_labels
+from clinical_extraction.exect.frequency_payload import (
+    build_exect_frequency_pre_vocab_labels,
+)
 
 ExectFrequencySlotType = str
 

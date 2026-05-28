@@ -1,0 +1,3181 @@
+{
+  "artifact_only": true,
+  "audit_id": "exect_s1_raw_bridge_prompt_split_audit_20260528",
+  "bridge_only_repair_counts": {
+    "policy_post_bridge_cap25": {
+      "diagnosis": 7,
+      "seizure_type": 21
+    },
+    "policy_post_bridge_full_validation": {
+      "diagnosis": 22,
+      "seizure_type": 28
+    },
+    "qwen_clean_test_holdout": {
+      "diagnosis": 17,
+      "seizure_type": 17
+    },
+    "qwen_clean_validation": {
+      "diagnosis": 21,
+      "seizure_type": 20
+    }
+  },
+  "caveats": [
+    "This audit reuses stored artifacts and makes no model calls.",
+    "It does not change loader, scorer, split, or benchmark bridge semantics.",
+    "Cap-25 prompt-policy deltas are diagnostic slice comparisons, not full-validation estimates.",
+    "Test-holdout metrics are reported only from the pre-existing test-holdout run and must not be used for tuning.",
+    "Medication is excluded from E2 because this card targets diagnosis and seizure-type causal attribution."
+  ],
+  "dataset": "exect_v2",
+  "field_families": [
+    "diagnosis",
+    "seizure_type"
+  ],
+  "interpretation": [
+    "Full-validation GPT S1 is near ceiling only after benchmark-policy bridges: diagnosis rises from 61.5% raw to 93.8% bridged, and seizure type rises from 57.4% to 90.5%.",
+    "The full-validation bridge contribution remains large (+32.3 pp diagnosis, +33.1 pp seizure type), so raw extraction is not itself at ceiling.",
+    "The Qwen clean v2 test holdout drops sharply relative to its validation anchor (-28.5 pp diagnosis, -22.1 pp seizure type), so S1 should be treated as validation-aligned rather than globally solved.",
+    "Residuals should be worked family by family: diagnosis failures skew toward scope/specificity/extraction boundaries, while seizure-type failures retain policy and bridge-sensitive granularity problems.",
+    "Decision: E2 supports keeping S1 as a strong validation anchor, but not as a near-ceiling mechanism claim until raw extraction and prompt-policy transfer are verified on holdout without using holdout for tuning."
+  ],
+  "model_calls": 0,
+  "residual_comparison": {
+    "policy_post_bridge_full_validation": {
+      "bridge": 5,
+      "extraction": 1,
+      "policy": 2,
+      "scope": 2,
+      "specificity_collapse": 1
+    },
+    "qwen_clean_test_holdout": {
+      "bridge": 10,
+      "extraction": 9,
+      "policy": 6,
+      "scope": 6,
+      "specificity_collapse": 7
+    },
+    "qwen_clean_validation": {
+      "bridge": 6,
+      "extraction": 3,
+      "policy": 7,
+      "scope": 1,
+      "specificity_collapse": 1
+    }
+  },
+  "residual_samples": {
+    "policy_post_bridge_full_validation": [
+      {
+        "document_id": "EA0072",
+        "false_negatives": [
+          "focal motor seizure"
+        ],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:secondary_token_co_listed",
+          "missing_evidence"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0109",
+        "false_negatives": [
+          "temporal lobe seizures"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:fused_seizure_type_split"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0125",
+        "false_negatives": [
+          "jme"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [],
+        "residual_class": "specificity_collapse"
+      },
+      {
+        "document_id": "EA0135",
+        "false_negatives": [
+          "focal onset epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0137",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "extraction"
+      },
+      {
+        "document_id": "EA0137",
+        "false_negatives": [],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:secondary_token_co_listed",
+          "missing_evidence"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0143",
+        "false_negatives": [],
+        "false_positives": [
+          "symptomatic structural focal epilepsy"
+        ],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:diagnosis_co_list_augmented"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0143",
+        "false_negatives": [
+          "focal"
+        ],
+        "false_positives": [
+          "focal seizures with altered awareness"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0150",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:symptomatic_structural_focal_restored"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0174",
+        "false_negatives": [
+          "epileptic seizures"
+        ],
+        "false_positives": [
+          "prolonged bilateral episodes of limb shaking with retained awareness"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "scope"
+      },
+      {
+        "document_id": "EA0179",
+        "false_negatives": [],
+        "false_positives": [
+          "complex partial seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "scope"
+      }
+    ],
+    "qwen_clean_test_holdout": [
+      {
+        "document_id": "EA0007",
+        "false_negatives": [],
+        "false_positives": [
+          "focal seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0015",
+        "false_negatives": [],
+        "false_positives": [
+          "epilepsy"
+        ],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "extraction"
+      },
+      {
+        "document_id": "EA0015",
+        "false_negatives": [
+          "epileptic attack"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "extraction"
+      },
+      {
+        "document_id": "EA0020",
+        "false_negatives": [],
+        "false_positives": [
+          "generalized tonic clonic seizure",
+          "absence seizure"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0033",
+        "false_negatives": [],
+        "false_positives": [
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [
+          "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0039",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "extraction"
+      },
+      {
+        "document_id": "EA0049",
+        "false_negatives": [
+          "myoclonic seizures",
+          "generalized tonic clonic seizure"
+        ],
+        "false_positives": [
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [
+          "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0056",
+        "false_negatives": [
+          "localisation related epilepsy",
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "specificity_collapse"
+      },
+      {
+        "document_id": "EA0056",
+        "false_negatives": [
+          "partial motor seizures",
+          "secondary generalized seizures"
+        ],
+        "false_positives": [
+          "focal aware seizures",
+          "focal motor seizures",
+          "focal to bilateral convulsive seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "missing_evidence"
+        ],
+        "residual_class": "scope"
+      },
+      {
+        "document_id": "EA0058",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:symptomatic_structural_focal_restored"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0060",
+        "false_negatives": [
+          "epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "extraction"
+      },
+      {
+        "document_id": "EA0060",
+        "false_negatives": [],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:secondary_token_co_listed",
+          "missing_evidence"
+        ],
+        "residual_class": "bridge"
+      }
+    ],
+    "qwen_clean_validation": [
+      {
+        "document_id": "EA0016",
+        "false_negatives": [
+          "focal seizure"
+        ],
+        "false_positives": [
+          "focal seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0029",
+        "false_negatives": [],
+        "false_positives": [
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [
+          "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0047",
+        "false_negatives": [
+          "generalized seizures"
+        ],
+        "false_positives": [
+          "generalized tonic clonic seizures",
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0050",
+        "false_negatives": [],
+        "false_positives": [
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [
+          "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0059",
+        "false_negatives": [],
+        "false_positives": [
+          "epilepsy"
+        ],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "missing_evidence",
+          "benchmark_bridge:diagnosis_co_list_augmented"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0072",
+        "false_negatives": [
+          "focal motor seizure"
+        ],
+        "false_positives": [
+          "secondary"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "benchmark_bridge:secondary_token_co_listed",
+          "missing_evidence"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0090",
+        "false_negatives": [
+          "generalized tonic clonic seizure"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [
+          "missing_evidence"
+        ],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0109",
+        "false_negatives": [
+          "temporal lobe seizures"
+        ],
+        "false_positives": [],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "extraction"
+      },
+      {
+        "document_id": "EA0124",
+        "false_negatives": [],
+        "false_positives": [
+          "absence seizures"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      },
+      {
+        "document_id": "EA0125",
+        "false_negatives": [
+          "jme"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [],
+        "residual_class": "specificity_collapse"
+      },
+      {
+        "document_id": "EA0125",
+        "false_negatives": [
+          "generalized tonic seizures"
+        ],
+        "false_positives": [
+          "generalized tonic seizure",
+          "absence seizure"
+        ],
+        "field_family": "seizure_type",
+        "gold_quality_flags": [
+          "specificity_collapsed"
+        ],
+        "prediction_quality_flags": [
+          "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+        ],
+        "residual_class": "bridge"
+      },
+      {
+        "document_id": "EA0135",
+        "false_negatives": [
+          "focal onset epilepsy"
+        ],
+        "false_positives": [],
+        "field_family": "diagnosis",
+        "gold_quality_flags": [],
+        "prediction_quality_flags": [],
+        "residual_class": "policy"
+      }
+    ]
+  },
+  "run_summaries": {
+    "policy_post_bridge_cap25": {
+      "bridge_flag_counts": {
+        "diagnosis": 7,
+        "seizure_type": 21
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 4,
+        "benchmark_bridge:focal_onset_to_bilateral_surface": 2,
+        "benchmark_bridge:fused_seizure_type_split": 14,
+        "benchmark_bridge:granular_seizure_surface_coarsened": 2,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 7,
+        "benchmark_bridge:jme_tonic_clonic_surface": 3,
+        "benchmark_bridge:on_awakening_diagnosis_surface": 1,
+        "benchmark_bridge:secondary_token_co_listed": 3,
+        "benchmark_bridge:seizure_temporal_modifier_stripped": 2,
+        "benchmark_bridge:seizure_type_convulsive_modifier": 2,
+        "benchmark_bridge:symptomatic_structural_focal_restored": 1,
+        "specificity_collapsed": 4
+      },
+      "counts": {
+        "evaluated_records": 25,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 175,
+        "predicted_records": 25
+      },
+      "field_f1": {
+        "diagnosis": 0.975609756097561,
+        "seizure_type": 0.9538461538461539
+      },
+      "field_precision": {
+        "diagnosis": 1.0,
+        "seizure_type": 0.96875
+      },
+      "field_recall": {
+        "diagnosis": 0.9523809523809523,
+        "seizure_type": 0.9393939393939394
+      },
+      "field_support": {
+        "diagnosis": 21,
+        "seizure_type": 33
+      },
+      "micro_f1": 0.9575757575757576,
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+      "repair_policy": "artifact_benchmark_bridge_only",
+      "residual_class_counts": {
+        "bridge": 2,
+        "specificity_collapse": 1
+      },
+      "residuals": [
+        {
+          "document_id": "EA0072",
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "false_positives": [
+            "secondary"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [
+            "temporal lobe seizures"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        }
+      ],
+      "run_dir": "archive/runs/exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini_20260520T190754Z",
+      "run_id": "exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini_20260520T190754Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:validation"
+    },
+    "policy_post_bridge_full_validation": {
+      "bridge_flag_counts": {
+        "diagnosis": 22,
+        "seizure_type": 28
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 10,
+        "benchmark_bridge:dissociative_focal_seizure_suppressed": 1,
+        "benchmark_bridge:epileptic_seizures_surface_restored": 1,
+        "benchmark_bridge:focal_onset_to_bilateral_surface": 2,
+        "benchmark_bridge:fused_seizure_type_split": 14,
+        "benchmark_bridge:granular_seizure_surface_coarsened": 2,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 7,
+        "benchmark_bridge:jme_tonic_clonic_surface": 3,
+        "benchmark_bridge:on_awakening_diagnosis_surface": 1,
+        "benchmark_bridge:secondary_token_co_listed": 8,
+        "benchmark_bridge:seizure_temporal_modifier_stripped": 2,
+        "benchmark_bridge:seizure_type_convulsive_modifier": 2,
+        "benchmark_bridge:specificity_collapse_diagnosis_co_listed": 3,
+        "benchmark_bridge:specificity_collapse_seizure_surface": 1,
+        "benchmark_bridge:symptomatic_structural_focal_restored": 2,
+        "benchmark_bridge:unclassified_epilepsy_surface": 3,
+        "specificity_collapsed": 12
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      },
+      "field_f1": {
+        "diagnosis": 0.9382716049382716,
+        "seizure_type": 0.9052631578947369
+      },
+      "field_precision": {
+        "diagnosis": 0.9743589743589743,
+        "seizure_type": 0.8958333333333334
+      },
+      "field_recall": {
+        "diagnosis": 0.9047619047619048,
+        "seizure_type": 0.9148936170212766
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47
+      },
+      "micro_f1": 0.9230769230769231,
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+      "repair_policy": "artifact_benchmark_bridge_only",
+      "residual_class_counts": {
+        "bridge": 5,
+        "extraction": 1,
+        "policy": 2,
+        "scope": 2,
+        "specificity_collapse": 1
+      },
+      "residuals": [
+        {
+          "document_id": "EA0072",
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "false_positives": [
+            "secondary"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [
+            "temporal lobe seizures"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:fused_seizure_type_split"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0135",
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0137",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0137",
+          "false_negatives": [],
+          "false_positives": [
+            "secondary"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0143",
+          "false_negatives": [],
+          "false_positives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0143",
+          "false_negatives": [
+            "focal"
+          ],
+          "false_positives": [
+            "focal seizures with altered awareness"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0150",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0174",
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "false_positives": [
+            "prolonged bilateral episodes of limb shaking with retained awareness"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0179",
+          "false_negatives": [],
+          "false_positives": [
+            "complex partial seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        }
+      ],
+      "run_dir": "archive/runs/exect_s1_interleaving_h1_post_bridge_gpt4_1_mini_20260520T190807Z",
+      "run_id": "exect_s1_interleaving_h1_post_bridge_gpt4_1_mini_20260520T190807Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:validation"
+    },
+    "policy_raw_cap25": {
+      "bridge_flag_counts": {
+        "diagnosis": 0,
+        "seizure_type": 0
+      },
+      "bridge_flag_names": {},
+      "counts": {
+        "evaluated_records": 25,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 175,
+        "predicted_records": 25
+      },
+      "field_f1": {
+        "diagnosis": 0.7142857142857143,
+        "seizure_type": 0.5633802816901409
+      },
+      "field_precision": {
+        "diagnosis": 0.7142857142857143,
+        "seizure_type": 0.5263157894736842
+      },
+      "field_recall": {
+        "diagnosis": 0.7142857142857143,
+        "seizure_type": 0.6060606060606061
+      },
+      "field_support": {
+        "diagnosis": 21,
+        "seizure_type": 33
+      },
+      "micro_f1": 0.7283236994219654,
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+      "repair_policy": "raw_no_benchmark_bridges",
+      "residual_class_counts": {
+        "extraction": 3,
+        "policy": 16,
+        "scope": 3,
+        "specificity_collapse": 3
+      },
+      "residuals": [
+        {
+          "document_id": "EA0018",
+          "false_negatives": [
+            "temporal lobe seizure",
+            "focal seizures"
+          ],
+          "false_positives": [
+            "temporal lobe onset focal seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0026",
+          "false_negatives": [],
+          "false_positives": [
+            "juvenile myoclonic epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0026",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0029",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0045",
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0047",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0048",
+          "false_negatives": [
+            "tonic clonic seizures"
+          ],
+          "false_positives": [
+            "myoclonic seizures",
+            "generalized tonic clonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0050",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic jerks",
+            "absences"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0059",
+          "false_negatives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "false_positives": [
+            "symptomatic structural epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0061",
+          "false_negatives": [
+            "parietal lobe epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0061",
+          "false_negatives": [
+            "focal to bilateral convulsive seizures"
+          ],
+          "false_positives": [
+            "focal to bilateral seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0069",
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0072",
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures with secondary generalisation"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [
+            "focal seizures",
+            "secondary generalisation",
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "focal seizures with secondary generalisation"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0098",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0098",
+          "false_negatives": [
+            "focal to bilateral convulsive seizure"
+          ],
+          "false_positives": [
+            "focal onset convulsive seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0102",
+          "false_negatives": [],
+          "false_positives": [
+            "non epileptic psychogenic seizures"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [
+            "focal seizures",
+            "temporal lobe seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0116",
+          "false_negatives": [
+            "epilepsy with generalized tonic clonic seizures on awakening"
+          ],
+          "false_positives": [
+            "epilepsy with generalized tonic clonic seizures from sleep"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0116",
+          "false_negatives": [
+            "generalized tonic clonic seizures"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizures from sleep"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0124",
+          "false_negatives": [],
+          "false_positives": [
+            "absence events"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        }
+      ],
+      "run_dir": "archive/runs/exect_s1_interleaving_l1_raw_no_bridges_cap25_gpt4_1_mini_20260520T190744Z",
+      "run_id": "exect_s1_interleaving_l1_raw_no_bridges_cap25_gpt4_1_mini_20260520T190744Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:validation"
+    },
+    "policy_raw_full_validation": {
+      "bridge_flag_counts": {
+        "diagnosis": 0,
+        "seizure_type": 0
+      },
+      "bridge_flag_names": {},
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      },
+      "field_f1": {
+        "diagnosis": 0.6153846153846153,
+        "seizure_type": 0.5742574257425743
+      },
+      "field_precision": {
+        "diagnosis": 0.6666666666666666,
+        "seizure_type": 0.5370370370370371
+      },
+      "field_recall": {
+        "diagnosis": 0.5714285714285714,
+        "seizure_type": 0.6170212765957447
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47
+      },
+      "micro_f1": 0.6859205776173285,
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+      "repair_policy": "raw_no_benchmark_bridges",
+      "residual_class_counts": {
+        "extraction": 5,
+        "policy": 20,
+        "scope": 8,
+        "specificity_collapse": 7
+      },
+      "residuals": [
+        {
+          "document_id": "EA0018",
+          "false_negatives": [
+            "temporal lobe seizure",
+            "focal seizures"
+          ],
+          "false_positives": [
+            "temporal lobe onset focal seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0026",
+          "false_negatives": [],
+          "false_positives": [
+            "juvenile myoclonic epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0026",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0029",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0045",
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0047",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0048",
+          "false_negatives": [
+            "tonic clonic seizures"
+          ],
+          "false_positives": [
+            "myoclonic seizures",
+            "generalized tonic clonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0050",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic jerks",
+            "absences"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0059",
+          "false_negatives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "false_positives": [
+            "symptomatic structural epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0061",
+          "false_negatives": [
+            "parietal lobe epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0061",
+          "false_negatives": [
+            "focal to bilateral convulsive seizures"
+          ],
+          "false_positives": [
+            "focal to bilateral seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0069",
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0072",
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures with secondary generalisation"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [
+            "focal seizures",
+            "secondary generalisation",
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "focal seizures with secondary generalisation"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0098",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0098",
+          "false_negatives": [
+            "focal to bilateral convulsive seizure"
+          ],
+          "false_positives": [
+            "focal onset convulsive seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0102",
+          "false_negatives": [],
+          "false_positives": [
+            "non epileptic psychogenic seizures"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [
+            "focal seizures",
+            "temporal lobe seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0116",
+          "false_negatives": [
+            "epilepsy with generalized tonic clonic seizures on awakening"
+          ],
+          "false_positives": [
+            "epilepsy with generalized tonic clonic seizures from sleep"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0116",
+          "false_negatives": [
+            "generalized tonic clonic seizures"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizures from sleep"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0124",
+          "false_negatives": [],
+          "false_positives": [
+            "absence events"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0131",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0135",
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "false_positives": [
+            "focal seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0137",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "secondary generalized seizures secondary to perinatal trauma"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0143",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0143",
+          "false_negatives": [
+            "focal"
+          ],
+          "false_positives": [
+            "focal seizures with altered awareness"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0148",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "epilepsy unclassified"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0150",
+          "false_negatives": [
+            "symptomatic structural focal epilepsy",
+            "epilepsy"
+          ],
+          "false_positives": [
+            "symptomatic structural epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0150",
+          "false_negatives": [
+            "secondary"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0170",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0173",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "unclassified epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0174",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "epilepsy unclassified"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0174",
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "false_positives": [
+            "prolonged bilateral episodes of limb shaking with retained awareness"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0179",
+          "false_negatives": [],
+          "false_positives": [
+            "complex partial seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0188",
+          "false_negatives": [
+            "focal",
+            "drug",
+            "occipital"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0188",
+          "false_negatives": [
+            "secondary"
+          ],
+          "false_positives": [
+            "focal seizures",
+            "focal seizures with impaired awareness",
+            "secondary generalized seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        }
+      ],
+      "run_dir": "archive/runs/exect_s1_interleaving_l1_raw_no_bridges_gpt4_1_mini_20260520T190804Z",
+      "run_id": "exect_s1_interleaving_l1_raw_no_bridges_gpt4_1_mini_20260520T190804Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:validation"
+    },
+    "qwen_clean_test_holdout": {
+      "bridge_flag_counts": {
+        "diagnosis": 17,
+        "seizure_type": 17
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 9,
+        "benchmark_bridge:focal_onset_to_bilateral_surface": 2,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 9,
+        "benchmark_bridge:secondary_token_co_listed": 7,
+        "benchmark_bridge:symptomatic_structural_focal_restored": 3,
+        "benchmark_bridge:unclassified_epilepsy_surface": 2,
+        "specificity_collapsed": 6
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      },
+      "field_f1": {
+        "diagnosis": 0.6666666666666666,
+        "seizure_type": 0.5217391304347825
+      },
+      "field_precision": {
+        "diagnosis": 0.7837837837837838,
+        "seizure_type": 0.5106382978723404
+      },
+      "field_recall": {
+        "diagnosis": 0.58,
+        "seizure_type": 0.5333333333333333
+      },
+      "field_support": {
+        "diagnosis": 50,
+        "seizure_type": 45
+      },
+      "micro_f1": 0.7183098591549296,
+      "model_config_path": "configs\\models\\exect_qwen35b_ollama.json",
+      "program_variant": "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble",
+      "prompt_version": "exect_s0_s1_field_family_v4_11_label_policy",
+      "repair_policy": "post_prediction_clean_ladder_v1",
+      "residual_class_counts": {
+        "bridge": 10,
+        "extraction": 9,
+        "policy": 6,
+        "scope": 6,
+        "specificity_collapse": 7
+      },
+      "residuals": [
+        {
+          "document_id": "EA0007",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0015",
+          "false_negatives": [],
+          "false_positives": [
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0015",
+          "false_negatives": [
+            "epileptic attack"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0020",
+          "false_negatives": [],
+          "false_positives": [
+            "generalized tonic clonic seizure",
+            "absence seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0033",
+          "false_negatives": [],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0039",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0049",
+          "false_negatives": [
+            "myoclonic seizures",
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0056",
+          "false_negatives": [
+            "localisation related epilepsy",
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0056",
+          "false_negatives": [
+            "partial motor seizures",
+            "secondary generalized seizures"
+          ],
+          "false_positives": [
+            "focal aware seizures",
+            "focal motor seizures",
+            "focal to bilateral convulsive seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0058",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0060",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0060",
+          "false_negatives": [],
+          "false_positives": [
+            "secondary"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0082",
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0097",
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0099",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "focal epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "specificity_collapsed",
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0105",
+          "false_negatives": [
+            "focal epilepsy",
+            "epilepsy due to stroke"
+          ],
+          "false_positives": [
+            "symptomatic structural focal epilepsy",
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0108",
+          "false_negatives": [
+            "symptomatic epilepsy"
+          ],
+          "false_positives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0108",
+          "false_negatives": [
+            "focal motor seizures",
+            "secondary generalized tonic clonic seizures",
+            "tonic clonic convulsion"
+          ],
+          "false_positives": [
+            "focal motor seizure",
+            "focal to bilateral convulsive seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0122",
+          "false_negatives": [
+            "generalized epilepsy",
+            "epilepsy, generalized",
+            "epilepsy with generalized tonic clonic seizure alone"
+          ],
+          "false_positives": [
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0122",
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0128",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0128",
+          "false_negatives": [
+            "generalized tonic clonic seizures",
+            "generalized"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0134",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0141",
+          "false_negatives": [
+            "focal epilepsy"
+          ],
+          "false_positives": [
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0141",
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "false_positives": [
+            "focal to bilateral convulsive seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "evidence_repair:ellipsis_contiguous_span"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0144",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:symptomatic_structural_focal_restored"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0144",
+          "false_negatives": [
+            "complex",
+            "focal seizures"
+          ],
+          "false_positives": [
+            "complex partial seizures",
+            "secondary"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0145",
+          "false_negatives": [
+            "grand mal"
+          ],
+          "false_positives": [
+            "focal seizures with altered awareness",
+            "generalized tonic clonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0146",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0146",
+          "false_negatives": [
+            "grand mal"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0162",
+          "false_negatives": [
+            "status epilepticus"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0162",
+          "false_negatives": [],
+          "false_positives": [
+            "generalized tonic clonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0171",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "focal epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0180",
+          "false_negatives": [],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0183",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0183",
+          "false_negatives": [
+            "generalized",
+            "secondary generalized tonic clonic seizures"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0198",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0198",
+          "false_negatives": [
+            "secondary generalized seizures"
+          ],
+          "false_positives": [
+            "secondary generalisation"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "scope"
+        }
+      ],
+      "run_dir": "runs/test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260526T184101Z",
+      "run_id": "test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260526T184101Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:test"
+    },
+    "qwen_clean_validation": {
+      "bridge_flag_counts": {
+        "diagnosis": 21,
+        "seizure_type": 20
+      },
+      "bridge_flag_names": {
+        "benchmark_bridge:diagnosis_co_list_augmented": 11,
+        "benchmark_bridge:epileptic_seizures_surface_restored": 1,
+        "benchmark_bridge:jme_gtcs_singular_co_listed": 2,
+        "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label": 12,
+        "benchmark_bridge:jme_tonic_clonic_surface": 3,
+        "benchmark_bridge:on_awakening_diagnosis_surface": 1,
+        "benchmark_bridge:secondary_token_co_listed": 6,
+        "benchmark_bridge:specificity_collapse_diagnosis_co_listed": 3,
+        "benchmark_bridge:specificity_collapse_seizure_surface": 1,
+        "benchmark_bridge:unclassified_epilepsy_surface": 3,
+        "specificity_collapsed": 12
+      },
+      "counts": {
+        "evaluated_records": 40,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 160,
+        "predicted_records": 40
+      },
+      "field_f1": {
+        "diagnosis": 0.951219512195122,
+        "seizure_type": 0.7422680412371133
+      },
+      "field_precision": {
+        "diagnosis": 0.975,
+        "seizure_type": 0.72
+      },
+      "field_recall": {
+        "diagnosis": 0.9285714285714286,
+        "seizure_type": 0.7659574468085106
+      },
+      "field_support": {
+        "diagnosis": 42,
+        "seizure_type": 47
+      },
+      "micro_f1": 0.8592592592592593,
+      "model_config_path": "configs\\models\\exect_qwen35b_ollama.json",
+      "program_variant": "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble",
+      "prompt_version": "exect_s0_s1_field_family_v4_11_label_policy",
+      "repair_policy": "post_prediction_clean_ladder_v1",
+      "residual_class_counts": {
+        "bridge": 6,
+        "extraction": 3,
+        "policy": 7,
+        "scope": 1,
+        "specificity_collapse": 1
+      },
+      "residuals": [
+        {
+          "document_id": "EA0016",
+          "false_negatives": [
+            "focal seizure"
+          ],
+          "false_positives": [
+            "focal seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0029",
+          "false_negatives": [],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0047",
+          "false_negatives": [
+            "generalized seizures"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizures",
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0050",
+          "false_negatives": [],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0059",
+          "false_negatives": [],
+          "false_positives": [
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence",
+            "benchmark_bridge:diagnosis_co_list_augmented"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0072",
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "false_positives": [
+            "secondary"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "benchmark_bridge:secondary_token_co_listed",
+            "missing_evidence"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [
+            "temporal lobe seizures"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0124",
+          "false_negatives": [],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "generalized tonic seizures"
+          ],
+          "false_positives": [
+            "generalized tonic seizure",
+            "absence seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label"
+          ],
+          "residual_class": "bridge"
+        },
+        {
+          "document_id": "EA0135",
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0136",
+          "false_negatives": [
+            "generalized seizures"
+          ],
+          "false_positives": [
+            "generalized tonic clonic seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0137",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0137",
+          "false_negatives": [
+            "secondary generalized seizures"
+          ],
+          "false_positives": [
+            "focal to bilateral convulsive seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0143",
+          "false_negatives": [
+            "secondarily generalized seizures",
+            "focal"
+          ],
+          "false_positives": [
+            "focal seizures with altered awareness",
+            "generalized tonic clonic seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0174",
+          "false_negatives": [
+            "epileptic seizures"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0179",
+          "false_negatives": [],
+          "false_positives": [
+            "complex partial seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        }
+      ],
+      "run_dir": "archive/runs/exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z",
+      "run_id": "exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:validation"
+    },
+    "schema_raw_cap25": {
+      "bridge_flag_counts": {
+        "diagnosis": 0,
+        "seizure_type": 0
+      },
+      "bridge_flag_names": {},
+      "counts": {
+        "evaluated_records": 25,
+        "extra_predictions": 0,
+        "gold_records": 200,
+        "missing_predictions": 175,
+        "predicted_records": 25
+      },
+      "field_f1": {
+        "diagnosis": 0.5098039215686274,
+        "seizure_type": 0.619718309859155
+      },
+      "field_precision": {
+        "diagnosis": 0.43333333333333335,
+        "seizure_type": 0.5789473684210527
+      },
+      "field_recall": {
+        "diagnosis": 0.6190476190476191,
+        "seizure_type": 0.6666666666666666
+      },
+      "field_support": {
+        "diagnosis": 21,
+        "seizure_type": 33
+      },
+      "micro_f1": 0.6774193548387097,
+      "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+      "program_variant": "exect_s0_s1_field_family_single_pass",
+      "prompt_version": "exect_s0_s1_field_family_l1_schema",
+      "repair_policy": "raw_no_benchmark_bridges",
+      "residual_class_counts": {
+        "extraction": 4,
+        "policy": 19,
+        "scope": 4,
+        "specificity_collapse": 3
+      },
+      "residuals": [
+        {
+          "document_id": "EA0016",
+          "false_negatives": [],
+          "false_positives": [
+            "single focal seizure"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0018",
+          "false_negatives": [
+            "temporal lobe seizure",
+            "focal seizures"
+          ],
+          "false_positives": [
+            "temporal lobe onset focal seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0026",
+          "false_negatives": [],
+          "false_positives": [
+            "juvenile myoclonic epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0026",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0029",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0045",
+          "false_negatives": [
+            "focal onset epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0047",
+          "false_negatives": [
+            "juvenile myoclonic epilepsy"
+          ],
+          "false_positives": [
+            "probable juvenile myoclonic epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0047",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0048",
+          "false_negatives": [
+            "juvenile myoclonic epilepsy"
+          ],
+          "false_positives": [
+            "probable juvenile myoclonic epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0048",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0050",
+          "false_negatives": [],
+          "false_positives": [
+            "myoclonic jerks",
+            "absences"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0059",
+          "false_negatives": [
+            "symptomatic structural focal epilepsy"
+          ],
+          "false_positives": [
+            "symptomatic structural epilepsy",
+            "learning difficulties"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0061",
+          "false_negatives": [
+            "parietal lobe epilepsy"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0061",
+          "false_negatives": [
+            "focal to bilateral convulsive seizures"
+          ],
+          "false_positives": [
+            "focal to bilateral seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0068",
+          "false_negatives": [],
+          "false_positives": [
+            "infrequent focal seizures",
+            "hydrocephalus"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0069",
+          "false_negatives": [
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0072",
+          "false_negatives": [
+            "focal motor seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0078",
+          "false_negatives": [],
+          "false_positives": [
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "missing_gold"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures with secondary generalisation"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0090",
+          "false_negatives": [
+            "focal seizures",
+            "secondary generalisation",
+            "generalized tonic clonic seizure"
+          ],
+          "false_positives": [
+            "focal seizures with secondary generalisation"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0098",
+          "false_negatives": [
+            "epilepsy"
+          ],
+          "false_positives": [
+            "left medial temporal lobe damage",
+            "anxiety"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "extraction"
+        },
+        {
+          "document_id": "EA0098",
+          "false_negatives": [
+            "focal to bilateral convulsive seizure"
+          ],
+          "false_positives": [
+            "focal onset convulsive seizure"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0100",
+          "false_negatives": [],
+          "false_positives": [
+            "single seizure"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "missing_gold"
+          ],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0102",
+          "false_negatives": [],
+          "false_positives": [
+            "non epileptic psychogenic seizures",
+            "anxiety"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [],
+          "false_positives": [
+            "focal seizures"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [
+            "unsupported_label"
+          ],
+          "residual_class": "scope"
+        },
+        {
+          "document_id": "EA0109",
+          "false_negatives": [
+            "focal seizures",
+            "temporal lobe seizure"
+          ],
+          "false_positives": [],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0116",
+          "false_negatives": [
+            "epilepsy with generalized tonic clonic seizures on awakening"
+          ],
+          "false_positives": [
+            "epilepsy"
+          ],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0124",
+          "false_negatives": [],
+          "false_positives": [
+            "absence seizures"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [],
+          "prediction_quality_flags": [],
+          "residual_class": "policy"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [
+            "jme"
+          ],
+          "false_positives": [],
+          "field_family": "diagnosis",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [],
+          "residual_class": "specificity_collapse"
+        },
+        {
+          "document_id": "EA0125",
+          "false_negatives": [],
+          "false_positives": [
+            "absences",
+            "myoclonic jerks"
+          ],
+          "field_family": "seizure_type",
+          "gold_quality_flags": [
+            "specificity_collapsed"
+          ],
+          "prediction_quality_flags": [
+            "missing_evidence"
+          ],
+          "residual_class": "policy"
+        }
+      ],
+      "run_dir": "archive/runs/exect_s1_full_ladder_l1_cap25_gpt4_1_mini_20260521T003924Z",
+      "run_id": "exect_s1_full_ladder_l1_cap25_gpt4_1_mini_20260521T003924Z",
+      "scorer_mode": "exect_field_family_deterministic_v1",
+      "split_name": "exectv2_fixed_v1:validation"
+    }
+  },
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "stage_deltas": {
+    "bridge_cap25": {
+      "diagnosis": 0.26132404181184665,
+      "seizure_type": 0.390465872156013
+    },
+    "bridge_full_validation": {
+      "diagnosis": 0.32288698955365625,
+      "seizure_type": 0.33100573215216256
+    },
+    "prompt_policy_raw_cap25": {
+      "diagnosis": 0.20448179271708689,
+      "seizure_type": -0.05633802816901412
+    },
+    "qwen_holdout_minus_validation": {
+      "diagnosis": -0.2845528455284554,
+      "seizure_type": -0.22052891080233084
+    }
+  }
+}

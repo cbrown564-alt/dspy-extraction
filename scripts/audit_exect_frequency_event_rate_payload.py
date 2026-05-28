@@ -18,7 +18,7 @@ from clinical_extraction.datasets.exect import (
     canonical_seizure_frequency_label,
     load_exect_gold_documents,
 )
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.frequency_payload import (
     build_exect_frequency_candidate_payloads,
     build_exect_frequency_pre_vocab_labels_high_precision,
 )

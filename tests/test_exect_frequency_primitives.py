@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.frequency_payload import (
     build_exect_frequency_candidate_payloads,
     build_exect_frequency_pre_vocab_labels,
     exect_frequency_benchmark_bridge,
@@ -264,5 +264,4 @@ def test_e6_frequency_candidate_recall_improvements():
 
     labels_worse_year = build_exect_frequency_pre_vocab_labels("seizures have been worse in the last year.")
     assert "frequency increased" in labels_worse_year
-
 

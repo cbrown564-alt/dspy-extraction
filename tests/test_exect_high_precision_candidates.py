@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.frequency_payload import (
     build_exect_frequency_pre_vocab_labels_high_precision,
     format_exect_frequency_pre_vocab_note_high_precision,
 )

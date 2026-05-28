@@ -9,7 +9,7 @@ from clinical_extraction.exect.slot_payload import (
     classify_exect_frequency_slot_type,
     format_exect_frequency_slot_payload_for_prompt,
 )
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.frequency_payload import (
     recover_exect_frequency_benchmark_values_with_multi_label_retention,
 )
 

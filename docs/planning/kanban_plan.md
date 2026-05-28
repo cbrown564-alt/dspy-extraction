@@ -41,42 +41,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Ready
 
-### C6 - Gan S0 Surface Split
-
-- **Outcome:** `gan_frequency_s0.py` reduced by extracting behavior-preserving
-  Gan S0 variant/spec routing and prediction-bridge/artifact assembly surfaces,
-  while keeping candidate generation, scorer behavior, and public wrappers
-  stable.
-- **Dependencies:** C2, C3, C4.
-- **Parallelizable:** yes, but coordinate with G1 because both touch Gan S0
-  stage boundaries.
-- **Owner:** unassigned.
-- **Validation:** Focused Gan parity checks for builder-gap v1 and D1 v1.2b on
-  fixed record IDs; `uv run pytest tests/test_gan_s0_program.py
-  tests/test_gan_temporal_candidates.py tests/test_gan_slot_payload.py -q`;
-  `uv run pytest tests/test_gan_scoring.py
-  tests/test_gan_paper_reproduction_scoring.py -q`.
-- **Notes:** This is a behavior-preserving architecture batch. Do not change
-  `unknown` versus `no seizure frequency reference` policy, and label scorer
-  mode explicitly in any generated report.
-
-### C8 - ExECT Frequency Payload Extraction
-
-- **Outcome:** Frequency event/rate/cue parsing is extracted from the broad
-  primitive module into a typed payload surface that can render existing
-  benchmark-facing frequency labels and support candidate-selection analysis.
-- **Dependencies:** C5.
-- **Parallelizable:** after C5; coordinate with E4 if section/family-span files
-  are also moving.
-- **Owner:** unassigned.
-- **Validation:** Preserve the C5 coverage audit result; `uv run pytest
-  tests/test_exect_frequency_primitives.py
-  tests/test_exect_frequency_slot_payload.py -q`; rerun
-  `uv run python scripts/audit_exect_frequency_event_rate_payload.py`.
-- **Notes:** This is the code extraction follow-up to the completed E1 coverage
-  gate. Do not infer seizure type from frequency rows or convert Gan labels
-  into ExECT benchmark truth.
-
 ### C9 - ExECT S5 Stack Boundary Split
 
 - **Outcome:** S5 operational stack composition is separated from S4 family
@@ -124,20 +88,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
   pass before any helper assertions are removed.
 - **Notes:** Split tests last. The goal is to make future cleanup safer, not to
   lose regression coverage during extraction.
-
-### E2 - S1 Raw/Bridge/Prompt Causal Split
-
-- **Outcome:** Diagnosis and seizure-type performance decomposed into raw model
-  extraction, deterministic bridge effects, prompt-policy effects, and final
-  benchmark-facing output.
-- **Dependencies:** none.
-- **Parallelizable:** yes, analysis-first.
-- **Owner:** unassigned.
-- **Validation:** Validation plus holdout residual samples by family, with
-  failures classified as extraction, bridge, policy, specificity/collapse, or
-  scope errors. No holdout tuning.
-- **Notes:** This replaces the old ambiguous bridge/prompt backlog item. The goal
-  is to decide whether S1 is near ceiling or only validation-aligned.
 
 ### E3 - Medication Current-Rx And Lifecycle Payload
 
@@ -344,6 +294,27 @@ cards above.
   the next frequency work should split candidate selection/adjudication from
   label construction before any model-backed stack work.
 
+### C6 - Gan S0 Surface Split
+
+- **Outcome:** Completed by extracting Gan S0 variant/spec routing to
+  `src/clinical_extraction/gan/s0/variant_routing.py` and prediction-bridge /
+  artifact assembly behavior to
+  `src/clinical_extraction/gan/s0/prediction_bridge.py`, while preserving the
+  public `src/clinical_extraction/programs/gan_frequency_s0.py` wrappers for
+  existing configs, tests, and scripts.
+- **Evidence:** `GanS0VariantSpec`, default prompt routing, stage-graph lookup,
+  `predict_gan_records`, `_predict_record`, evidence guards, label
+  normalization repairs, and `gan_frequency_s0_run_metadata` now live in
+  focused Gan S0 package surfaces.
+- **Validation:** `uv run pytest tests/test_gan_s0_program.py
+  tests/test_gan_temporal_candidates.py tests/test_gan_slot_payload.py -q`
+  passed with 178 tests; `uv run pytest tests/test_gan_scoring.py
+  tests/test_gan_paper_reproduction_scoring.py -q` passed with 13 tests.
+- **Notes:** Behavior-preserving architecture batch only. Candidate generation,
+  scorer behavior, public wrappers, and `unknown` versus
+  `no seizure frequency reference` policy were preserved. Generated reports
+  should still label scorer mode explicitly.
+
 ### C7 - ExECT S1 Bridge Boundary Split
 
 - **Outcome:** Completed by adding a typed S1 boundary metadata contract at
@@ -367,13 +338,61 @@ cards above.
   CUIPhrase preference, medication temporality, or specificity-collapse
   semantics changed. C7 now provides the architecture substrate for E2.
 
+### C8 - ExECT Frequency Payload Extraction
+
+- **Outcome:** Completed by extracting ExECT frequency event/rate/cue parsing,
+  candidate payload construction, high-precision candidate mode, and
+  benchmark-bridge recovery into
+  `src/clinical_extraction/exect/frequency_payload.py`.
+- **Evidence:** Frequency-specific S4 imports, slot payloads, primitive fixture
+  invokers, and the no-model audit script now consume the frequency payload
+  module directly; `src/clinical_extraction/exect/primitives.py` keeps
+  compatibility re-exports for existing callers.
+- **Validation:** `uv run pytest tests/test_exect_frequency_primitives.py
+  tests/test_exect_frequency_slot_payload.py -q` passed with 20 tests;
+  `uv run python scripts/audit_exect_frequency_event_rate_payload.py` preserved
+  the C5 result: broad gold coverage 100.0%, broad precision 22.2%, and
+  24/24 full-label gold documents. Additional checks passed:
+  `tests/test_exect_high_precision_candidates.py`,
+  `tests/test_exect_s4_prompt_policy.py`, `tests/test_exect_s4_program.py`,
+  `tests/test_primitive_contracts.py`, and
+  `tests/test_primitive_fixture_library.py`.
+- **Notes:** No loader, split, scorer, gold-source, seizure-type inference, or
+  Gan-to-ExECT label policy changed. ExECT abstention remains empty-list policy,
+  not Gan no-reference policy.
+
+### E2 - S1 Raw/Bridge/Prompt Causal Split
+
+- **Outcome:** Completed by adding a deterministic artifact-only S1 split audit
+  at `scripts/audit_exect_s1_raw_bridge_prompt_split.py` with reusable helpers
+  in `src/clinical_extraction/evaluation/exect_s1_split_audit.py`.
+- **Evidence:** The generated report
+  `docs/experiments/exect/exect_s1_raw_bridge_prompt_split_audit_20260528.md`
+  decomposes diagnosis and seizure-type performance across schema-only raw
+  cap-25, v4.10 policy raw cap-25, v4.10 post-bridge cap-25, full-validation
+  raw/post-bridge GPT surfaces, and the promoted Qwen validation/test-holdout
+  clean-v2 surfaces.
+- **Validation:** `uv run pytest tests/test_exect_s1_split_audit.py -q` passed
+  with 4 tests; `uv run python
+  scripts/audit_exect_s1_raw_bridge_prompt_split.py` produced JSON and
+  Markdown artifacts with 0 model calls. Full-validation bridge deltas were
+  +32.3 pp diagnosis and +33.1 pp seizure type; Qwen test holdout minus
+  validation was -28.5 pp diagnosis and -22.1 pp seizure type.
+- **Notes:** E2 supports keeping S1 as a strong validation anchor, but not a
+  near-ceiling mechanism claim. No loader, split, scorer, benchmark bridge, or
+  model-run behavior changed; test-holdout residuals are reported only as an
+  existing transfer warning and are not tuning targets.
+
 Recent evidence that remains active:
 
 | Evidence | Current interpretation |
 | --- | --- |
 | Typed program variant registry + C4 status review, 2026-05-28 | Registry-backed config contract surface exists, renders a synthesis report, and classifies each live config as current-authority or loadable replay/provenance. |
 | ExECT E1 frequency event/rate payload audit, 2026-05-28 | Broad deterministic frequency payload now covers all validation gold labels and gold-bearing docs, but low candidate precision keeps selection/adjudication open. |
+| Gan C6 S0 surface split, 2026-05-28 | Gan S0 variant/spec routing and prediction-bridge artifact assembly are behavior-preserving package surfaces; use them for G1/G2 stage attribution without changing scorer or no-reference policy. |
 | ExECT C7 S1 bridge boundary metadata, 2026-05-28 | S1 raw model output, prompt-policy provenance, deterministic bridge rows/flags, and final artifact values are inspectable separately without scorer or loader changes; use this as the substrate for E2. |
+| ExECT C8 frequency payload extraction, 2026-05-28 | Frequency candidate payload, high-precision mode, slot payload, and benchmark bridge now share a typed frequency module without changing C5 coverage or scorer semantics. |
+| ExECT E2 S1 split audit, 2026-05-28 | S1 full-validation GPT is near ceiling only after benchmark bridges; Qwen test holdout transfer drops keep S1 validation-aligned rather than mechanism-solved. |
 | ExECT deep review, 2026-05-28 | Current ExECT decomposition doctrine; component ceilings before stacking. |
 | Gan S0 deep dive, 2026-05-28 | Current Gan decomposition doctrine; split candidate inventory, target selection, label construction, and policy. |
 | Gan R11/R15 | D1 v1.2b schema-guard-only is the mechanism baseline; arithmetic and broad relative-anchor guardrails are diagnostic or rejected arms. |
@@ -391,14 +410,14 @@ Recent evidence that remains active:
   registry/config rows as current-authority, replay/provenance, historical,
   rejected, blocked, or diagnostic.
 - C6-C11 translate the C1 thermo-nuclear cleanup sequence into pullable
-  architecture batches. C6 and C8 remain first code-shape priorities for Gan S0
-  and ExECT frequency surfaces without changing dataset, split, scorer, or
-  benchmark semantics; C7 is now complete for the ExECT S1 bridge-boundary
-  surface.
-- E2, E3, E4, and G1 are safe first pulls because they do not require model
-  calls. E2 can now use C7 as its architecture substrate; G1 should coordinate
-  with C6; E1 is complete enough to unblock C8 and frequency
-  candidate-selection design, but not a broad-stack model run.
+  architecture batches. C6 is now complete for Gan S0 routing and prediction
+  bridge surfaces; C7 is complete for the ExECT S1 bridge-boundary surface; C8
+  is complete for the ExECT frequency payload and bridge surface without
+  changing dataset, split, scorer, or benchmark semantics.
+- E2 is complete as an artifact-only causal split audit. E3, E4, and G1 remain
+  safe first pulls because they do not require model calls. G1 should consume
+  the completed C6 Gan S0 stage surfaces; ExECT frequency candidate-selection
+  design can now consume C8, but is not a broad-stack model run.
 - G2 and G3 depend on G1 because target-selection and policy probes need known
   candidate coverage strata.
 - B1 is blocked until component substrates and isolated ceilings exist.
@@ -412,9 +431,9 @@ Recent evidence that remains active:
 
 ## Parallelization Opportunities
 
-- **Safe now:** C6, C8, E2, E3, E4, and G1. Coordinate C6 with G1; E2 should
-  consume the completed C7 boundary surfaces so architecture splits and
-  component analyses share the same stage names.
+- **Safe now:** E3, E4, and G1. G1 should consume the completed C6 Gan S0 stage
+  surfaces; ExECT frequency candidate-selection work should consume the
+  completed C8 payload surface.
 - **Single-threaded or carefully sequenced:** broad code deletions after C1/C2;
 -  C9 stack separation; any change to scorer, loader, split, benchmark bridge,
   or shared primitive contracts.
@@ -425,11 +444,13 @@ Recent evidence that remains active:
 
 ## Recommended Next Pull
 
-1. **C6 - Gan S0 Surface Split** if the next slot is Gan architecture work.
-2. **E2 - S1 Raw/Bridge/Prompt Causal Split** if the next slot is ExECT
-   diagnosis and seizure-type causal analysis.
-3. **C8 - ExECT Frequency Payload Extraction** if the next slot is to turn the
-   completed E1 coverage gate into a reusable typed substrate.
+1. **G1 - Gan Candidate Inventory Coverage Report** if the next slot is Gan
+   decomposition analysis using the completed C6 stage surfaces.
+2. **E3 - Medication Current-Rx And Lifecycle Payload** if the next slot is an
+   ExECT medication substrate that separates current-Rx extraction from
+   lifecycle/temporality reasoning.
+3. **E4 - Family-Span/List Payload** if the next slot is ExECT document
+   structure and family-span substrate work.
 
 ## Standing Guardrails
 

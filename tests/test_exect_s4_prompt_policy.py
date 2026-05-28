@@ -1,4 +1,4 @@
-from clinical_extraction.exect.primitives import (
+from clinical_extraction.exect.frequency_payload import (
     build_exect_frequency_pre_vocab_labels,
     format_exect_frequency_pre_vocab_note,
 )
