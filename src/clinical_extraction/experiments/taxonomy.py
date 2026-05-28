@@ -28,6 +28,11 @@ ProgramArchitectureValue = Literal[
     "temporal_candidates_single_pass",
     "llm_temporal_candidates_single_pass",
     "hybrid_temporal_candidates_single_pass",
+    "date_events_candidates_single_pass",
+    "llm_date_events_candidates_single_pass",
+    "hybrid_date_events_candidates_single_pass",
+    "tool_date_resolver_single_pass",
+    "entity_tags_date_events_single_pass",
     "temporal_candidates_adjudicate_verify_repair",
     "temporal_candidates_adjudicate_det_guards",
     "temporal_candidates_adjudicate_det_evidence",
@@ -86,6 +91,7 @@ VariedFactorValue = Literal[
     "implementation_variant",
     "context_selection_policy",
     "multi_factor",
+    "compute_allocation_and_aggregation_policy",
 ]
 ContextSelectionPolicyValue = Literal[
     "full_note",
@@ -106,6 +112,10 @@ StageExecutorValue = Literal[
     "det_all_family_hints_llm_extract",
     "det_seizure_hints_llm_extract",
     "det_medication_hints_llm_extract",
+    "det_date_events",
+    "llm_date_events",
+    "hybrid_date_events_merge",
+    "entity_tags_date_events",
 ]
 IntendedDecisionValue = Literal[
     "promote",

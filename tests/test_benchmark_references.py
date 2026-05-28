@@ -33,12 +33,28 @@ def test_current_exect_field_family_scorer_is_only_partially_aligned():
     assert "narrower audited field-family view" in " ".join(alignment.caveats)
 
 
-def test_current_gan_synthetic_subset_is_not_claimed_as_real_letter_reproduction():
+def test_current_gan_canonical_scorer_is_not_paper_comparable():
     alignment = benchmark_alignment(
         AlignmentContext(
             dataset="gan_2026",
             evaluation_set="synthetic_data_subset_1500",
             scorer_mode="gan_frequency_deterministic_v1",
+            metric_name="purist_category_accuracy",
+            schema_level="gan_frequency_s0",
+        )
+    )
+
+    assert alignment.label == AlignmentLabel.NOT_COMPARABLE
+    assert alignment.reference is GAN_REFERENCES["table8.cot15000.real300.purist_micro_f1"]
+    assert "gan2026_paper_reproduction" in " ".join(alignment.caveats)
+
+
+def test_gan_paper_reproduction_synthetic_subset_is_not_claimed_as_real_letter_reproduction():
+    alignment = benchmark_alignment(
+        AlignmentContext(
+            dataset="gan_2026",
+            evaluation_set="synthetic_data_subset_1500",
+            scorer_mode="gan2026_paper_reproduction",
             metric_name="purist_category_accuracy",
             schema_level="gan_frequency_s0",
         )
@@ -54,7 +70,7 @@ def test_future_gan_real300_micro_f1_context_can_be_marked_aligned():
         AlignmentContext(
             dataset="gan_2026",
             evaluation_set="Real(300)",
-            scorer_mode="gan_frequency_deterministic_v1",
+            scorer_mode="gan2026_paper_reproduction",
             metric_name="purist_micro_f1",
             schema_level="gan_frequency_s0",
         )

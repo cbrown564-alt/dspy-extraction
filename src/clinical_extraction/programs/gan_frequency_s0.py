@@ -87,6 +87,21 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT 
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT = (
     "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier"
 )
+GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_date_events_candidates_single_pass"
+)
+GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_llm_date_events_candidates_single_pass"
+)
+GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_hybrid_date_events_candidates_single_pass"
+)
+GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_tool_date_resolver_single_pass"
+)
+GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_entity_tags_date_events_single_pass"
+)
 GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
     "gan_frequency_s0_direct_verify_repair_v2_4"
 )
@@ -156,6 +171,21 @@ GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION = (
 GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_PROMPT_VERSION = (
     "gan_frequency_s0_react_temporal_tools_v1_1"
 )
+GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_date_events_candidates_v1"
+)
+GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_llm_date_events_v1"
+)
+GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_hybrid_date_events_v1"
+)
+GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_tool_date_resolver_v1"
+)
+GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_entity_tags_v1"
+)
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 GAN_FREQUENCY_S0_STAGE_GRAPH_BY_VARIANT = {
     GAN_FREQUENCY_S0_DIRECT_VARIANT: "g1_direct",
@@ -197,6 +227,21 @@ GAN_FREQUENCY_S0_STAGE_GRAPH_BY_VARIANT = {
     ),
     GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT: (
         "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT: (
+        "g3_date_events_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT: (
+        "g3_date_events_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT: (
+        "g3_date_events_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_VARIANT: (
+        "g2_tool_date_resolve_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT: (
+        "g4_entity_tags_date_events_candidates_adjudicate"
     ),
 }
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
@@ -700,6 +745,25 @@ GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM = """
     - evidence_text must be an exact contiguous substring of note_text.
 """
 
+GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM = """
+    Date-event payload adjudication policy (v1.1):
+    - date_event_payload lists clinic date, temporal anchors, seizure events,
+      seizure-free intervals, cluster events, current window cues, candidate labels,
+      and evidence text extracted from the note.
+    - Treat candidate_labels as diagnostic hints, not gold labels.
+    - Prefer note-supported quantified rates from candidates when they match the
+      note's event/window structure.
+    - Do calendar math: calculate the exact number of months between the clinic date
+      and the start date of any seizure-free period or event onset. Use this calculated
+      number as the denominator (e.g. 'multiple per 15 month').
+    - Identify minor active events: if a note describes generalised seizure freedom
+      but describes ongoing myoclonic jerks, brief jumps, or absences, count these
+      as active events rather than classifying the patient as seizure-free (e.g.
+      'multiple per 15 month').
+    - Cluster labels must include both cluster period and per-cluster count.
+    - evidence_text must be an exact contiguous substring of note_text.
+"""
+
 GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM = """
     Canonical-format worked examples (v3/v5 port — output the label exactly):
     - 'Two events over the last five months' -> "2 per 5 month"
@@ -1063,6 +1127,16 @@ def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
         return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT:
         return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
         return GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION
     return "gan_frequency_s0_v1"
@@ -1308,7 +1382,26 @@ def build_gan_frequency_s0_extractor_signature(
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )
+    if prompt_version in {
+        GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_TOOL_DATE_RESOLVER_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_PROMPT_VERSION,
+    }:
+        doc = (
+            (GanFrequencyS0DateEventsAdjudicateSignature.__doc__ or "")
+            + GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0DateEventsAdjudicateEnhancedSignature",
+            (GanFrequencyS0DateEventsAdjudicateSignature,),
+            {"__doc__": doc},
+        )
     raise ValueError(f"Unsupported Gan S0 extractor prompt version: {prompt_version!r}")
+
 
 
 def build_gan_frequency_s0_verifier_signature(
@@ -1772,6 +1865,484 @@ class GanFrequencyS0HybridTemporalCandidatesSinglePassModule(dspy.Module):
             ],
         )
 
+
+from clinical_extraction.schemas import FrozenModel
+from pydantic import Field
+
+class GanDateEventPayload(FrozenModel):
+    clinic_date: str | None = None
+    temporal_anchors: list[str] = Field(default_factory=list)
+    seizure_events: list[str] = Field(default_factory=list)
+    seizure_free_intervals: list[str] = Field(default_factory=list)
+    cluster_events: list[str] = Field(default_factory=list)
+    current_window_cues: list[str] = Field(default_factory=list)
+    candidate_labels: list[str] = Field(default_factory=list)
+    evidence_text: str | None = None
+    stage_confidence: float | None = None
+
+def build_deterministic_date_event_payload(note_text: str) -> GanDateEventPayload:
+    from clinical_extraction.gan.temporal_candidates import (
+        build_temporal_frequency_candidates_from_note,
+        _clinic_date,
+    )
+    candidates = build_temporal_frequency_candidates_from_note(note_text)
+    
+    clinic_d = _clinic_date(note_text)
+    clinic_date_str = clinic_d.isoformat() if clinic_d else None
+    
+    temporal_anchors = []
+    seizure_events = []
+    seizure_free_intervals = []
+    cluster_events = []
+    current_window_cues = []
+    candidate_labels = []
+    evidence_pieces = []
+    
+    for c in candidates:
+        candidate_labels.append(c.canonical_label)
+        if c.evidence_text:
+            evidence_pieces.append(c.evidence_text)
+        
+        label_lower = c.canonical_label.lower()
+        if "seizure free" in label_lower or "seizure-free" in label_lower:
+            seizure_free_intervals.append(f"{c.canonical_label} (based on: {c.evidence_text!r})")
+        elif "cluster" in label_lower:
+            cluster_events.append(f"{c.canonical_label} (based on: {c.evidence_text!r})")
+        else:
+            seizure_events.append(f"{c.canonical_label} (based on: {c.evidence_text!r})")
+            
+        if c.derivation:
+            current_window_cues.append(c.derivation)
+            
+    if clinic_date_str:
+        temporal_anchors.append(f"clinic_date={clinic_date_str}")
+        
+    unique_evidence = list(dict.fromkeys(evidence_pieces))
+    evidence_text = " | ".join(unique_evidence) if unique_evidence else None
+    
+    return GanDateEventPayload(
+        clinic_date=clinic_date_str,
+        temporal_anchors=list(dict.fromkeys(temporal_anchors)),
+        seizure_events=list(dict.fromkeys(seizure_events)),
+        seizure_free_intervals=list(dict.fromkeys(seizure_free_intervals)),
+        cluster_events=list(dict.fromkeys(cluster_events)),
+        current_window_cues=list(dict.fromkeys(current_window_cues)),
+        candidate_labels=list(dict.fromkeys(candidate_labels)),
+        evidence_text=evidence_text,
+        stage_confidence=1.0,
+    )
+
+GAN_FREQUENCY_S0_DATE_EVENTS_ADJUDICATE_EXTRACTOR_ADDENDUM = """
+    Date-event payload adjudication policy (v1.1):
+    - date_event_payload lists clinic date, temporal anchors, seizure events,
+      seizure-free intervals, cluster events, current window cues, candidate labels,
+      and evidence text extracted from the note.
+    - Treat candidate_labels as diagnostic hints, not gold labels.
+    - Prefer note-supported quantified rates from candidates when they match the
+      note's event/window structure.
+    - Do calendar math: calculate the exact number of months between the clinic date
+      and the start date of any seizure-free period or event onset. Use this calculated
+      number as the denominator (e.g. 'multiple per 15 month').
+    - Identify minor active events: if a note describes generalised seizure freedom
+      but describes ongoing myoclonic jerks, brief jumps, or absences, count these
+      as active events rather than classifying the patient as seizure-free. If the
+      candidates list includes 'multiple per [months] month', you MUST select
+      'multiple per [months] month' (e.g., 'multiple per 15 month') as the primary label.
+      Do NOT collapse this to unknown or seizure-free.
+    - Cluster labels must include both cluster period and per-cluster count.
+    - evidence_text must be an exact contiguous substring of note_text.
+"""
+
+GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM = """
+    Canonical-format worked examples (v3/v5 port — output the label exactly):
+    - 'Two events over the last five months' -> "2 per 5 month"
+    - '3 to 4 focal seizures per month' -> "3 to 4 per month"
+    - 'Seizure-free for 18 months' -> "seizure free for 18 month"  [SF >= 6 months]
+    - 'Seizures are sporadic but frequency unclear' -> "unknown"
+    - '<= 6 to 7 per year' -> "6 to 7 per year"  [strip inequality qualifiers]
+    - 'daily' or 'nightly' -> "1 per day"
+    - 'biweekly' or 'fortnightly' -> "1 per 2 week"
+    - 'every 4 days' -> "1 per 4 day"
+    - '3 or 4 per week' -> "3 to 4 per week"  [or -> to]
+    - 'daily absences and 2 focal seizures per month' -> "1 per day"  [highest type]
+    - '2 cluster days per month; typically 4 to 6 seizures on each cluster day'
+      -> "2 cluster per month, 4 to 6 per cluster"
+    - 'Cluster frequency unclear this month; last month approximately 4 clusters'
+      -> "4 cluster per month, multiple per cluster"
+    - 'He had 4 seizures in February when withdrawing from medication; has remained
+      well since (now May, 3 months later)' -> "4 per 3 month"  [SF < 6 months: rate]
+    - 'Had 2 seizures in January; none since (now April, 3 months)' -> "2 per 3 month"
+    - 'Has been seizure-free for the past 2 weeks; typically has 1 to 2 seizures
+      per month' -> "1 to 2 per month"  [ongoing rate overrides short SF period]
+    - 'Currently seizure free; no events for the past 14 months on current medication'
+      -> "seizure free for 14 month"  [SF >= 6 months]
+    - '11 to 28 events per quarter' -> "11 to 28 per 3 month"  [quarter = 3 month]
+"""
+
+GAN_FREQUENCY_S0_SLOT_PAYLOAD_ADJUDICATE_ADDENDUM = """
+    Structured slot-payload adjudication policy (v1.3):
+    - temporal_candidates now expose structured slots: event_count_or_range,
+      event_type, target_priority_cue, window_count/window_unit, window_source,
+      denominator_status, cluster slots, unknown_policy_cue, supporting_quote.
+    - Prefer the benchmark-facing highest/current seizure-frequency target when
+      multiple concurrent seizure types are mentioned. Do not pick a lower-rate
+      tonic-clonic or last-event quote if a higher-frequency concurrent type
+      is present elsewhere in the note.
+    - When denominator_status is missing_or_ambiguous or unknown_policy_cue says
+      to prefer unknown, output "unknown" rather than inventing a per-month or
+      per-week denominator from an unanchored count or latest date alone.
+    - When window_source is calendar_aggregation or elapsed_since_date, derive
+      the denominator from the summed counts and elapsed window rather than
+      compressing to a single-month rate.
+    - For cluster slots, preserve cluster form when cluster_count_or_range is
+      present; do not collapse cluster spacing to a simple rate when
+      cluster_spacing_source is vague_recurrence unless the note gives explicit
+      spacing.
+    - candidate_label is a provisional canonical label from slot provenance only;
+      choose the final label after reading slots and the full note.
+    - evidence_text must remain an exact contiguous substring of note_text.
+"""
+
+GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM = """
+    Error-taxonomy policy patch (v1.4; Gan S0 Qwen 2026-05-22 follow-up):
+    - Broad Gan grouping rule: group multiple recent events into the relevant
+      denominator window (e.g. 2 seizures this week + 1 seizure last week -> 3 seizures
+      in total -> "3 per 2 week" or "3 per month").
+"""
+
+GAN_FREQUENCY_S0_COMPACT_HIERARCHY_POLICY_ADDENDUM = """
+    Compact-hierarchy policy (v1.5):
+    - Avoid parsing diagnostic tests or clinical study tasks as active seizure occurrences.
+    - Keep seizure-free labels stable across minor or temporary titration events.
+"""
+
+GAN_FREQUENCY_S0_TARGETED_EXAMPLES_MIN7_ADDENDUM = """
+    Targeted clinic examples (v1.6):
+    - 'One or two single jerks remain ... No further generalised seizures since Feb 2021'
+      [now April 2022, 14 months elapsed] -> "1 to 2 per 14 month"
+    - 'No generalized tonic-clonic seizures in the past 7 months, though continues to
+      experience absences' -> "multiple per 7 month"
+"""
+
+GAN_FREQUENCY_S0_QWEN_EXACT_POLICY_ADDENDUM = """
+    Qwen exact policy (v1.7):
+    - Strict adherence to the 6-month seizure-free threshold.
+    - Preserve explicit denominators: e.g. "once every six months" -> "1 per 6 month".
+"""
+
+GAN_FREQUENCY_S0_QWEN_SCHEMA_VALIDITY_ADDENDUM = """
+    Qwen schema validity (v1.8):
+    - Ensure candidate labels are strictly validated before output.
+"""
+
+GAN_FREQUENCY_S0_QWEN_HYBRID_RESOLUTION_ADDENDUM = """
+    Qwen hybrid resolution (v1.9):
+    - Coordinate between deterministic and LLM-extracted rates.
+"""
+
+GAN_FREQUENCY_S0_UNKNOWN_OVERUSE_GUARD_ADDENDUM = """
+    Unknown overuse guard (v1.5):
+    - Avoid defaulting to unknown when a rate can be derived from the text.
+"""
+
+class GanFrequencyS0DateEventsExtractionSignature(dspy.Signature):
+    """Extract date anchors, seizure events, cluster events, and seizure-free intervals from a note.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    Output the date_event_payload as a JSON object matching the requested schema.
+    
+    JSON Schema fields:
+    - clinic_date: ISO date (YYYY-MM-DD) or null.
+    - temporal_anchors: List of string date/time reference anchors in the note.
+    - seizure_events: List of candidate rate strings with raw text references, e.g., "N per day/week/month/year (based on: '...')" or "N per M day/week/month/year (based on: '...')".
+    - seizure_free_intervals: List of seizure-free intervals, e.g., "seizure free for N day/week/month/year (based on: '...')" (N >= 6 months).
+    - cluster_events: List of cluster events, e.g., "N cluster per day/week/month/year, M per cluster (based on: '...')".
+    - current_window_cues: List of window or calculation cues.
+    - candidate_labels: List of canonical Gan frequency label candidates. EVERY candidate label in this list MUST match the exact canonical Gan frequency vocabulary:
+      * 'N per [day/week/month/year]'
+      * 'N to M per [day/week/month/year]'
+      * 'N per M [day/week/month/year]'
+      * 'N cluster per [day/week/month/year], M per cluster'
+      * 'seizure free for N [day/week/month/year]' (only when N >= 6 months)
+      * 'unknown'
+      * 'no seizure frequency reference'
+      
+      CRITICAL VOCABULARY AND MATH INSTRUCTIONS:
+      1. Use concrete units (day, week, month, year). Do not use the word 'unit'.
+      2. Perform calendar month subtraction: calculate the exact number of months between the clinic date (e.g., Dec 2019) and the start date of any seizure-free period or event onset (e.g., Sep 2018 -> 15 months). Use this calculated number as the denominator (e.g. 'multiple per 15 month').
+      3. Identify minor active events: if a note describes generalised seizure freedom but describes ongoing myoclonic jerks, brief jumps, or absences, count these as active events rather than classifying the patient as seizure-free (e.g. 'multiple per 15 month').
+      4. Do NOT output raw medical/clinical entity tags (like "generalised tonic-clonic seizure" or "Valproate treatment") in candidate_labels. Only output valid seizure frequency rates or "unknown" / "no seizure frequency reference".
+    - evidence_text: Shortest exact contiguous quote containing all the extracted events and windows.
+    - stage_confidence: float (1.0).
+
+    Worked Examples for candidate_labels generation:
+    - 'remained seizure-free for seven months ... before experiencing a generalised tonic-clonic seizure 3 Tuesdays ago, preceded by absences' -> candidate_labels: ["2 per 7 month"]
+    - 'She had no seizures for nearly a year ... then developed myoclonic jerks leading to a tonic seizure three Saturdays ago' -> candidate_labels: ["1 per year"]
+    - 'she experienced two to four seizures in the following month' -> candidate_labels: ["2 to 4 per month"]
+    - 'No further tonic-clonic seizures have occurred since Feb 2021, although one or two single jerks remain (now April 2022, 14 months later)' -> candidate_labels: ["1 to 2 per 14 month"]
+    - 'typically has 1 to 2 seizures per month' -> candidate_labels: ["1 to 2 per month"]
+    - 'seizure free for years' -> candidate_labels: ["seizure free for multiple year"]
+    """
+    note_text: str = dspy.InputField(desc="Clinical note text")
+    date_event_payload_json: str = dspy.OutputField(
+        desc="JSON object containing clinic_date, temporal_anchors, seizure_events, seizure_free_intervals, cluster_events, current_window_cues, candidate_labels, evidence_text, stage_confidence"
+    )
+
+class GanFrequencyS0DateEventsAdjudicateSignature(GanFrequencyS0Signature):
+    """Adjudicate Gan seizure frequency with a specialist date/event payload.
+    
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+    """
+    date_event_payload: str = dspy.InputField(
+        desc="JSON object containing clinic_date, temporal_anchors, seizure_events, seizure_free_intervals, cluster_events, current_window_cues, candidate_labels, evidence_text, stage_confidence"
+    )
+
+class GanFrequencyS0DateEventsCandidatesSinglePassModule(dspy.Module):
+    """Deterministic date/event extraction followed by a single LLM adjudication pass."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        payload = build_deterministic_date_event_payload(note_text)
+        payload_json = payload.model_dump_json(indent=2)
+        
+        result = self.adjudicate(
+            note_text=note_text,
+            date_event_payload=payload_json,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=result.seizure_frequency_number,
+            evidence_text=result.evidence_text,
+            date_event_payload=payload_json,
+            temporal_candidate_labels=payload.candidate_labels,
+        )
+
+class GanFrequencyS0LlmDateEventsCandidatesSinglePassModule(dspy.Module):
+    """LLM date/event extraction followed by single LLM adjudication."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.extractor = dspy.ChainOfThought(GanFrequencyS0DateEventsExtractionSignature)
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        extracted = self.extractor(note_text=note_text)
+        payload_json = extracted.date_event_payload_json
+        
+        try:
+            raw = json.loads(payload_json)
+            candidate_labels = raw.get("candidate_labels", [])
+        except Exception:
+            candidate_labels = []
+            
+        result = self.adjudicate(
+            note_text=note_text,
+            date_event_payload=payload_json,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=result.seizure_frequency_number,
+            evidence_text=result.evidence_text,
+            date_event_payload=payload_json,
+            temporal_candidate_labels=candidate_labels,
+        )
+
+class GanFrequencyS0HybridDateEventsCandidatesSinglePassModule(dspy.Module):
+    """Deterministic + LLM date/events merge followed by LLM adjudication."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.extractor = dspy.ChainOfThought(GanFrequencyS0DateEventsExtractionSignature)
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        det_payload = build_deterministic_date_event_payload(note_text)
+        extracted = self.extractor(note_text=note_text)
+        llm_payload_json = extracted.date_event_payload_json
+        
+        temporal_anchors = list(det_payload.temporal_anchors)
+        seizure_events = list(det_payload.seizure_events)
+        seizure_free_intervals = list(det_payload.seizure_free_intervals)
+        cluster_events = list(det_payload.cluster_events)
+        current_window_cues = list(det_payload.current_window_cues)
+        candidate_labels = list(det_payload.candidate_labels)
+        
+        try:
+            raw = json.loads(llm_payload_json)
+            if isinstance(raw.get("temporal_anchors"), list):
+                temporal_anchors.extend(raw["temporal_anchors"])
+            if isinstance(raw.get("seizure_events"), list):
+                seizure_events.extend(raw["seizure_events"])
+            if isinstance(raw.get("seizure_free_intervals"), list):
+                seizure_free_intervals.extend(raw["seizure_free_intervals"])
+            if isinstance(raw.get("cluster_events"), list):
+                cluster_events.extend(raw["cluster_events"])
+            if isinstance(raw.get("current_window_cues"), list):
+                current_window_cues.extend(raw["current_window_cues"])
+            if isinstance(raw.get("candidate_labels"), list):
+                candidate_labels.extend(raw["candidate_labels"])
+        except Exception:
+            pass
+
+        def to_str(x):
+            if isinstance(x, str):
+                return x
+            if isinstance(x, dict):
+                return x.get("text") or x.get("label") or json.dumps(x)
+            return str(x)
+
+        temporal_anchors = [to_str(x) for x in temporal_anchors]
+        seizure_events = [to_str(x) for x in seizure_events]
+        seizure_free_intervals = [to_str(x) for x in seizure_free_intervals]
+        cluster_events = [to_str(x) for x in cluster_events]
+        current_window_cues = [to_str(x) for x in current_window_cues]
+        candidate_labels = [to_str(x) for x in candidate_labels]
+            
+        merged_payload = GanDateEventPayload(
+            clinic_date=det_payload.clinic_date,
+            temporal_anchors=list(dict.fromkeys(temporal_anchors)),
+            seizure_events=list(dict.fromkeys(seizure_events)),
+            seizure_free_intervals=list(dict.fromkeys(seizure_free_intervals)),
+            cluster_events=list(dict.fromkeys(cluster_events)),
+            current_window_cues=list(dict.fromkeys(current_window_cues)),
+            candidate_labels=list(dict.fromkeys(candidate_labels)),
+            evidence_text=det_payload.evidence_text,
+            stage_confidence=1.0,
+        )
+        payload_json = merged_payload.model_dump_json(indent=2)
+        
+        result = self.adjudicate(
+            note_text=note_text,
+            date_event_payload=payload_json,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=result.seizure_frequency_number,
+            evidence_text=result.evidence_text,
+            date_event_payload=payload_json,
+            temporal_candidate_labels=merged_payload.candidate_labels,
+        )
+
+class GanFrequencyS0EntityTagsSignature(dspy.Signature):
+    """Extract clinical entities and events with offsets and temporality context.
+    
+    Output entity_tags as a JSON object with key "entity_tags".
+    """
+    note_text: str = dspy.InputField(desc="Clinical note text")
+    entity_tags_json: str = dspy.OutputField(
+        desc='JSON object {"entity_tags": [...]} containing clinical entities, counts, and temporality hints'
+    )
+
+class GanFrequencyS0EntityTagsDateEventsSinglePassModule(dspy.Module):
+    """LLM clinical entities/events tags -> Date/event payload -> Adjudicate."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.tagger = dspy.Predict(GanFrequencyS0EntityTagsSignature)
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        tagged = self.tagger(note_text=note_text)
+        tags_json = tagged.entity_tags_json
+        
+        temporal_anchors = []
+        seizure_events = []
+        seizure_free_intervals = []
+        cluster_events = []
+        current_window_cues = []
+        candidate_labels = []
+        evidence_pieces = []
+        
+        try:
+            raw = json.loads(tags_json)
+            tags = raw.get("entity_tags", [])
+            for tag in tags:
+                etype = tag.get("entity_type")
+                text = tag.get("text", "")
+                hint = tag.get("temporality_hint", "")
+                count_hint = tag.get("count_or_duration_hint")
+                
+                if text:
+                    evidence_pieces.append(text)
+                    
+                display = f"{text}"
+                if count_hint:
+                    display += f" (count/duration: {count_hint})"
+                if hint:
+                    display += f" [{hint}]"
+                    
+                if etype == "temporal_anchor":
+                    temporal_anchors.append(display)
+                elif etype in ("seizure_free_status", "negation_or_absence"):
+                    seizure_free_intervals.append(display)
+                elif etype == "cluster":
+                    cluster_events.append(display)
+                elif etype in ("seizure_event", "seizure_frequency"):
+                    seizure_events.append(display)
+                elif etype in ("medication_change", "other_relevant_context"):
+                    current_window_cues.append(display)
+                
+                if count_hint and etype in ("seizure_event", "seizure_frequency", "cluster"):
+                    candidate_labels.append(count_hint)
+        except Exception:
+            pass
+            
+        from clinical_extraction.gan.temporal_candidates import _clinic_date
+        clinic_d = _clinic_date(note_text)
+        clinic_date_str = clinic_d.isoformat() if clinic_d else None
+        if clinic_date_str:
+            temporal_anchors.append(f"clinic_date={clinic_date_str}")
+            
+        payload = GanDateEventPayload(
+            clinic_date=clinic_date_str,
+            temporal_anchors=list(dict.fromkeys(temporal_anchors)),
+            seizure_events=list(dict.fromkeys(seizure_events)),
+            seizure_free_intervals=list(dict.fromkeys(seizure_free_intervals)),
+            cluster_events=list(dict.fromkeys(cluster_events)),
+            current_window_cues=list(dict.fromkeys(current_window_cues)),
+            candidate_labels=list(dict.fromkeys(candidate_labels)),
+            evidence_text=" | ".join(dict.fromkeys(evidence_pieces)) if evidence_pieces else None,
+            stage_confidence=1.0,
+        )
+        payload_json = payload.model_dump_json(indent=2)
+        
+        result = self.adjudicate(
+            note_text=note_text,
+            date_event_payload=payload_json,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=result.seizure_frequency_number,
+            evidence_text=result.evidence_text,
+            date_event_payload=payload_json,
+            temporal_candidate_labels=payload.candidate_labels,
+        )
 
 class GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule(dspy.Module):
     """Adjudicate then deterministic plausibility guards only (validation ladder V2)."""
@@ -3814,6 +4385,22 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
         return GanFrequencyS0LlmTemporalCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0DateEventsCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0LlmDateEventsCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0HybridDateEventsCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_ENTITY_TAGS_DATE_EVENTS_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0EntityTagsDateEventsSinglePassModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:

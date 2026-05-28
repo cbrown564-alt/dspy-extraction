@@ -181,6 +181,60 @@ def test_gan_evaluation_scores_evidence_against_source_text_only(monkeypatch):
     assert "evidence.partial_overlap" not in report["error_analysis"]["counts"]
 
 
+def test_gan_evaluation_can_use_paper_reproduction_mode_without_changing_default(
+    monkeypatch,
+):
+    record = GanRecord(
+        record_id="gan-paper-mode-1",
+        source_row_index=1,
+        note_text="This administrative letter does not discuss seizures.",
+        gold_label="unknown",
+        gold_evidence=None,
+        reference_label="no seizure frequency reference",
+        reference_evidence=None,
+        row_ok=True,
+        labels_match_all_categories=True,
+        quotes_ok_all_categories=True,
+        flags=[],
+        raw={},
+    )
+    monkeypatch.setattr(
+        "clinical_extraction.evaluation.cli.load_gan_records",
+        lambda: [record],
+    )
+    predictions = PredictionSet(
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        predictions=[
+            DocumentPrediction(
+                document_id=record.record_id,
+                dataset="gan_2026",
+                schema_level="gan_frequency_s0",
+                values=[
+                    ExtractedValue(
+                        field_name="seizure_frequency_number",
+                        raw_value="no seizure frequency reference",
+                        normalized_value="no seizure frequency reference",
+                    )
+                ],
+            )
+        ],
+    )
+
+    canonical = evaluate_gan_predictions(predictions, bootstrap_samples=10)
+    paper = evaluate_gan_predictions(
+        predictions,
+        bootstrap_samples=10,
+        scorer_mode="gan2026_paper_reproduction",
+    )
+
+    assert canonical["scorer"] == "gan_frequency_deterministic_v1"
+    assert canonical["benchmark_metrics"]["monthly_frequency_accuracy"] == 0.0
+    assert paper["scorer"] == "gan2026_paper_reproduction"
+    assert paper["benchmark_metrics"]["monthly_frequency_accuracy"] == 1.0
+    assert "author-evaluator compatibility" in paper["caveats"][-1]
+
+
 def test_gan_evaluation_cli_reports_invalid_labels(tmp_path):
     record = load_gan_records()[0]
     predictions = PredictionSet(

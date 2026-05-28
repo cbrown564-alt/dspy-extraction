@@ -11,7 +11,11 @@ from clinical_extraction.evaluation.bootstrap import (
 )
 from clinical_extraction.evaluation.evidence import score_evidence_support
 from clinical_extraction.evaluation.error_analysis import ErrorTaxonomy
-from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+from clinical_extraction.gan.scoring import (
+    GAN_CANONICAL_SCORER,
+    GAN_PAPER_REPRODUCTION_SCORER,
+    score_gan_frequency_prediction,
+)
 from clinical_extraction.schemas import DocumentPrediction, ExtractedValue, PredictionSet
 
 GAN_FREQUENCY_FIELD = "seizure_frequency_number"
@@ -41,6 +45,27 @@ def main(argv: Sequence[str] | None = None) -> int:
         type=int,
         help="Seed for bootstrap confidence interval resampling.",
     )
+    parser.add_argument(
+        "--scorer-mode",
+        default=GAN_CANONICAL_SCORER,
+        choices=[GAN_CANONICAL_SCORER, GAN_PAPER_REPRODUCTION_SCORER],
+        help="Gan scorer semantics to use for frequency metrics.",
+    )
+    parser.add_argument(
+        "--apply-paper-prediction-repair",
+        action="store_true",
+        help="Apply author-evaluator prediction repair in gan2026_paper_reproduction mode.",
+    )
+    parser.add_argument(
+        "--allow-paper-prediction-range",
+        action="store_true",
+        help="Allow author-evaluator range containment in gan2026_paper_reproduction mode.",
+    )
+    parser.add_argument(
+        "--allow-paper-error-tolerance",
+        action="store_true",
+        help="Allow author-evaluator 1.5x numeric tolerance in gan2026_paper_reproduction mode.",
+    )
     args = parser.parse_args(argv)
 
     prediction_set = PredictionSet.model_validate_json(
@@ -57,6 +82,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         max_errors=args.max_errors,
         bootstrap_samples=args.bootstrap_samples,
         bootstrap_seed=args.bootstrap_seed,
+        scorer_mode=args.scorer_mode,
+        apply_paper_prediction_repair=args.apply_paper_prediction_repair,
+        allow_paper_prediction_range=args.allow_paper_prediction_range,
+        allow_paper_error_tolerance=args.allow_paper_error_tolerance,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
@@ -72,6 +101,10 @@ def evaluate_gan_predictions(
     max_errors: int = 20,
     bootstrap_samples: int = 1000,
     bootstrap_seed: int = 0,
+    scorer_mode: str = GAN_CANONICAL_SCORER,
+    apply_paper_prediction_repair: bool = False,
+    allow_paper_prediction_range: bool = False,
+    allow_paper_error_tolerance: bool = False,
 ) -> dict[str, Any]:
     gold_by_id = {record.record_id: record for record in load_gan_records()}
     predictions_by_id = {
@@ -173,6 +206,10 @@ def evaluate_gan_predictions(
             score = score_gan_frequency_prediction(
                 gold_label=gold.gold_label,
                 predicted_label=predicted_label,
+                scorer_mode=scorer_mode,
+                apply_paper_prediction_repair=apply_paper_prediction_repair,
+                allow_prediction_range=allow_paper_prediction_range,
+                allow_error_tolerance=allow_paper_error_tolerance,
             )
         except ValueError as exc:
             metric_observations["schema_valid_prediction_rate"].append(0)
@@ -362,7 +399,12 @@ def evaluate_gan_predictions(
     return {
         "dataset": prediction_set.dataset,
         "schema_level": prediction_set.schema_level,
-        "scorer": "gan_frequency_deterministic_v1",
+        "scorer": scorer_mode,
+        "scorer_options": {
+            "apply_paper_prediction_repair": apply_paper_prediction_repair,
+            "allow_paper_prediction_range": allow_paper_prediction_range,
+            "allow_paper_error_tolerance": allow_paper_error_tolerance,
+        },
         "counts": {
             "gold_records": len(expected_ids),
             "predicted_records": len(predicted_ids),
@@ -406,6 +448,7 @@ def evaluate_gan_predictions(
             "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
             "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
             "Evidence metrics are diagnostic source-grounding checks: predicted evidence is evaluated by deterministic quote/offset support in the note text, not by overlap with Gan evidence annotations.",
+            _gan_scorer_mode_caveat(scorer_mode),
         ],
         "errors": {
             "missing_prediction_ids": missing_ids[:max_errors],
@@ -435,6 +478,19 @@ def _ratio(numerator: int, denominator: int) -> float | None:
     if denominator == 0:
         return None
     return numerator / denominator
+
+
+def _gan_scorer_mode_caveat(scorer_mode: str) -> str:
+    if scorer_mode == GAN_PAPER_REPRODUCTION_SCORER:
+        return (
+            "Scorer mode gan2026_paper_reproduction is author-evaluator compatibility "
+            "scoring for Gan 2026 paper comparison; do not mix with canonical Gan metrics."
+        )
+    return (
+        "Scorer mode gan_frequency_deterministic_v1 is the canonical audited Gan "
+        "project scorer; do not compare directly to Gan 2026 paper numbers without "
+        "paper-reproduction scoring."
+    )
 
 
 if __name__ == "__main__":

@@ -243,6 +243,25 @@ intentional — those records have valid gold labels that passed the Step 7 filt
 
 ## Scoring Design
 
+### Scorer modes and paper-reproduction compatibility
+
+The project now keeps two Gan scorer contracts separate:
+
+- `gan_frequency_deterministic_v1` is the canonical project scorer. It preserves the audited
+  clinical distinction between `unknown` (seizures referenced but frequency unclear) and
+  `no seizure frequency reference` (no seizure-frequency information) and maps no-reference to
+  `0`.
+- `gan2026_paper_reproduction` is an author-evaluator compatibility scorer for comparing against
+  Gan 2026 paper numbers. It reproduces the supplied evaluator's compatibility behavior: both
+  `unknown` and `no seizure frequency reference` map to `1000`, `multiple` is resolved
+  dynamically by context, ranges are scored by averaging final lower/upper rate bounds, 365-day
+  year / 30-day month constants are used, and optional prediction repair/range/tolerance controls
+  must be reported when enabled.
+
+Do not mix these metrics in one comparison table unless the scorer mode and options are explicit.
+Canonical Gan project metrics remain the default for experiment diagnostics; paper-reproduction
+metrics are for compatibility claims against the Gan 2026 paper.
+
 ### Converting labels to x per month
 
 The gold label string must be converted to a numeric seizures/month value before applying the

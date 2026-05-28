@@ -254,3 +254,33 @@ Run IDs below use the `…` prefix for the timestamp suffix under `runs/` (e.g. 
 
 **Promotion review:** `docs/experiments/gan/gan_s0_operational_default_promotion_review_20260523.md`  
 **Paper defaults:** `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`
+
+---
+
+## Thread H — Gan S0 Ablations (R11, R12, R13) — Completed (2026-05-28)
+
+**Status:** Completed and analyzed. D1 (deterministic date/events) won R11 and passed to full validation. C1 (entity-first) and S1-S4 (self-consistency majority voting) were rejected.
+
+**Decision Reports:**
+- R11: [gan_s0_r11_temporal_date_stage_decision_20260528.md](../experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md)
+- R12: [gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md](../experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md)
+- R13: [gan_s0_r13_self_consistency_variance_probe_decision_20260528.md](../experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md)
+
+| Config ID / Experiment | Model | Monthly Acc | Purist Acc | Pragmatic Acc | Schema Valid | Status / Decision |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| **D0** (Baseline Control) | GPT 4.1-mini | 92.0% | 92.0% | 92.0% | 100.0% | Control |
+| | Qwen 3.6:35b | 84.0% | 84.0% | 92.0% | 100.0% | Control |
+| **D1** (Deterministic Events) | GPT 4.1-mini | **96.0%** | **100.0%** | **100.0%** | 100.0% | **PASS** to full validation |
+| | Qwen 3.6:35b | **92.0%** | **92.0%** | **96.0%** | 100.0% | **PASS** to full validation |
+| **D2** (LLM Events) | GPT 4.1-mini | 24.0% | 40.0% | 48.0% | 100.0% | REJECT (Severe schema failures) |
+| | Qwen 3.6:35b | 19.0% | 38.1% | 38.1% | 84.0% | REJECT (Severe schema failures) |
+| **D3** (Hybrid Merge) | GPT 4.1-mini | 92.0% | 92.0% | 96.0% | 100.0% | HOLD (No benefit over D1) |
+| | Qwen 3.6:35b | 92.0% | 92.0% | 96.0% | 100.0% | HOLD (No benefit over D1) |
+| **C0** (Entity Control) | GPT 4.1-mini | 96.0% | 100.0% | 100.0% | 100.0% | Control |
+| | Qwen 3.6:35b | 92.0% | 92.0% | 96.0% | 100.0% | Control |
+| **C1** (LLM Entity Tags) | GPT 4.1-mini | 20.8% | 41.7% | 54.2% | 96.0% | REJECT (Severe context-loss) |
+| | Qwen 3.6:35b | 12.0% | 24.0% | 28.0% | 100.0% | REJECT (Severe context-loss) |
+| **S0** (Stochastic Control) | GPT 4.1-mini | 96.0% | 96.0% | 96.0% | 100.0% | Control |
+| | Qwen 3.6:35b | 76.0% | 80.0% | 88.0% | 100.0% | Control |
+| **S1-S4** (5x Self-Consistency) | GPT 4.1-mini | 96.0% | 96.0% | 96.0% | 100.0% | REJECT (Zero variance, no gain) |
+| | Qwen 3.6:35b | 76.0% | 80.0% | 88.0% | 100.0% | REJECT (Zero variance, no gain) |

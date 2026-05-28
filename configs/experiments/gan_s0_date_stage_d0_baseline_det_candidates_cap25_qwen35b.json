@@ -1,0 +1,74 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag_with_error_taxonomy_policy_patch",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_date_stage_d0_baseline_det_candidates_cap25_qwen35b",
+  "hypothesis": "D0 baseline matched control for temporal/date-stage ablation grid.",
+  "max_records": null,
+  "metric_caveats": [
+    "Comparison group gan_s0_temporal_date_stage_gpt_cap25_v1",
+    "Record_ids are the same 25-record validation slice",
+    "Gan gold is seizure_frequency_number[0], reference is diagnostic only"
+  ],
+  "model_config_path": "configs/models/gan_s0_qwen35b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+  "record_ids": [
+    "gan_13058",
+    "gan_13123",
+    "gan_13149",
+    "gan_13190",
+    "gan_13574",
+    "gan_13598",
+    "gan_14214",
+    "gan_14250",
+    "gan_14485",
+    "gan_14562",
+    "gan_14628",
+    "gan_14689",
+    "gan_14792",
+    "gan_14821",
+    "gan_14881",
+    "gan_14965",
+    "gan_14973",
+    "gan_15127",
+    "gan_15168",
+    "gan_15193",
+    "gan_15302",
+    "gan_15442",
+    "gan_16529",
+    "gan_16645",
+    "gan_16750"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_temporal_date_stage_gpt_cap25_v1",
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "interleaving_positions": [
+      "pre",
+      "during"
+    ],
+    "intended_decision": "pending",
+    "program_architecture": "temporal_candidates_single_pass",
+    "schema_complexity": "gan_s0",
+    "stage_executor": "det_candidates_llm_adjudicate",
+    "stage_graph_id": "g2_candidates_adjudicate",
+    "varied_factor": "stage_executor"
+  }
+}

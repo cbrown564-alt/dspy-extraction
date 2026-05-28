@@ -282,13 +282,13 @@ def _gan_alignment(context: AlignmentContext) -> BenchmarkAlignment:
                 "Raw exact, normalized-label exact, evidence, and abstention metrics are diagnostic.",
             ),
         )
-    if context.scorer_mode != "gan_frequency_deterministic_v1":
+    if context.scorer_mode != "gan2026_paper_reproduction":
         return BenchmarkAlignment(
             label=AlignmentLabel.NOT_COMPARABLE,
             reference=reference,
             caveats=(
-                "The Gan scorer mode is not registered as benchmark-aligned.",
-                "Published Gan values compare category micro-F1 after label normalization.",
+                "Gan paper-number comparisons require scorer_mode='gan2026_paper_reproduction'.",
+                "Canonical Gan project metrics preserve no-reference semantics and must stay separate from author-evaluator compatibility metrics.",
             ),
         )
     if _normalize_evaluation_set(context.evaluation_set) == "real(300)" and context.metric_name in {
