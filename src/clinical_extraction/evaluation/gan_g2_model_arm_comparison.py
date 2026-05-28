@@ -16,6 +16,7 @@ from clinical_extraction.gan.scoring import (
     GAN_PAPER_REPRODUCTION_SCORER,
     score_gan_frequency_prediction,
 )
+from clinical_extraction.paths import resolve_run_directory
 from clinical_extraction.schemas import DocumentPrediction, GanRecord, PredictionSet
 
 DEFAULT_ARM_RUNS = {
@@ -215,6 +216,7 @@ def render_model_arm_markdown(report: dict[str, Any]) -> str:
 
 
 def _load_arm_run(arm_id: str, run_dir: Path) -> ArmRun:
+    run_dir = resolve_run_directory(run_dir)
     prediction_path = run_dir / "predictions.json"
     if not prediction_path.exists():
         raise FileNotFoundError(f"Missing predictions artifact: {prediction_path}")

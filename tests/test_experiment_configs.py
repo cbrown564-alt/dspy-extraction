@@ -12,14 +12,11 @@ from clinical_extraction.experiments.taxonomy import (
     ExperimentTaxonomy,
     registry_experiment_ids,
 )
+from clinical_extraction.paths import resolve_config_path
 
 
 def read_config_payload(path: Path | str) -> dict:
-    p = Path(path)
-    if not p.exists():
-        archive_path = Path("archive/configs") / p.name
-        if archive_path.exists():
-            p = archive_path
+    p = resolve_config_path(path)
     return json.loads(p.read_text(encoding="utf-8"))
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,

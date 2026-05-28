@@ -12,23 +12,13 @@ from clinical_extraction.evaluation.gan_residual_slice import (
     load_error_read_queue_rows,
     load_residual_slice_record_ids,
 )
+from clinical_extraction.paths import resolve_run_directory
 
 
 DEFAULT_FIXTURE = Path("data/fixtures/gan_s0_exact_frequency_residual_slice.json")
 DEFAULT_REFERENCE_QUEUE = Path(
     "runs/gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails_20260520T130933Z/analysis/exact_frequency_residual_slice/error_read_selection.jsonl"
 )
-
-
-def _resolve_run_dir(path: Path) -> Path:
-    if path.is_dir():
-        return path
-    matches = sorted(Path("runs").glob(f"{path.name}*"))
-    if len(matches) == 1:
-        return matches[0]
-    if matches:
-        return matches[-1]
-    raise FileNotFoundError(f"Could not resolve run directory for {path}")
 
 
 def main() -> None:
@@ -67,8 +57,20 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    control_run_dir = _resolve_run_dir(args.control_run_dir)
-    treatment_run_dir = _resolve_run_dir(args.treatment_run_dir)
+    control_run_dir = resolve_run_directory(
+        args.control_run_dir,
+        allow_prefix_match=True,
+    )
+    treatment_run_dir = resolve_run_directory(
+        args.treatment_run_dir,
+        allow_prefix_match=True,
+    )
+    for run_dir_arg, run_dir in (
+        (args.control_run_dir, control_run_dir),
+        (args.treatment_run_dir, treatment_run_dir),
+    ):
+        if not run_dir.is_dir():
+            raise FileNotFoundError(f"Could not resolve run directory for {run_dir_arg}")
     fixture_ids = load_residual_slice_record_ids(args.fixture)
     queue_rows = load_error_read_queue_rows(args.reference_queue)
     queue_ids = [row["record_id"] for row in queue_rows]

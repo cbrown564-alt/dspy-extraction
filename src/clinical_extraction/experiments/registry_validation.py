@@ -10,6 +10,7 @@ from clinical_extraction.experiments.taxonomy import (
     REGISTRY_PATH,
     load_experiment_registry,
 )
+from clinical_extraction.paths import resolve_run_directory
 
 IssueLevel = Literal["error", "warning"]
 
@@ -500,12 +501,8 @@ def validate_registry_row_canonical_run(
     if not canonical_run_id:
         return issues
 
-    run_dir = runs_root / canonical_run_id
+    run_dir = resolve_run_directory(canonical_run_id, runs_root=runs_root)
     if run_dir.is_dir():
-        return issues
-
-    archive_run_dir = runs_root.parent / "archive" / "runs" / canonical_run_id
-    if archive_run_dir.is_dir():
         return issues
 
     if _canonical_run_documented_missing(row):

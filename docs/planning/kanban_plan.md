@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 modularity completion track
+Last refreshed: 2026-05-28 C12 completion
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -21,9 +21,9 @@ or `component_ceiling_registry.md` explicitly promotes them.
 ## Current Priorities
 
 1. **Finish the architecture/modularity cleanup before new broad model work.**
-   The remaining audit gap is no longer an umbrella task: pull C12-C20 in order
-   until path resolution, metrics, Gan S0, ExECT S0/S1, ExECT S5, primitive
-   modules, tests, archive/delete work, and final review are complete.
+   The remaining audit gap is no longer an umbrella task: pull C13-C20 in order
+   until metrics, Gan S0, ExECT S0/S1, ExECT S5, primitive modules, tests,
+   archive/delete work, and final review are complete.
 2. **Keep behavior-preserving cleanup separate from research claims.** Each
    architecture card must preserve scorer, loader, split, benchmark bridge, and
    replay semantics unless a focused policy/test change explicitly says
@@ -47,31 +47,15 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Ready
 
-### C12 - Unified Archive Path Resolution
-
-- **Outcome:** Active and archived configs/runs resolve through shared helpers
-  in `src/clinical_extraction/paths.py`, and duplicate fallback checks are
-  removed from config, registry-validation, residual-slice, and explorer catalog
-  code without changing which artifacts load.
-- **Dependencies:** C2-C4 complete.
-- **Parallelizable:** yes, but coordinate with archive/delete work and any
-  registry export changes.
-- **Owner:** unassigned.
-- **Validation:** `uv run pytest tests/test_experiment_configs.py tests/test_experiment_registry_validation.py -q`;
-  smoke the affected explorer catalog builders if their imports change.
-- **Notes:** This is the first pull from `modularity_audit_report.md`. It
-  reduces path drift before files move. Do not use this card to archive or
-  rename any config or run directory.
-
 ### C13 - Program Metric Surface Migration
 
 - **Outcome:** Gan S0 program metrics and feedback metrics live behind
   Gan-owned scoring/metric modules, ExECT S0/S1 field-family metrics live behind
   ExECT-owned scoring/metric modules, and legacy imports from program files keep
   working during the transition.
-- **Dependencies:** C12 helpful but not required; scorer policy documents remain
-  frozen unless a separate scorer-semantics card is opened.
-- **Parallelizable:** after C12; coordinate with C14 and C15 because all three
+- **Dependencies:** C12 complete; scorer policy documents remain frozen unless
+  a separate scorer-semantics card is opened.
+- **Parallelizable:** coordinate with C14 and C15 because all three
   touch program imports.
 - **Owner:** unassigned.
 - **Validation:** `uv run pytest tests/test_gan_s0_program.py tests/test_gan_scoring.py tests/test_gan_paper_reproduction_scoring.py tests/test_exect_s0_s1_program.py tests/test_exect_scoring.py -q`.
@@ -448,6 +432,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | --- | --- |
 | C1-C4 architecture and registry cleanup, 2026-05-28 | The cleanup map, typed program variant registry, and active-status review exist. The live config tree remains loadable, but active authority is now separated from replay/provenance rows. |
 | C10 registry provenance and Gan analysis script cleanup, 2026-05-28 | Historical cap-25 registry backfill specs moved to `docs/archive/experiments/synthesis/pre_component_pivot/hybrid_cap25_registry_backfill_manifest_20260528.json`; `scripts/backfill_hybrid_cap25_registry.py` now loads retained provenance instead of carrying static rows; `scripts/analyze_gan_frequency_run.py` exposes explicit canonical versus paper-reproduction scorer mode and paper options. Focused C10 export and Gan scorer tests passed. |
+| C12 unified archive path resolution, 2026-05-28 | `src/clinical_extraction/paths.py` now owns active/archive config and run resolution. Config loading, registry validation, ExECT residual-slice loading, residual replay scripts, explorer catalogs, and Gan G2 arm loading use the shared helpers; no configs or run directories were archived or renamed. Validation: `uv run pytest tests/test_experiment_configs.py tests/test_experiment_registry_validation.py -q`; explorer/residual smoke suites passed. |
 | C5/C8 ExECT frequency substrate, 2026-05-28 | Broad frequency payload covers 43/43 validation gold labels and 24/24 gold-bearing documents, but broad precision is 22.2%; selection/adjudication is the active problem. |
 | C6/C7/C9 boundary splits, 2026-05-28 | Gan S0 routing/bridge, ExECT S1 boundary metadata, and ExECT S5 stack surfaces were extracted as behavior-preserving architecture work. Use them for stage attribution; do not infer new metric claims. |
 | E2 S1 raw/bridge/prompt split, 2026-05-28 | S1 validation strength depends heavily on benchmark bridges; holdout transfer drops keep diagnosis and seizure-type mechanisms open. |
@@ -462,13 +447,13 @@ artifacts, and git history; this section only keeps the steering implications.
 ## Dependency Notes
 
 - C1-C4 are complete enough to guide cleanup, but the modularity review shows
-  the core program monoliths are still open. Treat C12-C20 as the active
+  the core program monoliths are still open. Treat C13-C20 as the active
   architecture completion lane until C20 reclassifies or closes the P1 risks.
-- C12 should land before archive moves or path-sensitive cleanup. It centralizes
-  config/run fallback behavior so future file movement does not create path
-  drift across loaders, registry validation, residual analysis, and explorer
-  catalog scripts.
-- C13 should happen before large program splits. Moving metric surfaces first
+- C12 is complete and should be reused before archive moves or path-sensitive
+  cleanup. It centralizes config/run fallback behavior so future file movement
+  does not create path drift across loaders, registry validation, residual
+  analysis, and explorer catalog scripts.
+- C13 should happen next before large program splits. Moving metric surfaces first
   reduces churn when C14, C15, and C16 relocate signatures, modules, optimizers,
   and prediction artifact code.
 - C14 and C15 are the two largest behavior-preserving program decompositions.
@@ -532,8 +517,8 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Parallelization Opportunities
 
-- **Safe now:** C12 unified path resolution; C13 metric-surface planning and
-  focused parity tests; X3 doc-only prep if it does not regenerate stale
+- **Safe now:** C13 metric-surface planning and focused parity tests; X3 doc-only
+  prep if it does not regenerate stale
   navigation; G5 paper-scorer rescore if needed for a paper table; E5
   medication lifecycle policy decision. These should preserve scorer, loader,
   split, and benchmark bridge semantics.
@@ -559,27 +544,24 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. **C12 - Unified Archive Path Resolution** is the next codebase-simplification
-   pull. It is small, behavior-preserving, and reduces risk for every later
-   archive/delete or program split.
-2. **C13 - Program Metric Surface Migration** should follow so metrics are
+1. **C13 - Program Metric Surface Migration** should follow so metrics are
    anchored in domain scoring modules before the big program files move.
-3. **C14 - Gan S0 Program Package Decomposition** should then shrink the largest
+2. **C14 - Gan S0 Program Package Decomposition** should then shrink the largest
    remaining monolith behind stable public imports.
-4. **C15 - ExECT S0/S1 Program Package Decomposition** should split raw
+3. **C15 - ExECT S0/S1 Program Package Decomposition** should split raw
    extraction, prompt/repair routing, and bridge/final artifact assembly.
-5. **C16 - ExECT S5 Core Split From S4** should separate the operational stack
+4. **C16 - ExECT S5 Core Split From S4** should separate the operational stack
    from S4 component logic before more stack-interference work.
-6. **C17 - ExECT Primitive Family Module Split** should retire the remaining
+5. **C17 - ExECT Primitive Family Module Split** should retire the remaining
    over-bundled primitive module while preserving registry IDs.
-7. **C18 - Monolithic Test Retirement** should remove private-helper coupling
+6. **C18 - Monolithic Test Retirement** should remove private-helper coupling
    only after the replacement public surfaces are covered.
-8. **C19 - Archive And Delete Obsolete Program Surfaces** should use C2/C4
+7. **C19 - Archive And Delete Obsolete Program Surfaces** should use C2/C4
    status classes and C12 path helpers to move stale arms without losing replay
    provenance.
-9. **C20 - Modularity Completion Review** should close the architecture lane by
+8. **C20 - Modularity Completion Review** should close the architecture lane by
    updating audit status, residual risks, and validation evidence.
-10. **Then resume research-lane pulls** such as X3, G5, E5, E6, E10, and E8
+9. **Then resume research-lane pulls** such as X3, G5, E5, E6, E10, and E8
     according to paper/experiment need.
 
 ## Standing Guardrails

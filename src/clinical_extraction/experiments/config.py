@@ -19,6 +19,7 @@ from clinical_extraction.experiments.taxonomy import (
     TaxonomyExemptionValue,
     taxonomy_covers_config,
 )
+from clinical_extraction.paths import resolve_config_path
 from clinical_extraction.schemas import FrozenModel
 
 
@@ -212,10 +213,7 @@ class ExperimentConfig(FrozenModel):
 
 
 def load_experiment_config(path: Path) -> ExperimentConfig:
-    if not path.exists():
-        archive_path = Path("archive/configs") / path.name
-        if archive_path.exists():
-            path = archive_path
+    path = resolve_config_path(path)
     return ExperimentConfig.model_validate_json(path.read_text(encoding="utf-8"))
 
 

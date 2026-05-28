@@ -12,17 +12,7 @@ from clinical_extraction.evaluation.exect_residual_slice import (
     load_residual_slice_record_ids,
     replay_comorbidity_bridge_slice,
 )
-
-
-def _resolve_run_dir(path: Path) -> Path:
-    if path.is_dir():
-        return path
-    matches = sorted(Path("runs").glob(f"{path.name}*"))
-    if len(matches) == 1:
-        return matches[0]
-    if matches:
-        return matches[-1]
-    raise FileNotFoundError(f"Could not resolve run directory for {path}")
+from clinical_extraction.paths import resolve_run_directory
 
 
 def main() -> None:
@@ -51,7 +41,14 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    reference_run_dir = _resolve_run_dir(args.reference_run_dir)
+    reference_run_dir = resolve_run_directory(
+        args.reference_run_dir,
+        allow_prefix_match=True,
+    )
+    if not reference_run_dir.is_dir():
+        raise FileNotFoundError(
+            f"Could not resolve run directory for {args.reference_run_dir}"
+        )
     record_ids = load_residual_slice_record_ids(args.fixture)
     payload = replay_comorbidity_bridge_slice(
         reference_run_dir=reference_run_dir,

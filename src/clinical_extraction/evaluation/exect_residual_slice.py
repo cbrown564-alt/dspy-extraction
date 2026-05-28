@@ -29,6 +29,7 @@ from clinical_extraction.programs.exect_s3 import (
     _recover_s3_epilepsy_cause_raw_values,
     _s3_bridge_tiers,
 )
+from clinical_extraction.paths import resolve_run_directory
 from clinical_extraction.schemas import DocumentPrediction, ExtractedValue, PredictionSet
 
 DEFAULT_COMORBIDITY_SLICE_FIXTURE = Path(
@@ -56,22 +57,8 @@ def load_residual_slice_record_ids(fixture_path: Path) -> list[str]:
 
 
 def load_prediction_set(run_dir: Path) -> PredictionSet:
-    predictions_path = run_dir / "predictions.json"
-    if not predictions_path.is_file():
-        archive_run_dir = Path("archive/runs") / run_dir.name
-        predictions_path = archive_run_dir / "predictions.json"
-    if not predictions_path.is_file():
-        matches = sorted(Path("runs").glob(f"{run_dir.name}*"))
-        if len(matches) == 1:
-            predictions_path = matches[0] / "predictions.json"
-        elif matches:
-            predictions_path = matches[-1] / "predictions.json"
-    if not predictions_path.is_file():
-        matches_archive = sorted(Path("archive/runs").glob(f"{run_dir.name}*"))
-        if len(matches_archive) == 1:
-            predictions_path = matches_archive[0] / "predictions.json"
-        elif matches_archive:
-            predictions_path = matches_archive[-1] / "predictions.json"
+    resolved_run_dir = resolve_run_directory(run_dir, allow_prefix_match=True)
+    predictions_path = resolved_run_dir / "predictions.json"
     if not predictions_path.is_file():
         raise FileNotFoundError(f"Missing predictions.json under {run_dir}")
     return PredictionSet.model_validate_json(predictions_path.read_text(encoding="utf-8"))
