@@ -488,7 +488,21 @@ class ExectS4FrequencyStructuredSlotsFieldFamilyModule(dspy.Module):
         )
 
 
-def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Module:
+def build_exect_s4_module(
+    program_variant: str = EXECT_S4_VARIANT,
+    *,
+    include_archive: bool = False,
+) -> dspy.Module:
+    active_variants = {
+        EXECT_S4_VARIANT,
+        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+    }
+    if not include_archive and program_variant not in active_variants:
+        raise ValueError(
+            f"ExECT S4/S5 program variant {program_variant!r} is archive-only; "
+            "pass include_archive=True for explicit provenance replay."
+        )
     if program_variant in {
         EXECT_S4_VARIANT,
         EXECT_S4_L1_VARIANT,

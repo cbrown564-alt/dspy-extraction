@@ -162,17 +162,26 @@ def test_gan_s0_direct_module_maps_prediction_without_reasoning_field():
 
 
 def test_build_gan_s0_module_dispatches_program_variants():
-    assert isinstance(build_gan_s0_module(GAN_FREQUENCY_S0_VARIANT), GanFrequencyS0Module)
+    with pytest.raises(ValueError, match="archive-only"):
+        build_gan_s0_module(GAN_FREQUENCY_S0_VARIANT)
+
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_DIRECT_VARIANT),
+        build_gan_s0_module(GAN_FREQUENCY_S0_VARIANT, include_archive=True),
+        GanFrequencyS0Module,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_DIRECT_VARIANT, include_archive=True),
         GanFrequencyS0DirectModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT),
+        build_gan_s0_module(GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT, include_archive=True),
         GanFrequencyS0VerifyRepairModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0TemporalCandidatesVerifyRepairModule,
     )
     assert isinstance(
@@ -180,33 +189,52 @@ def test_build_gan_s0_module_dispatches_program_variants():
         GanFrequencyS0TemporalCandidatesSinglePassModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0LlmTemporalCandidatesSinglePassModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
     )
     assert isinstance(
         build_gan_s0_module(
-            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
+            include_archive=True,
         ),
         GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0ReactTemporalToolsModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0TemporalEventTableSinglePassModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0MultipleAnswerDetSelectorModule,
     )
     assert isinstance(
@@ -216,26 +244,37 @@ def test_build_gan_s0_module_dispatches_program_variants():
         GanFrequencyS0SeededMultipleAnswerDetSelectorModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule,
     )
     assert isinstance(
-        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT),
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
+            include_archive=True,
+        ),
         GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule,
     )
     assert isinstance(
         build_gan_s0_module(
-            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT,
+            include_archive=True,
         ),
         GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule,
     )
     assert isinstance(
         build_gan_s0_module(
-            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
+            include_archive=True,
         ),
         GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule,
     )
@@ -1481,7 +1520,7 @@ def test_compile_gan_s0_module_labeled_fewshot_returns_callable_module():
         max_labeled_demos=2,
     )
 
-    assert isinstance(compiled, GanFrequencyS0Module)
+    assert isinstance(compiled, GanFrequencyS0TemporalCandidatesSinglePassModule)
     _, predictor = compiled.named_predictors()[0]
     assert len(predictor.demos) == 2
 
@@ -1494,6 +1533,7 @@ def test_compile_gan_s0_module_labeled_fewshot_compiles_verify_repair_extractor_
         optimizer_name="LabeledFewShot",
         max_labeled_demos=2,
         optimizer_metric="synthesis_exact_with_evidence",
+        include_archive=True,
     )
 
     assert isinstance(compiled, GanFrequencyS0VerifyRepairModule)
@@ -1555,7 +1595,7 @@ def test_compile_gan_s0_module_bootstrap_returns_callable_module():
         max_rounds=1,
     )
 
-    assert isinstance(compiled, GanFrequencyS0Module)
+    assert isinstance(compiled, GanFrequencyS0TemporalCandidatesSinglePassModule)
 
     result = predict_gan_records(
         compiled,
@@ -1595,7 +1635,7 @@ def test_compile_gan_s0_module_gepa_uses_reflection_lm(monkeypatch):
 
     compiled = compile_gan_s0_module_gepa(records)
 
-    assert isinstance(compiled, GanFrequencyS0DirectModule)
+    assert isinstance(compiled, GanFrequencyS0TemporalCandidatesSinglePassModule)
     assert captured["reflection_lm"] is configured_lm
     assert captured["gepa_kwargs"] == {"use_cloudpickle": False}
     assert len(captured["trainset"]) == 2
@@ -1706,6 +1746,7 @@ def test_build_gan_s0_module_accepts_prompt_version_for_temporal_verify_repair()
     module = build_gan_s0_module(
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
         prompt_version=GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
+        include_archive=True,
     )
 
     assert isinstance(module, GanFrequencyS0TemporalCandidatesVerifyRepairModule)
@@ -2209,9 +2250,15 @@ def test_gan_s0_seeded_multiple_answer_selector_uses_deterministic_seed_when_llm
 
 
 def test_build_gan_s0_module_supports_temporal_event_table_variant():
-    module = build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT)
+    module = build_gan_s0_module(
+        GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, GanFrequencyS0TemporalEventTableVerifyRepairModule)
-    single_pass = build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT)
+    single_pass = build_gan_s0_module(
+        GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(single_pass, GanFrequencyS0TemporalEventTableSinglePassModule)
 
 

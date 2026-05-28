@@ -15,8 +15,7 @@ from clinical_extraction.gan.s0.modules import (
     build_gan_s0_module,
 )
 from clinical_extraction.gan.s0.variant_routing import (
-    GAN_FREQUENCY_S0_DIRECT_VARIANT,
-    GAN_FREQUENCY_S0_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
 )
 from clinical_extraction.schemas import GanRecord
 
@@ -101,13 +100,14 @@ def _gan_s0_optimizer_trainset(
 def compile_gan_s0_module(
     records: list[GanRecord],
     *,
-    program_variant: str = GAN_FREQUENCY_S0_VARIANT,
+    program_variant: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     optimizer_name: str = "BootstrapFewShot",
     max_bootstrapped_demos: int = 4,
     max_labeled_demos: int = 0,
     max_rounds: int = 1,
     num_candidate_programs: int = 16,
     optimizer_metric: str = "semantic_frequency_with_evidence",
+    include_archive: bool = False,
 ) -> (
     GanFrequencyS0Module
     | GanFrequencyS0DirectModule
@@ -127,7 +127,7 @@ def compile_gan_s0_module(
     sub-module so trainset demos stay on the direct extraction signature.
     """
     trainset = _gan_s0_optimizer_trainset(records, optimizer_metric=optimizer_metric)
-    module = build_gan_s0_module(program_variant)
+    module = build_gan_s0_module(program_variant, include_archive=include_archive)
 
     if optimizer_name == "LabeledFewShot":
         optimizer = dspy.LabeledFewShot(k=max_labeled_demos)
@@ -176,7 +176,7 @@ def compile_gan_s0_module(
 def compile_gan_s0_module_gepa(
     records: list[GanRecord],
     *,
-    program_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    program_variant: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     optimizer_metric: str = "semantic_frequency_with_evidence_feedback",
     auto: str | None = None,
     max_full_evals: int | None = None,
@@ -192,6 +192,7 @@ def compile_gan_s0_module_gepa(
     seed: int | None = 0,
     log_dir: Path | None = None,
     reflection_lm: dspy.LM | None = None,
+    include_archive: bool = False,
 ) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
     """Compile a Gan S0 module with GEPA and a feedback metric."""
     try:
@@ -218,5 +219,5 @@ def compile_gan_s0_module_gepa(
         log_dir=str(log_dir) if log_dir is not None else None,
         gepa_kwargs={"use_cloudpickle": use_cloudpickle},
     )
-    module = build_gan_s0_module(program_variant)
+    module = build_gan_s0_module(program_variant, include_archive=include_archive)
     return optimizer.compile(module, trainset=trainset)

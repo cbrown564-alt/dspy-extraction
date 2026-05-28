@@ -436,8 +436,19 @@ def build_exect_s0_s1_module(
     program_variant: str = EXECT_S0_S1_VARIANT,
     *,
     prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    include_archive: bool = False,
 ) -> dspy.Module:
     """Build an ExECT S0/S1 module for the requested program variant."""
+    active_variants = {
+        EXECT_S0_S1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+    }
+    if not include_archive and program_variant not in active_variants:
+        raise ValueError(
+            f"ExECT S0/S1 program variant {program_variant!r} is archive-only; "
+            "pass include_archive=True for explicit provenance replay."
+        )
     if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
         return ExectS0S1SectionAwareFieldFamilyModule()
     if program_variant == EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT:

@@ -98,22 +98,37 @@ def test_exect_s4_label_policy_extends_s3_guidance():
 
 
 def test_build_exect_s4_module_returns_frequency_pre_vocab_single_pass():
-    module = build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT)
+    with pytest.raises(ValueError, match="archive-only"):
+        build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT)
+
+    module = build_exect_s4_module(
+        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS4FrequencyPreVocabFieldFamilyModule)
 
 
 def test_build_exect_s4_module_returns_same_single_pass_for_temporality_post_classifier():
-    module = build_exect_s4_module(EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT)
+    module = build_exect_s4_module(
+        EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS4FieldFamilyModule)
 
 
 def test_build_exect_s4_module_returns_same_single_pass_for_mt_non_asm_guard():
-    module = build_exect_s4_module(EXECT_S4_MT_GUARD_NON_ASM_VARIANT)
+    module = build_exect_s4_module(
+        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS4FieldFamilyModule)
 
 
 def test_build_exect_s4_module_returns_same_single_pass_for_mt_non_asm_dose_current_guard():
-    module = build_exect_s4_module(EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT)
+    module = build_exect_s4_module(
+        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS4FieldFamilyModule)
 
 
@@ -123,12 +138,18 @@ def test_build_exect_s4_module_returns_same_single_pass_for_cause_bridge_k0_k1()
 
 
 def test_build_exect_s4_module_returns_same_single_pass_for_frequency_post_merge():
-    module = build_exect_s4_module(EXECT_S4_FREQUENCY_POST_MERGE_VARIANT)
+    module = build_exect_s4_module(
+        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS4FieldFamilyModule)
 
 
 def test_build_exect_s4_module_returns_structured_slots_module():
-    module = build_exect_s4_module(EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT)
+    module = build_exect_s4_module(
+        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS4FrequencyStructuredSlotsFieldFamilyModule)
 
 
@@ -170,7 +191,10 @@ def test_predict_exect_s4_temporality_post_classifier_applies_evidence_aligned_r
     )
 
     prediction_set = predict_exect_s4_records(
-        build_exect_s4_module(EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT),
+        build_exect_s4_module(
+            EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+            include_archive=True,
+        ),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",
@@ -229,7 +253,10 @@ def test_predict_exect_s4_mt_non_asm_guard_drops_non_asm_keeps_asm_status():
     )
 
     prediction_set = predict_exect_s4_records(
-        build_exect_s4_module(EXECT_S4_MT_GUARD_NON_ASM_VARIANT),
+        build_exect_s4_module(
+            EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+            include_archive=True,
+        ),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",
@@ -290,7 +317,10 @@ def test_predict_exect_s4_mt_non_asm_dose_current_guard_applies_narrow_fallback(
     )
 
     prediction_set = predict_exect_s4_records(
-        build_exect_s4_module(EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT),
+        build_exect_s4_module(
+            EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
+            include_archive=True,
+        ),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",
@@ -416,7 +446,7 @@ def test_predict_exect_s4_l1_preserves_unbridged_epilepsy_cause():
     )
 
     prediction_set = predict_exect_s4_records(
-        build_exect_s4_module(EXECT_S4_L1_VARIANT),
+        build_exect_s4_module(EXECT_S4_L1_VARIANT, include_archive=True),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",
@@ -489,7 +519,10 @@ def test_predict_exect_s4_frequency_pre_vocab_records_candidate_metadata():
     )
 
     prediction_set = predict_exect_s4_records(
-        build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT),
+        build_exect_s4_module(
+            EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+            include_archive=True,
+        ),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",

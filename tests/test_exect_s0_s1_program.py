@@ -424,6 +424,7 @@ def test_predict_exect_records_d1_variant_skips_benchmark_bridges():
     module = build_exect_s0_s1_module(
         EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
         prompt_version=EXECT_S0_S1_D1_PROMPT_VERSION,
+        include_archive=True,
     )
     prediction_set = predict_exect_records(
         module,
@@ -1969,7 +1970,10 @@ def test_exect_s0_s1_diagnosis_recall_probe_module_merges_recall_pass():
 
 
 def test_build_exect_s0_s1_module_returns_diagnosis_recall_probe():
-    module = build_exect_s0_s1_module(EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT)
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS0S1DiagnosisRecallProbeModule)
 
 
@@ -2109,7 +2113,13 @@ def test_exect_s0_s1_verify_repair_guards_block_add_only_diagnosis():
 
 
 def test_build_exect_s0_s1_module_returns_pre_vocab_single_pass():
-    module = build_exect_s0_s1_module(EXECT_S0_S1_PRE_VOCAB_VARIANT)
+    with pytest.raises(ValueError, match="archive-only"):
+        build_exect_s0_s1_module(EXECT_S0_S1_PRE_VOCAB_VARIANT)
+
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_PRE_VOCAB_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS0S1PreVocabFieldFamilyModule)
 
 
@@ -2127,7 +2137,10 @@ def test_format_note_with_precomputed_family_candidates_injects_vocabularies():
 
 
 def test_build_exect_s0_s1_module_returns_medication_pre_vocab_single_pass():
-    module = build_exect_s0_s1_module(EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT)
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS0S1MedicationPreVocabFieldFamilyModule)
 
 
@@ -2143,7 +2156,10 @@ def test_format_note_with_precomputed_medication_candidates_omits_other_families
 
 
 def test_build_exect_s0_s1_module_returns_seizure_pre_vocab_single_pass():
-    module = build_exect_s0_s1_module(EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT)
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS0S1SeizurePreVocabFieldFamilyModule)
 
 
@@ -2328,6 +2344,7 @@ def test_build_exect_s0_s1_module_returns_verify_repair():
     module = build_exect_s0_s1_module(
         EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
         prompt_version=EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
+        include_archive=True,
     )
     assert isinstance(module, ExectS0S1VerifyRepairModule)
     assert isinstance(module.extractor, ExectS0S1FieldFamilyModule)

@@ -85,3 +85,17 @@ def test_d1_v1_2b_fixed_record_parity_after_package_split():
     assert result.temporal_candidate_labels == payload["candidate_labels"]
     assert "1 per year" in payload["candidate_labels"]
     assert payload["stage_confidence"] == 1.0
+
+
+def test_active_gan_factory_rejects_historical_arms_without_archive_opt_in():
+    with pytest.raises(ValueError, match="archive-only"):
+        modules.build_gan_s0_module(
+            variant_routing.GAN_FREQUENCY_S0_DIRECT_VARIANT,
+        )
+
+    module = modules.build_gan_s0_module(
+        variant_routing.GAN_FREQUENCY_S0_DIRECT_VARIANT,
+        include_archive=True,
+    )
+
+    assert isinstance(module, modules.GanFrequencyS0DirectModule)

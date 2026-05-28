@@ -161,6 +161,7 @@ class GanFrequencyS0VerifyRepairModule(dspy.Module):
         self.extractor = build_gan_s0_module(
             extractor_variant,
             prompt_version=extractor_prompt_version,
+            include_archive=True,
         )
         self.verifier = GanFrequencyS0VerifierModule(prompt_version=prompt_version)
 
@@ -228,6 +229,7 @@ class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
         self.extractor = build_gan_s0_module(
             extractor_variant,
             prompt_version=extractor_prompt_version,
+            include_archive=True,
         )
         self.verifier = GanFrequencyS0TemporalVerifierModule(prompt_version=prompt_version)
 
@@ -1292,7 +1294,7 @@ class GanFrequencyS0TemporalEventTableVerifyRepairModule(dspy.Module):
 
     def __init__(self, extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT) -> None:
         super().__init__()
-        self.extractor = build_gan_s0_module(extractor_variant)
+        self.extractor = build_gan_s0_module(extractor_variant, include_archive=True)
         self.event_table_extractor = GanFrequencyS0TemporalEventTableExtractorModule()
         self.verifier = GanFrequencyS0TemporalEventTableVerifierModule()
 
@@ -1837,6 +1839,7 @@ def build_gan_s0_module(
     prompt_version: str | None = None,
     candidate_presentation: str | None = None,
     context_policy: str | None = None,
+    include_archive: bool = False,
 ) -> (
     GanFrequencyS0Module
     | GanFrequencyS0DirectModule
@@ -1849,6 +1852,16 @@ def build_gan_s0_module(
     | GanFrequencyS0SeededMultipleAnswerDetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
+    active_variants = {
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
+        GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+    }
+    if not include_archive and program_variant not in active_variants:
+        raise ValueError(
+            f"Gan S0 program variant {program_variant!r} is archive-only; "
+            "pass include_archive=True for explicit provenance replay."
+        )
     resolved_prompt_version = prompt_version or default_gan_frequency_s0_prompt_version(
         program_variant
     )

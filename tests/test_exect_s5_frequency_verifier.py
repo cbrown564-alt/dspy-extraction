@@ -73,7 +73,8 @@ def test_frequency_verifier_guard_rejects_medication_control_change():
 
 def test_build_exect_s4_module_returns_frequency_verify_wrapper():
     module = build_exect_s4_module(
-        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        include_archive=True,
     )
 
     assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule)
@@ -81,7 +82,8 @@ def test_build_exect_s4_module_returns_frequency_verify_wrapper():
 
 def test_build_exect_s4_module_returns_frequency_verify_v2_wrapper():
     module = build_exect_s4_module(
-        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        include_archive=True,
     )
 
     assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module)
@@ -177,7 +179,8 @@ def test_frequency_verify_wrapper_is_reject_only_and_preserves_am_guard():
 
     prediction_set = predict_exect_s4_records(
         build_exect_s4_module(
-            EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT
+            EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+            include_archive=True,
         ),
         [record],
         model_provider="mock",
@@ -286,7 +289,10 @@ def test_build_exect_s5_core_family_signature_includes_policy_examples():
 
 
 def test_build_exect_s4_module_returns_s5_core_parallel_wrapper():
-    module = build_exect_s4_module(EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT)
+    module = build_exect_s4_module(
+        EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
+        include_archive=True,
+    )
     assert isinstance(module, ExectS5CoreFieldFamilyParallelV2bModule)
 
 
@@ -331,7 +337,10 @@ def test_s5_core_parallel_module_uses_full_note_context_and_six_calls():
     )
 
     prediction_set = predict_exect_s4_records(
-        build_exect_s4_module(EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT),
+        build_exect_s4_module(
+            EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
+            include_archive=True,
+        ),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",

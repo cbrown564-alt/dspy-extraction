@@ -6,69 +6,56 @@ for hard Gan S0 cases without changing benchmark-facing scorer semantics.
 
 from __future__ import annotations
 
-import json
 import re
-from dataclasses import dataclass
 from datetime import date
-from typing import Any, Literal
 
+from clinical_extraction.gan.temporal_candidate_formatting import (
+    IMPLEMENTATION_VARIANT_TO_PRESENTATION,
+    TemporalCandidatePresentation,
+    format_temporal_candidates_for_prompt,
+    presentation_for_implementation_variant,
+)
+from clinical_extraction.gan.temporal_candidate_parsing import (
+    EVENT_NOUN_PATTERN,
+    MONTHS,
+    MONTH_PATTERN,
+    NUMBER_WORDS,
+    PERIOD_UNIT_PATTERN,
+    QUANTITY_RANGE_PATTERN,
+    SHORT_MONTH_PATTERN,
+    clinic_date as _clinic_date,
+    count_range_text_to_label as _count_range_text_to_label,
+    month_number as _month_number,
+    months_between_dates as _months_between_dates,
+    months_between_month_year as _months_between_month_year,
+    number_token_to_label as _number_token_to_label,
+    simple_rate_label as _simple_rate_label,
+)
+from clinical_extraction.gan.temporal_candidate_records import (
+    GanTemporalFrequencyCandidate,
+    dedupe_temporal_frequency_candidates,
+    merge_temporal_frequency_candidates,
+    parse_llm_temporal_candidates_json,
+    temporal_candidate_to_dict,
+)
 from clinical_extraction.schemas import GanRecord
 
-TemporalCandidatePresentation = Literal[
-    "prose", "table", "json", "bullets", "slot_payload"
+__all__ = [
+    "IMPLEMENTATION_VARIANT_TO_PRESENTATION",
+    "GanTemporalFrequencyCandidate",
+    "TemporalCandidatePresentation",
+    "MONTHS",
+    "MONTH_PATTERN",
+    "SHORT_MONTH_PATTERN",
+    "_clinic_date",
+    "build_temporal_frequency_candidates",
+    "build_temporal_frequency_candidates_from_note",
+    "format_temporal_candidates_for_prompt",
+    "merge_temporal_frequency_candidates",
+    "parse_llm_temporal_candidates_json",
+    "presentation_for_implementation_variant",
+    "temporal_candidate_to_dict",
 ]
-
-IMPLEMENTATION_VARIANT_TO_PRESENTATION: dict[str, TemporalCandidatePresentation] = {
-    "cand_prose_v1": "prose",
-    "cand_table_v1": "table",
-    "cand_json_v1": "json",
-    "cand_bullets_v1": "bullets",
-    "slot_payload_v1": "slot_payload",
-    "gan_s0_candidate_builder_gap_v1": "prose",
-}
-
-
-def presentation_for_implementation_variant(
-    implementation_variant: str | None,
-) -> TemporalCandidatePresentation | None:
-    """Map Axis-3 implementation_variant IDs to formatter presentation keys."""
-
-    if implementation_variant is None:
-        return None
-    return IMPLEMENTATION_VARIANT_TO_PRESENTATION.get(implementation_variant)
-
-
-@dataclass(frozen=True)
-class GanTemporalFrequencyCandidate:
-    """A candidate event/window interpretation for a canonical Gan label."""
-
-    canonical_label: str
-    event_count: str
-    window_count: str
-    window_unit: str
-    evidence_text: str
-    derivation: str
-
-
-MONTHS = {
-    "january": 1,
-    "february": 2,
-    "march": 3,
-    "april": 4,
-    "may": 5,
-    "june": 6,
-    "july": 7,
-    "august": 8,
-    "september": 9,
-    "october": 10,
-    "november": 11,
-    "december": 12,
-}
-
-MONTH_PATTERN = "|".join(name.title() for name in MONTHS)
-SHORT_MONTH_PATTERN = (
-    "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-)
 
 
 def build_temporal_frequency_candidates(
@@ -121,203 +108,6 @@ def build_temporal_frequency_candidates_from_note(
     candidates.extend(_seizure_free_for_multiple_year(note_text))
     candidates.extend(_high_recall_frequency_candidates(note_text))
     return _dedupe_candidates(candidates)
-
-
-def temporal_candidate_to_dict(
-    candidate: GanTemporalFrequencyCandidate,
-) -> dict[str, str]:
-    """Serialize a candidate for run artifacts and analyzer output."""
-
-    return {
-        "canonical_label": candidate.canonical_label,
-        "event_count": candidate.event_count,
-        "window_count": candidate.window_count,
-        "window_unit": candidate.window_unit,
-        "evidence_text": candidate.evidence_text,
-        "derivation": candidate.derivation,
-    }
-
-
-def _temporal_candidate_header(source: str) -> str:
-    if source == "llm":
-        return "LLM-extracted temporal frequency candidates (diagnostic hints only):"
-    if source == "hybrid":
-        return (
-            "Hybrid deterministic+LLM temporal frequency candidates "
-            "(diagnostic hints only):"
-        )
-    return "Deterministic temporal frequency candidates (diagnostic hints only):"
-
-
-def _empty_temporal_candidate_message(source: str) -> str:
-    if source == "llm":
-        prefix = "LLM-extracted"
-    elif source == "hybrid":
-        prefix = "Hybrid deterministic+LLM"
-    else:
-        prefix = "Deterministic"
-    return (
-        f"No {prefix.lower()} temporal frequency candidates were extracted "
-        "from this note."
-    )
-
-
-def _format_temporal_candidates_prose(
-    candidates: list[GanTemporalFrequencyCandidate],
-    *,
-    header: str,
-) -> str:
-    lines = [header]
-    for index, candidate in enumerate(candidates, start=1):
-        lines.append(
-            f"{index}. canonical_label={candidate.canonical_label!r}; "
-            f"event_count={candidate.event_count}; "
-            f"window={candidate.window_count} {candidate.window_unit}; "
-            f"derivation={candidate.derivation}; "
-            f"evidence_text={candidate.evidence_text!r}"
-        )
-    return "\n".join(lines)
-
-
-def _format_temporal_candidates_bullets(
-    candidates: list[GanTemporalFrequencyCandidate],
-    *,
-    header: str,
-) -> str:
-    lines = [header]
-    for candidate in candidates:
-        lines.append(
-            f"- {candidate.canonical_label!r}: "
-            f"{candidate.event_count} event(s) per "
-            f"{candidate.window_count} {candidate.window_unit}; "
-            f"{candidate.derivation}; evidence={candidate.evidence_text!r}"
-        )
-    return "\n".join(lines)
-
-
-def _format_temporal_candidates_table(
-    candidates: list[GanTemporalFrequencyCandidate],
-    *,
-    header: str,
-) -> str:
-    rows = [
-        "| # | canonical_label | event_count | window | derivation | evidence_text |",
-        "| --- | --- | --- | --- | --- | --- |",
-    ]
-    for index, candidate in enumerate(candidates, start=1):
-        window = f"{candidate.window_count} {candidate.window_unit}"
-        rows.append(
-            f"| {index} | {candidate.canonical_label!r} | {candidate.event_count} | "
-            f"{window} | {candidate.derivation} | {candidate.evidence_text!r} |"
-        )
-    return "\n".join([header, *rows])
-
-
-def _format_temporal_candidates_json(
-    candidates: list[GanTemporalFrequencyCandidate],
-    *,
-    header: str,
-) -> str:
-    payload = {
-        "candidates": [temporal_candidate_to_dict(candidate) for candidate in candidates]
-    }
-    return f"{header}\n{json.dumps(payload, indent=2)}"
-
-
-def format_temporal_candidates_for_prompt(
-    candidates: list[GanTemporalFrequencyCandidate],
-    *,
-    source: str = "deterministic",
-    presentation: TemporalCandidatePresentation = "prose",
-) -> str:
-    """Format temporal candidates for adjudication or verifier/repair input."""
-
-    if not candidates:
-        return _empty_temporal_candidate_message(source)
-
-    if presentation == "slot_payload":
-        from clinical_extraction.gan.slot_payload import (
-            format_slot_payload_candidates_for_prompt,
-        )
-
-        return format_slot_payload_candidates_for_prompt(candidates, source=source)
-
-    header = _temporal_candidate_header(source)
-    if presentation == "table":
-        return _format_temporal_candidates_table(candidates, header=header)
-    if presentation == "json":
-        return _format_temporal_candidates_json(candidates, header=header)
-    if presentation == "bullets":
-        return _format_temporal_candidates_bullets(candidates, header=header)
-    return _format_temporal_candidates_prose(candidates, header=header)
-
-
-def parse_llm_temporal_candidates_json(
-    payload: str | dict[str, Any] | None,
-    *,
-    note_text: str | None = None,
-) -> list[GanTemporalFrequencyCandidate]:
-    """Parse and validate model-generated temporal candidate JSON.
-
-    Returns an empty list when parsing fails. When ``note_text`` is provided,
-    drops candidates whose ``evidence_text`` is not an exact contiguous substring.
-    """
-
-    if payload is None:
-        return []
-    if isinstance(payload, str):
-        stripped = payload.strip()
-        if not stripped or stripped.lower() in {"none", "null"}:
-            return []
-        try:
-            raw = json.loads(stripped)
-        except json.JSONDecodeError:
-            return []
-    else:
-        raw = payload
-
-    if isinstance(raw, list):
-        candidate_rows = raw
-    elif isinstance(raw, dict):
-        candidate_rows = raw.get("candidates") or raw.get("temporal_candidates") or []
-    else:
-        return []
-
-    if not isinstance(candidate_rows, list):
-        return []
-
-    parsed: list[GanTemporalFrequencyCandidate] = []
-    for row in candidate_rows:
-        if not isinstance(row, dict):
-            continue
-        try:
-            candidate = GanTemporalFrequencyCandidate(
-                canonical_label=str(row["canonical_label"]).strip(),
-                event_count=str(row.get("event_count") or ""),
-                window_count=str(row.get("window_count") or ""),
-                window_unit=str(row.get("window_unit") or ""),
-                evidence_text=str(row.get("evidence_text") or "").strip(),
-                derivation=str(row.get("derivation") or "llm_candidate"),
-            )
-        except (KeyError, TypeError, ValueError):
-            continue
-        if not candidate.canonical_label or not candidate.evidence_text:
-            continue
-        if note_text is not None and candidate.evidence_text not in note_text:
-            continue
-        parsed.append(candidate)
-    return _dedupe_candidates(parsed)
-
-
-def merge_temporal_frequency_candidates(
-    *candidate_lists: list[GanTemporalFrequencyCandidate],
-) -> list[GanTemporalFrequencyCandidate]:
-    """Merge multiple candidate lists with canonical-label deduplication."""
-
-    merged: list[GanTemporalFrequencyCandidate] = []
-    for candidates in candidate_lists:
-        merged.extend(candidates)
-    return _dedupe_candidates(merged)
 
 
 def _breakthrough_after_nearly_year(
@@ -475,31 +265,6 @@ def _count_range_since_prior_month_year(
             derivation="count range is anchored to an explicit prior month/year",
         )
     ]
-
-
-NUMBER_WORDS = {
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9",
-    "ten": "10",
-    "eleven": "11",
-    "twelve": "12",
-    "thirteen": "13",
-    "fourteen": "14",
-    "fifteen": "15",
-    "sixteen": "16",
-    "seventeen": "17",
-    "eighteen": "18",
-    "nineteen": "19",
-    "twenty": "20",
-    "thirty": "30",
-}
 
 
 def _ytd_documented_seizure_count(
@@ -1168,10 +933,6 @@ def _vague_grouped_spells_unknown(
     ]
 
 
-def _months_between_month_year(clinic_date: date, month: int, year: int) -> int:
-    return max(1, (clinic_date.year - year) * 12 + clinic_date.month - month)
-
-
 def _last_convulsive_with_occasional_clusters(
     note_text: str,
 ) -> list[GanTemporalFrequencyCandidate]:
@@ -1502,30 +1263,6 @@ def _high_recall_frequency_candidates(
     candidates.extend(_month_tally_high_recall_candidates(note_text))
     candidates.extend(_cluster_high_recall_candidates(note_text))
     return candidates
-
-
-QUANTITY_TOKEN_PATTERN = (
-    r"(?:a pair of|a pair|pair of|once|twice|thrice|single|multiple|several|"
-    r"many|few|one|two|three|four|five|six|seven|eight|nine|ten|eleven|"
-    r"twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|"
-    r"nineteen|twenty|thirty|an|a|\d+(?:\.\d+)?)"
-)
-QUANTITY_RANGE_PATTERN = (
-    rf"{QUANTITY_TOKEN_PATTERN}(?:\s*(?:to|or|-|–|—|−)\s*"
-    rf"{QUANTITY_TOKEN_PATTERN})?"
-)
-EVENT_NOUN_PATTERN = (
-    r"(?:seizures?|events?|episodes?|absences?|convulsions?|attacks?|"
-    r"drop attacks?|tonic[- ]clonic(?: seizures?)?|gtc(?: seizures?)?|"
-    r"tcs?|focal(?: aware| impaired-awareness)? events?|myoclonic jerks?|"
-    r"focal sensory|focal non-?motors?|focal clonic|petit mal|"
-    r"simple partial seizures?|myoclonic|epileptic spasms?|jerks?|"
-    r"spasms?|spells?|auras?|seizure days?|nights?)"
-)
-PERIOD_UNIT_PATTERN = (
-    r"(?:days?|nights?|weeks?|months?|years?|fortnights?|quarters?|"
-    r"d|wk|wks|mo|mos|yr|yrs)"
-)
 
 
 def _append_supported_candidate(
@@ -2969,104 +2706,7 @@ def _dates_in_text(text: str) -> list[date]:
     return parsed
 
 
-def _months_between_dates(clinic_date: date, start_date: date) -> int:
-    return max(1, (clinic_date.year - start_date.year) * 12 + clinic_date.month - start_date.month)
-
-
-def _clinic_date(note_text: str) -> date | None:
-    match = re.search(
-        rf"(?:Clinic Date|Date):\s*(?P<day>\d{{1,2}}) "
-        rf"(?P<month>{MONTH_PATTERN}) (?P<year>\d{{4}})",
-        note_text,
-        flags=re.IGNORECASE,
-    )
-    if match is None:
-        return None
-    return date(
-        int(match.group("year")),
-        _month_number(match.group("month")),
-        int(match.group("day")),
-    )
-
-
-def _month_number(month_name: str) -> int:
-    name = month_name.lower().strip()[:3]
-    short_months = {
-        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-        "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
-    }
-    if name in short_months:
-        return short_months[name]
-    return MONTHS[month_name.lower()]
-
-
-def _count_phrase_to_label(count_phrase: str) -> str:
-    normalized = count_phrase.lower().strip()
-    if normalized == "two to three":
-        return "2 to 3"
-    if normalized == "two":
-        return "2"
-    if normalized == "three":
-        return "3"
-    raise ValueError(f"Unsupported count phrase: {count_phrase!r}")
-
-
-def _number_token_to_label(token: str) -> str:
-    normalized = token.lower().strip()
-    if normalized in ("a", "an", "single", "one"):
-        return "1"
-    if normalized in NUMBER_WORDS:
-        return NUMBER_WORDS[normalized]
-    return normalized
-
-
-def _count_range_text_to_label(count_text: str) -> str:
-    normalized = re.sub(r"\s+", " ", count_text.lower().strip())
-    normalized = normalized.strip(".,;:()[]")
-    normalized = normalized.replace("–", "-").replace("—", "-").replace("−", "-")
-    normalized = normalized.replace(" - ", " to ").replace("-", " to ")
-    normalized = re.sub(r"^(?:about|approximately|around|roughly|circa|~|≈|<=|≤|up to|at most)\s+", "", normalized)
-    normalized = re.sub(r"\b(?:seizures?|events?|episodes?|absences?|convulsions?|attacks?|jerks?|spells?)\b.*$", "", normalized).strip()
-    if normalized in {"a pair", "a pair of", "pair", "pair of"}:
-        return "2"
-    if normalized in {"once", "one time"}:
-        return "1"
-    if normalized in {"twice", "two times"}:
-        return "2"
-    if normalized in {"thrice", "three times"}:
-        return "3"
-    if normalized in {"few", "several", "many", "multiple"}:
-        return "multiple"
-    normalized = normalized.replace(" or ", " to ")
-    if normalized == "one or two":
-        return "1 to 2"
-    if normalized == "two to three":
-        return "2 to 3"
-    if normalized == "three to four":
-        return "3 to 4"
-    if normalized == "four to six":
-        return "4 to 6"
-    if " to " in normalized:
-        parts = [part.strip() for part in normalized.split(" to ", maxsplit=1)]
-        return f"{_number_token_to_label(parts[0])} to {_number_token_to_label(parts[1])}"
-    return _number_token_to_label(normalized)
-
-
-def _simple_rate_label(event_count: str, window_count: int, window_unit: str) -> str:
-    if window_count == 1:
-        return f"{event_count} per {window_unit}"
-    return f"{event_count} per {window_count} {window_unit}"
-
-
 def _dedupe_candidates(
     candidates: list[GanTemporalFrequencyCandidate],
 ) -> list[GanTemporalFrequencyCandidate]:
-    seen: set[tuple[str, str]] = set()
-    deduped: list[GanTemporalFrequencyCandidate] = []
-    for candidate in candidates:
-        key = (candidate.canonical_label, candidate.evidence_text)
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped.append(candidate)
-    return deduped
+    return dedupe_temporal_frequency_candidates(candidates)
