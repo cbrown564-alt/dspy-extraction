@@ -12,6 +12,15 @@ from clinical_extraction.experiments.taxonomy import (
     ExperimentTaxonomy,
     registry_experiment_ids,
 )
+
+
+def read_config_payload(path: Path | str) -> dict:
+    p = Path(path)
+    if not p.exists():
+        archive_path = Path("archive/configs") / p.name
+        if archive_path.exists():
+            p = archive_path
+    return json.loads(p.read_text(encoding="utf-8"))
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
@@ -98,11 +107,9 @@ def test_gan_s0_baseline_experiment_config_records_required_controls():
 
 
 def test_gan_s0_experiment_config_accepts_paper_reproduction_scorer_mode():
-    payload = json.loads(
-        Path(
-            "configs/experiments/"
-            "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
-        ).read_text(encoding="utf-8")
+    payload = read_config_payload(
+        "configs/experiments/"
+        "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
     )
     payload["scorer_mode"] = "gan2026_paper_reproduction"
 
@@ -112,11 +119,9 @@ def test_gan_s0_experiment_config_accepts_paper_reproduction_scorer_mode():
 
 
 def test_new_gan_s0_experiment_configs_default_to_paper_reproduction_scorer():
-    payload = json.loads(
-        Path(
-            "configs/experiments/"
-            "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
-        ).read_text(encoding="utf-8")
+    payload = read_config_payload(
+        "configs/experiments/"
+        "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
     )
     payload.pop("scorer_mode")
 
@@ -213,10 +218,8 @@ def test_qwen35b_gepa_probe_config_keeps_gepa_contract_but_marks_local_latency_s
 
 
 def test_gepa_optimizer_config_requires_feedback_metric():
-    payload = json.loads(
-        Path("configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json").read_text(
-            encoding="utf-8"
-        )
+    payload = read_config_payload(
+        "configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json"
     )
     payload["optimizer"]["name"] = "GEPA"
     payload["optimizer"]["max_metric_calls"] = 4
@@ -226,10 +229,8 @@ def test_gepa_optimizer_config_requires_feedback_metric():
 
 
 def test_gepa_optimizer_config_rejects_multiple_budget_controls():
-    payload = json.loads(
-        Path("configs/experiments/gan_s0_gepa_direct_cap5_gpt4_1_mini.json").read_text(
-            encoding="utf-8"
-        )
+    payload = read_config_payload(
+        "configs/experiments/gan_s0_gepa_direct_cap5_gpt4_1_mini.json"
     )
     payload["optimizer"]["max_full_evals"] = 2
 
@@ -1044,11 +1045,7 @@ def test_qwen_maxbudget_configs_raise_output_budget_without_changing_split_or_sc
 
 
 def test_experiment_config_rejects_test_reporting_without_explicit_flag():
-    payload = json.loads(
-        Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(
-            encoding="utf-8"
-        )
-    )
+    payload = read_config_payload("configs/experiments/gan_s0_baseline_gpt4_1_mini.json")
     payload["split_name"] = "gan_2026_fixed_v1:test"
     payload["report_on_test_split"] = False
 
@@ -1100,11 +1097,7 @@ def test_qwen35b_regression_slice_config_uses_record_ids_filter():
 
 
 def test_experiment_config_accepts_verify_repair_variant():
-    payload = json.loads(
-        Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(
-            encoding="utf-8"
-        )
-    )
+    payload = read_config_payload("configs/experiments/gan_s0_baseline_gpt4_1_mini.json")
     payload["program_variant"] = GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
     payload["controls"]["verifier_policy"] = "dspy_predict_verifier_after_extraction"
 
@@ -1234,10 +1227,8 @@ def test_gan_s0_ladder_zero_shot_config_matches_direct_ladder_surface():
 
 
 def test_labeled_fewshot_optimizer_config_requires_positive_demo_count():
-    payload = json.loads(
-        Path(
-            "configs/experiments/gan_s0_ladder_labeled_fewshot_cap25_gpt4_1_mini.json"
-        ).read_text(encoding="utf-8")
+    payload = read_config_payload(
+        "configs/experiments/gan_s0_ladder_labeled_fewshot_cap25_gpt4_1_mini.json"
     )
     payload["optimizer"]["max_labeled_demos"] = 0
 
@@ -1247,10 +1238,8 @@ def test_labeled_fewshot_optimizer_config_requires_positive_demo_count():
 
 def test_verify_repair_cap25_config_uses_v2_prompt():
     config = ExperimentConfig.model_validate(
-        json.loads(
-            Path(
-                "configs/experiments/gan_s0_verify_repair_cap25_gpt4_1_mini.json"
-            ).read_text(encoding="utf-8")
+        read_config_payload(
+            "configs/experiments/gan_s0_verify_repair_cap25_gpt4_1_mini.json"
         )
     )
     assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
@@ -3600,11 +3589,7 @@ def test_exect_s1_seizure_pre_vocab_slice_configs_record_contract():
 
 
 def test_experiment_config_rejects_conflicting_taxonomy_and_exemption():
-    payload = json.loads(
-        Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(
-            encoding="utf-8"
-        )
-    )
+    payload = read_config_payload("configs/experiments/gan_s0_baseline_gpt4_1_mini.json")
     payload["taxonomy"] = {
         "dataset": "gan_2026",
         "schema_complexity": "gan_s0",

@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C10 cleanup
+Last refreshed: 2026-05-28 C11 Gan stage-test slice
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is intentionally small and current-first. Completed work is
@@ -56,7 +56,13 @@ or `component_ceiling_registry.md` explicitly promotes them.
   replacement stage tests cover the same semantics; full focused domain suites
   pass before any helper assertions are removed.
 - **Notes:** Split tests last. The goal is to make future cleanup safer, not to
-  lose regression coverage during extraction.
+  lose regression coverage during extraction. 2026-05-28 first slice added
+  public stage-level characterization for ExECT S1 boundary surfaces and Gan
+  S0 routing/artifact/evidence guards, and moved S5 frequency-verifier
+  assertions onto the public `exect.s5_stack` surface. No monolithic parity
+  assertions were retired. 2026-05-28 follow-up slice added public Gan S0
+  candidate-inventory and target-selection/label-construction surfaces, with
+  report builders delegating through those surfaces.
 
 ### X3 - Registry And Atlas Refresh
 
@@ -335,7 +341,11 @@ artifacts, and git history; this section only keeps the steering implications.
   including medication current-Rx and family-span follow-ups where they affect
   the optimized stack.
 - C11 can now replace monolithic helper assertions incrementally because C6-C9
-  expose public stage surfaces.
+  expose public stage surfaces. The first replacement-test slice covers ExECT
+  S1 boundary metadata, Gan S0 bridge/evidence guards, and S5 frequency-verifier
+  stack surfaces; a follow-up slice now covers Gan S0 candidate inventory,
+  target selection, and label construction. No monolithic parity assertions have
+  been retired yet.
 - C10 completed the provenance cleanup needed before generated registry
   navigation is refreshed: historical cap-slice backfill rows are retained in
   an archive manifest, and Gan analysis scripts now expose scorer mode and

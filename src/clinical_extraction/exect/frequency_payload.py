@@ -667,6 +667,9 @@ def _build_exect_frequency_label_set(note_text: str) -> set[str]:
         if accepted:
             candidates.add(accepted)
 
+    if seizures_returned and "seizure free" in candidates:
+        candidates.remove("seizure free")
+
     return candidates
 
 

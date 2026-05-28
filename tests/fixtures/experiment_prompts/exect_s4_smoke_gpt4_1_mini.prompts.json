@@ -1,4 +1,9 @@
 {
+  "signature": "ExectS4FieldFamilySignature",
+  "module": "ExectS4FieldFamilyModule",
+  "predictor": "dspy.ChainOfThought",
+  "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
   "field_families": [
     "diagnosis",
     "seizure_type",
@@ -11,313 +16,6 @@
     "when_diagnosed",
     "seizure_frequency",
     "medication_temporality"
-  ],
-  "label_policy_examples": [
-    {
-      "benchmark_output": {
-        "investigation": [
-          "mri abnormal"
-        ]
-      },
-      "case": "investigation_modality_result",
-      "note_fragment": "Investigations: MRI, right parietal focal cortical dysplasia",
-      "policy": "Emit modality+result benchmark labels for performed investigations."
-    },
-    {
-      "benchmark_output": {
-        "comorbidity": [
-          "learning disabilities"
-        ]
-      },
-      "case": "comorbidity_excludes_seizure_history",
-      "note_fragment": "Comorbidities: learning disabilities. Seizure history: febrile seizures.",
-      "policy": "Exclude seizure-history phrases from comorbidity outputs."
-    },
-    {
-      "benchmark_output": {
-        "comorbidity": [
-          "type 1 diabetes"
-        ]
-      },
-      "case": "comorbidity_diabetes_header",
-      "note_fragment": "Diagnosis: epilepsy. Comorbidities: Type 1 diabetes.",
-      "policy": "Emit affirmed non-seizure comorbidities from diagnosis or history sections."
-    },
-    {
-      "benchmark_output": {
-        "seizure_type": [
-          "focal seizures with altered awareness"
-        ]
-      },
-      "case": "s2_seizure_altered_awareness_plural",
-      "note_fragment": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks.",
-      "policy": "Preserve altered awareness and plural seizures in the S1 seizure slot."
-    },
-    {
-      "benchmark_output": {
-        "seizure_type": [
-          "generalized tonic clonic seizures"
-        ]
-      },
-      "case": "s2_seizure_no_absence_without_note",
-      "note_fragment": "Seizure type: generalized tonic clonic seizures.",
-      "policy": "Do not add absence seizures when the note only names GTCS."
-    },
-    {
-      "benchmark_output": {
-        "comorbidity": [
-          "cva",
-          "hemiparesis",
-          "infarct"
-        ]
-      },
-      "case": "comorbidity_stroke_atomized",
-      "note_fragment": "History: CVA with right hemiparesis. MRI: prior infarct.",
-      "policy": "Atomize stroke components when the note names them separately."
-    },
-    {
-      "benchmark_output": {
-        "investigation": [
-          "eeg normal"
-        ]
-      },
-      "case": "investigation_no_unknown_without_note",
-      "note_fragment": "Investigations: EEG normal.",
-      "policy": "Do not emit mri unknown or eeg unknown without explicit unknown wording."
-    },
-    {
-      "benchmark_output": {
-        "comorbidity": [
-          "meningioma surgery"
-        ]
-      },
-      "case": "comorbidity_meningioma_surgery",
-      "note_fragment": "Previous meningioma resection 3rd January 2005.",
-      "policy": "Emit meningioma surgery when resection or surgery is named with meningioma."
-    },
-    {
-      "benchmark_output": {
-        "comorbidity": [
-          "meningitis",
-          "brain atrophy"
-        ]
-      },
-      "case": "comorbidity_affirmed_history_recall",
-      "note_fragment": "Diagnosis: symptomatic structural epilepsy secondary probably caused by early life meningitis. Investigations: MRI generalised brain atrophy.",
-      "policy": "Emit affirmed history phrases from diagnosis and investigation context."
-    },
-    {
-      "benchmark_output": {
-        "comorbidity": []
-      },
-      "case": "comorbidity_excludes_myoclonic_jerks",
-      "note_fragment": "Absences and myoclonic jerks since teenage years, JME.",
-      "policy": "Do not emit jerk or jerks as comorbidities when they are seizure descriptors."
-    },
-    {
-      "benchmark_output": {
-        "birth_history": [
-          "born normally"
-        ],
-        "investigation": [
-          "eeg normal"
-        ],
-        "seizure_type": [
-          "focal seizures with altered awareness"
-        ]
-      },
-      "case": "s3_seizure_priority_with_s3_fields",
-      "note_fragment": "Born normally. Seizure type: focal seizures with altered awareness. Investigations: EEG normal.",
-      "policy": "Emit full seizure-type list before S3 fields; do not drop seizure for birth history."
-    },
-    {
-      "benchmark_output": {
-        "onset": [
-          "epilepsy"
-        ],
-        "seizure_type": [
-          "generalized tonic clonic seizures"
-        ]
-      },
-      "case": "s3_seizure_not_in_onset_slot",
-      "note_fragment": "Epilepsy since age 4 with generalized tonic clonic seizures.",
-      "policy": "Onset holds timing condition phrase; named seizure types belong in seizure_type."
-    },
-    {
-      "benchmark_output": {
-        "investigation": [
-          "mri normal",
-          "eeg abnormal"
-        ]
-      },
-      "case": "s3_investigation_modality_result_not_prose",
-      "note_fragment": "Investigations: MRI brain scan was normal. EEG showed generalized spike and wave.",
-      "policy": "Map performed investigations to modality+result only; never imaging prose in investigation."
-    },
-    {
-      "benchmark_output": {
-        "birth_history": [
-          "born normally"
-        ],
-        "comorbidity": [
-          "type 1 diabetes"
-        ],
-        "investigation": [
-          "eeg normal"
-        ]
-      },
-      "case": "s3_s2_priority_before_birth_history",
-      "note_fragment": "Born normally. Investigations: EEG normal. Comorbidities: type 1 diabetes.",
-      "policy": "Emit full S2 investigation and comorbidity labels even when birth history is present."
-    },
-    {
-      "benchmark_output": {
-        "birth_history": [
-          "born normally"
-        ]
-      },
-      "case": "birth_history_born_normally",
-      "note_fragment": "He was born normally with no perinatal problems.",
-      "policy": "Emit affirmed birth-history CUIPhrase surfaces only."
-    },
-    {
-      "benchmark_output": {
-        "epilepsy_cause": [
-          "meningitis"
-        ]
-      },
-      "case": "epilepsy_cause_meningitis",
-      "note_fragment": "Diagnosis: symptomatic epilepsy secondary to childhood meningitis.",
-      "policy": "Prefer epilepsy_cause for causal aetiology phrasing."
-    },
-    {
-      "benchmark_output": {
-        "onset": [
-          "epilepsy"
-        ]
-      },
-      "case": "onset_epilepsy_age_context",
-      "note_fragment": "Epilepsy since the age of four with focal seizures.",
-      "policy": "Emit onset condition phrase; ages are not separate benchmark labels."
-    },
-    {
-      "benchmark_output": {
-        "when_diagnosed": [
-          "epilepsy"
-        ]
-      },
-      "case": "when_diagnosed_epilepsy",
-      "note_fragment": "She was diagnosed with epilepsy at age 18.",
-      "policy": "Emit when-diagnosed condition phrase when timing is stated."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "1 per 3 week",
-          "frequency increased"
-        ]
-      },
-      "case": "s4_seizure_frequency_quantified_and_change",
-      "note_fragment": "He has about one focal seizure every three weeks and the frequency has increased.",
-      "policy": "Emit quantified rate and qualitative frequency change in seizure_frequency."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "1 per 1 month"
-        ],
-        "seizure_type": [
-          "focal seizures"
-        ]
-      },
-      "case": "s4_seizure_frequency_not_seizure_type",
-      "note_fragment": "Seizure type: focal seizures. Frequency: one per month.",
-      "policy": "Keep seizure types in seizure_type; quantified rates in seizure_frequency."
-    },
-    {
-      "benchmark_output": {
-        "annotated_medication": [
-          "lamotrigine"
-        ],
-        "medication_temporality": [
-          "lamotrigine|current"
-        ]
-      },
-      "case": "s4_medication_temporality_pipe_format",
-      "note_fragment": "Current anti-epileptic medication: lamotrigine 75mg bd.",
-      "policy": "Emit medication name in annotated_medication and medication|current in temporality."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "seizure free since 2017"
-        ]
-      },
-      "case": "s4_seizure_free_since_year",
-      "note_fragment": "He has been seizure free since 2017.",
-      "policy": "Emit seizure free since YEAR when a seizure-free interval is stated."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "1 per 1 day",
-          "1 per 1 month"
-        ]
-      },
-      "case": "s4_seizure_frequency_dual_cardinal_template",
-      "note_fragment": "He has one seizure per day and one per month.",
-      "policy": "Always emit both cardinal slots in N per N period templates."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "0 per 3 year"
-        ]
-      },
-      "case": "s4_seizure_frequency_zero_rate",
-      "note_fragment": "No seizures in the past three years.",
-      "policy": "Emit zero-rate quantified surfaces when a zero count over a period is stated."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "1 per 1 week",
-          "frequency decreased",
-          "infrequent"
-        ]
-      },
-      "case": "s4_seizure_frequency_multi_label_block",
-      "note_fragment": "About one seizure per week with decreased frequency and infrequent clusters.",
-      "policy": "Retain all supported frequency labels; do not collapse to a single rate."
-    },
-    {
-      "benchmark_output": {
-        "seizure_frequency": [
-          "seizure free"
-        ]
-      },
-      "case": "s4_seizure_free_benchmark_surface",
-      "note_fragment": "Seizure free for more than five years.",
-      "policy": "Collapse long seizure-free prose to seizure free unless YEAR is explicit."
-    },
-    {
-      "benchmark_output": {
-        "investigation": []
-      },
-      "case": "s4_investigation_no_unknown_for_planned_scan",
-      "note_fragment": "I will arrange an MRI brain and an EEG.",
-      "policy": "Do not emit unknown for planned scans; abstain until results are stated."
-    },
-    {
-      "benchmark_output": {
-        "investigation": [
-          "eeg unknown"
-        ]
-      },
-      "case": "s4_investigation_unknown_when_results_unavailable",
-      "note_fragment": "I do not have the results of his recent EEG test.",
-      "policy": "Emit eeg unknown when results are explicitly unavailable."
-    }
   ],
   "label_policy_guidance": [
     "This is an eleven-family pass: complete frozen S3 v1.2 outputs for all nine S3 families before adding seizure frequency or medication temporality.",
@@ -423,6 +121,7 @@
     "Do not invent non-audited period templates (30 day, previous appointment, several per day) \u2014 use only supported benchmark surfaces.",
     "Do not put named seizure types (focal seizures, generalized tonic clonic seizures) in seizure_frequency; those belong in seizure_type.",
     "Do not emit clinical prose (seizure free for more than five years) \u2014 use benchmark surfaces only.",
+    "A patient can experience temporary seizure freedom in the past but have increased frequency currently. Extract BOTH (e.g. seizure free + frequency increased or 4 per 3 week) if the note mentions both.",
     "Investigation labels are performed modality+result pairs only (eeg/mri/ct + normal/abnormal/unknown).",
     "Do not emit eeg unknown or mri unknown for planned, requested, or not-yet-performed scans \u2014 abstain unless the note explicitly states an unknown result.",
     "When results are unavailable (for example do not have the results of the EEG), eeg unknown is allowed; otherwise prefer normal/abnormal or abstain.",
@@ -431,10 +130,312 @@
     "Treat dose changes on an existing prescription (to reduce, to increase) as current, not planned.",
     "When no supported S4 field value is present, return empty lists rather than guessing."
   ],
-  "module": "ExectS4FieldFamilyModule",
-  "predictor": "dspy.ChainOfThought",
-  "program_variant": "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
-  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
-  "signature": "ExectS4FieldFamilySignature",
+  "label_policy_examples": [
+    {
+      "case": "investigation_modality_result",
+      "note_fragment": "Investigations: MRI, right parietal focal cortical dysplasia",
+      "benchmark_output": {
+        "investigation": [
+          "mri abnormal"
+        ]
+      },
+      "policy": "Emit modality+result benchmark labels for performed investigations."
+    },
+    {
+      "case": "comorbidity_excludes_seizure_history",
+      "note_fragment": "Comorbidities: learning disabilities. Seizure history: febrile seizures.",
+      "benchmark_output": {
+        "comorbidity": [
+          "learning disabilities"
+        ]
+      },
+      "policy": "Exclude seizure-history phrases from comorbidity outputs."
+    },
+    {
+      "case": "comorbidity_diabetes_header",
+      "note_fragment": "Diagnosis: epilepsy. Comorbidities: Type 1 diabetes.",
+      "benchmark_output": {
+        "comorbidity": [
+          "type 1 diabetes"
+        ]
+      },
+      "policy": "Emit affirmed non-seizure comorbidities from diagnosis or history sections."
+    },
+    {
+      "case": "s2_seizure_altered_awareness_plural",
+      "note_fragment": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks.",
+      "benchmark_output": {
+        "seizure_type": [
+          "focal seizures with altered awareness"
+        ]
+      },
+      "policy": "Preserve altered awareness and plural seizures in the S1 seizure slot."
+    },
+    {
+      "case": "s2_seizure_no_absence_without_note",
+      "note_fragment": "Seizure type: generalized tonic clonic seizures.",
+      "benchmark_output": {
+        "seizure_type": [
+          "generalized tonic clonic seizures"
+        ]
+      },
+      "policy": "Do not add absence seizures when the note only names GTCS."
+    },
+    {
+      "case": "comorbidity_stroke_atomized",
+      "note_fragment": "History: CVA with right hemiparesis. MRI: prior infarct.",
+      "benchmark_output": {
+        "comorbidity": [
+          "cva",
+          "hemiparesis",
+          "infarct"
+        ]
+      },
+      "policy": "Atomize stroke components when the note names them separately."
+    },
+    {
+      "case": "investigation_no_unknown_without_note",
+      "note_fragment": "Investigations: EEG normal.",
+      "benchmark_output": {
+        "investigation": [
+          "eeg normal"
+        ]
+      },
+      "policy": "Do not emit mri unknown or eeg unknown without explicit unknown wording."
+    },
+    {
+      "case": "comorbidity_meningioma_surgery",
+      "note_fragment": "Previous meningioma resection 3rd January 2005.",
+      "benchmark_output": {
+        "comorbidity": [
+          "meningioma surgery"
+        ]
+      },
+      "policy": "Emit meningioma surgery when resection or surgery is named with meningioma."
+    },
+    {
+      "case": "comorbidity_affirmed_history_recall",
+      "note_fragment": "Diagnosis: symptomatic structural epilepsy secondary probably caused by early life meningitis. Investigations: MRI generalised brain atrophy.",
+      "benchmark_output": {
+        "comorbidity": [
+          "meningitis",
+          "brain atrophy"
+        ]
+      },
+      "policy": "Emit affirmed history phrases from diagnosis and investigation context."
+    },
+    {
+      "case": "comorbidity_excludes_myoclonic_jerks",
+      "note_fragment": "Absences and myoclonic jerks since teenage years, JME.",
+      "benchmark_output": {
+        "comorbidity": []
+      },
+      "policy": "Do not emit jerk or jerks as comorbidities when they are seizure descriptors."
+    },
+    {
+      "case": "s3_seizure_priority_with_s3_fields",
+      "note_fragment": "Born normally. Seizure type: focal seizures with altered awareness. Investigations: EEG normal.",
+      "benchmark_output": {
+        "birth_history": [
+          "born normally"
+        ],
+        "seizure_type": [
+          "focal seizures with altered awareness"
+        ],
+        "investigation": [
+          "eeg normal"
+        ]
+      },
+      "policy": "Emit full seizure-type list before S3 fields; do not drop seizure for birth history."
+    },
+    {
+      "case": "s3_seizure_not_in_onset_slot",
+      "note_fragment": "Epilepsy since age 4 with generalized tonic clonic seizures.",
+      "benchmark_output": {
+        "onset": [
+          "epilepsy"
+        ],
+        "seizure_type": [
+          "generalized tonic clonic seizures"
+        ]
+      },
+      "policy": "Onset holds timing condition phrase; named seizure types belong in seizure_type."
+    },
+    {
+      "case": "s3_investigation_modality_result_not_prose",
+      "note_fragment": "Investigations: MRI brain scan was normal. EEG showed generalized spike and wave.",
+      "benchmark_output": {
+        "investigation": [
+          "mri normal",
+          "eeg abnormal"
+        ]
+      },
+      "policy": "Map performed investigations to modality+result only; never imaging prose in investigation."
+    },
+    {
+      "case": "s3_s2_priority_before_birth_history",
+      "note_fragment": "Born normally. Investigations: EEG normal. Comorbidities: type 1 diabetes.",
+      "benchmark_output": {
+        "birth_history": [
+          "born normally"
+        ],
+        "investigation": [
+          "eeg normal"
+        ],
+        "comorbidity": [
+          "type 1 diabetes"
+        ]
+      },
+      "policy": "Emit full S2 investigation and comorbidity labels even when birth history is present."
+    },
+    {
+      "case": "birth_history_born_normally",
+      "note_fragment": "He was born normally with no perinatal problems.",
+      "benchmark_output": {
+        "birth_history": [
+          "born normally"
+        ]
+      },
+      "policy": "Emit affirmed birth-history CUIPhrase surfaces only."
+    },
+    {
+      "case": "epilepsy_cause_meningitis",
+      "note_fragment": "Diagnosis: symptomatic epilepsy secondary to childhood meningitis.",
+      "benchmark_output": {
+        "epilepsy_cause": [
+          "meningitis"
+        ]
+      },
+      "policy": "Prefer epilepsy_cause for causal aetiology phrasing."
+    },
+    {
+      "case": "onset_epilepsy_age_context",
+      "note_fragment": "Epilepsy since the age of four with focal seizures.",
+      "benchmark_output": {
+        "onset": [
+          "epilepsy"
+        ]
+      },
+      "policy": "Emit onset condition phrase; ages are not separate benchmark labels."
+    },
+    {
+      "case": "when_diagnosed_epilepsy",
+      "note_fragment": "She was diagnosed with epilepsy at age 18.",
+      "benchmark_output": {
+        "when_diagnosed": [
+          "epilepsy"
+        ]
+      },
+      "policy": "Emit when-diagnosed condition phrase when timing is stated."
+    },
+    {
+      "case": "s4_seizure_frequency_quantified_and_change",
+      "note_fragment": "He has about one focal seizure every three weeks and the frequency has increased.",
+      "benchmark_output": {
+        "seizure_frequency": [
+          "1 per 3 week",
+          "frequency increased"
+        ]
+      },
+      "policy": "Emit quantified rate and qualitative frequency change in seizure_frequency."
+    },
+    {
+      "case": "s4_seizure_frequency_not_seizure_type",
+      "note_fragment": "Seizure type: focal seizures. Frequency: one per month.",
+      "benchmark_output": {
+        "seizure_type": [
+          "focal seizures"
+        ],
+        "seizure_frequency": [
+          "1 per 1 month"
+        ]
+      },
+      "policy": "Keep seizure types in seizure_type; quantified rates in seizure_frequency."
+    },
+    {
+      "case": "s4_medication_temporality_pipe_format",
+      "note_fragment": "Current anti-epileptic medication: lamotrigine 75mg bd.",
+      "benchmark_output": {
+        "annotated_medication": [
+          "lamotrigine"
+        ],
+        "medication_temporality": [
+          "lamotrigine|current"
+        ]
+      },
+      "policy": "Emit medication name in annotated_medication and medication|current in temporality."
+    },
+    {
+      "case": "s4_seizure_free_since_year",
+      "note_fragment": "He has been seizure free since 2017.",
+      "benchmark_output": {
+        "seizure_frequency": [
+          "seizure free since 2017"
+        ]
+      },
+      "policy": "Emit seizure free since YEAR when a seizure-free interval is stated."
+    },
+    {
+      "case": "s4_seizure_frequency_dual_cardinal_template",
+      "note_fragment": "He has one seizure per day and one per month.",
+      "benchmark_output": {
+        "seizure_frequency": [
+          "1 per 1 day",
+          "1 per 1 month"
+        ]
+      },
+      "policy": "Always emit both cardinal slots in N per N period templates."
+    },
+    {
+      "case": "s4_seizure_frequency_zero_rate",
+      "note_fragment": "No seizures in the past three years.",
+      "benchmark_output": {
+        "seizure_frequency": [
+          "0 per 3 year"
+        ]
+      },
+      "policy": "Emit zero-rate quantified surfaces when a zero count over a period is stated."
+    },
+    {
+      "case": "s4_seizure_frequency_multi_label_block",
+      "note_fragment": "About one seizure per week with decreased frequency and infrequent clusters.",
+      "benchmark_output": {
+        "seizure_frequency": [
+          "1 per 1 week",
+          "frequency decreased",
+          "infrequent"
+        ]
+      },
+      "policy": "Retain all supported frequency labels; do not collapse to a single rate."
+    },
+    {
+      "case": "s4_seizure_free_benchmark_surface",
+      "note_fragment": "Seizure free for more than five years.",
+      "benchmark_output": {
+        "seizure_frequency": [
+          "seizure free"
+        ]
+      },
+      "policy": "Collapse long seizure-free prose to seizure free unless YEAR is explicit."
+    },
+    {
+      "case": "s4_investigation_no_unknown_for_planned_scan",
+      "note_fragment": "I will arrange an MRI brain and an EEG.",
+      "benchmark_output": {
+        "investigation": []
+      },
+      "policy": "Do not emit unknown for planned scans; abstain until results are stated."
+    },
+    {
+      "case": "s4_investigation_unknown_when_results_unavailable",
+      "note_fragment": "I do not have the results of his recent EEG test.",
+      "benchmark_output": {
+        "investigation": [
+          "eeg unknown"
+        ]
+      },
+      "policy": "Emit eeg unknown when results are explicitly unavailable."
+    }
+  ],
   "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
 }

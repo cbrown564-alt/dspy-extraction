@@ -2,6 +2,10 @@ import pytest
 
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.evaluation.gan_multi_event_flags import GanMultiEventFlags
+from clinical_extraction.gan.s0.target_selection import (
+    build_gan_s0_target_selection_surface,
+    construct_gan_s0_label_from_candidate_record,
+)
 
 
 def _record(record_id: str):
@@ -34,11 +38,7 @@ def _flags(record_id: str) -> GanMultiEventFlags:
 
 
 def test_construct_label_from_candidate_record_validates_without_scorer_repair():
-    from clinical_extraction.evaluation.gan_target_label_split import (
-        construct_label_from_candidate_record,
-    )
-
-    valid = construct_label_from_candidate_record(
+    valid = construct_gan_s0_label_from_candidate_record(
         {
             "canonical_label": "Seizure free for 6 months",
             "event_count": "0",
@@ -48,7 +48,7 @@ def test_construct_label_from_candidate_record_validates_without_scorer_repair()
             "derivation": "unit test",
         }
     )
-    invalid = construct_label_from_candidate_record(
+    invalid = construct_gan_s0_label_from_candidate_record(
         {
             "canonical_label": "a pair of per 4 month",
             "event_count": "2",
@@ -65,6 +65,32 @@ def test_construct_label_from_candidate_record_validates_without_scorer_repair()
     assert invalid.status == "invalid_candidate_label"
     assert invalid.constructed_label is None
     assert "Unsupported Gan frequency label" in invalid.failure_reason
+
+
+def test_target_selection_surface_separates_exact_and_family_selectors():
+    record = _record("gan_14390")
+
+    surface = build_gan_s0_target_selection_surface(
+        record=record,
+        flags=_flags(record.record_id),
+    )
+
+    constrained = surface["candidate_constrained_oracle"]
+    family_selector = surface["reason_code_selector_family_oracle"]
+
+    assert surface["candidate_labels"] == [
+        "2 per 4 month",
+        "2 per 3 month",
+        "no seizure frequency reference",
+        "unknown",
+    ]
+    assert surface["constructed_candidates"][-1]["constructed_label"] == "unknown"
+    assert constrained["reason_code"] == "select_exact_candidate"
+    assert constrained["constructed_label"] == "2 per 3 month"
+    assert family_selector["reason_code"] == "select_family_quantified_rate"
+    assert family_selector["constructed_label"] == "2 per 4 month"
+    assert family_selector["scores"]["canonical"]["monthly_frequency_match"] is False
+    assert family_selector["scores"]["canonical"]["pragmatic_category_match"] is True
 
 
 def test_g2_report_separates_candidate_selection_from_label_construction():
@@ -86,12 +112,17 @@ def test_g2_report_separates_candidate_selection_from_label_construction():
     constrained = arms["candidate_constrained_oracle"]
     family_selector = arms["reason_code_selector_family_oracle"]
 
-    assert constrained["canonical"]["normalized_label_accuracy"] == pytest.approx(2 / 3)
-    assert constrained["canonical"]["monthly_frequency_accuracy"] == pytest.approx(2 / 3)
-    assert constrained["paper_reproduction"]["monthly_frequency_accuracy"] == pytest.approx(2 / 3)
-    assert family_selector["unsupported_records"] == 1
-    assert report["summary"]["deterministic_label_constructor"]["invalid_candidates"] == 1
-    assert report["rows"][2]["candidate_constrained_oracle"]["status"] == "unsupported"
+    assert constrained["canonical"]["normalized_label_accuracy"] == pytest.approx(1.0)
+    assert constrained["canonical"]["monthly_frequency_accuracy"] == pytest.approx(1.0)
+    assert constrained["paper_reproduction"]["monthly_frequency_accuracy"] == (
+        pytest.approx(1.0)
+    )
+    assert family_selector["canonical"]["normalized_label_accuracy"] == pytest.approx(
+        2 / 3
+    )
+    assert family_selector["unsupported_records"] == 0
+    assert report["summary"]["deterministic_label_constructor"]["invalid_candidates"] == 0
+    assert report["rows"][2]["candidate_constrained_oracle"]["status"] == "supported"
     assert report["rows"][2]["candidate_constrained_oracle"]["reason_code"] == (
-        "invalid_selected_candidate"
+        "select_exact_candidate"
     )

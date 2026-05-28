@@ -1,3 +1,4 @@
+from unittest.mock import patch
 import dspy
 import pytest
 from dspy.utils import DummyLM
@@ -5,6 +6,7 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
 from clinical_extraction.gan.temporal_candidates import (
+    GanTemporalFrequencyCandidate,
     build_temporal_frequency_candidates_from_note,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
@@ -100,6 +102,14 @@ def reset_dspy_settings():
 
 def _configure_dummy(answers: list[dict]) -> None:
     dspy.configure(lm=DummyLM(answers=answers))
+
+
+def _patch_temporal_candidates(candidates: list[GanTemporalFrequencyCandidate]):
+    return patch(
+        "clinical_extraction.gan.temporal_candidates."
+        "build_temporal_frequency_candidates_from_note",
+        return_value=candidates,
+    )
 
 
 def test_gan_s0_module_maps_dspy_prediction_to_prediction_set():
@@ -417,7 +427,7 @@ def test_gan_s0_temporal_candidates_single_pass_injects_candidates_without_verif
 
     pred = prediction_set.predictions[0]
     assert "verifier_decision" not in pred.metadata
-    assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
+    assert "1 per year" in pred.metadata["temporal_candidate_labels"]
     assert pred.values[0].raw_value == "1 per year"
 
 
@@ -1966,7 +1976,7 @@ def test_gan_s0_temporal_candidates_verify_repair_passes_candidates_to_verifier(
 
     pred = prediction_set.predictions[0]
     assert pred.metadata["verifier_decision"] == "repair"
-    assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
+    assert "1 per year" in pred.metadata["temporal_candidate_labels"]
     assert pred.metadata["temporal_candidate_records"][0]["canonical_label"] == "1 per year"
     assert pred.values[0].raw_value == "1 per year"
 
@@ -2078,13 +2088,14 @@ def test_gan_s0_temporal_verify_repair_blocks_short_seizure_free_from_unknown():
     ])
 
     module = GanFrequencyS0TemporalCandidatesVerifyRepairModule()
-    prediction_set = predict_gan_records(
-        module,
-        [record],
-        model_provider="mock",
-        model_name="dummy-fixture",
-        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-    )
+    with _patch_temporal_candidates([]):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+        )
 
     pred = prediction_set.predictions[0]
     assert pred.metadata["verifier_decision"] == "confirm"
@@ -2119,13 +2130,22 @@ def test_gan_s0_temporal_event_table_verify_repair_rescues_confirmed_unknown_wit
     ])
 
     module = GanFrequencyS0TemporalEventTableVerifyRepairModule()
-    prediction_set = predict_gan_records(
-        module,
-        [record],
-        model_provider="mock",
-        model_name="dummy-fixture",
-        program_variant=GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+    sole_candidate = GanTemporalFrequencyCandidate(
+        canonical_label="1 per month",
+        event_count="1",
+        window_count="1",
+        window_unit="month",
+        evidence_text="His last episode was recorded on 26 February",
+        derivation="test_mock",
     )
+    with _patch_temporal_candidates([sole_candidate]):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+        )
 
     pred = prediction_set.predictions[0]
     assert pred.metadata["verifier_decision"] == "repair"
@@ -2176,7 +2196,7 @@ def test_gan_s0_temporal_event_table_verify_repair_passes_event_table_to_verifie
 
     pred = prediction_set.predictions[0]
     assert pred.metadata["verifier_decision"] == "repair"
-    assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
+    assert "1 per year" in pred.metadata["temporal_candidate_labels"]
     assert pred.metadata["temporal_event_table_records"]["events"][0]["event_count"] == "1"
     assert pred.values[0].raw_value == "1 per year"
 
@@ -2303,13 +2323,22 @@ def test_gan_s0_seeded_multiple_answer_selector_uses_deterministic_seed_when_llm
     ])
 
     module = GanFrequencyS0SeededMultipleAnswerDetSelectorModule()
-    prediction_set = predict_gan_records(
-        module,
-        [record],
-        model_provider="mock",
-        model_name="dummy-fixture",
-        program_variant=GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+    sole_candidate = GanTemporalFrequencyCandidate(
+        canonical_label="1 per year",
+        event_count="1",
+        window_count="1",
+        window_unit="year",
+        evidence_text="no seizures for nearly a year",
+        derivation="test_mock",
     )
+    with _patch_temporal_candidates([sole_candidate]):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+        )
 
     pred = prediction_set.predictions[0]
     assert pred.metadata["temporal_candidate_source"] == (

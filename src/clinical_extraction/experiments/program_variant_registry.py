@@ -404,6 +404,18 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         implementation_variant="gan_s0_candidate_builder_gap_v1",
     ),
     _gan_spec(
+        "gan.s0.temporal_candidates_adjudicate_constrained",
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="diagnostic_baseline",
+        prompt_default="gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+        implementation_variant="candidate_constrained_adjudication_v1",
+        decision_doc="docs/experiments/gan/gan_s0_g2_model_arm_comparison_20260528.md",
+        config_examples=(
+            "configs/experiments/gan_s0_g2_candidate_constrained_gpt4_1_mini_slice.json",
+        ),
+        notes="G2 model-arm comparison Arm B: deterministic candidates constraint target selection.",
+    ),
+    _gan_spec(
         "gan.s0.temporal_candidates_adjudicate_det_guards",
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
     ),

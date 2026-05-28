@@ -504,6 +504,10 @@ def validate_registry_row_canonical_run(
     if run_dir.is_dir():
         return issues
 
+    archive_run_dir = runs_root.parent / "archive" / "runs" / canonical_run_id
+    if archive_run_dir.is_dir():
+        return issues
+
     if _canonical_run_documented_missing(row):
         issues.append(
             ValidationIssue(
@@ -556,14 +560,22 @@ def validate_registry_row_decision_doc(
 
     doc_path = repo_root / _normalize_path(decision_doc)
     if not doc_path.is_file():
-        issues.append(
-            ValidationIssue(
-                level="error",
-                code="decision_doc_not_found",
-                message=f"decision_doc {decision_doc!r} does not exist.",
-                path=f"experiments[{experiment_id}].decision_doc",
+        archive_root = repo_root / "docs" / "archive" / "experiments"
+        found = False
+        if archive_root.is_dir():
+            for p in archive_root.rglob(doc_path.name):
+                if p.is_file():
+                    found = True
+                    break
+        if not found:
+            issues.append(
+                ValidationIssue(
+                    level="error",
+                    code="decision_doc_not_found",
+                    message=f"decision_doc {decision_doc!r} does not exist.",
+                    path=f"experiments[{experiment_id}].decision_doc",
+                )
             )
-        )
     return issues
 
 

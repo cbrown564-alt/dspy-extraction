@@ -212,6 +212,10 @@ class ExperimentConfig(FrozenModel):
 
 
 def load_experiment_config(path: Path) -> ExperimentConfig:
+    if not path.exists():
+        archive_path = Path("archive/configs") / path.name
+        if archive_path.exists():
+            path = archive_path
     return ExperimentConfig.model_validate_json(path.read_text(encoding="utf-8"))
 
 

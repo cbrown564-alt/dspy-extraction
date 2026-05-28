@@ -26,8 +26,18 @@ def test_decision_template_includes_required_headings():
     assert issues == []
 
 
+def _resolve_doc_path(relative_path_str: str) -> Path:
+    p = Path(relative_path_str)
+    if p.exists():
+        return p
+    for found in Path("docs").rglob(p.name):
+        if found.is_file():
+            return found
+    return p
+
+
 def test_exect_s4_frequency_inspection_maps_onto_template():
-    path = Path("docs/experiments/exect/exect_s4_frequency_deterministic_gpt_inspection_20260520.md")
+    path = _resolve_doc_path("docs/experiments/exect/exect_s4_frequency_deterministic_gpt_inspection_20260520.md")
     text = path.read_text(encoding="utf-8").lower()
     # Legacy docs use alternate section titles but retain comparability fields.
     assert "comparison group" in text
@@ -39,7 +49,7 @@ def test_exect_s4_frequency_inspection_maps_onto_template():
 
 
 def test_exect_s1_interleaving_preregistration_maps_onto_decision_template():
-    path = Path("docs/experiments/exect/exect_s1_interleaving_experiment_preregistration_20260520.md")
+    path = _resolve_doc_path("docs/experiments/exect/exect_s1_interleaving_experiment_preregistration_20260520.md")
     text = path.read_text(encoding="utf-8")
     assert "## Research question" in text
     assert "## Fixed controls (all arms)" in text

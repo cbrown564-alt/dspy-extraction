@@ -1,10 +1,13 @@
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.evaluation.gan_candidate_inventory import (
     build_gan_candidate_inventory_report,
-    hard_strata_for_record,
-    label_family,
 )
 from clinical_extraction.evaluation.gan_multi_event_flags import GanMultiEventFlags
+from clinical_extraction.gan.s0.candidate_inventory import (
+    build_gan_s0_candidate_inventory_surface,
+    gan_s0_hard_strata_for_record,
+    gan_s0_label_family,
+)
 
 
 def _record(record_id: str):
@@ -39,13 +42,13 @@ def _flags(**overrides) -> GanMultiEventFlags:
 
 
 def test_label_family_preserves_gan_special_cases():
-    assert label_family("unknown") == "unknown"
-    assert label_family("no seizure frequency reference") == "no_reference"
-    assert label_family("seizure free for multiple year") == "seizure_free"
-    assert label_family("unknown, 3 per cluster") == "unknown_cluster"
-    assert label_family("2 cluster per month, 3 per cluster") == "cluster"
-    assert label_family("multiple per week") == "vague_or_multiple_rate"
-    assert label_family("2 per month") == "quantified_rate"
+    assert gan_s0_label_family("unknown") == "unknown"
+    assert gan_s0_label_family("no seizure frequency reference") == "no_reference"
+    assert gan_s0_label_family("seizure free for multiple year") == "seizure_free"
+    assert gan_s0_label_family("unknown, 3 per cluster") == "unknown_cluster"
+    assert gan_s0_label_family("2 cluster per month, 3 per cluster") == "cluster"
+    assert gan_s0_label_family("multiple per week") == "vague_or_multiple_rate"
+    assert gan_s0_label_family("2 per month") == "quantified_rate"
 
 
 def test_hard_strata_include_required_g1_buckets():
@@ -57,7 +60,7 @@ def test_hard_strata_include_required_g1_buckets():
         label_reference_disagreement=True,
     )
 
-    strata = hard_strata_for_record(record, flags)
+    strata = gan_s0_hard_strata_for_record(record, flags)
 
     assert "cluster" in strata
     assert "unknown_with_events" in strata
@@ -91,9 +94,13 @@ def test_candidate_inventory_report_summarizes_exact_and_category_coverage():
     ] == 1
 
 
-def test_candidate_inventory_report_surfaces_invalid_candidate_labels():
+def test_candidate_inventory_surface_characterizes_current_candidate_labels():
     record = _record("gan_14390")
 
+    surface = build_gan_s0_candidate_inventory_surface(
+        record=record,
+        flags=_flags(record_id=record.record_id),
+    )
     report = build_gan_candidate_inventory_report(
         records=[record],
         record_ids=[record.record_id],
@@ -101,5 +108,13 @@ def test_candidate_inventory_report_surfaces_invalid_candidate_labels():
         split_name="unit",
     )
 
-    assert report["summary"]["invalid_candidate_labels"]["records"] == 1
-    assert report["rows"][0]["invalid_candidate_labels"] == ["a pair of per 4 month"]
+    assert surface["candidate_labels"] == [
+        "2 per 4 month",
+        "2 per 3 month",
+        "no seizure frequency reference",
+        "unknown",
+    ]
+    assert surface["gold_exact_in_candidates"] is True
+    assert surface["invalid_candidate_labels"] == []
+    assert report["summary"]["invalid_candidate_labels"]["records"] == 0
+    assert report["rows"][0] == surface
