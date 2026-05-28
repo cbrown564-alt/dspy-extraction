@@ -1,10 +1,12 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 evening refocus
+Last refreshed: 2026-05-28 evening cleanup
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
-This board is intentionally small. The project has two active priority sets:
+This board is intentionally small and current-first. Completed work is
+summarized only where it changes active sequencing. The project has two active
+priority sets:
 
 1. radically simplify the codebase so the decomposition program is easy to
    follow, test, and extend;
@@ -41,22 +43,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Ready
 
-### C9 - ExECT S5 Stack Boundary Split
-
-- **Outcome:** S5 operational stack composition is separated from S4 family
-  program logic, with medication guard and frequency verifier behavior callable
-  as explicit bridge/verifier components.
-- **Dependencies:** C2, C3, C4; C7 and C8 are helpful if shared bridge surfaces
-  move first.
-- **Parallelizable:** no; keep single-threaded because it touches stacked
-  baseline reproducibility.
-- **Owner:** unassigned.
-- **Validation:** Parity on the current S5 v2b full-validation artifact shape;
-  `uv run pytest tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py
-  tests/test_exect_s5_frequency_verifier.py -q`.
-- **Notes:** Do not report S5 stack deltas as isolated component ceilings, and
-  keep medication temporality diagnostic unless the gold policy changes.
-
 ### C10 - Registry Provenance And Analysis Script Cleanup
 
 - **Outcome:** Hard-coded historical registry/backfill knowledge is either
@@ -89,51 +75,88 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Notes:** Split tests last. The goal is to make future cleanup safer, not to
   lose regression coverage during extraction.
 
-### E3 - Medication Current-Rx And Lifecycle Payload
+### E5 - Medication Lifecycle Target Policy Decision
 
-- **Outcome:** A medication payload that separates annotated current medication
-  extraction from lifecycle/temporality reasoning.
-- **Dependencies:** none.
+- **Outcome:** A short decision note states whether medication lifecycle /
+  temporality is benchmark-facing, clinical-diagnostic, deferred, or blocked,
+  with the gold/proxy source and scoring caveats explicit.
+- **Dependencies:** E3.
+- **Parallelizable:** yes; no model calls.
+- **Owner:** unassigned.
+- **Validation:** Decision cites the E3 lifecycle inventory counts, ExECT gold
+  audit prescription-temporality caveat, and `deterministic_scorer_semantics.md`;
+  no scorer or loader change occurs unless a follow-up card is created.
+- **Notes:** ExECT prescription JSON has no native temporality column. Do not
+  treat planned/previous/taper/current status as a headline metric until this
+  target policy exists.
+
+### E6 - Medication Isolated Current-Rx Ceiling Probe
+
+- **Outcome:** A preregistered isolated medication component probe using the E3
+  annotation-current-Rx payload, reporting medication precision, recall, F1,
+  and residual categories without lifecycle scoring.
+- **Dependencies:** E3; E5 only if the probe includes lifecycle labels.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
-- **Validation:** Reproduce S1 medication strength from the payload; quantify
-  non-ASM, historical, planned, taper, dose-only, and prescription-list cases;
-  decide whether temporality is headline, diagnostic, deferred, or blocked.
-- **Notes:** Do not bundle temporality recovery back into broad S5 prompts before
-  this target is defined.
+- **Validation:** Compare the isolated medication component against existing S1
+  and S5 medication surfaces on validation; report dataset split, model/provider
+  if any, scorer mode, bridge/normalization policy, and evidence diagnostics.
+- **Notes:** This is the current-Rx ceiling path. Lifecycle rows remain
+  diagnostic unless E5 explicitly promotes a target.
 
-### E4 - Family-Span Payload
+### E7 - Medication Stack-Interference Probe
 
-- **Outcome:** `exect.sections.family_spans.v1` or equivalent typed substrate
-  for diagnosis/problem, seizure, medication, investigation, history/background,
-  frequency, and plan/follow-up spans.
-- **Dependencies:** none for design; injection should follow coverage audit.
-- **Parallelizable:** yes, but coordinate with C2 if files are being split.
+- **Outcome:** A no-model or capped-run analysis attributes S5 medication loss
+  to over-emission, non-ASM leakage, historical/planned/taper evidence, dose-only
+  rows, or cross-family prompt interference using the E3 payload as the audit
+  surface.
+- **Dependencies:** E3; E6 helpful if an isolated ceiling is available.
+- **Parallelizable:** after E3; coordinate with the S5 stack surface if files
+  move.
 - **Owner:** unassigned.
-- **Validation:** Gold evidence coverage by family, false-family span count, and
-  at least one cap-slice comparison of full-note versus family-span prompting.
-- **Notes:** Section-aware prompt routing failed as an arm; this card tests the
-  typed document-geometry mechanism.
+- **Validation:** Report S1 versus S5 medication deltas, row-level interference
+  categories, and whether an AM guard, payload routing, or prompt isolation is
+  the next appropriate mechanism.
+- **Notes:** Do not bundle temporality recovery into broad S5 prompts. The goal
+  is to explain medication degradation before changing the stack.
 
-### G2 - Gan Target Selection And Label Construction Split
+### E8 - Family-Span Cap-Slice Prompt Comparison
 
-- **Outcome:** An ablation plan, then implementation, that separates selected
-  candidate/reason-code choice from exact Gan label emission.
-- **Dependencies:** G1 complete for coverage and strata.
-- **Parallelizable:** yes.
+- **Outcome:** A preregistered cap-slice comparison of full-note prompting versus
+  E4 family-span prompting for a narrow target such as S1+investigation or one
+  selected family.
+- **Dependencies:** E4.
+- **Parallelizable:** yes, but keep one family/span surface fixed per run.
 - **Owner:** unassigned.
-- **Validation:** Compare free adjudication, candidate-constrained adjudication,
-  reason-code selector, and deterministic label constructor where supported.
-  Report both `gan2026_paper_reproduction` and canonical diagnostic views.
-- **Notes:** This is the largest bundled Gan semantic stage after R11/R15.
+- **Validation:** Report full-note versus family-span prompt substrate, dataset
+  split, cap size, model/provider, scorer mode, family F1/precision/recall,
+  gold evidence coverage, false-family span counts, and evidence diagnostics.
+- **Notes:** This tests typed document geometry. It does not promote the old
+  rejected section-aware routing arm unless recall is preserved and the
+  preregistered comparison shows a real precision or cost benefit.
+
+### E10 - ExECT Frequency Candidate Selection Split
+
+- **Outcome:** A preregistered component probe separates the completed
+  frequency event/rate payload from candidate adjudication and benchmark-label
+  construction.
+- **Dependencies:** C5 and C8 complete.
+- **Parallelizable:** yes, if scorer and bridge semantics are frozen.
+- **Owner:** unassigned.
+- **Validation:** Compare broad payload, high-precision payload, S4/S5 frequency
+  surfaces, and any adjudicator arm on validation. Report split, model/provider
+  if any, scorer mode, precision/recall/F1, extra-candidate strata, and whether
+  errors are payload coverage, target selection, or label construction.
+- **Notes:** C5/C8 cleared recall but not precision. Do not treat the 43/43
+  payload coverage result as a frequency ceiling.
 
 ### G3 - Gan Unknown Versus No-Reference Policy Probe
 
 - **Outcome:** A narrow post-adjudication policy probe for `unknown`,
   `no seizure frequency reference`, weak quantified labels, and seizure-free
   conflict cases.
-- **Dependencies:** G1 complete; ideally after G2 defines selected-candidate
-  metadata.
+- **Dependencies:** G1 complete; G2 completed selected-candidate and
+  answer-option metadata for the enriched slice.
 - **Parallelizable:** yes for planning from G1 strata; run after G2 if the
   probe needs selected-candidate metadata.
 - **Owner:** unassigned.
@@ -147,13 +170,15 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 - **Outcome:** S1*/S2*/S3*/S4*/S5* built from optimized components rather than
   broad prompt ladders.
-- **Blocked by:** E1-E4 component substrates and at least initial isolated
-  ceiling reports.
+- **Blocked by:** isolated ceiling reports and pairwise interaction evidence,
+  not substrates alone.
 - **Parallelizable:** no.
 - **Owner:** unassigned.
 - **Validation:** Per-family deltas from isolated ceilings, pairwise
   interaction losses, pooled micro F1 as secondary, and holdout residual audit.
 - **Notes:** Do not start this until component ceilings exist.
+  E3/E4 provide substrates only; E5-E10 and pairwise interaction work are still
+  needed before an optimized ExECT stack claim.
 
 ### B2 - ExECT Table 1 Benchmark Reproduction
 
@@ -177,35 +202,60 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Backlog
 
-### X1 - Component Ceiling Registry Backfill
-
-- **Outcome:** Existing Gan and ExECT results backfilled into
-  `component_ceiling_registry.md` or a linked detail table with caveats for
-  whether each row is an isolated ceiling, operational stack, diagnostic result,
-  rejected arm, or blocked benchmark claim.
-- **Dependencies:** C1/C2 helpful; can proceed from docs alone.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Every promoted baseline has model/provider, split, scorer,
-  config/run ID where available, normalization/bridge policy, and caveat.
-
 ### X2 - Pairwise ExECT Interaction Plan
 
 - **Outcome:** A preregistered plan for diagnosis+seizure type,
   seizure type+frequency, medication+temporality, investigation+comorbidity,
   and other high-value pairwise interactions.
-- **Dependencies:** initial component ceiling reports.
+- **Dependencies:** initial component ceiling reports; E5 before treating
+  medication+temporality as a scored pair.
 - **Parallelizable:** after E1-E4.
 - **Owner:** unassigned.
 - **Validation:** Each pair has hypothesis, support counts, primary family
   metrics, interference criteria, and stop rule.
 
+### E9 - Family-Span Promotion Or Rejection Decision
+
+- **Outcome:** A decision note classifies family-span prompting as promoted,
+  diagnostic-only, rejected arm, or still mechanism-open.
+- **Dependencies:** E8.
+- **Parallelizable:** after E8.
+- **Owner:** unassigned.
+- **Validation:** Decision cites the E4 no-model coverage audit, E8 cap-slice
+  results, full-note baseline, false-family span counts, and recall/cost
+  tradeoffs.
+- **Notes:** Promotion requires evidence against a full-note baseline. Existence
+  of `exect.sections.family_spans.v1` is substrate evidence only.
+
+### G4 - Gan Explicit Reason-Code Adjudicator
+
+- **Outcome:** A preregistered Gan S0 adjudicator that emits explicit
+  target-selection reason codes, selected-candidate references, and exact label
+  construction inputs separately from the final benchmark-facing label.
+- **Dependencies:** G2 model-arm comparison complete; G3 unknown/no-reference
+  policy probe complete.
+- **Parallelizable:** after G3; implementation should stay single-threaded with
+  any Gan S0 artifact/metadata contract changes.
+- **Owner:** unassigned.
+- **Validation:** Compare against free adjudication, candidate-constrained
+  adjudication, and the seeded answer-options selector surrogate on the same
+  validation slice first; report both `gan2026_paper_reproduction` and
+  canonical scorer views, selected reason-code distributions, unsupported
+  candidate cases, and whether errors are target-selection, label-construction,
+  policy, or evidence failures.
+- **Notes:** This is the explicit follow-up to the G2 seeded
+  reason-code/answer-options surrogate. Do not promote or full-validate it until
+  G3 has pinned down `unknown`, `no seizure frequency reference`, seizure-free,
+  and weak-quantifier policy.
+
 ### X3 - Registry And Atlas Refresh
 
 - **Outcome:** Regenerated registry-derived navigation only after May 28
   decisions and component-ceiling statuses are encoded.
-- **Dependencies:** X1.
-- **Parallelizable:** after X1.
+- **Dependencies:** X1 complete; C10 registry/export cleanup should run first
+  where generated navigation depends on registry material.
+- **Parallelizable:** after C10 if generated registry/atlas material is touched;
+  otherwise a doc-only refresh can proceed from the X1 backfill.
 - **Owner:** unassigned.
 - **Validation:** Generated artifacts explicitly state they postdate R11-R15 and
   the May 28 component pivot.
@@ -214,201 +264,21 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 The old R/A backlog is frozen as active guidance. Keep its evidence, but do not
 pull from it directly without translating the work into one of the current
-cards above.
-
-### C1 - Thermo-Nuclear Codebase Architecture Audit
-
-- **Outcome:** Completed as
-  `docs/planning/thermo_nuclear_codebase_architecture_audit_20260528.md`.
-- **Validation:** Review artifact with file/line references, dataset/scorer
-  preservation risks, and a ranked cleanup sequence.
-- **Notes:** C2 now provides the deletion map; broad deletions still wait on a
-  typed program variant registry plus active-status review.
-
-### C2 - Program Surface Inventory And Deletion Map
-
-- **Outcome:** Completed as
-  `docs/planning/program_surface_inventory_deletion_map_20260528.md`.
-- **Validation:** Inventory maps active surfaces, consolidation candidates,
-  archive/delete candidates, retained provenance, and focused validation gates.
-- **Notes:** Do not delete code or move configs until the typed program variant
-  registry and C4 status review preserve current-authority, historical, rejected,
-  and replay-provenance status.
-
-### C3 - Typed Program Variant Registry
-
-- **Outcome:** Introduced a typed source of truth for program variant contracts,
-  dataset/schema/scorer compatibility, active status, and provenance notes.
-- **Evidence:** `src/clinical_extraction/experiments/program_variant_registry.py`;
-  `docs/experiments/synthesis/program_variant_registry.md`;
-  `scripts/report_program_variant_registry.py`.
-- **Validation:** `uv run pytest tests/test_program_variant_registry.py -q`
-  passed with 13 tests; selected Gan config compatibility tests passed; all 59
-  JSON configs under `configs/experiments` loaded through
-  `load_experiment_config`.
-- **Notes:** This completed the registry prerequisite from C2 and moved config
-  validation away from a large literal table in `config.py`. The 59-config check
-  is deliberately loadability evidence only; C4 now supplies the status
-  authority layer.
-
-### C4 - Active Experiment Status Review
-
-- **Outcome:** Completed as
-  `docs/planning/active_experiment_status_review_20260528.md`.
-- **Evidence:** `src/clinical_extraction/experiments/program_variant_registry.py`
-  now distinguishes current-authority rows from loadable replay rows and renders
-  a per-config inventory in
-  `docs/experiments/synthesis/program_variant_registry.md`.
-- **Validation:** `uv run pytest tests/test_program_variant_registry.py -q`
-  passed with 15 tests.
-- **Notes:** The live config tree still has 59 loadable JSON configs, but C4
-  classifies them as 34 current-authority config rows and 25 loadable-replay
-  rows. Loadability is not active experiment authority, and no scorer, loader,
-  split, or benchmark semantics changed.
-
-### C5 - ExECT Frequency Event/Rate Payload Gate
-
-- **Outcome:** Completed as
-  `docs/experiments/exect/exect_frequency_event_rate_payload_audit_20260528.md`
-  with generated companion JSON at
-  `docs/experiments/exect/exect_frequency_event_rate_payload_audit_20260528.json`.
-- **Validation:** `uv run python scripts/audit_exect_frequency_event_rate_payload.py`
-  generated the audit; broad deterministic payload coverage improved from the
-  archived 11.6% baseline to 43/43 validation gold labels and 24/24 full-label
-  gold documents. Coverage is 100% across quantified rate, qualitative,
-  seizure-free, zero-rate, type-associated, temporal-scope, and multi-label
-  validation cases.
-- **Notes:** This clears the E1 coverage gate but does not close the component.
-  Broad candidate precision is 22.2% with 151 extra validation candidates, so
-  the next frequency work should split candidate selection/adjudication from
-  label construction before any model-backed stack work.
-
-### C6 - Gan S0 Surface Split
-
-- **Outcome:** Completed by extracting Gan S0 variant/spec routing to
-  `src/clinical_extraction/gan/s0/variant_routing.py` and prediction-bridge /
-  artifact assembly behavior to
-  `src/clinical_extraction/gan/s0/prediction_bridge.py`, while preserving the
-  public `src/clinical_extraction/programs/gan_frequency_s0.py` wrappers for
-  existing configs, tests, and scripts.
-- **Evidence:** `GanS0VariantSpec`, default prompt routing, stage-graph lookup,
-  `predict_gan_records`, `_predict_record`, evidence guards, label
-  normalization repairs, and `gan_frequency_s0_run_metadata` now live in
-  focused Gan S0 package surfaces.
-- **Validation:** `uv run pytest tests/test_gan_s0_program.py
-  tests/test_gan_temporal_candidates.py tests/test_gan_slot_payload.py -q`
-  passed with 178 tests; `uv run pytest tests/test_gan_scoring.py
-  tests/test_gan_paper_reproduction_scoring.py -q` passed with 13 tests.
-- **Notes:** Behavior-preserving architecture batch only. Candidate generation,
-  scorer behavior, public wrappers, and `unknown` versus
-  `no seizure frequency reference` policy were preserved. Generated reports
-  should still label scorer mode explicitly.
-
-### C7 - ExECT S1 Bridge Boundary Split
-
-- **Outcome:** Completed by adding a typed S1 boundary metadata contract at
-  `src/clinical_extraction/exect/s1_boundary.py` and attaching
-  `s1_boundary_surfaces` to S1 `DocumentPrediction.metadata` from
-  `src/clinical_extraction/programs/exect_s0_s1.py`.
-- **Evidence:** The metadata now separates raw model outputs, deterministic
-  benchmark-bridge rows, bridge flags, prompt-policy provenance, and final
-  benchmark-facing artifact values without changing the scored
-  `ExtractedValue` list.
-- **Validation:** Added raw/bridge parity fixtures for diagnosis specificity
-  collapse, seizure-type split/co-listing, brand medication normalization, and
-  current Rx augmentation in `tests/test_exect_s0_s1_program.py`.
-  `uv run pytest tests/test_exect_s0_s1_program.py
-  tests/test_exect_diagnosis_primitives.py
-  tests/test_exect_medication_primitives.py -q` passed with 104 tests;
-  `uv run pytest tests/test_exect_scoring.py tests/test_exect_loader.py -q`
-  passed with 11 tests; `uv run pytest
-  tests/test_exect_seizure_type_primitives.py -q` passed with 6 tests.
-- **Notes:** No loader, scorer, split, benchmark-source, certainty-threshold,
-  CUIPhrase preference, medication temporality, or specificity-collapse
-  semantics changed. C7 now provides the architecture substrate for E2.
-
-### C8 - ExECT Frequency Payload Extraction
-
-- **Outcome:** Completed by extracting ExECT frequency event/rate/cue parsing,
-  candidate payload construction, high-precision candidate mode, and
-  benchmark-bridge recovery into
-  `src/clinical_extraction/exect/frequency_payload.py`.
-- **Evidence:** Frequency-specific S4 imports, slot payloads, primitive fixture
-  invokers, and the no-model audit script now consume the frequency payload
-  module directly; `src/clinical_extraction/exect/primitives.py` keeps
-  compatibility re-exports for existing callers.
-- **Validation:** `uv run pytest tests/test_exect_frequency_primitives.py
-  tests/test_exect_frequency_slot_payload.py -q` passed with 20 tests;
-  `uv run python scripts/audit_exect_frequency_event_rate_payload.py` preserved
-  the C5 result: broad gold coverage 100.0%, broad precision 22.2%, and
-  24/24 full-label gold documents. Additional checks passed:
-  `tests/test_exect_high_precision_candidates.py`,
-  `tests/test_exect_s4_prompt_policy.py`, `tests/test_exect_s4_program.py`,
-  `tests/test_primitive_contracts.py`, and
-  `tests/test_primitive_fixture_library.py`.
-- **Notes:** No loader, split, scorer, gold-source, seizure-type inference, or
-  Gan-to-ExECT label policy changed. ExECT abstention remains empty-list policy,
-  not Gan no-reference policy.
-
-### E2 - S1 Raw/Bridge/Prompt Causal Split
-
-- **Outcome:** Completed by adding a deterministic artifact-only S1 split audit
-  at `scripts/audit_exect_s1_raw_bridge_prompt_split.py` with reusable helpers
-  in `src/clinical_extraction/evaluation/exect_s1_split_audit.py`.
-- **Evidence:** The generated report
-  `docs/experiments/exect/exect_s1_raw_bridge_prompt_split_audit_20260528.md`
-  decomposes diagnosis and seizure-type performance across schema-only raw
-  cap-25, v4.10 policy raw cap-25, v4.10 post-bridge cap-25, full-validation
-  raw/post-bridge GPT surfaces, and the promoted Qwen validation/test-holdout
-  clean-v2 surfaces.
-- **Validation:** `uv run pytest tests/test_exect_s1_split_audit.py -q` passed
-  with 4 tests; `uv run python
-  scripts/audit_exect_s1_raw_bridge_prompt_split.py` produced JSON and
-  Markdown artifacts with 0 model calls. Full-validation bridge deltas were
-  +32.3 pp diagnosis and +33.1 pp seizure type; Qwen test holdout minus
-  validation was -28.5 pp diagnosis and -22.1 pp seizure type.
-- **Notes:** E2 supports keeping S1 as a strong validation anchor, but not a
-  near-ceiling mechanism claim. No loader, split, scorer, benchmark bridge, or
-  model-run behavior changed; test-holdout residuals are reported only as an
-  existing transfer warning and are not tuning targets.
-
-### G1 - Gan Candidate Inventory Coverage Report
-
-- **Outcome:** Completed a no-model Gan S0 candidate-inventory coverage report
-  under the current deterministic D1/builder substrate.
-- **Evidence:**
-  `docs/experiments/gan/gan_s0_candidate_inventory_coverage_report_20260528.md`
-  and companion JSON report exact gold-label, Purist-equivalent, and
-  Pragmatic-equivalent coverage by label family and hard stratum.
-- **Validation:** `uv run pytest tests/test_gan_candidate_inventory.py
-  tests/test_gan_multi_event_flags.py -q` passed with 7 tests; `uv run python
-  scripts/export_gan_candidate_inventory_report.py` regenerated the report for
-  299 validation records with 61 exact gold candidates and 63 Purist/Pragmatic
-  equivalent candidates.
-- **Notes:** No loader, split, scorer, benchmark, or model-run behavior changed.
-  The report shows the deterministic substrate is a sparse inventory rather
-  than a near-ceiling component, so G2 should isolate target selection and label
-  construction before adding more prompt variants.
-
-Recent evidence that remains active:
+cards above. Detailed completion notes live in linked reports, generated
+artifacts, and git history; this section only keeps the steering implications.
 
 | Evidence | Current interpretation |
 | --- | --- |
-| Typed program variant registry + C4 status review, 2026-05-28 | Registry-backed config contract surface exists, renders a synthesis report, and classifies each live config as current-authority or loadable replay/provenance. |
-| ExECT E1 frequency event/rate payload audit, 2026-05-28 | Broad deterministic frequency payload now covers all validation gold labels and gold-bearing docs, but low candidate precision keeps selection/adjudication open. |
-| Gan C6 S0 surface split, 2026-05-28 | Gan S0 variant/spec routing and prediction-bridge artifact assembly are behavior-preserving package surfaces; use them for G1/G2 stage attribution without changing scorer or no-reference policy. |
-| ExECT C7 S1 bridge boundary metadata, 2026-05-28 | S1 raw model output, prompt-policy provenance, deterministic bridge rows/flags, and final artifact values are inspectable separately without scorer or loader changes; use this as the substrate for E2. |
-| ExECT C8 frequency payload extraction, 2026-05-28 | Frequency candidate payload, high-precision mode, slot payload, and benchmark bridge now share a typed frequency module without changing C5 coverage or scorer semantics. |
-| ExECT E2 S1 split audit, 2026-05-28 | S1 full-validation GPT is near ceiling only after benchmark bridges; Qwen test holdout transfer drops keep S1 validation-aligned rather than mechanism-solved. |
-| Gan G1 candidate inventory coverage, 2026-05-28 | Deterministic D1/builder substrate covers 61/299 exact validation labels and 63/299 Purist/Pragmatic-equivalent labels; use strata for G2 target-selection and label-construction split. |
-| ExECT deep review, 2026-05-28 | Current ExECT decomposition doctrine; component ceilings before stacking. |
-| Gan S0 deep dive, 2026-05-28 | Current Gan decomposition doctrine; split candidate inventory, target selection, label construction, and policy. |
-| Gan R11/R15 | D1 v1.2b schema-guard-only is the mechanism baseline; arithmetic and broad relative-anchor guardrails are diagnostic or rejected arms. |
-| Gan R12 | CLINES-style entity-first interface is a rejected arm, not mechanism closure. |
-| Gan R13 | Self-consistency is rejected for current Gan S0 compute allocation without a new instability hypothesis. |
-| Gan R14 | Qwen GEPA remains blocked until compact-delta gate clears. |
-| ExECT holdout report | Transfer warning and residual-analysis trigger; not a tuning target. |
-| S5 v2b | Current operational ExECT core-stack baseline; not proof of component ceilings. |
+| C1-C4 architecture and registry cleanup, 2026-05-28 | The cleanup map, typed program variant registry, and active-status review exist. The live config tree remains loadable, but active authority is now separated from replay/provenance rows. |
+| C5/C8 ExECT frequency substrate, 2026-05-28 | Broad frequency payload covers 43/43 validation gold labels and 24/24 gold-bearing documents, but broad precision is 22.2%; selection/adjudication is the active problem. |
+| C6/C7/C9 boundary splits, 2026-05-28 | Gan S0 routing/bridge, ExECT S1 boundary metadata, and ExECT S5 stack surfaces were extracted as behavior-preserving architecture work. Use them for stage attribution; do not infer new metric claims. |
+| E2 S1 raw/bridge/prompt split, 2026-05-28 | S1 validation strength depends heavily on benchmark bridges; holdout transfer drops keep diagnosis and seizure-type mechanisms open. |
+| E3 medication payload, 2026-05-28 | Annotation-derived current-Rx payload reproduces 47/47 validation medication gold labels; lifecycle/temporality remains diagnostic or deferred until E5 decides the target policy. |
+| E4 family-span payload, 2026-05-28 | `exect.sections.family_spans.v1` gives high evidence coverage and a cap-slice substrate; it is not promoted over full-note prompting until E8/E9. |
+| G1/G2 Gan target split evidence, 2026-05-28 | Current deterministic candidates are sparse: 61/299 exact gold labels in G1 and a 64/299 no-model G2 ceiling. On the enriched 25-record model slice, candidate-constrained and selector arms reached 92.0% monthly versus 16.0% for free adjudication, but this is diagnostic slice evidence only. |
+| X1 component ceiling registry backfill, 2026-05-28 | `component_ceiling_registry.md` now preserves row-level model/provider, split, scorer, config/run or artifact, bridge/normalization policy, classification, and caveat metadata for promoted baselines, diagnostic substrates, rejected arms, active risks, and blocked benchmark claims. |
+| Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
+| ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
 ## Dependency Notes
 
@@ -417,49 +287,72 @@ Recent evidence that remains active:
 - The typed program variant registry preserves loadable contracts and classifies
   registry/config rows as current-authority, replay/provenance, historical,
   rejected, blocked, or diagnostic.
-- C6-C11 translate the C1 thermo-nuclear cleanup sequence into pullable
-  architecture batches. C6 is now complete for Gan S0 routing and prediction
-  bridge surfaces; C7 is complete for the ExECT S1 bridge-boundary surface; C8
-  is complete for the ExECT frequency payload and bridge surface without
-  changing dataset, split, scorer, or benchmark semantics.
-- E2 is complete as an artifact-only causal split audit, and G1 is complete as
-  a no-model Gan candidate-inventory coverage report. E3 and E4 remain safe
-  first pulls because they do not require model calls; ExECT frequency
-  candidate-selection design can now consume C8, but is not a broad-stack model
-  run.
-- G2 and G3 are unblocked by G1 because target-selection and policy probes now
-  have known candidate coverage strata.
-- B1 is blocked until component substrates and isolated ceilings exist.
-- C9 should wait until S1/frequency bridge boundaries are stable enough to avoid
-  moving S5 stack logic twice.
-- C10 should not delete or regenerate registry material until X1 refreshes
-  component-ceiling rows and export scripts consume C4 status classes; otherwise
-  it will recreate stale navigation.
-- X3 should not run until X1 and C10 are complete enough to prevent stale
+- C6-C9 completed the first behavior-preserving architecture extractions: Gan
+  S0 routing/bridge surfaces, ExECT S1 boundary metadata, ExECT frequency
+  payload/bridge surfaces, and the ExECT S5 stack boundary.
+- E2, E3, and E4 are complete as no-model/artifact-only ExECT decomposition
+  audits, and G1 is complete as a no-model Gan candidate-inventory coverage
+  report. ExECT frequency candidate-selection design can now consume C8; E3/E4
+  follow-ups should use the completed substrates for isolated medication or
+  family-span comparison plans, not broad-stack model runs.
+- G3 is unblocked by G1/G2 because target-selection and policy probes now have
+  known candidate coverage strata plus selected-candidate/answer-option
+  metadata from the model-arm slice.
+- G4 is the explicit reason-code adjudicator follow-up, but it should consume
+  G3 policy outputs rather than baking unknown/no-reference decisions into a new
+  prompt surface.
+- E5 is the policy gate before medication lifecycle/temporality can become a
+  scored target. E6 is the current-Rx ceiling path; E7 is the stack-interference
+  path. E8 tests the family-span mechanism, and E9 is the promotion/rejection
+  decision after that comparison.
+- B1 is blocked until component substrates and isolated ceilings exist,
+  including medication current-Rx and family-span follow-ups where they affect
+  the optimized stack.
+- C11 can now replace monolithic helper assertions incrementally because C6-C9
+  expose public stage surfaces.
+- C10 can now consume the X1 component-ceiling backfill, but should still avoid
+  deleting provenance until export scripts consume C4 status classes and the X1
+  caveats.
+- X3 should not run until C10 is complete enough to prevent stale
   navigation from being regenerated.
 
 ## Parallelization Opportunities
 
-- **Safe now:** E3 and E4. Gan G2 is also unblocked by the completed G1 strata
-  report; ExECT frequency candidate-selection work should consume the completed
-  C8 payload surface.
+- **Safe now:** Gan G3 unknown/no-reference policy probe from the completed
+  G1/G2 strata; E5 medication lifecycle policy decision; E6 isolated
+  current-Rx ceiling probe; E8 family-span cap-slice preregistration/comparison;
+  and E10 ExECT frequency candidate-selection design. These should consume
+  completed E3/E4/C8 payload surfaces without changing scorer, loader, split,
+  or benchmark bridge semantics.
+- **After first follow-up:** E7 medication stack-interference probe benefits
+  from E6; E9 family-span promotion/rejection waits for E8; G4 explicit
+  reason-code adjudicator waits for G3.
 - **Single-threaded or carefully sequenced:** broad code deletions after C1/C2,
-  C9 stack separation, and any change to scorer, loader, split, benchmark
-  bridge, or shared primitive contracts.
-- **Blocked together:** C11 waits on extracted stage surfaces; B1 waits on
-  ExECT component ceilings; X3 waits on X1 and C10.
-- **Model-call gated:** E3/E4 audits should finish before related model runs;
-  Gan G2 model work should be planned from the completed G1 coverage strata.
+  registry/archive regeneration in C10/X3, and any change to scorer, loader,
+  split, benchmark bridge, or shared primitive contracts.
+- **Blocked together:** B1 waits on ExECT component ceilings; X3 waits on C10.
+- **Model-call gated:** E3/E4 audits are complete, so any related model run now
+  needs a preregistered comparison against the full-note/current-stack baseline;
+  any Gan selector full-validation run should wait until G3 policy isolation
+  explains the remaining unknown/no-reference and LLM-option tradeoffs. G4
+  should begin as a same-slice adjudicator comparison, not a full-validation
+  promotion run.
 
 ## Recommended Next Pull
 
-1. **G2 - Gan Target Selection And Label Construction Split** if the next slot
-   is Gan decomposition analysis using the completed G1 coverage strata.
-2. **E3 - Medication Current-Rx And Lifecycle Payload** if the next slot is an
-   ExECT medication substrate that separates current-Rx extraction from
-   lifecycle/temporality reasoning.
-3. **E4 - Family-Span/List Payload** if the next slot is ExECT document
-   structure and family-span substrate work.
+1. **Pull G3 - Gan Unknown Versus No-Reference Policy Probe** if the next slot
+   is Gan decomposition analysis: G2 now supplies selected-candidate and
+   answer-option metadata for the policy slice.
+2. **E5 - Medication Lifecycle Target Policy Decision** if the next slot should
+   resolve whether medication temporality is headline, diagnostic, deferred, or
+   blocked before any scored lifecycle run.
+3. **E6 - Medication Isolated Current-Rx Ceiling Probe** if the next slot should
+   use the completed E3 current-Rx substrate without lifecycle scoring.
+4. **E10 - ExECT Frequency Candidate Selection Split** if the next slot should
+   turn the completed frequency payload into a precision/adjudication plan.
+5. **E8 - Family-Span Cap-Slice Prompt Comparison** if the next slot should test
+   E4 spans against full-note prompting without promoting section filtering by
+   assumption.
 
 ## Standing Guardrails
 

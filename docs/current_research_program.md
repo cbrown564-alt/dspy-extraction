@@ -61,9 +61,11 @@ is:
 6. test pairwise family interactions;
 7. rebuild stacked schemas only after isolated ceilings are known.
 
-The immediate ExECT pulls are frequency event/rate payload, S1 raw/bridge/prompt
-causal split, medication current-Rx/lifecycle payload, family-span payload, and
-a component ceiling registry.
+The initial ExECT no-model substrate pulls are now frequency event/rate payload,
+S1 raw/bridge/prompt causal split, medication current-Rx/lifecycle payload, and
+family-span payload. The next ExECT work should use those substrates for
+isolated ceilings, pairwise comparisons, and component registry backfill rather
+than broad-stack prompt loops.
 
 ## Active Entry Points
 

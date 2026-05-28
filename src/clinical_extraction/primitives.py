@@ -403,7 +403,10 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Broad S1 pre-vocabulary prompting was rejected; this primitive is medication-scoped.",
             "Planned and previous medications are surfaced diagnostically, not as S1 current prescriptions.",
         ],
-        implementation_refs=["src/clinical_extraction/exect/frequency_payload.py"],
+        implementation_refs=[
+            "src/clinical_extraction/exect/medication_payload.py",
+            "src/clinical_extraction/exect/primitives.py",
+        ],
     ),
     PrimitiveMetadata(
         primitive_id="exect.medication.benchmark_bridge.v1",

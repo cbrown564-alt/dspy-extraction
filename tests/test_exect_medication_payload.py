@@ -9,6 +9,7 @@ from clinical_extraction.exect.medication_payload import (
     build_exect_medication_payload,
     summarize_medication_payload_rows,
 )
+from scripts.audit_exect_medication_current_rx_lifecycle_payload import build_report
 
 
 def test_medication_payload_separates_annotation_current_from_lifecycle_status():
@@ -85,3 +86,19 @@ def test_medication_payload_summary_counts_lifecycle_and_benchmark_rows():
     assert summary["lifecycle_status_counts"]["planned"] >= 1
     assert summary["taper_or_stop_rows"] >= 1
     assert summary["non_asm_rows"] >= 1
+
+
+def test_medication_payload_audit_reproduces_validation_current_rx_gold():
+    report = build_report(Path("data/splits/exectv2_splits.json"), "validation")
+
+    current = report["current_rx_summary"]
+    lifecycle = report["note_lifecycle_current_summary"]
+
+    assert current["documents"] == 40
+    assert current["gold_labels"] == 47
+    assert current["matched_gold_labels"] == 47
+    assert current["coverage"] == 1.0
+    assert lifecycle["matched_gold_labels"] < current["matched_gold_labels"]
+    assert report["decision"]["medication_lifecycle_temporality"] == (
+        "diagnostic/deferred"
+    )

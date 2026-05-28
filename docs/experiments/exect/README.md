@@ -26,6 +26,8 @@ The current program is:
 | S5 v2b core stack | promoted baseline | GPT 85.8% micro / 73.9% frequency F1; Qwen 85.4% / 71.4% validation. |
 | Frequency event/rate payload | current synthesis | Broad deterministic payload covers 43/43 validation gold labels but emits 151 extra candidates; selection/adjudication remains open. |
 | S1 raw/bridge/prompt split | current synthesis | GPT S1 full validation is near ceiling only after benchmark bridges; Qwen test holdout transfer drop keeps S1 validation-aligned rather than mechanism-solved. |
+| Medication current-Rx/lifecycle payload | current synthesis | Annotation-derived current-Rx payload covers 47/47 validation medication labels; lifecycle rows remain diagnostic/deferred because prescription JSON lacks native temporality. |
+| Family-span payload | current synthesis | `exect.sections.family_spans.v1` covers validation evidence for core families and provides a cap-25 full-note versus family-span substrate comparison; not yet promoted over full-note prompting. |
 | Holdout report | active risk | S1 and S5 frequency drops require residual analysis before new claims. |
 | ExECT Table 1 reproduction | blocked | Requires CUI-aware all-family scorer. |
 
@@ -34,6 +36,8 @@ The current program is:
 - `exect_task_deep_review_20260528.md` - current decomposition doctrine.
 - `exect_frequency_event_rate_payload_audit_20260528.md` - E1 no-model frequency payload coverage gate.
 - `exect_s1_raw_bridge_prompt_split_audit_20260528.md` - E2 artifact-only S1 causal split.
+- `exect_medication_current_rx_lifecycle_payload_audit_20260528.md` - E3 medication current-Rx/lifecycle substrate.
+- `exect_family_span_payload_audit_20260528.md` - E4 typed family-span substrate and cap-slice comparison.
 - `../synthesis/test_holdout_evaluation_report_20260527.md` - holdout warning.
 - `../synthesis/paper_result_table_pack_20260525.md` - current paper table pack.
 - `../../datasets/exect/exect_gold_label_audit.md` - gold-label policy.
@@ -43,8 +47,8 @@ The current program is:
 ## Active Next Work
 
 1. Frequency candidate selection/adjudication split after the E1/C8 payload gate.
-2. Medication current-Rx and lifecycle payload.
-3. Family-span/list payload.
+2. Isolated medication ceiling or stack-interference probe using the E3 current-Rx payload.
+3. Preregistered full-note versus family-span cap-slice comparison using E4 spans.
 4. Component ceiling reports before any new broad stack.
 
 ## Do Not Overread

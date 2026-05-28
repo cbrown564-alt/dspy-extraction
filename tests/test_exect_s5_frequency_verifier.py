@@ -2,6 +2,10 @@ import dspy
 from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document
+from clinical_extraction.exect.s5_stack import (
+    apply_exect_s5_annotated_medication_guard,
+    build_exect_s5_stack_metadata,
+)
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
@@ -18,6 +22,7 @@ from clinical_extraction.programs.exect_s4 import (
     build_exect_s4_module,
     predict_exect_s4_records,
 )
+from clinical_extraction.schemas import ExtractedValue
 
 
 def test_frequency_verifier_guard_blocks_added_labels_and_candidate_echo():
@@ -227,6 +232,44 @@ def test_frequency_verifier_guard_case_insensitive_and_recovery():
         "She thinks that she has about one a week"  # recovered capitalized 'She'
     ]
     assert "evidence_not_in_note" not in guarded.frequency_verifier_flags
+
+
+def test_s5_stack_components_expose_medication_guard_and_verifier_metadata():
+    record = load_exect_gold_document("EA0008")
+    pred = dspy.Prediction(
+        annotated_medication=["lamotrigine", "amitriptyline"],
+        annotated_medication_evidence=["lamotrigine 75mg bd", "amitriptyline"],
+        frequency_verifier_flags=["missing_evidence"],
+        frequency_verifier_decision="repair",
+        frequency_verifier_reason="drop unsupported label",
+    )
+    initial_values = [
+        ExtractedValue(field_name="annotated_medication", raw_value="amitriptyline")
+    ]
+
+    values = apply_exect_s5_annotated_medication_guard(
+        values=initial_values,
+        pred=pred,
+        record=record,
+        program_variant=EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+    )
+    metadata = build_exect_s5_stack_metadata(
+        pred=pred,
+        note_text=record.text,
+        program_variant=EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+    )
+
+    assert [
+        value.normalized_value
+        for value in values
+        if value.field_name == "annotated_medication"
+    ] == ["lamotrigine"]
+    assert metadata["post_guard"]["annotated_medication"] == (
+        "exect.medication.am_guard_non_asm_brand_alias.v1"
+    )
+    assert metadata["frequency_verifier"]["primitive_id"] == (
+        "exect.frequency.evidence_verify_policy.v2b"
+    )
 
 
 def test_build_exect_s5_core_family_signature_includes_policy_examples():

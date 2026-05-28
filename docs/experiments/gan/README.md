@@ -30,6 +30,8 @@ The system must separate:
 
 - `gan_s0_pipeline_decomposition_deep_dive_20260528.md` - current decomposition doctrine.
 - `gan_s0_candidate_inventory_coverage_report_20260528.md` - G1 no-model candidate inventory coverage by label family and hard stratum.
+- `gan_s0_target_label_split_g2_report_20260528.md` - G2 ablation plan plus no-model target-selection/label-construction split scaffold.
+- `gan_s0_g2_model_arm_comparison_20260528.md` - G2 same-slice model comparison of free adjudication, candidate-constrained adjudication, and seeded reason-code/answer-options selector surrogate.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
 - `gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md` - entity-first rejected arm.
@@ -47,8 +49,10 @@ listed above or in `../../component_ceiling_registry.md`.
 ## Active Next Work
 
 1. Rescore paper-facing baselines with `gan2026_paper_reproduction`.
-2. Isolate target selection from label construction using the G1 coverage report.
-3. Probe unknown versus no-reference policy after candidate/selection metadata exists.
+2. Probe unknown versus no-reference policy using the selected-candidate and
+   answer-option metadata exposed by G2.
+3. Decide whether the seeded reason-code/answer-options selector surrogate
+   deserves a full-validation confirmation after policy isolation.
 4. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
 

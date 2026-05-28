@@ -299,9 +299,13 @@ PLANNED_EXECT_FAMILY_PRIMITIVES: tuple[PrimitiveMetadata, ...] = (
         input_contract="ExECT note text with section headers or family-scoped spans.",
         output_contract="Section-anchored candidate spans for family-filtered extraction arms.",
         compatible_experiment_arms=["H2", "H4"],
-        status="planned",
+        status="implemented",
         caveats=[
             "Section filtering is not automatically promotable; preserve full-note baselines.",
+        ],
+        implementation_refs=[
+            "src/clinical_extraction/exect/family_spans.py",
+            "scripts/audit_exect_family_span_payload.py",
         ],
     ),
 )
