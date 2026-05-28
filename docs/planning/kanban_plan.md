@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C27 complete; static checks and full suite clean
+Last refreshed: 2026-05-28 C28-C32 pruning cards added
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -29,7 +29,10 @@ or `component_ceiling_registry.md` explicitly promotes them.
    product requirement; follow-up deletion should now use
    `planning/fresh_start_deadweight_pruning_review_20260528.md`. C22 removed
    the high-confidence active deadweight, and C23/C24 retired default archive
-   loadability plus active Gan/S0-S1 facade imports.
+   loadability plus active Gan/S0-S1 facade imports. C28-C32 now route the
+   stricter active-priority pruning review: archive noncurrent registry/factory
+   surfaces first, then cut historical Gan, ExECT S5, and ExECT S0/S1 code that
+   no longer serves current component-decomposition pulls.
 2. **Keep behavior-preserving cleanup separate from research claims.** Each
    architecture card must preserve scorer, loader, split, benchmark bridge, and
    replay semantics unless a focused policy/test change explicitly says
@@ -99,6 +102,23 @@ or `component_ceiling_registry.md` explicitly promotes them.
   errors are payload coverage, target selection, or label construction.
 - **Notes:** C5/C8 cleared recall but not precision. Do not treat the 43/43
   payload coverage result as a frequency ceiling.
+
+### C28 - Active Registry Authority Prune
+
+- **Outcome:** `PROGRAM_VARIANT_REGISTRY` keeps only current-authority rows
+  needed for active baselines, mechanism baselines, diagnostic baselines, and
+  operational defaults; historical, replay, rejected, and blocked rows move to
+  archive/provenance data that reports can still cite without making them live
+  runtime authority.
+- **Dependencies:** C27.
+- **Parallelizable:** no; this defines the authority boundary for C29-C32.
+- **Owner:** unassigned.
+- **Validation:** Regenerate/inspect the program variant report, run registry
+  and config validation tests, and confirm archived rows are absent from active
+  config/run resolution while remaining traceable by docs or archived JSON.
+- **Notes:** The pruning review found 77 registered rows, but only 9 are
+  current-authority-ish. Do not delete scorer, loader, split, benchmark bridge,
+  or current config semantics while moving the noncurrent rows.
 
 ## Blocked
 
@@ -232,6 +252,89 @@ or `component_ceiling_registry.md` explicitly promotes them.
 - **Notes:** This routes the registry investigation action. Broad-stack
   stability is not enough by itself to call the investigation component solved.
 
+### C29 - Program Factory Historical Arm Cut
+
+- **Outcome:** Gan S0, ExECT S0/S1, ExECT S4/S5 builders expose only variants
+  still needed by current configs, current baselines, active component probes,
+  or explicitly retained diagnostic comparators; factory branches for
+  historical, replay-only, rejected, or blocked arms are removed or moved behind
+  archive-only replay code.
+- **Dependencies:** C28.
+- **Parallelizable:** after C28; coordinate with C31/C32 if touching the same
+  ExECT builder surfaces.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_experiment_configs.py
+  tests/test_experiment_runner.py tests/test_program_variant_registry.py -q`;
+  focused Gan and ExECT module-construction tests for retained variants; `uv run
+  ruff check src scripts tests`; `uv run vulture src scripts tests
+  --min-confidence 80`.
+- **Notes:** The strict review found live factory gateways for many noncurrent
+  Gan variants such as direct, verify-repair, LLM/hybrid candidate,
+  event-table, entity-tags, React, and guard/no-guard arms, plus analogous
+  ExECT S0/S1 and S4/S5 historical branches. Keep builder-gap v1, D1 v1.2b,
+  S1/S2/S3/S4 diagnostic baselines, S5 v2b, and any explicitly needed G4
+  comparator.
+
+### C30 - Gan Candidate Builder Freeze And Split
+
+- **Outcome:** `clinical_extraction.gan.temporal_candidates` is split around
+  real responsibilities: frozen builder-gap/D1 candidate substrate,
+  high-recall candidate inventory, formatting/serialization, and shared
+  parsing/date helpers. Current output for active Gan validation candidate
+  surfaces remains behavior-equivalent unless a preregistered policy change says
+  otherwise.
+- **Dependencies:** C28 helpful; G4 coordination required if answer-option
+  metadata contracts change.
+- **Parallelizable:** cautiously after C28; single-thread with G4 or any Gan S0
+  artifact-schema edits.
+- **Owner:** unassigned.
+- **Validation:** Characterize candidate labels/counts before the split, then
+  run `uv run pytest tests/test_gan_temporal_candidates.py
+  tests/test_gan_candidate_inventory.py tests/test_gan_target_label_split.py
+  tests/test_gan_s0_stage_surfaces.py tests/test_gan_s0_program.py -q`; confirm
+  validation exact coverage and max candidate count do not regress.
+- **Notes:** Do not delete the older pattern block blindly. A review ablation
+  found full builder exact coverage 278/299 validation labels versus 238/299
+  for the generic high-recall builder alone; older patterns contributed 40
+  exact hits.
+
+### C31 - ExECT S5 Active Stack Prune
+
+- **Outcome:** ExECT S5 runtime code retains the current v2b operational stack
+  and diagnostics needed for E7/E10/E11, while rejected or obsolete public S5
+  arms such as v1/v2 verifier surfaces, temporal verifier variants, and the
+  rejected parallel S5 module are archived or removed from active builders.
+- **Dependencies:** C28; C29 if factory cleanup lands first.
+- **Parallelizable:** after C28; avoid overlapping with E7 if both touch S5
+  medication/frequency attribution surfaces.
+- **Owner:** unassigned.
+- **Validation:** Focused S5 tests for v2b retained behavior, ExECT scoring
+  tests, experiment config validation, and static checks. Any removal must keep
+  S5 v2b validation/test-holdout configs loadable as current operational
+  baselines.
+- **Notes:** S5 v2b stays useful as a stacked baseline but is not a component
+  ceiling. Rejected parallel S5 should remain provenance, not an active runtime
+  branch.
+
+### C32 - ExECT S0/S1 Prompt Archaeology Prune
+
+- **Outcome:** ExECT S0/S1 constants, signatures, prompt-routing branches, and
+  tests retain only prompt versions and variants needed by current configs,
+  current diagnostic baselines, E2 raw/bridge/prompt attribution, and active
+  component-ceiling follow-ups; older prompt archaeology moves to archive docs
+  or provenance fixtures.
+- **Dependencies:** C28; C29 if builder cleanup lands first.
+- **Parallelizable:** after C28; coordinate with ExECT diagnosis/seizure-type
+  isolated ceiling work if that starts.
+- **Owner:** unassigned.
+- **Validation:** Focused S0/S1 boundary and scorer tests, config validation,
+  and static checks. Confirm E2 audit artifacts remain interpretable even when
+  old prompt IDs are no longer active constants.
+- **Notes:** The review flagged v3 and v4.1-v4.9 prompt surfaces plus
+  pre-vocab, verify-repair, deterministic-only, diagnosis-recall, and
+  prompt-graph branches as likely historical unless a current card explicitly
+  promotes them.
+
 ## Done Or Frozen
 
 The old R/A backlog is frozen as active guidance. Keep its evidence, but do not
@@ -332,6 +435,10 @@ artifacts, and git history; this section only keeps the steering implications.
 - C27 is complete: explicit tests for old facade/re-export compatibility were
   shrunk, while scorer, loader, split, benchmark bridge, current config, and
   public component behavior coverage remained intact.
+- C28-C32 route the next pruning lane from the strict active-priority review:
+  first shrink active registry authority, then cut historical factory branches,
+  split the Gan candidate builder without losing active coverage, prune ExECT S5
+  to the v2b operational surface, and archive ExECT S0/S1 prompt archaeology.
 - The typed program variant registry classifies active config rows as
   current-authority and archived rows as docs/file provenance, with explicit
   status labels for replay/provenance, historical, rejected, blocked, or
@@ -389,10 +496,13 @@ artifacts, and git history; this section only keeps the steering implications.
   C22 removed the high-confidence active deadweight, and C23/C24 completed the
   replay/default-loadability and Gan/S0-S1 facade follow-ups. C25 settled
   script entrypoints, C26 completed the `ruff`/`vulture` dead-code sweep, and
-  C27 shrank obsolete compatibility test contracts.
+  C27 shrank obsolete compatibility test contracts. C28 is the next
+  single-threaded authority cut; C29-C32 follow from the reduced registry
+  surface, with C30 requiring extra Gan candidate-coverage characterization.
 - **Single-threaded or carefully sequenced:** future registry/archive
   regeneration and any change to scorer, loader, split, benchmark bridge, or
-  shared primitive contracts.
+  shared primitive contracts. C28 and C29 are sequencing-sensitive because they
+  decide what active runtime code is still allowed to exist.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline;
@@ -403,8 +513,10 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. Pull **G5, E7, E10, E8, or G4** according to cleanup, paper, or
-   experiment need, keeping each run preregistered and component-scoped.
+1. For pruning, pull **C28** first, then C29-C32 according to the code surface
+   you want to cut next.
+2. For research execution, pull **G5, E7, E10, E8, or G4** according to paper
+   or experiment need, keeping each run preregistered and component-scoped.
 
 ## Standing Guardrails
 
