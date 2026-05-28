@@ -1,12 +1,12 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C11 Gan stage-test slice
+Last refreshed: 2026-05-28 modularity completion track
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
-This board is intentionally small and current-first. Completed work is
-summarized only where it changes active sequencing. The project has two active
-priority sets:
+This board is current-first. Completed work is summarized only where it changes
+active sequencing, while the remaining architecture cleanup is explicit enough
+to pull through completion. The project has two active priority sets:
 
 1. radically simplify the codebase so the decomposition program is easy to
    follow, test, and extend;
@@ -20,28 +20,114 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Current Priorities
 
-1. **Codebase simplification before more broad model work.** Use
-   `thermo-nuclear-code-quality-review` to remove bloat, split bundled program
-   logic into real domain concepts, and make Gan/ExECT decomposition stages
-   inspectable without changing scorer, loader, split, or benchmark semantics.
-2. **ExECT component ceilings before schema stacking.** Follow
+1. **Finish the architecture/modularity cleanup before new broad model work.**
+   The remaining audit gap is no longer an umbrella task: pull C12-C20 in order
+   until path resolution, metrics, Gan S0, ExECT S0/S1, ExECT S5, primitive
+   modules, tests, archive/delete work, and final review are complete.
+2. **Keep behavior-preserving cleanup separate from research claims.** Each
+   architecture card must preserve scorer, loader, split, benchmark bridge, and
+   replay semantics unless a focused policy/test change explicitly says
+   otherwise.
+3. **ExECT component ceilings before schema stacking.** Follow
    `experiments/exect/exect_task_deep_review_20260528.md`: no-model gates,
    family payloads, raw/bridge/prompt causal splits, then isolated ceilings,
    pairwise interactions, and only then optimized S1*/S2*/S3*/S4*/S5* stacks.
-3. **Gan S0 decomposition before prompt polishing.** Follow
+4. **Gan S0 decomposition before prompt polishing.** Follow
    `experiments/gan/gan_s0_pipeline_decomposition_deep_dive_20260528.md`:
    candidate inventory, temporal anchoring, target selection, label
    construction, aggregation, unknown/no-reference policy, and evidence/schema
    diagnostics as separable components.
-4. **Preserve benchmark and scorer discipline.** Gan paper comparisons use
+5. **Preserve benchmark and scorer discipline.** Gan paper comparisons use
    `gan2026_paper_reproduction`; canonical Gan metrics remain diagnostic.
    ExECT Table 1 reproduction remains blocked until CUI-aware all-family
    scoring exists. Holdout is for residual analysis, not tuning.
-5. **Separate loadable config count from active experiment count.** The 59 JSON
+6. **Separate loadable config count from active experiment count.** The 59 JSON
    configs that currently load now have C4 authority classes; use those statuses
    before calling a config current, historical, rejected, blocked, or diagnostic.
 
 ## Ready
+
+### C12 - Unified Archive Path Resolution
+
+- **Outcome:** Active and archived configs/runs resolve through shared helpers
+  in `src/clinical_extraction/paths.py`, and duplicate fallback checks are
+  removed from config, registry-validation, residual-slice, and explorer catalog
+  code without changing which artifacts load.
+- **Dependencies:** C2-C4 complete.
+- **Parallelizable:** yes, but coordinate with archive/delete work and any
+  registry export changes.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_experiment_configs.py tests/test_experiment_registry_validation.py -q`;
+  smoke the affected explorer catalog builders if their imports change.
+- **Notes:** This is the first pull from `modularity_audit_report.md`. It
+  reduces path drift before files move. Do not use this card to archive or
+  rename any config or run directory.
+
+### C13 - Program Metric Surface Migration
+
+- **Outcome:** Gan S0 program metrics and feedback metrics live behind
+  Gan-owned scoring/metric modules, ExECT S0/S1 field-family metrics live behind
+  ExECT-owned scoring/metric modules, and legacy imports from program files keep
+  working during the transition.
+- **Dependencies:** C12 helpful but not required; scorer policy documents remain
+  frozen unless a separate scorer-semantics card is opened.
+- **Parallelizable:** after C12; coordinate with C14 and C15 because all three
+  touch program imports.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_gan_s0_program.py tests/test_gan_scoring.py tests/test_gan_paper_reproduction_scoring.py tests/test_exect_s0_s1_program.py tests/test_exect_scoring.py -q`.
+- **Notes:** This is a movement-only card. The metric functions should produce
+  byte-for-byte equivalent results on existing fixtures, and reports must still
+  label canonical versus paper-reproduction Gan scorer modes explicitly.
+
+### C14 - Gan S0 Program Package Decomposition
+
+- **Outcome:** `programs/gan_frequency_s0.py` becomes an import-compatible
+  facade over focused `clinical_extraction.gan.s0` modules for signatures,
+  modules, optimizer setup, variant routing, candidate inventory, target
+  selection, label construction, prediction bridge, evidence guards, and
+  artifact assembly.
+- **Dependencies:** C6/C7/C9 stage surfaces complete; C13 preferred so metrics
+  do not move at the same time as module construction.
+- **Parallelizable:** no for the main extraction; small follow-up test moves can
+  run after public surfaces land.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_gan_s0_program.py tests/test_gan_temporal_candidates.py tests/test_gan_slot_payload.py tests/test_gan_s0_stage_surfaces.py tests/test_gan_scoring.py tests/test_gan_paper_reproduction_scoring.py -q`;
+  add fixture-level parity for builder-gap v1 and D1 v1.2b on fixed record IDs.
+- **Notes:** Preserve existing class/function names registered by configs and
+  historical artifacts. Do not collapse `unknown` and
+  `no seizure frequency reference` outside `gan2026_paper_reproduction`.
+
+### C15 - ExECT S0/S1 Program Package Decomposition
+
+- **Outcome:** `programs/exect_s0_s1.py` becomes an import-compatible facade
+  over focused `clinical_extraction.exect.s0_s1` modules for signatures,
+  program modules, prompt/repair routing, prediction artifact assembly, and
+  raw/bridge/final S1 boundary contracts.
+- **Dependencies:** C7 S1 boundary surfaces complete; C13 preferred so metrics
+  do not move with prediction code.
+- **Parallelizable:** no for the main extraction; can proceed independently of
+  C14 if imports are kept stable.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_exect_s0_s1_program.py tests/test_exect_s1_boundary_surfaces.py tests/test_exect_diagnosis_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_scoring.py tests/test_exect_loader.py -q`;
+  parity fixtures for diagnosis specificity collapse, seizure-type co-listing,
+  brand medication normalization, and current-Rx augmentation.
+- **Notes:** Keep ExECT JSON diagnosis/seizure-type source policy, certainty
+  threshold, medication CUIPhrase preference, and specificity collapse unchanged
+  unless a scorer-policy card changes them explicitly.
+
+### C16 - ExECT S5 Core Split From S4
+
+- **Outcome:** S5 operational stack signatures, modules, medication guards,
+  frequency verifier wiring, and stack metadata are separated from S4 family
+  component logic while existing S4/S5 config variants remain loadable.
+- **Dependencies:** C9 S5 stack surface complete; C13 preferred.
+- **Parallelizable:** after C13; coordinate with E7 and any medication/frequency
+  isolated component work.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py tests/test_exect_s5_frequency_verifier.py -q`;
+  parity on the current S5 v2b artifact shape before any new component run.
+- **Notes:** S5 v2b remains an operational stacked baseline, not an isolated
+  family ceiling. Do not use this split to report a new component result.
 
 ### C11 - Stage-Level Test Surface Split
 
@@ -49,7 +135,8 @@ or `component_ceiling_registry.md` explicitly promotes them.
   stage-level characterization tests for candidate inventory, target selection,
   label construction, bridge policy, evidence guards, and artifact assembly.
 - **Dependencies:** C6, C7, C8, and C9 stage surfaces should exist before
-  retiring old helper assertions.
+  retiring old helper assertions; C14-C17 should land before the largest
+  private-helper assertions are removed.
 - **Parallelizable:** after each extracted surface exists.
 - **Owner:** unassigned.
 - **Validation:** Existing monolithic tests remain as parity nets until the
@@ -191,6 +278,71 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Backlog
 
+### C17 - ExECT Primitive Family Module Split
+
+- **Outcome:** `src/clinical_extraction/exect/primitives.py` is split into
+  family-owned primitive/bridge modules for diagnosis, seizure type,
+  medication, and frequency while primitive IDs, registry metadata, and
+  compatibility imports remain stable.
+- **Dependencies:** C15 preferred so S0/S1 bridge imports settle first; C8
+  frequency payload complete.
+- **Parallelizable:** after C15; frequency-only cleanup can proceed in parallel
+  if it does not change primitive registry contracts.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_exect_diagnosis_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_frequency_primitives.py tests/test_exect_frequency_slot_payload.py -q`;
+  `uv run python scripts/validate_primitives.py --errors-only`.
+- **Notes:** This is a modularity cleanup, not a policy change. Preserve raw
+  values, normalized values, evidence, flags, and benchmark bridge behavior.
+
+### C18 - Monolithic Test Retirement
+
+- **Outcome:** Large parity-net tests are split or reduced only after public
+  stage-level tests cover the same behavior; private-helper assertions that
+  block module extraction are retired or moved behind public surfaces.
+- **Dependencies:** C14, C15, C16, and C17 complete enough that public module
+  surfaces exist.
+- **Parallelizable:** after each extracted module has stage coverage.
+- **Owner:** unassigned.
+- **Validation:** Focused Gan, ExECT S0/S1, ExECT S4/S5, scorer, loader, and
+  primitive suites pass; run the full suite before declaring this card complete.
+- **Notes:** Keep old tests as parity nets until replacement coverage is real.
+  This card completes the test-isolation recommendation from
+  `modularity_audit_report.md`.
+
+### C19 - Archive And Delete Obsolete Program Surfaces
+
+- **Outcome:** Rejected and historical configs/scripts/branches identified by
+  the C2 inventory are archived, removed, or wrapped behind explicit replay
+  paths, and generated registry/navigation outputs no longer present stale arms
+  as current work.
+- **Dependencies:** C12 path resolution; C14-C18 behavior-preserving extraction;
+  X3 registry/atlas refresh should consume the same status classes.
+- **Parallelizable:** after C18 for code deletion; doc-only archive maps can be
+  prepared earlier.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_program_variant_registry.py tests/test_experiment_configs.py tests/test_experiment_registry_validation.py -q`;
+  `uv run python scripts/validate_experiment_taxonomy.py --errors-only` or
+  document any remaining provenance gaps.
+- **Notes:** Do not delete any path needed to trace active metrics to run ID,
+  config, model/provider, split, scorer mode, and caveat. Archive by decision
+  boundary, not age.
+
+### C20 - Modularity Completion Review
+
+- **Outcome:** A final review updates the architecture audit status with what
+  was addressed, what remains intentionally retained, file-size/module boundary
+  evidence, validation commands, and any residual risk accepted for
+  reproducibility.
+- **Dependencies:** C12-C19 complete.
+- **Parallelizable:** no.
+- **Owner:** unassigned.
+- **Validation:** Re-run the focused architecture validation matrix from C12-C19
+  plus the full test suite if feasible; update docs only after the result is
+  known.
+- **Notes:** Completion means the P1 monolith risks are closed or explicitly
+  reclassified with rationale. It does not require deleting replay-provenance
+  contracts that are still needed for historical runs.
+
 ### X2 - Pairwise ExECT Interaction Plan
 
 - **Outcome:** A preregistered plan for diagnosis+seizure type,
@@ -309,14 +461,39 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Dependency Notes
 
-- C1/C2/C3/C4 are complete enough to unblock carefully sequenced archive/delete
-  proposals, but broad moves still need row-level provenance checks.
+- C1-C4 are complete enough to guide cleanup, but the modularity review shows
+  the core program monoliths are still open. Treat C12-C20 as the active
+  architecture completion lane until C20 reclassifies or closes the P1 risks.
+- C12 should land before archive moves or path-sensitive cleanup. It centralizes
+  config/run fallback behavior so future file movement does not create path
+  drift across loaders, registry validation, residual analysis, and explorer
+  catalog scripts.
+- C13 should happen before large program splits. Moving metric surfaces first
+  reduces churn when C14, C15, and C16 relocate signatures, modules, optimizers,
+  and prediction artifact code.
+- C14 and C15 are the two largest behavior-preserving program decompositions.
+  They can be done in either order after C13, but each should be single-threaded
+  while imports and compatibility wrappers are moving.
+- C16 can proceed after C13 and the existing C9 S5 stack surface, but it should
+  coordinate with ExECT medication/frequency follow-ups so operational-stack
+  cleanup is not mistaken for isolated component progress.
+- C17 follows C15 for most ExECT family primitive movement; frequency-only work
+  can proceed earlier only if primitive IDs and registry contracts stay stable.
+- C18 is intentionally late. Monolithic tests are still useful parity nets until
+  C14-C17 expose public module surfaces with replacement characterization tests.
+- C19 is the first broad archive/delete pass. It depends on C12 path helpers and
+  enough C14-C18 extraction to avoid deleting code that still carries active
+  behavior.
+- C20 is the completion gate: rerun a strict architecture review and update the
+  audit status only after the code, tests, registry, and archive/delete path are
+  actually settled.
 - The typed program variant registry preserves loadable contracts and classifies
   registry/config rows as current-authority, replay/provenance, historical,
   rejected, blocked, or diagnostic.
 - C6-C9 completed the first behavior-preserving architecture extractions: Gan
   S0 routing/bridge surfaces, ExECT S1 boundary metadata, ExECT frequency
-  payload/bridge surfaces, and the ExECT S5 stack boundary.
+  payload/bridge surfaces, and the ExECT S5 stack boundary. These are inputs to
+  C14-C18, not proof that the monolith problem is finished.
 - E2, E3, and E4 are complete as no-model/artifact-only ExECT decomposition
   audits, and G1 is complete as a no-model Gan candidate-inventory coverage
   report. ExECT frequency candidate-selection design can now consume C8; E3/E4
@@ -340,34 +517,38 @@ artifacts, and git history; this section only keeps the steering implications.
 - B1 is blocked until component substrates and isolated ceilings exist,
   including medication current-Rx and family-span follow-ups where they affect
   the optimized stack.
-- C11 can now replace monolithic helper assertions incrementally because C6-C9
-  expose public stage surfaces. The first replacement-test slice covers ExECT
-  S1 boundary metadata, Gan S0 bridge/evidence guards, and S5 frequency-verifier
-  stack surfaces; a follow-up slice now covers Gan S0 candidate inventory,
-  target selection, and label construction. No monolithic parity assertions have
-  been retired yet.
+- C11 has started but is not done. The first replacement-test slice covers
+  ExECT S1 boundary metadata, Gan S0 bridge/evidence guards, and S5
+  frequency-verifier stack surfaces; a follow-up slice covers Gan S0 candidate
+  inventory, target selection, and label construction. No monolithic parity
+  assertions have been retired yet.
 - C10 completed the provenance cleanup needed before generated registry
   navigation is refreshed: historical cap-slice backfill rows are retained in
   an archive manifest, and Gan analysis scripts now expose scorer mode and
   paper-reproduction options explicitly.
-- X3 is unblocked by X1 and C10, but any regenerated atlas or registry-derived
-  navigation must label itself as post-R11-R15, post-X1, and post-C10.
+- X3 is unblocked by X1 and C10, but final registry/atlas navigation should be
+  coordinated with C19 so archived or deleted surfaces do not immediately make
+  regenerated navigation stale.
 
 ## Parallelization Opportunities
 
-- **Safe now:** X3 registry/atlas refresh from the C10 provenance surfaces; G5
-  Gan paper-scorer rescore pack; E5 medication lifecycle policy decision; E6
-  isolated current-Rx ceiling probe; E8 family-span cap-slice
-  preregistration/comparison; and E10 ExECT frequency candidate-selection
-  design. These should preserve scorer, loader, split, and benchmark bridge
-  semantics.
-- **After first follow-up:** E7 medication stack-interference probe benefits
-  from E6; E9 family-span promotion/rejection waits for E8; G4 explicit
-  reason-code adjudicator can now consume G3 policy outputs but should remain a
-  same-slice comparison before any full-validation promotion.
-- **Single-threaded or carefully sequenced:** broad code deletions after C1/C2,
-  registry/archive regeneration in X3, and any change to scorer, loader, split,
-  benchmark bridge, or shared primitive contracts.
+- **Safe now:** C12 unified path resolution; C13 metric-surface planning and
+  focused parity tests; X3 doc-only prep if it does not regenerate stale
+  navigation; G5 paper-scorer rescore if needed for a paper table; E5
+  medication lifecycle policy decision. These should preserve scorer, loader,
+  split, and benchmark bridge semantics.
+- **After C13:** C14 Gan S0 package decomposition, C15 ExECT S0/S1 package
+  decomposition, and C16 ExECT S5 split are all eligible, but each should be
+  single-threaded within its own file cluster.
+- **After C14-C17:** C18 monolithic test retirement can proceed stage by stage.
+  C19 archive/delete follows once path resolution and replacement surfaces make
+  replay provenance safe.
+- **Research lane still safe, but secondary:** E6, E8, E10, G4, and E11 remain
+  valid work, but new broad model/prompt changes should wait until the current
+  architecture lane is no longer the bottleneck.
+- **Single-threaded or carefully sequenced:** C14-C17 import-moving refactors,
+  C19 archive/delete, registry/archive regeneration in X3, and any change to
+  scorer, loader, split, benchmark bridge, or shared primitive contracts.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline;
@@ -378,22 +559,28 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. **X3 - Registry And Atlas Refresh** if the next slot should finish the C10
-   cleanup path by regenerating current navigation from post-pivot registry
-   surfaces.
-2. **G5 - Gan Paper-Scorer Rescore Pack** if a paper-comparison table or
-   benchmark-facing Gan claim is likely soon; no model calls are needed if the
-   promoted baseline artifacts remain available.
-3. **E5 - Medication Lifecycle Target Policy Decision** if the next slot should
-   resolve whether medication temporality is headline, diagnostic, deferred, or
-   blocked before any scored lifecycle run.
-4. **E6 - Medication Isolated Current-Rx Ceiling Probe** if the next slot should
-   use the completed E3 current-Rx substrate without lifecycle scoring.
-5. **E10 - ExECT Frequency Candidate Selection Split** if the next slot should
-   turn the completed frequency payload into a precision/adjudication plan.
-6. **E8 - Family-Span Cap-Slice Prompt Comparison** if the next slot should test
-   E4 spans against full-note prompting without promoting section filtering by
-   assumption.
+1. **C12 - Unified Archive Path Resolution** is the next codebase-simplification
+   pull. It is small, behavior-preserving, and reduces risk for every later
+   archive/delete or program split.
+2. **C13 - Program Metric Surface Migration** should follow so metrics are
+   anchored in domain scoring modules before the big program files move.
+3. **C14 - Gan S0 Program Package Decomposition** should then shrink the largest
+   remaining monolith behind stable public imports.
+4. **C15 - ExECT S0/S1 Program Package Decomposition** should split raw
+   extraction, prompt/repair routing, and bridge/final artifact assembly.
+5. **C16 - ExECT S5 Core Split From S4** should separate the operational stack
+   from S4 component logic before more stack-interference work.
+6. **C17 - ExECT Primitive Family Module Split** should retire the remaining
+   over-bundled primitive module while preserving registry IDs.
+7. **C18 - Monolithic Test Retirement** should remove private-helper coupling
+   only after the replacement public surfaces are covered.
+8. **C19 - Archive And Delete Obsolete Program Surfaces** should use C2/C4
+   status classes and C12 path helpers to move stale arms without losing replay
+   provenance.
+9. **C20 - Modularity Completion Review** should close the architecture lane by
+   updating audit status, residual risks, and validation evidence.
+10. **Then resume research-lane pulls** such as X3, G5, E5, E6, E10, and E8
+    according to paper/experiment need.
 
 ## Standing Guardrails
 
