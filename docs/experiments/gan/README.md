@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-28 after G6 evaluation-surface decision
+Last updated: 2026-05-29 after G8 special-class selector result
 
 ## Current Question
 
@@ -36,6 +36,8 @@ The system must separate:
 - `gan_s0_g5_paper_scorer_rescore_pack_20260528.md` - G5 synthetic-validation paper-scorer rescore pack for current promoted baselines.
 - `gan_s0_g5_scorer_mode_forensics_for_g4_20260528.md` - G5 scorer-discordance analysis for G4 follow-up and special-class target-selection design.
 - `gan_s0_g6_evaluation_slice_standard_decision_20260528.md` - G6 decision: use a locked 50-record mechanism slice plus named challenge sets; keep the old 25-record enriched slice as smoke-only.
+- `gan_s0_g7_special_class_target_selector_preregistration_20260528.md` - G7 preregistration for the next special-class target selector; varies target-selection policy only and requires G6-aligned smoke/standard evaluation before any full-validation claim.
+- `gan_s0_g8_special_class_target_selector_report_20260529.md` - G8 result; traceability passed, but the class-first selector is rejected as tested because it underperformed D1 and builder-gap GPT on standard50 and regressed on the motivating special-class overlays.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
 - `gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md` - entity-first rejected arm.
@@ -52,18 +54,21 @@ listed above or in `../../component_ceiling_registry.md`.
 
 ## Active Next Work
 
-1. Use G6 before any new selector or adjudicator run: the old enriched
+1. Treat G8 as a rejected arm, not a mechanism closure. Do not full-validate or
+   rerun the same class-first special-selector prompt shape.
+2. Before another Gan selector model call, use the G8 failure read to choose
+   between a standard50 candidate-constrained/answer-options comparator and a
+   no-model exact-miss/special-class failure inspection.
+3. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-2. Use the G4 negative result and G5 scorer-mode forensics before trying any
-   new seizure-free, quantified-rate, unknown, or no-reference selector.
-3. Decide whether the seeded reason-code/answer-options selector surrogate
-   deserves a full-validation confirmation only through a G6-aligned protocol;
-   G4 as tested is a negative traceability result, not a promotion path.
-4. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+4. Keep the G4 negative result, G5 scorer-mode forensics, and G8 report as
+   required context for any seizure-free, quantified-rate, unknown, or
+   no-reference selector.
+5. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-5. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+6. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance

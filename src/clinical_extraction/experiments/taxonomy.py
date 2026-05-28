@@ -47,6 +47,7 @@ ProgramArchitectureValue = Literal[
     "multiple_answer_det_selector",
     "seeded_multiple_answer_det_selector",
     "explicit_reason_code_adjudicator",
+    "special_class_target_selector",
     "react_temporal_tools",
     "section_aware",
     "field_family_parallel",
@@ -93,6 +94,7 @@ VariedFactorValue = Literal[
     "context_selection_policy",
     "multi_factor",
     "compute_allocation_and_aggregation_policy",
+    "target_selection_policy",
 ]
 ContextSelectionPolicyValue = Literal[
     "full_note",
@@ -109,6 +111,7 @@ StageExecutorValue = Literal[
     "llm_answer_options_det_selector",
     "seeded_hybrid_answer_options_det_selector",
     "det_candidates_llm_reason_code_adjudicator",
+    "det_date_events_llm_special_class_selector",
     "llm_extract_inline_bridges",
     "llm_extract_post_bridges",
     "det_all_family_hints_llm_extract",

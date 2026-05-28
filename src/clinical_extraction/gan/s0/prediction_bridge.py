@@ -581,10 +581,14 @@ def _predict_record(
         metadata["selected_candidate_reference"] = pred.selected_candidate_reference
     if hasattr(pred, "label_construction_inputs"):
         metadata["label_construction_inputs"] = pred.label_construction_inputs
+    if hasattr(pred, "target_semantic_class"):
+        metadata["target_semantic_class"] = pred.target_semantic_class
     if hasattr(pred, "target_selection_reason_code"):
         metadata["target_selection_reason_code"] = pred.target_selection_reason_code
     if hasattr(pred, "target_selection_error_class"):
         metadata["target_selection_error_class"] = pred.target_selection_error_class
+    if hasattr(pred, "temporal_date_event_payload"):
+        metadata["temporal_date_event_payload"] = pred.temporal_date_event_payload
     if hasattr(pred, "react_trajectory"):
         metadata["react_trajectory"] = pred.react_trajectory
     if hasattr(pred, "react_tool_call_count"):

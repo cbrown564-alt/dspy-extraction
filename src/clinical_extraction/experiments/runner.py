@@ -651,4 +651,25 @@ def run_experiment(
     )
 
     print_summary(report, config.metric_caveats, file=out)
+
+    # Auto-refresh model catalog in exect-explorer if directories exist
+    try:
+        root_dir = Path(__file__).resolve().parents[3]
+        exect_explorer_dir = root_dir / "exect-explorer"
+        if exect_explorer_dir.exists():
+            import subprocess
+            dataset_type = report.get("dataset")
+            if dataset_type == "exect_v2":
+                script_path = exect_explorer_dir / "scripts" / "build_model_catalog.py"
+                if script_path.exists():
+                    emit("\nAuto-refreshing ExECT Model Catalog in exect-explorer...")
+                    subprocess.run([sys.executable, str(script_path)], check=False, capture_output=True)
+            elif dataset_type == "gan_2026":
+                script_path = exect_explorer_dir / "scripts" / "build_model_catalog_gan.py"
+                if script_path.exists():
+                    emit("\nAuto-refreshing Gan Model Catalog in exect-explorer...")
+                    subprocess.run([sys.executable, str(script_path)], check=False, capture_output=True)
+    except Exception as ex:
+        emit(f"\nWarning: failed to auto-refresh model catalog: {ex}")
+
     return 0

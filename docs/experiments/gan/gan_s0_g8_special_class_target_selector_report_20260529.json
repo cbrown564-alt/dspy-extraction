@@ -1,0 +1,126 @@
+{
+  "status": "rejected_arm",
+  "decision_scope": "arm",
+  "generated_at": "2026-05-29",
+  "kanban_card": "G8 - Gan G7 Selector Smoke/Standard Execution",
+  "dataset": "gan_2026",
+  "split": "gan_2026_fixed_v1:validation",
+  "gold_source": "check__Seizure Frequency Number.seizure_frequency_number[0]",
+  "reference_policy": "reference[0] is a secondary difficulty signal, not gold",
+  "model_provider": "OpenAI",
+  "model": "gpt-4.1-mini",
+  "program_variant": "gan_frequency_s0_special_class_target_selector",
+  "prompt_version": "gan_frequency_s0_special_class_target_selector_v1_0",
+  "configs": {
+    "smoke25": "configs/experiments/gan_s0_g8_special_class_target_selector_gpt4_1_mini_smoke25.json",
+    "standard50": "configs/experiments/gan_s0_g8_special_class_target_selector_gpt4_1_mini_standard50.json"
+  },
+  "runs": {
+    "smoke25": "runs/gan_s0_g8_special_class_target_selector_gpt4_1_mini_smoke25_20260528T232759Z",
+    "standard50": "runs/gan_s0_g8_special_class_target_selector_gpt4_1_mini_standard50_20260528T233005Z"
+  },
+  "fixed_controls": [
+    "no scorer changes",
+    "no loader changes",
+    "no split changes",
+    "no benchmark bridge changes",
+    "no candidate-builder changes",
+    "no prediction-repair changes"
+  ],
+  "smoke25": {
+    "records": 25,
+    "trace_complete": {
+      "target_semantic_class": "25/25",
+      "selected_candidate_reference": "25/25",
+      "label_construction_inputs": "25/25",
+      "reason_code_adjudication": "25/25",
+      "temporal_date_event_payload": "25/25"
+    },
+    "paper_reproduction": {
+      "monthly": "16/25",
+      "purist": "16/25",
+      "pragmatic": "16/25",
+      "normalized_label": "16/25"
+    },
+    "canonical": {
+      "monthly": "16/25",
+      "purist": "16/25",
+      "pragmatic": "16/25",
+      "normalized_label": "16/25"
+    }
+  },
+  "standard50": {
+    "records": 50,
+    "paper_reproduction": {
+      "monthly": "37/50",
+      "purist": "39/50",
+      "pragmatic": "42/50",
+      "normalized_label": "35/50"
+    },
+    "canonical": {
+      "monthly": "36/50",
+      "purist": "38/50",
+      "pragmatic": "41/50",
+      "normalized_label": "35/50"
+    },
+    "target_semantic_class_counts": {
+      "frequency_present_quantified": 29,
+      "seizure_free_duration": 12,
+      "cluster_spacing_unknown": 2,
+      "seizures_referenced_frequency_unclear": 3,
+      "no_seizure_frequency_reference": 4
+    },
+    "primary_paper_monthly_failure_counts": {
+      "target_selection": 9,
+      "candidate_coverage": 4
+    }
+  },
+  "standard50_comparators": {
+    "d1_v1_2b_schema_guard_gpt": {
+      "run": "runs/gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini_20260528T074900Z",
+      "paper_monthly": "40/50",
+      "canonical_monthly": "42/50"
+    },
+    "builder_gap_v1_gpt": {
+      "run": "archive/runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+      "paper_monthly": "41/50",
+      "canonical_monthly": "42/50"
+    }
+  },
+  "challenge_overlays_paper_monthly": {
+    "gan_s0_g6_target_selection_standard": {
+      "g8": "30/43",
+      "d1_v1_2b": "34/43",
+      "builder_gap_v1_gpt": "34/43"
+    },
+    "gan_s0_g6_seizure_free_vs_quantified": {
+      "g8": "13/21",
+      "d1_v1_2b": "17/21",
+      "builder_gap_v1_gpt": "18/21"
+    },
+    "gan_s0_g6_unknown_no_reference_policy": {
+      "g8": "6/10",
+      "d1_v1_2b": "9/10",
+      "builder_gap_v1_gpt": "10/10"
+    },
+    "gan_s0_g6_cluster_policy": {
+      "g8": "19/24",
+      "d1_v1_2b": "19/24",
+      "builder_gap_v1_gpt": "21/24"
+    },
+    "gan_s0_g6_temporal_anchoring": {
+      "g8": "11/15",
+      "d1_v1_2b": "12/15",
+      "builder_gap_v1_gpt": "11/15"
+    },
+    "gan_s0_g6_candidate_coverage_exact_miss": {
+      "g8": "0/4",
+      "d1_v1_2b": "2/4",
+      "builder_gap_v1_gpt": "2/4"
+    }
+  },
+  "decision": {
+    "recommendation": "do_not_full_validate_as_tested",
+    "rationale": "The standard50 arm was 3 records below D1 and 4 records below builder-gap GPT under the paper-reproduction monthly scorer, and it regressed on the motivating seizure-free-vs-quantified and unknown/no-reference challenge overlays."
+  }
+}

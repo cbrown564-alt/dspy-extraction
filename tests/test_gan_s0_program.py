@@ -25,6 +25,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT,
+    GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
@@ -52,6 +53,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0MultipleAnswerDetSelectorModule,
     GanFrequencyS0SeededMultipleAnswerDetSelectorModule,
     GanFrequencyS0ExplicitReasonCodeAdjudicatorModule,
+    GanFrequencyS0SpecialClassTargetSelectorModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -252,6 +254,10 @@ def test_build_gan_s0_module_dispatches_program_variants():
         GanFrequencyS0ExplicitReasonCodeAdjudicatorModule,
     )
     assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT),
+        GanFrequencyS0SpecialClassTargetSelectorModule,
+    )
+    assert isinstance(
         build_gan_s0_module(
             GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
             include_archive=True,
@@ -341,6 +347,12 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
             GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT
         )
         == "g4_reason_code_adjudicator"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT
+        )
+        == "g7_special_class_target_selector"
     )
 
 
@@ -2320,6 +2332,62 @@ def test_gan_s0_explicit_reason_code_adjudicator_records_selection_and_construct
     assert pred.metadata["temporal_candidate_source"] == (
         "explicit_reason_code_adjudicator"
     )
+
+
+def test_gan_s0_special_class_target_selector_records_semantic_class_and_date_payload():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    selected_evidence = "no seizures for nearly a year"
+    candidate = GanTemporalFrequencyCandidate(
+        canonical_label="1 per year",
+        event_count="1",
+        window_count="1",
+        window_unit="year",
+        evidence_text=selected_evidence,
+        derivation="test_mock",
+    )
+    _configure_dummy([
+        {
+            "adjudication_json": (
+                '{"target_semantic_class": "frequency_present_quantified", '
+                '"reason_code": "select_current_quantified_rate", '
+                '"selected_candidate_index": 1, '
+                '"selected_candidate_label": "1 per year", '
+                f'"selected_evidence_text": {selected_evidence!r}, '
+                '"label_construction_inputs": {'
+                '"event_count": "1", "window_count": "1", "window_unit": "year"}, '
+                '"final_benchmark_label": "1 per year", '
+                f'"final_evidence_text": {selected_evidence!r}, '
+                '"error_class": "none"}'
+            ).replace("'", '"')
+        }
+    ])
+
+    module = GanFrequencyS0SpecialClassTargetSelectorModule()
+    with _patch_temporal_candidates([candidate]):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
+        )
+
+    pred = prediction_set.predictions[0]
+    assert pred.values[0].raw_value == "1 per year"
+    assert pred.metadata["target_semantic_class"] == "frequency_present_quantified"
+    assert pred.metadata["target_selection_reason_code"] == (
+        "select_current_quantified_rate"
+    )
+    assert pred.metadata["reason_code_adjudication"]["target_semantic_class"] == (
+        "frequency_present_quantified"
+    )
+    assert pred.metadata["selected_candidate_reference"]["candidate_index"] == 1
+    assert pred.metadata["temporal_candidate_source"] == (
+        "special_class_target_selector"
+    )
+    assert pred.metadata["temporal_date_event_payload"]["candidate_labels"] == [
+        "1 per year"
+    ]
 
 
 def test_build_gan_s0_module_supports_temporal_event_table_variant():

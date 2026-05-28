@@ -59,7 +59,7 @@ The Landscape view has been rebuilt from a flat status table into an interactive
 
 The Landscape view is the first step toward a richer visual research command centre. The following are planned or aspirational:
 
-### 1. Pipeline Architecture Diagram *(Priority)*
+### 1. Pipeline Architecture Diagram *(Implemented in v0.3.0)*
 A dedicated **Architecture** view that renders the decomposed pipeline as an interactive network graph or node diagram. Unlike the Landscape (which shows *results*), the Architecture view focuses on *what we are building, testing, evaluating, and why*.
 
 * **Nodes** = pipeline stages (Candidate Builder, Temporal Parser, Adjudicator, Label Constructor, Verifier, etc.)
@@ -91,6 +91,30 @@ Each cell shows the best validation score found for that configuration, with col
 
 ### 5. Holdout Drop Forensics
 A specialised residual-analysis view that visualises the validation → holdout drop as a "meltdown" animation on the Landscape peaks. Components that degrade significantly flare red; stable components stay green. Hover reveals the attributed cause (raw extraction, bridge policy, prompt sensitivity, scorer effect).
+
+---
+
+## 📊 Data Architecture & Refresh Pipeline
+
+The explorer frontend is a fully static React application that fetches structured JSON files from the `public/data/` directory at runtime. This avoids running an active backend database, optimizing for a fast and beautiful frontend experience.
+
+### Data Sources
+1. **Dataset Gold Standards (Manifests)**: 
+   * **ExECTv2 (2025)**: Parsed from raw texts, BRAT annotations (`.ann`), and JSON files in `data/ExECTv2 (2025)/`.
+   * **Gan (2026)**: Parsed from `data/Gan (2026)/synthetic_data_subset_1500.json`.
+2. **Model Run Artifacts (Catalogs)**:
+   * Sourced from DSPy evaluation runs outputting to the `runs/` directory (metrics, predictions, configs).
+
+### How to Refresh Data
+Python build scripts under `scripts/` process and serialize raw datasets and run artifacts into static JSON files for the frontend:
+* **To rebuild ExECTv2 letter manifests**: `python scripts/build_manifest.py` (generates `public/data/EA*.json` & `public/data/index.json`)
+* **To rebuild Gan letter manifests**: `python scripts/build_manifest_gan.py` (generates `public/data/gan_*.json` & `public/data/index_gan.json`)
+* **To rebuild ExECTv2 runs catalog**: `python scripts/build_model_catalog.py` (generates `public/data/model_catalog.json`)
+* **To rebuild Gan runs catalog**: `python scripts/build_model_catalog_gan.py` (generates `public/data/model_catalog_gan.json`)
+
+### Manual Curation & Run Registry
+* **Known Flaws**: Custom clinical annotations/anomalies (like split-dose ambiguities) are manually curated in the `KNOWN_FLAWS` dictionary inside `scripts/build_manifest.py`.
+* **Model Catalog Registry**: The models and runs displayed on the Runs dashboard are registry-based. To add a new run to the interface, you must add the folder run ID to the `RUN_SPECS` array inside `scripts/build_model_catalog.py` (or `scripts/build_model_catalog_gan.py` for Gan) and run the build script.
 
 ---
 

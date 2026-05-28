@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState, useCallback } from "react";
 import {
   BookOpen, Microscope, Stethoscope, BrainCircuit,
-  Clock, LayoutList, PenTool, Mountain,
+  Clock, LayoutList, PenTool, Mountain, Layers,
   ChevronLeft, ChevronRight, AlertTriangle
 } from "lucide-react";
 import LetterSelector from "./components/LetterSelector.jsx";
@@ -15,6 +15,7 @@ import ModelPanel from "./components/ModelPanel.jsx";
 import AnnotateView from "./components/AnnotateView.jsx";
 import ShortcutsModal from "./components/ShortcutsModal.jsx";
 import CeilingLandscape from "./components/CeilingLandscape.jsx";
+import ArchitectureView from "./components/ArchitectureView.jsx";
 import AnnotationProgress from "./components/AnnotationProgress.jsx";
 import RunsView from "./components/RunsView.jsx";
 
@@ -44,6 +45,7 @@ const VIEWS = [
   { id: "annotate", label: "Annotate", icon: PenTool },
   { id: "runs", label: "Runs", icon: BrainCircuit },
   { id: "landscape", label: "Landscape", icon: Mountain },
+  { id: "architecture", label: "Architecture", icon: Layers },
 ];
 
 function appReducer(state, action) {
@@ -390,6 +392,7 @@ function AppContent() {
             />
           )}
           {state.view === "landscape" && <CeilingLandscape />}
+          {state.view === "architecture" && <ArchitectureView />}
 
           {state.view === "reader" && state.lens === "oracle" && state.letterData && (
             <OraclePanel data={state.letterData} oracleRates={state.index?.oracle_rates || {}} />

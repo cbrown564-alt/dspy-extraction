@@ -29,18 +29,135 @@ from clinical_extraction.paths import resolve_run_directory  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT = ROOT / "exect-explorer" / "public" / "data" / "model_catalog.json"
 
-RUN_SPECS = [
-    ("S1", "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z", "GPT-4.1-mini", "paper_frozen", True),
-    ("S1", "exect_s0_s1_validation_full_qwen35b_ollama_20260520T042117Z", "Qwen3.6:35b", "paper_frozen", False),
-    ("S2", "exect_s2_validation_full_gpt4_1_mini_20260519T231223Z", "GPT-4.1-mini", "paper_frozen", False),
-    ("S2", "exect_s2_validation_full_qwen35b_ollama_20260520T073552Z", "Qwen3.6:35b", "paper_frozen", True),
-    ("S3", "exect_s3_validation_full_gpt4_1_mini_20260519T235439Z", "GPT-4.1-mini", "paper_frozen", False),
-    ("S3", "exect_s3_validation_full_qwen35b_ollama_20260520T092244Z", "Qwen3.6:35b", "paper_frozen", True),
-    ("S4", "exect_s4_validation_full_gpt4_1_mini_20260520T071248Z", "GPT-4.1-mini", "paper_frozen", False),
-    ("S4", "exect_s4_validation_full_qwen35b_ollama_20260520T160914Z", "Qwen3.6:35b", "paper_frozen", True),
-    ("S5", "exect_s5_validation_full_gpt4_1_mini_20260524T142812Z", "GPT-4.1-mini baseline", "workspace_candidate", False),
-    ("S5", "exect_s5_frequency_pre_vocab_full_gpt4_1_mini_20260524T142823Z", "GPT-4.1-mini frequency vocab", "workspace_candidate", True),
-]
+
+def scan_runs_for_exect() -> list[tuple[str, str, str, str, bool]]:
+    """Scan the runs/ directory dynamically to build specs for ExECTv2."""
+    runs_dir = ROOT / "runs"
+    if not runs_dir.exists():
+        return []
+    
+    FROZEN_RUNS = {
+        "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+        "exect_s0_s1_validation_full_qwen35b_ollama_20260520T042117Z",
+        "exect_s2_validation_full_gpt4_1_mini_20260519T231223Z",
+        "exect_s2_validation_full_qwen35b_ollama_20260520T073552Z",
+        "exect_s3_validation_full_gpt4_1_mini_20260519T235439Z",
+        "exect_s3_validation_full_qwen35b_ollama_20260520T092244Z",
+        "exect_s4_validation_full_gpt4_1_mini_20260520T071248Z",
+        "exect_s4_validation_full_qwen35b_ollama_20260520T160914Z",
+    }
+    
+    KNOWN_BEST = {
+        "exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z",
+        "exect_s2_validation_full_qwen35b_ollama_20260520T073552Z",
+        "exect_s3_validation_full_qwen35b_ollama_20260520T092244Z",
+        "exect_s4_validation_full_qwen35b_ollama_20260520T160914Z",
+        "exect_s5_frequency_pre_vocab_full_gpt4_1_mini_20260524T142823Z",
+    }
+
+    import re
+    timestamp_pattern = re.compile(r"(\d{8}T\d{6}Z)")
+
+    run_candidates = []
+    for run_path in runs_dir.iterdir():
+        if not run_path.is_dir():
+            continue
+        metrics_file = run_path / "metrics.json"
+        config_file = run_path / "config.json"
+        predictions_file = run_path / "predictions.json"
+        if not (metrics_file.exists() and config_file.exists() and predictions_file.exists()):
+            continue
+        try:
+            metrics = read_json(metrics_file)
+            config = read_json(config_file)
+        except Exception:
+            continue
+            
+        if metrics.get("dataset") != "exect_v2":
+            continue
+            
+        run_candidates.append((run_path.name, config, metrics))
+
+    def get_task_id(cfg: dict[str, Any], met: dict[str, Any]) -> str:
+        schema = (cfg.get("schema_level") or met.get("schema_level") or "").lower()
+        if "s5" in schema:
+            return "S5"
+        if "s4" in schema:
+            return "S4"
+        if "s3" in schema:
+            return "S3"
+        if "s2" in schema:
+            return "S2"
+        return "S1"
+
+    def get_timestamp(run_id: str) -> str:
+        m = timestamp_pattern.search(run_id)
+        return m.group(1) if m else ""
+
+    run_candidates.sort(key=lambda x: get_timestamp(x[0]), reverse=True)
+
+    from collections import defaultdict
+    runs_by_task = defaultdict(list)
+    for run_id, config, metrics in run_candidates:
+        task = get_task_id(config, metrics)
+        runs_by_task[task].append((run_id, config, metrics))
+
+    final_specs = []
+    
+    for task, task_runs in runs_by_task.items():
+        frozen_in_task = []
+        candidates_in_task = []
+        
+        for run_id, config, metrics in task_runs:
+            if run_id in FROZEN_RUNS:
+                frozen_in_task.append((run_id, config, metrics))
+            else:
+                candidates_in_task.append((run_id, config, metrics))
+                
+        # Keep up to 5 latest candidates to prevent catalog file bloat
+        candidates_in_task = candidates_in_task[:5]
+        kept_for_task = frozen_in_task + candidates_in_task
+        
+        best_run_id = None
+        for run_id, _, _ in kept_for_task:
+            if run_id in KNOWN_BEST:
+                best_run_id = run_id
+                break
+        
+        if not best_run_id and kept_for_task:
+            def get_f1(item):
+                bm = item[2].get("benchmark_metrics", {})
+                return bm.get("micro_f1") or 0.0
+            sorted_by_perf = sorted(kept_for_task, key=lambda x: (get_f1(x), x[0]), reverse=True)
+            best_run_id = sorted_by_perf[0][0]
+            
+        for run_id, config, metrics in kept_for_task:
+            model_path = str(config.get("model_config_path", "")).lower()
+            run_id_lower = run_id.lower()
+            if "gpt4" in model_path or "gpt-4" in model_path or "gpt4" in run_id_lower or "gpt-4" in run_id_lower:
+                model_label = "GPT-4.1-mini"
+            elif "qwen" in model_path or "qwen" in run_id_lower:
+                model_label = "Qwen3.6:35b"
+            else:
+                model_label = str(config.get("model_config_path", "")).split("/")[-1].split("\\")[-1].replace(".json", "").replace("_", " ").title()
+                if "gpt4" in model_label.lower() or "gpt-4" in model_label.lower():
+                    model_label = "GPT-4.1-mini"
+                elif "qwen" in model_label.lower():
+                    model_label = "Qwen3.6:35b"
+                
+            evidence_status = "paper_frozen" if run_id in FROZEN_RUNS else "workspace_candidate"
+            best = (run_id == best_run_id)
+            final_specs.append((task, run_id, model_label, evidence_status, best))
+            
+    def spec_sort_key(spec):
+        task_num = int(spec[0][1]) if len(spec[0]) > 1 and spec[0][1].isdigit() else 0
+        best_val = 0 if spec[4] else 1
+        ts = get_timestamp(spec[1])
+        return (task_num, best_val, ts)
+        
+    final_specs.sort(key=spec_sort_key)
+    return final_specs
+
 
 TASK_SPECS = {
     "S1": ("ExECT S1", "diagnosis, seizure type, annotated medication"),
@@ -147,7 +264,8 @@ def build_run(task: str, run_id: str, model_label: str, evidence_status: str, be
 
 
 def build_exect_catalog() -> dict[str, Any]:
-    runs = [build_run(*spec) for spec in RUN_SPECS]
+    run_specs = scan_runs_for_exect()
+    runs = [build_run(*spec) for spec in run_specs]
     tasks = build_tasks_from_runs(TASK_SPECS, runs)
     catalog = build_catalog(
         dataset="exect_v2",

@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 E9 completion and next-pull reset
+Last refreshed: 2026-05-29 G9/G10 Gan follow-up cards
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -42,7 +42,14 @@ promotes them.
    enriched slice only for smoke checks, use `gan_s0_g6_standard50_v1` for
    default mechanism comparisons, and use named challenge sets only with their
    declared decision scopes. Use the completed G5 rescore pack before any
-   synthetic paper-facing comparison.
+   synthetic paper-facing comparison. For plain-English handoff language, use
+   `docs/experiments/gan/gan_s0_key_axes_progress_report_20260528.md`: we are
+   now strong at finding possible answers and formatting a chosen answer, but
+   still weakest at choosing the right answer when a note contains competing
+   signals. G8 completed the G7 class-first selector as a rejected arm: trace
+   fields were complete, but standard50 paper monthly was 37/50, below D1
+   (40/50) and builder-gap GPT (41/50), with regressions on seizure-free versus
+   quantified and unknown/no-reference overlays.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -62,25 +69,28 @@ promotes them.
 
 ## Ready
 
-### G7 - Gan G6 Special-Class Target Selector Preregistration
+### G9 - Gan G8 Exact-Miss And Special-Class Failure Inspection
 
-- **Outcome:** A preregistered Gan S0 selector/adjudicator mechanism card names
-  the varied component, evaluation surface, scorer views, preserved trace
-  fields, and stop rule before any new model calls.
-- **Dependencies:** G1, G2, G3, G4, G5, and G6 complete.
-- **Parallelizable:** yes for preregistration; model execution only after the
-  protocol is explicit.
+- **Outcome:** No-model inspection of the G8 standard-50 failures decides
+  whether the four standard-50 exact-miss records require a candidate-inventory
+  challenge-set pass before another selector run, and separates
+  candidate-coverage failures from target-selection or label-policy failures.
+- **Dependencies:** G8 report
+  `docs/experiments/gan/gan_s0_g8_special_class_target_selector_report_20260529.md`;
+  G6 standard/challenge surfaces; G1 candidate inventory substrate; G2
+  target/label split; G5 scorer-mode forensics.
+- **Parallelizable:** yes, with ExECT mechanism-card drafting. Do not run in
+  parallel with another Gan selector model call.
 - **Owner:** unassigned.
-- **Validation:** Preregistration states whether it targets
-  `gan_s0_g6_standard50_v1`, a named G6 challenge set, or full validation;
-  reports both `gan2026_paper_reproduction` and
-  `gan_frequency_deterministic_v1`; preserves selected candidate reference,
-  reason code, construction inputs, final label, and scorer-discordance flags;
-  and confirms no scorer, loader, split, benchmark bridge, or prediction repair
-  changed.
-- **Notes:** Start with special-class target semantics: quantified current
-  frequency versus seizure-free duration, plus unknown/no-reference boundary
-  behavior. The old 25-record slice is smoke-only.
+- **Validation:** Produce a record-level inspection table for the 13 G8
+  paper-monthly misses, with special focus on the four standard-50 exact-miss
+  records (`gan_15997`, `gan_16772`, `gan_16825`, `gan_16335`). Include
+  candidate labels, whether gold is present in candidates, selected label,
+  target semantic class, reason code, challenge tags, and a decision on whether
+  candidate inventory is the next bottleneck.
+- **Notes:** No model calls and no scorer, loader, split, bridge,
+  candidate-builder, or prediction-repair changes. The output should route the
+  next pull to either G10 or G11.
 
 ## Blocked
 
@@ -147,6 +157,47 @@ promotes them.
   and any holdout residual caveat as diagnostic only.
 - **Notes:** This routes the registry investigation action. Broad-stack
   stability is not enough by itself to call the investigation component solved.
+
+### G10 - Gan Standard50 Candidate-Constrained/Answer-Options Comparator
+
+- **Outcome:** Preregistered model-backed comparison on
+  `gan_s0_g6_standard50_v1` directly compares a candidate-constrained or
+  answer-options selector against D1 v1.2b and builder-gap GPT on the same
+  records.
+- **Dependencies:** G9 decides candidate inventory is adequate for this
+  comparator, or G11 has closed the exact-miss candidate-coverage issue; G6
+  evaluation surface; G8 negative report; stored D1 and builder-gap GPT
+  predictions.
+- **Parallelizable:** only after G9 routing. Do not overlap with other local
+  model-backed Gan selector runs.
+- **Owner:** unassigned.
+- **Validation:** Dry-run config first, then standard-50 model run. Report both
+  `gan2026_paper_reproduction` and `gan_frequency_deterministic_v1`,
+  per-challenge overlays, pairwise deltas versus D1 and builder-gap GPT, trace
+  fields, and stop rule. Do not full-validate unless the selector shows at
+  least two-record monthly lift over the relevant comparator, no paper-metric
+  regression, and no targeted-overlay regression.
+- **Notes:** This must not be another special-class-label expansion of the same
+  class-first prompt. The mechanism under test is candidate-constrained or
+  answer-options selection with scorer, loader, split, bridge,
+  candidate-builder, and prediction-repair semantics preserved.
+
+### G11 - Gan Candidate-Inventory Challenge-Set Pass
+
+- **Outcome:** If G9 finds the four exact-miss records are candidate-coverage
+  failures, design and run a candidate-inventory pass on a focused
+  exact-miss/challenge surface before making another selector claim.
+- **Dependencies:** blocked until G9 routes exact-miss failure to candidate
+  inventory.
+- **Parallelizable:** after G9, but not with changes to the candidate-builder
+  contract.
+- **Owner:** unassigned.
+- **Validation:** No-model candidate-coverage report over the named challenge
+  set, with gold exact/Purist/Pragmatic coverage, candidate diff versus the G1
+  substrate, and an explicit decision on whether candidate-builder changes are
+  needed before G10.
+- **Notes:** This card should remain blocked unless G9 identifies candidate
+  inventory as the bottleneck.
 
 ## Recent Developments For Context
 
@@ -236,6 +287,34 @@ indexes, and git history.
   sets only for their declared component scope, and full validation before any
   baseline promotion. Decision report:
   `docs/experiments/gan/gan_s0_g6_evaluation_slice_standard_decision_20260528.md`.
+- **G7 preregistered the next Gan selector mechanism.** The preregistration
+  narrows the next model-backed arm to target-selection policy for special
+  classes: quantified current frequency versus seizure-free duration,
+  unknown/no-reference boundaries, and scorer-discordance preservation. It
+  requires `gan_s0_g6_standard50_v1` for mechanism comparison, keeps the old
+  25-record slice smoke-only, reports both Gan scorer views, and forbids
+  scorer, loader, split, bridge, candidate-builder, or prediction-repair
+  changes. Protocol:
+  `docs/experiments/gan/gan_s0_g7_special_class_target_selector_preregistration_20260528.md`.
+- **G8 rejected the class-first special-selector arm as tested.** The smoke run
+  preserved target semantic class, selected-candidate reference,
+  label-construction inputs, adjudication JSON, and D1 date/event payload in
+  25/25 records, so it passed the traceability stop rule. The standard50 run
+  scored 37/50 paper monthly and 36/50 canonical monthly, below D1 v1.2b
+  (40/50 paper) and builder-gap GPT (41/50 paper) on the same records. It also
+  regressed on seizure-free versus quantified (13/21 versus D1 17/21) and
+  unknown/no-reference (6/10 versus D1 9/10). Do not full-validate this arm.
+  Report:
+  `docs/experiments/gan/gan_s0_g8_special_class_target_selector_report_20260529.md`.
+- **Gan S0 now has a plain-English component handoff.** The key-axes progress
+  report translates the decomposition into reader-facing components:
+  frequency-content gate, candidate inventory, temporal anchoring, target
+  selection, label construction, aggregation, unknown/no-reference policy, and
+  evidence/schema checks. The practical summary is that current systems are
+  strong at finding possible answers and reasonably good at formatting a chosen
+  answer, while the open bottleneck is choosing the right answer when a note
+  contains competing signals. Report:
+  `docs/experiments/gan/gan_s0_key_axes_progress_report_20260528.md`.
 - **The component registry is the provenance map.** `component_ceiling_registry.md`
   carries row-level model/provider, split, scorer, run/artifact, bridge policy,
   classification, and caveat metadata. This Kanban should not duplicate that
@@ -267,6 +346,22 @@ clear active dependency.
   mechanism card should name whether it targets the 50-record standard slice,
   a named challenge set, or full validation, and must preserve scorer, loader,
   split, and benchmark bridge semantics.
+- G8 completed the first G7-protocol model-backed arm and rejected the
+  class-first special-class prompt as tested. Another Gan selector pull should
+  either compare a standard50 candidate-constrained/answer-options selector
+  directly or first inspect the G8 standard50 exact-miss and special-class
+  failures; do not rerun the same class-first prompt shape.
+- G9 is the required no-model gate before G10 or G11. It should classify the G8
+  misses by candidate coverage, target-selection failure, and label-policy
+  failure before any new Gan selector call.
+- G10 is blocked until G9 says exact-miss candidate coverage is adequate for a
+  selector comparison, or until G11 closes a candidate-inventory gap.
+- G11 starts only if G9 routes the exact-miss failures to candidate inventory.
+  It should not mutate candidate-builder behavior without a separate scoped
+  implementation card.
+- The Gan key-axes progress report is the handoff reference for plain-English
+  component names. Use it to keep G8 interpretation centered on the actual
+  failure stage rather than on implementation jargon.
 - G5 is complete and should be used for synthetic-only paper-facing Gan tables.
   Its scorer-mode forensics note is G4 follow-up input; it does not unblock Gan
   real-note reporting.
@@ -278,10 +373,12 @@ clear active dependency.
 
 ## Parallelization Opportunities
 
-- **Safe now:** G7 as Gan preregistration only, and drafting a new
-  validation-only ExECT mechanism card from E11 findings before any model calls.
-  Any downstream Gan selector/adjudicator run must use the G6 evaluation-surface
-  protocol and preserve scorer, loader, split, and benchmark bridge semantics.
+- **Safe now:** pull G9 for a no-model G8 failure inspection, draft a new
+  validation-only ExECT mechanism card from E11 findings before any model
+  calls, or do error-analysis/readme cleanup tied to completed Gan artifacts.
+  Any downstream Gan selector/adjudicator run must use the G6
+  evaluation-surface protocol and preserve scorer, loader, split, benchmark
+  bridge, candidate-builder, and prediction-repair semantics.
 - **Architecture lane closed as bottleneck:** C31/C32 closed the currently
   scoped active-priority pruning pass. Any new cleanup should start from a
   concrete runtime contract or active-authority ambiguity, not from historical
@@ -292,19 +389,24 @@ clear active dependency.
   sequencing-sensitive where it changes S5, S0/S1, or active runtime contracts.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
-  needs a preregistered comparison against the full-note/current-stack baseline;
-  any Gan selector full-validation run should wait until G3 policy isolation
-  explains the remaining unknown/no-reference and LLM-option tradeoffs. Any new
-  Gan selector slice rerun should use the completed G6 50-record standard slice
-  or a named challenge set with its declared decision scope.
+  needs a preregistered comparison against the full-note/current-stack baseline.
+  G10 and other Gan selector model calls wait on G9 routing, and any Gan
+  selector full-validation run should wait until the standard-50 mechanism has
+  cleared its stop rule. G11 candidate-inventory work waits unless G9 identifies
+  candidate coverage as the bottleneck.
 
 ## Recommended Next Pull
 
-1. Draft **G7** before any more Gan selector or adjudicator model calls.
-2. Before any new ExECT model calls, draft a validation-only mechanism card from
-   E11 for S1 transfer, frequency payload robustness/adjudication, or medication
-   payload routing. Holdout rows remain residual evidence only.
-3. For additional pruning, first write a new card that names the runtime
+1. Pull G9 first: inspect the G8 standard-50 misses and decide whether the four
+   exact-miss records are a candidate-inventory problem or a selector/policy
+   problem.
+2. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
+   transfer, frequency payload robustness/adjudication, or medication payload
+   routing. Holdout rows remain residual evidence only.
+3. If G9 says candidate inventory is adequate, pull G10 and compare the
+   standard-50 candidate-constrained/answer-options selector directly against
+   D1. If not, pull G11 before G10.
+4. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.
 

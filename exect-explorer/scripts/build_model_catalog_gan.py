@@ -30,22 +30,99 @@ from clinical_extraction.paths import resolve_run_directory  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT = ROOT / "exect-explorer" / "public" / "data" / "model_catalog_gan.json"
 
-RUN_SPECS = [
-    (
-        "Gan_S0",
+
+def scan_runs_for_gan() -> list[tuple[str, str, str, str, bool]]:
+    """Scan the runs/ directory dynamically to build specs for Gan 2026."""
+    runs_dir = ROOT / "runs"
+    if not runs_dir.exists():
+        return []
+    
+    FROZEN_RUNS = {
         "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
-        "GPT-4.1-mini candidate-builder gap v1",
-        "paper_frozen",
-        True,
-    ),
-    (
-        "Gan_S0",
         "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
-        "Qwen3.6:35b candidate-builder gap v1",
-        "paper_frozen",
-        False,
-    ),
-]
+    }
+    
+    KNOWN_BEST = {
+        "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+    }
+
+    import re
+    timestamp_pattern = re.compile(r"(\d{8}T\d{6}Z)")
+
+    run_candidates = []
+    for run_path in runs_dir.iterdir():
+        if not run_path.is_dir():
+            continue
+        metrics_file = run_path / "metrics.json"
+        config_file = run_path / "config.json"
+        predictions_file = run_path / "predictions.json"
+        if not (metrics_file.exists() and config_file.exists() and predictions_file.exists()):
+            continue
+        try:
+            metrics = read_json(metrics_file)
+            config = read_json(config_file)
+        except Exception:
+            continue
+            
+        if metrics.get("dataset") != "gan_2026":
+            continue
+            
+        run_candidates.append((run_path.name, config, metrics))
+
+    def get_timestamp(run_id: str) -> str:
+        m = timestamp_pattern.search(run_id)
+        return m.group(1) if m else ""
+
+    run_candidates.sort(key=lambda x: get_timestamp(x[0]), reverse=True)
+
+    frozen_runs = []
+    candidate_runs = []
+    
+    for run_id, config, metrics in run_candidates:
+        if run_id in FROZEN_RUNS:
+            frozen_runs.append((run_id, config, metrics))
+        else:
+            candidate_runs.append((run_id, config, metrics))
+            
+    # Keep up to 5 latest candidates
+    candidate_runs = candidate_runs[:5]
+    kept_runs = frozen_runs + candidate_runs
+
+    best_run_id = None
+    for run_id, _, _ in kept_runs:
+        if run_id in KNOWN_BEST:
+            best_run_id = run_id
+            break
+            
+    if not best_run_id and kept_runs:
+        def get_acc(item):
+            bm = item[2].get("benchmark_metrics", {})
+            return bm.get("monthly_frequency_accuracy") or 0.0
+        sorted_by_perf = sorted(kept_runs, key=lambda x: (get_acc(x), x[0]), reverse=True)
+        best_run_id = sorted_by_perf[0][0]
+
+    final_specs = []
+    for run_id, config, metrics in kept_runs:
+        model_path = str(config.get("model_config_path", "")).lower()
+        run_id_lower = run_id.lower()
+        if "gpt4" in model_path or "gpt-4" in model_path or "gpt4" in run_id_lower or "gpt-4" in run_id_lower:
+            model_label = "GPT-4.1-mini"
+        elif "qwen" in model_path or "qwen" in run_id_lower:
+            model_label = "Qwen3.6:35b"
+        else:
+            model_label = str(config.get("model_config_path", "")).split("/")[-1].split("\\")[-1].replace(".json", "").replace("_", " ").title()
+            if "gpt4" in model_label.lower() or "gpt-4" in model_label.lower():
+                model_label = "GPT-4.1-mini"
+            elif "qwen" in model_label.lower():
+                model_label = "Qwen3.6:35b"
+            
+        evidence_status = "paper_frozen" if run_id in FROZEN_RUNS else "workspace_candidate"
+        best = (run_id == best_run_id)
+        final_specs.append(("Gan_S0", run_id, model_label, evidence_status, best))
+        
+    final_specs.sort(key=lambda x: (0 if x[4] else 1, get_timestamp(x[1])), reverse=True)
+    return final_specs
+
 
 TASK_SPECS = {
     "Gan_S0": (
@@ -147,7 +224,8 @@ def build_run(task: str, run_id: str, model_label: str, evidence_status: str, be
 
 
 def build_gan_catalog() -> dict[str, Any]:
-    runs = [build_run(*spec) for spec in RUN_SPECS]
+    run_specs = scan_runs_for_gan()
+    runs = [build_run(*spec) for spec in run_specs]
     tasks = build_tasks_from_runs(TASK_SPECS, runs)
     catalog = build_catalog(
         dataset="gan_2026",
