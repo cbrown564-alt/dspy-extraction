@@ -29,6 +29,7 @@ The system must separate:
 ## Read First
 
 - `gan_s0_pipeline_decomposition_deep_dive_20260528.md` - current decomposition doctrine.
+- `gan_s0_candidate_inventory_coverage_report_20260528.md` - G1 no-model candidate inventory coverage by label family and hard stratum.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
 - `gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md` - entity-first rejected arm.
@@ -46,8 +47,8 @@ listed above or in `../../component_ceiling_registry.md`.
 ## Active Next Work
 
 1. Rescore paper-facing baselines with `gan2026_paper_reproduction`.
-2. Create candidate inventory coverage reports by hard strata.
-3. Isolate target selection from label construction.
+2. Isolate target selection from label construction using the G1 coverage report.
+3. Probe unknown versus no-reference policy after candidate/selection metadata exists.
 4. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
 

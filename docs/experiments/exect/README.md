@@ -24,12 +24,14 @@ The current program is:
 | --- | --- | --- |
 | Clean S1-S4 ladder | diagnostic baseline | Complexity stress test; not proof of component ceilings. |
 | S5 v2b core stack | promoted baseline | GPT 85.8% micro / 73.9% frequency F1; Qwen 85.4% / 71.4% validation. |
+| Frequency event/rate payload | current synthesis | Broad deterministic payload covers 43/43 validation gold labels but emits 151 extra candidates; selection/adjudication remains open. |
 | Holdout report | active risk | S1 and S5 frequency drops require residual analysis before new claims. |
 | ExECT Table 1 reproduction | blocked | Requires CUI-aware all-family scorer. |
 
 ## Read First
 
 - `exect_task_deep_review_20260528.md` - current decomposition doctrine.
+- `exect_frequency_event_rate_payload_audit_20260528.md` - E1 no-model frequency payload coverage gate.
 - `../synthesis/test_holdout_evaluation_report_20260527.md` - holdout warning.
 - `../synthesis/paper_result_table_pack_20260525.md` - current paper table pack.
 - `../../datasets/exect/exect_gold_label_audit.md` - gold-label policy.
@@ -38,7 +40,7 @@ The current program is:
 
 ## Active Next Work
 
-1. Frequency event/rate payload no-model audit.
+1. Frequency candidate selection/adjudication split after the E1 coverage gate.
 2. S1 raw extraction versus bridge versus prompt-policy causal split.
 3. Medication current-Rx and lifecycle payload.
 4. Family-span/list payload.

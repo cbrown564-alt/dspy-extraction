@@ -27,9 +27,13 @@ evidence, not active steering. Use this map before citing any synthesis doc.
 
 ## Registry Status
 
-`experiment_registry.json` is useful provenance, but the latest checked registry
-generation predates the May 28 R11-R15 decisions. Do not use registry-derived
-atlas or matrix exports as current authority until regenerated.
+`program_variant_registry.md` is the C4 current-authority/loadable-replay status
+view for program variants and live experiment configs.
+
+`experiment_registry.json` remains useful provenance, but its atlas-style rows
+still predate the May 28 R11-R15 status review as a generated navigation source.
+Do not use registry-derived atlas or matrix exports as current authority until
+they consume the C4 status classes and X1 component-ceiling backfill.
 
 ## New Synthesis Rule
 

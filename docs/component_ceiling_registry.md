@@ -49,7 +49,7 @@ appears when optimized components are stacked?
 | Clean ladder S1-S4 | diagnostic baseline | Shows schema breadth pressure, but not component ceilings. | Treat as unoptimized complexity stress test. |
 | S5 core surface | promoted baseline | GPT v2b 85.8% micro / 73.9% frequency F1; Qwen 85.4% / 71.4% on validation. | Keep as current stacked baseline, not proof of optimal decomposition. |
 | Holdout transfer | active risk | S1 GPT 92.3 -> 77.8 micro; S5 GPT frequency 73.9 -> 47.1 F1. | Run residual/causal split analysis; do not tune from holdout. |
-| Frequency event/rate payload | mechanism open | Prior no-model coverage only 11.6%; verifier is compensating for weak substrate. | Build typed event/rate payload and no-model coverage audit before model runs. |
+| Frequency event/rate payload | coverage gate passed / adjudication open | E1 audit covers 43/43 validation gold labels, including quantified, qualitative, seizure-free, zero-rate, type-associated, temporal-scope, and multi-label cases; broad payload precision is only 22.2% with 151 extra candidates. | Split candidate selection/adjudication from label construction before model-backed stack work. |
 | S1 raw/bridge/prompt split | mechanism open | Validation strong, holdout diagnosis/seizure-type weak; prompt and bridge effects are entangled. | Separate raw extraction, bridge-only, prompt-policy, and combined effects. |
 | Medication current-Rx | likely high ceiling | S1 medication transfers well; S5 broad stack damages medication via over-emission/interference. | Build medication mention/current-Rx payload and benchmark bridge. |
 | Medication lifecycle / temporality | mechanism open | Broad temporal guard arms collapsed recall; prescription gold lacks clean temporality column. | Build lifecycle table first, then decide benchmark-facing vs diagnostic target. |
@@ -62,6 +62,7 @@ appears when optimized components are stacked?
 Primary current docs:
 
 - `experiments/exect/exect_task_deep_review_20260528.md`
+- `experiments/exect/exect_frequency_event_rate_payload_audit_20260528.md`
 - `experiments/synthesis/test_holdout_evaluation_report_20260527.md`
 - `experiments/synthesis/paper_result_table_pack_20260525.md`
 - `datasets/exect/exect_gold_label_audit.md`

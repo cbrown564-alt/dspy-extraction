@@ -36,45 +36,113 @@ or `component_ceiling_registry.md` explicitly promotes them.
    ExECT Table 1 reproduction remains blocked until CUI-aware all-family
    scoring exists. Holdout is for residual analysis, not tuning.
 5. **Separate loadable config count from active experiment count.** The 59 JSON
-   configs that currently load are replay/provenance surfaces until a status
-   review classifies which ones are current, historical, rejected, blocked, or
-   diagnostic.
+   configs that currently load now have C4 authority classes; use those statuses
+   before calling a config current, historical, rejected, blocked, or diagnostic.
 
 ## Ready
 
-### C4 - Active Experiment Status Review
+### C6 - Gan S0 Surface Split
 
-- **Outcome:** The typed registry and experiment config inventory distinguish
-  genuinely current experiments from loadable replay/provenance surfaces,
-  historical arms, rejected variants, blocked work, and diagnostic baselines.
-- **Dependencies:** C3.
-- **Parallelizable:** no, because this is a status-authority review that should
-  settle terminology before more archive/delete work.
+- **Outcome:** `gan_frequency_s0.py` reduced by extracting behavior-preserving
+  Gan S0 variant/spec routing and prediction-bridge/artifact assembly surfaces,
+  while keeping candidate generation, scorer behavior, and public wrappers
+  stable.
+- **Dependencies:** C2, C3, C4.
+- **Parallelizable:** yes, but coordinate with G1 because both touch Gan S0
+  stage boundaries.
 - **Owner:** unassigned.
-- **Validation:** Every registry/config row used in current docs is classified
-  with an explicit status; generated registry report language no longer implies
-  all loadable configs are current; `uv run pytest
-  tests/test_program_variant_registry.py -q` still passes.
-- **Notes:** The earlier "59 experiment configs loaded" check proves contract
-  loadability only. It does not prove those experiments are current,
-  paper-facing, or active. Review should use `docs/current_research_program.md`,
-  `docs/experiments/synthesis/experiment_registry.json`,
-  `configs/experiments`, recent run artifacts, and the C1/C2 inventory before
-  changing active/frozen/archive language.
+- **Validation:** Focused Gan parity checks for builder-gap v1 and D1 v1.2b on
+  fixed record IDs; `uv run pytest tests/test_gan_s0_program.py
+  tests/test_gan_temporal_candidates.py tests/test_gan_slot_payload.py -q`;
+  `uv run pytest tests/test_gan_scoring.py
+  tests/test_gan_paper_reproduction_scoring.py -q`.
+- **Notes:** This is a behavior-preserving architecture batch. Do not change
+  `unknown` versus `no seizure frequency reference` policy, and label scorer
+  mode explicitly in any generated report.
 
-### E1 - ExECT Frequency Event/Rate Payload Gate
+### C7 - ExECT S1 Bridge Boundary Split
 
-- **Outcome:** A no-model ExECT frequency payload audit that materially improves
-  over the prior 11.6% gold-label coverage baseline before any new S5 frequency
-  model grid.
-- **Dependencies:** none.
-- **Parallelizable:** yes, no model calls required.
+- **Outcome:** S1 raw model outputs, deterministic benchmark-bridge values,
+  bridge flags, prompt-policy effects, and final benchmark-facing artifact
+  values are inspectable as separate surfaces.
+- **Dependencies:** C2, C3, C4.
+- **Parallelizable:** yes, but coordinate with E2 because this is the
+  architecture substrate for the causal split.
 - **Owner:** unassigned.
-- **Validation:** Coverage, precision, and full-label coverage by document and
-  label type: quantified rate, qualitative, seizure-free, zero-rate,
-  type-associated, temporal-scope, and multi-label cases.
-- **Notes:** This is the highest-priority ExECT substrate gap identified in the
-  deep review.
+- **Validation:** Raw/bridge parity fixtures for diagnosis specificity collapse,
+  seizure-type co-listing, brand medication normalization, and current Rx lines;
+  `uv run pytest tests/test_exect_s0_s1_program.py
+  tests/test_exect_diagnosis_primitives.py
+  tests/test_exect_medication_primitives.py -q`; `uv run pytest
+  tests/test_exect_scoring.py tests/test_exect_loader.py -q`.
+- **Notes:** Preserve ExECT JSON diagnosis/seizure-type source policy,
+  certainty threshold, medication CUIPhrase preference, and specificity
+  collapse unless scorer policy and tests change in the same work.
+
+### C8 - ExECT Frequency Payload Extraction
+
+- **Outcome:** Frequency event/rate/cue parsing is extracted from the broad
+  primitive module into a typed payload surface that can render existing
+  benchmark-facing frequency labels and support candidate-selection analysis.
+- **Dependencies:** C5.
+- **Parallelizable:** after C5; coordinate with E4 if section/family-span files
+  are also moving.
+- **Owner:** unassigned.
+- **Validation:** Preserve the C5 coverage audit result; `uv run pytest
+  tests/test_exect_frequency_primitives.py
+  tests/test_exect_frequency_slot_payload.py -q`; rerun
+  `uv run python scripts/audit_exect_frequency_event_rate_payload.py`.
+- **Notes:** This is the code extraction follow-up to the completed E1 coverage
+  gate. Do not infer seizure type from frequency rows or convert Gan labels
+  into ExECT benchmark truth.
+
+### C9 - ExECT S5 Stack Boundary Split
+
+- **Outcome:** S5 operational stack composition is separated from S4 family
+  program logic, with medication guard and frequency verifier behavior callable
+  as explicit bridge/verifier components.
+- **Dependencies:** C2, C3, C4; C7 and C8 are helpful if shared bridge surfaces
+  move first.
+- **Parallelizable:** no; keep single-threaded because it touches stacked
+  baseline reproducibility.
+- **Owner:** unassigned.
+- **Validation:** Parity on the current S5 v2b full-validation artifact shape;
+  `uv run pytest tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py
+  tests/test_exect_s5_frequency_verifier.py -q`.
+- **Notes:** Do not report S5 stack deltas as isolated component ceilings, and
+  keep medication temporality diagnostic unless the gold policy changes.
+
+### C10 - Registry Provenance And Analysis Script Cleanup
+
+- **Outcome:** Hard-coded historical registry/backfill knowledge is either
+  moved into retained provenance manifests or replaced by registry-generated
+  views; retained Gan analysis scripts expose scorer mode explicitly.
+- **Dependencies:** C2, C3, C4; X1 for component-ceiling status backfill where
+  registry exports would otherwise be stale.
+- **Parallelizable:** after X1 for export regeneration; scorer-flag cleanup can
+  start independently.
+- **Owner:** unassigned.
+- **Validation:** `uv run pytest tests/test_export_registry_matrix.py
+  tests/test_export_research_atlas.py -q`; `uv run pytest
+  tests/test_analyze_gan_frequency_run.py
+  tests/test_gan_paper_reproduction_scoring.py -q`.
+- **Notes:** Archive run IDs, decision documents, and scorer caveats before
+  deleting generated or hard-coded registry material.
+
+### C11 - Stage-Level Test Surface Split
+
+- **Outcome:** Monolithic private-helper tests are gradually replaced by public
+  stage-level characterization tests for candidate inventory, target selection,
+  label construction, bridge policy, evidence guards, and artifact assembly.
+- **Dependencies:** C6, C7, C8, and C9 stage surfaces should exist before
+  retiring old helper assertions.
+- **Parallelizable:** after each extracted surface exists.
+- **Owner:** unassigned.
+- **Validation:** Existing monolithic tests remain as parity nets until the
+  replacement stage tests cover the same semantics; full focused domain suites
+  pass before any helper assertions are removed.
+- **Notes:** Split tests last. The goal is to make future cleanup safer, not to
+  lose regression coverage during extraction.
 
 ### E2 - S1 Raw/Bridge/Prompt Causal Split
 
@@ -244,8 +312,8 @@ cards above.
 - **Validation:** Inventory maps active surfaces, consolidation candidates,
   archive/delete candidates, retained provenance, and focused validation gates.
 - **Notes:** Do not delete code or move configs until the typed program variant
-  registry and C4 status review preserve active/historical status and replay
-  provenance.
+  registry and C4 status review preserve current-authority, historical, rejected,
+  and replay-provenance status.
 
 ### C3 - Typed Program Variant Registry
 
@@ -260,15 +328,47 @@ cards above.
   `load_experiment_config`.
 - **Notes:** This completed the registry prerequisite from C2 and moved config
   validation away from a large literal table in `config.py`. The 59-config check
-  is deliberately loadability evidence only; C4 must now review active versus
-  historical status before the board or paper narrative calls those experiments
-  current.
+  is deliberately loadability evidence only; C4 now supplies the status
+  authority layer.
+
+### C4 - Active Experiment Status Review
+
+- **Outcome:** Completed as
+  `docs/planning/active_experiment_status_review_20260528.md`.
+- **Evidence:** `src/clinical_extraction/experiments/program_variant_registry.py`
+  now distinguishes current-authority rows from loadable replay rows and renders
+  a per-config inventory in
+  `docs/experiments/synthesis/program_variant_registry.md`.
+- **Validation:** `uv run pytest tests/test_program_variant_registry.py -q`
+  passed with 15 tests.
+- **Notes:** The live config tree still has 59 loadable JSON configs, but C4
+  classifies them as 34 current-authority config rows and 25 loadable-replay
+  rows. Loadability is not active experiment authority, and no scorer, loader,
+  split, or benchmark semantics changed.
+
+### C5 - ExECT Frequency Event/Rate Payload Gate
+
+- **Outcome:** Completed as
+  `docs/experiments/exect/exect_frequency_event_rate_payload_audit_20260528.md`
+  with generated companion JSON at
+  `docs/experiments/exect/exect_frequency_event_rate_payload_audit_20260528.json`.
+- **Validation:** `uv run python scripts/audit_exect_frequency_event_rate_payload.py`
+  generated the audit; broad deterministic payload coverage improved from the
+  archived 11.6% baseline to 43/43 validation gold labels and 24/24 full-label
+  gold documents. Coverage is 100% across quantified rate, qualitative,
+  seizure-free, zero-rate, type-associated, temporal-scope, and multi-label
+  validation cases.
+- **Notes:** This clears the E1 coverage gate but does not close the component.
+  Broad candidate precision is 22.2% with 151 extra validation candidates, so
+  the next frequency work should split candidate selection/adjudication from
+  label construction before any model-backed stack work.
 
 Recent evidence that remains active:
 
 | Evidence | Current interpretation |
 | --- | --- |
-| Typed program variant registry, 2026-05-28 | Initial registry-backed config contract surface exists and can render a synthesis report; status labels still need C4 active-vs-historical review. |
+| Typed program variant registry + C4 status review, 2026-05-28 | Registry-backed config contract surface exists, renders a synthesis report, and classifies each live config as current-authority or loadable replay/provenance. |
+| ExECT E1 frequency event/rate payload audit, 2026-05-28 | Broad deterministic frequency payload now covers all validation gold labels and gold-bearing docs, but low candidate precision keeps selection/adjudication open. |
 | ExECT deep review, 2026-05-28 | Current ExECT decomposition doctrine; component ceilings before stacking. |
 | Gan S0 deep dive, 2026-05-28 | Current Gan decomposition doctrine; split candidate inventory, target selection, label construction, and policy. |
 | Gan R11/R15 | D1 v1.2b schema-guard-only is the mechanism baseline; arithmetic and broad relative-anchor guardrails are diagnostic or rejected arms. |
@@ -280,37 +380,49 @@ Recent evidence that remains active:
 
 ## Dependency Notes
 
-- C1/C2/C3 are complete enough to unblock status review, but C4 should precede
-  broad moves, deletions, or archive relabeling.
-- The typed program variant registry preserves loadable contracts; C4 now
-  decides which registry/config rows are truly current, merely replayable,
-  historical, rejected, blocked, or diagnostic.
-- E1, E2, E3, E4, and G1 are safe first pulls because they do not require model
-  calls.
+- C1/C2/C3/C4 are complete enough to unblock carefully sequenced archive/delete
+  proposals, but broad moves still need row-level provenance checks.
+- The typed program variant registry preserves loadable contracts and classifies
+  registry/config rows as current-authority, replay/provenance, historical,
+  rejected, blocked, or diagnostic.
+- C6-C11 translate the C1 thermo-nuclear cleanup sequence into pullable
+  architecture batches. C6, C7, and C8 are the first code-shape priorities
+  because they expose Gan S0, ExECT S1, and ExECT frequency component surfaces
+  without changing dataset, split, scorer, or benchmark semantics.
+- E2, E3, E4, and G1 are safe first pulls because they do not require model
+  calls. E2 should use C7 as its architecture substrate; G1 should coordinate
+  with C6; E1 is complete enough to unblock C8 and frequency
+  candidate-selection design, but not a broad-stack model run.
 - G2 and G3 depend on G1 because target-selection and policy probes need known
   candidate coverage strata.
 - B1 is blocked until component substrates and isolated ceilings exist.
-- X3 should not run until C4 and X1 refresh registry/component status; otherwise
+- C9 should wait until S1/frequency bridge boundaries are stable enough to avoid
+  moving S5 stack logic twice.
+- C10 should not delete or regenerate registry material until X1 refreshes
+  component-ceiling rows and export scripts consume C4 status classes; otherwise
   it will recreate stale navigation.
+- X3 should not run until X1 and C10 are complete enough to prevent stale
+  navigation from being regenerated.
 
 ## Parallelization Opportunities
 
-- **Safe now:** C4 active-status review, E1, E2, E3, E4, and G1. Keep E1/G1
-  language careful until C4 resolves "current" versus "loadable" status.
+- **Safe now:** C6, C7, C8, E3, E4, and G1. Coordinate C6 with G1 and C7 with
+  E2 so architecture splits and component analyses share the same stage names.
 - **Single-threaded or carefully sequenced:** broad code deletions after C1/C2;
-  any change to scorer, loader, split, benchmark bridge, or shared primitive
-  contracts.
-- **Blocked together:** B1 waits on ExECT component ceilings; X3 waits on X1.
+-  C9 stack separation; any change to scorer, loader, split, benchmark bridge,
+  or shared primitive contracts.
+- **Blocked together:** C11 waits on extracted stage surfaces; B1 waits on
+  ExECT component ceilings; X3 waits on X1 and C10.
 - **Model-call gated:** E1/E3/E4/G1 audits should finish before related model
   runs.
 
 ## Recommended Next Pull
 
-1. **C4 - Active Experiment Status Review**, because the 59 loadable configs
-   should not be treated as current experiment evidence without a deeper review.
-2. **E1 - ExECT Frequency Event/Rate Payload Gate** or **G1 - Gan Candidate
-   Inventory Coverage Report**, depending on whether the next implementation
-   slot is ExECT or Gan.
+1. **C6 - Gan S0 Surface Split** if the next slot is Gan architecture work.
+2. **C7 - ExECT S1 Bridge Boundary Split** if the next slot is ExECT diagnosis
+   and seizure-type causal analysis.
+3. **C8 - ExECT Frequency Payload Extraction** if the next slot is to turn the
+   completed E1 coverage gate into a reusable typed substrate.
 
 ## Standing Guardrails
 
@@ -324,7 +436,7 @@ Recent evidence that remains active:
 - Treat ExECT clean ladder results as diagnostic baselines, not component
   ceilings.
 - Do not describe `configs/experiments` loadability counts as active experiment
-  counts without a status review.
+  counts; use the C4 authority classes in the generated registry report.
 - Treat rejected arms as rejected arms unless a mechanism-level review closes
   the mechanism.
 - Holdout metrics trigger residual analysis only; do not tune from holdout.

@@ -114,29 +114,28 @@ ProgramVariantStatusValue = Literal[
     "mechanism_baseline",
     "diagnostic_baseline",
     "operational_baseline",
-    "historical",
+    "replay_provenance",
+    "historical_arm",
     "rejected_arm",
     "blocked",
 ]
 
-LOADABLE_STATUSES = frozenset(
+CURRENT_AUTHORITY_STATUSES = frozenset(
     {
         "promoted_baseline",
         "mechanism_baseline",
         "diagnostic_baseline",
         "operational_baseline",
-        "historical",
+    }
+)
+LOADABLE_REPLAY_STATUSES = frozenset(
+    {
+        "replay_provenance",
+        "historical_arm",
         "rejected_arm",
     }
 )
-STATUS_REQUIRES_EXACT_PROMPT = frozenset(
-    {
-        "promoted_baseline",
-        "mechanism_baseline",
-        "diagnostic_baseline",
-        "operational_baseline",
-    }
-)
+LOADABLE_STATUSES = CURRENT_AUTHORITY_STATUSES | LOADABLE_REPLAY_STATUSES
 
 
 class ProgramVariantSpec(FrozenModel):
@@ -153,6 +152,7 @@ class ProgramVariantSpec(FrozenModel):
     replacement_target: str | None = None
     decision_doc: str | None = None
     implementation_variant: str | None = None
+    taxonomy_filters: tuple[tuple[str, str], ...] = ()
     config_examples: tuple[str, ...] = ()
     notes: str = ""
 
@@ -178,6 +178,18 @@ class ProgramVariantSpec(FrozenModel):
         return self.status in LOADABLE_STATUSES
 
     @property
+    def is_current_authority(self) -> bool:
+        return self.status in CURRENT_AUTHORITY_STATUSES
+
+    @property
+    def authority_class(self) -> str:
+        if self.is_current_authority:
+            return "current_authority"
+        if self.status in LOADABLE_REPLAY_STATUSES:
+            return "loadable_replay"
+        return "blocked"
+
+    @property
     def dataset_label(self) -> str:
         if self.dataset == "gan_2026":
             return "Gan 2026"
@@ -197,6 +209,7 @@ def _spec(
     replacement_target: str | None = None,
     decision_doc: str | None = None,
     implementation_variant: str | None = None,
+    taxonomy_filters: tuple[tuple[str, str], ...] = (),
     config_examples: tuple[str, ...] = (),
     notes: str = "",
 ) -> ProgramVariantSpec:
@@ -212,6 +225,7 @@ def _spec(
         replacement_target=replacement_target,
         decision_doc=decision_doc,
         implementation_variant=implementation_variant,
+        taxonomy_filters=taxonomy_filters,
         config_examples=config_examples,
         notes=notes,
     )
@@ -223,7 +237,7 @@ GAN_SCORERS = (GAN_FREQUENCY_S0_SCORER, GAN_PAPER_REPRODUCTION_SCORER)
 def _gan_spec(
     variant_id: str,
     program_variant: str,
-    status: ProgramVariantStatusValue = "historical",
+    status: ProgramVariantStatusValue = "historical_arm",
     **overrides: object,
 ) -> ProgramVariantSpec:
     return _spec(
@@ -250,7 +264,7 @@ def _exect_spec(
     program_variant: str,
     scorer_mode: str,
     prompt_default: str,
-    status: ProgramVariantStatusValue = "historical",
+    status: ProgramVariantStatusValue = "historical_arm",
     **overrides: object,
 ) -> ProgramVariantSpec:
     return _spec(
@@ -272,10 +286,24 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
     _gan_spec(
         "gan.s0.temporal_candidates_verify_repair",
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+        status="replay_provenance",
+        implementation_variant="gan_s0_candidate_builder_gap_v1",
     ),
     _gan_spec(
         "gan.s0.temporal_candidates_single_pass",
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    ),
+    _gan_spec(
+        "gan.s0.d0_det_candidate_control",
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="replay_provenance",
+        prompt_default="gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+        taxonomy_filters=(
+            ("comparison_group", "gan_s0_temporal_date_stage_gpt_cap25_v1"),
+        ),
+        decision_doc="docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+        replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
+        notes="R11 D0 control retained for date-stage ablation replay.",
     ),
     _gan_spec(
         "gan.s0.builder_gap_v1",
@@ -304,6 +332,13 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
     _gan_spec(
         "gan.s0.date_events_candidates_single_pass",
         GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="replay_provenance",
+        taxonomy_filters=(
+            ("comparison_group", "gan_s0_temporal_date_stage_gpt_cap25_v1"),
+        ),
+        decision_doc="docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+        replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
+        notes="R11 D1 v1 pass-to-integration surface, superseded by D1 v1.2b.",
     ),
     _gan_spec(
         "gan.s0.d1_v1_2b_schema_guard_only",
@@ -317,12 +352,39 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         notes="Current decomposed Gan S0 mechanism baseline after the May 28 pivot.",
     ),
     _gan_spec(
+        "gan.s0.d1_v1_2_guardrails",
+        GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="rejected_arm",
+        prompt_default="gan_frequency_s0_date_events_candidates_v1_2_guardrails",
+        decision_doc="docs/experiments/gan/gan_s0_r15_d1_guardrail_ablation_decision_20260528.md",
+        replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
+        notes="R15 broad relative-anchor and arithmetic guardrail arm regressed.",
+    ),
+    _gan_spec(
         "gan.s0.llm_date_events_candidates_single_pass",
         GAN_FREQUENCY_S0_LLM_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="rejected_arm",
+        decision_doc="docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+        replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
     ),
     _gan_spec(
         "gan.s0.hybrid_date_events_candidates_single_pass",
         GAN_FREQUENCY_S0_HYBRID_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="replay_provenance",
+        decision_doc="docs/experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md",
+        replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
+        notes="R11 D3 held as replay evidence; it did not beat the cleaner D1 stage.",
+    ),
+    _gan_spec(
+        "gan.s0.entity_first_c0_date_events",
+        GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
+        status="replay_provenance",
+        taxonomy_filters=(
+            ("comparison_group", "gan_s0_entity_first_stage_graph_gpt_cap25_v1"),
+        ),
+        decision_doc="docs/experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md",
+        replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
+        notes="R12 C0 control retained only for entity-first gate replay.",
     ),
     _gan_spec(
         "gan.s0.entity_tags_date_events_single_pass",
@@ -338,6 +400,8 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
     _gan_spec(
         "gan.s0.temporal_candidates_adjudicate_constrained_verifier",
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
+        status="replay_provenance",
+        implementation_variant="gan_s0_candidate_builder_gap_v1",
     ),
     _gan_spec(
         "gan.s0.temporal_candidates_adjudicate_det_guards",
@@ -385,6 +449,13 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         "gan.s0.self_consistency",
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
         status="rejected_arm",
+        prompt_default="gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+        taxonomy_filters=(
+            (
+                "comparison_group",
+                "gan_s0_self_consistency_compute_allocation_gpt_cap25_v1",
+            ),
+        ),
         decision_doc="docs/experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md",
         replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
         config_examples=(
@@ -844,11 +915,16 @@ def program_contract_allows(
     )
 
 
-def active_program_variant_specs() -> tuple[ProgramVariantSpec, ...]:
-    inactive_statuses = {"historical", "rejected_arm", "blocked"}
+def current_authority_program_variant_specs() -> tuple[ProgramVariantSpec, ...]:
     return tuple(
-        spec for spec in PROGRAM_VARIANT_REGISTRY if spec.status not in inactive_statuses
+        spec for spec in PROGRAM_VARIANT_REGISTRY if spec.is_current_authority
     )
+
+
+def active_program_variant_specs() -> tuple[ProgramVariantSpec, ...]:
+    """Legacy alias; use current_authority_program_variant_specs in new code."""
+
+    return current_authority_program_variant_specs()
 
 
 def _iter_config_payloads(repo_root: Path) -> list[tuple[Path, dict]]:
@@ -859,11 +935,22 @@ def _iter_config_payloads(repo_root: Path) -> list[tuple[Path, dict]]:
     for path in sorted(config_root.rglob("*.json")):
         try:
             payloads.append(
-                (path.relative_to(repo_root), json.loads(path.read_text(encoding="utf-8")))
+                (
+                    path.relative_to(repo_root),
+                    json.loads(path.read_text(encoding="utf-8")),
+                )
             )
         except json.JSONDecodeError:
             continue
     return payloads
+
+
+def _taxonomy_value(payload: dict, key: str) -> str | None:
+    taxonomy = payload.get("taxonomy") or {}
+    value = taxonomy.get(key)
+    if isinstance(value, str):
+        return value
+    return None
 
 
 def _config_matches_spec(payload: dict, spec: ProgramVariantSpec) -> bool:
@@ -875,21 +962,106 @@ def _config_matches_spec(payload: dict, spec: ProgramVariantSpec) -> bool:
         return False
     if payload.get("scorer_mode") not in spec.scorer_modes:
         return False
-    if (
-        spec.status in STATUS_REQUIRES_EXACT_PROMPT
-        and payload.get("prompt_version") != spec.prompt_default
-    ):
+    if payload.get("prompt_version") != spec.prompt_default:
         return False
     if spec.implementation_variant:
-        taxonomy = payload.get("taxonomy") or {}
-        if taxonomy.get("implementation_variant") != spec.implementation_variant:
+        if (
+            _taxonomy_value(payload, "implementation_variant")
+            != spec.implementation_variant
+        ):
+            return False
+    for key, expected_value in spec.taxonomy_filters:
+        if _taxonomy_value(payload, key) != expected_value:
             return False
     return True
 
 
+def _spec_match_score(
+    spec: ProgramVariantSpec, *, config_path: Path | None
+) -> tuple[int, int, int, int]:
+    path_text = config_path.as_posix() if config_path is not None else ""
+    return (
+        int(path_text in spec.config_examples),
+        len(spec.taxonomy_filters),
+        int(spec.implementation_variant is not None),
+        int(spec.is_current_authority),
+    )
+
+
+def resolve_program_variant_spec_for_config(
+    payload: dict,
+    *,
+    config_path: Path | None = None,
+) -> ProgramVariantSpec | None:
+    matches = [
+        spec for spec in PROGRAM_VARIANT_REGISTRY if _config_matches_spec(payload, spec)
+    ]
+    if not matches:
+        return None
+    return max(
+        matches, key=lambda spec: _spec_match_score(spec, config_path=config_path)
+    )
+
+
 def config_count_for_spec(spec: ProgramVariantSpec, *, repo_root: Path) -> int:
     payloads = _iter_config_payloads(repo_root)
-    return sum(1 for _, payload in payloads if _config_matches_spec(payload, spec))
+    return sum(
+        1
+        for path, payload in payloads
+        if resolve_program_variant_spec_for_config(payload, config_path=path) == spec
+    )
+
+
+class ExperimentConfigInventoryRow(FrozenModel):
+    """Resolved status row for one loadable experiment config file."""
+
+    config_path: str
+    experiment_id: str
+    variant_id: str
+    dataset: str
+    status: ProgramVariantStatusValue
+    authority_class: str
+    split_name: str
+    run_scope: str
+    scorer_mode: str
+    prompt_version: str
+    decision_doc: str | None = None
+
+
+def _config_run_scope(payload: dict) -> str:
+    if payload.get("report_on_test_split"):
+        return "test_holdout"
+    record_ids = payload.get("record_ids")
+    if isinstance(record_ids, list):
+        return f"cap_{len(record_ids)}"
+    max_records = payload.get("max_records")
+    if isinstance(max_records, int):
+        return f"cap_{max_records}"
+    return "full_validation"
+
+
+def experiment_config_inventory(*, repo_root: Path) -> tuple[ExperimentConfigInventoryRow, ...]:
+    rows: list[ExperimentConfigInventoryRow] = []
+    for path, payload in _iter_config_payloads(repo_root):
+        spec = resolve_program_variant_spec_for_config(payload, config_path=path)
+        if spec is None:
+            continue
+        rows.append(
+            ExperimentConfigInventoryRow(
+                config_path=path.as_posix(),
+                experiment_id=str(payload.get("experiment_id", "")),
+                variant_id=spec.variant_id,
+                dataset=spec.dataset_label,
+                status=spec.status,
+                authority_class=spec.authority_class,
+                split_name=str(payload.get("split_name", "")),
+                run_scope=_config_run_scope(payload),
+                scorer_mode=str(payload.get("scorer_mode", "")),
+                prompt_version=str(payload.get("prompt_version", "")),
+                decision_doc=spec.decision_doc,
+            )
+        )
+    return tuple(rows)
 
 
 def render_program_variant_registry_markdown(repo_root: Path | None = None) -> str:
@@ -901,8 +1073,24 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
         "",
         "Generated from `clinical_extraction.experiments.program_variant_registry`.",
         "",
-        "| Variant ID | Dataset | Status | Schema Level | Program Variant | Prompt Default | Stage Graph | Scorers | Config Count | Decision Doc |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |",
+        "C4 status review rule: loadable configs are replay/provenance contracts,",
+        "not active experiment counts. A row is current authority only when",
+        "`Authority Class` is `current_authority`; rejected, historical, and replay",
+        "rows remain loadable only to preserve provenance and reproducibility.",
+        "",
+        "Status glossary:",
+        "",
+        "- `promoted_baseline`, `mechanism_baseline`, `diagnostic_baseline`, and",
+        "  `operational_baseline` are current-authority rows with different caveats.",
+        "- `replay_provenance` and `historical_arm` are loadable for replay, not current",
+        "  steering evidence.",
+        "- `rejected_arm` is loadable only to preserve failed-arm provenance.",
+        "- `blocked` is not a loadable experiment contract.",
+        "",
+        "## Variant Status",
+        "",
+        "| Variant ID | Dataset | Status | Authority Class | Schema Level | Program Variant | Prompt Default | Stage Graph | Scorers | Loadable Config Count | Decision Doc |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |",
     ]
     for spec in PROGRAM_VARIANT_REGISTRY:
         decision_doc = spec.decision_doc or ""
@@ -915,6 +1103,7 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
                     spec.variant_id,
                     spec.dataset_label,
                     spec.status,
+                    spec.authority_class,
                     spec.schema_level,
                     spec.program_variant,
                     spec.prompt_default,
@@ -922,6 +1111,33 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
                     scorers,
                     str(config_count_for_spec(spec, repo_root=root)),
                     decision_doc,
+                ]
+            )
+            + " |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Config Inventory",
+            "",
+            "| Config Path | Experiment ID | Variant ID | Status | Authority Class | Split | Run Scope | Scorer | Prompt Version |",
+            "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    for row in experiment_config_inventory(repo_root=root):
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    row.config_path,
+                    row.experiment_id,
+                    row.variant_id,
+                    row.status,
+                    row.authority_class,
+                    row.split_name,
+                    row.run_scope,
+                    row.scorer_mode,
+                    row.prompt_version,
                 ]
             )
             + " |"

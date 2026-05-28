@@ -9,7 +9,8 @@ from pydantic import ValidationError
 from clinical_extraction.experiments.config import ExperimentConfig, load_experiment_config
 from clinical_extraction.experiments.program_variant_registry import (
     PROGRAM_VARIANT_REGISTRY,
-    active_program_variant_specs,
+    current_authority_program_variant_specs,
+    experiment_config_inventory,
     program_contract_allows,
     program_variant_registry_by_id,
     render_program_variant_registry_markdown,
@@ -75,22 +76,76 @@ def test_experiment_config_validation_uses_program_variant_registry():
         ExperimentConfig.model_validate(payload)
 
 
-def test_active_program_variant_specs_default_to_non_historical_rows():
-    active_ids = {spec.variant_id for spec in active_program_variant_specs()}
+def test_current_authority_program_variant_specs_exclude_replay_rows():
+    active_ids = {
+        spec.variant_id for spec in current_authority_program_variant_specs()
+    }
 
     assert "gan.s0.builder_gap_v1" in active_ids
     assert "gan.s0.self_consistency" not in active_ids
+    assert "gan.s0.date_events_candidates_single_pass" not in active_ids
 
 
-def test_registry_markdown_report_groups_status_and_config_counts():
+def test_registry_markdown_report_labels_loadable_config_counts_as_replay():
     report = render_program_variant_registry_markdown(repo_root=Path.cwd())
 
-    assert "| gan.s0.builder_gap_v1 | Gan 2026 | promoted_baseline |" in report
-    assert "| exect.s5.v2b_operational | ExECTv2 | operational_baseline |" in report
-    assert "Config Count" in report
+    assert (
+        "| gan.s0.builder_gap_v1 | Gan 2026 | promoted_baseline | "
+        "current_authority |"
+    ) in report
+    assert (
+        "| exect.s5.v2b_operational | ExECTv2 | operational_baseline | "
+        "current_authority |"
+    ) in report
+    assert (
+        "| gan.s0.self_consistency | Gan 2026 | rejected_arm | loadable_replay |"
+    ) in report
+    assert "Loadable Config Count" in report
+    assert "loadable configs are replay/provenance contracts" in report
 
 
-def test_current_experiment_configs_are_covered_by_program_variant_registry():
+def test_experiment_config_inventory_assigns_one_explicit_status_per_config():
+    rows = experiment_config_inventory(repo_root=Path.cwd())
+    paths = [row.config_path for row in rows]
+
+    assert len(rows) == len(list(Path("configs/experiments").rglob("*.json")))
+    assert len(paths) == len(set(paths))
+    assert {row.authority_class for row in rows} == {
+        "current_authority",
+        "loadable_replay",
+    }
+    assert any(row.status == "replay_provenance" for row in rows)
+    assert any(row.status == "rejected_arm" for row in rows)
+
+
+def test_config_inventory_resolves_ambiguous_gan_program_surfaces():
+    rows = {
+        row.config_path: row
+        for row in experiment_config_inventory(repo_root=Path.cwd())
+    }
+
+    assert (
+        rows[
+            "configs/experiments/gan_s0_date_stage_d1_v1_2b_schema_guard_only_full_validation_gpt4_1_mini.json"
+        ].variant_id
+        == "gan.s0.d1_v1_2b_schema_guard_only"
+    )
+    assert (
+        rows[
+            "configs/experiments/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"
+        ].status
+        == "rejected_arm"
+    )
+    assert (
+        rows[
+            "configs/experiments/"
+            "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
+        ].status
+        == "replay_provenance"
+    )
+
+
+def test_loadable_experiment_configs_are_covered_by_program_variant_registry():
     errors: list[str] = []
     for path in sorted(Path("configs/experiments").rglob("*.json")):
         try:
