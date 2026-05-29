@@ -593,6 +593,8 @@ def _predict_record(
         metadata["target_selection_error_class"] = pred.target_selection_error_class
     if hasattr(pred, "temporal_date_event_payload"):
         metadata["temporal_date_event_payload"] = pred.temporal_date_event_payload
+    if hasattr(pred, "candidate_support_context"):
+        metadata["candidate_support_context"] = pred.candidate_support_context
     if hasattr(pred, "react_trajectory"):
         metadata["react_trajectory"] = pred.react_trajectory
     if hasattr(pred, "react_tool_call_count"):

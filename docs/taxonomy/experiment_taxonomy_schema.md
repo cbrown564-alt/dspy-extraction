@@ -138,6 +138,7 @@ Allowed values:
 - `explicit_reason_code_adjudicator`
 - `special_class_target_selector`
 - `candidate_ranking_target_selector`
+- `support_aware_target_selector`
 - `react_temporal_tools`
 - `section_aware`
 - `diagnosis_recall`
@@ -323,6 +324,7 @@ Allowed Gan S0 values include:
 - `det_candidates_llm_reason_code_adjudicator`
 - `det_date_events_llm_special_class_selector`
 - `det_candidates_llm_candidate_ranking_selector`
+- `det_candidates_support_context_llm_target_selector`
 
 ### `evidence_strategy`
 

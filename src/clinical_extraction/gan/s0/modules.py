@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from typing import Any
 
 import dspy
@@ -31,6 +32,7 @@ from clinical_extraction.gan.s0.signatures import (
     GanFrequencyS0SeededMultipleAnswerSignature,
     GanFrequencyS0Signature,
     GanFrequencyS0SpecialClassTargetSelectorSignature,
+    GanFrequencyS0SupportAwareTargetSelectorSignature,
     GanFrequencyS0TemporalEventTableAdjudicateSignature,
     GanFrequencyS0TemporalEventTableSignature,
     GanFrequencyS0TemporalEventTableVerifierSignature,
@@ -72,6 +74,8 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
@@ -1665,6 +1669,12 @@ def _parse_reason_code_adjudication_json(payload: str | dict[str, Any] | None) -
         "target_semantic_class": str(
             raw.get("target_semantic_class") or "missing_target_semantic_class"
         ).strip(),
+        "support_policy_decision": str(
+            raw.get("support_policy_decision") or "missing_support_policy_decision"
+        ).strip(),
+        "competing_signal_resolution": str(
+            raw.get("competing_signal_resolution") or "none"
+        ).strip(),
         "category_decision": str(
             raw.get("category_decision") or raw.get("target_semantic_class") or "missing_category_decision"
         ).strip(),
@@ -2049,6 +2059,142 @@ def _format_date_event_payload_for_prompt(payload: GanDateEventPayload) -> str:
     return json.dumps(payload.model_dump(), indent=2, sort_keys=True)
 
 
+def _candidate_support_family(label: str) -> str:
+    normalized = _normalize_predicted_label(label) or ""
+    if normalized == "no seizure frequency reference":
+        return "no_reference"
+    if normalized == "unknown":
+        return "unclear_frequency"
+    if normalized.startswith("unknown,") and "per cluster" in normalized:
+        return "cluster_spacing_unknown"
+    if normalized.startswith("seizure free"):
+        return "seizure_free"
+    if "cluster per" in normalized and "per cluster" in normalized:
+        return "cluster_rate"
+    return "quantified_rate"
+
+
+def _candidate_support_caveats(candidate: Any) -> list[str]:
+    label = _normalize_predicted_label(getattr(candidate, "canonical_label", "")) or ""
+    evidence = str(getattr(candidate, "evidence_text", "") or "").lower()
+    derivation = str(getattr(candidate, "derivation", "") or "").lower()
+    text = f"{evidence} {derivation}"
+    caveats: list[str] = []
+    if any(
+        token in text
+        for token in (
+            "trigger",
+            "poor sleep",
+            "lack of sleep",
+            "missed medication",
+            "stress",
+            "alcohol",
+            "illness",
+            "travel",
+        )
+    ):
+        caveats.append("trigger_conditioned")
+    if label.startswith("unknown,") and "per cluster" in label:
+        caveats.append("cluster_spacing_unknown")
+    if "cluster" in label and "per cluster" in label:
+        caveats.append("cluster_burden_or_rate")
+    if label.startswith("seizure free"):
+        caveats.append("seizure_free_candidate")
+    if any(token in text for token in ("historical", "previous", "prior", "older")):
+        caveats.append("historical_signal")
+    if any(token in text for token in ("dated", "window", "elapsed", "year-to-date", "ytd")):
+        caveats.append("temporal_anchor_sensitive")
+    return caveats
+
+
+def _build_g15_candidate_support_context(
+    *,
+    note_text: str,
+    candidates: list[Any],
+    date_event_payload: GanDateEventPayload,
+) -> dict[str, Any]:
+    family_by_label = [
+        _candidate_support_family(str(getattr(candidate, "canonical_label", "")))
+        for candidate in candidates
+    ]
+    family_counts = dict(Counter(family_by_label))
+    lower_note = note_text.lower()
+    trigger_note = any(
+        token in lower_note
+        for token in (
+            "trigger",
+            "poor sleep",
+            "lack of sleep",
+            "missed medication",
+            "stress",
+            "alcohol",
+            "illness",
+            "travel",
+        )
+    )
+    conflict_flags = {
+        "candidate_count": len(candidates),
+        "has_quantified_rate": bool(family_counts.get("quantified_rate")),
+        "has_seizure_free": bool(family_counts.get("seizure_free")),
+        "has_unclear_frequency": bool(family_counts.get("unclear_frequency")),
+        "has_cluster_spacing_unknown": bool(
+            family_counts.get("cluster_spacing_unknown")
+        ),
+        "has_no_reference": bool(family_counts.get("no_reference")),
+        "quantified_and_seizure_free": bool(
+            family_counts.get("quantified_rate")
+            and family_counts.get("seizure_free")
+        ),
+        "quantified_and_unclear_frequency": bool(
+            family_counts.get("quantified_rate")
+            and (
+                family_counts.get("unclear_frequency")
+                or family_counts.get("cluster_spacing_unknown")
+            )
+        ),
+        "trigger_conditioned_note": trigger_note,
+        "calculated_arithmetic_diagnostic_only": bool(
+            date_event_payload.calculated_arithmetic
+        ),
+        "no_reference_only": (
+            len(candidates) > 0
+            and set(family_by_label) <= {"no_reference", "unclear_frequency"}
+        ),
+    }
+    support_rows = []
+    for index, candidate in enumerate(candidates, start=1):
+        label = str(getattr(candidate, "canonical_label", "") or "")
+        support_rows.append(
+            {
+                "candidate_index": index,
+                "canonical_label": label,
+                "family": _candidate_support_family(label),
+                "event_count": getattr(candidate, "event_count", None),
+                "window_count": getattr(candidate, "window_count", None),
+                "window_unit": getattr(candidate, "window_unit", None),
+                "evidence_text": getattr(candidate, "evidence_text", None),
+                "derivation": getattr(candidate, "derivation", None),
+                "caveats": _candidate_support_caveats(candidate),
+            }
+        )
+    return {
+        "component": "G15 target-selection support context",
+        "candidate_family_counts": family_counts,
+        "conflict_flags": conflict_flags,
+        "support_rows": support_rows,
+        "g13_gate_caveat_policy": [
+            "Quantified-looking candidates are high-recall support, not a final content-state verdict.",
+            "Unknown and seizure-free rows may still include quantified-looking candidates.",
+            "No-reference should remain conservative and should not replace unclear seizure context.",
+        ],
+        "g14_temporal_caveat_policy": [
+            "Temporal candidates are diagnostic support and may miss exact aggregate or slot targets.",
+            "Do not expand arithmetic or relative-anchor guards inside this selector arm.",
+            "Rows without exact temporal-slot coverage should be classified as upstream caveats in reporting.",
+        ],
+    }
+
+
 class GanFrequencyS0SpecialClassTargetSelectorModule(dspy.Module):
     """G7 selector over D1 date/event payloads and indexed candidates."""
 
@@ -2090,6 +2236,62 @@ class GanFrequencyS0SpecialClassTargetSelectorModule(dspy.Module):
             temporal_candidate_source="special_class_target_selector",
         )
         prediction.temporal_date_event_payload = date_event_payload.model_dump()
+        prediction.prompt_version = self.prompt_version
+        return prediction
+
+
+class GanFrequencyS0SupportAwareTargetSelectorModule(dspy.Module):
+    """G15 support-aware target selector over candidate and caveat metadata."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.adjudicate = dspy.Predict(GanFrequencyS0SupportAwareTargetSelectorSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        date_event_payload = build_deterministic_date_event_payload(note_text)
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation="table",
+        )
+        support_context = _build_g15_candidate_support_context(
+            note_text=note_text,
+            candidates=candidates,
+            date_event_payload=date_event_payload,
+        )
+        generated = self.adjudicate(
+            note_text=note_text,
+            date_event_payload=_format_date_event_payload_for_prompt(
+                date_event_payload
+            ),
+            temporal_candidates=temporal_candidates_text,
+            candidate_support_context=json.dumps(
+                support_context,
+                indent=2,
+                sort_keys=True,
+            ),
+        )
+        adjudication = _parse_reason_code_adjudication_json(
+            generated.adjudication_json
+        )
+        prediction = _prediction_from_reason_code_adjudication(
+            adjudication=adjudication,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            temporal_candidate_source="support_aware_target_selector",
+        )
+        prediction.temporal_date_event_payload = date_event_payload.model_dump()
+        prediction.candidate_support_context = support_context
         prediction.prompt_version = self.prompt_version
         return prediction
 
@@ -2202,6 +2404,7 @@ def build_gan_s0_module(
     | GanFrequencyS0SeededMultipleAnswerDetSelectorModule
     | GanFrequencyS0ExplicitReasonCodeAdjudicatorModule
     | GanFrequencyS0SpecialClassTargetSelectorModule
+    | GanFrequencyS0SupportAwareTargetSelectorModule
     | GanFrequencyS0CandidateRankingTargetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
@@ -2211,6 +2414,7 @@ def build_gan_s0_module(
         GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT,
         GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
+        GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
     }
     if not include_archive and program_variant not in active_variants:
@@ -2322,6 +2526,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT:
         return GanFrequencyS0SpecialClassTargetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT:
+        return GanFrequencyS0SupportAwareTargetSelectorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT:

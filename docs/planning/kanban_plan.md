@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 completed G14 temporal anchoring
+Last refreshed: 2026-05-29 completed G15 support-aware selector arm
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -77,9 +77,15 @@ promotes them.
    temporal anchoring diagnostic baseline: standard50 exact candidate coverage
    is 41/50 and temporal-slot coverage is 36/40 applicable rows; the temporal
    challenge set is 13/15 exact and slot-covered, with `gan_16772` and
-   `gan_16825` as true temporal-slot misses. Do not expand fragile arithmetic
-   or broad relative-anchor guards from G14; route the remaining exact misses
-   to aggregation-aware answer construction plus LLM target selection.
+   `gan_16825` as true temporal-slot misses. G15 then tested an LLM
+   support-aware target selector with G13/G14 caveats carried forward and is
+   rejected as tested: support context was present for 50/50 records, but paper
+   monthly fell to 31/50, below G10 (36/50), G8 (37/50), D1 v1.2b (40/50),
+   and builder-gap GPT (41/50), with regressions on target-selection,
+   seizure-free-versus-quantified, and unknown/no-reference overlays. Do not
+   full-validate G15. Route the remaining exact misses to G16 aggregation-aware
+   answer construction or a new selector mechanism only after that policy is
+   explicit.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -99,15 +105,22 @@ promotes them.
 
 ## Ready
 
-### G15 - Gan Target Selection and Semantic Adjudication
+### G16 - Gan Rate/Duration Aggregation Policy
 
-- **Outcome:** Design and evaluate a target selector that adjudicates over candidate inventory,
-  focusing on current quantified frequency versus seizure-free duration.
-- **Dependencies:** G12, G13, G14.
-- **Parallelizable:** no.
+- **Outcome:** Define the clinical and benchmark-facing policy for aggregating
+  multiple seizure-frequency mentions into answer options before another exact
+  target-selection claim.
+- **Dependencies:** G12, G14, completed G15 negative arm.
+- **Parallelizable:** yes.
 - **Owner:** unassigned.
-- **Validation:** Performance on `gan_s0_g6_standard50_v1` target selection overlay.
-- **Notes:** Use G13 gate caveats and G14 temporal-slot misses as upstream caveats. Address precision vs. recall tradeoff in candidate inventory and its impact on selector reasoning.
+- **Validation:** Fixture tests plus `gan_s0_g6_candidate_coverage_exact_miss`
+  and `gan_s0_g6_standard50_v1` diagnostics for multi-mention and
+  seizure-free-versus-quantified cases.
+- **Notes:** G15 showed that adding explicit support metadata to the prompt did
+  not compensate for unresolved aggregation/semantic policy. Keep scorer,
+  loader, split, benchmark bridge, candidate-builder, and prediction-repair
+  semantics fixed.
+
 ## Blocked
 
 ### B1 - ExECT Optimized Stack Reconstruction
@@ -146,18 +159,10 @@ promotes them.
 
 ## Backlog
 
-### G16 - Gan Rate/Duration Aggregation Policy
-
-- **Outcome:** Explicit clinical rules and model prompts for aggregating multiple frequency mentions.
-- **Dependencies:** G15.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Correct aggregation on multi-mention cases.
-
 ### G17 - Gan Unknown vs. No-Reference Policy Separation
 
 - **Outcome:** Refinement of target selection to accurately differentiate `unknown` from `no seizure frequency reference` based on diagnostic evidence.
-- **Dependencies:** G15, G16.
+- **Dependencies:** completed G15 negative arm, G16.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
 - **Validation:** Reduction of paper-scorer discrepancies due to special-class confusion.
@@ -318,9 +323,9 @@ indexes, and git history.
   high-recall at 201/203 (99.0%), and no-reference predictions are precise
   (10/10), but unclear-frequency recall is 10/40 (25.0%) and seizure-free
   recall is 23/45 (51.1%). The main source-level errors are unknown or
-  seizure-free gold rows routed to quantified-frequency presence, so G14/G15
-  must account for gate errors before attributing misses to temporal anchoring
-  or target selection. Report:
+  seizure-free gold rows routed to quantified-frequency presence, so temporal
+  anchoring and selector analyses must account for gate errors before
+  attributing misses to those stages. Report:
   `docs/experiments/gan/gan_s0_g13_frequency_content_gate_report_20260529.md`.
 - **G14 completed the temporal anchoring diagnostic pass.** The no-model report
   over current deterministic temporal candidates found 41/50 standard50 exact
@@ -328,8 +333,9 @@ indexes, and git history.
   rows. On `gan_s0_g6_temporal_anchoring`, exact and slot coverage are 13/15;
   `gan_16772` and `gan_16825` are true temporal-slot misses, while standard50
   gate-confused rows remain G13 upstream caveats. The decision is not to expand
-  fragile arithmetic or broad relative-anchor guards from this pass; route the
-  remaining exact misses to aggregation-aware answer construction plus G15.
+  fragile arithmetic or broad relative-anchor guards from this pass; route
+  remaining exact misses to aggregation-aware answer construction before another
+  target-selection claim.
   Report:
   `docs/experiments/gan/gan_s0_g14_temporal_anchoring_report_20260529.md`.
 - **G12 completed the answer-option routing decision.** On the locked G6
@@ -353,6 +359,19 @@ indexes, and git history.
   on G16 or a separate deterministic aggregation constructor informed by G14.
   Report:
   `docs/experiments/gan/gan_s0_g10_candidate_ranking_target_selector_report_20260529.md`.
+- **G15 completed the support-aware target selector arm and rejected it as
+  tested.** The model-backed run on `gan_s0_g6_standard50_v1` preserved scorer,
+  loader, split, benchmark bridge, candidate-builder, label-construction, and
+  prediction-repair controls. Support context was present in 50/50 predictions,
+  with selected-candidate references and label-construction inputs present in
+  49/50, but the arm reached only 31/50 paper monthly and 60.0% canonical
+  monthly. It regressed against builder-gap GPT, D1 v1.2b, G8, and G10 on the
+  motivating target-selection and seizure-free-versus-quantified overlays, and
+  scored 5/10 on unknown/no-reference. Do not full-validate or promote this
+  arm; pull G16 aggregation policy or a separately preregistered deterministic
+  aggregation constructor before another exact-label claim.
+  Report:
+  `docs/experiments/gan/gan_s0_g15_support_aware_target_selector_report_20260529.md`.
 - **Gan S0 now has a plain-English component handoff.** The key-axes progress
   report translates the decomposition into reader-facing components:
   frequency-content gate, candidate inventory, temporal anchoring, target
@@ -421,15 +440,17 @@ clear active dependency.
   by G14.
 - G12 did not mutate scorer, loader, split, benchmark bridge, prompt, model, or
   prediction-repair semantics.
-- G13 established the baseline for the frequency-content gate. G15 (target
-  selection) should use G13's false-positive and false-negative rows to avoid
-  cascading gate errors.
-- G14 established the temporal anchoring diagnostic baseline. G15 should carry
+- G13 established the baseline for the frequency-content gate. G15 carried
+  G13's false-positive and false-negative rows as caveats, but the support-aware
+  selector still regressed as a prompt/interface arm.
+- G14 established the temporal anchoring diagnostic baseline. G15 carried
   `gan_16772` and `gan_16825` as temporal-slot upstream caveats rather than
   treating those exact misses as pure selector failures.
-- G15 depends on the completed source-level abstention gating from G18, the
-  answer-option/aggregation surface from G12, and the gates from G13 and G14.
-- G16 and G17 refine semantic policies (aggregation and unknown vs. no-reference) downstream of G15's selection mechanism.
+- G15 completed the support-aware selector authorized by G12/G13/G14 and is
+  rejected as tested. It is evidence that support metadata alone is not enough,
+  not closure of target selection as a mechanism class.
+- G16 and G17 refine semantic policies (aggregation and unknown vs. no-reference)
+  downstream of the completed G15 negative arm.
 - The Gan key-axes progress report is the handoff reference for plain-English
   component names. Use it to keep G8 interpretation centered on the actual
   failure stage rather than on implementation jargon.
@@ -451,12 +472,13 @@ clear active dependency.
 
 ## Parallelization Opportunities
 
-- **Safe now:** pull G15 for target selection with G13/G14 caveats, draft a
-  new validation-only ExECT mechanism card from E11 findings before any model
-  calls, or do error-analysis/readme cleanup tied to completed Gan artifacts.
-  Any downstream Gan selector/adjudicator run must use the G6
-  evaluation-surface protocol and preserve scorer, loader, split, benchmark
-  bridge, candidate-builder, and prediction-repair semantics.
+- **Safe now:** pull G16 aggregation policy or a separately preregistered
+  deterministic aggregation constructor, draft a new validation-only ExECT
+  mechanism card from E11 findings before any model calls, or do
+  error-analysis/readme cleanup tied to completed Gan artifacts. Any downstream
+  Gan selector/adjudicator run must use the G6 evaluation-surface protocol and
+  preserve scorer, loader, split, benchmark bridge, candidate-builder, and
+  prediction-repair semantics.
 - **Architecture lane closed as bottleneck:** C31/C32 closed the currently
   scoped active-priority pruning pass. Any new cleanup should start from a
   concrete runtime contract or active-authority ambiguity, not from historical
@@ -468,21 +490,22 @@ clear active dependency.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline.
-  G10's narrowed selector lane is complete and rejected as tested. Any new Gan
+  G10 and G15 selector lanes are complete and rejected as tested. Any new Gan
   selector/adjudicator lane needs a new preregistered mechanism card, and any
   full-validation run should wait until the standard-50 mechanism has cleared
   its stop rule.
 
 ## Recommended Next Pull
 
-1. Pull G15 if you want the next Gan mechanism: design target selection around
-   candidate support, G13 source-gate caveats, and G14 temporal-slot misses.
+1. Pull G16 for the next Gan mechanism: define aggregation policy or a
+   deterministic aggregation constructor before another exact-label claim from
+   answer options.
 2. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
    transfer, frequency payload robustness/adjudication, or medication payload
    routing, using X2 for pairwise support counts and stop rules. Holdout rows
    remain residual evidence only.
-3. Pull G16 or a separately preregistered deterministic aggregation constructor
-   before any exact-label aggregation claim from answer options.
+3. Reopen target selection only with a new mechanism card that explicitly
+   accounts for G15's support-aware regression and G16's aggregation decision.
 4. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.

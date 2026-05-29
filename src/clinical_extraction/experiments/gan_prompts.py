@@ -15,6 +15,7 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
@@ -114,6 +115,13 @@ def gan_prompts_data(
             "D1 deterministic date/event payload + deterministic temporal "
             "candidates + dspy.Predict(special-class target selection) + "
             "deterministic label construction"
+        )
+    elif program_variant == GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT:
+        module_name = "GanFrequencyS0SupportAwareTargetSelectorModule"
+        predictor_name = (
+            "D1 deterministic date/event payload + deterministic temporal "
+            "candidates + support metadata + dspy.Predict(support-aware target "
+            "selection) + deterministic label construction"
         )
     elif program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
         module_name = "GanFrequencyS0ReactTemporalToolsModule"

@@ -27,7 +27,7 @@ def test_program_variant_registry_has_unique_ids():
 def test_program_variant_registry_is_current_authority_only():
     ids = {spec.variant_id for spec in PROGRAM_VARIANT_REGISTRY}
 
-    assert len(PROGRAM_VARIANT_REGISTRY) == 15
+    assert len(PROGRAM_VARIANT_REGISTRY) == 16
     assert ids == {spec.variant_id for spec in current_authority_program_variant_specs()}
     assert "gan.s0.self_consistency" not in ids
     assert "gan.s0.date_events_candidates_single_pass" not in ids
@@ -57,6 +57,7 @@ def test_archived_program_variant_specs_preserve_provenance_rows():
         "gan.s0.explicit_reason_code_adjudicator",
         "gan.s0.special_class_target_selector",
         "gan.s0.candidate_ranking_target_selector",
+        "gan.s0.support_aware_target_selector",
     ],
 )
 def test_registry_includes_c2_promoted_and_diagnostic_surfaces(variant_id: str):

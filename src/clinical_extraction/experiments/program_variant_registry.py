@@ -318,6 +318,30 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         ),
     ),
     _spec(
+        variant_id="gan.s0.support_aware_target_selector",
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        program_variant="gan_frequency_s0_support_aware_target_selector",
+        scorer_modes=("gan_frequency_deterministic_v1", "gan2026_paper_reproduction"),
+        prompt_default="gan_frequency_s0_support_aware_target_selector_v1_0",
+        stage_graph_id="g15_support_aware_target_selector",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/gan/"
+            "gan_s0_g15_support_aware_target_selector_report_20260529.md"
+        ),
+        implementation_variant="support_aware_target_selector_v1",
+        config_examples=(
+            "configs/experiments/"
+            "gan_s0_g15_support_aware_target_selector_gpt4_1_mini_standard50.json",
+        ),
+        notes=(
+            "G15 selector arm: fixed deterministic candidate/date payloads plus "
+            "support metadata carrying G13 gate and G14 temporal caveats, varying "
+            "only target-selection and semantic adjudication over candidate support."
+        ),
+    ),
+    _spec(
         variant_id="exect.s1.clean_ladder_v1",
         dataset="exect_v2",
         schema_level="exect_s0_s1_field_family",

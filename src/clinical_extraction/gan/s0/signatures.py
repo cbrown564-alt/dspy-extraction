@@ -1613,6 +1613,107 @@ class GanFrequencyS0CandidateRankingTargetSelectorSignature(dspy.Signature):
     )
 
 
+class GanFrequencyS0SupportAwareTargetSelectorSignature(dspy.Signature):
+    """Select the Gan S0 benchmark target using support metadata and caveats.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output field.
+
+    This is the G15 support-aware target selector. The varied component is
+    target-selection and semantic adjudication only. The deterministic candidate
+    inventory, temporal candidate builder, date/event payload, scorer, split,
+    label construction, and prediction-repair semantics are fixed controls.
+
+    Use the candidate list and support metadata as evidence support, not as a
+    mechanical ranked menu. First decide the content state, then select the
+    benchmark target. Prefer a selected_candidate_index whenever an indexed
+    candidate supports the final benchmark label. Do not use gold labels or the
+    reference label.
+
+    Output adjudication_json as a JSON object with:
+    - target_semantic_class: one of current_quantified_frequency,
+      seizure_free_duration, unclear_frequency, no_seizure_frequency_reference,
+      cluster_spacing_unknown, or unsupported_surface.
+    - support_policy_decision: short policy decision such as direct_candidate,
+      quantified_count_window_supported, seizure_free_current_state,
+      trigger_conditioned_unknown, cluster_burden_without_spacing,
+      no_reference_only, or policy_fallback.
+    - competing_signal_resolution: short conflict resolution such as
+      quantified_over_seizure_free, seizure_free_over_historical,
+      unknown_over_trigger_conditioned_rate, cluster_spacing_unknown,
+      no_reference_only, direct_candidate, or none.
+    - reason_code: short target-selection reason, such as
+      select_current_supported_quantified_rate,
+      select_current_seizure_free_duration, select_unclear_frequency_context,
+      select_no_reference, select_cluster_spacing_unknown, or
+      select_policy_fallback.
+    - selected_candidate_index: 1-based candidate number from temporal_candidates.
+      Use null only when no indexed candidate supports the selected class.
+    - selected_candidate_label: selected candidate canonical_label, or null.
+    - selected_evidence_text: exact contiguous note quote for the selected
+      candidate, or null for no seizure frequency reference.
+    - label_construction_inputs: object preserving the selected candidate slots.
+    - final_benchmark_label: final canonical Gan label produced from the selected
+      target. For this arm, copy the selected candidate label unless selecting
+      unknown or no seizure frequency reference without a supporting index.
+    - final_evidence_text: exact contiguous quote supporting final_benchmark_label,
+      or null for no seizure frequency reference.
+    - error_class: candidate_coverage, target_selection, label_construction,
+      unknown_no_reference_policy, seizure_free_policy, cluster_policy,
+      temporal_anchoring, evidence, schema, or none.
+
+    Support-aware policy:
+    - Current quantified count+window evidence beats unknown only when the
+      count and denominator describe the benchmark target, not just a trigger,
+      cluster burden, or historical event.
+    - Trigger-conditioned events are unknown unless the note gives an overall
+      calendar interval for the seizures themselves.
+    - Separate cluster burden from cluster frequency. If seizures per cluster
+      are known but cluster spacing is not, select an unknown-cluster candidate
+      rather than inventing a calendar rate.
+    - A current seizure-free duration beats older historical event counts when
+      the note clearly describes current seizure freedom and no breakthrough
+      event follows that interval.
+    - Select no seizure frequency reference only when the note lacks usable
+      seizure-frequency information entirely.
+    - Treat the deterministic gate and temporal payload as caveated support:
+      do not assume a quantified-looking candidate is the correct target just
+      because it exists.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    date_event_payload: str = dspy.InputField(
+        desc=(
+            "Deterministic D1 date/event payload with temporal anchors, "
+            "seizure events, seizure-free intervals, cluster events, and "
+            "candidate labels."
+        )
+    )
+    temporal_candidates: str = dspy.InputField(
+        desc=(
+            "Indexed deterministic candidate labels with slots, derivations, and "
+            "evidence text."
+        )
+    )
+    candidate_support_context: str = dspy.InputField(
+        desc=(
+            "Candidate-family counts, conflict flags, and G13/G14-derived caveat "
+            "policy for support-aware adjudication. This contains no gold labels."
+        )
+    )
+    adjudication_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with target_semantic_class, support_policy_decision, "
+            "competing_signal_resolution, reason_code, selected_candidate_index, "
+            "selected_candidate_label, selected_evidence_text, "
+            "label_construction_inputs, final_benchmark_label, "
+            "final_evidence_text, and error_class."
+        )
+    )
+
+
 class GanFrequencyS0ReactTemporalToolsSignature(dspy.Signature):
     """Extract Gan seizure frequency using bounded ReAct temporal tools.
 
