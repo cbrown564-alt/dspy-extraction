@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G22 closed-option selector result
+Last updated: 2026-05-29 after G23 selector failure mechanism audit
 
 ## Current Question
 
@@ -33,6 +33,7 @@ The system must separate:
 | G21 aggregation constructor implementation | fixture-tested no-model constructor / mechanism open | G21 implements `gan.frequency.aggregation_constructor.v1` as a separate constructed answer-option surface. Standard50 exact option coverage rises from 41/50 raw to 45/50 combined, and the G11 exact-miss challenge reaches 12/21 constructed exact with 0 deferred or negative-control constructions. This is answer-option coverage, not selector performance. |
 | G17 unknown/no-reference policy | current synthesis / special-label policy defined | G17 defines the nine-row G19 special-label slice across unclear-frequency, unknown-cluster, seizure-free/no-reference scorer discordance, and concrete-rate overcall cases. It makes no scorer, loader, split, bridge, candidate-builder, selector, or repair changes and authorizes no deterministic repairs. |
 | G22 closed-option target selector | rejected target-selection arm | G22 tested a closed-option selector over raw deterministic temporal candidates plus prediction-time G21 constructed options. Trace fields were complete in 50/50 rows and final labels were copied from selected options, but standard50 paper monthly was 39/50, below builder-gap GPT at 41/50 and the 43/50 stop-rule gate. It regressed on seizure-free-versus-quantified and unknown/no-reference overlays, including five G17 builder-gap regressions. Do not full-validate or promote as tested. |
+| G23 selector failure mechanism audit | current synthesis / mechanism framing | Across G8/G10/G15/G22 there are 57 selector arm-misses on standard50; 39/57 have an exact answer option already available. G22's 11 misses split into 6 wrong choices with exact options present and 5 forced wrong choices where G17 unknown labels were absent from the closed-option surface. | Use G23 to design G24: keep closed options as support, but test evidence-first target narration with a constrained special-label escape instead of rerunning closed-option ID selection alone. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
 ## Read First
@@ -62,6 +63,7 @@ The system must separate:
 - `gan_s0_g21_aggregation_constructor_report_20260529.md` - G21 fixture-tested quantified-rate constructor report; use it before any closed-option selector card.
 - `gan_s0_g22_closed_option_target_selector_preregistration_20260529.md` - G22 preregistered closed-option selector protocol.
 - `gan_s0_g22_closed_option_target_selector_report_20260529.md` - G22 standard50 result and before/after ledger; use it before any new Gan selector card.
+- `gan_s0_g23_selector_failure_mechanism_audit_20260529.md` - G23 no-model selector failure mechanism audit; use it to frame G24 around evidence-first target narration, special-label escape, and construction-aware option priority.
 - `gan_s0_g17_unknown_no_reference_policy_20260529.md` - G17 no-model special-label policy separation; use it before any new unknown/no-reference, unknown-cluster, seizure-free/no-reference, or unclear-frequency selector mechanism.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
@@ -105,32 +107,41 @@ listed above or in `../../component_ceiling_registry.md`.
    below builder-gap GPT at 41/50 and below the 43/50 stop-rule gate. It is
    useful as a row-level ledger for future work, not as a full-validation
    candidate.
-7. Treat G13 as the source-level gate baseline before future selector work: do
+7. Treat G23 as complete for selector failure mechanism analysis. It shows
+   candidate absence is not the broad bottleneck: across G8/G10/G15/G22,
+   39/57 selector arm-misses had an exact answer option available. G24 should
+   test a reframed evidence-first selector with a constrained special-label
+   escape and construction-aware option priority, not another closed-option
+   ID-selection rerun.
+8. Treat G13 as the source-level gate baseline before future selector work: do
    not attribute unclear-frequency or seizure-free gate misses to target
    selection until the G13 false-positive/false-negative rows are accounted for.
    Use the G13 design-implications note to keep deterministic candidates as LLM
    support rather than as a growing semantic adjudicator.
-8. Treat G14 as the temporal anchoring diagnostic baseline: the current
+9. Treat G14 as the temporal anchoring diagnostic baseline: the current
    deterministic substrate covers most temporal challenge rows, but two true
    temporal-slot misses remain. Do not expand fragile arithmetic or broad
    relative-anchor guards from G14; route remaining exact misses to
    aggregation-aware answer construction before another target-selection arm.
-9. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
+10. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-10. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22
+11. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23
    reports as required context for any seizure-free, quantified-rate, unknown,
    no-reference, support-aware, aggregation-constructor, or
    candidate-constrained selector.
-11. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+12. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-12. Use G19's queue before choosing the next Gan mechanism: G20 preregistered
+13. Use G19's queue and G23's mechanism framing before choosing the next Gan
+   selector: G20 preregistered
    the aggregation-constructor path, G21 implemented the quantified-rate option
    surface, G17 defined the special-label slice, and G22 tested one
-   closed-option selector that failed the stop rule. Any later selector needs a
-   new preregistered mechanism and a G22-aware before/after ledger.
-13. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+   closed-option selector that failed the stop rule. G23 then showed the next
+   selector should relax/reframe the interface, not rerun the same shape. Any
+   later selector needs a new preregistered mechanism and a G22-aware
+   before/after ledger.
+14. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance
