@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G15 support-aware selector result
+Last updated: 2026-05-29 after G16 aggregation policy
 
 ## Current Question
 
@@ -27,6 +27,7 @@ The system must separate:
 | G13 frequency-content gate | diagnostic gate baseline | 244/299 validation gate accuracy using the current deterministic temporal candidate substrate. Quantified-frequency presence recall is 99.0%, but unclear-frequency recall is 25.0% and seizure-free recall is 51.1%. |
 | G14 temporal anchoring | diagnostic component measured | On `gan_s0_g6_standard50_v1`, exact candidate coverage is 41/50 and temporal-slot coverage is 36/40 applicable rows. On `gan_s0_g6_temporal_anchoring`, exact and slot coverage are 13/15; the two slot misses are `gan_16772` and `gan_16825`. |
 | G15 support-aware target selector | rejected target-selection arm | Support context was present in 50/50 standard50 predictions, but paper monthly was 31/50, below builder-gap GPT, D1 v1.2b, G8, and G10. Do not full-validate or promote as tested. |
+| G16 aggregation policy | policy defined / exact constructor blocked | On the G11 exact-miss challenge, 14/21 rows need quantified rate aggregation with missing temporal slots, 2/21 need seizure-free duration policy, 4/21 are candidate-inventory gaps, and 1/21 is outside rate/duration policy. On standard50, 41/50 already have exact options and 4/50 are quantified rate aggregation blocks. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
 ## Read First
@@ -49,6 +50,7 @@ The system must separate:
 - `gan_s0_g14_temporal_anchoring_report_20260529.md` - G14 no-model temporal anchoring report; standard50 and temporal challenge coverage with G13 gate caveats carried separately.
 - `gan_s0_g10_candidate_ranking_target_selector_report_20260529.md` - G10 narrowed category-ranking selector result; traces were complete, but the arm is rejected as tested at 36/50 paper monthly on standard50, below G8, D1, and builder-gap GPT.
 - `gan_s0_g15_support_aware_target_selector_report_20260529.md` - G15 support-aware target selector result; support traces were complete, but the arm is rejected as tested at 31/50 paper monthly on standard50 with motivating-overlay regressions.
+- `gan_s0_g16_aggregation_policy_20260529.md` - G16 no-model rate/duration aggregation policy; exact closed-answer selector claims remain blocked until a constructor or preregistered model mechanism satisfies the policy.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
 - `gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md` - entity-first rejected arm.
@@ -76,29 +78,32 @@ listed above or in `../../component_ceiling_registry.md`.
 3. Treat G15 as complete and rejected as tested. Explicit support metadata,
    G13 gate caveats, and G14 temporal caveats did not improve the selector:
    standard50 paper monthly was 31/50, below G10 (36/50), G8 (37/50), D1
-   (40/50), and builder-gap GPT (41/50). Pull G16 aggregation policy or a
-   separately preregistered deterministic aggregation constructor before another
-   exact-label selector claim.
-4. Treat G13 as the source-level gate baseline before future selector work: do
+   (40/50), and builder-gap GPT (41/50).
+4. Treat G16 as complete for policy definition, not as a constructor. Exact
+   closed-answer selector claims remain blocked until a deterministic
+   aggregation constructor or preregistered model mechanism is tested against
+   the G16 policy. G17 unknown/no-reference policy is now the ready semantic
+   policy follow-up.
+5. Treat G13 as the source-level gate baseline before future selector work: do
    not attribute unclear-frequency or seizure-free gate misses to target
    selection until the G13 false-positive/false-negative rows are accounted for.
    Use the G13 design-implications note to keep deterministic candidates as LLM
    support rather than as a growing semantic adjudicator.
-5. Treat G14 as the temporal anchoring diagnostic baseline: the current
+6. Treat G14 as the temporal anchoring diagnostic baseline: the current
    deterministic substrate covers most temporal challenge rows, but two true
    temporal-slot misses remain. Do not expand fragile arithmetic or broad
    relative-anchor guards from G14; route remaining exact misses to
    aggregation-aware answer construction before another target-selection arm.
-6. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
+7. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-7. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15
+8. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15
    reports as required context for any seizure-free, quantified-rate, unknown,
    no-reference, support-aware, or candidate-constrained selector.
-8. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+9. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-9. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+10. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance

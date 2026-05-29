@@ -9,6 +9,10 @@ from clinical_extraction.evaluation.gan_g11_candidate_inventory_challenge import
 from clinical_extraction.evaluation.gan_g12_answer_option_surface import (
     build_g12_answer_option_surface_report,
 )
+from clinical_extraction.evaluation.gan_g16_aggregation_policy import (
+    aggregation_policy_class,
+    build_g16_aggregation_policy_report,
+)
 from clinical_extraction.evaluation.gan_temporal_anchoring_g14 import (
     G14_STANDARD50_IDS,
     G14_TEMPORAL_CHALLENGE_IDS,
@@ -23,7 +27,9 @@ from clinical_extraction.gan.s0.candidate_inventory import (
 
 
 def _record(record_id: str):
-    return next(record for record in load_gan_records() if record.record_id == record_id)
+    return next(
+        record for record in load_gan_records() if record.record_id == record_id
+    )
 
 
 def _flags(**overrides) -> GanMultiEventFlags:
@@ -101,9 +107,12 @@ def test_candidate_inventory_report_summarizes_exact_and_category_coverage():
     assert overall["gold_pragmatic_equivalent_covered"] == 2
     assert report["summary"]["by_label_family"]["quantified_rate"]["records"] == 1
     assert report["summary"]["by_label_family"]["seizure_free"]["records"] == 1
-    assert report["summary"]["by_hard_stratum"]["seizure_free_conflict"][
-        "gold_exact_covered"
-    ] == 1
+    assert (
+        report["summary"]["by_hard_stratum"]["seizure_free_conflict"][
+            "gold_exact_covered"
+        ]
+        == 1
+    )
 
 
 def test_candidate_inventory_surface_characterizes_current_candidate_labels():
@@ -198,12 +207,84 @@ def test_g14_carries_g13_gate_caveats_separately_from_anchoring():
     rows_by_id = {row["record_id"]: row for row in report["rows"]}
 
     assert rows_by_id["gan_9566"]["gate_caveated"] is True
-    assert (
-        rows_by_id["gan_9566"]["g14_failure_class"]
-        == "upstream_g13_gate_caveat"
-    )
+    assert rows_by_id["gan_9566"]["g14_failure_class"] == "upstream_g13_gate_caveat"
     assert rows_by_id["gan_16772"]["gate_caveated"] is False
+    assert rows_by_id["gan_16772"]["g14_failure_class"] == "temporal_slot_miss"
+
+
+def test_g16_aggregation_policy_classifies_rate_duration_boundaries():
     assert (
-        rows_by_id["gan_16772"]["g14_failure_class"]
-        == "temporal_slot_miss"
+        aggregation_policy_class(
+            gold_label="10 per 3 month",
+            exact_candidate_coverage=False,
+            temporal_applicable=True,
+            temporal_slot_coverage=False,
+            purist_equivalent_coverage=True,
+            pragmatic_equivalent_coverage=True,
+            gate_caveated=False,
+        )
+        == "aggregation_required_temporal_slot_missing"
     )
+    assert (
+        aggregation_policy_class(
+            gold_label="seizure free for 16 month",
+            exact_candidate_coverage=False,
+            temporal_applicable=True,
+            temporal_slot_coverage=False,
+            purist_equivalent_coverage=True,
+            pragmatic_equivalent_coverage=True,
+            gate_caveated=False,
+        )
+        == "duration_aggregation_policy_required"
+    )
+    assert (
+        aggregation_policy_class(
+            gold_label="unknown, 2 to 3 per cluster",
+            exact_candidate_coverage=False,
+            temporal_applicable=False,
+            temporal_slot_coverage=None,
+            purist_equivalent_coverage=True,
+            pragmatic_equivalent_coverage=True,
+            gate_caveated=False,
+        )
+        == "outside_rate_duration_aggregation_policy"
+    )
+
+
+def test_g16_aggregation_policy_reports_g11_and_standard50_diagnostics():
+    report = build_g16_aggregation_policy_report()
+    g11 = report["summary"]["g11_exact_miss_challenge"]
+    standard = report["summary"]["standard50"]
+    g11_rows = {
+        row["record_id"]: row for row in report["rows"]["g11_exact_miss_challenge"]
+    }
+    standard_rows = {row["record_id"]: row for row in report["rows"]["standard50"]}
+
+    assert g11["records"] == 21
+    assert (
+        g11["policy_class_counts"]["aggregation_required_temporal_slot_missing"] == 14
+    )
+    assert g11["policy_class_counts"]["duration_aggregation_policy_required"] == 2
+    assert g11["policy_class_counts"]["outside_rate_duration_aggregation_policy"] == 1
+    assert standard["records"] == 50
+    assert standard["policy_class_counts"]["closed_option_already_available"] == 41
+    assert (
+        standard["policy_class_counts"]["aggregation_required_temporal_slot_missing"]
+        == 4
+    )
+    assert g11_rows["gan_15997"]["policy_class"] == (
+        "aggregation_required_temporal_slot_missing"
+    )
+    assert g11_rows["gan_4996"]["policy_class"] == (
+        "duration_aggregation_policy_required"
+    )
+    assert g11_rows["gan_10583"]["policy_class"] == (
+        "outside_rate_duration_aggregation_policy"
+    )
+    assert standard_rows["gan_16772"]["policy_class"] == (
+        "aggregation_required_temporal_slot_missing"
+    )
+    assert report["decision"]["next_selector_authorization"] == (
+        "blocked_until_constructor_or_preregistered_model_mechanism"
+    )
+    assert report["fixed_controls"]["candidate_builder_changed"] is False
