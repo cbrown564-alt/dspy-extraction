@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G16 aggregation policy
+Last updated: 2026-05-29 after G17 special-label policy separation
 
 ## Current Question
 
@@ -28,6 +28,9 @@ The system must separate:
 | G14 temporal anchoring | diagnostic component measured | On `gan_s0_g6_standard50_v1`, exact candidate coverage is 41/50 and temporal-slot coverage is 36/40 applicable rows. On `gan_s0_g6_temporal_anchoring`, exact and slot coverage are 13/15; the two slot misses are `gan_16772` and `gan_16825`. |
 | G15 support-aware target selector | rejected target-selection arm | Support context was present in 50/50 standard50 predictions, but paper monthly was 31/50, below builder-gap GPT, D1 v1.2b, G8, and G10. Do not full-validate or promote as tested. |
 | G16 aggregation policy | policy defined / exact constructor blocked | On the G11 exact-miss challenge, 14/21 rows need quantified rate aggregation with missing temporal slots, 2/21 need seizure-free duration policy, 4/21 are candidate-inventory gaps, and 1/21 is outside rate/duration policy. On standard50, 41/50 already have exact options and 4/50 are quantified rate aggregation blocks. |
+| G19 post-G16 error attribution | current synthesis / optimization queue | Across builder-gap GPT, D1 v1.2b, G8, G10, and G15 on standard50, there are 65 paper-monthly arm-misses across 29 rows. The leading classes are aggregation blocks with missing temporal slots, unclear or unknown-cluster evidence misrouted as concrete, seizure-free over quantified target selection, and wrong quantified rate/window selection. G20 has now preregistered the aggregation-constructor path, and G17 has defined the special-label policy slice. |
+| G20 aggregation constructor preregistration | preregistered deterministic constructor protocol / mechanism open | G20 chooses a deterministic, fixture-first quantified-rate aggregation constructor as the next implementation path. It scopes primary fixtures to the four G19 standard50 aggregation rows and the 21-row G11 exact-miss challenge, while deferring seizure-free duration, unknown/no-reference, cluster flattening, and target selection. |
+| G17 unknown/no-reference policy | current synthesis / special-label policy defined | G17 defines the nine-row G19 special-label slice across unclear-frequency, unknown-cluster, seizure-free/no-reference scorer discordance, and concrete-rate overcall cases. It makes no scorer, loader, split, bridge, candidate-builder, selector, or repair changes and authorizes no deterministic repairs. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
 ## Read First
@@ -51,6 +54,9 @@ The system must separate:
 - `gan_s0_g10_candidate_ranking_target_selector_report_20260529.md` - G10 narrowed category-ranking selector result; traces were complete, but the arm is rejected as tested at 36/50 paper monthly on standard50, below G8, D1, and builder-gap GPT.
 - `gan_s0_g15_support_aware_target_selector_report_20260529.md` - G15 support-aware target selector result; support traces were complete, but the arm is rejected as tested at 31/50 paper monthly on standard50 with motivating-overlay regressions.
 - `gan_s0_g16_aggregation_policy_20260529.md` - G16 no-model rate/duration aggregation policy; exact closed-answer selector claims remain blocked until a constructor or preregistered model mechanism satisfies the policy.
+- `gan_s0_g19_post_g16_error_attribution_audit_20260529.md` - G19 no-model residual attribution over standard50; use this row ledger before G17, G20, or any new selector/adjudicator mechanism.
+- `gan_s0_g20_aggregation_constructor_preregistration_20260529.md` - G20 no-model constructor preregistration; use it before implementing exact answer-option construction.
+- `gan_s0_g17_unknown_no_reference_policy_20260529.md` - G17 no-model special-label policy separation; use it before any new unknown/no-reference, unknown-cluster, seizure-free/no-reference, or unclear-frequency selector mechanism.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
 - `gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md` - entity-first rejected arm.
@@ -80,30 +86,39 @@ listed above or in `../../component_ceiling_registry.md`.
    standard50 paper monthly was 31/50, below G10 (36/50), G8 (37/50), D1
    (40/50), and builder-gap GPT (41/50).
 4. Treat G16 as complete for policy definition, not as a constructor. Exact
-   closed-answer selector claims remain blocked until a deterministic
-   aggregation constructor or preregistered model mechanism is tested against
-   the G16 policy. G17 unknown/no-reference policy is now the ready semantic
-   policy follow-up.
-5. Treat G13 as the source-level gate baseline before future selector work: do
+   closed-answer selector claims remain blocked until a deterministic constructor
+   is implemented and tested against the G20 fixture gates. G20 is complete as a
+   preregistration only; it does not implement answer-option construction.
+5. Treat G17 as complete for special-label policy separation, not as a selector.
+   Future unknown/no-reference or special-label mechanisms must preserve the
+   nine-row G17 ledger and separate unclear-frequency, unknown-cluster,
+   seizure-free/no-reference scorer discordance, and concrete-rate overcall
+   cases before aggregating paper-facing metrics.
+6. Treat G13 as the source-level gate baseline before future selector work: do
    not attribute unclear-frequency or seizure-free gate misses to target
    selection until the G13 false-positive/false-negative rows are accounted for.
    Use the G13 design-implications note to keep deterministic candidates as LLM
    support rather than as a growing semantic adjudicator.
-6. Treat G14 as the temporal anchoring diagnostic baseline: the current
+7. Treat G14 as the temporal anchoring diagnostic baseline: the current
    deterministic substrate covers most temporal challenge rows, but two true
    temporal-slot misses remain. Do not expand fragile arithmetic or broad
    relative-anchor guards from G14; route remaining exact misses to
    aggregation-aware answer construction before another target-selection arm.
-7. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
+8. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-8. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15
+9. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20
    reports as required context for any seizure-free, quantified-rate, unknown,
-   no-reference, support-aware, or candidate-constrained selector.
-9. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+   no-reference, support-aware, aggregation-constructor, or
+   candidate-constrained selector.
+10. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-10. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+11. Use G19's queue before choosing the next Gan mechanism: G20 has now
+   preregistered the aggregation-constructor path, G17 has defined the
+   special-label slice, and only then should a newly preregistered closed-option
+   or special-label target-selection mechanism run.
+12. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance

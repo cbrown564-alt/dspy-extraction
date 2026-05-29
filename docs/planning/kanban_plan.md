@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 queued G19 error-driven Gan follow-up after G16
+Last refreshed: 2026-05-29 completed G17 policy separation and routed G21 next
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -88,11 +88,19 @@ promotes them.
    exact closed-answer options, and standard50 has four quantified rate
    aggregation blocks. Exact closed-option selector claims remain blocked until
    a deterministic constructor or preregistered model mechanism satisfies that
-   policy. The next Gan pull is now error-analysis-first: G19 must attribute
-   the residual failures across gate, inventory, temporal anchoring, target
-   selection, aggregation, unknown/no-reference policy, label construction, and
-   evidence/schema before G17, an aggregation constructor, or another selector
-   arm changes behavior.
+   policy. G19 has now completed the post-G16 attribution audit: across the
+   five inspected standard50 arms, the leading arm-miss classes are aggregation
+   blocks with missing temporal slots (16 arm-misses / 4 rows), unclear or
+   unknown-cluster evidence misrouted as concrete (15 / 6), seizure-free over
+   quantified target selection (11 / 6), and wrong quantified rate/window
+   selection (11 / 5). G20 has now preregistered a deterministic, fixture-first
+   quantified-rate aggregation constructor for the G19 aggregation block without
+   implementing it. G17 has now completed the special-label policy separation:
+   the active unknown/no-reference surface is a nine-row slice covering
+   unclear-frequency, unknown-cluster, seizure-free/no-reference scorer
+   discordance, and concrete-rate overcall cases, with zero deterministic repair
+   candidates. Any new selector needs a card that cites the specific G19/G17
+   class it intends to reduce.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -112,57 +120,27 @@ promotes them.
 
 ## Ready
 
-### G19 - Gan Post-G16 Error Attribution Audit
+### G21 - Gan Deterministic Aggregation Constructor Fixture Implementation
 
-- **Outcome:** A comprehensive row-level Gan S0 error analysis that turns the
-  G1-G16 evidence into an optimization queue. It should classify residual
-  misses for builder-gap GPT, D1 v1.2b, G8, G10, and G15 on
-  `gan_s0_g6_standard50_v1`, then link those rows back to G13 gate errors, G14
-  temporal-slot misses, G16 aggregation policy classes, and G5 scorer-mode
-  discordance.
-- **Dependencies:** completed G5/G6/G8/G10/G13/G14/G15/G16 reports and the
-  inspected run artifacts; no new model calls.
-- **Parallelizable:** no for the core taxonomy because it defines the shared
-  optimization queue; ExECT planning can proceed in parallel.
+- **Outcome:** Fixture-tested deterministic answer-option construction for the
+  G20 quantified-rate aggregation rows, preserving raw candidates and emitting
+  constructed options with provenance rather than final target labels.
+- **Dependencies:** completed G20 preregistration, completed G19 attribution
+  audit, G16 aggregation policy, and G14 temporal anchoring report.
+- **Parallelizable:** no with additional Gan policy changes if it touches shared
+  candidate-surface or primitive contracts; the G17 policy is complete and
+  routes special labels outside this constructor.
 - **Owner:** unassigned.
-- **Validation:** New report and JSON artifact under `docs/experiments/gan/`
-  with counts by failure class, row IDs, affected components, deterministic
-  repair candidates, semantic/prompt candidates, scorer-mode caveats, and the
-  recommended next experiment cards. Scorer semantics remain unchanged and
-  `gan2026_paper_reproduction` leads benchmark-facing counts.
-- **Notes:** This card exists because recent G8/G10/G15 choices were drifting
-  toward interface variation before a full residual-error accounting. Do not
-  start another Gan selector, prompt, model, bridge, scorer, or candidate-builder
-  change until G19 names the error classes it is meant to fix.
-
-### G17 - Gan Unknown vs. No-Reference Policy Separation
-
-- **Outcome:** Refinement of target selection to accurately differentiate `unknown` from `no seizure frequency reference` based on diagnostic evidence.
-- **Dependencies:** completed G15 negative arm, completed G16 policy, and the
-  G19 special-label failure slice.
-- **Parallelizable:** after G19 identifies whether unknown/no-reference rows are
-  the leading fixable residual.
-- **Owner:** unassigned.
-- **Validation:** Reduction of paper-scorer discrepancies due to special-class confusion.
-- **Notes:** Keep benchmark and clinical scorer modes separated; G16 routes unknown/no-reference and unknown-cluster rows outside rate/duration aggregation.
-
-### G20 - Gan Aggregation Constructor Preregistration
-
-- **Outcome:** A preregistered no-model plan for exact closed answer-option
-  construction where G16 says aggregation or duration policy is the first
-  blocker.
-- **Dependencies:** G19 error attribution audit, G14 temporal anchoring report,
-  and G16 aggregation policy.
-- **Parallelizable:** after G19; can run beside G17 only if G19 separates the
-  special-label and aggregation residuals cleanly.
-- **Owner:** unassigned.
-- **Validation:** Preregistration document names the policy cases, fixture rows,
-  permitted deterministic transformations, forbidden repairs, expected metrics
-  on the G11 exact-miss challenge and standard50, and the scorer/reporting
-  caveats before implementation.
-- **Notes:** This is a design card, not a constructor implementation. It should
-  decide whether the next implementation is deterministic, model-mediated, or
-  deferred.
+- **Validation:** Focused fixture tests for the four G19 standard50 aggregation
+  rows, the 21-row G11 exact-miss challenge, no-op closed-option controls, and
+  negative controls for duration, inventory gaps, and outside-policy rows.
+  Report standard50 answer-option exact coverage before/after, G11 exact-miss
+  coverage before/after, and zero mutation of existing raw candidates. If the
+  implementation adds a registry-backed primitive, update typed primitive
+  metadata first and run `uv run python scripts/validate_primitives.py --errors-only`.
+- **Notes:** Use the G20 permitted/forbidden transformation list. Do not include
+  seizure-free duration aggregation, unknown/no-reference policy, cluster
+  flattening, or final target selection in this implementation card.
 
 ## Blocked
 
@@ -405,6 +383,23 @@ indexes, and git history.
   aggregation constructor before another exact-label claim.
   Report:
   `docs/experiments/gan/gan_s0_g15_support_aware_target_selector_report_20260529.md`.
+- **G20 preregistered the aggregation-constructor path.** The design chooses a
+  deterministic, fixture-first quantified-rate constructor rather than a
+  model-mediated first pass or deferral. It names the four G19 standard50
+  aggregation rows, the 21 G11 exact-miss challenge fixtures, permitted
+  transformations, forbidden repairs, expected coverage gates, and scorer
+  caveats. It does not implement the constructor or make a performance claim.
+  Report:
+  `docs/experiments/gan/gan_s0_g20_aggregation_constructor_preregistration_20260529.md`.
+- **G17 completed the special-label policy separation.** The G19 special-label
+  slice is now a nine-row policy surface, not a binary string distinction:
+  `gan_6532`, `gan_9566`, `gan_5974`, `gan_6607`, `gan_6387`, `gan_14002`,
+  `gan_11380`, `gan_7894`, and `gan_8264`. It separates unclear-frequency
+  misroutes, unknown-cluster policy, unknown-over-concrete, and seizure-free/no-
+  reference scorer-mode discordance. It made no scorer, loader, split, bridge,
+  prompt, model, candidate-builder, target-selection, or prediction-repair
+  changes, and found 0 deterministic repair candidates. Report:
+  `docs/experiments/gan/gan_s0_g17_unknown_no_reference_policy_20260529.md`.
 - **Gan S0 now has a plain-English component handoff.** The key-axes progress
   report translates the decomposition into reader-facing components:
   frequency-content gate, candidate inventory, temporal anchoring, target
@@ -493,15 +488,23 @@ clear active dependency.
   closed-answer selector claims remain blocked until a deterministic constructor
   or preregistered model mechanism is tested. Report:
   `docs/experiments/gan/gan_s0_g16_aggregation_policy_20260529.md`.
-- G19 is now the immediate Gan sequencing gate. It should consolidate G8/G10/G15
-  standard50 residuals against G13, G14, G16, and G5 before any new selector,
-  aggregation constructor, special-label policy, or prompt/interface experiment
-  changes behavior.
-- G17 refines unknown vs. no-reference policy downstream of the completed G15
-  negative arm, G16 special-class routing, and the G19 special-label slice.
-- G20 preregisters aggregation-constructor work downstream of G19, G14, and G16.
-  Do not implement exact closed answer options until G20 names fixture cases and
-  allowed deterministic transformations.
+- G19 completed the post-G16 error attribution audit with no model, scorer,
+  loader, split, bridge, prompt, candidate-builder, target-selection, or
+  prediction-repair changes. On `gan_s0_g6_standard50_v1`, builder-gap GPT,
+  D1 v1.2b, G8, G10, and G15 produce 65 paper-monthly arm-misses across 29
+  unique rows. The largest classes are aggregation blocks with missing temporal
+  slots (16 arm-misses / 4 rows), unclear or unknown-cluster evidence misrouted
+  as concrete (15 / 6), seizure-free over quantified target selection (11 / 6),
+  and wrong quantified rate/window selection (11 / 5). There are 0 deterministic
+  repair candidates and 0 schema/evidence residuals on this surface. Report:
+  `docs/experiments/gan/gan_s0_g19_post_g16_error_attribution_audit_20260529.md`.
+- G17 completed unknown vs. no-reference policy separation downstream of the
+  completed G15 negative arm, G16 special-class routing, and the G19
+  special-label slice. Future special-label selector work needs a new mechanism
+  card and a before/after ledger for the nine G17 rows.
+- G20 completed the aggregation-constructor preregistration downstream of G19,
+  G14, and G16. Exact closed answer-option implementation is now a separate G21
+  fixture-first deterministic card; target selection remains separate.
 - The Gan key-axes progress report is the handoff reference for plain-English
   component names. Use it to keep G8 interpretation centered on the actual
   failure stage rather than on implementation jargon.
@@ -523,48 +526,46 @@ clear active dependency.
 
 ## Parallelization Opportunities
 
-- **Safe now:** pull G19 Gan post-G16 error attribution, draft a new
-  validation-only ExECT mechanism card from E11 findings before any model calls,
-  or do readme/report cleanup tied to completed Gan artifacts. G17 policy work
-  and G20 aggregation-constructor preregistration should wait for G19's row-level
-  failure counts unless they are explicitly scoped to preparing templates only.
-  Any downstream Gan selector/adjudicator run must use the G6 evaluation-surface
-  protocol and preserve scorer, loader, split, benchmark bridge,
-  candidate-builder, and prediction-repair semantics.
+- **Safe now:** pull G21 deterministic aggregation-constructor fixture
+  implementation, draft a new validation-only ExECT mechanism card from E11
+  findings before any model calls, or do readme/report cleanup tied to completed
+  Gan artifacts. Any
+  downstream Gan selector/adjudicator run must use the G6 evaluation-surface
+  protocol, cite the G19 failure class it targets, and preserve scorer, loader,
+  split, benchmark bridge, candidate-builder, and prediction-repair semantics.
 - **Architecture lane closed as bottleneck:** C31/C32 closed the currently
   scoped active-priority pruning pass. Any new cleanup should start from a
   concrete runtime contract or active-authority ambiguity, not from historical
   card carryover.
-- **Single-threaded or carefully sequenced:** G19's Gan failure taxonomy, future
-  registry/archive regeneration, and any change to scorer, loader, split,
-  benchmark bridge, or shared primitive contracts. ExECT component-ceiling work
-  remains sequencing-sensitive where it changes S5, S0/S1, or active runtime
-  contracts.
+- **Single-threaded or carefully sequenced:** G21 if it touches shared
+  candidate-surface or primitive contracts, future registry/archive
+  regeneration, and any change to scorer, loader, split, benchmark bridge, or
+  shared primitive contracts. ExECT component-ceiling work remains
+  sequencing-sensitive where it changes S5, S0/S1, or active runtime contracts.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline.
   G10 and G15 selector lanes are complete and rejected as tested. Any new Gan
-  selector/adjudicator lane needs G19 error attribution plus a new preregistered
-  mechanism card, and any full-validation run should wait until the standard-50
-  mechanism has cleared its stop rule.
+  selector/adjudicator lane needs to cite the completed G19 failure class plus a
+  new preregistered mechanism card, and any full-validation run should wait
+  until the standard-50 mechanism has cleared its stop rule.
 
 ## Recommended Next Pull
 
-1. Pull G19 first: produce a comprehensive Gan post-G16 error attribution audit
-   over standard50 and the current baselines/rejected arms, with row-level
-   component labels and a ranked optimization queue.
-2. Use G19 to decide whether the next Gan implementation card is G17
-   unknown/no-reference policy, G20 aggregation-constructor preregistration, or
-   a newly scoped target-selection mechanism. Do not choose by prompt/interface
-   intuition alone.
-3. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
+1. Pull G21 if choosing an engineering implementation next: implement only the
+   G20 deterministic quantified-rate constructor fixtures, report answer-option
+   coverage before/after, and leave duration, cluster flattening, special labels,
+   and target selection untouched.
+2. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
    transfer, frequency payload robustness/adjudication, or medication payload
    routing, using X2 for pairwise support counts and stop rules. Holdout rows
    remain residual evidence only.
-4. Reopen target selection only with a new mechanism card that explicitly
-   accounts for G19's failure classes, G15's support-aware regression, and G16's
-   aggregation decision.
-5. For additional pruning, first write a new card that names the runtime
+3. Reopen target selection only with a new mechanism card that explicitly
+   accounts for G19's failure classes, G17's special-label strata, G15's
+   support-aware regression, and G16's aggregation decision. The next
+   target-selection card should preserve a row-level before/after ledger rather
+   than rerunning the G8/G10/G15 prompt shapes.
+4. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.
 

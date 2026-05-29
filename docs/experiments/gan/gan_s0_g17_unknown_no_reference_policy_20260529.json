@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-05-29T10:15:00+00:00",
+  "status": "current_synthesis",
+  "decision_scope": "special_label_policy",
+  "kanban_card": "G17 - Gan Unknown vs. No-Reference Policy Separation",
+  "dataset": "gan_2026 synthetic",
+  "split": "gan_2026_fixed_v1:validation",
+  "schema_level": "gan_frequency_s0",
+  "surface": "gan_s0_g6_standard50_v1",
+  "gold_source": "check__Seizure Frequency Number.seizure_frequency_number[0]",
+  "reference_policy": "reference[0] is a secondary cross-check and difficulty signal, not benchmark gold.",
+  "scorer_semantics": {
+    "primary": "gan2026_paper_reproduction monthly_frequency_match, repair/range/tolerance disabled",
+    "diagnostic": "gan_frequency_deterministic_v1 canonical monthly_frequency_match",
+    "semantics_changed": false,
+    "policy": "Reports must keep benchmark-facing collapse behavior separate from canonical clinical distinctions among unknown, no seizure frequency reference, seizure-free duration, and unknown-cluster labels."
+  },
+  "fixed_controls": {
+    "model_calls": "none",
+    "scorer_changed": false,
+    "loader_split_bridge_prompt_or_repair_changed": false,
+    "candidate_builder_changed": false,
+    "target_selection_changed": false,
+    "prediction_repair_changed": false
+  },
+  "source_artifacts": [
+    "docs/experiments/gan/gan_s0_g19_post_g16_error_attribution_audit_20260529.json",
+    "docs/experiments/gan/gan_s0_g19_post_g16_error_attribution_audit_20260529.md",
+    "docs/experiments/gan/gan_s0_g16_aggregation_policy_20260529.md",
+    "docs/experiments/gan/gan_s0_g13_frequency_content_gate_report_20260529.md",
+    "docs/experiments/gan/gan_s0_g5_scorer_mode_forensics_for_g4_20260528.md",
+    "docs/datasets/gan/gan_2026_label_audit.md",
+    "docs/policies/deterministic_scorer_semantics.md",
+    "docs/policies/published_benchmark_metrics.md"
+  ],
+  "special_label_slice": [
+    {
+      "record_id": "gan_6532",
+      "gold_label": "unknown, multiple per cluster",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": true,
+      "policy_bucket": "unknown_cluster_misrouted_as_concrete",
+      "g19_failure_class": "frequency_content_gate__unclear_or_cluster_misrouted_as_concrete",
+      "missed_by_arms": ["g8_special_class_selector", "g10_candidate_ranking_selector"],
+      "g13_gate": "unknown_unclear_frequency -> quantified_frequency_presence",
+      "g14_link": "exact_temporal_candidate_present",
+      "g16_policy_class": "closed_option_already_available"
+    },
+    {
+      "record_id": "gan_9566",
+      "gold_label": "unknown",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": false,
+      "policy_bucket": "unknown_misrouted_as_concrete",
+      "g19_failure_class": "frequency_content_gate__unclear_or_cluster_misrouted_as_concrete",
+      "missed_by_arms": ["g8_special_class_selector", "g10_candidate_ranking_selector", "g15_support_aware_selector"],
+      "g13_gate": "unknown_unclear_frequency -> quantified_frequency_presence",
+      "g14_link": "upstream_g13_gate_caveat",
+      "g16_policy_class": "outside_rate_duration_aggregation_policy"
+    },
+    {
+      "record_id": "gan_5974",
+      "gold_label": "unknown",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": false,
+      "policy_bucket": "unknown_misrouted_as_seizure_free",
+      "g19_failure_class": "frequency_content_gate__unclear_or_cluster_misrouted_as_concrete",
+      "missed_by_arms": ["g8_special_class_selector", "g10_candidate_ranking_selector", "g15_support_aware_selector"],
+      "g13_gate": "unknown_unclear_frequency -> seizure_free",
+      "g14_link": "upstream_g13_gate_caveat",
+      "g16_policy_class": "outside_rate_duration_aggregation_policy"
+    },
+    {
+      "record_id": "gan_6607",
+      "gold_label": "unknown",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": false,
+      "policy_bucket": "unknown_misrouted_as_concrete",
+      "g19_failure_class": "frequency_content_gate__unclear_or_cluster_misrouted_as_concrete",
+      "missed_by_arms": ["g10_candidate_ranking_selector", "g15_support_aware_selector"],
+      "g13_gate": "unknown_unclear_frequency -> quantified_frequency_presence",
+      "g14_link": "upstream_g13_gate_caveat",
+      "g16_policy_class": "outside_rate_duration_aggregation_policy"
+    },
+    {
+      "record_id": "gan_6387",
+      "gold_label": "unknown",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": false,
+      "policy_bucket": "unknown_overcalled_as_concrete",
+      "g19_failure_class": "unknown_no_reference_policy__over_concrete",
+      "missed_by_arms": ["d1_v1_2b_schema_guard"],
+      "g13_gate": "unknown_unclear_frequency -> unknown_unclear_frequency",
+      "g14_link": "exact_temporal_candidate_present",
+      "g16_policy_class": "closed_option_already_available"
+    },
+    {
+      "record_id": "gan_14002",
+      "gold_label": "unknown",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": false,
+      "policy_bucket": "unknown_misrouted_as_seizure_free",
+      "g19_failure_class": "frequency_content_gate__unclear_or_cluster_misrouted_as_concrete",
+      "missed_by_arms": ["g10_candidate_ranking_selector", "g15_support_aware_selector"],
+      "g13_gate": "unknown_unclear_frequency -> seizure_free",
+      "g14_link": "upstream_g13_gate_caveat",
+      "g16_policy_class": "outside_rate_duration_aggregation_policy"
+    },
+    {
+      "record_id": "gan_11380",
+      "gold_label": "unknown",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": false,
+      "policy_bucket": "unknown_misrouted_as_concrete",
+      "g19_failure_class": "frequency_content_gate__unclear_or_cluster_misrouted_as_concrete",
+      "missed_by_arms": ["g8_special_class_selector", "g10_candidate_ranking_selector", "g15_support_aware_selector"],
+      "g13_gate": "unknown_unclear_frequency -> quantified_frequency_presence",
+      "g14_link": "upstream_g13_gate_caveat",
+      "g16_policy_class": "outside_rate_duration_aggregation_policy"
+    },
+    {
+      "record_id": "gan_7894",
+      "gold_label": "seizure free for multiple year",
+      "reference_label": "seizure free for multiple month",
+      "row_ok": true,
+      "hard_case": true,
+      "policy_bucket": "seizure_free_no_reference_scorer_discordance",
+      "g19_failure_class": "scorer_mode_discordance__canonical_only_correct",
+      "missed_by_arms": ["builder_gap_gpt", "d1_v1_2b_schema_guard"],
+      "g13_gate": "seizure_free -> seizure_free",
+      "g14_link": "exact_temporal_candidate_present",
+      "g16_policy_class": "closed_option_already_available"
+    },
+    {
+      "record_id": "gan_8264",
+      "gold_label": "seizure free for 4 month",
+      "reference_label": "unknown",
+      "row_ok": true,
+      "hard_case": true,
+      "policy_bucket": "seizure_free_no_reference_scorer_discordance",
+      "g19_failure_class": "scorer_mode_discordance__canonical_only_correct",
+      "missed_by_arms": ["d1_v1_2b_schema_guard"],
+      "g13_gate": "seizure_free -> seizure_free",
+      "g14_link": "exact_temporal_candidate_present",
+      "g16_policy_class": "closed_option_already_available"
+    }
+  ],
+  "policy_bucket_counts": {
+    "unknown_cluster_misrouted_as_concrete": 1,
+    "unknown_misrouted_as_concrete": 3,
+    "unknown_misrouted_as_seizure_free": 2,
+    "unknown_overcalled_as_concrete": 1,
+    "seizure_free_no_reference_scorer_discordance": 2
+  },
+  "decision": {
+    "classification": "special_label_policy_defined",
+    "deterministic_repair_candidates": 0,
+    "next_selector_authorization": "blocked_until_new_mechanism_card",
+    "reporting_rule": "Future Gan special-label reports must stratify unknown, no seizure frequency reference, unknown-cluster, seizure-free duration, unclear-frequency, and concrete-rate overcall rows separately before aggregating paper-facing metrics."
+  }
+}
