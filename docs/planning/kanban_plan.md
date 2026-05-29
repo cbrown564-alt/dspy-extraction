@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 completed G23 and set G25/G24 as next Gan pulls
+Last refreshed: 2026-05-29 completed G24 and set G28 as next Gan pull
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -115,13 +115,16 @@ promotes them.
    `gan_16772` and `gan_16825`. G23 has now explained the selector failure
    mechanism: across G8/G10/G15/G22, 39/57 selector arm-misses already had an
    exact answer option available, while G22's five exact-absent misses were
-   forced wrong choices on G17 unknown rows. The next planning step is G25 and
-   then G24 before another selector run: quantify how much standard50
-   validation-slice evidence may hide generalization behavior, then
-   preregister an evidence-first selector interface with a constrained
-   special-label escape and construction-aware option priority. Qwen3.6:35b and
-   full-validation/test residual runs are deliberately blocked until those
-   analysis/protocol cards exist.
+   forced wrong choices on G17 unknown rows. G25 has now defined the
+   standard50/full-validation/test gate: standard50 remains a mechanism slice,
+   43/50 is an obvious-pass trigger, 39-42/50 requires a clean preregistered
+   row-ledger exception, and below 39/50 is blocked without an explicit
+   generalization exception. G24 has now preregistered the next interface:
+   evidence-first selector narration, a constrained special-label escape, and
+   construction-aware option priority before another selector run. The next Gan
+   pull is G28, the GPT-4.1-mini cap5/standard50 execution of that protocol.
+   Qwen3.6:35b and full-validation/test residual runs remain blocked until the
+   G28 row ledger satisfies the G25 gate.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -141,47 +144,24 @@ promotes them.
 
 ## Ready
 
-### G24 - Gan Selector Interface Reframing Preregistration
+### G28 - Gan Evidence-First Selector GPT Standard50 Run
 
-- **Outcome:** A preregistered next selector mechanism derived from G23, not a
-  rerun of G8/G10/G15/G22. The protocol should name the interface hypothesis
-  being tested, such as evidence-first reasoning before option selection,
-  freer target narration with constrained final output, or revised task
-  wording that separates clinical interpretation from benchmark label choice.
-- **Dependencies:** G23 is complete; G25 should inform the final run-scope and
-  generalization gate before model calls.
-- **Parallelizable:** preregistration drafting can start now; model-run scope
-  should wait for G25.
+- **Outcome:** Implement and run the G24 evidence-first selector protocol with
+  GPT-4.1-mini: cap5 trace smoke first, then `gan_s0_g6_standard50_v1` only if
+  the trace gate clears. The report should decide whether the arm satisfies the
+  G25 full-validation gate.
+- **Dependencies:** G24 preregistration, G25 gate, model-call budget, and
+  unchanged scorer/loader/split/candidate-builder/constructor semantics.
+- **Parallelizable:** no with other Gan selector model runs; cap5 and
+  standard50 must be sequential.
 - **Owner:** unassigned.
-- **Validation:** Preregistration document with hypothesis, varied factor,
-  fixed controls, dataset/split, model/provider plan, scorer modes,
-  standard50/challenge/full-validation gates, row-level before/after ledger
-  requirements, and stop rules.
-- **Notes:** Any model-backed follow-up must cite the G19/G17/G22/G23 failure
-  class it targets and must preserve scorer, loader, split, benchmark bridge,
-  candidate-builder, G21 constructor, and prediction-repair semantics unless a
-  separate policy card explicitly changes them.
-
-### G25 - Gan Selector Generalization And Sample-Size Audit
-
-- **Outcome:** No-model/statistical audit of whether the G6 standard50 surface
-  is hiding generalization behavior. The report should quantify standard50
-  uncertainty, compare available full-validation and frozen-test residual
-  evidence where artifacts already exist, and define when a lower-standard50
-  arm is still worth a preregistered full-validation or test-residual check.
-- **Dependencies:** G1-G23 synthesis, G6 evaluation-surface protocol, existing
-  full-validation/test artifacts for builder-gap v1, D1 v1.2b, and any
-  selector arms that already have stored outputs.
-- **Parallelizable:** yes with G24 preregistration drafting; should finish
-  before any model-call scope decision.
-- **Owner:** unassigned.
-- **Validation:** Report under `docs/experiments/gan/` with surface
-  denominators, uncertainty or resampling analysis, validation-versus-test
-  caveats, artifact references, and a proposed generalization gate for future
-  selectors.
-- **Notes:** Do not tune from test or holdout rows. This card exists because
-  builder-gap v1 appears validation-fit and because standard50 may overstate or
-  understate variants that generalize differently.
+- **Validation:** Cap5 trace-gate report, standard50 run IDs/configs if the
+  gate passes, primary `gan2026_paper_reproduction` metrics, canonical
+  diagnostics, G17/G21/G22/G23 before/after ledger, and explicit G25 gate
+  decision.
+- **Notes:** Do not full-validate, run Qwen, or inspect frozen test inside this
+  card. If standard50 falls below 39/50 or fails the preregistered row-ledger
+  exception, reject the arm as tested.
 
 ## Blocked
 
@@ -225,9 +205,9 @@ promotes them.
   chosen by G24, with GPT-4.1-mini comparison held fixed. The report should
   identify model-specific reasoning effects rather than treating GPT-mini
   failures as universal.
-- **Blocked by:** G24; Qwen local/provider availability and model-call budget;
-  G25 if the run scope depends on the generalization gate.
-- **Parallelizable:** after G24, but only one Qwen selector batch should run at
+- **Blocked by:** G24, G28 standard50 completion, G25 gate satisfaction, Qwen
+  local/provider availability, and model-call budget.
+- **Parallelizable:** after G28, but only one Qwen selector batch should run at
   a time to keep artifacts and provider effects interpretable.
 - **Owner:** unassigned.
 - **Validation:** Cap/smoke run before standard50, then a standard50 report
@@ -243,8 +223,8 @@ promotes them.
 - **Outcome:** For a selector that clears G24/G25 gates, run full synthetic
   validation and a frozen-test residual analysis that reports validation-to-test
   behavior without tuning from the test rows.
-- **Blocked by:** G24, G25, model-call budget, and either a standard50 pass or
-  an explicit G25 generalization exception.
+- **Blocked by:** G24, G28, model-call budget, and either a G25 standard50 pass
+  or an explicit G25 generalization exception.
 - **Parallelizable:** no; this is model-call gated and should follow the
   preregistered mechanism and generalization protocol.
 - **Owner:** unassigned.
@@ -263,6 +243,24 @@ These are the only completed-work facts that should influence the next pull.
 Detailed card history belongs in linked reports, generated artifacts, archive
 indexes, and git history.
 
+- **G24 preregistered the evidence-first selector interface.** The protocol
+  freezes the next selector mechanism before model calls: evidence-first target
+  narration, closed-option adequacy, constrained `unknown`/`no seizure
+  frequency reference` escape, construction-aware option priority, cap5 trace
+  gate, standard50 row ledger, and G25 run-scope decision. It preserves scorer,
+  loader, split, benchmark bridge, candidate-builder, G21 constructor, and
+  prediction-repair semantics. Report:
+  `docs/experiments/gan/gan_s0_g24_selector_interface_preregistration_20260529.md`.
+- **G25 completed the selector generalization and sample-size audit.**
+  Standard50 remains the default Gan mechanism slice, but its 50-row aggregate
+  is not a promotion surface. Builder-gap GPT and D1 standard50 scores
+  overstate full-validation paper monthly by 2.1pp and 3.4pp, while stored
+  builder-gap frozen-test paper monthly drops by 15.5pp (GPT) and 11.1pp
+  (Qwen) versus validation. Future selector scale-up needs either 43/50 with
+  clean overlays, or a 39-42/50 preregistered row-ledger exception with no new
+  special-label regression; below 39/50 remains blocked without an explicit
+  generalization exception. Report:
+  `docs/experiments/gan/gan_s0_g25_selector_generalization_audit_20260529.md`.
 - **G23 completed the selector failure-mechanism audit.** Across G8/G10/G15/G22
   on standard50, there are 57 selector arm-misses and 39 already have an exact
   answer option available. G22's 11 misses split into 6 exact-available wrong
@@ -299,10 +297,10 @@ indexes, and git history.
 - **G1-G22 synthesis changed the next Gan pull from selector execution to
   failure-mechanism analysis.** The full synthesis argues that candidate
   discovery and quantified-rate answer-option construction are relatively
-  strong, while wrong-option selection remains unexplained. New cards G23-G27
+  strong, while wrong-option selection remains unexplained. New cards G23-G28
   separate failure-mechanism analysis, selector-interface reframing,
-  standard50/generalization risk, Qwen replication, and full-validation/test
-  residual checks. Report:
+  standard50/generalization risk, GPT evidence-first execution, Qwen
+  replication, and full-validation/test residual checks. Report:
   `docs/experiments/gan/gan_s0_g1_g22_research_report_20260529.md`.
 - **Architecture cleanup is no longer blocking research.** The C12-C20
   decomposition work closed the original P1 monolith risks or reclassified them
@@ -641,20 +639,19 @@ clear active dependency.
   evidence-first selector with a constrained special-label escape and
   construction-aware option priority. It does not authorize Qwen, full
   validation, or test-residual runs.
-- G24 is now unblocked for preregistration drafting and should preregister the
-  next selector interface before any model calls. It should not reuse the
-  G8/G10/G15/G22 prompt shapes; it should carry G23's row classes and define
-  the G17/G21/G22 before/after ledger.
-- G25 should define how standard50, full validation, and frozen-test residual
-  evidence are interpreted before G27. Test rows remain residual-analysis
+- G24 completed the preregistration for the next selector interface. The next
+  model-backed pull is G28: implement the G24 GPT cap5/standard50 arm and carry
+  the G17/G21/G22/G23 before/after ledger.
+- G25 has defined how standard50, full validation, and frozen-test residual
+  evidence are interpreted before G26/G27. Test rows remain residual-analysis
   evidence only; do not tune selector wording or candidate policy from them.
-- G26 Qwen replication is downstream of G24 and any G25 gate that changes run
-  scope. Qwen should test a specific
-  model-effect hypothesis, not act as a broad search over rejected GPT-mini
-  arms.
-- G27 full-validation/test residual checks are blocked until G24/G25 define
-  the mechanism and generalization gate. Passing or failing standard50 should
-  not be the only signal considered, but any exception must be preregistered.
+- G26 Qwen replication is downstream of G28 and G25 gate satisfaction. Qwen
+  should test a specific model-effect hypothesis, not act as a broad search
+  over rejected GPT-mini arms.
+- G27 full-validation/test residual checks are blocked until G28 satisfies the
+  G25 generalization gate.
+  Passing or failing standard50 should not be the only signal considered, but
+  any exception must be preregistered.
 - The Gan key-axes progress report is the handoff reference for plain-English
   component names. Use it to keep G8 interpretation centered on the actual
   failure stage rather than on implementation jargon.
@@ -676,8 +673,9 @@ clear active dependency.
 
 ## Parallelization Opportunities
 
-- **Safe now:** run G25, and draft G24's preregistration in parallel if the
-  run-scope gates are left pending until G25. Also safe: write a scoped ExECT
+- **Safe now:** implement and run G28 only as the G24-defined GPT cap5 then
+  standard50 sequence, with model-call budget confirmed and no downstream
+  scale-up until the G25 gate is evaluated. Also safe: write a scoped ExECT
   medication follow-up card only if it avoids the rejected E13 lifecycle-context
   prompt shape, or do readme/report cleanup tied to completed Gan artifacts.
   Any downstream Gan selector/adjudicator run must use the G6
@@ -700,24 +698,20 @@ clear active dependency.
   complete and should frame, not replace, the next preregistration. Any new Gan
   selector/adjudicator lane needs G24 preregistration, G25 generalization
   policy, and the G19/G17/G22/G23 row ledger first. Qwen replication (G26) and
-  full-validation/test residual checks (G27) should wait for G24/G25 gates.
+  full-validation/test residual checks (G27) should wait for G28 and a G25 gate
+  pass or preregistered exception.
 
 ## Recommended Next Pull
 
-1. Pull G25 for Gan: quantify standard50 sample-size and validation-to-test
-   generalization risk so future selector gates are not overfit to a 50-row
-   validation slice.
-2. Draft G24 as the next selector-interface preregistration, using G23's
-   evidence-first/special-label-escape mechanism framing. Leave model-run scope
-   and exception gates pending until G25 is complete.
-3. After G24/G25, consider only the specific downstream checks they authorize.
-   Only then consider G26 Qwen replication or G27 full-validation/test residual
-   checks.
-4. For ExECT medication follow-up, write a new prompt-isolation or
+1. Pull G28: implement the G24 evidence-first selector protocol, run the cap5
+   trace smoke, then run standard50 only if the trace gate clears.
+2. Apply the G25 gate to the G28 row ledger. Only then consider G26 Qwen
+   replication or G27 full-validation/test residual checks.
+3. For ExECT medication follow-up, write a new prompt-isolation or
    deterministic routing card that accounts for E13's recall regression and the
    two persistent annotation-policy false positives before running another
    model-backed arm.
-5. For additional pruning, first write a new card that names the runtime
+4. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.
 

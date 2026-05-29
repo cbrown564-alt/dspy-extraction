@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G23 selector failure mechanism audit
+Last updated: 2026-05-29 after G24 selector interface preregistration
 
 ## Current Question
 
@@ -34,6 +34,8 @@ The system must separate:
 | G17 unknown/no-reference policy | current synthesis / special-label policy defined | G17 defines the nine-row G19 special-label slice across unclear-frequency, unknown-cluster, seizure-free/no-reference scorer discordance, and concrete-rate overcall cases. It makes no scorer, loader, split, bridge, candidate-builder, selector, or repair changes and authorizes no deterministic repairs. |
 | G22 closed-option target selector | rejected target-selection arm | G22 tested a closed-option selector over raw deterministic temporal candidates plus prediction-time G21 constructed options. Trace fields were complete in 50/50 rows and final labels were copied from selected options, but standard50 paper monthly was 39/50, below builder-gap GPT at 41/50 and the 43/50 stop-rule gate. It regressed on seizure-free-versus-quantified and unknown/no-reference overlays, including five G17 builder-gap regressions. Do not full-validate or promote as tested. |
 | G23 selector failure mechanism audit | current synthesis / mechanism framing | Across G8/G10/G15/G22 there are 57 selector arm-misses on standard50; 39/57 have an exact answer option already available. G22's 11 misses split into 6 wrong choices with exact options present and 5 forced wrong choices where G17 unknown labels were absent from the closed-option surface. | Use G23 to design G24: keep closed options as support, but test evidence-first target narration with a constrained special-label escape instead of rerunning closed-option ID selection alone. |
+| G25 selector generalization audit | current synthesis / generalization gate | Standard50 remains the default mechanism slice, but its 50-row aggregate is too noisy to promote or kill near-baseline selectors alone. Builder-gap GPT and D1 standard50 scores slightly overstate full-validation paper scores by 2.1pp and 3.4pp, while stored builder-gap frozen-test paper scores drop by 15.5pp (GPT) and 11.1pp (Qwen) versus validation. | Use the G25 gate before spending full-validation, Qwen, or frozen-test budget: 43/50 is an obvious-pass trigger; 39-42/50 needs a preregistered row-ledger exception with no special-label regression; below 39/50 is blocked without an explicit generalization exception. |
+| G24 evidence-first selector preregistration | preregistered mechanism card | G24 freezes the next selector interface before model calls: evidence-first target narration, closed-option adequacy decision, constrained `unknown`/`no seizure frequency reference` escape, and construction-aware option priority. | Next pull is the GPT-4.1-mini cap5/standard50 implementation and run under G24. Do not full-validate, run Qwen, or inspect frozen test until the G25 gate is satisfied. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
 ## Read First
@@ -64,6 +66,8 @@ The system must separate:
 - `gan_s0_g22_closed_option_target_selector_preregistration_20260529.md` - G22 preregistered closed-option selector protocol.
 - `gan_s0_g22_closed_option_target_selector_report_20260529.md` - G22 standard50 result and before/after ledger; use it before any new Gan selector card.
 - `gan_s0_g23_selector_failure_mechanism_audit_20260529.md` - G23 no-model selector failure mechanism audit; use it to frame G24 around evidence-first target narration, special-label escape, and construction-aware option priority.
+- `gan_s0_g25_selector_generalization_audit_20260529.md` - G25 no-model sample-size and validation-to-test audit; use its gate before authorizing full-validation, Qwen, or frozen-test selector checks.
+- `gan_s0_g24_selector_interface_preregistration_20260529.md` - G24 preregistered evidence-first selector interface; use it before building or running the next GPT standard50 selector arm.
 - `gan_s0_g17_unknown_no_reference_policy_20260529.md` - G17 no-model special-label policy separation; use it before any new unknown/no-reference, unknown-cluster, seizure-free/no-reference, or unclear-frequency selector mechanism.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
@@ -113,35 +117,46 @@ listed above or in `../../component_ceiling_registry.md`.
    test a reframed evidence-first selector with a constrained special-label
    escape and construction-aware option priority, not another closed-option
    ID-selection rerun.
-8. Treat G13 as the source-level gate baseline before future selector work: do
+8. Treat G25 as complete for selector run-scope policy. Standard50 remains the
+   default mechanism-comparison slice, but a 50-row aggregate is not a
+   promotion surface. A future selector gets full validation either by an
+   obvious 43/50 standard50 pass with clean overlays, or by a 39-42/50
+   preregistered row-ledger exception with no new special-label regression.
+   Below 39/50 remains blocked without an explicit generalization exception.
+9. Treat G24 as the active preregistered selector mechanism. The next model
+   work should implement and run only the GPT-4.1-mini cap5/standard50 arm
+   defined by G24, then apply the G25 gate before any full-validation, Qwen, or
+   frozen-test spend.
+10. Treat G13 as the source-level gate baseline before future selector work: do
    not attribute unclear-frequency or seizure-free gate misses to target
    selection until the G13 false-positive/false-negative rows are accounted for.
    Use the G13 design-implications note to keep deterministic candidates as LLM
    support rather than as a growing semantic adjudicator.
-9. Treat G14 as the temporal anchoring diagnostic baseline: the current
+11. Treat G14 as the temporal anchoring diagnostic baseline: the current
    deterministic substrate covers most temporal challenge rows, but two true
    temporal-slot misses remain. Do not expand fragile arithmetic or broad
    relative-anchor guards from G14; route remaining exact misses to
    aggregation-aware answer construction before another target-selection arm.
-10. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
+12. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-11. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23
+13. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23/G24/G25
    reports as required context for any seizure-free, quantified-rate, unknown,
    no-reference, support-aware, aggregation-constructor, or
    candidate-constrained selector.
-12. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+14. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-13. Use G19's queue and G23's mechanism framing before choosing the next Gan
+15. Use G19's queue and G23's mechanism framing before choosing the next Gan
    selector: G20 preregistered
    the aggregation-constructor path, G21 implemented the quantified-rate option
    surface, G17 defined the special-label slice, and G22 tested one
    closed-option selector that failed the stop rule. G23 then showed the next
-   selector should relax/reframe the interface, not rerun the same shape. Any
-   later selector needs a new preregistered mechanism and a G22-aware
-   before/after ledger.
-14. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+   selector should relax/reframe the interface, not rerun the same shape. G24
+   is that preregistered mechanism; any later selector needs a new card and a
+   G22-aware before/after ledger, with G25's standard50/full-validation/test
+   gate applied before any model-call scale-up.
+16. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance
