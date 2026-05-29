@@ -1842,3 +1842,49 @@ class GanFrequencyS0ReactTemporalToolsSignature(dspy.Signature):
     evidence_text: str = dspy.OutputField(
         desc="Exact contiguous quote from note_text supporting the label."
     )
+
+
+class GanFrequencyS0EvidenceFirstTargetSelectorSignature(dspy.Signature):
+    """Select the Gan S0 benchmark target using evidence-first target narration.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output field.
+
+    This is the G24 evidence-first target selector.
+    Deterministic candidate extraction, label construction, scorer, bridge, split, and repair semantics are fixed controls.
+
+    Output adjudication_json as a JSON object with:
+    - evidence_first_target_narration: Detailed clinical and temporal narration of the target seizure frequency evidence in the note.
+    - closed_option_adequacy: one of 'adequate' or 'inadequate'.
+    - selected_option_id: option_id of the selected option from closed_answer_options (only when closed_option_adequacy is 'adequate').
+    - selected_option_label: canonical_label copied exactly from the selected option (only when closed_option_adequacy is 'adequate').
+    - construction_priority_reason: detailed explanation of construction priority when a constructed option is present.
+    - special_label_escape: one of 'unknown', 'no seizure frequency reference', or null (only when closed_option_adequacy is 'inadequate').
+    - special_label_escape_reason: reason for choosing the special label escape (only when closed_option_adequacy is 'inadequate').
+    - final_label: final canonical label (either selected_option_label or special_label_escape).
+    - final_label_source: one of 'selected_closed_option' or 'constrained_special_label_escape'.
+
+    Narration and Adequacy Policy:
+    1. Narration first: describe the current clinical status, all reported seizure events, any seizure-free periods, and any clusters.
+    2. Explicit adequacy check: decide if any of the provided closed options represents the correct benchmark target.
+    3. Construction-aware priority: when a constructed option (is_constructed: true) summarizes the target clinical window better than raw single-piece options, give it priority.
+    4. If closed options are inadequate, you MUST use the constrained special-label escape ('unknown' or 'no seizure frequency reference'). You MUST NOT output free-written quantified rates or duration-based repairs.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    closed_answer_options: str = dspy.InputField(
+        desc=(
+            "JSON array of closed answer options. Each option has option_id, "
+            "canonical_label, source, family, evidence_text, is_constructed, and "
+            "construction metadata when applicable."
+        )
+    )
+    adjudication_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with evidence_first_target_narration, closed_option_adequacy, "
+            "selected_option_id, selected_option_label, construction_priority_reason, "
+            "special_label_escape, special_label_escape_reason, final_label, final_label_source."
+        )
+    )

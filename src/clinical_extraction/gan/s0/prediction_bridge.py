@@ -583,6 +583,22 @@ def _predict_record(
         metadata["selected_closed_answer_option"] = pred.selected_closed_answer_option
     if hasattr(pred, "closed_option_ranking"):
         metadata["closed_option_ranking"] = pred.closed_option_ranking
+    if hasattr(pred, "evidence_first_target_narration"):
+        metadata["evidence_first_target_narration"] = pred.evidence_first_target_narration
+    if hasattr(pred, "closed_option_adequacy"):
+        metadata["closed_option_adequacy"] = pred.closed_option_adequacy
+    if hasattr(pred, "selected_option_id"):
+        metadata["selected_option_id"] = pred.selected_option_id
+    if hasattr(pred, "selected_option_label"):
+        metadata["selected_option_label"] = pred.selected_option_label
+    if hasattr(pred, "construction_priority_reason"):
+        metadata["construction_priority_reason"] = pred.construction_priority_reason
+    if hasattr(pred, "special_label_escape"):
+        metadata["special_label_escape"] = pred.special_label_escape
+    if hasattr(pred, "special_label_escape_reason"):
+        metadata["special_label_escape_reason"] = pred.special_label_escape_reason
+    if hasattr(pred, "final_label_source"):
+        metadata["final_label_source"] = pred.final_label_source
     if hasattr(pred, "reason_code_adjudication"):
         metadata["reason_code_adjudication"] = pred.reason_code_adjudication
     if hasattr(pred, "selected_candidate_reference"):

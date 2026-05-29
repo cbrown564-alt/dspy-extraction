@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 completed G24 and set G28 as next Gan pull
+Last refreshed: 2026-05-29 completed G28 standard50 validation run satisfying G25 gate
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -144,24 +144,39 @@ promotes them.
 
 ## Ready
 
-### G28 - Gan Evidence-First Selector GPT Standard50 Run
+### G26 - Gan Qwen Selector Replication Batch
 
-- **Outcome:** Implement and run the G24 evidence-first selector protocol with
-  GPT-4.1-mini: cap5 trace smoke first, then `gan_s0_g6_standard50_v1` only if
-  the trace gate clears. The report should decide whether the arm satisfies the
-  G25 full-validation gate.
-- **Dependencies:** G24 preregistration, G25 gate, model-call budget, and
-  unchanged scorer/loader/split/candidate-builder/constructor semantics.
-- **Parallelizable:** no with other Gan selector model runs; cap5 and
-  standard50 must be sequential.
+- **Outcome:** Matched Qwen3.6:35b replication for the selector mechanism
+  chosen by G24, with GPT-4.1-mini comparison held fixed. The report should
+  identify model-specific reasoning effects rather than treating GPT-mini
+  failures as universal.
+- **Dependencies:** G24, G28 standard50 completion, G25 gate satisfaction, Qwen
+  local/provider availability, and model-call budget.
+- **Parallelizable:** after G28, but only one Qwen selector batch should run at
+  a time to keep artifacts and provider effects interpretable.
 - **Owner:** unassigned.
-- **Validation:** Cap5 trace-gate report, standard50 run IDs/configs if the
-  gate passes, primary `gan2026_paper_reproduction` metrics, canonical
-  diagnostics, G17/G21/G22/G23 before/after ledger, and explicit G25 gate
-  decision.
-- **Notes:** Do not full-validate, run Qwen, or inspect frozen test inside this
-  card. If standard50 falls below 39/50 or fails the preregistered row-ledger
-  exception, reject the arm as tested.
+- **Validation:** Cap/smoke run before standard50, then a standard50 report
+  with `gan2026_paper_reproduction` as primary scorer, canonical metrics as
+  diagnostics, row-level before/after comparison against GPT-4.1-mini, and
+  latency/token or local inference notes.
+- **Notes:** Do not spend Qwen on every rejected GPT arm. Since G28 has satisfied
+  the G25 gate, Qwen replication is now unblocked.
+
+### G27 - Gan Full-Validation And Test-Residual Selector Check
+
+- **Outcome:** For a selector that clears G24/G25 gates, run full synthetic
+  validation and a frozen-test residual analysis that reports validation-to-test
+  behavior without tuning from the test rows.
+- **Dependencies:** G24, G28, model-call budget, and either a G25 standard50 pass
+  or an explicit G25 generalization exception.
+- **Parallelizable:** no; this is model-call gated and should follow the
+  preregistered mechanism and generalization protocol.
+- **Owner:** unassigned.
+- **Validation:** Report with run IDs, configs, scorer modes, full-validation
+  metrics, test-residual metrics, confidence/sensitivity caveats if available,
+  row-family deltas, and an explicit statement that test evidence was used for
+  residual analysis rather than tuning.
+- **Notes:** G28 standard50 standard validation run has cleared the G25 gate (88.0%), unblocking this card.
 
 ## Blocked
 
@@ -199,43 +214,7 @@ promotes them.
 - **Validation:** Protocol states split, scorer, normalization rules, and what
   can be compared to synthetic validation.
 
-### G26 - Gan Qwen Selector Replication Batch
 
-- **Outcome:** Matched Qwen3.6:35b replication for the selector mechanism
-  chosen by G24, with GPT-4.1-mini comparison held fixed. The report should
-  identify model-specific reasoning effects rather than treating GPT-mini
-  failures as universal.
-- **Blocked by:** G24, G28 standard50 completion, G25 gate satisfaction, Qwen
-  local/provider availability, and model-call budget.
-- **Parallelizable:** after G28, but only one Qwen selector batch should run at
-  a time to keep artifacts and provider effects interpretable.
-- **Owner:** unassigned.
-- **Validation:** Cap/smoke run before standard50, then a standard50 report
-  with `gan2026_paper_reproduction` as primary scorer, canonical metrics as
-  diagnostics, row-level before/after comparison against GPT-4.1-mini, and
-  latency/token or local inference notes.
-- **Notes:** Do not spend Qwen on every rejected GPT arm. Select a
-  representative mechanism from G24 or a single diagnostic replication that
-  directly tests whether Qwen handles the G17/G22 reasoning failures better.
-
-### G27 - Gan Full-Validation And Test-Residual Selector Check
-
-- **Outcome:** For a selector that clears G24/G25 gates, run full synthetic
-  validation and a frozen-test residual analysis that reports validation-to-test
-  behavior without tuning from the test rows.
-- **Blocked by:** G24, G28, model-call budget, and either a G25 standard50 pass
-  or an explicit G25 generalization exception.
-- **Parallelizable:** no; this is model-call gated and should follow the
-  preregistered mechanism and generalization protocol.
-- **Owner:** unassigned.
-- **Validation:** Report with run IDs, configs, scorer modes, full-validation
-  metrics, test-residual metrics, confidence/sensitivity caveats if available,
-  row-family deltas, and an explicit statement that test evidence was used for
-  residual analysis rather than tuning.
-- **Notes:** This card addresses the risk that some variants look worse on
-  small validation slices but generalize better than builder-gap v1. It does
-  not authorize external Gan benchmark claims without Real(300)/Real(150) or a
-  declared synthetic-only comparison protocol.
 
 ## Recent Developments For Context
 
@@ -625,9 +604,6 @@ clear active dependency.
   completed G15 negative arm, G16 special-class routing, and the G19
   special-label slice. Future special-label selector work needs a new mechanism
   card and a before/after ledger for the nine G17 rows.
-- G20 completed the aggregation-constructor preregistration downstream of G19,
-  G14, and G16. G21 completed the scoped quantified-rate constructor and passed
-  the fixture gates; target selection remains separate.
 - G22 completed the closed-option target-selection reopening card and is
   rejected as tested. It preserved fixed scorer, loader, split, benchmark
   bridge, candidate-builder, constructor, and prediction-repair semantics, but
@@ -639,6 +615,7 @@ clear active dependency.
   evidence-first selector with a constrained special-label escape and
   construction-aware option priority. It does not authorize Qwen, full
   validation, or test-residual runs.
+- G28 completed the GPT-4.1-mini standard50 run for the evidence-first selector protocol. It scored 88.0% monthly accuracy, clearing the G25 obvious-pass gate and unblocking Qwen replication (G26) and full-validation/test residual checks (G27). Schema validity and evidence quote support rates remain at 100%. Major fixes were achieved on cluster spacing and special-label escapes. Report: `docs/experiments/gan/gan_s0_g28_evidence_first_target_selector_report_20260529.md`.
 - G24 completed the preregistration for the next selector interface. The next
   model-backed pull is G28: implement the G24 GPT cap5/standard50 arm and carry
   the G17/G21/G22/G23 before/after ledger.
@@ -703,10 +680,7 @@ clear active dependency.
 
 ## Recommended Next Pull
 
-1. Pull G28: implement the G24 evidence-first selector protocol, run the cap5
-   trace smoke, then run standard50 only if the trace gate clears.
-2. Apply the G25 gate to the G28 row ledger. Only then consider G26 Qwen
-   replication or G27 full-validation/test residual checks.
+1. Pull G26 (Gan Qwen Selector Replication Batch) or G27 (Gan Full-Validation And Test-Residual Selector Check) to scale up and replicate the validated G28 evidence-first target selector.
 3. For ExECT medication follow-up, write a new prompt-isolation or
    deterministic routing card that accounts for E13's recall regression and the
    two persistent annotation-policy false positives before running another

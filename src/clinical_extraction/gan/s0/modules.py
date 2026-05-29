@@ -27,6 +27,7 @@ from clinical_extraction.gan.s0.signatures import (
     GanFrequencyS0EntityTagsSignature,
     GanFrequencyS0CandidateRankingTargetSelectorSignature,
     GanFrequencyS0ClosedOptionTargetSelectorSignature,
+    GanFrequencyS0EvidenceFirstTargetSelectorSignature,
     GanFrequencyS0ExplicitReasonCodeAdjudicatorSignature,
     GanFrequencyS0LlmTemporalCandidatesSignature,
     GanFrequencyS0MultipleAnswerSignature,
@@ -51,6 +52,8 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
@@ -2477,6 +2480,125 @@ def _prediction_from_closed_option_adjudication(
     )
 
 
+def _parse_evidence_first_adjudication_json(
+    payload: str | dict[str, Any] | None,
+) -> dict[str, Any]:
+    if payload is None:
+        return {"rejection_reason": "missing_adjudication_json"}
+    if isinstance(payload, str):
+        stripped = payload.strip()
+        if not stripped or stripped.lower() in {"none", "null"}:
+            return {"rejection_reason": "empty_adjudication_json"}
+        try:
+            raw = json.loads(stripped)
+        except json.JSONDecodeError:
+            return {
+                "rejection_reason": "invalid_json",
+                "raw_adjudication": payload,
+            }
+    else:
+        raw = payload
+
+    if not isinstance(raw, dict):
+        return {"rejection_reason": "adjudication_not_object"}
+
+    return {
+        "evidence_first_target_narration": str(raw.get("evidence_first_target_narration") or "").strip(),
+        "closed_option_adequacy": str(raw.get("closed_option_adequacy") or "").strip(),
+        "selected_option_id": str(raw.get("selected_option_id") or "").strip() if raw.get("selected_option_id") else None,
+        "selected_option_label": raw.get("selected_option_label"),
+        "construction_priority_reason": raw.get("construction_priority_reason"),
+        "special_label_escape": raw.get("special_label_escape"),
+        "special_label_escape_reason": raw.get("special_label_escape_reason"),
+        "final_label": raw.get("final_label"),
+        "final_label_source": raw.get("final_label_source"),
+    }
+
+
+def _prediction_from_evidence_first_adjudication(
+    *,
+    adjudication: dict[str, Any],
+    options: list[dict[str, Any]],
+    candidates: list[Any],
+    temporal_candidates_text: str,
+) -> dspy.Prediction:
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    candidate_records = [temporal_candidate_to_dict(candidate) for candidate in candidates]
+    constructed_options = [
+        option for option in options if bool(option.get("is_constructed"))
+    ]
+
+    adequacy = adjudication.get("closed_option_adequacy") or ""
+    is_adequate = adequacy.strip().lower() == "adequate"
+
+    selected = None
+    rejection_reason = None
+    if is_adequate:
+        selected, rejection_reason = _select_closed_option_from_adjudication(
+            adjudication=adjudication,
+            options=options,
+        )
+
+    if is_adequate and selected is not None:
+        final_label = _normalize_predicted_label(selected.get("canonical_label")) or "unknown"
+        final_label_source = "selected_closed_option"
+        selected_evidence = selected.get("evidence_text")
+        label_inputs = _closed_option_label_inputs(selected)
+    else:
+        escape = adjudication.get("special_label_escape") or ""
+        escape_str = str(escape).strip().lower()
+        if "no seizure frequency reference" in escape_str:
+            final_label = "no seizure frequency reference"
+        else:
+            final_label = "unknown"
+        final_label_source = "constrained_special_label_escape"
+        selected_evidence = None
+        label_inputs = None
+
+    metadata = {
+        "evidence_first_target_narration": adjudication.get("evidence_first_target_narration"),
+        "closed_option_adequacy": "adequate" if is_adequate and selected is not None else "inadequate",
+        "selected_option_id": selected.get("option_id") if selected else None,
+        "selected_option_label": selected.get("canonical_label") if selected else None,
+        "construction_priority_reason": adjudication.get("construction_priority_reason"),
+        "special_label_escape": final_label if not (is_adequate and selected is not None) else None,
+        "special_label_escape_reason": adjudication.get("special_label_escape_reason"),
+        "final_label": final_label,
+        "final_label_source": final_label_source,
+    }
+
+    return dspy.Prediction(
+        seizure_frequency_number=final_label,
+        evidence_text=selected_evidence if isinstance(selected_evidence, str) else None,
+        temporal_candidates=temporal_candidates_text,
+        temporal_candidate_labels=[c.canonical_label for c in candidates],
+        temporal_candidate_records=candidate_records,
+        closed_answer_options=options,
+        constructed_answer_options=constructed_options,
+        selected_closed_answer_option=selected,
+        reason_code_adjudication=adjudication,
+        label_construction_inputs=label_inputs,
+        evidence_first_target_narration=adjudication.get("evidence_first_target_narration"),
+        closed_option_adequacy=metadata["closed_option_adequacy"],
+        selected_option_id=metadata["selected_option_id"],
+        selected_option_label=metadata["selected_option_label"],
+        construction_priority_reason=metadata["construction_priority_reason"],
+        special_label_escape=metadata["special_label_escape"],
+        special_label_escape_reason=metadata["special_label_escape_reason"],
+        final_label=final_label,
+        final_label_source=final_label_source,
+        temporal_candidate_source="evidence_first_target_selector",
+        verifier_decision="evidence_first_select" if is_adequate and selected is not None else "evidence_first_escape",
+        verifier_reason=(
+            "Selected final label by closed answer-option ID; final label copied "
+            "from the selected option."
+            if is_adequate and selected is not None
+            else f"No option was adequate; fell back to special label escape: {final_label}."
+        ),
+    )
+
+
 class GanFrequencyS0SpecialClassTargetSelectorModule(dspy.Module):
     """G7 selector over D1 date/event payloads and indexed candidates."""
 
@@ -2666,6 +2788,53 @@ class GanFrequencyS0ClosedOptionTargetSelectorModule(dspy.Module):
         return prediction
 
 
+class GanFrequencyS0EvidenceFirstTargetSelectorModule(dspy.Module):
+    """G24/G28 evidence-first target selector over closed options and escapes."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.adjudicate = dspy.Predict(GanFrequencyS0EvidenceFirstTargetSelectorSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation="table",
+        )
+        closed_options = _build_g22_closed_answer_options(
+            note_text=note_text,
+            candidates=candidates,
+        )
+        generated = self.adjudicate(
+            note_text=note_text,
+            closed_answer_options=_format_closed_answer_options_for_prompt(
+                closed_options
+            ),
+        )
+        adjudication = _parse_evidence_first_adjudication_json(
+            generated.adjudication_json
+        )
+        prediction = _prediction_from_evidence_first_adjudication(
+            adjudication=adjudication,
+            options=closed_options,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+        )
+        prediction.prompt_version = self.prompt_version
+        return prediction
+
+
+
 class GanFrequencyS0ReactTemporalToolsModule(dspy.Module):
     """Bounded ReAct probe with deterministic temporal helper tools."""
 
@@ -2735,6 +2904,7 @@ def build_gan_s0_module(
     | GanFrequencyS0SupportAwareTargetSelectorModule
     | GanFrequencyS0CandidateRankingTargetSelectorModule
     | GanFrequencyS0ClosedOptionTargetSelectorModule
+    | GanFrequencyS0EvidenceFirstTargetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     active_variants = {
@@ -2746,6 +2916,7 @@ def build_gan_s0_module(
         GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
+        GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
     }
     if not include_archive and program_variant not in active_variants:
         raise ValueError(
@@ -2868,6 +3039,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT:
         return GanFrequencyS0ClosedOptionTargetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT:
+        return GanFrequencyS0EvidenceFirstTargetSelectorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:

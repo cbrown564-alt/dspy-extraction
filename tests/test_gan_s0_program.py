@@ -29,6 +29,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
@@ -60,6 +61,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0CandidateRankingTargetSelectorModule,
     GanFrequencyS0SupportAwareTargetSelectorModule,
     GanFrequencyS0ClosedOptionTargetSelectorModule,
+    GanFrequencyS0EvidenceFirstTargetSelectorModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -2614,6 +2616,80 @@ def test_gan_s0_closed_option_target_selector_selects_constructed_option():
     assert pred.metadata["constructed_answer_options"][0]["canonical_label"] == (
         "10 per 3 month"
     )
+
+
+def test_gan_s0_evidence_first_target_selector_runs():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_15997")
+    raw_evidence = "three seizures in January"
+    constructed_evidence = "three seizures in January, four in February and three in March"
+    raw_candidate = GanTemporalFrequencyCandidate(
+        canonical_label="3 per month",
+        event_count="3",
+        window_count="1",
+        window_unit="month",
+        evidence_text=raw_evidence,
+        derivation="test_mock",
+    )
+
+    class FakeConstructedOption:
+        constructed_label = "10 per 3 month"
+
+        def to_dict(self):
+            return {
+                "canonical_label": self.constructed_label,
+                "constructed_label": self.constructed_label,
+                "source": "deterministic_aggregation_constructor",
+                "evidence_text": constructed_evidence,
+                "event_count": "10",
+                "window_count": "3",
+                "window_unit": "month",
+                "derivation": "g22_test_aggregation",
+                "primitive_id": "gan.frequency.aggregation_constructor.v1",
+            }
+
+    _configure_dummy([
+        {
+            "adjudication_json": (
+                '{"evidence_first_target_narration": "Narration of three seizures...", '
+                '"closed_option_adequacy": "adequate", '
+                '"selected_option_id": "constructed_1", '
+                '"selected_option_label": "10 per 3 month", '
+                '"construction_priority_reason": "Construction captures observation window.", '
+                '"special_label_escape": null, '
+                '"special_label_escape_reason": null, '
+                '"final_label": "10 per 3 month", '
+                '"final_label_source": "selected_closed_option"}'
+            )
+        }
+    ])
+
+    module = GanFrequencyS0EvidenceFirstTargetSelectorModule()
+    with _patch_temporal_candidates([raw_candidate]), patch(
+        "clinical_extraction.gan.s0.aggregation_constructor."
+        "construct_gan_s0_aggregation_options",
+        return_value=[FakeConstructedOption()],
+    ):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
+        )
+
+    pred = prediction_set.predictions[0]
+    assert pred.values[0].raw_value == "10 per 3 month"
+    assert pred.metadata["temporal_candidate_source"] == (
+        "evidence_first_target_selector"
+    )
+    assert pred.metadata["selected_closed_answer_option"]["option_id"] == (
+        "constructed_1"
+    )
+    assert pred.metadata["closed_option_adequacy"] == "adequate"
+    assert pred.metadata["evidence_first_target_narration"] == "Narration of three seizures..."
+    assert pred.metadata["construction_priority_reason"] == "Construction captures observation window."
+    assert pred.metadata["final_label_source"] == "selected_closed_option"
+
 
 
 def test_build_gan_s0_module_supports_temporal_event_table_variant():

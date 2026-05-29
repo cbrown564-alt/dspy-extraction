@@ -51,6 +51,7 @@ ProgramArchitectureValue = Literal[
     "candidate_ranking_target_selector",
     "support_aware_target_selector",
     "closed_option_target_selector",
+    "evidence_first_target_selector",
     "react_temporal_tools",
     "section_aware",
     "field_family_parallel",
