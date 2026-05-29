@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from collections import Counter
+from types import SimpleNamespace
 from typing import Any
 
 import dspy
@@ -25,6 +26,7 @@ from clinical_extraction.gan.s0.signatures import (
     GanFrequencyS0DateEventsExtractionSignature,
     GanFrequencyS0EntityTagsSignature,
     GanFrequencyS0CandidateRankingTargetSelectorSignature,
+    GanFrequencyS0ClosedOptionTargetSelectorSignature,
     GanFrequencyS0ExplicitReasonCodeAdjudicatorSignature,
     GanFrequencyS0LlmTemporalCandidatesSignature,
     GanFrequencyS0MultipleAnswerSignature,
@@ -47,6 +49,8 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION,
     GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
@@ -2195,6 +2199,284 @@ def _build_g15_candidate_support_context(
     }
 
 
+def _closed_option_family(label: str) -> str:
+    family = _candidate_support_family(label)
+    if family == "cluster_rate":
+        return "cluster_rate"
+    return family
+
+
+def _closed_option_label_inputs(option: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "event_count": option.get("event_count"),
+        "window_count": option.get("window_count"),
+        "window_unit": option.get("window_unit"),
+        "source": option.get("source"),
+        "option_id": option.get("option_id"),
+    }
+
+
+def _build_g22_closed_answer_options(
+    *,
+    note_text: str,
+    candidates: list[Any],
+) -> list[dict[str, Any]]:
+    from clinical_extraction.gan.s0.aggregation_constructor import (
+        construct_gan_s0_aggregation_options,
+    )
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    candidate_records = [temporal_candidate_to_dict(candidate) for candidate in candidates]
+    options: list[dict[str, Any]] = []
+    raw_labels: set[str] = set()
+    for index, candidate in enumerate(candidates, start=1):
+        label = _normalize_predicted_label(getattr(candidate, "canonical_label", None))
+        if not label:
+            continue
+        raw_labels.add(label)
+        options.append(
+            {
+                "option_id": f"raw_{index}",
+                "canonical_label": label,
+                "source": "deterministic_temporal_candidate",
+                "family": _closed_option_family(label),
+                "evidence_text": getattr(candidate, "evidence_text", None),
+                "candidate_index": index,
+                "is_constructed": False,
+                "event_count": getattr(candidate, "event_count", None),
+                "window_count": getattr(candidate, "window_count", None),
+                "window_unit": getattr(candidate, "window_unit", None),
+                "derivation": getattr(candidate, "derivation", None),
+                "status": "current",
+                "ambiguity_flags": [],
+            }
+        )
+
+    constructed_options = construct_gan_s0_aggregation_options(
+        record=SimpleNamespace(record_id="runtime_unknown", note_text=note_text),
+        policy_class="aggregation_required_temporal_slot_missing",
+        candidate_records=candidate_records,
+    )
+    constructed_count = 0
+    for constructed in constructed_options:
+        row = constructed.to_dict()
+        label = _normalize_predicted_label(
+            row.get("canonical_label") or row.get("constructed_label")
+        )
+        if not label or label in raw_labels:
+            continue
+        constructed_count += 1
+        options.append(
+            {
+                "option_id": f"constructed_{constructed_count}",
+                "canonical_label": label,
+                "source": row.get("source") or "deterministic_aggregation_constructor",
+                "family": _closed_option_family(label),
+                "evidence_text": row.get("evidence_text") or row.get("source_evidence"),
+                "candidate_index": None,
+                "is_constructed": True,
+                "event_count": row.get("event_count") or row.get("numerator"),
+                "window_count": row.get("window_count") or row.get("denominator"),
+                "window_unit": row.get("window_unit") or row.get("unit"),
+                "derivation": row.get("derivation") or row.get("derivation_kind"),
+                "primitive_id": row.get("primitive_id"),
+                "policy_class": row.get("policy_class"),
+                "contributing_candidate_labels": row.get(
+                    "contributing_candidate_labels", []
+                ),
+                "contributing_candidate_evidence": row.get(
+                    "contributing_candidate_evidence", []
+                ),
+                "status": "current",
+                "ambiguity_flags": ["constructed_aggregate_option"],
+            }
+        )
+    return options
+
+
+def _format_closed_answer_options_for_prompt(options: list[dict[str, Any]]) -> str:
+    prompt_options = [
+        {
+            "option_id": option.get("option_id"),
+            "canonical_label": option.get("canonical_label"),
+            "source": option.get("source"),
+            "family": option.get("family"),
+            "evidence_text": option.get("evidence_text"),
+            "event_count": option.get("event_count"),
+            "window_count": option.get("window_count"),
+            "window_unit": option.get("window_unit"),
+            "derivation": option.get("derivation"),
+            "is_constructed": option.get("is_constructed", False),
+            "primitive_id": option.get("primitive_id"),
+            "policy_class": option.get("policy_class"),
+        }
+        for option in options
+    ]
+    return json.dumps(prompt_options, indent=2, sort_keys=True)
+
+
+def _parse_closed_option_adjudication_json(
+    payload: str | dict[str, Any] | None,
+) -> dict[str, Any]:
+    if payload is None:
+        return {"rejection_reason": "missing_adjudication_json"}
+    if isinstance(payload, str):
+        stripped = payload.strip()
+        if not stripped or stripped.lower() in {"none", "null"}:
+            return {"rejection_reason": "empty_adjudication_json"}
+        try:
+            raw = json.loads(stripped)
+        except json.JSONDecodeError:
+            return {
+                "rejection_reason": "invalid_json",
+                "raw_adjudication": payload,
+            }
+    else:
+        raw = payload
+
+    if not isinstance(raw, dict):
+        return {"rejection_reason": "adjudication_not_object"}
+
+    ranking = raw.get("option_ranking") or []
+    if not isinstance(ranking, list):
+        ranking = []
+    return {
+        "selected_option_id": str(raw.get("selected_option_id") or "").strip(),
+        "option_ranking": [
+            str(value).strip() for value in ranking if str(value).strip()
+        ],
+        "target_semantic_class": str(
+            raw.get("target_semantic_class") or "missing_target_semantic_class"
+        ).strip(),
+        "selection_policy_decision": str(
+            raw.get("selection_policy_decision")
+            or "missing_selection_policy_decision"
+        ).strip(),
+        "competing_signal_resolution": str(
+            raw.get("competing_signal_resolution") or "none"
+        ).strip(),
+        "reason_code": str(raw.get("reason_code") or "missing_reason_code").strip(),
+        "selected_option_label": raw.get("selected_option_label"),
+        "selected_evidence_text": raw.get("selected_evidence_text"),
+        "final_benchmark_label": raw.get("final_benchmark_label"),
+        "final_evidence_text": raw.get("final_evidence_text"),
+        "error_class": str(raw.get("error_class") or "none").strip(),
+    }
+
+
+def _select_closed_option_from_adjudication(
+    *,
+    adjudication: dict[str, Any],
+    options: list[dict[str, Any]],
+) -> tuple[dict[str, Any] | None, str | None]:
+    option_by_id = {
+        str(option.get("option_id")): option
+        for option in options
+        if option.get("option_id") is not None
+    }
+    selected_id = str(adjudication.get("selected_option_id") or "").strip()
+    if selected_id in option_by_id:
+        return option_by_id[selected_id], None
+
+    selected_label = _normalize_predicted_label(
+        adjudication.get("selected_option_label")
+        or adjudication.get("final_benchmark_label")
+    )
+    if selected_label:
+        label_matches = [
+            option
+            for option in options
+            if _normalize_predicted_label(option.get("canonical_label")) == selected_label
+        ]
+        if len(label_matches) == 1:
+            return label_matches[0], "selected_option_id_recovered_from_label"
+
+    fallback = select_gan_multiple_answer_option(options)
+    if fallback is not None:
+        return fallback, "invalid_selected_option_id_deterministic_fallback"
+    return None, "no_valid_closed_option"
+
+
+def _prediction_from_closed_option_adjudication(
+    *,
+    adjudication: dict[str, Any],
+    options: list[dict[str, Any]],
+    candidates: list[Any],
+    temporal_candidates_text: str,
+) -> dspy.Prediction:
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    selected, rejection_reason = _select_closed_option_from_adjudication(
+        adjudication=adjudication,
+        options=options,
+    )
+    candidate_records = [temporal_candidate_to_dict(candidate) for candidate in candidates]
+    constructed_options = [
+        option for option in options if bool(option.get("is_constructed"))
+    ]
+    if selected is None:
+        adjudication = {
+            **adjudication,
+            "rejection_reason": rejection_reason or "no_valid_closed_option",
+        }
+        return dspy.Prediction(
+            seizure_frequency_number="unknown",
+            evidence_text=None,
+            temporal_candidates=temporal_candidates_text,
+            temporal_candidate_labels=[c.canonical_label for c in candidates],
+            temporal_candidate_records=candidate_records,
+            closed_answer_options=options,
+            constructed_answer_options=constructed_options,
+            selected_closed_answer_option=None,
+            closed_option_ranking=adjudication.get("option_ranking") or [],
+            reason_code_adjudication=adjudication,
+            target_semantic_class=adjudication.get("target_semantic_class"),
+            category_decision=adjudication.get("selection_policy_decision"),
+            target_selection_reason_code=adjudication.get("reason_code"),
+            target_selection_error_class="policy",
+            temporal_candidate_source="closed_option_target_selector",
+            verifier_decision="closed_option_fallback_unknown",
+            verifier_reason="No valid closed answer option was selected.",
+        )
+
+    selected_label = _normalize_predicted_label(selected.get("canonical_label"))
+    selected_evidence = selected.get("evidence_text")
+    model_final = _normalize_predicted_label(adjudication.get("final_benchmark_label"))
+    if model_final and selected_label and model_final != selected_label:
+        adjudication = {
+            **adjudication,
+            "model_final_label_mismatch": {
+                "model_final_benchmark_label": model_final,
+                "selected_option_label": selected_label,
+            },
+        }
+    if rejection_reason is not None:
+        adjudication = {**adjudication, "rejection_reason": rejection_reason}
+    return dspy.Prediction(
+        seizure_frequency_number=selected_label or "unknown",
+        evidence_text=selected_evidence if isinstance(selected_evidence, str) else None,
+        temporal_candidates=temporal_candidates_text,
+        temporal_candidate_labels=[c.canonical_label for c in candidates],
+        temporal_candidate_records=candidate_records,
+        closed_answer_options=options,
+        constructed_answer_options=constructed_options,
+        selected_closed_answer_option=selected,
+        closed_option_ranking=adjudication.get("option_ranking") or [],
+        reason_code_adjudication=adjudication,
+        label_construction_inputs=_closed_option_label_inputs(selected),
+        target_semantic_class=adjudication.get("target_semantic_class"),
+        category_decision=adjudication.get("selection_policy_decision"),
+        target_selection_reason_code=adjudication.get("reason_code"),
+        target_selection_error_class=adjudication.get("error_class") or "none",
+        temporal_candidate_source="closed_option_target_selector",
+        verifier_decision="closed_option_select",
+        verifier_reason=(
+            "Selected final label by closed answer-option ID; final label copied "
+            "from the selected option."
+        ),
+    )
+
+
 class GanFrequencyS0SpecialClassTargetSelectorModule(dspy.Module):
     """G7 selector over D1 date/event payloads and indexed candidates."""
 
@@ -2338,6 +2620,52 @@ class GanFrequencyS0CandidateRankingTargetSelectorModule(dspy.Module):
         return prediction
 
 
+class GanFrequencyS0ClosedOptionTargetSelectorModule(dspy.Module):
+    """G22 selector that chooses from raw plus constructed closed options."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.adjudicate = dspy.Predict(GanFrequencyS0ClosedOptionTargetSelectorSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation="table",
+        )
+        closed_options = _build_g22_closed_answer_options(
+            note_text=note_text,
+            candidates=candidates,
+        )
+        generated = self.adjudicate(
+            note_text=note_text,
+            closed_answer_options=_format_closed_answer_options_for_prompt(
+                closed_options
+            ),
+        )
+        adjudication = _parse_closed_option_adjudication_json(
+            generated.adjudication_json
+        )
+        prediction = _prediction_from_closed_option_adjudication(
+            adjudication=adjudication,
+            options=closed_options,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+        )
+        prediction.prompt_version = self.prompt_version
+        return prediction
+
+
 class GanFrequencyS0ReactTemporalToolsModule(dspy.Module):
     """Bounded ReAct probe with deterministic temporal helper tools."""
 
@@ -2406,6 +2734,7 @@ def build_gan_s0_module(
     | GanFrequencyS0SpecialClassTargetSelectorModule
     | GanFrequencyS0SupportAwareTargetSelectorModule
     | GanFrequencyS0CandidateRankingTargetSelectorModule
+    | GanFrequencyS0ClosedOptionTargetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     active_variants = {
@@ -2416,6 +2745,7 @@ def build_gan_s0_module(
         GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
+        GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
     }
     if not include_archive and program_variant not in active_variants:
         raise ValueError(
@@ -2534,6 +2864,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT:
         return GanFrequencyS0CandidateRankingTargetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT:
+        return GanFrequencyS0ClosedOptionTargetSelectorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:

@@ -28,6 +28,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
@@ -58,6 +59,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0SpecialClassTargetSelectorModule,
     GanFrequencyS0CandidateRankingTargetSelectorModule,
     GanFrequencyS0SupportAwareTargetSelectorModule,
+    GanFrequencyS0ClosedOptionTargetSelectorModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -377,6 +379,12 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
             GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT
         )
         == "g15_support_aware_target_selector"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT
+        )
+        == "g22_closed_option_target_selection_ledger"
     )
 
 
@@ -2525,6 +2533,87 @@ def test_gan_s0_support_aware_target_selector_records_support_context():
     support_context = pred.metadata["candidate_support_context"]
     assert support_context["candidate_family_counts"]["quantified_rate"] == 1
     assert support_context["conflict_flags"]["candidate_count"] == 1
+
+
+def test_gan_s0_closed_option_target_selector_selects_constructed_option():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_15997")
+    raw_evidence = "three seizures in January"
+    constructed_evidence = "three seizures in January, four in February and three in March"
+    raw_candidate = GanTemporalFrequencyCandidate(
+        canonical_label="3 per month",
+        event_count="3",
+        window_count="1",
+        window_unit="month",
+        evidence_text=raw_evidence,
+        derivation="test_mock",
+    )
+
+    class FakeConstructedOption:
+        constructed_label = "10 per 3 month"
+
+        def to_dict(self):
+            return {
+                "canonical_label": self.constructed_label,
+                "constructed_label": self.constructed_label,
+                "source": "deterministic_aggregation_constructor",
+                "evidence_text": constructed_evidence,
+                "event_count": "10",
+                "window_count": "3",
+                "window_unit": "month",
+                "derivation": "g22_test_aggregation",
+                "primitive_id": "gan.frequency.aggregation_constructor.v1",
+            }
+
+    _configure_dummy([
+        {
+            "adjudication_json": (
+                '{"selected_option_id": "constructed_1", '
+                '"option_ranking": ["constructed_1", "raw_1"], '
+                '"target_semantic_class": "current_quantified_frequency", '
+                '"selection_policy_decision": "constructed_aggregate_option", '
+                '"competing_signal_resolution": "aggregate_over_monthly_piece", '
+                '"reason_code": "select_constructed_aggregate_rate", '
+                '"selected_option_label": "10 per 3 month", '
+                f'"selected_evidence_text": {constructed_evidence!r}, '
+                '"final_benchmark_label": "10 per 3 month", '
+                f'"final_evidence_text": {constructed_evidence!r}, '
+                '"error_class": "none"}'
+            ).replace("'", '"')
+        }
+    ])
+
+    module = GanFrequencyS0ClosedOptionTargetSelectorModule()
+    with _patch_temporal_candidates([raw_candidate]), patch(
+        "clinical_extraction.gan.s0.aggregation_constructor."
+        "construct_gan_s0_aggregation_options",
+        return_value=[FakeConstructedOption()],
+    ):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
+        )
+
+    pred = prediction_set.predictions[0]
+    assert pred.values[0].raw_value == "10 per 3 month"
+    assert pred.metadata["temporal_candidate_source"] == (
+        "closed_option_target_selector"
+    )
+    assert pred.metadata["selected_closed_answer_option"]["option_id"] == (
+        "constructed_1"
+    )
+    assert pred.metadata["selected_closed_answer_option"]["source"] == (
+        "deterministic_aggregation_constructor"
+    )
+    assert pred.metadata["closed_option_ranking"] == ["constructed_1", "raw_1"]
+    assert pred.metadata["closed_answer_options"][1]["canonical_label"] == (
+        "10 per 3 month"
+    )
+    assert pred.metadata["constructed_answer_options"][0]["canonical_label"] == (
+        "10 per 3 month"
+    )
 
 
 def test_build_gan_s0_module_supports_temporal_event_table_variant():

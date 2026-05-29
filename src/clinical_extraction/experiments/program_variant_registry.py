@@ -342,6 +342,35 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         ),
     ),
     _spec(
+        variant_id="gan.s0.closed_option_target_selector",
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        program_variant="gan_frequency_s0_closed_option_target_selector",
+        scorer_modes=("gan_frequency_deterministic_v1", "gan2026_paper_reproduction"),
+        prompt_default="gan_frequency_s0_closed_option_target_selector_v1_2",
+        stage_graph_id="g22_closed_option_target_selection_ledger",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/gan/"
+            "gan_s0_g22_closed_option_target_selector_report_20260529.md"
+        ),
+        implementation_variant="closed_option_target_selector_v1",
+        config_examples=(
+            "configs/experiments/"
+            "gan_s0_g22_closed_option_target_selector_gpt4_1_mini_cap5.json",
+            "configs/experiments/"
+            "gan_s0_g22_closed_option_target_selector_gpt4_1_mini_standard50.json",
+        ),
+        notes=(
+            "G22 target-selection arm: deterministic temporal candidates plus "
+            "G21-style quantified-rate constructed options are presented as "
+            "closed answer options, and the model must select an option ID "
+            "rather than free-writing a label. Standard50 preserved trace fields "
+            "but reached 39/50 paper monthly, below builder-gap GPT at 41/50, "
+            "and failed the preregistered stop rule."
+        ),
+    ),
+    _spec(
         variant_id="exect.s1.clean_ladder_v1",
         dataset="exect_v2",
         schema_level="exect_s0_s1_field_family",
@@ -370,6 +399,54 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         notes=(
             "E8 cap-slice mechanism probe: same S1 clean-ladder prompt/scorer as "
             "the full-note baseline, with E4 family-span context as the varied factor."
+        ),
+    ),
+    _spec(
+        variant_id="exect.s1.e13_medication_only",
+        dataset="exect_v2",
+        schema_level="exect_s0_s1_field_family",
+        program_variant="exect_s1_medication_only_e13_single_pass",
+        scorer_modes=("exect_field_family_deterministic_v1",),
+        prompt_default="exect_s0_s1_field_family_v4_10_label_policy",
+        stage_graph_id="medication_payload_routing_v1",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/exect/"
+            "exect_medication_payload_routing_e13_results_20260529.md"
+        ),
+        implementation_variant="e13_am_only_medication_component",
+        config_examples=(
+            "configs/experiments/exect_s1_e13_am_only_cap5_gpt4_1_mini.json",
+            "configs/experiments/exect_s1_e13_am_only_full_gpt4_1_mini.json",
+        ),
+        notes=(
+            "E13 AM-only comparator. It emits only annotated_medication while "
+            "keeping diagnosis and seizure_type empty; reports should use the "
+            "medication family slice of exect_field_family_deterministic_v1."
+        ),
+    ),
+    _spec(
+        variant_id="exect.s1.e13_medication_lifecycle_context",
+        dataset="exect_v2",
+        schema_level="exect_s0_s1_field_family",
+        program_variant="exect_s1_medication_lifecycle_context_e13_single_pass",
+        scorer_modes=("exect_field_family_deterministic_v1",),
+        prompt_default="exect_s0_s1_field_family_v4_10_label_policy",
+        stage_graph_id="medication_payload_routing_v1",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/exect/"
+            "exect_medication_payload_routing_e13_results_20260529.md"
+        ),
+        implementation_variant="e13_am_mt_lifecycle_context_component",
+        config_examples=(
+            "configs/experiments/exect_s1_e13_am_mt_lifecycle_cap5_gpt4_1_mini.json",
+            "configs/experiments/exect_s1_e13_am_mt_lifecycle_full_gpt4_1_mini.json",
+        ),
+        notes=(
+            "E13 AM+MT-route arm. Diagnostic lifecycle rows are injected as "
+            "prompt context, but annotated_medication remains the only scored "
+            "endpoint and lifecycle/temporality is not benchmark-facing."
         ),
     ),
     _spec(

@@ -12,6 +12,8 @@ from clinical_extraction.exect.s0_s1.constants import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
+    EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
     EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
@@ -30,6 +32,7 @@ from clinical_extraction.exect.s0_s1.prediction_artifacts import (
 from clinical_extraction.exect.s0_s1.prompt_routing import (
     extract_d1_field_family_surfaces,
     format_note_with_precomputed_family_candidates,
+    format_note_with_medication_lifecycle_context,
     format_note_with_precomputed_medication_candidates,
     format_note_with_precomputed_seizure_type_candidates,
     resolve_exect_s0_s1_extraction_prompt_version,
@@ -131,6 +134,47 @@ class ExectS0S1MedicationPreVocabFieldFamilyModule(dspy.Module):
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(
             note_text=format_note_with_precomputed_medication_candidates(note_text)
+        )
+
+
+class ExectS0S1MedicationOnlyE13Module(dspy.Module):
+    """E13 AM-only comparator: extract annotated medication and leave other S1 fields empty."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.extract_medication = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature(
+                "annotated_medication",
+                prompt_version,
+            )
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        medication = self.extract_medication(note_text=note_text)
+        return dspy.Prediction(
+            diagnosis=[],
+            diagnosis_evidence=[],
+            seizure_type=[],
+            seizure_type_evidence=[],
+            annotated_medication=_as_list(
+                getattr(medication, "annotated_medication", [])
+            ),
+            annotated_medication_evidence=_as_list(
+                getattr(medication, "annotated_medication_evidence", [])
+            ),
+        )
+
+
+class ExectS0S1MedicationLifecycleContextE13Module(ExectS0S1MedicationOnlyE13Module):
+    """E13 AM+MT arm: add diagnostic lifecycle rows to the medication prompt context."""
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return super().forward(
+            format_note_with_medication_lifecycle_context(note_text)
         )
 
 
@@ -497,6 +541,12 @@ def build_exect_s0_s1_module(
         return ExectS0S1PreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT:
         return ExectS0S1MedicationPreVocabFieldFamilyModule()
+    if program_variant == EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT:
+        return ExectS0S1MedicationOnlyE13Module(prompt_version=prompt_version)
+    if program_variant == EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT:
+        return ExectS0S1MedicationLifecycleContextE13Module(
+            prompt_version=prompt_version
+        )
     if program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT:
         return ExectS0S1SeizurePreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:

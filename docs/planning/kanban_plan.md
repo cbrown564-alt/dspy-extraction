@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 completed G21 aggregation constructor implementation
+Last refreshed: 2026-05-29 completed G22 Gan target-selection ledger arm
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -103,8 +103,16 @@ promotes them.
    the active unknown/no-reference surface is a nine-row slice covering
    unclear-frequency, unknown-cluster, seizure-free/no-reference scorer
    discordance, and concrete-rate overcall cases, with zero deterministic repair
-   candidates. Any new selector needs a card that cites the specific G19/G17
-   class it intends to reduce.
+   candidates. G22 has now completed the closed-option target-selection ledger
+   arm and is rejected as tested: trace fields were complete in 50/50 records
+   and final labels were copied from selected closed options, but standard50
+   paper monthly was 39/50, below builder-gap GPT at 41/50, with
+   seizure-free-versus-quantified and unknown/no-reference overlay regressions.
+   Do not full-validate G22. Any next Gan selector needs a new mechanism card
+   that accounts for the G22 row ledger, especially the G17 builder-gap
+   regressions (`gan_9566`, `gan_5974`, `gan_6607`, `gan_14002`,
+   `gan_11380`) and the G21 constructed-option selection failures on
+   `gan_16772` and `gan_16825`.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -124,11 +132,9 @@ promotes them.
 
 ## Ready
 
-No implementation card is currently ready by default. The next pull should be a
-new scoped card: either an ExECT validation-only mechanism card from E11/X2, or
-a Gan selector/adjudicator card that explicitly cites the G19/G17 class it
-targets and uses the G21 constructed-option surface with a row-level before/after
-ledger.
+No active ready card is currently pulled. G22 is complete and rejected as
+tested; any next Gan target-selection work needs a new card rather than a rerun
+of G8, G10, G15, or G22 prompt/interface shapes.
 
 ## Blocked
 
@@ -181,6 +187,22 @@ indexes, and git history.
   use investigation-only and comorbidity-only directional component arms rather
   than S1 versus S2. B1 remains blocked. Report:
   `docs/experiments/exect/exect_pairwise_interaction_results_x2_20260529.md`.
+- **E13 rejected the tested medication lifecycle-context routing arm.** The
+  matched validation comparison used GPT 4.1-mini with annotated medication as
+  the sole scored endpoint. AM-only scored 42 TP / 4 FP / 5 FN (90.3% F1);
+  AM+MT lifecycle context scored 36 TP / 4 FP / 11 FN (82.8% F1). The
+  lifecycle-context arm did not reduce the E7 false-positive ledger and lost
+  six additional recall labels, so it is rejected as tested. Report:
+  `docs/experiments/exect/exect_medication_payload_routing_e13_results_20260529.md`.
+- **G22 rejected the closed-option target-selection arm as tested.** The
+  model-backed standard50 run preserved closed answer options, selected options,
+  and final-label-copy traces in 50/50 records. It selected constructed G21
+  options for two rows and improved over G15, but paper monthly was 39/50,
+  below builder-gap GPT at 41/50 and below the 43/50 preregistered lift gate.
+  The before/after ledger shows regressions on seizure-free-versus-quantified
+  and unknown/no-reference overlays, including five G17 builder-gap regressions.
+  Do not full-validate G22. Report:
+  `docs/experiments/gan/gan_s0_g22_closed_option_target_selector_report_20260529.md`.
 - **Architecture cleanup is no longer blocking research.** The C12-C20
   decomposition work closed the original P1 monolith risks or reclassified them
   as accepted residual P2/provenance risks. Gan S0, ExECT S0/S1, ExECT S4/S5,
@@ -431,6 +453,11 @@ clear active dependency.
 - E7 completed the medication stack-interference attribution. Treat lifecycle
   categories as diagnostic only; do not change the medication scorer or bundle
   temporality recovery into broad S5 prompts without a new mechanism card.
+- E13 completed the validation-only AM-only versus AM+MT lifecycle-context arm
+  and rejects that arm as tested: AM+MT did not reduce false positives and lost
+  six additional annotated-medication recall labels versus AM-only. It does not
+  authorize lifecycle/temporality scoring, holdout tuning, or broad S5 prompt
+  changes.
 - E8 completed the family-span cap-slice prompt comparison, and E9 rejected the
   tested S1 family-span replacement arm while preserving the span substrate as
   diagnostic. Any follow-up needs a narrower preregistered mechanism.
@@ -502,6 +529,12 @@ clear active dependency.
 - G20 completed the aggregation-constructor preregistration downstream of G19,
   G14, and G16. G21 completed the scoped quantified-rate constructor and passed
   the fixture gates; target selection remains separate.
+- G22 completed the closed-option target-selection reopening card and is
+  rejected as tested. It preserved fixed scorer, loader, split, benchmark
+  bridge, candidate-builder, constructor, and prediction-repair semantics, but
+  failed the 43/50 stop rule and regressed against builder-gap GPT on the G17
+  special-label slice. Any next Gan selector needs a new mechanism card and
+  must use the G22 before/after ledger as input.
 - The Gan key-axes progress report is the handoff reference for plain-English
   component names. Use it to keep G8 interpretation centered on the actual
   failure stage rather than on implementation jargon.
@@ -523,13 +556,15 @@ clear active dependency.
 
 ## Parallelization Opportunities
 
-- **Safe now:** draft a new validation-only ExECT mechanism card from E11
-  findings before any model calls, or do readme/report cleanup tied to completed
-  Gan artifacts. Any
+- **Safe now:** write a new scoped ExECT medication follow-up card only if it
+  avoids the rejected E13 lifecycle-context prompt shape, do readme/report
+  cleanup tied to completed Gan artifacts, or draft a new Gan selector card
+  only if it explicitly accounts for the G22 before/after regressions. Any
   downstream Gan selector/adjudicator run must use the G6 evaluation-surface
-  protocol, cite the G19/G17 failure class it targets, use the G21 constructed
-  option surface only if its scope matches, and preserve scorer, loader, split,
-  benchmark bridge, candidate-builder, and prediction-repair semantics.
+  protocol, cite the G19/G17 failure class it targets, carry the G21/G22
+  constructed-option evidence explicitly, and preserve scorer, loader, split,
+  benchmark bridge, candidate-builder, constructor, and prediction-repair
+  semantics.
 - **Architecture lane closed as bottleneck:** C31/C32 closed the currently
   scoped active-priority pruning pass. Any new cleanup should start from a
   concrete runtime contract or active-authority ambiguity, not from historical
@@ -541,22 +576,19 @@ clear active dependency.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline.
-  G10 and G15 selector lanes are complete and rejected as tested. Any new Gan
-  selector/adjudicator lane needs to cite the completed G19 failure class plus a
-  new preregistered mechanism card, and any full-validation run should wait
-  until the standard-50 mechanism has cleared its stop rule.
+  G10, G15, and G22 selector lanes are complete and rejected as tested. Any new
+  Gan selector/adjudicator lane needs a preregistered mechanism and G19/G17/G22
+  row ledger first, and any full-validation run should wait until the
+  standard50 mechanism has cleared its stop rule.
 
 ## Recommended Next Pull
 
-1. Draft the ExECT validation-only mechanism card from E11 for S1
-   transfer, frequency payload robustness/adjudication, or medication payload
-   routing, using X2 for pairwise support counts and stop rules. Holdout rows
-   remain residual evidence only.
-2. Reopen Gan target selection only with a new mechanism card that explicitly
-   accounts for G19's failure classes, G17's special-label strata, G15's
-   support-aware regression, and the G21 constructed-option surface. The next
-   target-selection card should preserve a row-level before/after ledger rather
-   than rerunning the G8/G10/G15 prompt shapes.
+1. For ExECT medication follow-up, write a new prompt-isolation or deterministic
+   routing card that accounts for E13's recall regression and the two persistent
+   annotation-policy false positives before running another model-backed arm.
+2. For any Gan target-selection follow-up, first write a new mechanism card that
+   accounts for the G22 ledger regressions and does not rerun the G8/G10/G15/G22
+   prompt/interface shapes.
 3. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.

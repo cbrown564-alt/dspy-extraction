@@ -22,6 +22,8 @@ from clinical_extraction.exect.s0_s1.constants import (
     EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+    EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
+    EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PROMPT_VERSION,
@@ -262,6 +264,8 @@ def _s1_single_pass_variants() -> frozenset[str]:
             EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
             EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
             EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+            EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
+            EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
         }
     )
 
@@ -325,6 +329,15 @@ def _predict_record(
         if program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT:
             metadata["precomputed_candidates"] = {
                 "seizure_type": build_precomputed_seizure_type_candidates()
+            }
+        if program_variant in {
+            EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
+            EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
+        }:
+            metadata["e13_component_surface"] = {
+                "kanban_card": "E13",
+                "scored_endpoint": "annotated_medication",
+                "lifecycle_temporality": "diagnostic_only",
             }
         if program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:
             metadata["d1_surfaces"] = extract_d1_field_family_surfaces(record.text)

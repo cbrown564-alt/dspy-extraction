@@ -20,6 +20,12 @@ EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT = (
 EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT = (
     "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble"
 )
+EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT = (
+    "exect_s1_medication_only_e13_single_pass"
+)
+EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT = (
+    "exect_s1_medication_lifecycle_context_e13_single_pass"
+)
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
 EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT = (
     "exect_s0_s1_field_family_prompt_graph_parallel"
@@ -37,6 +43,10 @@ EXECT_S0_S1_STAGE_GRAPH_BY_VARIANT = {
     EXECT_S0_S1_SECTION_AWARE_VARIANT: "g3_family_split_merge",
     EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT: "g2_field_family_parallel",
     EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT: "g2_field_family_prompt_graph",
+    EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT: "medication_payload_routing_v1",
+    EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT: (
+        "medication_payload_routing_v1"
+    ),
 }
 EXECT_S0_S1_ACTIVE_VARIANTS = frozenset(
     {
@@ -44,6 +54,8 @@ EXECT_S0_S1_ACTIVE_VARIANTS = frozenset(
         EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+        EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
+        EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
     }
 )
 EXECT_S0_S1_ARCHIVE_VARIANTS = frozenset(

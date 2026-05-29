@@ -1,0 +1,41 @@
+{
+  "date": "2026-05-29",
+  "status": "rejected arm",
+  "kanban_card": "E13 - Medication Payload Routing / Prompt Isolation",
+  "dataset": "exect_v2",
+  "split_name": "exectv2_fixed_v1:validation",
+  "model_provider": "OpenAI",
+  "model": "gpt-4.1-mini",
+  "scorer_mode": "medication-family slice of exect_field_family_deterministic_v1",
+  "scored_endpoint": "annotated_medication",
+  "decision_scope": "arm",
+  "runs": {
+    "am_only_smoke": "exect_s1_e13_am_only_cap5_gpt4_1_mini_20260529T101912Z",
+    "am_mt_smoke": "exect_s1_e13_am_mt_lifecycle_cap5_gpt4_1_mini_20260529T101920Z",
+    "am_only_full": "exect_s1_e13_am_only_full_gpt4_1_mini_20260529T102009Z",
+    "am_mt_full": "exect_s1_e13_am_mt_lifecycle_full_gpt4_1_mini_20260529T102054Z"
+  },
+  "medication_metrics": {
+    "e13_am_only": {
+      "tp": 42,
+      "fp": 4,
+      "fn": 5,
+      "precision": 0.9130434782608695,
+      "recall": 0.8936170212765957,
+      "f1": 0.9032258064516129
+    },
+    "e13_am_mt_lifecycle_context": {
+      "tp": 36,
+      "fp": 4,
+      "fn": 11,
+      "precision": 0.9,
+      "recall": 0.7659574468085106,
+      "f1": 0.8275862068965516
+    }
+  },
+  "decision": {
+    "outcome": "reject tested AM+MT lifecycle-context arm",
+    "reason": "No FP reduction versus AM-only and six-label recall loss.",
+    "mechanism_status": "mechanism open"
+  }
+}

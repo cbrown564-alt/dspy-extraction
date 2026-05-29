@@ -33,6 +33,7 @@ from clinical_extraction.exect.s0_s1.constants import (
     _KNOWN_PRESCRIPTION_MEDICATIONS,
     _PRE_VOCAB_SEIZURE_TYPE_SURFACES,
 )
+from clinical_extraction.exect.medication_payload import build_exect_medication_payload
 
 def resolve_exect_s0_s1_extraction_prompt_version(
     prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
@@ -174,6 +175,38 @@ def format_note_with_precomputed_medication_candidates(note_text: str) -> str:
         "",
         note_text,
     ]
+    return "\n".join(lines)
+
+
+def format_note_with_medication_lifecycle_context(note_text: str) -> str:
+    """Inject E13 diagnostic medication lifecycle rows before the clinical note."""
+
+    rows = [
+        row
+        for row in build_exect_medication_payload(note_text)
+        if row.source_kind == "note_surface"
+    ]
+    lines = [
+        "Medication lifecycle diagnostic context (diagnostic only; annotated_medication is the only scored endpoint):",
+    ]
+    if rows:
+        for row in rows:
+            benchmark_value = row.benchmark_medication or "not_benchmark_current"
+            evidence = " ".join(row.evidence_text.split())
+            if len(evidence) > 180:
+                evidence = evidence[:177].rstrip() + "..."
+            lines.append(
+                "- "
+                f"raw={row.raw_text}; "
+                f"canonical={row.canonical_medication}; "
+                f"lifecycle_status={row.lifecycle_status}; "
+                f"benchmark_role={row.benchmark_role}; "
+                f"benchmark_medication={benchmark_value}; "
+                f"evidence={evidence}"
+            )
+    else:
+        lines.append("- no note-surface medication rows found")
+    lines.extend(["", "---", "", note_text])
     return "\n".join(lines)
 
 

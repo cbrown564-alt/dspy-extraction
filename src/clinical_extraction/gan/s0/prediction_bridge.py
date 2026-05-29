@@ -575,6 +575,14 @@ def _predict_record(
         )
     if hasattr(pred, "selected_answer_option"):
         metadata["selected_answer_option"] = pred.selected_answer_option
+    if hasattr(pred, "closed_answer_options"):
+        metadata["closed_answer_options"] = pred.closed_answer_options
+    if hasattr(pred, "constructed_answer_options"):
+        metadata["constructed_answer_options"] = pred.constructed_answer_options
+    if hasattr(pred, "selected_closed_answer_option"):
+        metadata["selected_closed_answer_option"] = pred.selected_closed_answer_option
+    if hasattr(pred, "closed_option_ranking"):
+        metadata["closed_option_ranking"] = pred.closed_option_ranking
     if hasattr(pred, "reason_code_adjudication"):
         metadata["reason_code_adjudication"] = pred.reason_code_adjudication
     if hasattr(pred, "selected_candidate_reference"):

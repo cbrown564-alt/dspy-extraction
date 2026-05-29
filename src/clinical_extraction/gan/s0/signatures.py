@@ -1714,6 +1714,96 @@ class GanFrequencyS0SupportAwareTargetSelectorSignature(dspy.Signature):
     )
 
 
+class GanFrequencyS0ClosedOptionTargetSelectorSignature(dspy.Signature):
+    """Select the Gan S0 benchmark target from closed answer options.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output field.
+
+    This is the G22 closed-option target-selection selector. The varied
+    component is target selection over a fixed answer-option surface. The model
+    must select one provided option by option_id and must not invent,
+    normalize, repair, or rewrite a final label outside that closed list.
+
+    The closed_answer_options input contains deterministic temporal candidates
+    plus deterministic quantified-rate constructed options emitted by
+    gan.frequency.aggregation_constructor.v1. Constructed options are candidate
+    options only; their presence is not proof they are correct. Do not use gold
+    labels, reference labels, baseline predictions, row IDs, or row-specific
+    G19/G17 failure classes.
+
+    Output adjudication_json as a JSON object with:
+    - selected_option_id: option_id copied exactly from closed_answer_options.
+    - option_ranking: list of option_id strings ordered from most to least
+      benchmark-relevant.
+    - target_semantic_class: one of current_quantified_frequency,
+      seizure_free_duration, unclear_frequency, no_seizure_frequency_reference,
+      cluster_rate, cluster_spacing_unknown, or unsupported_surface.
+    - selection_policy_decision: short decision such as direct_raw_option,
+      constructed_aggregate_option, seizure_free_current_state,
+      unclear_frequency_option, no_reference_only, cluster_option, or
+      policy_fallback.
+    - competing_signal_resolution: short conflict resolution such as
+      aggregate_over_piece_rate, quantified_over_seizure_free,
+      seizure_free_over_historical, unknown_over_trigger_conditioned_rate,
+      cluster_spacing_unknown, no_reference_only, direct_option, or none.
+    - reason_code: short target-selection reason.
+    - selected_option_label: canonical_label copied from the selected option.
+    - selected_evidence_text: evidence_text copied from the selected option,
+      or null for no seizure frequency reference.
+    - final_benchmark_label: same canonical label as selected_option_label.
+    - final_evidence_text: same evidence text as selected_evidence_text.
+    - error_class: candidate_coverage, target_selection, label_construction,
+      unknown_no_reference_policy, seizure_free_policy, cluster_policy,
+      temporal_anchoring, evidence, schema, or none.
+
+    Closed-option policy:
+    - Prefer the option that represents the current benchmark target, not the
+      most dramatic or most recent-looking text fragment.
+    - Constructed aggregate options may beat single-piece quantified options
+      only when their evidence covers an aggregate observation window.
+    - Current quantified count+window evidence beats seizure-free text when the
+      note contains a competing current counted-frequency target.
+    - When one option counts seizures/events across a stated observation window
+      and another option says seizure-free since the final event in that same
+      history, choose the counted observation-window option. Do not choose
+      seizure-free merely because it is later in the note or sounds current.
+    - Cluster-spacing-unknown options such as "unknown, multiple per cluster"
+      beat concrete per-day/per-week options when the concrete option counts
+      events inside a burst or cluster but the record lacks the spacing between
+      clusters.
+    - Unknown options beat concrete quantified options when the concrete option
+      is trigger-conditioned, single-burst-only, or otherwise lacks a benchmark
+      denominator for the patient's seizure frequency.
+    - Seizure-free options win only when they represent the current benchmark
+      state and no later breakthrough event contradicts the interval.
+    - Unknown or unknown-cluster options win when seizures are discussed but
+      the closed options lack a usable calendar spacing or denominator.
+    - No seizure frequency reference wins only when no closed option contains
+      usable seizure-frequency information.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    closed_answer_options: str = dspy.InputField(
+        desc=(
+            "JSON array of closed answer options. Each option has option_id, "
+            "canonical_label, source, family, evidence_text, slots, and "
+            "construction metadata when applicable."
+        )
+    )
+    adjudication_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with selected_option_id, option_ranking, "
+            "target_semantic_class, selection_policy_decision, "
+            "competing_signal_resolution, reason_code, selected_option_label, "
+            "selected_evidence_text, final_benchmark_label, final_evidence_text, "
+            "and error_class."
+        )
+    )
+
+
 class GanFrequencyS0ReactTemporalToolsSignature(dspy.Signature):
     """Extract Gan seizure frequency using bounded ReAct temporal tools.
 

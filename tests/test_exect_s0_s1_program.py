@@ -26,6 +26,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
     EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+    EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
+    EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
     EXECT_S0_S1_D1_PROMPT_VERSION,
     EXECT_S0_S1_L0_PROMPT_VERSION,
     EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
@@ -51,6 +53,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     ExectS0S1FamilySpanFieldFamilyModule,
+    ExectS0S1MedicationOnlyE13Module,
+    ExectS0S1MedicationLifecycleContextE13Module,
     ExectS1CleanLadderDiagnosisStableEnsembleModule,
     ExectS0S1SectionAwareFieldFamilyModule,
     ExectS0S1FieldFamilyPromptGraphParallelModule,
@@ -68,6 +72,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     exect_s0_s1_run_metadata,
     format_note_with_precomputed_family_candidates,
     format_note_with_precomputed_medication_candidates,
+    format_note_with_medication_lifecycle_context,
     format_note_with_precomputed_seizure_type_candidates,
     build_precomputed_seizure_type_candidates,
     make_exect_s0_s1_dspy_examples,
@@ -126,6 +131,8 @@ def test_s0_s1_prompt_archaeology_is_archive_only_by_default():
         EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V1_FAMILY_SPAN_VARIANT,
         EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+        EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
+        EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
     }
     assert EXECT_S0_S1_ACTIVE_VARIANTS.isdisjoint(EXECT_S0_S1_ARCHIVE_VARIANTS)
 
@@ -2189,6 +2196,59 @@ def test_build_exect_s0_s1_module_returns_medication_pre_vocab_single_pass():
         include_archive=True,
     )
     assert isinstance(module, ExectS0S1MedicationPreVocabFieldFamilyModule)
+
+
+def test_build_exect_s0_s1_module_returns_e13_medication_arms():
+    am_only = build_exect_s0_s1_module(EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT)
+    am_mt = build_exect_s0_s1_module(
+        EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT
+    )
+
+    assert isinstance(am_only, ExectS0S1MedicationOnlyE13Module)
+    assert isinstance(am_mt, ExectS0S1MedicationLifecycleContextE13Module)
+
+
+def test_e13_medication_only_arms_emit_only_annotated_medication():
+    _configure_dummy(
+        [
+            {
+                "reasoning": "Medication-only extraction.",
+                "annotated_medication": ["lamotrigine"],
+                "annotated_medication_evidence": ["lamotrigine"],
+            },
+            {
+                "reasoning": "Lifecycle context confirms medication-only extraction.",
+                "annotated_medication": ["lamotrigine"],
+                "annotated_medication_evidence": ["lamotrigine"],
+            },
+        ]
+    )
+
+    for module in (
+        ExectS0S1MedicationOnlyE13Module(),
+        ExectS0S1MedicationLifecycleContextE13Module(),
+    ):
+        prediction = module(note_text="Current medication: lamotrigine 100mg bd.")
+
+        assert prediction.diagnosis == []
+        assert prediction.diagnosis_evidence == []
+        assert prediction.seizure_type == []
+        assert prediction.seizure_type_evidence == []
+        assert prediction.annotated_medication == ["lamotrigine"]
+
+
+def test_format_note_with_medication_lifecycle_context_is_diagnostic_only():
+    formatted = format_note_with_medication_lifecycle_context(
+        "Current medication: lamotrigine 100mg bd.\n"
+        "Previous medication: carbamazepine stopped due to rash."
+    )
+
+    assert "Medication lifecycle diagnostic context" in formatted
+    assert "lifecycle_status=current" in formatted
+    assert "lifecycle_status=previous" in formatted
+    assert "diagnostic only" in formatted
+    assert "diagnosis:" not in formatted
+    assert "seizure_type:" not in formatted
 
 
 def test_format_note_with_precomputed_medication_candidates_omits_other_families():

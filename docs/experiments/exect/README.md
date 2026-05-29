@@ -1,7 +1,7 @@
 # ExECT Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after X2 pairwise design correction
+Last updated: 2026-05-29 after E13 medication payload-routing result
 
 ## Current Question
 
@@ -28,6 +28,7 @@ The current program is:
 | S1 raw/bridge/prompt split | current synthesis | GPT S1 full validation is near ceiling only after benchmark bridges; Qwen test holdout transfer drop keeps S1 validation-aligned rather than mechanism-solved. |
 | Medication current-Rx ceiling | isolated ceiling / no-model oracle substrate | E6 annotation-derived current-Rx payload scores 100.0% medication F1 on validation; S1 GPT scores 92.8% and S5 GPT scores 88.7% on the same target. Lifecycle rows remain diagnostic/deferred. |
 | Medication stack interference | current synthesis | E7 attributes S5 medication loss to over-emission: S5 adds 8 false positives that S1 avoided, mostly planned/future, historical/switched, other-medication, and annotation-policy cases, while recovering both S1 false negatives. |
+| Medication payload routing | rejected arm / mechanism open | E13 tested AM-only versus AM+MT lifecycle-context prompting on validation. AM-only scored 90.3% medication F1; AM+MT scored 82.8% and did not reduce false positives, so the tested lifecycle-context arm is rejected as tested. |
 | Family-span prompting | rejected arm / diagnostic substrate | E9 rejects the E8 single-pass S1 family-span replacement arm: E4 `exect.sections.family_spans.v1` covers validation evidence for core families, but E8 cap-25 family-span prompting regressed micro F1 from 95.8% to 90.2%, driven by seizure-type F1 dropping from 95.4% to 81.8%. Keep the substrate diagnostic; do not promote this prompt shape. |
 | Holdout residual attribution | current synthesis / diagnostic holdout | E11 attributes S1 transfer loss to diagnosis/seizure-type extraction, bridge, policy, specificity, and scope residuals while medication stays stable. S5 frequency loss is mixed payload-generalization plus adjudication: broad payload coverage drops from 43/43 validation labels to 31/44 holdout labels. |
 | Pairwise interaction plan | preregistered plan / mechanism open | X2 defines validation-split support counts, hypotheses, metrics, interference criteria, and stop rules for diagnosis+seizure type, seizure type+frequency, medication+temporality, investigation+comorbidity, and secondary pairs. The May 29 result correction marks the S2/S4 ladder-aligned comparisons as non-answering diagnostics, not completed pairwise evidence. Medication+temporality is a diagnostic-input pair: temporality remains unscored while annotated medication F1 is scored. |
@@ -43,6 +44,8 @@ The current program is:
 - `exect_medication_lifecycle_target_policy_decision_20260528.md` - E5 lifecycle/temporality target policy decision.
 - `exect_medication_current_rx_ceiling_probe_20260528.md` - E6 isolated current-Rx ceiling probe.
 - `exect_medication_stack_interference_probe_20260528.md` - E7 S1-vs-S5 medication over-emission attribution.
+- `exect_medication_payload_routing_e13_preregistration_20260529.md` - E13 validation-only medication payload-routing / prompt-isolation mechanism card.
+- `exect_medication_payload_routing_e13_results_20260529.md` - E13 AM-only versus AM+MT lifecycle-context result and rejected-arm decision.
 - `exect_family_span_payload_audit_20260528.md` - E4 typed family-span substrate and cap-slice comparison.
 - `exect_family_span_prompt_comparison_e8_results_20260528.md` - E8 full-note versus family-span cap-25 prompt comparison.
 - `exect_family_span_promotion_decision_e9_20260528.md` - E9 rejection/diagnostic-substrate decision for the tested family-span prompt arm.
@@ -57,9 +60,9 @@ The current program is:
 
 ## Active Next Work
 
-1. Use E11 to preregister validation-only component probes for S1 diagnosis/seizure-type transfer, frequency payload robustness/adjudication, and medication payload routing. Do not tune from holdout rows.
-2. Frequency candidate adjudication/ranking follow-up should account for the E11 payload-transfer caveat before any promotion claim.
-3. Medication payload-routing/prompt-isolation follow-up before any broad stack.
+1. Frequency candidate adjudication/ranking follow-up should account for the E11 payload-transfer caveat before any promotion claim.
+2. Preregister validation-only component probes for S1 diagnosis/seizure-type transfer and frequency payload robustness/adjudication before broad stack work.
+3. For medication follow-up, write a new prompt-isolation or deterministic routing card that accounts for E13's AM+MT recall regression before another model-backed arm.
 4. Use X2 to keep pairwise interaction cards validation-only, support-counted,
    component-isolated, and stop-rule-bound before any broad stack.
 5. Use E12 to confirm investigation before calling it solved.

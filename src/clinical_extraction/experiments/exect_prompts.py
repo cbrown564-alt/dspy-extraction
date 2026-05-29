@@ -52,6 +52,8 @@ from clinical_extraction.exect.s0_s1.constants import (
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
+    EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT,
+    EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT,
     EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
     EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
     EXECT_S0_S1_PROMPT_VERSION,
@@ -204,6 +206,14 @@ def exect_prompts_data(
     elif program_variant == EXECT_S0_S1_VARIANT:
         module_name = "ExectS0S1FieldFamilyModule"
         predictor_name = "dspy.ChainOfThought"
+    elif program_variant == EXECT_S0_S1_MEDICATION_ONLY_E13_VARIANT:
+        module_name = "ExectS0S1MedicationOnlyE13Module"
+        predictor_name = "dspy.ChainOfThought (medication only)"
+    elif program_variant == EXECT_S0_S1_MEDICATION_LIFECYCLE_CONTEXT_E13_VARIANT:
+        module_name = "ExectS0S1MedicationLifecycleContextE13Module"
+        predictor_name = (
+            "dspy.ChainOfThought (medication only with diagnostic lifecycle context)"
+        )
     elif program_variant == EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT:
         module_name = "ExectS0S1FieldFamilyPromptGraphParallelModule"
         predictor_name = (
