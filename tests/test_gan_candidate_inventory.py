@@ -13,6 +13,9 @@ from clinical_extraction.evaluation.gan_g16_aggregation_policy import (
     aggregation_policy_class,
     build_g16_aggregation_policy_report,
 )
+from clinical_extraction.evaluation.gan_g21_aggregation_constructor import (
+    build_g21_aggregation_constructor_report,
+)
 from clinical_extraction.evaluation.gan_temporal_anchoring_g14 import (
     G14_STANDARD50_IDS,
     G14_TEMPORAL_CHALLENGE_IDS,
@@ -288,3 +291,34 @@ def test_g16_aggregation_policy_reports_g11_and_standard50_diagnostics():
         "blocked_until_constructor_or_preregistered_model_mechanism"
     )
     assert report["fixed_controls"]["candidate_builder_changed"] is False
+
+
+def test_g21_aggregation_constructor_builds_fixture_options_without_raw_mutation():
+    report = build_g21_aggregation_constructor_report()
+    g11 = report["summary"]["g11_exact_miss_challenge"]
+    standard = report["summary"]["standard50"]
+    rows = {
+        row["record_id"]: row
+        for row in report["rows"]["g11_exact_miss_challenge"]
+    }
+
+    assert standard["raw_exact_covered"] == 41
+    assert standard["combined_exact_covered"] == 45
+    assert standard["constructed_exact_covered"] == 4
+    assert g11["raw_exact_covered"] == 0
+    assert g11["constructed_exact_covered"] >= 10
+    assert g11["negative_or_deferred_constructed"] == 0
+    assert rows["gan_15997"]["constructed_options"][0]["constructed_label"] == (
+        "10 per 3 month"
+    )
+    assert rows["gan_16772"]["constructed_options"][0]["constructed_label"] == (
+        "9 per 5 month"
+    )
+    assert rows["gan_4996"]["constructed_options"] == []
+    assert rows["gan_1486"]["constructed_options"] == []
+    assert rows["gan_10583"]["constructed_options"] == []
+    assert rows["gan_15997"]["raw_candidate_records"] == rows["gan_15997"][
+        "post_constructor_raw_candidate_records"
+    ]
+    assert report["fixed_controls"]["candidate_builder_changed"] is False
+    assert report["decision"]["standard50_gate_passed"] is True

@@ -46,6 +46,7 @@ Sparse S2–S4 families sketched for catalog review. Implementation waits until 
 | `exect.seizure_type.benchmark_bridge.v1` | ExECTv2 | seizure_type | post | posthoc correction | implemented | diagnostic_only | S1 raw vs bridge diagnostics and Qwen seizure-gap error analysis | Quantifies bridge contribution, but Qwen seizure gap persists after bridging; next work should diagnose model/prompt policy rather than rerun post-bridge arms. |
 | `exect.diagnosis.benchmark_bridge.v1` | ExECTv2 | diagnosis | post | posthoc correction | implemented | diagnostic_only | S1 raw vs bridge diagnostics and diagnosis recall checks | Bridge remains scorer-policy infrastructure; do not infer diagnosis from seizure type alone. |
 | `gan.frequency.label_policy_bridge.v1` | Gan 2026 | frequency | post/eval_only | posthoc correction/diagnostic_only | implemented | diagnostic_only | Gan frequency repair diagnostics and scorer-only audits | Keep scorer semantics fixed; bridge output preserves raw, canonical, benchmark-facing, monthly, Purist, and Pragmatic values separately. |
+| `gan.frequency.aggregation_constructor.v1` | Gan 2026 | frequency | post/eval_only | posthoc correction/diagnostic_only | implemented | mechanism_open | G21 quantified-rate answer-option construction fixtures | Creates separate constructed answer options only for G16-eligible quantified-rate aggregation rows; excludes duration, special labels, cluster flattening, inventory gaps, and final target selection. |
 
 ## Evidence Support
 

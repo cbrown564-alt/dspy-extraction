@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G17 special-label policy separation
+Last updated: 2026-05-29 after G21 aggregation constructor implementation
 
 ## Current Question
 
@@ -27,9 +27,10 @@ The system must separate:
 | G13 frequency-content gate | diagnostic gate baseline | 244/299 validation gate accuracy using the current deterministic temporal candidate substrate. Quantified-frequency presence recall is 99.0%, but unclear-frequency recall is 25.0% and seizure-free recall is 51.1%. |
 | G14 temporal anchoring | diagnostic component measured | On `gan_s0_g6_standard50_v1`, exact candidate coverage is 41/50 and temporal-slot coverage is 36/40 applicable rows. On `gan_s0_g6_temporal_anchoring`, exact and slot coverage are 13/15; the two slot misses are `gan_16772` and `gan_16825`. |
 | G15 support-aware target selector | rejected target-selection arm | Support context was present in 50/50 standard50 predictions, but paper monthly was 31/50, below builder-gap GPT, D1 v1.2b, G8, and G10. Do not full-validate or promote as tested. |
-| G16 aggregation policy | policy defined / exact constructor blocked | On the G11 exact-miss challenge, 14/21 rows need quantified rate aggregation with missing temporal slots, 2/21 need seizure-free duration policy, 4/21 are candidate-inventory gaps, and 1/21 is outside rate/duration policy. On standard50, 41/50 already have exact options and 4/50 are quantified rate aggregation blocks. |
+| G16 aggregation policy | policy defined | On the G11 exact-miss challenge, 14/21 rows need quantified rate aggregation with missing temporal slots, 2/21 need seizure-free duration policy, 4/21 are candidate-inventory gaps, and 1/21 is outside rate/duration policy. On standard50, 41/50 already have exact options and 4/50 are quantified rate aggregation blocks. |
 | G19 post-G16 error attribution | current synthesis / optimization queue | Across builder-gap GPT, D1 v1.2b, G8, G10, and G15 on standard50, there are 65 paper-monthly arm-misses across 29 rows. The leading classes are aggregation blocks with missing temporal slots, unclear or unknown-cluster evidence misrouted as concrete, seizure-free over quantified target selection, and wrong quantified rate/window selection. G20 has now preregistered the aggregation-constructor path, and G17 has defined the special-label policy slice. |
 | G20 aggregation constructor preregistration | preregistered deterministic constructor protocol / mechanism open | G20 chooses a deterministic, fixture-first quantified-rate aggregation constructor as the next implementation path. It scopes primary fixtures to the four G19 standard50 aggregation rows and the 21-row G11 exact-miss challenge, while deferring seizure-free duration, unknown/no-reference, cluster flattening, and target selection. |
+| G21 aggregation constructor implementation | fixture-tested no-model constructor / mechanism open | G21 implements `gan.frequency.aggregation_constructor.v1` as a separate constructed answer-option surface. Standard50 exact option coverage rises from 41/50 raw to 45/50 combined, and the G11 exact-miss challenge reaches 12/21 constructed exact with 0 deferred or negative-control constructions. This is answer-option coverage, not selector performance. |
 | G17 unknown/no-reference policy | current synthesis / special-label policy defined | G17 defines the nine-row G19 special-label slice across unclear-frequency, unknown-cluster, seizure-free/no-reference scorer discordance, and concrete-rate overcall cases. It makes no scorer, loader, split, bridge, candidate-builder, selector, or repair changes and authorizes no deterministic repairs. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
@@ -56,6 +57,7 @@ The system must separate:
 - `gan_s0_g16_aggregation_policy_20260529.md` - G16 no-model rate/duration aggregation policy; exact closed-answer selector claims remain blocked until a constructor or preregistered model mechanism satisfies the policy.
 - `gan_s0_g19_post_g16_error_attribution_audit_20260529.md` - G19 no-model residual attribution over standard50; use this row ledger before G17, G20, or any new selector/adjudicator mechanism.
 - `gan_s0_g20_aggregation_constructor_preregistration_20260529.md` - G20 no-model constructor preregistration; use it before implementing exact answer-option construction.
+- `gan_s0_g21_aggregation_constructor_report_20260529.md` - G21 fixture-tested quantified-rate constructor report; use it before any closed-option selector card.
 - `gan_s0_g17_unknown_no_reference_policy_20260529.md` - G17 no-model special-label policy separation; use it before any new unknown/no-reference, unknown-cluster, seizure-free/no-reference, or unclear-frequency selector mechanism.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
@@ -85,10 +87,10 @@ listed above or in `../../component_ceiling_registry.md`.
    G13 gate caveats, and G14 temporal caveats did not improve the selector:
    standard50 paper monthly was 31/50, below G10 (36/50), G8 (37/50), D1
    (40/50), and builder-gap GPT (41/50).
-4. Treat G16 as complete for policy definition, not as a constructor. Exact
-   closed-answer selector claims remain blocked until a deterministic constructor
-   is implemented and tested against the G20 fixture gates. G20 is complete as a
-   preregistration only; it does not implement answer-option construction.
+4. Treat G16 as complete for policy definition and G21 as complete for the first
+   quantified-rate constructor. G21 passed the G20 fixture gates but creates
+   answer options only; it does not select a target label or cover duration,
+   special labels, clusters, or inventory gaps.
 5. Treat G17 as complete for special-label policy separation, not as a selector.
    Future unknown/no-reference or special-label mechanisms must preserve the
    nine-row G17 ledger and separate unclear-frequency, unknown-cluster,
@@ -108,16 +110,16 @@ listed above or in `../../component_ceiling_registry.md`.
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-9. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20
+9. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21
    reports as required context for any seizure-free, quantified-rate, unknown,
    no-reference, support-aware, aggregation-constructor, or
    candidate-constrained selector.
 10. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-11. Use G19's queue before choosing the next Gan mechanism: G20 has now
-   preregistered the aggregation-constructor path, G17 has defined the
-   special-label slice, and only then should a newly preregistered closed-option
-   or special-label target-selection mechanism run.
+11. Use G19's queue before choosing the next Gan mechanism: G20 preregistered
+   the aggregation-constructor path, G21 implemented the quantified-rate option
+   surface, G17 defined the special-label slice, and only then should a newly
+   preregistered closed-option or special-label target-selection mechanism run.
 12. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 

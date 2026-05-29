@@ -693,6 +693,37 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         ],
     ),
     PrimitiveMetadata(
+        primitive_id="gan.frequency.aggregation_constructor.v1",
+        name="Gan frequency aggregation constructor",
+        dataset="gan_2026",
+        field_families=["frequency"],
+        clinical_operation="normalization",
+        knowledge_sources=["temporal_rules", "regex_rules", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic", "D1_deterministic_only"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract=(
+            "Gan note text, G16 aggregation policy class, and raw temporal "
+            "candidate records."
+        ),
+        output_contract=(
+            "Separate quantified-rate constructed answer options with source "
+            "evidence, numerator, denominator, unit, derivation kind, policy "
+            "class, and contributing candidate provenance."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        caveats=[
+            "Constructs answer options only; it does not choose the final target label.",
+            "G21 scope excludes seizure-free duration, unknown/no-reference, unknown-cluster, cluster flattening, and inventory-gap rows.",
+            "Raw temporal candidates are preserved unchanged.",
+        ],
+        implementation_refs=[
+            "src/clinical_extraction/gan/s0/aggregation_constructor.py",
+            "src/clinical_extraction/evaluation/gan_g21_aggregation_constructor.py",
+        ],
+    ),
+    PrimitiveMetadata(
         primitive_id="shared.evidence.substring_support.v1",
         name="Deterministic substring evidence support",
         dataset="shared",
