@@ -2709,4 +2709,22 @@ def _dates_in_text(text: str) -> list[date]:
 def _dedupe_candidates(
     candidates: list[GanTemporalFrequencyCandidate],
 ) -> list[GanTemporalFrequencyCandidate]:
-    return dedupe_temporal_frequency_candidates(candidates)
+    return _drop_incoherent_abstentions(
+        dedupe_temporal_frequency_candidates(candidates)
+    )
+
+
+def _drop_incoherent_abstentions(
+    candidates: list[GanTemporalFrequencyCandidate],
+) -> list[GanTemporalFrequencyCandidate]:
+    abstention_labels = {"unknown", "no seizure frequency reference"}
+    has_frequency_candidate = any(
+        candidate.canonical_label not in abstention_labels for candidate in candidates
+    )
+    if not has_frequency_candidate:
+        return candidates
+    return [
+        candidate
+        for candidate in candidates
+        if candidate.canonical_label not in abstention_labels
+    ]

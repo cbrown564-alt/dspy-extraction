@@ -335,12 +335,26 @@ def test_temporal_candidates_emit_unknown_for_unanchored_since_discharge_count()
     assert "unknown" in _labels("gan_13993")
 
 
-def test_temporal_candidates_emit_unknown_for_drop_attacks_with_latest_date_only():
-    assert "unknown" in _labels("gan_14036")
+def test_temporal_candidates_drop_unknown_when_latest_date_proxy_exists():
+    labels = _labels("gan_14036")
+
+    assert "1 per month" in labels
+    assert "unknown" not in labels
 
 
-def test_temporal_candidates_emit_unknown_for_clobazam_count_with_latest_date_only():
-    assert "unknown" in _labels("gan_14137")
+def test_temporal_candidates_drop_unknown_when_clobazam_date_proxy_exists():
+    labels = _labels("gan_14137")
+
+    assert "1 per month" in labels
+    assert "unknown" not in labels
+
+
+def test_temporal_candidates_drop_abstention_options_when_frequency_candidates_exist():
+    labels = _labels("gan_15997")
+
+    assert "3 per week" in labels
+    assert "unknown" not in labels
+    assert "no seizure frequency reference" not in labels
 
 
 def test_temporal_candidates_represent_morning_cluster_shorthand():

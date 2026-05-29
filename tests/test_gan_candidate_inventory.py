@@ -2,6 +2,10 @@ from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.evaluation.gan_candidate_inventory import (
     build_gan_candidate_inventory_report,
 )
+from clinical_extraction.evaluation.gan_g11_candidate_inventory_challenge import (
+    G11_CHALLENGE_SET_IDS,
+    build_g11_candidate_inventory_challenge_report,
+)
 from clinical_extraction.evaluation.gan_multi_event_flags import GanMultiEventFlags
 from clinical_extraction.gan.s0.candidate_inventory import (
     build_gan_s0_candidate_inventory_surface,
@@ -111,10 +115,30 @@ def test_candidate_inventory_surface_characterizes_current_candidate_labels():
     assert surface["candidate_labels"] == [
         "2 per 4 month",
         "2 per 3 month",
-        "no seizure frequency reference",
-        "unknown",
     ]
     assert surface["gold_exact_in_candidates"] is True
     assert surface["invalid_candidate_labels"] == []
     assert report["summary"]["invalid_candidate_labels"]["records"] == 0
     assert report["rows"][0] == surface
+
+
+def test_g11_candidate_inventory_challenge_set_preserves_g1_exact_miss_surface():
+    report = build_g11_candidate_inventory_challenge_report()
+
+    overall = report["summary"]["overall"]
+    standard50 = report["standard50_g9_exact_miss_summary"]["overall"]
+
+    assert [row["record_id"] for row in report["rows"]] == G11_CHALLENGE_SET_IDS
+    assert overall["records"] == 21
+    assert overall["gold_exact_covered"] == 0
+    assert overall["gold_purist_equivalent_covered"] == 14
+    assert overall["gold_pragmatic_equivalent_covered"] == 17
+    assert standard50["records"] == 4
+    assert standard50["gold_exact_covered"] == 0
+    assert standard50["gold_purist_equivalent_covered"] == 4
+    assert standard50["gold_pragmatic_equivalent_covered"] == 4
+    assert report["g1_diff_summary"]["rows_with_any_diff"] == 20
+    assert (
+        report["decision"]["inventory_stage_interpretation"]
+        == "raw_inventory_requires_aggregation_aware_answer_options"
+    )

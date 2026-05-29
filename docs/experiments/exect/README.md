@@ -1,7 +1,7 @@
 # ExECT Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-28 after E9 family-span decision
+Last updated: 2026-05-29 after X2 pairwise interaction plan
 
 ## Current Question
 
@@ -30,6 +30,7 @@ The current program is:
 | Medication stack interference | current synthesis | E7 attributes S5 medication loss to over-emission: S5 adds 8 false positives that S1 avoided, mostly planned/future, historical/switched, other-medication, and annotation-policy cases, while recovering both S1 false negatives. |
 | Family-span prompting | rejected arm / diagnostic substrate | E9 rejects the E8 single-pass S1 family-span replacement arm: E4 `exect.sections.family_spans.v1` covers validation evidence for core families, but E8 cap-25 family-span prompting regressed micro F1 from 95.8% to 90.2%, driven by seizure-type F1 dropping from 95.4% to 81.8%. Keep the substrate diagnostic; do not promote this prompt shape. |
 | Holdout residual attribution | current synthesis / diagnostic holdout | E11 attributes S1 transfer loss to diagnosis/seizure-type extraction, bridge, policy, specificity, and scope residuals while medication stays stable. S5 frequency loss is mixed payload-generalization plus adjudication: broad payload coverage drops from 43/43 validation labels to 31/44 holdout labels. |
+| Pairwise interaction plan | preregistered plan / mechanism open | X2 defines validation-split support counts, hypotheses, metrics, interference criteria, and stop rules for diagnosis+seizure type, seizure type+frequency, medication+temporality, investigation+comorbidity, and secondary pairs. Medication+temporality is a diagnostic-input pair: temporality remains unscored while annotated medication F1 is scored. |
 | ExECT Table 1 reproduction | blocked | Requires CUI-aware all-family scorer. |
 
 ## Read First
@@ -46,6 +47,7 @@ The current program is:
 - `exect_family_span_prompt_comparison_e8_results_20260528.md` - E8 full-note versus family-span cap-25 prompt comparison.
 - `exect_family_span_promotion_decision_e9_20260528.md` - E9 rejection/diagnostic-substrate decision for the tested family-span prompt arm.
 - `exect_holdout_residual_attribution_e11_20260528.md` - E11 diagnostic holdout residual attribution.
+- `exect_pairwise_interaction_plan_x2_20260529.md` - X2 pairwise interaction preregistration and support-count plan.
 - `../synthesis/test_holdout_evaluation_report_20260527.md` - holdout warning.
 - `../synthesis/paper_result_table_pack_20260525.md` - current paper table pack.
 - `../../datasets/exect/exect_gold_label_audit.md` - gold-label policy.
@@ -57,8 +59,10 @@ The current program is:
 1. Use E11 to preregister validation-only component probes for S1 diagnosis/seizure-type transfer, frequency payload robustness/adjudication, and medication payload routing. Do not tune from holdout rows.
 2. Frequency candidate adjudication/ranking follow-up should account for the E11 payload-transfer caveat before any promotion claim.
 3. Medication payload-routing/prompt-isolation follow-up before any broad stack.
-4. Use E12 to confirm investigation before calling it solved.
-5. Component ceiling reports before any new broad stack.
+4. Use X2 to keep pairwise interaction cards validation-only, support-counted,
+   and stop-rule-bound before any broad stack.
+5. Use E12 to confirm investigation before calling it solved.
+6. Component ceiling reports before any new broad stack.
 
 ## Do Not Overread
 
