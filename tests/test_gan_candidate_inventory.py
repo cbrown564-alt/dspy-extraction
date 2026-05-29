@@ -6,6 +6,14 @@ from clinical_extraction.evaluation.gan_g11_candidate_inventory_challenge import
     G11_CHALLENGE_SET_IDS,
     build_g11_candidate_inventory_challenge_report,
 )
+from clinical_extraction.evaluation.gan_g12_answer_option_surface import (
+    build_g12_answer_option_surface_report,
+)
+from clinical_extraction.evaluation.gan_temporal_anchoring_g14 import (
+    G14_STANDARD50_IDS,
+    G14_TEMPORAL_CHALLENGE_IDS,
+    build_g14_temporal_anchoring_report,
+)
 from clinical_extraction.evaluation.gan_multi_event_flags import GanMultiEventFlags
 from clinical_extraction.gan.s0.candidate_inventory import (
     build_gan_s0_candidate_inventory_surface,
@@ -141,4 +149,61 @@ def test_g11_candidate_inventory_challenge_set_preserves_g1_exact_miss_surface()
     assert (
         report["decision"]["inventory_stage_interpretation"]
         == "raw_inventory_requires_aggregation_aware_answer_options"
+    )
+
+
+def test_g12_answer_option_surface_authorizes_category_level_only():
+    report = build_g12_answer_option_surface_report()
+
+    raw = report["summary"]["raw_option_view"]["overall"]
+    constructed = report["summary"]["constructed_aggregate_option_view"]["overall"]
+    subset = report["summary"]["standard50_g9_exact_miss_subset"]
+
+    assert raw["records"] == 21
+    assert raw["gold_exact_covered"] == 0
+    assert raw["gold_purist_equivalent_covered"] == 14
+    assert raw["gold_pragmatic_equivalent_covered"] == 17
+    assert constructed["gold_exact_covered"] == 0
+    assert constructed["gold_purist_equivalent_covered"] == 11
+    assert constructed["gold_pragmatic_equivalent_covered"] == 13
+    assert subset["raw_option_view"]["overall"]["gold_purist_equivalent_covered"] == 4
+    assert (
+        report["decision"]["g10_authorized_surface"]
+        == "category_level_selector_only_before_new_aggregation_constructor"
+    )
+    assert report["fixed_controls"]["scorer_changed"] is False
+
+
+def test_g14_temporal_anchoring_reports_standard50_and_temporal_challenge():
+    report = build_g14_temporal_anchoring_report()
+
+    standard = report["summary"]["standard50"]
+    temporal = report["summary"]["temporal_challenge"]
+    temporal_failures = temporal["failure_classes"]
+
+    assert [row["record_id"] for row in report["rows"]] == G14_STANDARD50_IDS
+    assert standard["records"] == 50
+    assert temporal["records"] == len(G14_TEMPORAL_CHALLENGE_IDS)
+    assert temporal["exact_candidate_coverage"]["covered"] == 13
+    assert temporal["exact_candidate_coverage"]["records"] == 15
+    assert temporal["temporal_slot_coverage"]["covered"] == 13
+    assert temporal["temporal_slot_coverage"]["records"] == 15
+    assert temporal_failures["exact_temporal_candidate_present"] == 13
+    assert temporal_failures["temporal_slot_miss"] == 2
+    assert report["fixed_controls"]["candidate_builder_changed"] is False
+
+
+def test_g14_carries_g13_gate_caveats_separately_from_anchoring():
+    report = build_g14_temporal_anchoring_report()
+    rows_by_id = {row["record_id"]: row for row in report["rows"]}
+
+    assert rows_by_id["gan_9566"]["gate_caveated"] is True
+    assert (
+        rows_by_id["gan_9566"]["g14_failure_class"]
+        == "upstream_g13_gate_caveat"
+    )
+    assert rows_by_id["gan_16772"]["gate_caveated"] is False
+    assert (
+        rows_by_id["gan_16772"]["g14_failure_class"]
+        == "temporal_slot_miss"
     )

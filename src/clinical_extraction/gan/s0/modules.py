@@ -23,6 +23,7 @@ from clinical_extraction.gan.s0.signatures import (
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_GENERATOR_ADDENDUM,
     GanFrequencyS0DateEventsExtractionSignature,
     GanFrequencyS0EntityTagsSignature,
+    GanFrequencyS0CandidateRankingTargetSelectorSignature,
     GanFrequencyS0ExplicitReasonCodeAdjudicatorSignature,
     GanFrequencyS0LlmTemporalCandidatesSignature,
     GanFrequencyS0MultipleAnswerSignature,
@@ -42,6 +43,8 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
     GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES,
     GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
@@ -1649,11 +1652,23 @@ def _parse_reason_code_adjudication_json(payload: str | dict[str, Any] | None) -
     inputs = raw.get("label_construction_inputs") or {}
     if not isinstance(inputs, dict):
         inputs = {"raw": inputs}
+    ranking = raw.get("candidate_ranking") or []
+    if not isinstance(ranking, list):
+        ranking = []
+    ranking = [
+        candidate_index
+        for candidate_index in (_coerce_candidate_index(value) for value in ranking)
+        if candidate_index is not None
+    ]
 
     return {
         "target_semantic_class": str(
             raw.get("target_semantic_class") or "missing_target_semantic_class"
         ).strip(),
+        "category_decision": str(
+            raw.get("category_decision") or raw.get("target_semantic_class") or "missing_category_decision"
+        ).strip(),
+        "candidate_ranking": ranking,
         "reason_code": str(raw.get("reason_code") or "missing_reason_code").strip(),
         "selected_candidate_index": _coerce_candidate_index(
             raw.get("selected_candidate_index")
@@ -1750,6 +1765,8 @@ def _prediction_from_reason_code_adjudication(
                 selected_candidate_reference=selected_reference,
                 label_construction_inputs=label_inputs,
                 target_semantic_class=adjudication.get("target_semantic_class"),
+                category_decision=adjudication.get("category_decision"),
+                candidate_ranking=adjudication.get("candidate_ranking") or [],
                 target_selection_reason_code=reason_code,
                 target_selection_error_class=adjudication.get("error_class") or "none",
                 temporal_candidate_source=temporal_candidate_source,
@@ -1796,6 +1813,8 @@ def _prediction_from_reason_code_adjudication(
         selected_candidate_reference=selected_reference,
         label_construction_inputs=label_inputs,
         target_semantic_class=adjudication.get("target_semantic_class"),
+        category_decision=adjudication.get("category_decision"),
+        candidate_ranking=adjudication.get("candidate_ranking") or [],
         target_selection_reason_code=reason_code,
         target_selection_error_class=adjudication.get("error_class") or "policy",
         temporal_candidate_source=temporal_candidate_source,
@@ -2075,6 +2094,48 @@ class GanFrequencyS0SpecialClassTargetSelectorModule(dspy.Module):
         return prediction
 
 
+class GanFrequencyS0CandidateRankingTargetSelectorModule(dspy.Module):
+    """G10 selector that ranks indexed deterministic candidates directly."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.adjudicate = dspy.Predict(
+            GanFrequencyS0CandidateRankingTargetSelectorSignature
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation="table",
+        )
+        generated = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        adjudication = _parse_reason_code_adjudication_json(
+            generated.adjudication_json
+        )
+        prediction = _prediction_from_reason_code_adjudication(
+            adjudication=adjudication,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            temporal_candidate_source="candidate_ranking_target_selector",
+        )
+        prediction.prompt_version = self.prompt_version
+        return prediction
+
+
 class GanFrequencyS0ReactTemporalToolsModule(dspy.Module):
     """Bounded ReAct probe with deterministic temporal helper tools."""
 
@@ -2141,6 +2202,7 @@ def build_gan_s0_module(
     | GanFrequencyS0SeededMultipleAnswerDetSelectorModule
     | GanFrequencyS0ExplicitReasonCodeAdjudicatorModule
     | GanFrequencyS0SpecialClassTargetSelectorModule
+    | GanFrequencyS0CandidateRankingTargetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     active_variants = {
@@ -2149,6 +2211,7 @@ def build_gan_s0_module(
         GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_EXPLICIT_REASON_CODE_ADJUDICATOR_VARIANT,
         GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT,
+        GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
     }
     if not include_archive and program_variant not in active_variants:
         raise ValueError(
@@ -2259,6 +2322,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_SPECIAL_CLASS_TARGET_SELECTOR_VARIANT:
         return GanFrequencyS0SpecialClassTargetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT:
+        return GanFrequencyS0CandidateRankingTargetSelectorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:

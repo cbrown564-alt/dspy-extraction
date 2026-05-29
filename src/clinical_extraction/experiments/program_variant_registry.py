@@ -294,6 +294,30 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         ),
     ),
     _spec(
+        variant_id="gan.s0.candidate_ranking_target_selector",
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        program_variant="gan_frequency_s0_candidate_ranking_target_selector",
+        scorer_modes=("gan_frequency_deterministic_v1", "gan2026_paper_reproduction"),
+        prompt_default="gan_frequency_s0_candidate_ranking_target_selector_v1_0",
+        stage_graph_id="g10_candidate_ranking_target_selector",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/gan/"
+            "gan_s0_g10_candidate_ranking_target_selector_report_20260529.md"
+        ),
+        implementation_variant="candidate_ranking_target_selector_v1",
+        config_examples=(
+            "configs/experiments/"
+            "gan_s0_g10_candidate_ranking_target_selector_gpt4_1_mini_standard50.json",
+        ),
+        notes=(
+            "G10 narrowed category-ranking selector arm. Preserves category and "
+            "candidate-rank traces, but is rejected as tested because it "
+            "underperformed G8, D1 v1.2b, and builder-gap GPT on standard50."
+        ),
+    ),
+    _spec(
         variant_id="exect.s1.clean_ladder_v1",
         dataset="exect_v2",
         schema_level="exect_s0_s1_field_family",
@@ -394,6 +418,30 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         config_examples=(
             "configs/experiments/exect_s4_validation_full_gpt4_1_mini.json",
             "configs/experiments/test_holdout/exect_s4_clean_ladder_v1_gpt4_test.json",
+        ),
+    ),
+    _spec(
+        variant_id="exect.s4.mt_guard_non_asm",
+        dataset="exect_v2",
+        schema_level="exect_s4_field_family",
+        program_variant="exect_s4_field_family_mt_guard_non_asm_single_pass",
+        scorer_modes=("exect_s4_field_family_deterministic_v1",),
+        prompt_default="exect_s4_field_family_v1_2_label_policy",
+        status="diagnostic_baseline",
+        config_examples=(
+            "configs/experiments/exect_s4_mt_guard_non_asm_full_gpt4_1_mini.json",
+        ),
+    ),
+    _spec(
+        variant_id="exect.s4.mt_guard_non_asm_dose_current",
+        dataset="exect_v2",
+        schema_level="exect_s4_field_family",
+        program_variant="exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass",
+        scorer_modes=("exect_s4_field_family_deterministic_v1",),
+        prompt_default="exect_s4_field_family_v1_2_label_policy",
+        status="diagnostic_baseline",
+        config_examples=(
+            "configs/experiments/exect_s4_mt_guard_non_asm_dose_current_full_gpt4_1_mini.json",
         ),
     ),
     _spec(

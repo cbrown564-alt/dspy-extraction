@@ -1,7 +1,7 @@
 # ExECT Pairwise Interaction Plan X2
 
 Date: 2026-05-29
-Status: preregistered plan; mechanism open
+Status: preregistered plan; corrected design boundary; mechanism open
 Kanban card: X2 - Pairwise ExECT Interaction Plan
 
 ## Research Question
@@ -12,6 +12,12 @@ S1*/S2*/S3*/S4*/S5* stacks?
 
 This plan defines the pairwise tests. It does not run models, change scorers,
 change loaders, edit prompts, or promote any pair as solved.
+
+Design boundary: X2 must not be satisfied by comparing schema ladder rungs such
+as S1 versus S2 or S4 baseline versus S4 guard variants. Each pair needs a
+component-isolated comparison where the only intended varied factor is whether
+the paired component signal is available to the target component. Ladder runs
+may be cited as diagnostics, but they are not pairwise interaction evidence.
 
 ## Taxonomy
 
@@ -191,8 +197,16 @@ current by policy. E3 diagnostic rows add 11 planned, 9 previous, 8
 taper-or-stop, and 116 unknown-temporality rows, but these are not medication
 F1 labels.
 
-Primary comparator: E6 annotated current-Rx no-model ceiling, the S1 GPT
-medication surface, and E7 S1-versus-S5 medication interference attribution.
+Primary comparator: a matched component-isolated AM-only versus AM+MT
+comparison on the same validation records. E6 annotated current-Rx no-model
+ceiling, the S1 GPT medication surface, and E7 S1-versus-S5 medication
+interference attribution are context and error strata, not substitutes for the
+paired comparison.
+
+| Arm | Input / context | Output scored | Purpose |
+| --- | --- | --- | --- |
+| AM-only | medication component without lifecycle/temporality routing | annotated medication only | isolates current medication extraction without temporality |
+| AM+MT | same medication component plus lifecycle/temporality context or router signal | annotated medication only | tests whether temporality improves current-Rx precision without recall loss |
 
 Primary metrics:
 
@@ -228,9 +242,16 @@ helps patient-history filtering or merely adds medical-history distractors.
 
 Support: 13 co-documents, 21 investigation labels, and 31 comorbidity labels.
 
-Primary comparator: E12 isolated investigation confirmation plus a no-model or
-diagnostic comorbidity representability pass. Do not call investigation solved
-from broad-stack stability alone.
+Primary comparator: directional component-isolated arms, using E12 isolated
+investigation confirmation plus a no-model or diagnostic comorbidity
+representability pass as context. Do not compare S1 versus S2 Clean Ladder as
+primary Pair 4 evidence, and do not call investigation solved from broad-stack
+stability alone.
+
+| Direction | Baseline arm | Interaction arm | Output scored |
+| --- | --- | --- | --- |
+| Investigation target | investigation-only | investigation plus comorbidity context | investigation |
+| Comorbidity target | comorbidity-only | comorbidity plus investigation context | comorbidity |
 
 Primary metrics:
 

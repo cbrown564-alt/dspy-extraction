@@ -4,7 +4,7 @@ Status: X3 refreshed registry-derived export / methods and provenance view
 Authority: provenance and methods drafting only; current component status lives in `docs/component_ceiling_registry.md`, and active/replay config authority lives in `docs/experiments/synthesis/program_variant_registry.md`.
 Refresh scope: generated after the May 28 component pivot, R11-R15 Gan decisions, X1 component-ceiling backfill, C4 authority classes, and C10 provenance cleanup. The legacy experiment registry remains the row source; use the authority docs above before treating any row as current.
 
-**Generated:** 2026-05-28  
+**Generated:** 2026-05-29  
 **Source:** `docs/experiments/synthesis/experiment_registry.json` (registry_rows=215)  
 **Filter mode:** `curated`  
 **Exported rows:** 156

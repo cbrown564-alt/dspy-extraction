@@ -583,6 +583,10 @@ def _predict_record(
         metadata["label_construction_inputs"] = pred.label_construction_inputs
     if hasattr(pred, "target_semantic_class"):
         metadata["target_semantic_class"] = pred.target_semantic_class
+    if hasattr(pred, "category_decision"):
+        metadata["category_decision"] = pred.category_decision
+    if hasattr(pred, "candidate_ranking"):
+        metadata["candidate_ranking"] = pred.candidate_ranking
     if hasattr(pred, "target_selection_reason_code"):
         metadata["target_selection_reason_code"] = pred.target_selection_reason_code
     if hasattr(pred, "target_selection_error_class"):

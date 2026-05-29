@@ -1,7 +1,7 @@
 # ExECT Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after X2 pairwise interaction plan
+Last updated: 2026-05-29 after X2 pairwise design correction
 
 ## Current Question
 
@@ -30,7 +30,7 @@ The current program is:
 | Medication stack interference | current synthesis | E7 attributes S5 medication loss to over-emission: S5 adds 8 false positives that S1 avoided, mostly planned/future, historical/switched, other-medication, and annotation-policy cases, while recovering both S1 false negatives. |
 | Family-span prompting | rejected arm / diagnostic substrate | E9 rejects the E8 single-pass S1 family-span replacement arm: E4 `exect.sections.family_spans.v1` covers validation evidence for core families, but E8 cap-25 family-span prompting regressed micro F1 from 95.8% to 90.2%, driven by seizure-type F1 dropping from 95.4% to 81.8%. Keep the substrate diagnostic; do not promote this prompt shape. |
 | Holdout residual attribution | current synthesis / diagnostic holdout | E11 attributes S1 transfer loss to diagnosis/seizure-type extraction, bridge, policy, specificity, and scope residuals while medication stays stable. S5 frequency loss is mixed payload-generalization plus adjudication: broad payload coverage drops from 43/43 validation labels to 31/44 holdout labels. |
-| Pairwise interaction plan | preregistered plan / mechanism open | X2 defines validation-split support counts, hypotheses, metrics, interference criteria, and stop rules for diagnosis+seizure type, seizure type+frequency, medication+temporality, investigation+comorbidity, and secondary pairs. Medication+temporality is a diagnostic-input pair: temporality remains unscored while annotated medication F1 is scored. |
+| Pairwise interaction plan | preregistered plan / mechanism open | X2 defines validation-split support counts, hypotheses, metrics, interference criteria, and stop rules for diagnosis+seizure type, seizure type+frequency, medication+temporality, investigation+comorbidity, and secondary pairs. The May 29 result correction marks the S2/S4 ladder-aligned comparisons as non-answering diagnostics, not completed pairwise evidence. Medication+temporality is a diagnostic-input pair: temporality remains unscored while annotated medication F1 is scored. |
 | ExECT Table 1 reproduction | blocked | Requires CUI-aware all-family scorer. |
 
 ## Read First
@@ -48,6 +48,7 @@ The current program is:
 - `exect_family_span_promotion_decision_e9_20260528.md` - E9 rejection/diagnostic-substrate decision for the tested family-span prompt arm.
 - `exect_holdout_residual_attribution_e11_20260528.md` - E11 diagnostic holdout residual attribution.
 - `exect_pairwise_interaction_plan_x2_20260529.md` - X2 pairwise interaction preregistration and support-count plan.
+- `exect_pairwise_interaction_results_x2_20260529.md` - X2 design correction; prior S2/S4 ladder-aligned comparisons are diagnostic provenance only.
 - `../synthesis/test_holdout_evaluation_report_20260527.md` - holdout warning.
 - `../synthesis/paper_result_table_pack_20260525.md` - current paper table pack.
 - `../../datasets/exect/exect_gold_label_audit.md` - gold-label policy.
@@ -60,7 +61,7 @@ The current program is:
 2. Frequency candidate adjudication/ranking follow-up should account for the E11 payload-transfer caveat before any promotion claim.
 3. Medication payload-routing/prompt-isolation follow-up before any broad stack.
 4. Use X2 to keep pairwise interaction cards validation-only, support-counted,
-   and stop-rule-bound before any broad stack.
+   component-isolated, and stop-rule-bound before any broad stack.
 5. Use E12 to confirm investigation before calling it solved.
 6. Component ceiling reports before any new broad stack.
 
@@ -68,6 +69,7 @@ The current program is:
 
 - S1 validation success does not prove diagnosis or seizure-type ceilings.
 - S5 v2b is an operational stacked baseline, not optimal family decomposition.
+- S1-S4 ladder comparisons do not count as pairwise interaction evidence.
 - Medication temporal guard failures are rejected arms, not proof that lifecycle
   decomposition is impossible.
 - Per-family parallel S5 rejection is a rejected implementation, not rejection

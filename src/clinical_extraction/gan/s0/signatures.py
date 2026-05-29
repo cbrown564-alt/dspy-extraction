@@ -1545,6 +1545,74 @@ class GanFrequencyS0SpecialClassTargetSelectorSignature(dspy.Signature):
     )
 
 
+class GanFrequencyS0CandidateRankingTargetSelectorSignature(dspy.Signature):
+    """Rank deterministic Gan S0 candidates and select the benchmark target.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output field.
+
+    This is the G10 narrowed candidate-ranking selector. The varied component is
+    candidate ranking / category-level target selection only. Deterministic
+    candidate extraction, label construction, scorer, bridge, split, and repair
+    semantics are fixed controls.
+
+    Output adjudication_json as a JSON object with:
+    - candidate_ranking: list of 1-based candidate indices ordered from most to
+      least benchmark-relevant.
+    - category_decision: one of quantified_rate, seizure_free,
+      unclear_frequency, no_reference, cluster, or unsupported.
+    - reason_code: short ranking reason, such as
+      rank_current_quantified_candidate, rank_highest_current_rate,
+      rank_seizure_free_state, rank_unclear_frequency,
+      rank_no_reference_only, rank_cluster_candidate, or rank_policy_fallback.
+    - selected_candidate_index: 1-based candidate number from temporal_candidates.
+      Use null only when no indexed candidate supports the selected category.
+    - selected_candidate_label: selected candidate canonical_label, or null.
+    - selected_evidence_text: exact contiguous note quote for the selected
+      candidate, or null for no seizure frequency reference.
+    - label_construction_inputs: object preserving the selected candidate slots.
+    - final_benchmark_label: final canonical Gan label produced from the selected
+      target, not a free rewrite.
+    - final_evidence_text: exact contiguous quote supporting final_benchmark_label,
+      or null for no seizure frequency reference.
+    - error_class: candidate_coverage, target_selection, label_construction,
+      unknown_no_reference_policy, seizure_free_policy, cluster_policy,
+      temporal_anchoring, evidence, schema, or none.
+
+    Ranking policy:
+    - Rank concrete current count+window candidates ahead of unknown when the
+      evidence supports a current benchmark target.
+    - Rank seizure-free candidates first only when they express the current
+      benchmark state, not merely an interval after older counted events.
+    - Rank unknown when seizures are discussed but all candidate denominators are
+      unusable or trigger-conditioned.
+    - Rank no_reference only when the note has no usable seizure-frequency
+      information.
+    - Do not construct aggregate exact labels that are not present in the
+      candidate list. This arm can make category-level/candidate-ranking claims,
+      not exact closed answer-option construction claims.
+    - Do not use reference labels or any gold-label information.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    temporal_candidates: str = dspy.InputField(
+        desc=(
+            "Indexed deterministic candidate labels with slots, derivations, and "
+            "evidence text."
+        )
+    )
+    adjudication_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with candidate_ranking, category_decision, reason_code, "
+            "selected_candidate_index, selected_candidate_label, "
+            "selected_evidence_text, label_construction_inputs, "
+            "final_benchmark_label, final_evidence_text, and error_class."
+        )
+    )
+
+
 class GanFrequencyS0ReactTemporalToolsSignature(dspy.Signature):
     """Extract Gan seizure frequency using bounded ReAct temporal tools.
 

@@ -41,6 +41,8 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_VARIANT,
+    EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+    EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
     build_exect_s4_module,
     exect_s4_run_metadata,
     predict_exect_s4_records,
@@ -78,6 +80,8 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
     {
         EXECT_S4_VARIANT,
         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     }
 )

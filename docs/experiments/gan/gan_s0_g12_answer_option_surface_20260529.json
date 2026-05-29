@@ -1,0 +1,1970 @@
+{
+  "generated_at": "2026-05-29T00:45:41.013834+00:00",
+  "status": "G12 no-model answer-option surface decision",
+  "kanban_card": "G12 - Gan Aggregation-Aware Answer-Option Surface",
+  "dataset": "Gan 2026 synthetic",
+  "split": "gan_2026_fixed_v1:validation",
+  "challenge_set": "gan_s0_g6_candidate_coverage_exact_miss",
+  "source_artifacts": {
+    "g11_candidate_inventory_challenge": "docs/experiments/gan/gan_s0_g11_candidate_inventory_challenge_set_pass_20260529.json",
+    "g1_candidate_inventory": "docs/experiments/gan/gan_s0_candidate_inventory_coverage_report_20260528.json",
+    "g6_evaluation_surface": "docs/experiments/gan/gan_s0_g6_evaluation_slice_standard_decision_20260528.md",
+    "g9_routing_report": "docs/experiments/gan/gan_s0_g9_exact_miss_failure_inspection_20260529.md"
+  },
+  "fixed_controls": {
+    "model_calls": "none",
+    "scorer_changed": false,
+    "loader_split_bridge_or_repair_changed": false,
+    "candidate_builder_changed": false,
+    "prompt_or_model_changed": false,
+    "prediction_repair_changed": false,
+    "constructed_view_rule": "uses only existing candidate_records whose derivation indicates temporal anchoring, event summation, diary/month tallying, or explicit-window aggregation",
+    "aggregate_derivation_keywords": [
+      "aggregat",
+      "calendar",
+      "dated",
+      "diary",
+      "documented",
+      "elapsed",
+      "from first month",
+      "last",
+      "named-month",
+      "observation window",
+      "over",
+      "past",
+      "since",
+      "summed",
+      "window",
+      "year-to-date"
+    ]
+  },
+  "summary": {
+    "raw_option_view": {
+      "overall": {
+        "records": 21,
+        "records_with_options": 21,
+        "records_with_options_rate": 1.0,
+        "gold_exact_covered": 0,
+        "gold_exact_coverage_rate": 0.0,
+        "gold_purist_equivalent_covered": 14,
+        "gold_purist_equivalent_coverage_rate": 0.6666666666666666,
+        "gold_pragmatic_equivalent_covered": 17,
+        "gold_pragmatic_equivalent_coverage_rate": 0.8095238095238095
+      },
+      "by_label_family": {
+        "quantified_rate": {
+          "records": 18,
+          "records_with_options": 18,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 11,
+          "gold_purist_equivalent_coverage_rate": 0.6111111111111112,
+          "gold_pragmatic_equivalent_covered": 14,
+          "gold_pragmatic_equivalent_coverage_rate": 0.7777777777777778
+        },
+        "seizure_free": {
+          "records": 2,
+          "records_with_options": 2,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 2,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 2,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        },
+        "unknown_cluster": {
+          "records": 1,
+          "records_with_options": 1,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 1,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 1,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        }
+      },
+      "by_hard_stratum": {
+        "cluster": {
+          "records": 12,
+          "records_with_options": 12,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 7,
+          "gold_purist_equivalent_coverage_rate": 0.5833333333333334,
+          "gold_pragmatic_equivalent_covered": 10,
+          "gold_pragmatic_equivalent_coverage_rate": 0.8333333333333334
+        },
+        "gold_evidence_multispan": {
+          "records": 2,
+          "records_with_options": 2,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 2,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 2,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        },
+        "label_reference_disagreement": {
+          "records": 6,
+          "records_with_options": 6,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 3,
+          "gold_purist_equivalent_coverage_rate": 0.5,
+          "gold_pragmatic_equivalent_covered": 4,
+          "gold_pragmatic_equivalent_coverage_rate": 0.6666666666666666
+        },
+        "multi_highest": {
+          "records": 5,
+          "records_with_options": 5,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 3,
+          "gold_purist_equivalent_coverage_rate": 0.6,
+          "gold_pragmatic_equivalent_covered": 5,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        },
+        "seizure_free_conflict": {
+          "records": 13,
+          "records_with_options": 13,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 9,
+          "gold_purist_equivalent_coverage_rate": 0.6923076923076923,
+          "gold_pragmatic_equivalent_covered": 11,
+          "gold_pragmatic_equivalent_coverage_rate": 0.8461538461538461
+        },
+        "vague_frequency": {
+          "records": 1,
+          "records_with_options": 1,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 1,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 1,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        }
+      },
+      "option_count_distribution": {
+        "0": 0,
+        "1": 5,
+        "2-3": 9,
+        "4+": 7
+      },
+      "category_gap_rows": [
+        "gan_1463",
+        "gan_1486",
+        "gan_15129",
+        "gan_6509",
+        "gan_4378",
+        "gan_6296",
+        "gan_13019"
+      ]
+    },
+    "constructed_aggregate_option_view": {
+      "overall": {
+        "records": 21,
+        "records_with_options": 15,
+        "records_with_options_rate": 0.7142857142857143,
+        "gold_exact_covered": 0,
+        "gold_exact_coverage_rate": 0.0,
+        "gold_purist_equivalent_covered": 11,
+        "gold_purist_equivalent_coverage_rate": 0.5238095238095238,
+        "gold_pragmatic_equivalent_covered": 13,
+        "gold_pragmatic_equivalent_coverage_rate": 0.6190476190476191
+      },
+      "by_label_family": {
+        "quantified_rate": {
+          "records": 18,
+          "records_with_options": 14,
+          "records_with_options_rate": 0.7777777777777778,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 11,
+          "gold_purist_equivalent_coverage_rate": 0.6111111111111112,
+          "gold_pragmatic_equivalent_covered": 13,
+          "gold_pragmatic_equivalent_coverage_rate": 0.7222222222222222
+        },
+        "seizure_free": {
+          "records": 2,
+          "records_with_options": 1,
+          "records_with_options_rate": 0.5,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 0,
+          "gold_purist_equivalent_coverage_rate": 0.0,
+          "gold_pragmatic_equivalent_covered": 0,
+          "gold_pragmatic_equivalent_coverage_rate": 0.0
+        },
+        "unknown_cluster": {
+          "records": 1,
+          "records_with_options": 0,
+          "records_with_options_rate": 0.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 0,
+          "gold_purist_equivalent_coverage_rate": 0.0,
+          "gold_pragmatic_equivalent_covered": 0,
+          "gold_pragmatic_equivalent_coverage_rate": 0.0
+        }
+      },
+      "by_hard_stratum": {
+        "cluster": {
+          "records": 12,
+          "records_with_options": 9,
+          "records_with_options_rate": 0.75,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 6,
+          "gold_purist_equivalent_coverage_rate": 0.5,
+          "gold_pragmatic_equivalent_covered": 8,
+          "gold_pragmatic_equivalent_coverage_rate": 0.6666666666666666
+        },
+        "gold_evidence_multispan": {
+          "records": 2,
+          "records_with_options": 2,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 2,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 2,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        },
+        "label_reference_disagreement": {
+          "records": 6,
+          "records_with_options": 4,
+          "records_with_options_rate": 0.6666666666666666,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 3,
+          "gold_purist_equivalent_coverage_rate": 0.5,
+          "gold_pragmatic_equivalent_covered": 4,
+          "gold_pragmatic_equivalent_coverage_rate": 0.6666666666666666
+        },
+        "multi_highest": {
+          "records": 5,
+          "records_with_options": 4,
+          "records_with_options_rate": 0.8,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 3,
+          "gold_purist_equivalent_coverage_rate": 0.6,
+          "gold_pragmatic_equivalent_covered": 4,
+          "gold_pragmatic_equivalent_coverage_rate": 0.8
+        },
+        "seizure_free_conflict": {
+          "records": 13,
+          "records_with_options": 9,
+          "records_with_options_rate": 0.6923076923076923,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 7,
+          "gold_purist_equivalent_coverage_rate": 0.5384615384615384,
+          "gold_pragmatic_equivalent_covered": 8,
+          "gold_pragmatic_equivalent_coverage_rate": 0.6153846153846154
+        },
+        "vague_frequency": {
+          "records": 1,
+          "records_with_options": 0,
+          "records_with_options_rate": 0.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 0,
+          "gold_purist_equivalent_coverage_rate": 0.0,
+          "gold_pragmatic_equivalent_covered": 0,
+          "gold_pragmatic_equivalent_coverage_rate": 0.0
+        }
+      },
+      "option_count_distribution": {
+        "0": 6,
+        "1": 4,
+        "2-3": 8,
+        "4+": 3
+      },
+      "category_gap_rows": [
+        "gan_10583",
+        "gan_1463",
+        "gan_1486",
+        "gan_4996",
+        "gan_15129",
+        "gan_9063",
+        "gan_6509",
+        "gan_4378",
+        "gan_6296",
+        "gan_13019"
+      ]
+    },
+    "standard50_g9_exact_miss_subset": {
+      "raw_option_view": {
+        "overall": {
+          "records": 4,
+          "records_with_options": 4,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 4,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 4,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        },
+        "by_label_family": {
+          "quantified_rate": {
+            "records": 4,
+            "records_with_options": 4,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 4,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 4,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          }
+        },
+        "by_hard_stratum": {
+          "cluster": {
+            "records": 2,
+            "records_with_options": 2,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 2,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 2,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          },
+          "gold_evidence_multispan": {
+            "records": 2,
+            "records_with_options": 2,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 2,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 2,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          },
+          "multi_highest": {
+            "records": 1,
+            "records_with_options": 1,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 1,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 1,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          },
+          "seizure_free_conflict": {
+            "records": 2,
+            "records_with_options": 2,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 2,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 2,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          }
+        },
+        "option_count_distribution": {
+          "0": 0,
+          "1": 0,
+          "2-3": 1,
+          "4+": 3
+        },
+        "category_gap_rows": []
+      },
+      "constructed_aggregate_option_view": {
+        "overall": {
+          "records": 4,
+          "records_with_options": 4,
+          "records_with_options_rate": 1.0,
+          "gold_exact_covered": 0,
+          "gold_exact_coverage_rate": 0.0,
+          "gold_purist_equivalent_covered": 4,
+          "gold_purist_equivalent_coverage_rate": 1.0,
+          "gold_pragmatic_equivalent_covered": 4,
+          "gold_pragmatic_equivalent_coverage_rate": 1.0
+        },
+        "by_label_family": {
+          "quantified_rate": {
+            "records": 4,
+            "records_with_options": 4,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 4,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 4,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          }
+        },
+        "by_hard_stratum": {
+          "cluster": {
+            "records": 2,
+            "records_with_options": 2,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 2,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 2,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          },
+          "gold_evidence_multispan": {
+            "records": 2,
+            "records_with_options": 2,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 2,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 2,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          },
+          "multi_highest": {
+            "records": 1,
+            "records_with_options": 1,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 1,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 1,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          },
+          "seizure_free_conflict": {
+            "records": 2,
+            "records_with_options": 2,
+            "records_with_options_rate": 1.0,
+            "gold_exact_covered": 0,
+            "gold_exact_coverage_rate": 0.0,
+            "gold_purist_equivalent_covered": 2,
+            "gold_purist_equivalent_coverage_rate": 1.0,
+            "gold_pragmatic_equivalent_covered": 2,
+            "gold_pragmatic_equivalent_coverage_rate": 1.0
+          }
+        },
+        "option_count_distribution": {
+          "0": 0,
+          "1": 0,
+          "2-3": 2,
+          "4+": 2
+        },
+        "category_gap_rows": []
+      }
+    },
+    "g1_g11_diff_summary": {
+      "rows": 21,
+      "rows_missing_from_g1": 0,
+      "rows_with_any_diff": 20,
+      "changed_key_counts": {
+        "candidate_labels": 20
+      }
+    }
+  },
+  "decision": {
+    "g10_authorized_surface": "category_level_selector_only_before_new_aggregation_constructor",
+    "exact_label_claim": "not authorized: current constructed aggregate view exact-covers 0/21 rows",
+    "category_level_claim": "authorized as a narrowed G10 mechanism claim: raw options cover 14/21 Purist and 17/21 Pragmatic equivalent rows",
+    "required_follow_up_for_exact_closed_options": "G14 temporal anchoring plus G16 rate/duration aggregation policy, or a separate deterministic aggregation constructor with fixture tests"
+  },
+  "rows": [
+    {
+      "record_id": "gan_15997",
+      "gold_label": "10 per 3 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "10 per 3 month",
+      "raw_option_view": {
+        "option_count": 5,
+        "labels": [
+          "seizure free for multiple month",
+          "3 per week",
+          "4 per month",
+          "3 per month",
+          "unknown, multiple per cluster"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "- Seizure safety reviewed, including bathing supervision and driving advice (not driving; will reassess per DVLA guidance after seizure-free interval).",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "3 per week",
+            "derivation": "explicit event count per period",
+            "evidence_text": "- Optimise sleep where possible given infant care; patient to trial shared night feeds three nights per week to reduce sleep fragmentation.",
+            "event_count": "3",
+            "window_count": "1",
+            "window_unit": "week"
+          },
+          {
+            "label": "4 per month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "Against this background, she described the following pattern: In Nov he had 3 seizures during sleep and 1 while awake.",
+            "event_count": "4",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "3 per month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Against this background, she described the following pattern: In Nov he had 3 seizures during sleep and 1 while awake.",
+            "event_count": "3",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "unknown, multiple per cluster",
+            "derivation": "fallback unknown-spacing cluster candidate",
+            "evidence_text": "She notices events cluster after multiple consecutive nights of <4 hours\u2019 continuous sleep.",
+            "event_count": "multiple",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "4 per month",
+          "3 per month"
+        ],
+        "option_records": [
+          {
+            "label": "4 per month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "Against this background, she described the following pattern: In Nov he had 3 seizures during sleep and 1 while awake.",
+            "event_count": "4",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "3 per month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Against this background, she described the following pattern: In Nov he had 3 seizures during sleep and 1 while awake.",
+            "event_count": "3",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_16772",
+      "gold_label": "9 per 5 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "gold_evidence_multispan"
+      ],
+      "reference_label": "9 per 5 month",
+      "raw_option_view": {
+        "option_count": 6,
+        "labels": [
+          "seizure free for multiple month",
+          "8 per 2 month",
+          "11 per 3 month",
+          "11 per 10 month",
+          "11 per month",
+          "unknown, 1 per cluster"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "- No rescue medication indicated at present given self-limited events and absence of generalised tonic\u2013clonic seizures; we will revisit if frequency increases.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per 2 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother).",
+            "event_count": "8",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "11 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother). He associates the November and December events with multiple red-eye flights, jet lag and fragmented sleep. The March episode followed a strenuous rehabilitation session for a minor ankle injury while he was mildly sleep-deprived; there was no reported trauma, tongue biting or incontinence.",
+            "event_count": "11",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "11 per 10 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother). He associates the November and December events with multiple red-eye flights, jet lag and fragmented sleep. The March episode followed a strenuous rehabilitation session for a minor ankle injury while he was mildly sleep-deprived; there was no reported trauma, tongue biting or incontinence.",
+            "event_count": "11",
+            "window_count": "10",
+            "window_unit": "month"
+          },
+          {
+            "label": "11 per month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother). He associates the November and December events with multiple red-eye flights, jet lag and fragmented sleep. The March episode followed a strenuous rehabilitation session for a minor ankle injury while he was mildly sleep-deprived; there was no reported trauma, tongue biting or incontinence.",
+            "event_count": "11",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "unknown, 1 per cluster",
+            "derivation": "fallback unknown-spacing cluster candidate",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication).",
+            "event_count": "1",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 4,
+        "labels": [
+          "8 per 2 month",
+          "11 per 3 month",
+          "11 per 10 month",
+          "11 per month"
+        ],
+        "option_records": [
+          {
+            "label": "8 per 2 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother).",
+            "event_count": "8",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "11 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother). He associates the November and December events with multiple red-eye flights, jet lag and fragmented sleep. The March episode followed a strenuous rehabilitation session for a minor ankle injury while he was mildly sleep-deprived; there was no reported trauma, tongue biting or incontinence.",
+            "event_count": "11",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "11 per 10 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother). He associates the November and December events with multiple red-eye flights, jet lag and fragmented sleep. The March episode followed a strenuous rehabilitation session for a minor ankle injury while he was mildly sleep-deprived; there was no reported trauma, tongue biting or incontinence.",
+            "event_count": "11",
+            "window_count": "10",
+            "window_unit": "month"
+          },
+          {
+            "label": "11 per month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "Seizure history since the last review: In November he had a run of one seizure within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In December there was 7 further seizures at night, and in March another during physiotherapy (unwitnessed by mother). He associates the November and December events with multiple red-eye flights, jet lag and fragmented sleep. The March episode followed a strenuous rehabilitation session for a minor ankle injury while he was mildly sleep-deprived; there was no reported trauma, tongue biting or incontinence.",
+            "event_count": "11",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_16825",
+      "gold_label": "10 per 6 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "gold_evidence_multispan",
+        "multi_highest",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "10 per 6 month",
+      "raw_option_view": {
+        "option_count": 6,
+        "labels": [
+          "12 per 2 month",
+          "12 per 3 month",
+          "8 per 3 month",
+          "8 per 10 month",
+          "8 per month",
+          "unknown, 3 per cluster"
+        ],
+        "option_records": [
+          {
+            "label": "12 per 2 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "12",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "12 per 3 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "12",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "8",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per 10 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "8",
+            "window_count": "10",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "8",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "unknown, 3 per cluster",
+            "derivation": "fallback unknown-spacing cluster candidate",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating).",
+            "event_count": "3",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 5,
+        "labels": [
+          "12 per 2 month",
+          "12 per 3 month",
+          "8 per 3 month",
+          "8 per 10 month",
+          "8 per month"
+        ],
+        "option_records": [
+          {
+            "label": "12 per 2 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "12",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "12 per 3 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "12",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "8",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per 10 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "8",
+            "window_count": "10",
+            "window_unit": "month"
+          },
+          {
+            "label": "8 per month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In October he had six nocturnal seizures, and in January a single tonic seizure was recorded during respite care.",
+            "event_count": "8",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_16335",
+      "gold_label": "7 per 3 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [],
+      "reference_label": "7 per 3 month",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "1 per month",
+          "4 per 3 month"
+        ],
+        "option_records": [
+          {
+            "label": "1 per month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "4 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states.",
+            "event_count": "4",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "1 per month",
+          "4 per 3 month"
+        ],
+        "option_records": [
+          {
+            "label": "1 per month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "4 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states.",
+            "event_count": "4",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_10583",
+      "gold_label": "unknown, 2 to 3 per cluster",
+      "label_family": "unknown_cluster",
+      "hard_strata": [
+        "cluster",
+        "vague_frequency"
+      ],
+      "reference_label": "unknown, 2 to 3 per cluster",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "no seizure frequency reference",
+          "unknown"
+        ],
+        "option_records": [
+          {
+            "label": "no seizure frequency reference",
+            "derivation": "high-recall null-label candidate; later selection decides applicability",
+            "evidence_text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 18 September 2020 \n\nDr Green \nConsultant in General Practice  \nRiverside Health Centre  \n12 Wharf Road, London N1 7TZ  \n\nDear Dr Green \nConsultant in General Practice,",
+            "event_count": "",
+            "window_count": "",
+            "window_unit": ""
+          },
+          {
+            "label": "unknown",
+            "derivation": "high-recall unknown-frequency candidate for seizure-context notes",
+            "evidence_text": "Over the past two months there has been a notable deterioration in his overall stability, with increasing episodes despite adherence to his current regimen and only limited benefit from prior medication trials as reported.",
+            "event_count": "",
+            "window_count": "",
+            "window_unit": ""
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 0,
+        "labels": [],
+        "option_records": [],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_1463",
+      "gold_label": "3 per month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "3 per month",
+      "raw_option_view": {
+        "option_count": 4,
+        "labels": [
+          "seizure free for multiple month",
+          "seizure free for 6 month",
+          "4 per month",
+          "1 per month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "There have been no recent generalised tonic\u2013clonic seizures and no injuries.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "seizure free for 6 month",
+            "derivation": "explicit seizure-free duration in Gan label-scheme units",
+            "evidence_text": "No nocturnal events have been witnessed by his partner in the past six months.",
+            "event_count": "0",
+            "window_count": "6",
+            "window_unit": "month"
+          },
+          {
+            "label": "4 per month",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "Over the last month he reports two focal sensory and one focal non-motor in last month, with brief paraesthesiae in both hands on two occasions and one spell of transient speech arrest without loss of awareness.",
+            "event_count": "4",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "1 per month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "The recent brief focal features may represent focal aware manifestations within a generalised epilepsy syndrome or non-epileptic sensory phenomena; however, given the background of generalised epilepsy and his stable course without generalised convulsions, I have advised continued routine seizure precautions and ongoing adherence to medication.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "4 per month",
+          "1 per month"
+        ],
+        "option_records": [
+          {
+            "label": "4 per month",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "Over the last month he reports two focal sensory and one focal non-motor in last month, with brief paraesthesiae in both hands on two occasions and one spell of transient speech arrest without loss of awareness.",
+            "event_count": "4",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "1 per month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "The recent brief focal features may represent focal aware manifestations within a generalised epilepsy syndrome or non-epileptic sensory phenomena; however, given the background of generalised epilepsy and his stable course without generalised convulsions, I have advised continued routine seizure precautions and ongoing adherence to medication.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_9424",
+      "gold_label": "10 per 9 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "seizure_free_conflict"
+      ],
+      "reference_label": "10 per 9 month",
+      "raw_option_view": {
+        "option_count": 1,
+        "labels": [
+          "5 per 3 month"
+        ],
+        "option_records": [
+          {
+            "label": "5 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "To document recent frequency: Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0.",
+            "event_count": "5",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 1,
+        "labels": [
+          "5 per 3 month"
+        ],
+        "option_records": [
+          {
+            "label": "5 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "To document recent frequency: Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0.",
+            "event_count": "5",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_6094",
+      "gold_label": "3 per month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "label_reference_disagreement",
+        "multi_highest"
+      ],
+      "reference_label": "unknown",
+      "raw_option_view": {
+        "option_count": 3,
+        "labels": [
+          "seizure free for multiple month",
+          "2 per month",
+          "1 per month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "I have advised strict sleep hygiene, avoidance of missed doses, and no driving in line with DVLA guidance following recent events.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "She reports clusters of brief nocturnal warning sensations followed by loss of awareness on three occasions in September and two further events in early October.",
+            "event_count": "2",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "1 per month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "She reports clusters of brief nocturnal warning sensations followed by loss of awareness on three occasions in September and two further events in early October.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "2 per month",
+          "1 per month"
+        ],
+        "option_records": [
+          {
+            "label": "2 per month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "She reports clusters of brief nocturnal warning sensations followed by loss of awareness on three occasions in September and two further events in early October.",
+            "event_count": "2",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "1 per month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "She reports clusters of brief nocturnal warning sensations followed by loss of awareness on three occasions in September and two further events in early October.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_1486",
+      "gold_label": "3 per month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster"
+      ],
+      "reference_label": "3 per month",
+      "raw_option_view": {
+        "option_count": 1,
+        "labels": [
+          "1 per month"
+        ],
+        "option_records": [
+          {
+            "label": "1 per month",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "The patient reports two focal epileptic spasms and one focal non-motor in last month.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 1,
+        "labels": [
+          "1 per month"
+        ],
+        "option_records": [
+          {
+            "label": "1 per month",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "The patient reports two focal epileptic spasms and one focal non-motor in last month.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_7431",
+      "gold_label": "1 per month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "label_reference_disagreement",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "unknown",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "2 per 8 week",
+          "0.25 per week"
+        ],
+        "option_records": [
+          {
+            "label": "2 per 8 week",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "The patient reports two brief episodes over the past eight weeks, each under one minute, with rapid recovery and no injury.",
+            "event_count": "2",
+            "window_count": "8",
+            "window_unit": "week"
+          },
+          {
+            "label": "0.25 per week",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "The patient reports two brief episodes over the past eight weeks, each under one minute, with rapid recovery and no injury.",
+            "event_count": "0.25",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "2 per 8 week",
+          "0.25 per week"
+        ],
+        "option_records": [
+          {
+            "label": "2 per 8 week",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "The patient reports two brief episodes over the past eight weeks, each under one minute, with rapid recovery and no injury.",
+            "event_count": "2",
+            "window_count": "8",
+            "window_unit": "week"
+          },
+          {
+            "label": "0.25 per week",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "The patient reports two brief episodes over the past eight weeks, each under one minute, with rapid recovery and no injury.",
+            "event_count": "0.25",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_16883",
+      "gold_label": "4 per 3 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [],
+      "reference_label": "4 per 3 month",
+      "raw_option_view": {
+        "option_count": 4,
+        "labels": [
+          "seizure free for multiple month",
+          "3 per 2 month",
+          "3 per 3 month",
+          "5 per 3 month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "There is no family history of seizures to his knowledge.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "3 per 2 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "In Feb two generalised tonic-clonic seizures were reported. In Mar a nocturnal seizure occurred, and in Apr another during respite care.",
+            "event_count": "3",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "3 per 3 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "In Feb two generalised tonic-clonic seizures were reported. In Mar a nocturnal seizure occurred, and in Apr another during respite care.",
+            "event_count": "3",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "5 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Feb two generalised tonic-clonic seizures were reported. In Mar a nocturnal seizure occurred, and in Apr another during respite care. The daytime events were said to begin without a consistent warning; witnesses describe bilateral stiffening and rhythmic jerks lasting approximately 90\u2013120 seconds with a bitten lateral tongue on one occasion and post-event confusion for 30\u201345 minutes. The nocturnal event was inferred from a bed partner report of witnessed jerking, vocalisation, and subsequent morning myalgia, tongue soreness, and headache. The episode during respite care was recorded in the facility log with similar semiology and a comparable period of post-event disorientation.\n\nBetween events he reports intermittent fatigue and reduced concentration but no clear focal neurological symptoms. He is currently taking levetiracetam 1000 mg twice daily as his sole antiseizure medicine, which he started eight months ago; adherence is reported as good with a single missed evening dose in late March. He denies alcohol excess or recreational drug use. Sleep has been fragmented since February owing to an",
+            "event_count": "5",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 3,
+        "labels": [
+          "3 per 2 month",
+          "3 per 3 month",
+          "5 per 3 month"
+        ],
+        "option_records": [
+          {
+            "label": "3 per 2 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "In Feb two generalised tonic-clonic seizures were reported. In Mar a nocturnal seizure occurred, and in Apr another during respite care.",
+            "event_count": "3",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "3 per 3 month",
+            "derivation": "named-month clauses summed over plausible diary windows",
+            "evidence_text": "In Feb two generalised tonic-clonic seizures were reported. In Mar a nocturnal seizure occurred, and in Apr another during respite care.",
+            "event_count": "3",
+            "window_count": "3",
+            "window_unit": "month"
+          },
+          {
+            "label": "5 per 3 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Feb two generalised tonic-clonic seizures were reported. In Mar a nocturnal seizure occurred, and in Apr another during respite care. The daytime events were said to begin without a consistent warning; witnesses describe bilateral stiffening and rhythmic jerks lasting approximately 90\u2013120 seconds with a bitten lateral tongue on one occasion and post-event confusion for 30\u201345 minutes. The nocturnal event was inferred from a bed partner report of witnessed jerking, vocalisation, and subsequent morning myalgia, tongue soreness, and headache. The episode during respite care was recorded in the facility log with similar semiology and a comparable period of post-event disorientation.\n\nBetween events he reports intermittent fatigue and reduced concentration but no clear focal neurological symptoms. He is currently taking levetiracetam 1000 mg twice daily as his sole antiseizure medicine, which he started eight months ago; adherence is reported as good with a single missed evening dose in late March. He denies alcohol excess or recreational drug use. Sleep has been fragmented since February owing to an",
+            "event_count": "5",
+            "window_count": "3",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_4996",
+      "gold_label": "seizure free for 16 month",
+      "label_family": "seizure_free",
+      "hard_strata": [
+        "seizure_free_conflict"
+      ],
+      "reference_label": "seizure free for 16 month",
+      "raw_option_view": {
+        "option_count": 1,
+        "labels": [
+          "seizure free for multiple month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "Seizure-free interval since 20/Apr/2018, corroborated by the patient\u2019s paper seizure calendar which she brings to each appointment.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 0,
+        "labels": [],
+        "option_records": [],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_3355",
+      "gold_label": "1 per 3 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "label_reference_disagreement",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "unknown",
+      "raw_option_view": {
+        "option_count": 7,
+        "labels": [
+          "seizure free for multiple month",
+          "5 per day",
+          "3 per 6 month",
+          "0.5 per month",
+          "2 per 2 month",
+          "2 per 4 month",
+          "2 per 5 month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "He reports that events arise almost exclusively after nights of curtailed sleep, such as when moored near noisy locks or after early starts for travel; on well-rested weeks he remains seizure-free.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "5 per day",
+            "derivation": "shorthand count/unit seizure frequency",
+            "evidence_text": "Summary/ Diagnoses: Generalised epilepsy with patient-reported seizures occurring predominantly when markedly underslept/past concussive head injury in adolescence without persistent deficit/seasonal allergic rhinitis/vitamin D insufficiency/lives on a houseboat with intermittent electricity supply impacting device charging/smoker (5/day).",
+            "event_count": "5",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "label": "3 per 6 month",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "3",
+            "window_count": "6",
+            "window_unit": "month"
+          },
+          {
+            "label": "0.5 per month",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "0.5",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per 2 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "2",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per 4 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "2",
+            "window_count": "4",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per 5 month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "2",
+            "window_count": "5",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 5,
+        "labels": [
+          "3 per 6 month",
+          "0.5 per month",
+          "2 per 2 month",
+          "2 per 4 month",
+          "2 per 5 month"
+        ],
+        "option_records": [
+          {
+            "label": "3 per 6 month",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "3",
+            "window_count": "6",
+            "window_unit": "month"
+          },
+          {
+            "label": "0.5 per month",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "0.5",
+            "window_count": "1",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per 2 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "2",
+            "window_count": "2",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per 4 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "2",
+            "window_count": "4",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per 5 month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "Over the past six months he recorded: April x 0, May x 1 GTC following two consecutive short nights, June x 0, July x 0, August x 1 GTC after a night with less than three hours\u2019 sleep during a power outage, September x 0.",
+            "event_count": "2",
+            "window_count": "5",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_15129",
+      "gold_label": "4 per 15 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "label_reference_disagreement"
+      ],
+      "reference_label": "5 per 15 month",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "seizure free for multiple month",
+          "2 per day"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "Plan:\n- Continue lamotrigine 100 mg twice daily as tolerated; no recent generalised events and only four brief morning jerks since 3/2015 as per diary.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per day",
+            "derivation": "adverbial daily/weekly/monthly/yearly seizure frequency",
+            "evidence_text": "Plan:\n- Continue lamotrigine 100 mg twice daily as tolerated; no recent generalised events and only four brief morning jerks since 3/2015 as per diary.",
+            "event_count": "2",
+            "window_count": "1",
+            "window_unit": "day"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 0,
+        "labels": [],
+        "option_records": [],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_9063",
+      "gold_label": "seizure free for 8 month",
+      "label_family": "seizure_free",
+      "hard_strata": [
+        "seizure_free_conflict"
+      ],
+      "reference_label": "seizure free for 8 month",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "seizure free for multiple month",
+          "2017 per 8 month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "They report sustained stability with no episodes suggestive of evolving motor activity, loss of awareness, or nocturnal events.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "2017 per 8 month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "Importantly, they volunteered a clear timepoint: No focal clonic since 19-Mar-2017.",
+            "event_count": "2017",
+            "window_count": "8",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 1,
+        "labels": [
+          "2017 per 8 month"
+        ],
+        "option_records": [
+          {
+            "label": "2017 per 8 month",
+            "derivation": "named-month event tallies summed from first month to clinic month",
+            "evidence_text": "Importantly, they volunteered a clear timepoint: No focal clonic since 19-Mar-2017.",
+            "event_count": "2017",
+            "window_count": "8",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_13290",
+      "gold_label": "4 per 6 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "4 per 6 month",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "2 per 6 month",
+          "0.333 per month"
+        ],
+        "option_records": [
+          {
+            "label": "2 per 6 month",
+            "derivation": "breakthrough events after a long seizure-free interval",
+            "evidence_text": "Regarding recent events, his seizure diary confirms the following: He did not have seizures for over 6 months, but then reported two generalised tonic-clonic seizures two Fridays ago, each preceded by myoclonic jerks.",
+            "event_count": "2",
+            "window_count": "6",
+            "window_unit": "month"
+          },
+          {
+            "label": "0.333 per month",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "Regarding recent events, his seizure diary confirms the following: He did not have seizures for over 6 months, but then reported two generalised tonic-clonic seizures two Fridays ago, each preceded by myoclonic jerks.",
+            "event_count": "0.333",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 1,
+        "labels": [
+          "0.333 per month"
+        ],
+        "option_records": [
+          {
+            "label": "0.333 per month",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "Regarding recent events, his seizure diary confirms the following: He did not have seizures for over 6 months, but then reported two generalised tonic-clonic seizures two Fridays ago, each preceded by myoclonic jerks.",
+            "event_count": "0.333",
+            "window_count": "1",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_6509",
+      "gold_label": "1 per week",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "label_reference_disagreement",
+        "multi_highest"
+      ],
+      "reference_label": "unknown",
+      "raw_option_view": {
+        "option_count": 5,
+        "labels": [
+          "seizure free for multiple month",
+          "2 per day",
+          "1 per day",
+          "1 per 2 week",
+          "0.5 per week"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "Previously tried and discontinued (ineffective or adverse effects): Lamotrigine (worsened myoclonus), Topiramate (cognitive dulling, weight loss), Zonisamide (appetite suppression), Perampanel (irritability), Ethosuximide (GI upset, insufficient control beyond absences), Lacosamide (no benefit), Carbamazepine (worsened generalised seizures), Phenobarbital (sedation), Phenytoin (ataxia), Tiagabine (confusion).",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per day",
+            "derivation": "adverbial daily/weekly/monthly/yearly seizure frequency",
+            "evidence_text": "Current medications: Sodium valproate 600 mg twice daily; Levetiracetam 1000 mg twice daily; Clobazam 10 mg nocte; Folic acid 5 mg daily; PRN midazolam buccal for prolonged convulsion.",
+            "event_count": "2",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "label": "1 per day",
+            "derivation": "adverbial daily/weekly/monthly/yearly seizure frequency",
+            "evidence_text": "Current medications: Sodium valproate 600 mg twice daily; Levetiracetam 1000 mg twice daily; Clobazam 10 mg nocte; Folic acid 5 mg daily; PRN midazolam buccal for prolonged convulsion.",
+            "event_count": "1",
+            "window_count": "1",
+            "window_unit": "day"
+          },
+          {
+            "label": "1 per 2 week",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "She notes increased morning myoclonic jerks and more frequent absence spells, with two generalised tonic\u2013clonic seizures in the past fortnight after many months without a convulsion.",
+            "event_count": "1",
+            "window_count": "2",
+            "window_unit": "week"
+          },
+          {
+            "label": "0.5 per week",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "She notes increased morning myoclonic jerks and more frequent absence spells, with two generalised tonic\u2013clonic seizures in the past fortnight after many months without a convulsion.",
+            "event_count": "0.5",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "1 per 2 week",
+          "0.5 per week"
+        ],
+        "option_records": [
+          {
+            "label": "1 per 2 week",
+            "derivation": "event count over explicit observation window",
+            "evidence_text": "She notes increased morning myoclonic jerks and more frequent absence spells, with two generalised tonic\u2013clonic seizures in the past fortnight after many months without a convulsion.",
+            "event_count": "1",
+            "window_count": "2",
+            "window_unit": "week"
+          },
+          {
+            "label": "0.5 per week",
+            "derivation": "event/window count converted to single-period rate",
+            "evidence_text": "She notes increased morning myoclonic jerks and more frequent absence spells, with two generalised tonic\u2013clonic seizures in the past fortnight after many months without a convulsion.",
+            "event_count": "0.5",
+            "window_count": "1",
+            "window_unit": "week"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    },
+    {
+      "record_id": "gan_4378",
+      "gold_label": "3 per 2 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "multi_highest",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "3 per 2 month",
+      "raw_option_view": {
+        "option_count": 2,
+        "labels": [
+          "seizure free for multiple month",
+          "2 per day"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "There is no history of head injury, CNS infection, or family history of seizures.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "2 per day",
+            "derivation": "adverbial daily/weekly/monthly/yearly seizure frequency",
+            "evidence_text": "- Continue levetiracetam 500 mg twice daily\n- Safety and trigger management advice provided\n- Arrange sleep-deprived EEG and MRI brain with epilepsy protocol to aid classification\n- DVLA guidance discussed in line with current standards\n- Liaise with GP regarding glycaemic control; no changes to diabetes regimen from neurology clinic\n- Follow-up in 6 months or sooner if further events",
+            "event_count": "2",
+            "window_count": "1",
+            "window_unit": "day"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 0,
+        "labels": [],
+        "option_records": [],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_6296",
+      "gold_label": "3 per 4 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "label_reference_disagreement",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "unknown",
+      "raw_option_view": {
+        "option_count": 1,
+        "labels": [
+          "seizure free for multiple month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "Otherwise seizure-free between these episodes.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 0,
+        "labels": [],
+        "option_records": [],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_13019",
+      "gold_label": "9 per 3 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "9 per 3 month",
+      "raw_option_view": {
+        "option_count": 1,
+        "labels": [
+          "seizure free for multiple month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "No history of prolonged status events.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 0,
+        "labels": [],
+        "option_records": [],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": false,
+        "gold_pragmatic_equivalent_covered": false
+      }
+    },
+    {
+      "record_id": "gan_9526",
+      "gold_label": "4 per 8 month",
+      "label_family": "quantified_rate",
+      "hard_strata": [
+        "cluster",
+        "multi_highest",
+        "seizure_free_conflict"
+      ],
+      "reference_label": "4 per 8 month",
+      "raw_option_view": {
+        "option_count": 3,
+        "labels": [
+          "seizure free for multiple month",
+          "5 per 4 month",
+          "5 per 6 month"
+        ],
+        "option_records": [
+          {
+            "label": "seizure free for multiple month",
+            "derivation": "seizure-free/no-event expression without exact duration",
+            "evidence_text": "No events reported since late May; June through August have been event-free by history and corroborated by partner.",
+            "event_count": "0",
+            "window_count": "multiple",
+            "window_unit": "month"
+          },
+          {
+            "label": "5 per 4 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0\n\nContext: The patient reports brief episodes of impaired awareness with automatisms, lasting under one minute, followed by mild fatigue. No clear precipitants identified. Sleep hygiene has improved and alcohol is minimal. No events reported since late May; June through August have been event-free by history and corroborated by partner.",
+            "event_count": "5",
+            "window_count": "4",
+            "window_unit": "month"
+          },
+          {
+            "label": "5 per 6 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0\n\nContext: The patient reports brief episodes of impaired awareness with automatisms, lasting under one minute, followed by mild fatigue. No clear precipitants identified. Sleep hygiene has improved and alcohol is minimal. No events reported since late May; June through August have been event-free by history and corroborated by partner.",
+            "event_count": "5",
+            "window_count": "6",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      },
+      "constructed_aggregate_option_view": {
+        "option_count": 2,
+        "labels": [
+          "5 per 4 month",
+          "5 per 6 month"
+        ],
+        "option_records": [
+          {
+            "label": "5 per 4 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0\n\nContext: The patient reports brief episodes of impaired awareness with automatisms, lasting under one minute, followed by mild fatigue. No clear precipitants identified. Sleep hygiene has improved and alcohol is minimal. No events reported since late May; June through August have been event-free by history and corroborated by partner.",
+            "event_count": "5",
+            "window_count": "4",
+            "window_unit": "month"
+          },
+          {
+            "label": "5 per 6 month",
+            "derivation": "named-month event tallies summed over listed months",
+            "evidence_text": "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0\n\nContext: The patient reports brief episodes of impaired awareness with automatisms, lasting under one minute, followed by mild fatigue. No clear precipitants identified. Sleep hygiene has improved and alcohol is minimal. No events reported since late May; June through August have been event-free by history and corroborated by partner.",
+            "event_count": "5",
+            "window_count": "6",
+            "window_unit": "month"
+          }
+        ],
+        "gold_exact_covered": false,
+        "gold_purist_equivalent_covered": true,
+        "gold_pragmatic_equivalent_covered": true
+      }
+    }
+  ]
+}

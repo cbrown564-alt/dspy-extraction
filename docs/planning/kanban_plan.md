@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 added Gan source-level abstention candidate gating before selector work
+Last refreshed: 2026-05-29 completed G14 temporal anchoring
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -32,9 +32,11 @@ promotes them.
    validation-only S1 transfer probes, frequency payload
    robustness/adjudication, and medication payload routing or prompt isolation.
    X2 now preregisters pairwise interaction hypotheses, support counts,
-   primary metrics, interference criteria, and stop rules. Optimized
+   primary metrics, interference criteria, and stop rules. The May 29 X2
+   result correction makes clear that schema-ladder comparisons are
+   non-answering diagnostics, not completed pairwise evidence. Optimized
    S1*/S2*/S3*/S4*/S5* stacks remain blocked until isolated ceilings and
-   pairwise interaction evidence exist.
+   corrected component-isolated pairwise interaction evidence exist.
 3. **Gan S0 work stays decomposed.** Use D1 v1.2b and the G1/G2/G3 artifacts to
    separate candidate inventory, temporal anchoring, target selection, label
    construction, and unknown/no-reference policy. G4 is completed as a negative
@@ -56,14 +58,28 @@ promotes them.
    surface remains 0/21 exact, 14/21 Purist-equivalent, and 17/21
    Pragmatic-equivalent. This should not be treated as a simple candidate-builder
    defect because some gold labels require temporal anchoring and aggregation
-   across separately reported events. G10 stays blocked only for raw-inventory
-   exact-label answer options until an aggregation-aware answer-option surface
-   is defined or the selector claim is explicitly narrowed to category-level
-   selection. A newly identified source-level interface bug must be fixed first:
-   `_high_recall_frequency_candidates` currently injects broad abstention
-   options (`unknown`, `no seizure frequency reference`) into candidate lists
-   that also contain concrete frequency candidates, which likely encourages
-   adjudicators to over-select unknown/no-reference.
+   across separately reported events. G12 has now explicitly narrowed G10:
+   before a new aggregation constructor exists, G10 may test category-level or
+   candidate-ranking selection only, not exact closed answer-option
+   construction. G10 has now tested that narrowed selector arm and is rejected
+   as tested: it reached 36/50 paper monthly on `gan_s0_g6_standard50_v1`,
+   below G8 (37/50), D1 v1.2b (40/50), and builder-gap GPT (41/50), with
+   complete category/ranking traces but regression on the unknown/no-reference
+   overlay. Do not full-validate this arm. G18 is complete for the source-level candidate-interface bug:
+   current runtime and the G11 current rows have 0 cases where broad standalone
+   abstentions (`unknown`, `no seizure frequency reference`) are offered beside
+   concrete frequency candidates. The older G1 lists remain provenance for the
+   pre-pruning surface. G13 now supplies the isolated frequency-content gate
+   baseline: overall gate accuracy is 244/299 (81.6%), with strong
+   quantified-frequency recall (201/203, 99.0%) and no-reference precision
+   (10/10 predicted no-reference rows), but weak unclear-frequency recall
+   (10/40, 25.0%) and seizure-free recall (23/45, 51.1%). G14 now supplies the
+   temporal anchoring diagnostic baseline: standard50 exact candidate coverage
+   is 41/50 and temporal-slot coverage is 36/40 applicable rows; the temporal
+   challenge set is 13/15 exact and slot-covered, with `gan_16772` and
+   `gan_16825` as true temporal-slot misses. Do not expand fragile arithmetic
+   or broad relative-anchor guards from G14; route the remaining exact misses
+   to aggregation-aware answer construction plus LLM target selection.
 4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
    paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
    remain diagnostic. ExECT Table 1 reproduction remains blocked until
@@ -83,76 +99,15 @@ promotes them.
 
 ## Ready
 
-### G18 - Gan Source-Level Abstention Candidate Gating
+### G15 - Gan Target Selection and Semantic Adjudication
 
-- **Outcome:** Change `_high_recall_frequency_candidates` so abstention labels
-  are evidence-triggered rather than universal candidate options:
-  `no seizure frequency reference` only when there is no seizure-frequency
-  reference, and `unknown` only when seizure context exists but no quantified,
-  seizure-free, cluster, or aggregatable frequency candidate is supported.
-- **Dependencies:** G11/G9 failure rows and current candidate inventory behavior.
-  Use the Gan label audit distinction between `unknown` and
-  `no seizure frequency reference`; preserve `unknown, N per cluster` when
-  per-cluster burden is present but spacing is genuinely unknown.
-- **Parallelizable:** no with G10/G12/G15 because it changes the candidate
-  option surface those cards depend on.
+- **Outcome:** Design and evaluate a target selector that adjudicates over candidate inventory,
+  focusing on current quantified frequency versus seizure-free duration.
+- **Dependencies:** G12, G13, G14.
+- **Parallelizable:** no.
 - **Owner:** unassigned.
-- **Validation:** TDD regression tests showing concrete frequency candidates
-  suppress broad abstentions; true unknown-only and no-reference cases still
-  retain the right abstention label; regenerated G11-style report comparing
-  candidate labels before/after; focused Gan temporal candidate and candidate
-  inventory tests. No scorer, loader, split, bridge, prompt, model, or
-  prediction-repair changes.
-- **Notes:** This is a source-level candidate-interface fix, not a scorer repair
-  and not an adjudicator prompt change. It should remove incoherent sibling
-  options such as `unknown` and `no seizure frequency reference` from lists
-  that already contain concrete frequency evidence.
-
-### G12 - Gan Aggregation-Aware Answer-Option Surface
-
-- **Outcome:** Preregister the answer-option surface that G10 should use when
-  exact Gan labels must be constructed from separately reported frequency
-  events through temporal anchoring and aggregation, rather than copied from raw
-  candidate labels.
-- **Dependencies:** G11 found 0/21 exact, 14/21 Purist-equivalent, and 17/21
-  Pragmatic-equivalent coverage on the locked exact-miss challenge set, with no
-  row diffs versus G1:
-  `docs/experiments/gan/gan_s0_g11_candidate_inventory_challenge_set_pass_20260529.md`.
-  Use G1 candidate inventory, G2 target/label split and deterministic
-  constructor, G6 evaluation surface, and G9/G11 failure rows.
-- **Parallelizable:** no with G10 or other Gan selector runs. Safe with ExECT
-  mechanism-card drafting if scorer, loader, split, bridge, repair, and model
-  surfaces stay untouched.
-- **Owner:** unassigned.
-- **Validation:** No-model answer-option report over
-  `gan_s0_g6_candidate_coverage_exact_miss`; distinguish raw event/rate
-  candidates from constructed aggregate labels; candidate diff versus G1/G11;
-  explicit exact/Purist/Pragmatic coverage for both raw and constructed option
-  views; no scorer, loader, split, bridge, prompt, model, or prediction-repair
-  changes. If behavior changes touch typed primitives or adapters, also run
-  `uv run python scripts/validate_primitives.py --errors-only`.
-- **Notes:** Do not broaden into a selector prompt or scorer repair. The
-  motivating gap is whether downstream temporal anchoring and aggregation can
-  compose exact answer options from represented event pieces; raw inventory
-  labels are not required to include aggregate labels that never appear
-  verbatim in the note.
-
-### G13 - Gan Isolated Frequency-Content Gate Evaluation and Refinement
-
-- **Outcome:** Clean, isolated model/rule evaluation of the frequency-content gate
-  (detecting whether a note contains any useful seizure frequency info, is seizure-free,
-  or has no reference) on the standard validation split. Establish baseline metrics
-  for gate classification accuracy (Precision, Recall, F1) separate from candidate
-  building or final target selection.
-- **Dependencies:** none.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Report accuracy, false positives, and false negatives in separating
-  `no seizure frequency reference` vs. `unknown` (unclear frequency) vs. quantified frequency
-  presence.
-- **Notes:** Focuses on getting the frequency gate right and documented before moving
-  to target selection, addressing the lack of independent gate evaluation.
-
+- **Validation:** Performance on `gan_s0_g6_standard50_v1` target selection overlay.
+- **Notes:** Use G13 gate caveats and G14 temporal-slot misses as upstream caveats. Address precision vs. recall tradeoff in candidate inventory and its impact on selector reasoning.
 ## Blocked
 
 ### B1 - ExECT Optimized Stack Reconstruction
@@ -191,66 +146,6 @@ promotes them.
 
 ## Backlog
 
-### E12 - Investigation Isolated Ceiling Confirmation
-
-- **Outcome:** A narrow isolated investigation-family probe or decision note
-  states whether broad-stack investigation performance is enough to classify the
-  component as near ceiling, still diagnostic, or blocked by family-contract
-  ambiguity.
-- **Dependencies:** Initial component ceiling reports; X2 helpful if
-  investigation is tested as part of an interaction pair.
-- **Parallelizable:** yes, if scorer and bridge semantics stay frozen.
-- **Owner:** unassigned.
-- **Validation:** Report support counts, validation split, model/provider if
-  any, scorer mode, precision/recall/F1, modality/result normalization policy,
-  and any holdout residual caveat as diagnostic only.
-- **Notes:** This routes the registry investigation action. Broad-stack
-  stability is not enough by itself to call the investigation component solved.
-
-### G10 - Gan Standard50 Candidate-Constrained/Answer-Options Comparator
-
-- **Outcome:** Preregistered model-backed comparison on
-  `gan_s0_g6_standard50_v1` directly compares a candidate-constrained or
-  answer-options selector against D1 v1.2b and builder-gap GPT on the same
-  records.
-- **Dependencies:** G18 fixes source-level abstention candidate gating; G12
-  defines the aggregation-aware answer-option surface or explicitly authorizes a
-  narrower category-level selector claim; G6 evaluation surface; G8/G9/G11
-  negative and routing reports; stored D1 and builder-gap GPT predictions.
-- **Parallelizable:** only after G18 and G12 routing. Do not overlap with other local
-  model-backed Gan selector runs.
-- **Owner:** unassigned.
-- **Validation:** Dry-run config first, then standard-50 model run. Report both
-  `gan2026_paper_reproduction` and `gan_frequency_deterministic_v1`,
-  per-challenge overlays, pairwise deltas versus D1 and builder-gap GPT, trace
-  fields, and stop rule. Do not full-validate unless the selector shows at
-  least two-record monthly lift over the relevant comparator, no paper-metric
-  regression, and no targeted-overlay regression.
-- **Notes:** This must not be another special-class-label expansion of the same
-  class-first prompt. The mechanism under test is candidate-constrained or
-  answer-options selection with scorer, loader, split, bridge,
-  candidate-builder, and prediction-repair semantics preserved.
-
-### G14 - Gan Temporal Anchoring Evaluation and Optimization
-
-- **Outcome:** Isolated evaluation of the date/event temporal anchoring component on standard50
-  and temporal challenge sets.
-- **Dependencies:** G13.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Measure accuracy of matching frequencies to correct temporal windows.
-- **Notes:** Ensure temporal extraction does not inject false candidates or rely on fragile arithmetic.
-
-### G15 - Gan Target Selection and Semantic Adjudication
-
-- **Outcome:** Design and evaluate a target selector that adjudicates over candidate inventory,
-  focusing on current quantified frequency versus seizure-free duration.
-- **Dependencies:** G12, G13, G14.
-- **Parallelizable:** no.
-- **Owner:** unassigned.
-- **Validation:** Performance on `gan_s0_g6_standard50_v1` target selection overlay.
-- **Notes:** Address precision vs. recall tradeoff in candidate inventory and its impact on selector reasoning.
-
 ### G16 - Gan Rate/Duration Aggregation Policy
 
 - **Outcome:** Explicit clinical rules and model prompts for aggregating multiple frequency mentions.
@@ -273,6 +168,15 @@ These are the only completed-work facts that should influence the next pull.
 Detailed card history belongs in linked reports, generated artifacts, archive
 indexes, and git history.
 
+- **X2 pairwise interaction results were corrected as non-answering.** The
+  earlier Pair 4 S1-versus-S2 and Pair 3 S4-guard comparisons followed schema
+  ladder surfaces, so they are diagnostic provenance only and do not promote or
+  reject the pairwise mechanisms. Corrected Pair 3 must compare annotated
+  medication alone against annotated medication plus medication temporality,
+  with annotated medication as the sole scored endpoint. Corrected Pair 4 must
+  use investigation-only and comorbidity-only directional component arms rather
+  than S1 versus S2. B1 remains blocked. Report:
+  `docs/experiments/exect/exect_pairwise_interaction_results_x2_20260529.md`.
 - **Architecture cleanup is no longer blocking research.** The C12-C20
   decomposition work closed the original P1 monolith risks or reclassified them
   as accepted residual P2/provenance risks. Gan S0, ExECT S0/S1, ExECT S4/S5,
@@ -290,6 +194,12 @@ indexes, and git history.
   were shrunk, and `ruff`/`vulture` were brought clean on `src scripts tests`.
   Do not add more cleanup cards unless they name a concrete active runtime
   contract to remove.
+- **E12 investigation ceiling is confirmed.** Analysis across validation and
+  test splits shows the isolated investigation component reaches 90.4% - 97.2%
+  F1. Mismatches are minor and driven by gold omissions and clinical reasoning
+  modifier boundaries (e.g. EEG psychogenic confirmation). The component is classified
+  as near ceiling, unblocking Pair 4 (investigation + comorbidity) interaction tests.
+  Report: `docs/experiments/exect/exect_investigation_isolated_ceiling_e12_20260529.md`.
 - **ExECT substrates exist, but most ceilings are still open.** Frequency
   event/rate payload covers 43/43 validation gold labels but has low precision;
   S1 raw/bridge/prompt attribution exists; medication current-Rx has a no-model
@@ -385,13 +295,64 @@ indexes, and git history.
   `docs/experiments/gan/gan_s0_g9_exact_miss_failure_inspection_20260529.md`.
 - **G11 completed the candidate-inventory challenge-set pass.** The locked G6
   `gan_s0_g6_candidate_coverage_exact_miss` challenge set remains 0/21 exact,
-  14/21 Purist-equivalent, and 17/21 Pragmatic-equivalent, with 0 row diffs
-  versus the stored G1 substrate. The four G9 standard50 exact-miss records are
-  still 0/4 exact but 4/4 Purist/Pragmatic-equivalent. This does not mean the
-  raw candidate builder must emit aggregate labels that never appear verbatim in
-  the note. It means G10 needs an aggregation-aware answer-option surface, or a
-  narrower category-level selector claim. Report:
+  14/21 Purist-equivalent, and 17/21 Pragmatic-equivalent. Compared with the
+  stored G1 substrate, 20 rows changed because the current runtime prunes broad
+  abstention options when concrete frequency candidates are present. The four
+  G9 standard50 exact-miss records are still 0/4 exact but 4/4
+  Purist/Pragmatic-equivalent. This does not mean the raw candidate builder
+  must emit aggregate labels that never appear verbatim in the note. It means
+  G10 needs an aggregation-aware answer-option surface, or a narrower
+  category-level selector claim. Report:
   `docs/experiments/gan/gan_s0_g11_candidate_inventory_challenge_set_pass_20260529.md`.
+- **G18 source-level abstention candidate gating is complete.** The current G11
+  report and a full validation recompute show 0 rows where standalone
+  `unknown` or `no seizure frequency reference` appear beside concrete
+  frequency candidates. The focused temporal-candidate regression
+  `test_temporal_candidates_drop_abstention_options_when_frequency_candidates_exist`
+  passes. Treat the old G1 abstention-heavy labels as provenance, not the
+  active candidate surface. Abstention-only `unknown` versus
+  `no seizure frequency reference` cases are routed to G13.
+- **G13 completed the isolated frequency-content gate report.** The no-model
+  gate over the current deterministic temporal candidate substrate reaches
+  244/299 validation accuracy (81.6%). Quantified-frequency presence is
+  high-recall at 201/203 (99.0%), and no-reference predictions are precise
+  (10/10), but unclear-frequency recall is 10/40 (25.0%) and seizure-free
+  recall is 23/45 (51.1%). The main source-level errors are unknown or
+  seizure-free gold rows routed to quantified-frequency presence, so G14/G15
+  must account for gate errors before attributing misses to temporal anchoring
+  or target selection. Report:
+  `docs/experiments/gan/gan_s0_g13_frequency_content_gate_report_20260529.md`.
+- **G14 completed the temporal anchoring diagnostic pass.** The no-model report
+  over current deterministic temporal candidates found 41/50 standard50 exact
+  candidate coverage and 36/40 temporal-slot coverage on temporally applicable
+  rows. On `gan_s0_g6_temporal_anchoring`, exact and slot coverage are 13/15;
+  `gan_16772` and `gan_16825` are true temporal-slot misses, while standard50
+  gate-confused rows remain G13 upstream caveats. The decision is not to expand
+  fragile arithmetic or broad relative-anchor guards from this pass; route the
+  remaining exact misses to aggregation-aware answer construction plus G15.
+  Report:
+  `docs/experiments/gan/gan_s0_g14_temporal_anchoring_report_20260529.md`.
+- **G12 completed the answer-option routing decision.** On the locked G6
+  exact-miss challenge set, raw options remain 0/21 exact, 14/21
+  Purist-equivalent, and 17/21 Pragmatic-equivalent. The current constructed
+  aggregate subset is still 0/21 exact, with 11/21 Purist-equivalent and 13/21
+  Pragmatic-equivalent coverage. Therefore G10 was allowed to proceed only as a
+  category-level/candidate-ranking selector comparison; exact closed answer
+  options now require G16 aggregation policy, or a separate deterministic
+  aggregation constructor with fixture tests informed by G14. G10 has
+  since completed and been rejected as tested. Report:
+  `docs/experiments/gan/gan_s0_g12_answer_option_surface_20260529.md`.
+- **G10 completed the narrowed category-ranking selector arm.** The model-backed
+  run on `gan_s0_g6_standard50_v1` preserved the fixed scorer, loader, split,
+  bridge, candidate builder, label-construction, and prediction-repair controls.
+  Category decisions and candidate rankings were present in 50/50 predictions,
+  but the arm reached only 36/50 paper monthly and 70.0% canonical monthly,
+  below builder-gap GPT (41/50), D1 v1.2b (40/50), and G8 (37/50) on the same
+  records. The unknown/no-reference overlay fell to 4/10. Do not full-validate
+  or promote this arm; exact closed answer-option construction remains blocked
+  on G16 or a separate deterministic aggregation constructor informed by G14.
+  Report:
+  `docs/experiments/gan/gan_s0_g10_candidate_ranking_target_selector_report_20260529.md`.
 - **Gan S0 now has a plain-English component handoff.** The key-axes progress
   report translates the decomposition into reader-facing components:
   frequency-content gate, candidate inventory, temporal anchoring, target
@@ -450,18 +411,23 @@ clear active dependency.
 - G11 completed the candidate-inventory exact-miss pass and found that raw
   inventory labels are not sufficient as exact answer options for aggregation
   cases.
-- G18 is the immediate source-level cleanup before selector work: broad
-  abstention candidates should not be universal answer options when concrete
-  frequency evidence is already represented.
-- G10 is blocked until G12 defines aggregation-aware answer options or explicitly
-  narrows the selector claim to category-level selection; it also depends on
-  G18 so adjudicators are not tested against incoherent abstention-heavy option
-  lists.
-- G12 should not mutate scorer, loader, split, benchmark bridge, prompt, model,
-  or prediction-repair semantics.
-- G13 establishes the baseline for the frequency-content gate. G14 (temporal anchoring)
-  and G15 (target selection) depend on G13's classification accuracy to avoid cascading gate errors.
-- G15 depends on source-level abstention gating from G18, the
+- G18 completed the source-level cleanup before selector work: broad abstention
+  candidates are no longer active universal answer options when concrete
+  frequency evidence is already represented. Older G1 rows document the
+  pre-pruning surface; G11 current rows document the active surface.
+- G10 completed the narrowed category-level/candidate-ranking claim authorized
+  by G12 and was rejected as tested. Exact closed answer-option construction
+  remains blocked on G16 or a new deterministic aggregation constructor informed
+  by G14.
+- G12 did not mutate scorer, loader, split, benchmark bridge, prompt, model, or
+  prediction-repair semantics.
+- G13 established the baseline for the frequency-content gate. G15 (target
+  selection) should use G13's false-positive and false-negative rows to avoid
+  cascading gate errors.
+- G14 established the temporal anchoring diagnostic baseline. G15 should carry
+  `gan_16772` and `gan_16825` as temporal-slot upstream caveats rather than
+  treating those exact misses as pure selector failures.
+- G15 depends on the completed source-level abstention gating from G18, the
   answer-option/aggregation surface from G12, and the gates from G13 and G14.
 - G16 and G17 refine semantic policies (aggregation and unknown vs. no-reference) downstream of G15's selection mechanism.
 - The Gan key-axes progress report is the handoff reference for plain-English
@@ -477,14 +443,16 @@ clear active dependency.
   counts, hypotheses, metrics, interference criteria, and stop rules before
   drafting diagnosis+seizure type, seizure type+frequency,
   investigation+comorbidity, medication+frequency, or medication+temporality
-  follow-ups.
+  follow-ups. Do not use S1-S4 ladder comparisons as pairwise evidence; each
+  follow-up needs target-component-alone versus target-plus-paired-component
+  arms.
 - B1 stays blocked until isolated component ceilings and pairwise interaction
   evidence exist. Substrates alone are not enough to rebuild optimized stacks.
 
 ## Parallelization Opportunities
 
-- **Safe now:** pull G13 to isolate and measure the frequency-content gate. Run G9 for a no-model G8 failure inspection, draft a new
-  validation-only ExECT mechanism card from E11 findings before any model
+- **Safe now:** pull G15 for target selection with G13/G14 caveats, draft a
+  new validation-only ExECT mechanism card from E11 findings before any model
   calls, or do error-analysis/readme cleanup tied to completed Gan artifacts.
   Any downstream Gan selector/adjudicator run must use the G6
   evaluation-surface protocol and preserve scorer, loader, split, benchmark
@@ -500,26 +468,22 @@ clear active dependency.
 - **Blocked together:** B1 waits on ExECT component ceilings.
 - **Model-call gated:** E3/E4 audits are complete, so any related model run now
   needs a preregistered comparison against the full-note/current-stack baseline.
-  G10 and other Gan selector model calls wait on G18 and G12 routing, and any
-  Gan selector full-validation run should wait until the standard-50 mechanism
-  has cleared its stop rule.
+  G10's narrowed selector lane is complete and rejected as tested. Any new Gan
+  selector/adjudicator lane needs a new preregistered mechanism card, and any
+  full-validation run should wait until the standard-50 mechanism has cleared
+  its stop rule.
 
 ## Recommended Next Pull
 
-1. **Pull G18 first:** fix source-level abstention candidate gating so
-   `unknown` and `no seizure frequency reference` are not offered beside
-   concrete frequency candidates.
-2. Pull G13 to get the frequency-content gate right: implement and evaluate the isolated frequency-content gate to reliably separate no-mention, unclear-frequency, and seizure-free/quantified presence.
-3. Pull G12: scope the aggregation-aware answer-option surface that G11 made
-   necessary, or write the explicit decision to evaluate only category-level
-   selection before G10.
-4. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
+1. Pull G15 if you want the next Gan mechanism: design target selection around
+   candidate support, G13 source-gate caveats, and G14 temporal-slot misses.
+2. In parallel, draft the ExECT validation-only mechanism card from E11 for S1
    transfer, frequency payload robustness/adjudication, or medication payload
    routing, using X2 for pairwise support counts and stop rules. Holdout rows
    remain residual evidence only.
-5. Pull G10 only after G18 is complete and G12 defines aggregation-aware answer
-   options or explicitly authorizes a narrower category-level selector claim.
-6. For additional pruning, first write a new card that names the runtime
+3. Pull G16 or a separately preregistered deterministic aggregation constructor
+   before any exact-label aggregation claim from answer options.
+4. For additional pruning, first write a new card that names the runtime
    contract to remove; C31/C32 closed the currently scoped ExECT active-priority
    pruning pass.
 
