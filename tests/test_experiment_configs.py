@@ -75,3 +75,19 @@ def test_experiment_config_rejects_conflicting_taxonomy_and_exemption():
 
     with pytest.raises(ValidationError):
         ExperimentConfig.model_validate(payload)
+
+
+def test_experiment_config_rejects_reflection_model_path_without_gepa():
+    payload = read_config_payload(
+        "configs/experiments/"
+        "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice.json"
+    )
+    payload["optimizer"] = {
+        "name": "BootstrapFewShot",
+        "metric_name": "synthesis_exact_with_evidence",
+        "max_bootstrapped_demos": 4,
+        "reflection_model_config_path": "configs/models/gan_s0_gpt5_5_openai.json",
+    }
+
+    with pytest.raises(ValidationError, match="reflection_model_config_path"):
+        ExperimentConfig.model_validate(payload)

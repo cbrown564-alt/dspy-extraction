@@ -38,7 +38,7 @@ unknown/no-reference policy before another broad prompt pass?
 | Evidence and schema | diagnostic only | High schema/evidence rates often coexist with wrong frequency labels. | Keep as gates and diagnostics, not proof of semantic correctness. |
 | CLINES-style entity-first | rejected arm | R12 C1 caused severe context loss: GPT 20.8%, Qwen 12.0% monthly on cap-25. | Do not rerun same entity-first interface. Mechanism only reopens with preserved global context. |
 | Self-consistency | rejected arm | R13 repeated sampling gave 0.0pp gain and 0% variance at temperature 0.7. | Do not spend 5x compute on Gan S0 self-consistency without a new instability hypothesis. |
-| GEPA / optimizers | blocked | R14 requires compact-delta gate before Qwen GEPA. | No new Qwen GEPA until hosted compact-delta gate clears. |
+| GEPA / optimizers | hosted gate preregistered / Qwen blocked | R14 requires compact-delta gate before Qwen GEPA. G30 now preregisters a hosted teacher-runner gate over the G27 evidence-first selector surface and adds runtime/config support for separate prediction and reflection model configs. | Dry-ran G30 matched-control and GEPA smoke configs; next step is hosted smoke only after teacher-model availability is confirmed. No new Qwen GEPA until hosted compact-delta gate clears. |
 
 G19/G20/G17/G21/G22/G23/G24/G25/G27/G29 sequencing note: the post-G16 standard50 attribution audit is the active
 row-level optimization queue for Gan follow-up work. It classifies 65

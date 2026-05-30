@@ -107,10 +107,14 @@ The active program is the May 28 component-ceiling pivot:
   planning; model calls wait for preregistration, dry-run validation, and
   teacher-model availability.
 - **Owner:** Codex.
+- **Status:** preregistered and runtime/config gate implemented; live model
+  calls not yet run.
 - **Validation:** Add config/runtime support proving the prediction LM and GEPA
   reflection LM can differ; preregister G30 controls; dry-run configs; preserve
   fixed scorer, loader, split, benchmark bridge, candidate-builder,
   constructor, and prediction-repair semantics; run smoke before standard50.
+  Implemented runtime support with `optimizer.reflection_model_config_path`,
+  added matched-control and GEPA smoke configs, and dry-ran both successfully.
 - **Notes:** Treat GPT-5.4 as a requested teacher alias that must be verified
   against available model config before live calls. If unavailable, use the
   repo's strongest approved hosted GPT-5-family teacher config or add a
@@ -124,7 +128,11 @@ The active program is the May 28 component-ceiling pivot:
   beat G27's 247/299 paper monthly or justify a narrower arm-level decision.
   Record per-predictor instruction length and reject policy-wall wins unless
   the benchmark-facing lift justifies the tradeoff. Qwen remains blocked until
-  the hosted compact-delta gate clears.
+  the hosted compact-delta gate clears. See
+  `docs/experiments/gan/gan_s0_g30_gepa_teacher_runner_preregistration_20260530.md`,
+  `configs/experiments/gan_s0_g30_evidence_first_control_gpt4_1_mini_smoke6.json`,
+  and
+  `configs/experiments/gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6.json`.
 
 ### P3 - ExECT Medication Prompt-Isolation Or Routing Card
 

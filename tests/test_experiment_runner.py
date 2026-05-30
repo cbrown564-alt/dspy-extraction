@@ -9,9 +9,13 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from clinical_extraction.experiments.backends import BACKENDS, get_backend
-from clinical_extraction.experiments.config import load_experiment_config
+from clinical_extraction.experiments.config import (
+    ExperimentConfig,
+    load_experiment_config,
+)
 from clinical_extraction.experiments.runner import (
     gepa_reflection_config,
+    resolve_gepa_reflection_model_config,
     resolve_split_record_ids,
     run_experiment,
 )
@@ -319,6 +323,63 @@ def test_gepa_reflection_config_uses_high_temperature_when_supported():
     reflection = gepa_reflection_config(base)
 
     assert reflection.temperature == 1.0
+
+
+def test_resolve_gepa_reflection_model_config_uses_explicit_optimizer_path(tmp_path):
+    prediction_config = LLMProviderConfig(
+        provider="openai",
+        model="gpt-4.1-mini",
+        api_key_env="OPENAI_API_KEY",
+        temperature=0.0,
+    )
+    reflection_config_path = tmp_path / "reflection.json"
+    reflection_config_path.write_text(
+        json.dumps(
+            {
+                "provider": "openai",
+                "model": "gpt-5.5",
+                "api_key_env": "OPENAI_API_KEY",
+                "temperature": None,
+                "timeout_seconds": 90.0,
+            }
+        ),
+        encoding="utf-8",
+    )
+    config = ExperimentConfig.model_validate(
+        {
+            **load_experiment_config(GAN_ACTIVE_CONFIG).model_dump(mode="json"),
+            "optimizer": {
+                "name": "GEPA",
+                "metric_name": "gan_s0_stage_attributed_frequency_feedback",
+                "max_metric_calls": 4,
+                "reflection_model_config_path": str(reflection_config_path),
+            },
+        }
+    )
+
+    reflection = resolve_gepa_reflection_model_config(config, prediction_config)
+
+    assert reflection.model == "gpt-5.5"
+    assert reflection.temperature is None
+
+
+def test_dry_run_prints_explicit_gepa_reflection_model_config(tmp_path, capsys):
+    base_config = load_experiment_config(GAN_ACTIVE_CONFIG)
+    config_payload = base_config.model_dump(mode="json")
+    config_payload["optimizer"] = {
+        "name": "GEPA",
+        "metric_name": "gan_s0_stage_attributed_frequency_feedback",
+        "max_metric_calls": 4,
+        "reflection_model_config_path": "configs/models/gan_s0_gpt5_5_openai.json",
+    }
+    run_config_path = tmp_path / "config.json"
+    run_config_path.write_text(json.dumps(config_payload), encoding="utf-8")
+
+    exit_code = run_experiment(run_config_path, dry_run=True)
+    captured = capsys.readouterr().out
+
+    assert exit_code == 0
+    assert "Reflection model: configs/models/gan_s0_gpt5_5_openai.json" in captured
 
 
 def test_runner_validation_b2_api_key_env_missing(tmp_path, capsys):

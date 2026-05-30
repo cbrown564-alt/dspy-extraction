@@ -65,10 +65,15 @@ class OptimizerConfig(FrozenModel):
     use_cloudpickle: bool = False
     num_threads: int | None = Field(default=None, gt=0)
     seed: int | None = 0
+    reflection_model_config_path: Path | None = None
 
     @model_validator(mode="after")
     def validate_optimizer_settings(self) -> OptimizerConfig:
         if self.name == "LabeledFewShot":
+            if self.reflection_model_config_path is not None:
+                raise ValueError(
+                    "reflection_model_config_path is only valid for GEPA optimizer configs."
+                )
             if self.max_labeled_demos < 1:
                 raise ValueError(
                     "LabeledFewShot optimizer configs must set max_labeled_demos >= 1."
@@ -84,6 +89,10 @@ class OptimizerConfig(FrozenModel):
             return self
 
         if self.name in {"BootstrapFewShot", "BootstrapFewShotWithRandomSearch"}:
+            if self.reflection_model_config_path is not None:
+                raise ValueError(
+                    "reflection_model_config_path is only valid for GEPA optimizer configs."
+                )
             if self.max_bootstrapped_demos < 1:
                 raise ValueError(
                     f"{self.name} optimizer configs must set max_bootstrapped_demos >= 1."

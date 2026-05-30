@@ -15,8 +15,13 @@ from typing import Any, Callable, TextIO
 import dspy
 
 from clinical_extraction.experiments.backends import get_backend
-from clinical_extraction.experiments.config import ExperimentConfig, OptimizerConfig, load_experiment_config
+from clinical_extraction.experiments.config import (
+    ExperimentConfig,
+    OptimizerConfig,
+    load_experiment_config,
+)
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
+from clinical_extraction.paths import resolve_config_path
 from clinical_extraction.runs import create_run_artifact_layout
 
 
@@ -119,6 +124,12 @@ def print_optimizer_plan(
             f"candidate_selection={optimizer.candidate_selection_strategy})",
             file=file,
         )
+        if optimizer.reflection_model_config_path is not None:
+            print(
+                "Reflection model: "
+                f"{optimizer.reflection_model_config_path.as_posix()}",
+                file=file,
+            )
         return
 
     if optimizer.name == "LabeledFewShot":
@@ -309,6 +320,50 @@ def gepa_reflection_config(base: LLMProviderConfig) -> LLMProviderConfig:
     return base.model_copy(update={"temperature": 1.0})
 
 
+def resolve_gepa_reflection_model_config(
+    config: ExperimentConfig,
+    prediction_config: LLMProviderConfig,
+) -> LLMProviderConfig:
+    """Resolve the GEPA reflection model config for an experiment."""
+    optimizer = config.optimizer
+    if (
+        optimizer is None
+        or optimizer.name != "GEPA"
+        or optimizer.reflection_model_config_path is None
+    ):
+        return gepa_reflection_config(prediction_config)
+
+    path = resolve_config_path(optimizer.reflection_model_config_path)
+    return LLMProviderConfig.model_validate_json(path.read_text(encoding="utf-8"))
+
+
+def validate_hosted_provider_credentials(
+    model_config: LLMProviderConfig,
+    *,
+    dry_run: bool,
+    emit: Callable[[str], None],
+    role: str = "model",
+) -> None:
+    """Warn on dry-runs and fail live runs when hosted credentials are absent."""
+    if model_config.provider in ("ollama", "mock"):
+        return
+    api_key_env = model_config.api_key_env
+    if api_key_env:
+        if not os.environ.get(api_key_env):
+            emit(
+                f"Warning: required API key environment variable {api_key_env!r} "
+                f"is not set in the current process or env file ({role})."
+            )
+            if not dry_run:
+                raise ValueError(
+                    f"Required API key environment variable {api_key_env!r} is not set."
+                )
+    elif not model_config.api_key:
+        emit(f"Warning: no api_key or api_key_env configured for hosted {role}.")
+        if not dry_run:
+            raise ValueError(f"No api_key or api_key_env configured for hosted {role}.")
+
+
 def capture_local_model_residency(
     provider: str,
     model_name: str,
@@ -480,19 +535,27 @@ def run_experiment(
     model_config = LLMProviderConfig.model_validate_json(
         config.model_config_path.read_text(encoding="utf-8")
     )
+    reflection_model_config: LLMProviderConfig | None = None
+    if config.optimizer is not None and config.optimizer.name == "GEPA":
+        reflection_model_config = resolve_gepa_reflection_model_config(
+            config,
+            model_config,
+        )
 
     # B2 check: Add Runtime Environment Checks Before Live Provider Runs
-    if model_config.provider not in ("ollama", "mock"):
-        api_key_env = model_config.api_key_env
-        if api_key_env:
-            if not os.environ.get(api_key_env):
-                emit(f"Warning: required API key environment variable {api_key_env!r} is not set in the current process or env file.")
-                if not dry_run:
-                    raise ValueError(f"Required API key environment variable {api_key_env!r} is not set.")
-        elif not model_config.api_key:
-            emit("Warning: no api_key or api_key_env configured for hosted provider.")
-            if not dry_run:
-                raise ValueError("No api_key or api_key_env configured for hosted provider.")
+    validate_hosted_provider_credentials(
+        model_config,
+        dry_run=dry_run,
+        emit=emit,
+        role="prediction model",
+    )
+    if reflection_model_config is not None and reflection_model_config != model_config:
+        validate_hosted_provider_credentials(
+            reflection_model_config,
+            dry_run=dry_run,
+            emit=emit,
+            role="GEPA reflection model",
+        )
 
     # B3 check: Keep Qwen Context And Timeout Pairing Explicit
     if model_config.provider == "ollama":
@@ -529,7 +592,7 @@ def run_experiment(
     dspy.configure(lm=lm)
     reflection_lm = None
     if config.optimizer is not None and config.optimizer.name == "GEPA":
-        reflection_config = gepa_reflection_config(model_config)
+        reflection_config = reflection_model_config or gepa_reflection_config(model_config)
         reflection_lm = build_dspy_lm(reflection_config)
 
     resolved_run_id = run_id or make_run_id(config.experiment_id)
@@ -544,6 +607,22 @@ def run_experiment(
             "experiment_id": config.experiment_id,
             "structured_output_strategy": config.structured_output_strategy,
             "schema_level": config.schema_level,
+            "reflection_model_config_path": (
+                str(config.optimizer.reflection_model_config_path)
+                if config.optimizer is not None
+                and config.optimizer.reflection_model_config_path is not None
+                else None
+            ),
+            "reflection_model_provider": (
+                reflection_model_config.provider
+                if reflection_model_config is not None
+                else None
+            ),
+            "reflection_model_name": (
+                reflection_model_config.model
+                if reflection_model_config is not None
+                else None
+            ),
         },
     )
     metadata = metadata.model_copy(
