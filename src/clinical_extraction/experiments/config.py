@@ -162,6 +162,7 @@ class ExperimentConfig(FrozenModel):
     optimizer: OptimizerConfig | None = None
     taxonomy: ExperimentTaxonomy | None = None
     taxonomy_exemption: TaxonomyExemptionValue | None = None
+    refresh_explorer: bool = False
 
     @model_validator(mode="after")
     def validate_taxonomy_fields(self) -> ExperimentConfig:

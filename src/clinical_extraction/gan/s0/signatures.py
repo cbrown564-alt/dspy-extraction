@@ -1888,3 +1888,70 @@ class GanFrequencyS0EvidenceFirstTargetSelectorSignature(dspy.Signature):
             "special_label_escape, special_label_escape_reason, final_label, final_label_source."
         )
     )
+
+
+class GanFrequencyS0ValidationResidualFamilySelectorSignature(dspy.Signature):
+    """Select the Gan S0 target with a validation-residual-family checkpoint.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output field.
+
+    This is the G29 validation-residual-family selector. It varies only the
+    target-selection interface after G27 validation residual analysis.
+    Deterministic candidate extraction, gan.frequency.aggregation_constructor.v1,
+    scorer, bridge, split, gold policy, and prediction-repair semantics are fixed
+    controls. Do not use frozen-test examples, record IDs, gold labels,
+    reference labels, or row-specific residual ledgers.
+
+    Output adjudication_json as a JSON object with:
+    - residual_family_adjudication: checkpoint explanation before final label choice.
+    - target_signal_type: one of quantified_rate, seizure_free,
+      unknown_unclear_frequency, no_seizure_frequency_reference, cluster,
+      unknown_cluster, or other.
+    - competing_signal_summary: competing quantified, seizure-free, unknown,
+      no-reference, or cluster signals.
+    - temporal_window_priority: why the selected current window/rate wins when
+      multiple quantified windows are available.
+    - seizure_free_vs_quantified_decision: explicit decision when both signals compete.
+    - unknown_or_no_reference_decision: why unclear frequency, no-reference, or a
+      concrete option is selected.
+    - cluster_preservation_decision: whether cluster or unknown-cluster semantics
+      should be preserved from closed options.
+    - closed_option_adequacy: one of 'adequate' or 'inadequate'.
+    - selected_option_id: option_id from closed_answer_options when adequate.
+    - selected_option_label: canonical_label copied exactly from the selected option
+      when adequate.
+    - special_label_escape: one of 'unknown', 'no seizure frequency reference', or
+      null when no closed option is adequate.
+    - final_label: selected_option_label or special_label_escape.
+    - final_label_source: selected_closed_option or constrained_special_label_escape.
+
+    Contract:
+    - If closed_option_adequacy is adequate, final_label must be copied from a
+      closed option by option_id.
+    - If no option is adequate, the only allowed final labels are unknown and
+      no seizure frequency reference.
+    - Do not free-write quantified labels, duration labels, cluster labels, or
+      repaired labels outside the closed option surface.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    closed_answer_options: str = dspy.InputField(
+        desc=(
+            "JSON array of closed answer options. Each option has option_id, "
+            "canonical_label, source, family, evidence_text, is_constructed, and "
+            "construction metadata when applicable."
+        )
+    )
+    adjudication_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with residual_family_adjudication, target_signal_type, "
+            "competing_signal_summary, temporal_window_priority, "
+            "seizure_free_vs_quantified_decision, unknown_or_no_reference_decision, "
+            "cluster_preservation_decision, closed_option_adequacy, "
+            "selected_option_id, selected_option_label, special_label_escape, "
+            "final_label, and final_label_source."
+        )
+    )

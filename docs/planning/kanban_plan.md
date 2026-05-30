@@ -1,182 +1,154 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 completed G28 standard50 validation run satisfying G25 gate
+Last refreshed: 2026-05-29 after G29 and ExECT E1-E13 next-experiment synthesis
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
-This board is current-first. Completed work is summarized only where it changes
-active sequencing. The architecture lane is closed as a bottleneck, and the
-remaining pulls are organized around two priorities:
+This board is current-first. Completed work is retained only when it changes
+active sequencing. Detailed history belongs in
+`component_ceiling_registry.md`, experiment reports, generated artifacts,
+archive indexes, and git history.
 
-1. preserve the simplified architecture so the decomposition program stays easy
-   to follow, test, and extend;
-2. run experiments around the May 28 component-ceiling research program,
-   not around old broad-pipeline improvement loops.
+The active program is the May 28 component-ceiling pivot:
 
-Historical cards, rejected arms, and old backlog detail remain provenance in
-`kanban_frozen_threads_history.md`, experiment notes, archive indexes, and run
-artifacts. They are not active guidance unless this board,
-`current_research_program.md`, or `component_ceiling_registry.md` explicitly
-promotes them.
+1. estimate or explain isolated component ceilings;
+2. test pairwise interference before rebuilding stacks;
+3. keep scorer, loader, split, benchmark bridge, and prediction-repair
+   semantics fixed unless a card explicitly changes them.
 
 ## Current Priorities
 
-1. **Use E11 as a completed residual router, not a tuning source.** E11
-   attributes the ExECT validation-to-holdout drop without scorer, loader,
-   split, bridge, prompt, prediction-repair, or artifact changes. S1 loss is
-   concentrated in diagnosis/seizure-type transfer while medication is stable;
-   S5 frequency loss is mixed payload-generalization plus adjudication.
-2. **ExECT work starts from isolated family questions.** Use the completed
-   frequency, medication, S1 raw/bridge/prompt, and family-span substrates to
-   measure ceilings or explain interference: investigation confirmation (E12),
-   validation-only S1 transfer probes, frequency payload
-   robustness/adjudication, and medication payload routing or prompt isolation.
-   X2 now preregisters pairwise interaction hypotheses, support counts,
-   primary metrics, interference criteria, and stop rules. The May 29 X2
-   result correction makes clear that schema-ladder comparisons are
-   non-answering diagnostics, not completed pairwise evidence. Optimized
-   S1*/S2*/S3*/S4*/S5* stacks remain blocked until isolated ceilings and
-   corrected component-isolated pairwise interaction evidence exist.
-3. **Gan S0 work stays decomposed.** Use D1 v1.2b and the G1/G2/G3 artifacts to
-   separate candidate inventory, temporal anchoring, target selection, label
-   construction, and unknown/no-reference policy. G4 is completed as a negative
-   same-slice traceability result; use its failure records and the G5
-   scorer-mode forensics before trying another seizure-free-versus-quantified
-   selector. G6 now fixes the evaluation surface: use the old 25-record
-   enriched slice only for smoke checks, use `gan_s0_g6_standard50_v1` for
-   default mechanism comparisons, and use named challenge sets only with their
-   declared decision scopes. Use the completed G5 rescore pack before any
-   synthetic paper-facing comparison. For plain-English handoff language, use
-   `docs/experiments/gan/gan_s0_key_axes_progress_report_20260528.md`: we are
-   now strong at finding possible answers and formatting a chosen answer, but
-   still weakest at choosing the right answer when a note contains competing
-   signals. G8 completed the G7 class-first selector as a rejected arm: trace
-   fields were complete, but standard50 paper monthly was 37/50, below D1
-   (40/50) and builder-gap GPT (41/50), with regressions on seizure-free versus
-   quantified and unknown/no-reference overlays. G11 completed the no-model
-   candidate-coverage challenge pass: the locked 21-record G6 exact-miss
-   surface remains 0/21 exact, 14/21 Purist-equivalent, and 17/21
-   Pragmatic-equivalent. This should not be treated as a simple candidate-builder
-   defect because some gold labels require temporal anchoring and aggregation
-   across separately reported events. G12 has now explicitly narrowed G10:
-   before a new aggregation constructor exists, G10 may test category-level or
-   candidate-ranking selection only, not exact closed answer-option
-   construction. G10 has now tested that narrowed selector arm and is rejected
-   as tested: it reached 36/50 paper monthly on `gan_s0_g6_standard50_v1`,
-   below G8 (37/50), D1 v1.2b (40/50), and builder-gap GPT (41/50), with
-   complete category/ranking traces but regression on the unknown/no-reference
-   overlay. Do not full-validate this arm. G18 is complete for the source-level candidate-interface bug:
-   current runtime and the G11 current rows have 0 cases where broad standalone
-   abstentions (`unknown`, `no seizure frequency reference`) are offered beside
-   concrete frequency candidates. The older G1 lists remain provenance for the
-   pre-pruning surface. G13 now supplies the isolated frequency-content gate
-   baseline: overall gate accuracy is 244/299 (81.6%), with strong
-   quantified-frequency recall (201/203, 99.0%) and no-reference precision
-   (10/10 predicted no-reference rows), but weak unclear-frequency recall
-   (10/40, 25.0%) and seizure-free recall (23/45, 51.1%). G14 now supplies the
-   temporal anchoring diagnostic baseline: standard50 exact candidate coverage
-   is 41/50 and temporal-slot coverage is 36/40 applicable rows; the temporal
-   challenge set is 13/15 exact and slot-covered, with `gan_16772` and
-   `gan_16825` as true temporal-slot misses. G15 then tested an LLM
-   support-aware target selector with G13/G14 caveats carried forward and is
-   rejected as tested: support context was present for 50/50 records, but paper
-   monthly fell to 31/50, below G10 (36/50), G8 (37/50), D1 v1.2b (40/50),
-   and builder-gap GPT (41/50), with regressions on target-selection,
-   seizure-free-versus-quantified, and unknown/no-reference overlays. Do not
-   full-validate G15. G16 now defines the no-model aggregation policy: 16/21
-   G11 exact-miss rows are blocked on aggregation or duration policy before
-   exact closed-answer options, and standard50 has four quantified rate
-   aggregation blocks. Exact closed-option selector claims remain blocked until
-   a deterministic constructor or preregistered model mechanism satisfies that
-   policy. G19 has now completed the post-G16 attribution audit: across the
-   five inspected standard50 arms, the leading arm-miss classes are aggregation
-   blocks with missing temporal slots (16 arm-misses / 4 rows), unclear or
-   unknown-cluster evidence misrouted as concrete (15 / 6), seizure-free over
-   quantified target selection (11 / 6), and wrong quantified rate/window
-   selection (11 / 5). G20 preregistered a deterministic, fixture-first
-   quantified-rate aggregation constructor for the G19 aggregation block, and
-   G21 has now implemented the first scoped constructor: Standard50 exact option
-   coverage rises from 41/50 raw to 45/50 combined, and the G11 exact-miss
-   challenge reaches 12/21 constructed exact with zero deferred or
-   negative-control constructions. This is answer-option coverage, not selector
-   performance. G17 has now completed the special-label policy separation:
-   the active unknown/no-reference surface is a nine-row slice covering
-   unclear-frequency, unknown-cluster, seizure-free/no-reference scorer
-   discordance, and concrete-rate overcall cases, with zero deterministic repair
-   candidates. G22 has now completed the closed-option target-selection ledger
-   arm and is rejected as tested: trace fields were complete in 50/50 records
-   and final labels were copied from selected closed options, but standard50
-   paper monthly was 39/50, below builder-gap GPT at 41/50, with
-   seizure-free-versus-quantified and unknown/no-reference overlay regressions.
-   Do not full-validate G22. Any next Gan selector needs a new mechanism card
-   that accounts for the G22 row ledger, especially the G17 builder-gap
-   regressions (`gan_9566`, `gan_5974`, `gan_6607`, `gan_14002`,
-   `gan_11380`) and the G21 constructed-option selection failures on
-   `gan_16772` and `gan_16825`. G23 has now explained the selector failure
-   mechanism: across G8/G10/G15/G22, 39/57 selector arm-misses already had an
-   exact answer option available, while G22's five exact-absent misses were
-   forced wrong choices on G17 unknown rows. G25 has now defined the
-   standard50/full-validation/test gate: standard50 remains a mechanism slice,
-   43/50 is an obvious-pass trigger, 39-42/50 requires a clean preregistered
-   row-ledger exception, and below 39/50 is blocked without an explicit
-   generalization exception. G24 has now preregistered the next interface:
-   evidence-first selector narration, a constrained special-label escape, and
-   construction-aware option priority before another selector run. The next Gan
-   pull is G28, the GPT-4.1-mini cap5/standard50 execution of that protocol.
-   Qwen3.6:35b and full-validation/test residual runs remain blocked until the
-   G28 row ledger satisfies the G25 gate.
-4. **Benchmark and scorer policy are frozen unless explicitly changed.** Gan
-   paper comparisons use `gan2026_paper_reproduction`; canonical Gan metrics
-   remain diagnostic. ExECT Table 1 reproduction remains blocked until
-   CUI-aware all-family scoring exists. Holdout metrics trigger residual
-   analysis only; do not tune from holdout.
-5. **Architecture is now a constraint, not the main workstream.** C12-C32 closed
-   the scoped cleanup and active-authority pass. Ordinary config, run, and
-   program factory resolution is active-only by default; historical, rejected,
-   and replay/provenance configs require explicit archive/reporting opt-in.
-   Additional cleanup needs a new card naming the active runtime contract being
-   removed.
-6. **Completed work is context, not a pull list.** Use
-   `component_ceiling_registry.md` for row-level provenance and this board for
-   active sequencing. Frozen C-card/R/A history should not re-enter the board
-   unless translated into a current component, benchmark, or runtime-contract
-   card.
+1. **Gan S0: G29 is implemented and rejected as tested.** The G24/G28
+   evidence-first selector is useful on validation but not promoted as an
+   operational default after G27. Full synthetic validation improves over
+   stored builder-gap GPT under the paper scorer, but frozen-test monthly is
+   essentially tied and lower on pragmatic category. G29 added the
+   validation-residual-family checkpoint and preserved trace / label-contract
+   validity, but full validation regressed versus G27: 243/299 paper monthly
+   versus 247/299, with 10 gains and 14 regressions. Do not promote G29 or run
+   a frozen-test check for this arm.
 
-## Ready
+2. **ExECT: move from substrates to isolated ceilings and corrected pairwise
+   arms.** E11 remains a residual router only. The E1-E13 synthesis now routes
+   the next ExECT experiments to frequency adjudication over the fixed broad
+   payload, S1 diagnosis/seizure raw-bridge ceiling comparators, medication
+   prompt isolation or deterministic routing after E13, and corrected X2
+   pairwise arms. B1 stays blocked until isolated family ceilings and
+   component-isolated interaction evidence exist.
 
-### G26 - Gan Qwen Selector Replication Batch
+3. **Medication follow-up needs a new mechanism, not the rejected E13 shape.**
+   E13 rejects the tested AM+MT lifecycle-context routing arm because it lost
+   annotated-medication recall without reducing false positives. Any next
+   medication card should test prompt isolation or deterministic routing while
+   keeping annotated medication as the sole scored endpoint and lifecycle /
+   temporality as diagnostic context only.
 
-- **Outcome:** Matched Qwen3.6:35b replication for the selector mechanism
-  chosen by G24, with GPT-4.1-mini comparison held fixed. The report should
-  identify model-specific reasoning effects rather than treating GPT-mini
-  failures as universal.
-- **Dependencies:** G24, G28 standard50 completion, G25 gate satisfaction, Qwen
-  local/provider availability, and model-call budget.
-- **Parallelizable:** after G28, but only one Qwen selector batch should run at
-  a time to keep artifacts and provider effects interpretable.
+4. **Frequency and target-selection work must stay decomposed.** For Gan,
+   separate frequency-content gating, candidate inventory, temporal anchoring,
+   aggregation, special-label policy, and final target selection. For ExECT,
+   treat broad frequency payloads as recall substrates until an adjudicator or
+   ranker is preregistered against the fixed payload.
+
+5. **Architecture cleanup is no longer a standing workstream.** C12-C32 closed
+   the active cleanup and current-authority pass. New cleanup needs a concrete
+   runtime contract or active-authority ambiguity, not historical card
+   carryover.
+
+6. **Benchmark and scorer policy stay frozen by default.** Gan paper-comparison
+   tables use `gan2026_paper_reproduction`; canonical Gan metrics remain
+   diagnostic. ExECT Table 1 reproduction remains blocked until CUI-aware
+   all-family scoring exists. Holdout and frozen-test rows are residual-analysis
+   surfaces, not tuning surfaces.
+
+## Active Pulls
+
+### P1 - Gan Validation-First Selector Follow-Up
+
+- **Outcome:** A preregistered and implemented Gan mechanism arm targeting
+  specific G27 validation residual families without using frozen-test rows for
+  wording, policy, or candidate-surface tuning.
+- **Dependencies:** G24/G28/G27 reports, G25 generalization policy, G19/G17/G22
+  row ledgers, G21 constructed-option surface.
+- **Parallelizable:** yes with ExECT follow-up planning.
+- **Owner:** Codex.
+- **Status:** rejected as tested after G29 implementation.
+- **Validation:** Smoke trace and label-contract gates passed. Full validation
+  scored 243/299 paper monthly, below G27 at 247/299, with 10 gains and 14
+  regressions.
+- **Notes:** See
+  `docs/experiments/gan/gan_s0_g29_validation_residual_selector_preregistration_20260529.md`
+  and
+  `docs/experiments/gan/gan_s0_g29_validation_residual_selector_results_20260529.md`.
+  Treat the evidence-first selector as a useful validation mechanism arm, not a
+  new default. Treat G29 as a rejected arm, not mechanism closure.
+
+### P2 - ExECT Medication Prompt-Isolation Or Routing Card
+
+- **Outcome:** A narrow validation-only medication mechanism card, and then a
+  run only if the card is explicit enough, that accounts for E7/E13 false-
+  positive and recall-regression evidence.
+- **Dependencies:** E6 current-Rx ceiling substrate, E7 stack-interference
+  attribution, E13 rejected lifecycle-context arm, E5 lifecycle target policy.
+- **Parallelizable:** yes with P4 and P5; model calls should wait for the card.
 - **Owner:** unassigned.
-- **Validation:** Cap/smoke run before standard50, then a standard50 report
-  with `gan2026_paper_reproduction` as primary scorer, canonical metrics as
-  diagnostics, row-level before/after comparison against GPT-4.1-mini, and
-  latency/token or local inference notes.
-- **Notes:** Do not spend Qwen on every rejected GPT arm. Since G28 has satisfied
-  the G25 gate, Qwen replication is now unblocked.
+- **Validation:** Annotated medication remains the sole scored endpoint;
+  lifecycle / temporality is diagnostic only; scorer and bridge semantics stay
+  fixed; E7 false-positive rows are reported as a before/after ledger.
+- **Notes:** Do not rerun AM+MT lifecycle context as tested. Do not count
+  annotation-policy or missing-gold false-positive suppression as a clean
+  precision gain unless the report says so explicitly.
 
-### G27 - Gan Full-Validation And Test-Residual Selector Check
+### P3 - ExECT Pair 4 Investigation + Comorbidity Design
 
-- **Outcome:** For a selector that clears G24/G25 gates, run full synthetic
-  validation and a frozen-test residual analysis that reports validation-to-test
-  behavior without tuning from the test rows.
-- **Dependencies:** G24, G28, model-call budget, and either a G25 standard50 pass
-  or an explicit G25 generalization exception.
-- **Parallelizable:** no; this is model-call gated and should follow the
-  preregistered mechanism and generalization protocol.
+- **Outcome:** A corrected Pair 4 design that defines the comorbidity side
+  before model calls, then compares investigation-only versus
+  investigation-plus-comorbidity and comorbidity-only versus
+  comorbidity-plus-investigation if the design clears support and policy gates.
+- **Dependencies:** X2 plan and corrected-result note, E12 investigation
+  near-ceiling confirmation, comorbidity support/representability review.
+- **Parallelizable:** design can run with P2/P4/P5; model calls wait for the
+  comorbidity side to be defined.
 - **Owner:** unassigned.
-- **Validation:** Report with run IDs, configs, scorer modes, full-validation
-  metrics, test-residual metrics, confidence/sensitivity caveats if available,
-  row-family deltas, and an explicit statement that test evidence was used for
-  residual analysis rather than tuning.
-- **Notes:** G28 standard50 standard validation run has cleared the G25 gate (88.0%), unblocking this card.
+- **Validation:** Target-component-alone versus target-plus-paired-component
+  arms, same scored endpoint, validation split, declared interference threshold,
+  and patient-history versus family-history/background leakage categories.
+- **Notes:** Do not use S1-S4 ladder comparisons as pairwise evidence. E12
+  solves the investigation comparator, not comorbidity.
+
+### P4 - ExECT Frequency Adjudicator Design
+
+- **Outcome:** A preregistered adjudicator or ranker plan against the fixed broad
+  frequency event/rate payload, followed by a validation-only arm only after
+  the endpoint and comparator are frozen.
+- **Dependencies:** E1 frequency event/rate payload, E10 candidate-selection
+  split, E11 frequency holdout residual caveat.
+- **Parallelizable:** yes with P2/P5; implementation should wait until endpoint
+  and comparator are explicit.
+- **Owner:** unassigned.
+- **Validation:** Fixed payload, fixed scorer, declared precision/recall tradeoff,
+  comparison to S4/S5 frequency baselines, candidate precision/recall, oracle
+  gap, type-associated and multi-label strata, and label-construction
+  residuals.
+- **Notes:** Do not run another coverage audit or broad-stack prompt loop as the
+  next frequency step. Do not tune from holdout; use holdout only later as a
+  residual audit.
+
+### P5 - ExECT Diagnosis And Seizure-Type Ceiling Comparators
+
+- **Outcome:** A validation-only design for isolated diagnosis and seizure-type
+  ceiling comparators that separates raw extraction, benchmark bridge,
+  specificity collapse, scope, and policy residuals before Pair 1 or S1*
+  claims.
+- **Dependencies:** E2 raw/bridge/prompt split, E11 holdout residual routing,
+  ExECT gold audit, implemented diagnosis and seizure-type benchmark bridges.
+- **Parallelizable:** yes with P2 and P4.
+- **Owner:** unassigned.
+- **Validation:** Per-family diagnosis and seizure-type precision, recall, F1,
+  raw versus bridged deltas, bridge-flagged value counts, and residual classes
+  under fixed `exect_field_family_deterministic_v1` semantics.
+- **Notes:** Do not infer diagnosis from seizure-type evidence alone, and do
+  not create seizure-type labels from frequency rows. Holdout rows remain
+  residual-analysis evidence only.
 
 ## Blocked
 
@@ -184,15 +156,14 @@ promotes them.
 
 - **Outcome:** S1*/S2*/S3*/S4*/S5* built from optimized components rather than
   broad prompt ladders.
-- **Blocked by:** isolated ceiling reports and pairwise interaction evidence,
-  not substrates alone.
+- **Blocked by:** isolated ceiling reports and corrected pairwise interaction
+  evidence, not substrates alone.
 - **Parallelizable:** no.
 - **Owner:** unassigned.
-- **Validation:** Per-family deltas from isolated ceilings, pairwise
-  interaction losses, pooled micro F1 as secondary, and holdout residual audit.
-- **Notes:** Do not start this until component ceilings exist.
-  E3/E4 provide substrates only; E6-E8 plus pairwise interaction work are still
-  needed before an optimized ExECT stack claim.
+- **Validation:** Per-family deltas from isolated ceilings, pairwise interaction
+  losses, pooled micro F1 as secondary, and holdout residual audit.
+- **Notes:** Do not start this until component ceilings and interaction evidence
+  exist.
 
 ### B2 - ExECT Table 1 Benchmark Reproduction
 
@@ -214,480 +185,113 @@ promotes them.
 - **Validation:** Protocol states split, scorer, normalization rules, and what
   can be compared to synthetic validation.
 
+## Historical Context
 
+These are the completed-work facts that still shape sequencing. They are not
+pullable done cards.
 
-## Recent Developments For Context
+- **Gan selector evidence:** G8, G10, G15, and G22 are rejected selector arms
+  under fixed scorer, loader, split, bridge, candidate-builder, and repair
+  semantics. G23 explains why: many misses already had an exact answer option,
+  so the failure is often final target selection rather than candidate
+  discovery. G24/G28 improved the interface with evidence-first narration,
+  constrained special-label escape, and construction-aware option priority; G27
+  shows validation lift but no frozen-test promotion.
 
-These are the only completed-work facts that should influence the next pull.
-Detailed card history belongs in linked reports, generated artifacts, archive
-indexes, and git history.
+- **Gan component substrates:** G13 establishes the frequency-content gate
+  baseline; G14 establishes temporal anchoring diagnostics; G16/G20/G21 define
+  and implement the first quantified-rate aggregation constructor; G17 defines
+  the nine-row special-label policy surface. Candidate discovery and constructed
+  answer-option coverage are stronger than final option choice, but neither is
+  a solved operational selector.
 
-- **G24 preregistered the evidence-first selector interface.** The protocol
-  freezes the next selector mechanism before model calls: evidence-first target
-  narration, closed-option adequacy, constrained `unknown`/`no seizure
-  frequency reference` escape, construction-aware option priority, cap5 trace
-  gate, standard50 row ledger, and G25 run-scope decision. It preserves scorer,
-  loader, split, benchmark bridge, candidate-builder, G21 constructor, and
-  prediction-repair semantics. Report:
-  `docs/experiments/gan/gan_s0_g24_selector_interface_preregistration_20260529.md`.
-- **G25 completed the selector generalization and sample-size audit.**
-  Standard50 remains the default Gan mechanism slice, but its 50-row aggregate
-  is not a promotion surface. Builder-gap GPT and D1 standard50 scores
-  overstate full-validation paper monthly by 2.1pp and 3.4pp, while stored
-  builder-gap frozen-test paper monthly drops by 15.5pp (GPT) and 11.1pp
-  (Qwen) versus validation. Future selector scale-up needs either 43/50 with
-  clean overlays, or a 39-42/50 preregistered row-ledger exception with no new
-  special-label regression; below 39/50 remains blocked without an explicit
-  generalization exception. Report:
-  `docs/experiments/gan/gan_s0_g25_selector_generalization_audit_20260529.md`.
-- **G23 completed the selector failure-mechanism audit.** Across G8/G10/G15/G22
-  on standard50, there are 57 selector arm-misses and 39 already have an exact
-  answer option available. G22's 11 misses split into 6 exact-available wrong
-  choices and 5 forced wrong choices where G17 unknown labels were absent from
-  the closed-option surface. The next selector should relax/reframe the
-  interface: evidence-first target narration, constrained special-label escape,
-  and construction-aware option priority. Report:
-  `docs/experiments/gan/gan_s0_g23_selector_failure_mechanism_audit_20260529.md`.
-- **X2 pairwise interaction results were corrected as non-answering.** The
-  earlier Pair 4 S1-versus-S2 and Pair 3 S4-guard comparisons followed schema
-  ladder surfaces, so they are diagnostic provenance only and do not promote or
-  reject the pairwise mechanisms. Corrected Pair 3 must compare annotated
-  medication alone against annotated medication plus medication temporality,
-  with annotated medication as the sole scored endpoint. Corrected Pair 4 must
-  use investigation-only and comorbidity-only directional component arms rather
-  than S1 versus S2. B1 remains blocked. Report:
-  `docs/experiments/exect/exect_pairwise_interaction_results_x2_20260529.md`.
-- **E13 rejected the tested medication lifecycle-context routing arm.** The
-  matched validation comparison used GPT 4.1-mini with annotated medication as
-  the sole scored endpoint. AM-only scored 42 TP / 4 FP / 5 FN (90.3% F1);
-  AM+MT lifecycle context scored 36 TP / 4 FP / 11 FN (82.8% F1). The
-  lifecycle-context arm did not reduce the E7 false-positive ledger and lost
-  six additional recall labels, so it is rejected as tested. Report:
-  `docs/experiments/exect/exect_medication_payload_routing_e13_results_20260529.md`.
-- **G22 rejected the closed-option target-selection arm as tested.** The
-  model-backed standard50 run preserved closed answer options, selected options,
-  and final-label-copy traces in 50/50 records. It selected constructed G21
-  options for two rows and improved over G15, but paper monthly was 39/50,
-  below builder-gap GPT at 41/50 and below the 43/50 preregistered lift gate.
-  The before/after ledger shows regressions on seizure-free-versus-quantified
-  and unknown/no-reference overlays, including five G17 builder-gap regressions.
-  Do not full-validate G22. Report:
-  `docs/experiments/gan/gan_s0_g22_closed_option_target_selector_report_20260529.md`.
-- **G1-G22 synthesis changed the next Gan pull from selector execution to
-  failure-mechanism analysis.** The full synthesis argues that candidate
-  discovery and quantified-rate answer-option construction are relatively
-  strong, while wrong-option selection remains unexplained. New cards G23-G28
-  separate failure-mechanism analysis, selector-interface reframing,
-  standard50/generalization risk, GPT evidence-first execution, Qwen
-  replication, and full-validation/test residual checks. Report:
-  `docs/experiments/gan/gan_s0_g1_g22_research_report_20260529.md`.
-- **Architecture cleanup is no longer blocking research.** The C12-C20
-  decomposition work closed the original P1 monolith risks or reclassified them
-  as accepted residual P2/provenance risks. Gan S0, ExECT S0/S1, ExECT S4/S5,
-  family primitives, active/archive config resolution, and public stage tests
-  now have domain-owned surfaces. This was behavior-preserving cleanup, not new
-  scorer or dataset evidence.
-- **Active authority is current-only by default.** Historical configs, rejected
-  variants, replay/provenance rows, and archived one-off scripts now require
-  explicit archive or reporting opt-in. Ordinary config resolution, registry
-  validation, and program factories should expose current-authority variants
-  only unless a replay/reporting task says otherwise.
-- **Static and compatibility cleanup has been spent.** High-confidence
-  deadweight was deleted, script entrypoints were classified, current report
-  builders moved under `clinical_extraction.evaluation.*`, obsolete facade tests
-  were shrunk, and `ruff`/`vulture` were brought clean on `src scripts tests`.
-  Do not add more cleanup cards unless they name a concrete active runtime
-  contract to remove.
-- **E12 investigation ceiling is confirmed.** Analysis across validation and
-  test splits shows the isolated investigation component reaches 90.4% - 97.2%
-  F1. Mismatches are minor and driven by gold omissions and clinical reasoning
-  modifier boundaries (e.g. EEG psychogenic confirmation). The component is classified
-  as near ceiling, unblocking Pair 4 (investigation + comorbidity) interaction tests.
-  Report: `docs/experiments/exect/exect_investigation_isolated_ceiling_e12_20260529.md`.
-- **ExECT substrates exist, but most ceilings are still open.** Frequency
-  event/rate payload covers 43/43 validation gold labels but has low precision;
-  S1 raw/bridge/prompt attribution exists; medication current-Rx has a no-model
-  validation ceiling substrate at 47/47; lifecycle/temporality is diagnostic
-  only; family spans have strong evidence coverage but need full-note comparison
-  before promotion.
-- **Medication stack interference is now attributed.** E7 shows S5 medication
-  loss is over-emission, not current-Rx coverage failure: S5 has 12 false
-  positives and no false negatives, including 8 S5-only false positives, 4
-  shared S1/S5 false positives, and 2 recovered S1 false negatives. The next
-  medication mechanism should be payload routing or prompt isolation before a
-  broader temporality guard.
-- **Frequency candidate selection is now split from payload coverage.** E10
-  shows the broad event/rate payload is recall-sufficient but not
-  prediction-ready: direct promotion scores 22.2% precision, 100.0% recall, and
-  36.3% F1. A gold-constrained oracle over the same broad candidates reaches
-  100.0% F1, while S5 GPT reaches 73.9% frequency F1. The next frequency
-  mechanism should be a candidate adjudicator or ranker against the fixed broad
-  payload, not another coverage audit or broad-stack prompt loop.
-- **Family-span prompting is closed as a rejected arm.** E8 compared full-note
-  S1 clean-ladder prompting with E4 family-span prompting on the same cap-25 GPT
-  validation slice. Family-span context covered 116/116 selected-family gold
-  annotations and used 88.8% of full-note characters, but micro F1 dropped from
-  95.8% to 90.2%, driven by seizure-type F1 falling from 95.4% to 81.8%.
-  E9 classifies the E8 single-pass S1 family-span replacement arm as a rejected
-  arm while preserving `exect.sections.family_spans.v1` as a diagnostic
-  document-geometry substrate. Do not rerun the same broad context-substitution
-  arm; reopen only with a narrower preregistered mechanism and an explicit
-  comparator.
-- **E11 attributed the ExECT holdout drop without tuning.** S1 GPT drops from
-  92.3% to 77.8% micro because diagnosis and seizure-type transfer degrade
-  sharply while medication is stable. S5 GPT frequency drops from 73.9% to
-  47.1% F1 through both payload-generalization and adjudication: broad payload
-  coverage is 43/43 labels on validation but 31/44 on holdout. Medication
-  current-Rx remains representable on holdout at 53/53 labels, so S5 medication
-  loss is stack behavior rather than a substrate failure. Report:
-  `docs/experiments/exect/exect_holdout_residual_attribution_e11_20260528.md`.
-- **G4 is complete and should not be pulled again as tested.** The explicit
-  reason-code adjudicator preserved selected-candidate references and
-  label-construction inputs in 25/25 records, but scored only 80.0%
-  monthly/pragmatic on the enriched 25-record Gan slice, below the G2
-  candidate-constrained and seeded selector baselines. All five misses were
-  target-selection failures with seizure-free-over-quantified policy signals.
-  Report:
-  `docs/experiments/gan/gan_s0_g4_explicit_reason_code_adjudicator_report_20260528.md`.
-- **Gan S0 has decomposition evidence, not a solved selector.** The candidate
-  inventory and target/label split establish useful coverage and selected-slice
-  behavior; unknown versus no-reference policy informed G4 and remains input to
-  future selector challenge sets. G5 rescored the current promoted synthetic
-  baselines under `gan2026_paper_reproduction`: builder-gap GPT 79.9% monthly,
-  builder-gap Qwen 70.2%, and D1 v1.2b 76.6%, with repair/range/tolerance
-  disabled.
-  The G5 scorer-mode forensics isolate D1's paper-scorer loss as mostly
-  special-class target semantics, especially seizure-free gold labels predicted
-  as `no seizure frequency reference`; use that note before any Gan selector
-  follow-up.
-  External Gan benchmark claims remain blocked without Real(300)/Real(150) or
-  an explicitly synthetic-only comparison protocol.
-- **G6 fixed the Gan selector evaluation surface.** The G2/G4 enriched slice is
-  now `gan_s0_g6_traceability_smoke_25` and is smoke-only: one record equals
-  4.0pp and two records equal 8.0pp. New selector/adjudicator mechanisms should
-  use `gan_s0_g6_standard50_v1` for default slice comparisons, named challenge
-  sets only for their declared component scope, and full validation before any
-  baseline promotion. Decision report:
-  `docs/experiments/gan/gan_s0_g6_evaluation_slice_standard_decision_20260528.md`.
-- **G7 preregistered the next Gan selector mechanism.** The preregistration
-  narrows the next model-backed arm to target-selection policy for special
-  classes: quantified current frequency versus seizure-free duration,
-  unknown/no-reference boundaries, and scorer-discordance preservation. It
-  requires `gan_s0_g6_standard50_v1` for mechanism comparison, keeps the old
-  25-record slice smoke-only, reports both Gan scorer views, and forbids
-  scorer, loader, split, bridge, candidate-builder, or prediction-repair
-  changes. Protocol:
-  `docs/experiments/gan/gan_s0_g7_special_class_target_selector_preregistration_20260528.md`.
-- **G8 rejected the class-first special-selector arm as tested.** The smoke run
-  preserved target semantic class, selected-candidate reference,
-  label-construction inputs, adjudication JSON, and D1 date/event payload in
-  25/25 records, so it passed the traceability stop rule. The standard50 run
-  scored 37/50 paper monthly and 36/50 canonical monthly, below D1 v1.2b
-  (40/50 paper) and builder-gap GPT (41/50 paper) on the same records. It also
-  regressed on seizure-free versus quantified (13/21 versus D1 17/21) and
-  unknown/no-reference (6/10 versus D1 9/10). Do not full-validate this arm.
-  Report:
-  `docs/experiments/gan/gan_s0_g8_special_class_target_selector_report_20260529.md`.
-- **G9 routed the next Gan pull to candidate inventory.** The no-model G8
-  failure inspection found 13 standard-50 paper-monthly misses: 4
-  candidate-coverage exact misses, 3 seizure-free-over-quantified target
-  selection failures, 3 unknown-policy target selection failures, and 3
-  quantified target-selection/temporal-anchoring failures. All four named
-  exact-miss standard-50 records (`gan_15997`, `gan_16772`, `gan_16825`,
-  `gan_16335`) lack the exact gold label in the current candidate inventory,
-  which routed G11 before G10. Report:
-  `docs/experiments/gan/gan_s0_g9_exact_miss_failure_inspection_20260529.md`.
-- **G11 completed the candidate-inventory challenge-set pass.** The locked G6
-  `gan_s0_g6_candidate_coverage_exact_miss` challenge set remains 0/21 exact,
-  14/21 Purist-equivalent, and 17/21 Pragmatic-equivalent. Compared with the
-  stored G1 substrate, 20 rows changed because the current runtime prunes broad
-  abstention options when concrete frequency candidates are present. The four
-  G9 standard50 exact-miss records are still 0/4 exact but 4/4
-  Purist/Pragmatic-equivalent. This does not mean the raw candidate builder
-  must emit aggregate labels that never appear verbatim in the note. It means
-  G10 needs an aggregation-aware answer-option surface, or a narrower
-  category-level selector claim. Report:
-  `docs/experiments/gan/gan_s0_g11_candidate_inventory_challenge_set_pass_20260529.md`.
-- **G18 source-level abstention candidate gating is complete.** The current G11
-  report and a full validation recompute show 0 rows where standalone
-  `unknown` or `no seizure frequency reference` appear beside concrete
-  frequency candidates. The focused temporal-candidate regression
-  `test_temporal_candidates_drop_abstention_options_when_frequency_candidates_exist`
-  passes. Treat the old G1 abstention-heavy labels as provenance, not the
-  active candidate surface. Abstention-only `unknown` versus
-  `no seizure frequency reference` cases are routed to G13.
-- **G13 completed the isolated frequency-content gate report.** The no-model
-  gate over the current deterministic temporal candidate substrate reaches
-  244/299 validation accuracy (81.6%). Quantified-frequency presence is
-  high-recall at 201/203 (99.0%), and no-reference predictions are precise
-  (10/10), but unclear-frequency recall is 10/40 (25.0%) and seizure-free
-  recall is 23/45 (51.1%). The main source-level errors are unknown or
-  seizure-free gold rows routed to quantified-frequency presence, so temporal
-  anchoring and selector analyses must account for gate errors before
-  attributing misses to those stages. Report:
-  `docs/experiments/gan/gan_s0_g13_frequency_content_gate_report_20260529.md`.
-- **G14 completed the temporal anchoring diagnostic pass.** The no-model report
-  over current deterministic temporal candidates found 41/50 standard50 exact
-  candidate coverage and 36/40 temporal-slot coverage on temporally applicable
-  rows. On `gan_s0_g6_temporal_anchoring`, exact and slot coverage are 13/15;
-  `gan_16772` and `gan_16825` are true temporal-slot misses, while standard50
-  gate-confused rows remain G13 upstream caveats. The decision is not to expand
-  fragile arithmetic or broad relative-anchor guards from this pass; route
-  remaining exact misses to aggregation-aware answer construction before another
-  target-selection claim.
-  Report:
-  `docs/experiments/gan/gan_s0_g14_temporal_anchoring_report_20260529.md`.
-- **G12 completed the answer-option routing decision.** On the locked G6
-  exact-miss challenge set, raw options remain 0/21 exact, 14/21
-  Purist-equivalent, and 17/21 Pragmatic-equivalent. The current constructed
-  aggregate subset is still 0/21 exact, with 11/21 Purist-equivalent and 13/21
-  Pragmatic-equivalent coverage. Therefore G10 was allowed to proceed only as a
-  category-level/candidate-ranking selector comparison; exact closed answer
-  options now require G16 aggregation policy, or a separate deterministic
-  aggregation constructor with fixture tests informed by G14. G10 has
-  since completed and been rejected as tested. Report:
-  `docs/experiments/gan/gan_s0_g12_answer_option_surface_20260529.md`.
-- **G10 completed the narrowed category-ranking selector arm.** The model-backed
-  run on `gan_s0_g6_standard50_v1` preserved the fixed scorer, loader, split,
-  bridge, candidate builder, label-construction, and prediction-repair controls.
-  Category decisions and candidate rankings were present in 50/50 predictions,
-  but the arm reached only 36/50 paper monthly and 70.0% canonical monthly,
-  below builder-gap GPT (41/50), D1 v1.2b (40/50), and G8 (37/50) on the same
-  records. The unknown/no-reference overlay fell to 4/10. Do not full-validate
-  or promote this arm; exact closed answer-option construction remains blocked
-  on G16 or a separate deterministic aggregation constructor informed by G14.
-  Report:
-  `docs/experiments/gan/gan_s0_g10_candidate_ranking_target_selector_report_20260529.md`.
-- **G15 completed the support-aware target selector arm and rejected it as
-  tested.** The model-backed run on `gan_s0_g6_standard50_v1` preserved scorer,
-  loader, split, benchmark bridge, candidate-builder, label-construction, and
-  prediction-repair controls. Support context was present in 50/50 predictions,
-  with selected-candidate references and label-construction inputs present in
-  49/50, but the arm reached only 31/50 paper monthly and 60.0% canonical
-  monthly. It regressed against builder-gap GPT, D1 v1.2b, G8, and G10 on the
-  motivating target-selection and seizure-free-versus-quantified overlays, and
-  scored 5/10 on unknown/no-reference. Do not full-validate or promote this
-  arm; pull G16 aggregation policy or a separately preregistered deterministic
-  aggregation constructor before another exact-label claim.
-  Report:
-  `docs/experiments/gan/gan_s0_g15_support_aware_target_selector_report_20260529.md`.
-- **G20 preregistered the aggregation-constructor path.** The design chooses a
-  deterministic, fixture-first quantified-rate constructor rather than a
-  model-mediated first pass or deferral. It names the four G19 standard50
-  aggregation rows, the 21 G11 exact-miss challenge fixtures, permitted
-  transformations, forbidden repairs, expected coverage gates, and scorer
-  caveats. It does not implement the constructor or make a performance claim.
-  Report:
-  `docs/experiments/gan/gan_s0_g20_aggregation_constructor_preregistration_20260529.md`.
-- **G21 implemented the quantified-rate aggregation constructor.** The new
-  `gan.frequency.aggregation_constructor.v1` primitive emits separate
-  constructed answer options for G16-eligible quantified-rate rows and preserves
-  raw temporal candidates unchanged. Standard50 exact option coverage rises from
-  41/50 raw to 45/50 combined; the G11 exact-miss challenge reaches 11/21
-  constructed exact, passing the 10/14 quantified-rate fixture gate, with 0
-  constructions for deferred duration, inventory-gap, or outside-policy rows.
-  This is answer-option coverage only, not selector performance. Report:
-  `docs/experiments/gan/gan_s0_g21_aggregation_constructor_report_20260529.md`.
-- **G17 completed the special-label policy separation.** The G19 special-label
-  slice is now a nine-row policy surface, not a binary string distinction:
-  `gan_6532`, `gan_9566`, `gan_5974`, `gan_6607`, `gan_6387`, `gan_14002`,
-  `gan_11380`, `gan_7894`, and `gan_8264`. It separates unclear-frequency
-  misroutes, unknown-cluster policy, unknown-over-concrete, and seizure-free/no-
-  reference scorer-mode discordance. It made no scorer, loader, split, bridge,
-  prompt, model, candidate-builder, target-selection, or prediction-repair
-  changes, and found 0 deterministic repair candidates. Report:
-  `docs/experiments/gan/gan_s0_g17_unknown_no_reference_policy_20260529.md`.
-- **Gan S0 now has a plain-English component handoff.** The key-axes progress
-  report translates the decomposition into reader-facing components:
-  frequency-content gate, candidate inventory, temporal anchoring, target
-  selection, label construction, aggregation, unknown/no-reference policy, and
-  evidence/schema checks. The practical summary is that current systems are
-  strong at finding possible answers and reasonably good at formatting a chosen
-  answer, while the open bottleneck is choosing the right answer when a note
-  contains competing signals. Report:
-  `docs/experiments/gan/gan_s0_key_axes_progress_report_20260528.md`.
-- **X2 preregistered ExECT pairwise interaction tests.** The plan defines
-  validation-split support counts, hypotheses, primary family metrics,
-  interference criteria, and stop rules for diagnosis+seizure type,
-  seizure type+frequency, medication+temporality, investigation+comorbidity,
-  and secondary pairs. Medication+temporality is active as a diagnostic-input
-  pair where temporality is unscored and annotated medication F1 is the scored
-  endpoint. Holdout remains residual-audit only. Plan:
-  `docs/experiments/exect/exect_pairwise_interaction_plan_x2_20260529.md`.
-- **The component registry is the provenance map.** `component_ceiling_registry.md`
-  carries row-level model/provider, split, scorer, run/artifact, bridge policy,
-  classification, and caveat metadata. This Kanban should not duplicate that
-  ledger.
+- **Gan evaluation policy:** G6 defines `gan_s0_g6_standard50_v1` as the default
+  mechanism slice and keeps the old 25-record enriched slice smoke-only. G25
+  defines standard50/full-validation/frozen-test interpretation. G5 remains the
+  synthetic paper-scorer pack for paper-facing Gan tables; Real(300)/Real(150)
+  reporting remains blocked.
+
+- **ExECT residual routing:** E11 attributes the validation-to-holdout drop
+  without changing scorer, loader, split, bridge, prompt, prediction repair, or
+  artifact semantics. S1 transfer loss concentrates in diagnosis and seizure
+  type; S5 frequency loss mixes payload generalization with adjudication.
+  Holdout remains residual analysis only.
+
+- **ExECT substrates and rejected arms:** E6 confirms annotation-derived
+  medication current-Rx is representable on validation; E7 attributes S5
+  medication loss to over-emission; E13 rejects the lifecycle-context routing
+  arm as tested. E10 shows the broad frequency payload is recall-sufficient but
+  low precision. E8/E9 reject broad family-span substitution while preserving
+  family spans as a diagnostic document-geometry substrate. E12 confirms
+  investigation is near ceiling and unblocks corrected Pair 4 planning.
+  The E1-E13/X2 synthesis report turns these into the active ExECT pull set:
+  P2 medication routing, P3 Pair 4 design, P4 frequency adjudication, and P5
+  diagnosis/seizure-type ceiling comparators.
+
+- **Architecture cleanup:** C12-C32 and active-authority pruning are complete as
+  research blockers. Ordinary active configs, run lookup, and program factories
+  should remain current-only by default; archive/provenance access requires
+  explicit reporting or replay intent.
 
 ## Frozen Work
 
-The old R/A backlog and completed C-card cleanup lane are frozen as active
-pull sources. Keep their evidence, but do not pull from them directly without
-translating the work into one of the current cards above or a new card with a
-clear active dependency.
+The old R/A backlog and completed C-card cleanup lane are frozen as active pull
+sources. Keep their evidence, but do not pull from them directly without
+translating the work into a current component, benchmark, or runtime-contract
+card.
 
 ## Dependency Notes
 
-- E7 completed the medication stack-interference attribution. Treat lifecycle
-  categories as diagnostic only; do not change the medication scorer or bundle
-  temporality recovery into broad S5 prompts without a new mechanism card.
-- E13 completed the validation-only AM-only versus AM+MT lifecycle-context arm
-  and rejects that arm as tested: AM+MT did not reduce false positives and lost
-  six additional annotated-medication recall labels versus AM-only. It does not
-  authorize lifecycle/temporality scoring, holdout tuning, or broad S5 prompt
-  changes.
-- E8 completed the family-span cap-slice prompt comparison, and E9 rejected the
-  tested S1 family-span replacement arm while preserving the span substrate as
-  diagnostic. Any follow-up needs a narrower preregistered mechanism.
-- E10 completed the first frequency candidate-selection split. Treat the broad
-  payload as fixed recall substrate and pull a new mechanism card for any
-  model-backed adjudicator/ranker comparison.
-- G4 and any follow-up depend on G2 target/label split outputs, G3
-  policy-isolation findings, and the G5 scorer-mode forensics; keep target
-  selection, label construction, seizure-free, unknown/no-reference policy, and
-  scorer-discordant records separable in artifacts and reports.
-- G6 completed the no-model evaluation-surface decision. Any new Gan selector
-  mechanism card should name whether it targets the 50-record standard slice,
-  a named challenge set, or full validation, and must preserve scorer, loader,
-  split, and benchmark bridge semantics.
-- G8 completed the first G7-protocol model-backed arm and rejected the
-  class-first special-class prompt as tested. Another Gan selector pull should
-  either compare a standard50 candidate-constrained/answer-options selector
-  directly or first inspect the G8 standard50 exact-miss and special-class
-  failures; do not rerun the same class-first prompt shape.
-- G9 completed the required no-model gate before G10/G11 and routed the next
-  Gan pull to candidate inventory.
-- G11 completed the candidate-inventory exact-miss pass and found that raw
-  inventory labels are not sufficient as exact answer options for aggregation
-  cases.
-- G18 completed the source-level cleanup before selector work: broad abstention
-  candidates are no longer active universal answer options when concrete
-  frequency evidence is already represented. Older G1 rows document the
-  pre-pruning surface; G11 current rows document the active surface.
-- G10 completed the narrowed category-level/candidate-ranking claim authorized
-  by G12 and was rejected as tested. G21 now supplies the first deterministic
-  quantified-rate constructed-option surface, but target selection remains a
-  separate card.
-- G12 did not mutate scorer, loader, split, benchmark bridge, prompt, model, or
-  prediction-repair semantics.
-- G13 established the baseline for the frequency-content gate. G15 carried
-  G13's false-positive and false-negative rows as caveats, but the support-aware
-  selector still regressed as a prompt/interface arm.
-- G14 established the temporal anchoring diagnostic baseline. G15 carried
-  `gan_16772` and `gan_16825` as temporal-slot upstream caveats rather than
-  treating those exact misses as pure selector failures.
-- G15 completed the support-aware selector authorized by G12/G13/G14 and is
-  rejected as tested. It is evidence that support metadata alone is not enough,
-  not closure of target selection as a mechanism class.
-- G16 completed the rate/duration aggregation policy pass. The no-model policy
-  report leaves scorer, loader, split, bridge, prompt, model,
-  candidate-builder, target-selection, and prediction-repair semantics
-  unchanged. On the G11 exact-miss challenge, 14/21 rows need quantified rate
-  aggregation with missing temporal slots, 2/21 need seizure-free duration
-  policy, 4/21 are candidate-inventory gaps, and 1/21 is outside rate/duration
-  policy. On standard50, 41/50 already have exact options, 4/50 are quantified
-  rate aggregation blocks, and 5/50 are outside rate/duration policy. Exact
-  closed-answer selector claims remain blocked until a deterministic constructor
-  or preregistered model mechanism is tested. Report:
-  `docs/experiments/gan/gan_s0_g16_aggregation_policy_20260529.md`.
-- G19 completed the post-G16 error attribution audit with no model, scorer,
-  loader, split, bridge, prompt, candidate-builder, target-selection, or
-  prediction-repair changes. On `gan_s0_g6_standard50_v1`, builder-gap GPT,
-  D1 v1.2b, G8, G10, and G15 produce 65 paper-monthly arm-misses across 29
-  unique rows. The largest classes are aggregation blocks with missing temporal
-  slots (16 arm-misses / 4 rows), unclear or unknown-cluster evidence misrouted
-  as concrete (15 / 6), seizure-free over quantified target selection (11 / 6),
-  and wrong quantified rate/window selection (11 / 5). There are 0 deterministic
-  repair candidates and 0 schema/evidence residuals on this surface. Report:
-  `docs/experiments/gan/gan_s0_g19_post_g16_error_attribution_audit_20260529.md`.
-- G17 completed unknown vs. no-reference policy separation downstream of the
-  completed G15 negative arm, G16 special-class routing, and the G19
-  special-label slice. Future special-label selector work needs a new mechanism
-  card and a before/after ledger for the nine G17 rows.
-- G22 completed the closed-option target-selection reopening card and is
-  rejected as tested. It preserved fixed scorer, loader, split, benchmark
-  bridge, candidate-builder, constructor, and prediction-repair semantics, but
-  failed the 43/50 stop rule and regressed against builder-gap GPT on the G17
-  special-label slice. Any next Gan selector needs a new mechanism card and
-  must use the G22 before/after ledger as input.
-- G23 completed the required failure mechanism audit before another selector
-  run. Its decision is to keep closed options as support, but test a relaxed
-  evidence-first selector with a constrained special-label escape and
-  construction-aware option priority. It does not authorize Qwen, full
-  validation, or test-residual runs.
-- G28 completed the GPT-4.1-mini standard50 run for the evidence-first selector protocol. It scored 88.0% monthly accuracy, clearing the G25 obvious-pass gate and unblocking Qwen replication (G26) and full-validation/test residual checks (G27). Schema validity and evidence quote support rates remain at 100%. Major fixes were achieved on cluster spacing and special-label escapes. Report: `docs/experiments/gan/gan_s0_g28_evidence_first_target_selector_report_20260529.md`.
-- G24 completed the preregistration for the next selector interface. The next
-  model-backed pull is G28: implement the G24 GPT cap5/standard50 arm and carry
-  the G17/G21/G22/G23 before/after ledger.
-- G25 has defined how standard50, full validation, and frozen-test residual
-  evidence are interpreted before G26/G27. Test rows remain residual-analysis
-  evidence only; do not tune selector wording or candidate policy from them.
-- G26 Qwen replication is downstream of G28 and G25 gate satisfaction. Qwen
-  should test a specific model-effect hypothesis, not act as a broad search
-  over rejected GPT-mini arms.
-- G27 full-validation/test residual checks are blocked until G28 satisfies the
-  G25 generalization gate.
-  Passing or failing standard50 should not be the only signal considered, but
-  any exception must be preregistered.
-- The Gan key-axes progress report is the handoff reference for plain-English
-  component names. Use it to keep G8 interpretation centered on the actual
-  failure stage rather than on implementation jargon.
-- G5 is complete and should be used for synthetic-only paper-facing Gan tables.
-  Its scorer-mode forensics note is G4 follow-up input; it does not unblock Gan
-  real-note reporting.
-- E11 completed the primary holdout residual attribution. Treat it as a router
-  for validation-only follow-ups; do not tune prompts, scorers, loaders,
-  bridges, repairs, or splits from holdout rows.
-- X2 completed the pairwise interaction preregistration. Use it for support
-  counts, hypotheses, metrics, interference criteria, and stop rules before
-  drafting diagnosis+seizure type, seizure type+frequency,
-  investigation+comorbidity, medication+frequency, or medication+temporality
-  follow-ups. Do not use S1-S4 ladder comparisons as pairwise evidence; each
-  follow-up needs target-component-alone versus target-plus-paired-component
-  arms.
-- B1 stays blocked until isolated component ceilings and pairwise interaction
-  evidence exist. Substrates alone are not enough to rebuild optimized stacks.
+- B1 waits on isolated component ceilings and corrected pairwise interaction
+  evidence. Substrates alone are not enough to rebuild optimized ExECT stacks.
+- Any ExECT pairwise follow-up must use target-component-alone versus
+  target-plus-paired-component arms, not schema-ladder comparisons.
+- Pair 1 diagnosis + seizure type waits on P5 isolated comparators. Pair 2
+  seizure type + frequency waits on P4 frequency adjudicator design. Pair 4
+  investigation + comorbidity waits on a comorbidity-side support and
+  representability review even though E12 confirms investigation.
+- Medication lifecycle / temporality remains diagnostic unless a new target
+  policy and scorer design explicitly make it benchmark-facing.
+- Future Gan selector work must cite the G19/G17/G22/G23/G27 failure class it
+  targets and preserve a row-level before/after ledger.
+- G21 constructed answer options improve coverage only; selector performance is
+  a separate claim.
+- Frozen-test rows can motivate residual families but must not drive prompt,
+  candidate, scorer, bridge, or repair changes.
+- CUI-aware ExECT Table 1 reproduction is separate from project field-family
+  metrics.
 
 ## Parallelization Opportunities
 
-- **Safe now:** implement and run G28 only as the G24-defined GPT cap5 then
-  standard50 sequence, with model-call budget confirmed and no downstream
-  scale-up until the G25 gate is evaluated. Also safe: write a scoped ExECT
-  medication follow-up card only if it avoids the rejected E13 lifecycle-context
-  prompt shape, or do readme/report cleanup tied to completed Gan artifacts.
-  Any downstream Gan selector/adjudicator run must use the G6
-  evaluation-surface protocol, cite the G19/G17/G22/G23 failure class it
-  targets, carry the G21/G22 constructed-option evidence explicitly, and
-  preserve scorer, loader, split, benchmark bridge, candidate-builder,
-  constructor, and prediction-repair semantics.
-- **Architecture lane closed as bottleneck:** C31/C32 closed the currently
-  scoped active-priority pruning pass. Any new cleanup should start from a
-  concrete runtime contract or active-authority ambiguity, not from historical
-  card carryover.
-- **Single-threaded or carefully sequenced:** future registry/archive
-  regeneration, and any change to scorer, loader, split, benchmark bridge, or
-  shared primitive contracts. ExECT component-ceiling work remains
-  sequencing-sensitive where it changes S5, S0/S1, or active runtime contracts.
-- **Blocked together:** B1 waits on ExECT component ceilings.
-- **Model-call gated:** E3/E4 audits are complete, so any related model run now
-  needs a preregistered comparison against the full-note/current-stack baseline.
-  G10, G15, and G22 selector lanes are complete and rejected as tested. G23 is
-  complete and should frame, not replace, the next preregistration. Any new Gan
-  selector/adjudicator lane needs G24 preregistration, G25 generalization
-  policy, and the G19/G17/G22/G23 row ledger first. Qwen replication (G26) and
-  full-validation/test residual checks (G27) should wait for G28 and a G25 gate
-  pass or preregistered exception.
+- **Safe now:** P2 ExECT medication
+  follow-up planning, P4 frequency adjudicator design, P5 diagnosis/seizure
+  ceiling-comparator design, and report/readme cleanup tied to completed
+  artifacts. P3 Pair 4 design is also safe if it starts with comorbidity
+  support/representability rather than model calls.
+- **Single-threaded or carefully sequenced:** scorer, loader, split, benchmark
+  bridge, shared primitive contracts, registry/archive regeneration, and any
+  active runtime authority changes.
+- **Blocked together:** optimized ExECT stack reconstruction and external ExECT
+  benchmark claims.
+- **Model-call gated:** any new Gan selector/adjudicator, ExECT medication arm,
+  ExECT frequency adjudicator, ExECT diagnosis/seizure arm, or ExECT pairwise
+  arm must be preregistered with fixed controls before calls are spent.
 
 ## Recommended Next Pull
 
-1. Pull G26 (Gan Qwen Selector Replication Batch) or G27 (Gan Full-Validation And Test-Residual Selector Check) to scale up and replicate the validated G28 evidence-first target selector.
-3. For ExECT medication follow-up, write a new prompt-isolation or
-   deterministic routing card that accounts for E13's recall regression and the
-   two persistent annotation-policy false positives before running another
-   model-backed arm.
-4. For additional pruning, first write a new card that names the runtime
-   contract to remove; C31/C32 closed the currently scoped ExECT active-priority
-   pruning pass.
+1. For ExECT, pull P4 or P5 first: frequency adjudicator design and
+   diagnosis/seizure raw-bridge ceiling comparators unlock the largest share of
+   downstream pairwise and stack work.
+2. In parallel, write P2 as a medication prompt-isolation or deterministic
+   routing card that uses the E7 row ledger and avoids the rejected E13
+   lifecycle-context shape.
+3. Start P3 only as Pair 4 design and comorbidity support review; defer model
+   calls until the target-component-alone comparators are explicit.
+4. If staying on Gan instead, write a new G29-aware mechanism card before any
+   model calls. The implemented G29 arm is rejected as tested, and frozen-test
+   inspection is not authorized for this prompt.
+5. Add cleanup work only when it names a concrete active runtime contract or
+   active-authority ambiguity.
 
 ## Standing Guardrails
 
@@ -702,12 +306,12 @@ clear active dependency.
   ceilings.
 - Do not describe `archive/configs` as active experiment loadability; active
   config authority lives in `configs/experiments` and the generated registry
-  report's active inventory. Archive artifacts remain traceable through docs,
-  git history, and explicit replay/reporting opt-ins.
+  report's active inventory.
 - Treat rejected arms as rejected arms unless a mechanism-level review closes
   the mechanism.
-- Holdout metrics trigger residual analysis only; do not tune from holdout.
-- New Gan experiments must cite the G19 failure class they intend to reduce and
+- Holdout and frozen-test metrics trigger residual analysis only; do not tune
+  from them.
+- New Gan experiments must cite the failure class they intend to reduce and
   preserve a row-level before/after ledger for that class.
 - Standard50 is a mechanism surface, not a promotion surface. Future Gan
   selector plans must say how full-validation and frozen-test residual evidence

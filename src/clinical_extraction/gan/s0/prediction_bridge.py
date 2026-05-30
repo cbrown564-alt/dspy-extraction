@@ -583,6 +583,24 @@ def _predict_record(
         metadata["selected_closed_answer_option"] = pred.selected_closed_answer_option
     if hasattr(pred, "closed_option_ranking"):
         metadata["closed_option_ranking"] = pred.closed_option_ranking
+    if hasattr(pred, "residual_family_adjudication"):
+        metadata["residual_family_adjudication"] = pred.residual_family_adjudication
+    if hasattr(pred, "target_signal_type"):
+        metadata["target_signal_type"] = pred.target_signal_type
+    if hasattr(pred, "competing_signal_summary"):
+        metadata["competing_signal_summary"] = pred.competing_signal_summary
+    if hasattr(pred, "temporal_window_priority"):
+        metadata["temporal_window_priority"] = pred.temporal_window_priority
+    if hasattr(pred, "seizure_free_vs_quantified_decision"):
+        metadata["seizure_free_vs_quantified_decision"] = (
+            pred.seizure_free_vs_quantified_decision
+        )
+    if hasattr(pred, "unknown_or_no_reference_decision"):
+        metadata["unknown_or_no_reference_decision"] = (
+            pred.unknown_or_no_reference_decision
+        )
+    if hasattr(pred, "cluster_preservation_decision"):
+        metadata["cluster_preservation_decision"] = pred.cluster_preservation_decision
     if hasattr(pred, "evidence_first_target_narration"):
         metadata["evidence_first_target_narration"] = pred.evidence_first_target_narration
     if hasattr(pred, "closed_option_adequacy"):

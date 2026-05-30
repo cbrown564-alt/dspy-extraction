@@ -30,6 +30,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SUPPORT_AWARE_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
@@ -62,6 +63,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0SupportAwareTargetSelectorModule,
     GanFrequencyS0ClosedOptionTargetSelectorModule,
     GanFrequencyS0EvidenceFirstTargetSelectorModule,
+    GanFrequencyS0ValidationResidualFamilySelectorModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -275,6 +277,12 @@ def test_build_gan_s0_module_dispatches_program_variants():
     )
     assert isinstance(
         build_gan_s0_module(
+            GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT
+        ),
+        GanFrequencyS0ValidationResidualFamilySelectorModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(
             GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
             include_archive=True,
         ),
@@ -387,6 +395,12 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
             GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT
         )
         == "g22_closed_option_target_selection_ledger"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT
+        )
+        == "g29_validation_residual_family_selector"
     )
 
 
@@ -2688,6 +2702,65 @@ def test_gan_s0_evidence_first_target_selector_runs():
     assert pred.metadata["closed_option_adequacy"] == "adequate"
     assert pred.metadata["evidence_first_target_narration"] == "Narration of three seizures..."
     assert pred.metadata["construction_priority_reason"] == "Construction captures observation window."
+    assert pred.metadata["final_label_source"] == "selected_closed_option"
+
+
+def test_gan_s0_validation_residual_family_selector_runs():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_12679")
+    raw_evidence = "three seizures in January"
+    raw_candidate = GanTemporalFrequencyCandidate(
+        canonical_label="3 per month",
+        event_count="3",
+        window_count="1",
+        window_unit="month",
+        evidence_text=raw_evidence,
+        derivation="test_mock",
+    )
+
+    _configure_dummy([
+        {
+            "adjudication_json": (
+                '{"residual_family_adjudication": "Quantified-rate row with a current rate.", '
+                '"target_signal_type": "quantified_rate", '
+                '"competing_signal_summary": "No seizure-free conflict.", '
+                '"temporal_window_priority": "Use the current January window.", '
+                '"seizure_free_vs_quantified_decision": "Quantified evidence wins.", '
+                '"unknown_or_no_reference_decision": "Not unknown or no-reference.", '
+                '"cluster_preservation_decision": "No cluster semantics.", '
+                '"closed_option_adequacy": "adequate", '
+                '"selected_option_id": "raw_1", '
+                '"selected_option_label": "3 per month", '
+                '"special_label_escape": null, '
+                '"final_label": "3 per month", '
+                '"final_label_source": "selected_closed_option"}'
+            )
+        }
+    ])
+
+    module = GanFrequencyS0ValidationResidualFamilySelectorModule()
+    with _patch_temporal_candidates([raw_candidate]):
+        prediction_set = predict_gan_records(
+            module,
+            [record],
+            model_provider="mock",
+            model_name="dummy-fixture",
+            program_variant=GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT,
+        )
+
+    pred = prediction_set.predictions[0]
+    assert pred.values[0].raw_value == "3 per month"
+    assert pred.metadata["temporal_candidate_source"] == (
+        "validation_residual_family_selector"
+    )
+    assert pred.metadata["residual_family_adjudication"] == (
+        "Quantified-rate row with a current rate."
+    )
+    assert pred.metadata["target_signal_type"] == "quantified_rate"
+    assert pred.metadata["temporal_window_priority"] == (
+        "Use the current January window."
+    )
+    assert pred.metadata["selected_option_id"] == "raw_1"
+    assert pred.metadata["closed_option_adequacy"] == "adequate"
     assert pred.metadata["final_label_source"] == "selected_closed_option"
 
 

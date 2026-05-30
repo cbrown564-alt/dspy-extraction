@@ -25,12 +25,18 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Validate config and print plan without making model calls.",
     )
+    parser.add_argument(
+        "--refresh-explorer",
+        action="store_true",
+        help="Auto-refresh exect-explorer's model catalog after successful run.",
+    )
     args = parser.parse_args(argv)
     return run_experiment(
         args.experiment,
         run_id=args.run_id,
         env_file=args.env_file,
         dry_run=args.dry_run,
+        refresh_explorer=args.refresh_explorer,
     )
 
 

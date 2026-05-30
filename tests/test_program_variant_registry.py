@@ -27,7 +27,7 @@ def test_program_variant_registry_has_unique_ids():
 def test_program_variant_registry_is_current_authority_only():
     ids = {spec.variant_id for spec in PROGRAM_VARIANT_REGISTRY}
 
-    assert len(PROGRAM_VARIANT_REGISTRY) == 19
+    assert len(PROGRAM_VARIANT_REGISTRY) == 21
     assert ids == {spec.variant_id for spec in current_authority_program_variant_specs()}
     assert "gan.s0.self_consistency" not in ids
     assert "gan.s0.date_events_candidates_single_pass" not in ids

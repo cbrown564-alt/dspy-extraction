@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G24 selector interface preregistration
+Last updated: 2026-05-29 after G29 validation-residual selector result
 
 ## Current Question
 
@@ -36,6 +36,8 @@ The system must separate:
 | G23 selector failure mechanism audit | current synthesis / mechanism framing | Across G8/G10/G15/G22 there are 57 selector arm-misses on standard50; 39/57 have an exact answer option already available. G22's 11 misses split into 6 wrong choices with exact options present and 5 forced wrong choices where G17 unknown labels were absent from the closed-option surface. | Use G23 to design G24: keep closed options as support, but test evidence-first target narration with a constrained special-label escape instead of rerunning closed-option ID selection alone. |
 | G25 selector generalization audit | current synthesis / generalization gate | Standard50 remains the default mechanism slice, but its 50-row aggregate is too noisy to promote or kill near-baseline selectors alone. Builder-gap GPT and D1 standard50 scores slightly overstate full-validation paper scores by 2.1pp and 3.4pp, while stored builder-gap frozen-test paper scores drop by 15.5pp (GPT) and 11.1pp (Qwen) versus validation. | Use the G25 gate before spending full-validation, Qwen, or frozen-test budget: 43/50 is an obvious-pass trigger; 39-42/50 needs a preregistered row-ledger exception with no special-label regression; below 39/50 is blocked without an explicit generalization exception. |
 | G24 evidence-first selector preregistration | preregistered mechanism card | G24 freezes the next selector interface before model calls: evidence-first target narration, closed-option adequacy decision, constrained `unknown`/`no seizure frequency reference` escape, and construction-aware option priority. | Next pull is the GPT-4.1-mini cap5/standard50 implementation and run under G24. Do not full-validate, run Qwen, or inspect frozen test until the G25 gate is satisfied. |
+| G27 evidence-first selector scale-up | validation mechanism arm / test residual diagnostic | G24/G28/G27 evidence-first target selection reaches 247/299 (82.6%) paper monthly on full validation, above builder-gap GPT's stored 239/299 (79.9%), with 100% schema validity and evidence support. Frozen test is essentially tied with builder-gap GPT at 196/301 (65.1%) versus 197/301 (65.4%) and lower on pragmatic category. | Treat as a useful validation mechanism arm, not a new operational default. Frozen-test rows remain residual-analysis evidence only and must not be used to tune G24. |
+| G29 validation-residual selector | rejected arm | G29 implemented the validation-residual-family checkpoint under fixed scorer, loader, split, bridge, candidate-builder, constructor, gold-policy, and repair controls. Smoke passed trace and label-contract gates. Full validation reached 243/299 (81.3%) paper monthly, below G27 at 247/299 (82.6%), with 10 gains and 14 regressions. | Do not promote G29 or run a frozen-test check for this arm. Any future Gan selector needs a new G29-aware mechanism card. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
 ## Read First
@@ -68,6 +70,9 @@ The system must separate:
 - `gan_s0_g23_selector_failure_mechanism_audit_20260529.md` - G23 no-model selector failure mechanism audit; use it to frame G24 around evidence-first target narration, special-label escape, and construction-aware option priority.
 - `gan_s0_g25_selector_generalization_audit_20260529.md` - G25 no-model sample-size and validation-to-test audit; use its gate before authorizing full-validation, Qwen, or frozen-test selector checks.
 - `gan_s0_g24_selector_interface_preregistration_20260529.md` - G24 preregistered evidence-first selector interface; use it before building or running the next GPT standard50 selector arm.
+- `gan_s0_g27_full_validation_test_residual_selector_report_20260529.md` - G27 full-validation and frozen-test residual result; use it as residual evidence without tuning from test rows.
+- `gan_s0_g29_validation_residual_selector_preregistration_20260529.md` - G29 validation-residual-family selector preregistration.
+- `gan_s0_g29_validation_residual_selector_results_20260529.md` - G29 implementation and validation result; rejected as tested.
 - `gan_s0_g17_unknown_no_reference_policy_20260529.md` - G17 no-model special-label policy separation; use it before any new unknown/no-reference, unknown-cluster, seizure-free/no-reference, or unclear-frequency selector mechanism.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
@@ -123,40 +128,46 @@ listed above or in `../../component_ceiling_registry.md`.
    obvious 43/50 standard50 pass with clean overlays, or by a 39-42/50
    preregistered row-ledger exception with no new special-label regression.
    Below 39/50 remains blocked without an explicit generalization exception.
-9. Treat G24 as the active preregistered selector mechanism. The next model
-   work should implement and run only the GPT-4.1-mini cap5/standard50 arm
-   defined by G24, then apply the G25 gate before any full-validation, Qwen, or
-   frozen-test spend.
-10. Treat G13 as the source-level gate baseline before future selector work: do
+9. Treat G24/G28/G27 as complete for the GPT-4.1-mini evidence-first selector
+   scale-up. The arm improves full synthetic validation but does not improve
+   frozen-test monthly accuracy over builder-gap GPT, so it is not a new
+   operational default.
+10. Treat G29 as complete and rejected as tested. It preserved trace completeness
+   and the closed-option / constrained-escape contract, but full validation
+   regressed versus G27: 243/299 paper monthly versus 247/299, with 10 gains and
+   14 regressions. Do not promote G29 or run frozen-test inspection for this arm.
+11. Treat G13 as the source-level gate baseline before future selector work: do
    not attribute unclear-frequency or seizure-free gate misses to target
    selection until the G13 false-positive/false-negative rows are accounted for.
    Use the G13 design-implications note to keep deterministic candidates as LLM
    support rather than as a growing semantic adjudicator.
-11. Treat G14 as the temporal anchoring diagnostic baseline: the current
+12. Treat G14 as the temporal anchoring diagnostic baseline: the current
    deterministic substrate covers most temporal challenge rows, but two true
    temporal-slot misses remain. Do not expand fragile arithmetic or broad
    relative-anchor guards from G14; route remaining exact misses to
    aggregation-aware answer construction before another target-selection arm.
-12. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
+13. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-13. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23/G24/G25
+14. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23/G24/G25/G27/G29
    reports as required context for any seizure-free, quantified-rate, unknown,
    no-reference, support-aware, aggregation-constructor, or
    candidate-constrained selector.
-14. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+15. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-15. Use G19's queue and G23's mechanism framing before choosing the next Gan
+16. Use G19's queue and G23's mechanism framing before choosing the next Gan
    selector: G20 preregistered
    the aggregation-constructor path, G21 implemented the quantified-rate option
    surface, G17 defined the special-label slice, and G22 tested one
    closed-option selector that failed the stop rule. G23 then showed the next
    selector should relax/reframe the interface, not rerun the same shape. G24
-   is that preregistered mechanism; any later selector needs a new card and a
-   G22-aware before/after ledger, with G25's standard50/full-validation/test
-   gate applied before any model-call scale-up.
-16. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+   is that preregistered mechanism; G29 is the rejected validation-residual
+   follow-up after G27. Any later selector needs a new card and a
+   G22-, G27-, and G29-aware before/after ledger, with G25's
+   standard50/full-validation/test gate applied before any model-call scale-up.
+   Do not tune from frozen-test rows.
+17. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance

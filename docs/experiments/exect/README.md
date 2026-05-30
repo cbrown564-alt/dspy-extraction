@@ -1,7 +1,7 @@
 # ExECT Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after E13 medication payload-routing result
+Last updated: 2026-05-29 after E13 medication payload-routing result and E1-E13 decomposition synthesis
 
 ## Current Question
 
@@ -37,6 +37,8 @@ The current program is:
 ## Read First
 
 - `exect_task_deep_review_20260528.md` - current decomposition doctrine.
+- `exect_decomposed_experiments_research_report_20260529.md` - full current synthesis of the E1-E13 and X2 ExECT decomposition sequence,
+  including component findings, card ledger, limitations, and next experiments.
 - `exect_frequency_event_rate_payload_audit_20260528.md` - E1 no-model frequency payload coverage gate.
 - `exect_frequency_candidate_selection_probe_20260528.md` - E10 no-model frequency candidate-selection split.
 - `exect_s1_raw_bridge_prompt_split_audit_20260528.md` - E2 artifact-only S1 causal split.

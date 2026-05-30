@@ -377,14 +377,48 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         program_variant="gan_frequency_s0_evidence_first_target_selector",
         scorer_modes=("gan_frequency_deterministic_v1", "gan2026_paper_reproduction"),
         prompt_default="gan_frequency_s0_evidence_first_target_selector_v1_0",
-        stage_graph_id="g22_closed_option_target_selection_ledger",
+        stage_graph_id="g24_evidence_first_target_selection",
         status="diagnostic_baseline",
         implementation_variant="evidence_first_target_selector_v1",
         config_examples=(
             "configs/experiments/gan_s0_g24_evidence_first_target_selector_gpt4_1_mini_cap5.json",
             "configs/experiments/gan_s0_g24_evidence_first_target_selector_gpt4_1_mini_standard50.json",
+            "configs/experiments/gan_s0_g27_evidence_first_target_selector_gpt4_1_mini_full_validation.json",
+            "configs/experiments/test_holdout/gan_s0_g27_evidence_first_target_selector_gpt4_1_mini_test.json",
         ),
-        notes="G24/G28 evidence-first target selector.",
+        notes=(
+            "G24/G28/G27 evidence-first target selector: evidence-first target "
+            "narration, constrained special-label escape, and construction-aware "
+            "option priority. G27 validates the arm on full synthetic validation "
+            "but keeps frozen-test evidence residual-only."
+        ),
+    ),
+    _spec(
+        variant_id="gan.s0.validation_residual_family_selector",
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        program_variant="gan_frequency_s0_validation_residual_family_selector",
+        scorer_modes=("gan_frequency_deterministic_v1", "gan2026_paper_reproduction"),
+        prompt_default="gan_frequency_s0_validation_residual_family_selector_v1_0",
+        stage_graph_id="g29_validation_residual_family_selector",
+        status="diagnostic_baseline",
+        decision_doc=(
+            "docs/experiments/gan/"
+            "gan_s0_g29_validation_residual_selector_preregistration_20260529.md"
+        ),
+        implementation_variant="validation_residual_family_selector_v1",
+        config_examples=(
+            "configs/experiments/gan_s0_g29_validation_residual_family_selector_gpt4_1_mini_smoke6.json",
+            "configs/experiments/gan_s0_g29_validation_residual_family_selector_gpt4_1_mini_full_validation.json",
+        ),
+        notes=(
+            "G29 validation-residual-family selector: keeps the G24 closed-option "
+            "copy or constrained special-label escape contract, but adds a "
+            "residual-family checkpoint before final option choice. It targets "
+            "G27 validation residual families only; frozen-test rows remain "
+            "blocked from prompt wording, candidate policy, scorer policy, and "
+            "repair changes."
+        ),
     ),
     _spec(
         variant_id="exect.s1.clean_ladder_v1",

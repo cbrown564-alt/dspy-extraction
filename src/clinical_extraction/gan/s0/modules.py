@@ -39,6 +39,7 @@ from clinical_extraction.gan.s0.signatures import (
     GanFrequencyS0TemporalEventTableAdjudicateSignature,
     GanFrequencyS0TemporalEventTableSignature,
     GanFrequencyS0TemporalEventTableVerifierSignature,
+    GanFrequencyS0ValidationResidualFamilySelectorSignature,
     build_gan_frequency_s0_extractor_signature,
     build_gan_frequency_s0_verifier_signature,
     resolve_gan_frequency_s0_extractor_prompt_version,
@@ -54,6 +55,8 @@ from clinical_extraction.gan.s0.variant_routing import (
     GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_DATE_EVENTS_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
@@ -2503,6 +2506,17 @@ def _parse_evidence_first_adjudication_json(
         return {"rejection_reason": "adjudication_not_object"}
 
     return {
+        "residual_family_adjudication": raw.get("residual_family_adjudication"),
+        "target_signal_type": raw.get("target_signal_type"),
+        "competing_signal_summary": raw.get("competing_signal_summary"),
+        "temporal_window_priority": raw.get("temporal_window_priority"),
+        "seizure_free_vs_quantified_decision": raw.get(
+            "seizure_free_vs_quantified_decision"
+        ),
+        "unknown_or_no_reference_decision": raw.get(
+            "unknown_or_no_reference_decision"
+        ),
+        "cluster_preservation_decision": raw.get("cluster_preservation_decision"),
         "evidence_first_target_narration": str(raw.get("evidence_first_target_narration") or "").strip(),
         "closed_option_adequacy": str(raw.get("closed_option_adequacy") or "").strip(),
         "selected_option_id": str(raw.get("selected_option_id") or "").strip() if raw.get("selected_option_id") else None,
@@ -2521,6 +2535,7 @@ def _prediction_from_evidence_first_adjudication(
     options: list[dict[str, Any]],
     candidates: list[Any],
     temporal_candidates_text: str,
+    temporal_candidate_source: str = "evidence_first_target_selector",
 ) -> dspy.Prediction:
     from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
 
@@ -2557,6 +2572,17 @@ def _prediction_from_evidence_first_adjudication(
         label_inputs = None
 
     metadata = {
+        "residual_family_adjudication": adjudication.get("residual_family_adjudication"),
+        "target_signal_type": adjudication.get("target_signal_type"),
+        "competing_signal_summary": adjudication.get("competing_signal_summary"),
+        "temporal_window_priority": adjudication.get("temporal_window_priority"),
+        "seizure_free_vs_quantified_decision": adjudication.get(
+            "seizure_free_vs_quantified_decision"
+        ),
+        "unknown_or_no_reference_decision": adjudication.get(
+            "unknown_or_no_reference_decision"
+        ),
+        "cluster_preservation_decision": adjudication.get("cluster_preservation_decision"),
         "evidence_first_target_narration": adjudication.get("evidence_first_target_narration"),
         "closed_option_adequacy": "adequate" if is_adequate and selected is not None else "inadequate",
         "selected_option_id": selected.get("option_id") if selected else None,
@@ -2579,6 +2605,17 @@ def _prediction_from_evidence_first_adjudication(
         selected_closed_answer_option=selected,
         reason_code_adjudication=adjudication,
         label_construction_inputs=label_inputs,
+        residual_family_adjudication=metadata["residual_family_adjudication"],
+        target_signal_type=metadata["target_signal_type"],
+        competing_signal_summary=metadata["competing_signal_summary"],
+        temporal_window_priority=metadata["temporal_window_priority"],
+        seizure_free_vs_quantified_decision=metadata[
+            "seizure_free_vs_quantified_decision"
+        ],
+        unknown_or_no_reference_decision=metadata[
+            "unknown_or_no_reference_decision"
+        ],
+        cluster_preservation_decision=metadata["cluster_preservation_decision"],
         evidence_first_target_narration=adjudication.get("evidence_first_target_narration"),
         closed_option_adequacy=metadata["closed_option_adequacy"],
         selected_option_id=metadata["selected_option_id"],
@@ -2588,7 +2625,7 @@ def _prediction_from_evidence_first_adjudication(
         special_label_escape_reason=metadata["special_label_escape_reason"],
         final_label=final_label,
         final_label_source=final_label_source,
-        temporal_candidate_source="evidence_first_target_selector",
+        temporal_candidate_source=temporal_candidate_source,
         verifier_decision="evidence_first_select" if is_adequate and selected is not None else "evidence_first_escape",
         verifier_reason=(
             "Selected final label by closed answer-option ID; final label copied "
@@ -2834,6 +2871,55 @@ class GanFrequencyS0EvidenceFirstTargetSelectorModule(dspy.Module):
         return prediction
 
 
+class GanFrequencyS0ValidationResidualFamilySelectorModule(dspy.Module):
+    """G29 selector with a residual-family checkpoint before closed-option choice."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.adjudicate = dspy.Predict(
+            GanFrequencyS0ValidationResidualFamilySelectorSignature
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation="table",
+        )
+        closed_options = _build_g22_closed_answer_options(
+            note_text=note_text,
+            candidates=candidates,
+        )
+        generated = self.adjudicate(
+            note_text=note_text,
+            closed_answer_options=_format_closed_answer_options_for_prompt(
+                closed_options
+            ),
+        )
+        adjudication = _parse_evidence_first_adjudication_json(
+            generated.adjudication_json
+        )
+        prediction = _prediction_from_evidence_first_adjudication(
+            adjudication=adjudication,
+            options=closed_options,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            temporal_candidate_source="validation_residual_family_selector",
+        )
+        prediction.prompt_version = self.prompt_version
+        return prediction
+
+
 
 class GanFrequencyS0ReactTemporalToolsModule(dspy.Module):
     """Bounded ReAct probe with deterministic temporal helper tools."""
@@ -2905,6 +2991,7 @@ def build_gan_s0_module(
     | GanFrequencyS0CandidateRankingTargetSelectorModule
     | GanFrequencyS0ClosedOptionTargetSelectorModule
     | GanFrequencyS0EvidenceFirstTargetSelectorModule
+    | GanFrequencyS0ValidationResidualFamilySelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     active_variants = {
@@ -2917,6 +3004,7 @@ def build_gan_s0_module(
         GAN_FREQUENCY_S0_CANDIDATE_RANKING_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_CLOSED_OPTION_TARGET_SELECTOR_VARIANT,
         GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT,
+        GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT,
     }
     if not include_archive and program_variant not in active_variants:
         raise ValueError(
@@ -3043,6 +3131,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_EVIDENCE_FIRST_TARGET_SELECTOR_VARIANT:
         return GanFrequencyS0EvidenceFirstTargetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_VALIDATION_RESIDUAL_FAMILY_SELECTOR_VARIANT:
+        return GanFrequencyS0ValidationResidualFamilySelectorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
