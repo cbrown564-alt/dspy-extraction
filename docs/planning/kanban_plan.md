@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-30 after P5 ExECT frequency adjudicator preregistration
+Last refreshed: 2026-05-30 after P2 G30 standard50 GEPA result and P5 ExECT frequency adjudicator preregistration
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is retained only when it changes
@@ -36,14 +36,15 @@ The active program is the May 28 component-ceiling pivot:
    pairwise arms. B1 stays blocked until isolated family ceilings and
    component-isolated interaction evidence exist.
 
-3. **Gan GEPA needs a proper hosted teacher-runner gate before another optimizer
-   verdict.** R14 blocks Qwen GEPA, but does not close GEPA as a mechanism. The
-   next optimizer path should be a dedicated G30 workstream over the current
-   strongest Gan frequency selector architecture: GPT-4.1-mini as the runner,
-   a stronger hosted GPT-5-family reflection teacher if available, component-
-   attributed feedback, enough search budget to explore alternatives, and a
-   compact-delta / standard50 gate before full validation. Do not tune from
-   frozen-test rows and do not treat one GEPA arm as mechanism closure.
+3. **Gan GEPA has cleared the hosted teacher-runner runtime gate, but the G30
+   standard50 arm is rejected as tested.** P2/G30 proves GPT-4.1-mini
+   prediction and a separate hosted GPT-5.5 reflection config can run
+   end-to-end over the evidence-first selector. With `max_metric_calls=80`,
+   GEPA accepted reflected candidates and improved its 16-record compile
+   objective, but the final standard50 result was only 41/50 paper monthly,
+   below G24/G28 at 44/50 and below the G25 43/50 gate. Do not full-validate,
+   run Qwen GEPA, inspect frozen test, or scale the accepted policy-wall
+   instruction from this arm.
 
 4. **Medication follow-up needs a new mechanism, not the rejected E13 shape.**
    E13 rejects the tested AM+MT lifecycle-context routing arm because it lost
@@ -96,8 +97,8 @@ The active program is the May 28 component-ceiling pivot:
 - **Outcome:** A preregistered Gan optimizer mechanism path that gives GEPA a
   real test over the current strongest frequency-selector architecture, using
   GPT-4.1-mini for predictions and a stronger hosted GPT-5-family reflection
-  teacher when available, before any model budget is spent beyond dry-run or
-  smoke validation.
+  teacher when available, and records whether the hosted smoke and standard50
+  gates justify any further optimizer scale-up.
 - **Dependencies:** R14 GEPA postmortem and compact-delta gate, G24/G28/G27
   evidence-first selector reports, G25 standard50/generalization policy,
   G19/G17/G22/G23/G29 residual ledgers, G21 constructed-option surface, Gan
@@ -107,32 +108,53 @@ The active program is the May 28 component-ceiling pivot:
   planning; model calls wait for preregistration, dry-run validation, and
   teacher-model availability.
 - **Owner:** Codex.
-- **Status:** preregistered and runtime/config gate implemented; live model
-  calls not yet run.
+- **Status:** completed for hosted teacher-runner smoke and rejected standard50
+  GEPA arm.
 - **Validation:** Add config/runtime support proving the prediction LM and GEPA
   reflection LM can differ; preregister G30 controls; dry-run configs; preserve
   fixed scorer, loader, split, benchmark bridge, candidate-builder,
   constructor, and prediction-repair semantics; run smoke before standard50.
   Implemented runtime support with `optimizer.reflection_model_config_path`,
-  added matched-control and GEPA smoke configs, and dry-ran both successfully.
+  added matched-control and GEPA smoke configs, dry-ran both successfully, fixed
+  GEPA optimizer artifact serialization for path-valued reflection configs, and
+  ran live smoke. Matched control
+  `gan_s0_g30_evidence_first_control_gpt4_1_mini_smoke6_20260530T200132Z`
+  completed 6/6 valid predictions. Corrected GEPA smoke
+  `gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6_20260530T200635Z`
+  used `max_metric_calls=12`, invoked GPT-5.5 reflection, retained no new
+  candidate, and produced the same final labels as control. Both scored 0/6
+  paper monthly and 1/6 pragmatic on the smoke rows, with 6/6 schema validity
+  and 5/5 evidence support among present quotes; this is a runtime gate, not a
+  performance estimate. The standard50 GEPA follow-up
+  `gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_standard50_20260530T203349Z`
+  used `max_metric_calls=80`, accepted reflected candidates, improved the
+  compile-set objective from 10.25/16 to 11.1/16, and wrote a 14,639-character
+  final instruction. It scored 41/50 paper monthly, 42/50 Purist, 43/50
+  Pragmatic, 50/50 schema validity, and 44/44 evidence support among present
+  quotes, with 6/50 missing prediction evidence. Against G24/G28 standard50 at
+  44/50 monthly, the row movement was 2 fixes, 4 regressions, 5 shared misses,
+  and 39 shared hits, so it misses the G25 gate and is rejected as tested.
 - **Notes:** Treat GPT-5.4 as a requested teacher alias that must be verified
   against available model config before live calls. If unavailable, use the
   repo's strongest approved hosted GPT-5-family teacher config or add a
   clearly named private model config. Use `gan2026_paper_reproduction` as the
   primary benchmark-facing scorer and keep canonical Gan metrics diagnostic.
-  Candidate arms should include a matched non-GEPA G27-style control, GEPA over
-  the evidence-first selector, GEPA over a stripped short target-selector
-  prompt, and a distilled compact instruction arm with no compile. Promotion
-  requires a standard50 gate of at least 43/50 paper monthly or a preregistered
-  row-ledger exception with no special-label regression; full validation must
-  beat G27's 247/299 paper monthly or justify a narrower arm-level decision.
-  Record per-predictor instruction length and reject policy-wall wins unless
-  the benchmark-facing lift justifies the tradeoff. Qwen remains blocked until
-  the hosted compact-delta gate clears. See
+  The tested GEPA-over-evidence-first arm does not authorize full validation,
+  Qwen GEPA, frozen-test inspection, or scaling the accepted policy-wall
+  instruction. Future GEPA work should be a new compact or stripped-prompt
+  mechanism card with its own standard50 gate and row ledger. Promotion still
+  requires a standard50 gate of at least 43/50 paper monthly or a
+  preregistered row-ledger exception with no special-label regression; full
+  validation must beat G27's 247/299 paper monthly or justify a narrower
+  arm-level decision. Qwen remains blocked until the hosted compact-delta gate
+  clears. See
   `docs/experiments/gan/gan_s0_g30_gepa_teacher_runner_preregistration_20260530.md`,
+  `docs/experiments/gan/gan_s0_g30_gepa_teacher_runner_smoke_results_20260530.md`,
+  `docs/experiments/gan/gan_s0_g30_gepa_teacher_runner_standard50_results_20260530.md`,
   `configs/experiments/gan_s0_g30_evidence_first_control_gpt4_1_mini_smoke6.json`,
+  `configs/experiments/gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6.json`,
   and
-  `configs/experiments/gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6.json`.
+  `configs/experiments/gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_standard50.json`.
 
 ### P3 - ExECT Medication Prompt-Isolation Or Routing Card
 
@@ -307,10 +329,10 @@ card.
   representability review even though E12 confirms investigation.
 - Medication lifecycle / temporality remains diagnostic unless a new target
   policy and scorer design explicitly make it benchmark-facing.
-- Gan G30 GEPA work waits on separate runner/reflection model config support,
-  G30 preregistration, and component-attributed feedback review. It should
-  build from the G24/G27 evidence-first selector surface rather than the
-  rejected G29 residual-family checkpoint.
+- Any future G30/GEPA follow-up starts from the rejected standard50 row ledger,
+  not from a scale-up assumption. It needs a new compact or stripped-prompt
+  mechanism card with explicit budget, the preregistered 43/50 paper-monthly
+  gate, and no frozen-test tuning.
 - Future Gan selector work must cite the G19/G17/G22/G23/G27 failure class it
   targets and preserve a row-level before/after ledger.
 - G21 constructed answer options improve coverage only; selector performance is
@@ -322,11 +344,11 @@ card.
 
 ## Parallelization Opportunities
 
-- **Safe now:** P2 Gan GEPA preregistration/runtime design, P3 ExECT medication
-  follow-up planning, P5 frequency adjudicator design, P6 diagnosis/seizure
-  ceiling-comparator design, and report/readme cleanup tied to completed
-  artifacts. P4 Pair 4 design is also safe if it starts with comorbidity
-  support/representability rather than model calls.
+- **Safe now:** P3 ExECT medication follow-up planning, P5 frequency adjudicator
+  implementation planning, P6 diagnosis/seizure ceiling-comparator design, and
+  report/readme cleanup tied to completed artifacts. P4 Pair 4 design is also
+  safe if it starts with comorbidity support/representability rather than model
+  calls.
 - **Single-threaded or carefully sequenced:** scorer, loader, split, benchmark
   bridge, shared primitive contracts, registry/archive regeneration, and any
   active runtime authority changes.
@@ -335,22 +357,24 @@ card.
 - **Model-call gated:** any new Gan selector/adjudicator, ExECT medication arm,
   ExECT frequency adjudicator, ExECT diagnosis/seizure arm, or ExECT pairwise
   arm must be preregistered with fixed controls before calls are spent.
-  Gan G30 GEPA additionally requires the hosted teacher-runner config gate and
-  smoke validation before standard50 search.
+  Any future GEPA follow-up additionally requires a new compact or
+  stripped-prompt mechanism card, because the G30 evidence-first standard50 arm
+  is already rejected as tested.
 
 ## Recommended Next Pull
 
-1. If staying on Gan, pull P2 first: add separate runner/reflection model config
-   support, write the G30 preregistration, and dry-run the matched control plus
-   GEPA smoke configs before any real search budget is spent.
-2. For ExECT, P5 design is preregistered; next pull either implements its
+1. For ExECT, P5 design is preregistered; next pull either implements its
    deterministic comparator plus capped smoke config, or pulls P6 to design
    diagnosis/seizure raw-bridge ceiling comparators before Pair 1 claims.
-3. In parallel, write P3 as a medication prompt-isolation or deterministic
+2. In parallel, write P3 as a medication prompt-isolation or deterministic
    routing card that uses the E7 row ledger and avoids the rejected E13
    lifecycle-context shape.
-4. Start P4 only as Pair 4 design and comorbidity support review; defer model
+3. Start P4 only as Pair 4 design and comorbidity support review; defer model
    calls until the target-component-alone comparators are explicit.
+4. If staying on Gan, do not scale the G30 GEPA evidence-first arm. The
+   standard50 run exercised `max_metric_calls=80` but scored 41/50 and regressed
+   versus G24/G28; any optimizer follow-up should be a new compact or
+   stripped-prompt mechanism card.
 5. Add cleanup work only when it names a concrete active runtime contract or
    active-authority ambiguity.
 

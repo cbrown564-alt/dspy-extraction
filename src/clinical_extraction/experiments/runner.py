@@ -667,9 +667,10 @@ def run_experiment(
 
     prompts_data = backend.prompts_data(config)
     if config.optimizer is not None:
-        prompts_data["optimizer"] = config.optimizer.model_dump()
+        optimizer_payload = config.optimizer.model_dump(mode="json")
+        prompts_data["optimizer"] = optimizer_payload
         write_compiled_state(module, paths["compiled_state"])
-        write_optimizer_summary(config.optimizer.model_dump(), paths["optimizer_artifacts"])
+        write_optimizer_summary(optimizer_payload, paths["optimizer_artifacts"])
     paths["prompts"].write_text(
         json.dumps(prompts_data, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -713,7 +714,7 @@ def run_experiment(
     )
     report["runtime"] = runtime_report(
         records=len(records),
-        optimizer=config.optimizer.model_dump() if config.optimizer else None,
+        optimizer=config.optimizer.model_dump(mode="json") if config.optimizer else None,
         compile_duration_seconds=compile_duration_seconds,
         prediction_duration_seconds=prediction_duration_seconds,
         evaluation_duration_seconds=evaluation_duration_seconds,

@@ -1,7 +1,7 @@
 # Component Ceiling Registry
 
 Status: component ceiling registry
-Last updated: 2026-05-30 (P5 ExECT frequency adjudicator preregistration)
+Last updated: 2026-05-30 (P2 G30 standard50 GEPA result; P5 ExECT frequency adjudicator preregistration)
 Scope: current Gan S0 and ExECT decomposition status
 
 This registry is the compact current map. It is not a full run registry. Use it
@@ -38,9 +38,9 @@ unknown/no-reference policy before another broad prompt pass?
 | Evidence and schema | diagnostic only | High schema/evidence rates often coexist with wrong frequency labels. | Keep as gates and diagnostics, not proof of semantic correctness. |
 | CLINES-style entity-first | rejected arm | R12 C1 caused severe context loss: GPT 20.8%, Qwen 12.0% monthly on cap-25. | Do not rerun same entity-first interface. Mechanism only reopens with preserved global context. |
 | Self-consistency | rejected arm | R13 repeated sampling gave 0.0pp gain and 0% variance at temperature 0.7. | Do not spend 5x compute on Gan S0 self-consistency without a new instability hypothesis. |
-| GEPA / optimizers | hosted gate preregistered / Qwen blocked | R14 requires compact-delta gate before Qwen GEPA. G30 now preregisters a hosted teacher-runner gate over the G27 evidence-first selector surface and adds runtime/config support for separate prediction and reflection model configs. | Dry-ran G30 matched-control and GEPA smoke configs; next step is hosted smoke only after teacher-model availability is confirmed. No new Qwen GEPA until hosted compact-delta gate clears. |
+| GEPA / optimizers | standard50 arm rejected / Qwen blocked / mechanism open | R14 requires compact-delta gate before Qwen GEPA. G30 preregistered and completed a hosted teacher-runner smoke over the G27 evidence-first selector surface: GPT-4.1-mini predictions, separate GPT-5.5 reflection, stage-attributed feedback, and fixed scorer/loader/split/bridge/candidate/constructor/repair controls. The standard50 follow-up used `max_metric_calls=80` and accepted reflected candidates, but the accepted instruction expanded to 14,639 chars and scored only 41/50 paper monthly, below G24/G28 at 44/50 and below the G25 43/50 gate. | Reject the tested G30 evidence-first GEPA arm. Do not full-validate, run Qwen GEPA, inspect frozen test, or scale the policy-wall instruction. Any future GEPA work needs a new compact or stripped-prompt mechanism card with its own gate and row ledger. |
 
-G19/G20/G17/G21/G22/G23/G24/G25/G27/G29 sequencing note: the post-G16 standard50 attribution audit is the active
+G19/G20/G17/G21/G22/G23/G24/G25/G27/G29/G30 sequencing note: the post-G16 standard50 attribution audit is the active
 row-level optimization queue for Gan follow-up work. It classifies 65
 paper-monthly arm-misses across builder-gap GPT, D1 v1.2b, G8, G10, and G15 on
 29 unique rows. G20 has now preregistered the deterministic quantified-rate
@@ -61,8 +61,11 @@ scope conditional on the G25 gate. G27 has now shown that the G24 evidence-first
 selector improves full validation but does not improve frozen-test monthly over
 builder-gap GPT. G29 tested the validation-residual-family checkpoint against
 G27 validation misses, preserved trace and label-contract validity, but
-regressed versus G27 and is rejected as tested. Any later selector card should
-cite a G19/G17/G22/G23/G27/G29 failure
+regressed versus G27 and is rejected as tested. G30 then tested hosted
+teacher-runner GEPA over the G24/G27 evidence-first selector; the optimizer
+capacity worked, but standard50 regressed to 41/50 and the accepted instruction
+became a 14,639-character policy wall. Any later selector or optimizer card
+should cite a G19/G17/G22/G23/G27/G29/G30 failure
 class, keep a row-level before/after ledger, state how the G25 gate will be
 applied, and preserve the rule that frozen-test rows are residual analysis
 only.
@@ -102,6 +105,8 @@ only.
 | R12 CLINES-style entity-first | rejected arm | Gan 2026 synthetic; cap-25 validation slice | GPT 4.1-mini / OpenAI and Qwen3.6:35b / Ollama | Runs `gan_s0_entity_first_c1_llm_tags_date_events_cap25_gpt4_1_mini_20260527T235513Z` and `gan_s0_entity_first_c1_llm_tags_date_events_cap25_qwen35b_20260528T003538Z` | Gan deterministic cap-slice metrics under the date/events comparison policy | Severe context loss regressed GPT to 20.8% and Qwen to 12.0%; rejects the tested interface, not all entity-aware decomposition. |
 | R13 self-consistency | rejected arm | Gan 2026 synthetic; cap-25 validation slice | GPT 4.1-mini / OpenAI and Qwen3.6:35b / Ollama, temperature 0.7 | Runs `gan_s0_self_consistency_sample5_cap25_gpt4_1_mini_20260528T000203Z` and `gan_s0_self_consistency_sample5_cap25_qwen35b_20260528T010925Z` | Gan deterministic cap-slice metrics; five samples compared against single-sample controls | 0.0pp gain and no variance at 5x compute; reopen only with a new instability hypothesis. |
 | R14 GEPA / optimizer gate | blocked optimizer claim | Gan 2026 synthetic; historical GEPA artifacts reviewed | Qwen3.6:35b / Ollama gate design | Artifact `experiments/gan/gan_s0_r14_gepa_failure_postmortem_qwen_gate_design_20260528.md` | Optimizer objectives remain separate from benchmark scorers; no new benchmark claim made | Qwen GEPA stays blocked until compact-delta, latency, and no-overlap gate criteria are satisfied. |
+| G30 GEPA teacher-runner smoke | runtime gate complete / mechanism open | Gan 2026 synthetic; `gan_2026_fixed_v1:validation`; six-record smoke slice | GPT 4.1-mini / OpenAI prediction runner; GPT-5.5 / OpenAI reflection model | Configs `configs/experiments/gan_s0_g30_evidence_first_control_gpt4_1_mini_smoke6.json` and `configs/experiments/gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6.json`; runs `gan_s0_g30_evidence_first_control_gpt4_1_mini_smoke6_20260530T200132Z` and `gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6_20260530T200635Z`; report `experiments/gan/gan_s0_g30_gepa_teacher_runner_smoke_results_20260530.md` | Primary `gan2026_paper_reproduction`; canonical Gan metrics diagnostic; repair/range/tolerance disabled; fixed scorer, loader, split, benchmark bridge, candidate-builder, G21 constructor, prompt version, prediction-repair, and gold-policy controls | Matched control and GEPA smoke both produced 6/6 valid predictions and identical final labels: 0/6 paper monthly, 0/6 Purist, 1/6 Pragmatic, with 5/5 evidence support among present quotes and one missing evidence prediction. GEPA invoked GPT-5.5 reflection under `max_metric_calls=12`, proposed a longer instruction, and retained no new candidate. This completes the teacher-runner smoke gate only; it does not promote GEPA or authorize full validation. |
+| G30 GEPA teacher-runner standard50 | rejected arm / mechanism open | Gan 2026 synthetic; `gan_2026_fixed_v1:validation`; `gan_s0_g6_standard50_v1` | GPT 4.1-mini / OpenAI prediction runner; GPT-5.5 / OpenAI reflection model | Config `configs/experiments/gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_standard50.json`; run `gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_standard50_20260530T203349Z`; report `experiments/gan/gan_s0_g30_gepa_teacher_runner_standard50_results_20260530.md` | Primary `gan2026_paper_reproduction`; canonical Gan metrics diagnostic; repair/range/tolerance disabled; fixed scorer, loader, split, benchmark bridge, candidate-builder, G21 constructor, prompt version, prediction-repair, and gold-policy controls | `max_metric_calls=80` exercised optimizer capacity: GEPA accepted candidates and improved the compile-set objective from 10.25/16 to 11.1/16. Standard50 scored 41/50 paper monthly, 42/50 Purist, 43/50 Pragmatic, 50/50 schema-valid, and 44/44 evidence-supported among present quotes, below G24/G28 at 44/50 monthly and below the G25 43/50 gate. Row movement versus G24/G28 was 2 fixes, 4 regressions, 5 shared misses, and 39 shared hits. Do not full-validate or scale as tested. |
 
 Primary current docs:
 
@@ -132,6 +137,11 @@ Primary current docs:
 - `experiments/gan/gan_s0_g25_selector_generalization_audit_20260529.md`
 - `experiments/gan/gan_s0_g24_selector_interface_preregistration_20260529.md`
 - `experiments/gan/gan_s0_g27_full_validation_test_residual_selector_report_20260529.md`
+- `experiments/gan/gan_s0_g29_validation_residual_selector_preregistration_20260529.md`
+- `experiments/gan/gan_s0_g29_validation_residual_selector_results_20260529.md`
+- `experiments/gan/gan_s0_g30_gepa_teacher_runner_preregistration_20260530.md`
+- `experiments/gan/gan_s0_g30_gepa_teacher_runner_smoke_results_20260530.md`
+- `experiments/gan/gan_s0_g30_gepa_teacher_runner_standard50_results_20260530.md`
 - `experiments/gan/gan_s0_r11_temporal_date_stage_decision_20260528.md`
 - `experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md`
 - `experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md`

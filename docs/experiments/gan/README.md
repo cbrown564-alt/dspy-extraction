@@ -1,7 +1,7 @@
 # Gan S0 Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after G29 validation-residual selector result
+Last updated: 2026-05-30 after G30 standard50 GEPA teacher-runner result
 
 ## Current Question
 
@@ -38,6 +38,7 @@ The system must separate:
 | G24 evidence-first selector preregistration | preregistered mechanism card | G24 freezes the next selector interface before model calls: evidence-first target narration, closed-option adequacy decision, constrained `unknown`/`no seizure frequency reference` escape, and construction-aware option priority. | Next pull is the GPT-4.1-mini cap5/standard50 implementation and run under G24. Do not full-validate, run Qwen, or inspect frozen test until the G25 gate is satisfied. |
 | G27 evidence-first selector scale-up | validation mechanism arm / test residual diagnostic | G24/G28/G27 evidence-first target selection reaches 247/299 (82.6%) paper monthly on full validation, above builder-gap GPT's stored 239/299 (79.9%), with 100% schema validity and evidence support. Frozen test is essentially tied with builder-gap GPT at 196/301 (65.1%) versus 197/301 (65.4%) and lower on pragmatic category. | Treat as a useful validation mechanism arm, not a new operational default. Frozen-test rows remain residual-analysis evidence only and must not be used to tune G24. |
 | G29 validation-residual selector | rejected arm | G29 implemented the validation-residual-family checkpoint under fixed scorer, loader, split, bridge, candidate-builder, constructor, gold-policy, and repair controls. Smoke passed trace and label-contract gates. Full validation reached 243/299 (81.3%) paper monthly, below G27 at 247/299 (82.6%), with 10 gains and 14 regressions. | Do not promote G29 or run a frozen-test check for this arm. Any future Gan selector needs a new G29-aware mechanism card. |
+| G30 GEPA teacher-runner | standard50 rejected arm / runtime gate complete / mechanism open | Matched smoke control `gan_s0_g30_evidence_first_control_gpt4_1_mini_smoke6_20260530T200132Z` and corrected GEPA smoke `gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6_20260530T200635Z` proved GPT-4.1-mini prediction plus separate GPT-5.5 reflection can run end-to-end. The subsequent standard50 GEPA run `gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_standard50_20260530T203349Z` used `max_metric_calls=80`, accepted reflected candidates, and improved the compile-set objective from 10.25/16 to 11.1/16, but expanded the final instruction to 14,639 chars and scored 41/50 paper monthly, 42/50 Purist, 43/50 Pragmatic, 50/50 schema-valid, and 44/44 evidence-supported among present quotes. Versus G24/G28 standard50 at 44/50 monthly, the row ledger is 2 fixes, 4 regressions, 5 shared misses, and 39 shared hits. | Reject this arm as tested. Do not full-validate, run Qwen GEPA, inspect frozen test, or scale this policy-wall instruction. Future GEPA work needs a new compact or stripped-prompt mechanism card. |
 | R1.1 schema guard Qwen | held diagnostic | 71.3% monthly, 93.3% schema validity; held after R10, not promoted. |
 
 ## Read First
@@ -73,6 +74,9 @@ The system must separate:
 - `gan_s0_g27_full_validation_test_residual_selector_report_20260529.md` - G27 full-validation and frozen-test residual result; use it as residual evidence without tuning from test rows.
 - `gan_s0_g29_validation_residual_selector_preregistration_20260529.md` - G29 validation-residual-family selector preregistration.
 - `gan_s0_g29_validation_residual_selector_results_20260529.md` - G29 implementation and validation result; rejected as tested.
+- `gan_s0_g30_gepa_teacher_runner_preregistration_20260530.md` - G30 hosted GEPA teacher-runner preregistration.
+- `gan_s0_g30_gepa_teacher_runner_smoke_results_20260530.md` - G30 hosted GEPA smoke result; runtime/config gate complete before the standard50 follow-up.
+- `gan_s0_g30_gepa_teacher_runner_standard50_results_20260530.md` - G30 standard50 GEPA result; optimizer capacity exercised, but the arm is rejected at 41/50 paper monthly.
 - `gan_s0_g17_unknown_no_reference_policy_20260529.md` - G17 no-model special-label policy separation; use it before any new unknown/no-reference, unknown-cluster, seizure-free/no-reference, or unclear-frequency selector mechanism.
 - `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md` - D1 mechanism baseline.
 - `gan_s0_r11_temporal_date_stage_decision_20260528.md` - date/event stage decision.
@@ -136,27 +140,36 @@ listed above or in `../../component_ceiling_registry.md`.
    and the closed-option / constrained-escape contract, but full validation
    regressed versus G27: 243/299 paper monthly versus 247/299, with 10 gains and
    14 regressions. Do not promote G29 or run frozen-test inspection for this arm.
-11. Treat G13 as the source-level gate baseline before future selector work: do
+11. Treat G30 as complete for the hosted GEPA teacher-runner smoke and rejected
+   standard50 arm. The corrected smoke proved the runner can use GPT-4.1-mini
+   for predictions and GPT-5.5 for reflection. The standard50 follow-up used
+   `max_metric_calls=80`, accepted reflected candidates, and improved its
+   16-record compile objective, but scored only 41/50 paper monthly versus
+   G24/G28 at 44/50 and below the G25 43/50 gate. It does not authorize full
+   validation, frozen-test inspection, Qwen GEPA, or scaling the accepted
+   14,639-character policy-wall instruction. Future GEPA work needs a new
+   compact or stripped-prompt mechanism card.
+12. Treat G13 as the source-level gate baseline before future selector work: do
    not attribute unclear-frequency or seizure-free gate misses to target
    selection until the G13 false-positive/false-negative rows are accounted for.
    Use the G13 design-implications note to keep deterministic candidates as LLM
    support rather than as a growing semantic adjudicator.
-12. Treat G14 as the temporal anchoring diagnostic baseline: the current
+13. Treat G14 as the temporal anchoring diagnostic baseline: the current
    deterministic substrate covers most temporal challenge rows, but two true
    temporal-slot misses remain. Do not expand fragile arithmetic or broad
    relative-anchor guards from G14; route remaining exact misses to
    aggregation-aware answer construction before another target-selection arm.
-13. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
+14. Use G6 surfaces for any new selector/adjudicator execution: the old enriched
    25-record slice is smoke-only, `gan_s0_g6_standard50_v1` is the default
    mechanism-comparison surface, and named challenge sets are diagnostic
    overlays.
-14. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23/G24/G25/G27/G29
+15. Keep the G4 negative result, G5 scorer-mode forensics, and G8/G9/G10/G15/G17/G19/G20/G21/G22/G23/G24/G25/G27/G29/G30
    reports as required context for any seizure-free, quantified-rate, unknown,
    no-reference, support-aware, aggregation-constructor, or
    candidate-constrained selector.
-15. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
+16. Keep arithmetic and broad relative-anchor guardrails diagnostic-only until a
    seizure-specific parser exists.
-16. Use G19's queue and G23's mechanism framing before choosing the next Gan
+17. Use G19's queue and G23's mechanism framing before choosing the next Gan
    selector: G20 preregistered
    the aggregation-constructor path, G21 implemented the quantified-rate option
    surface, G17 defined the special-label slice, and G22 tested one
@@ -167,7 +180,7 @@ listed above or in `../../component_ceiling_registry.md`.
    G22-, G27-, and G29-aware before/after ledger, with G25's
    standard50/full-validation/test gate applied before any model-call scale-up.
    Do not tune from frozen-test rows.
-17. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
+18. Use the G5 rescore pack for synthetic-only paper-facing tables; Real(300)
    and Real(150) benchmark reporting remains blocked.
 
 ## Filing Guidance

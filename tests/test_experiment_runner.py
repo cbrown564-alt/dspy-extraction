@@ -309,6 +309,74 @@ def test_mock_runner_writes_optimizer_artifacts_when_config_has_optimizer(tmp_pa
     assert prompts_payload["optimizer"]["name"] == "BootstrapFewShot"
 
 
+def test_mock_runner_writes_gepa_optimizer_artifacts_with_reflection_path(tmp_path):
+    config_path = Path(
+        "configs/experiments/"
+        "gan_s0_g30_evidence_first_gepa_gpt4_1_mini_gpt5_5_reflection_smoke6.json"
+    )
+    config = load_experiment_config(config_path)
+    run_config_path = tmp_path / "config.json"
+    run_config_path.write_text(
+        json.dumps(
+            {
+                **config.model_dump(mode="json"),
+                "output_root": str(tmp_path / "runs"),
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    prediction_set = MagicMock()
+    prediction_set.model_dump.return_value = {"predictions": [], "dataset": "gan_2026"}
+    report = {
+        "dataset": "gan_2026",
+        "counts": {"evaluated_records": 6},
+        "benchmark_metrics": {},
+        "diagnostic_metrics": {},
+        "errors": {},
+    }
+    compiled_module = MagicMock()
+    compiled_module.dump_state.return_value = {"compiled": True}
+    prediction_lm = MagicMock(history=[])
+    reflection_lm = MagicMock(history=[])
+
+    with patch.dict("os.environ", {"OPENAI_API_KEY": "test"}), patch(
+        "clinical_extraction.experiments.runner.build_dspy_lm",
+        side_effect=[prediction_lm, reflection_lm],
+    ), patch(
+        "clinical_extraction.experiments.gan_backend.compile_gan_s0_module_gepa",
+        return_value=compiled_module,
+    ), patch(
+        "clinical_extraction.experiments.gan_backend.predict_gan_records",
+        return_value=prediction_set,
+    ), patch(
+        "clinical_extraction.experiments.gan_backend.evaluate_gan_predictions",
+        return_value=report,
+    ):
+        assert run_experiment(run_config_path, run_id="gepa_optimizer_run") == 0
+
+    run_dir = tmp_path / "runs" / "gepa_optimizer_run"
+    summary_payload = json.loads(
+        (run_dir / "artifacts" / "optimizer" / "summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    prompts_payload = json.loads((run_dir / "prompts.json").read_text(encoding="utf-8"))
+    metrics_payload = json.loads((run_dir / "metrics.json").read_text(encoding="utf-8"))
+
+    assert summary_payload["optimizer"]["name"] == "GEPA"
+    assert isinstance(
+        summary_payload["optimizer"]["reflection_model_config_path"],
+        str,
+    )
+    assert prompts_payload["optimizer"]["reflection_model_config_path"].endswith(
+        "gan_s0_gpt5_5_openai.json"
+    )
+    assert metrics_payload["runtime"]["optimizer"][
+        "reflection_model_config_path"
+    ].endswith("gan_s0_gpt5_5_openai.json")
+
+
 def test_gepa_reflection_config_preserves_null_temperature():
     base = LLMProviderConfig(provider="openai", model="gpt-5.5", temperature=None)
 

@@ -51,3 +51,20 @@ errors.
 This card tests one GEPA arm under better teacher-runner conditions. A failed
 G30 arm rejects the arm as tested; it does not close GEPA as a mechanism unless
 a later mechanism review compares multiple GEPA positions or prompts.
+
+## Result
+
+The hosted smoke result is recorded in
+`gan_s0_g30_gepa_teacher_runner_smoke_results_20260530.md`. The smoke completed
+the runtime/config gate with GPT-4.1-mini prediction and GPT-5.5 reflection, but
+it did not produce a retained GEPA instruction improvement or a performance
+promotion.
+
+The standard50 follow-up is recorded in
+`gan_s0_g30_gepa_teacher_runner_standard50_results_20260530.md`. It used
+`max_metric_calls=80`, accepted reflected candidates, and improved the
+16-record compile objective, but the accepted instruction expanded to 14,639
+chars and the run scored 41/50 paper monthly, below G24/G28 at 44/50 and below
+the G25 43/50 gate. Reject this G30 arm as tested; do not full-validate, run
+Qwen GEPA, inspect frozen test, or scale the policy-wall instruction from this
+arm.
