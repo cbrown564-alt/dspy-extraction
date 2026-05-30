@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-29 after G29 and ExECT E1-E13 next-experiment synthesis
+Last refreshed: 2026-05-30 after Gan G30 GEPA/teacher-runner planning
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is retained only when it changes
@@ -36,25 +36,34 @@ The active program is the May 28 component-ceiling pivot:
    pairwise arms. B1 stays blocked until isolated family ceilings and
    component-isolated interaction evidence exist.
 
-3. **Medication follow-up needs a new mechanism, not the rejected E13 shape.**
+3. **Gan GEPA needs a proper hosted teacher-runner gate before another optimizer
+   verdict.** R14 blocks Qwen GEPA, but does not close GEPA as a mechanism. The
+   next optimizer path should be a dedicated G30 workstream over the current
+   strongest Gan frequency selector architecture: GPT-4.1-mini as the runner,
+   a stronger hosted GPT-5-family reflection teacher if available, component-
+   attributed feedback, enough search budget to explore alternatives, and a
+   compact-delta / standard50 gate before full validation. Do not tune from
+   frozen-test rows and do not treat one GEPA arm as mechanism closure.
+
+4. **Medication follow-up needs a new mechanism, not the rejected E13 shape.**
    E13 rejects the tested AM+MT lifecycle-context routing arm because it lost
    annotated-medication recall without reducing false positives. Any next
    medication card should test prompt isolation or deterministic routing while
    keeping annotated medication as the sole scored endpoint and lifecycle /
    temporality as diagnostic context only.
 
-4. **Frequency and target-selection work must stay decomposed.** For Gan,
+5. **Frequency and target-selection work must stay decomposed.** For Gan,
    separate frequency-content gating, candidate inventory, temporal anchoring,
    aggregation, special-label policy, and final target selection. For ExECT,
    treat broad frequency payloads as recall substrates until an adjudicator or
    ranker is preregistered against the fixed payload.
 
-5. **Architecture cleanup is no longer a standing workstream.** C12-C32 closed
+6. **Architecture cleanup is no longer a standing workstream.** C12-C32 closed
    the active cleanup and current-authority pass. New cleanup needs a concrete
    runtime contract or active-authority ambiguity, not historical card
    carryover.
 
-6. **Benchmark and scorer policy stay frozen by default.** Gan paper-comparison
+7. **Benchmark and scorer policy stay frozen by default.** Gan paper-comparison
    tables use `gan2026_paper_reproduction`; canonical Gan metrics remain
    diagnostic. ExECT Table 1 reproduction remains blocked until CUI-aware
    all-family scoring exists. Holdout and frozen-test rows are residual-analysis
@@ -82,14 +91,49 @@ The active program is the May 28 component-ceiling pivot:
   Treat the evidence-first selector as a useful validation mechanism arm, not a
   new default. Treat G29 as a rejected arm, not mechanism closure.
 
-### P2 - ExECT Medication Prompt-Isolation Or Routing Card
+### P2 - Gan G30 GEPA Teacher-Runner Mechanism Card
+
+- **Outcome:** A preregistered Gan optimizer mechanism path that gives GEPA a
+  real test over the current strongest frequency-selector architecture, using
+  GPT-4.1-mini for predictions and a stronger hosted GPT-5-family reflection
+  teacher when available, before any model budget is spent beyond dry-run or
+  smoke validation.
+- **Dependencies:** R14 GEPA postmortem and compact-delta gate, G24/G28/G27
+  evidence-first selector reports, G25 standard50/generalization policy,
+  G19/G17/G22/G23/G29 residual ledgers, G21 constructed-option surface, Gan
+  audit, and runner support for separate prediction and reflection model
+  configs.
+- **Parallelizable:** design and runner/config support can run with ExECT
+  planning; model calls wait for preregistration, dry-run validation, and
+  teacher-model availability.
+- **Owner:** Codex.
+- **Validation:** Add config/runtime support proving the prediction LM and GEPA
+  reflection LM can differ; preregister G30 controls; dry-run configs; preserve
+  fixed scorer, loader, split, benchmark bridge, candidate-builder,
+  constructor, and prediction-repair semantics; run smoke before standard50.
+- **Notes:** Treat GPT-5.4 as a requested teacher alias that must be verified
+  against available model config before live calls. If unavailable, use the
+  repo's strongest approved hosted GPT-5-family teacher config or add a
+  clearly named private model config. Use `gan2026_paper_reproduction` as the
+  primary benchmark-facing scorer and keep canonical Gan metrics diagnostic.
+  Candidate arms should include a matched non-GEPA G27-style control, GEPA over
+  the evidence-first selector, GEPA over a stripped short target-selector
+  prompt, and a distilled compact instruction arm with no compile. Promotion
+  requires a standard50 gate of at least 43/50 paper monthly or a preregistered
+  row-ledger exception with no special-label regression; full validation must
+  beat G27's 247/299 paper monthly or justify a narrower arm-level decision.
+  Record per-predictor instruction length and reject policy-wall wins unless
+  the benchmark-facing lift justifies the tradeoff. Qwen remains blocked until
+  the hosted compact-delta gate clears.
+
+### P3 - ExECT Medication Prompt-Isolation Or Routing Card
 
 - **Outcome:** A narrow validation-only medication mechanism card, and then a
   run only if the card is explicit enough, that accounts for E7/E13 false-
   positive and recall-regression evidence.
 - **Dependencies:** E6 current-Rx ceiling substrate, E7 stack-interference
   attribution, E13 rejected lifecycle-context arm, E5 lifecycle target policy.
-- **Parallelizable:** yes with P4 and P5; model calls should wait for the card.
+- **Parallelizable:** yes with P5 and P6; model calls should wait for the card.
 - **Owner:** unassigned.
 - **Validation:** Annotated medication remains the sole scored endpoint;
   lifecycle / temporality is diagnostic only; scorer and bridge semantics stay
@@ -98,7 +142,7 @@ The active program is the May 28 component-ceiling pivot:
   annotation-policy or missing-gold false-positive suppression as a clean
   precision gain unless the report says so explicitly.
 
-### P3 - ExECT Pair 4 Investigation + Comorbidity Design
+### P4 - ExECT Pair 4 Investigation + Comorbidity Design
 
 - **Outcome:** A corrected Pair 4 design that defines the comorbidity side
   before model calls, then compares investigation-only versus
@@ -106,7 +150,7 @@ The active program is the May 28 component-ceiling pivot:
   comorbidity-plus-investigation if the design clears support and policy gates.
 - **Dependencies:** X2 plan and corrected-result note, E12 investigation
   near-ceiling confirmation, comorbidity support/representability review.
-- **Parallelizable:** design can run with P2/P4/P5; model calls wait for the
+- **Parallelizable:** design can run with P3/P5/P6; model calls wait for the
   comorbidity side to be defined.
 - **Owner:** unassigned.
 - **Validation:** Target-component-alone versus target-plus-paired-component
@@ -115,14 +159,14 @@ The active program is the May 28 component-ceiling pivot:
 - **Notes:** Do not use S1-S4 ladder comparisons as pairwise evidence. E12
   solves the investigation comparator, not comorbidity.
 
-### P4 - ExECT Frequency Adjudicator Design
+### P5 - ExECT Frequency Adjudicator Design
 
 - **Outcome:** A preregistered adjudicator or ranker plan against the fixed broad
   frequency event/rate payload, followed by a validation-only arm only after
   the endpoint and comparator are frozen.
 - **Dependencies:** E1 frequency event/rate payload, E10 candidate-selection
   split, E11 frequency holdout residual caveat.
-- **Parallelizable:** yes with P2/P5; implementation should wait until endpoint
+- **Parallelizable:** yes with P3/P6; implementation should wait until endpoint
   and comparator are explicit.
 - **Owner:** unassigned.
 - **Validation:** Fixed payload, fixed scorer, declared precision/recall tradeoff,
@@ -133,7 +177,7 @@ The active program is the May 28 component-ceiling pivot:
   next frequency step. Do not tune from holdout; use holdout only later as a
   residual audit.
 
-### P5 - ExECT Diagnosis And Seizure-Type Ceiling Comparators
+### P6 - ExECT Diagnosis And Seizure-Type Ceiling Comparators
 
 - **Outcome:** A validation-only design for isolated diagnosis and seizure-type
   ceiling comparators that separates raw extraction, benchmark bridge,
@@ -141,7 +185,7 @@ The active program is the May 28 component-ceiling pivot:
   claims.
 - **Dependencies:** E2 raw/bridge/prompt split, E11 holdout residual routing,
   ExECT gold audit, implemented diagnosis and seizure-type benchmark bridges.
-- **Parallelizable:** yes with P2 and P4.
+- **Parallelizable:** yes with P3 and P5.
 - **Owner:** unassigned.
 - **Validation:** Per-family diagnosis and seizure-type precision, recall, F1,
   raw versus bridged deltas, bridge-flagged value counts, and residual classes
@@ -225,7 +269,7 @@ pullable done cards.
   family spans as a diagnostic document-geometry substrate. E12 confirms
   investigation is near ceiling and unblocks corrected Pair 4 planning.
   The E1-E13/X2 synthesis report turns these into the active ExECT pull set:
-  P2 medication routing, P3 Pair 4 design, P4 frequency adjudication, and P5
+  P3 medication routing, P4 Pair 4 design, P5 frequency adjudication, and P6
   diagnosis/seizure-type ceiling comparators.
 
 - **Architecture cleanup:** C12-C32 and active-authority pruning are complete as
@@ -246,12 +290,16 @@ card.
   evidence. Substrates alone are not enough to rebuild optimized ExECT stacks.
 - Any ExECT pairwise follow-up must use target-component-alone versus
   target-plus-paired-component arms, not schema-ladder comparisons.
-- Pair 1 diagnosis + seizure type waits on P5 isolated comparators. Pair 2
-  seizure type + frequency waits on P4 frequency adjudicator design. Pair 4
+- Pair 1 diagnosis + seizure type waits on P6 isolated comparators. Pair 2
+  seizure type + frequency waits on P5 frequency adjudicator design. Pair 4
   investigation + comorbidity waits on a comorbidity-side support and
   representability review even though E12 confirms investigation.
 - Medication lifecycle / temporality remains diagnostic unless a new target
   policy and scorer design explicitly make it benchmark-facing.
+- Gan G30 GEPA work waits on separate runner/reflection model config support,
+  G30 preregistration, and component-attributed feedback review. It should
+  build from the G24/G27 evidence-first selector surface rather than the
+  rejected G29 residual-family checkpoint.
 - Future Gan selector work must cite the G19/G17/G22/G23/G27 failure class it
   targets and preserve a row-level before/after ledger.
 - G21 constructed answer options improve coverage only; selector performance is
@@ -263,10 +311,10 @@ card.
 
 ## Parallelization Opportunities
 
-- **Safe now:** P2 ExECT medication
-  follow-up planning, P4 frequency adjudicator design, P5 diagnosis/seizure
+- **Safe now:** P2 Gan GEPA preregistration/runtime design, P3 ExECT medication
+  follow-up planning, P5 frequency adjudicator design, P6 diagnosis/seizure
   ceiling-comparator design, and report/readme cleanup tied to completed
-  artifacts. P3 Pair 4 design is also safe if it starts with comorbidity
+  artifacts. P4 Pair 4 design is also safe if it starts with comorbidity
   support/representability rather than model calls.
 - **Single-threaded or carefully sequenced:** scorer, loader, split, benchmark
   bridge, shared primitive contracts, registry/archive regeneration, and any
@@ -276,20 +324,22 @@ card.
 - **Model-call gated:** any new Gan selector/adjudicator, ExECT medication arm,
   ExECT frequency adjudicator, ExECT diagnosis/seizure arm, or ExECT pairwise
   arm must be preregistered with fixed controls before calls are spent.
+  Gan G30 GEPA additionally requires the hosted teacher-runner config gate and
+  smoke validation before standard50 search.
 
 ## Recommended Next Pull
 
-1. For ExECT, pull P4 or P5 first: frequency adjudicator design and
+1. If staying on Gan, pull P2 first: add separate runner/reflection model config
+   support, write the G30 preregistration, and dry-run the matched control plus
+   GEPA smoke configs before any real search budget is spent.
+2. For ExECT, pull P5 or P6 first: frequency adjudicator design and
    diagnosis/seizure raw-bridge ceiling comparators unlock the largest share of
    downstream pairwise and stack work.
-2. In parallel, write P2 as a medication prompt-isolation or deterministic
+3. In parallel, write P3 as a medication prompt-isolation or deterministic
    routing card that uses the E7 row ledger and avoids the rejected E13
    lifecycle-context shape.
-3. Start P3 only as Pair 4 design and comorbidity support review; defer model
+4. Start P4 only as Pair 4 design and comorbidity support review; defer model
    calls until the target-component-alone comparators are explicit.
-4. If staying on Gan instead, write a new G29-aware mechanism card before any
-   model calls. The implemented G29 arm is rejected as tested, and frozen-test
-   inspection is not authorized for this prompt.
 5. Add cleanup work only when it names a concrete active runtime contract or
    active-authority ambiguity.
 
