@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-30 after Gan G30 GEPA/teacher-runner planning
+Last refreshed: 2026-05-30 after P5 ExECT frequency adjudicator preregistration
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is retained only when it changes
@@ -176,14 +176,17 @@ The active program is the May 28 component-ceiling pivot:
   split, E11 frequency holdout residual caveat.
 - **Parallelizable:** yes with P3/P6; implementation should wait until endpoint
   and comparator are explicit.
-- **Owner:** unassigned.
+- **Owner:** Codex.
+- **Status:** preregistered; implementation/model calls not yet run.
 - **Validation:** Fixed payload, fixed scorer, declared precision/recall tradeoff,
   comparison to S4/S5 frequency baselines, candidate precision/recall, oracle
   gap, type-associated and multi-label strata, and label-construction
-  residuals.
+  residuals. The P5 preregistration freezes the endpoint, comparator set,
+  validity gates, and stop rules.
 - **Notes:** Do not run another coverage audit or broad-stack prompt loop as the
   next frequency step. Do not tune from holdout; use holdout only later as a
-  residual audit.
+  residual audit. See
+  `docs/experiments/exect/exect_frequency_adjudicator_p5_preregistration_20260530.md`.
 
 ### P6 - ExECT Diagnosis And Seizure-Type Ceiling Comparators
 
@@ -340,9 +343,9 @@ card.
 1. If staying on Gan, pull P2 first: add separate runner/reflection model config
    support, write the G30 preregistration, and dry-run the matched control plus
    GEPA smoke configs before any real search budget is spent.
-2. For ExECT, pull P5 or P6 first: frequency adjudicator design and
-   diagnosis/seizure raw-bridge ceiling comparators unlock the largest share of
-   downstream pairwise and stack work.
+2. For ExECT, P5 design is preregistered; next pull either implements its
+   deterministic comparator plus capped smoke config, or pulls P6 to design
+   diagnosis/seizure raw-bridge ceiling comparators before Pair 1 claims.
 3. In parallel, write P3 as a medication prompt-isolation or deterministic
    routing card that uses the E7 row ledger and avoids the rejected E13
    lifecycle-context shape.

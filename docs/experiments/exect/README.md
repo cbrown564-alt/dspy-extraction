@@ -1,7 +1,7 @@
 # ExECT Experiment Map
 
 Status: active guidance
-Last updated: 2026-05-29 after E13 medication payload-routing result and E1-E13 decomposition synthesis
+Last updated: 2026-05-30 after P5 frequency adjudicator preregistration
 
 ## Current Question
 
@@ -24,7 +24,7 @@ The current program is:
 | --- | --- | --- |
 | Clean S1-S4 ladder | diagnostic baseline | Complexity stress test; not proof of component ceilings. |
 | S5 v2b core stack | promoted baseline | GPT 85.8% micro / 73.9% frequency F1; Qwen 85.4% / 71.4% validation. |
-| Frequency event/rate payload | current synthesis / adjudication open | Broad deterministic payload covers 43/43 validation gold labels but emits 151 extra candidates. E10 shows direct broad-payload promotion is only 36.3% F1, while a gold-constrained oracle over the same candidates reaches 100.0% F1; selection/adjudication remains open. |
+| Frequency event/rate payload | current synthesis / adjudication preregistered | Broad deterministic payload covers 43/43 validation gold labels but emits 151 extra candidates. E10 shows direct broad-payload promotion is only 36.3% F1, while a gold-constrained oracle over the same candidates reaches 100.0% F1; P5 preregisters the validation-only adjudicator/ranker design. |
 | S1 raw/bridge/prompt split | current synthesis | GPT S1 full validation is near ceiling only after benchmark bridges; Qwen test holdout transfer drop keeps S1 validation-aligned rather than mechanism-solved. |
 | Medication current-Rx ceiling | isolated ceiling / no-model oracle substrate | E6 annotation-derived current-Rx payload scores 100.0% medication F1 on validation; S1 GPT scores 92.8% and S5 GPT scores 88.7% on the same target. Lifecycle rows remain diagnostic/deferred. |
 | Medication stack interference | current synthesis | E7 attributes S5 medication loss to over-emission: S5 adds 8 false positives that S1 avoided, mostly planned/future, historical/switched, other-medication, and annotation-policy cases, while recovering both S1 false negatives. |
@@ -41,6 +41,7 @@ The current program is:
   including component findings, card ledger, limitations, and next experiments.
 - `exect_frequency_event_rate_payload_audit_20260528.md` - E1 no-model frequency payload coverage gate.
 - `exect_frequency_candidate_selection_probe_20260528.md` - E10 no-model frequency candidate-selection split.
+- `exect_frequency_adjudicator_p5_preregistration_20260530.md` - P5 validation-only frequency adjudicator/ranker design over the fixed E1 broad payload.
 - `exect_s1_raw_bridge_prompt_split_audit_20260528.md` - E2 artifact-only S1 causal split.
 - `exect_medication_current_rx_lifecycle_payload_audit_20260528.md` - E3 medication current-Rx/lifecycle substrate.
 - `exect_medication_lifecycle_target_policy_decision_20260528.md` - E5 lifecycle/temporality target policy decision.
@@ -62,8 +63,10 @@ The current program is:
 
 ## Active Next Work
 
-1. Frequency candidate adjudication/ranking follow-up should account for the E11 payload-transfer caveat before any promotion claim.
-2. Preregister validation-only component probes for S1 diagnosis/seizure-type transfer and frequency payload robustness/adjudication before broad stack work.
+1. Implement the P5 frequency candidate adjudicator/ranker only under the frozen
+   validation controls in `exect_frequency_adjudicator_p5_preregistration_20260530.md`;
+   account for the E11 payload-transfer caveat before any promotion claim.
+2. Preregister validation-only component probes for S1 diagnosis/seizure-type transfer before broad stack work.
 3. For medication follow-up, write a new prompt-isolation or deterministic routing card that accounts for E13's AM+MT recall regression before another model-backed arm.
 4. Use X2 to keep pairwise interaction cards validation-only, support-counted,
    component-isolated, and stop-rule-bound before any broad stack.
